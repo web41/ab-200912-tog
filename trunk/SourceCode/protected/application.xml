@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<application id="TOG" mode="Debug">
+	<!-- alias definitions and namespace usings
+	<paths>
+		<alias id="myalias" path="./lib" />
+		<using namespace="Application.common.*" />
+	</paths>
+	-->
+	<paths>
+		<!--alias id="CSitemap" path="common/CSitemap"/--> 
+		<using namespace="System.I18N.*"/>
+		<using namespace="System.Data.*"/>
+		<using namespace="System.Data.ActiveRecord.*"/>
+		<using namespace="System.Security.*" />
+		<using namespace="System.Web.UI.ActiveControls.*"/>
+		<using namespace="System.Web.TUrlMapping.*"/>
+		<using namespace="Application.data.*"/>
+		<using namespace="Application.common.*"/>
+		<!--using namespace="CSitemap.*"/-->
+	</paths>
+
+
+	<!-- configurations for modules -->
+	<modules>
+		<!-- Remove this comment mark to enable caching
+		<module id="cache" class="System.Caching.TDbCache" />
+		-->
+	
+		<!-- Remove this comment mark to enable PATH url format
+		<module id="request" class="THttpRequest" UrlFormat="Path" />
+		-->
+	
+		<!-- Remove this comment mark to enable logging
+		<module id="log" class="System.Util.TLogRouter">
+		  <route class="TBrowserLogRoute" Categories="System" />
+		</module>
+		-->
+		<module id="db" class="System.Data.TDataSourceConfig">
+			<database ConnectionString="mysql:host=localhost;dbname=tog_db" username="root" password=""/>
+		</module>
+		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
+		<module class="System.Web.THttpSession" Timeout="3600" />
+		<module id="globalization" class="TGlobalization" Charset="utf-8" Culture="en-US">
+			<translation type="XLIFF" source="Application.lang" marker="@@" autosave="true" cache="true" />
+		</module>
+		<module id="mailer" class="System.Util.TEmailer" Type="Mail" EmailTemplateDirectory="Application.template">
+			<sender Field="Sender" Address="noreply@asiablaze.com" Name="AsiaBlaze" />
+		</module>
+		<!--module id="sitemap" class="CSitemap.CSitemapManager" SitemapFile="Application.sitemap"/-->
+		<module id="request" class="THttpRequest" UrlManager="friendly-url"/>
+		<module id="friendly-url" class="System.Web.TUrlMapping" EnableCustomUrl="true" UrlPrefix="/tog">
+		</module>
+	</modules>
+
+	<!-- configuration for available services -->
+	<service id="page" class="TPageService" BasePath="Application.pages" DefaultPage="home.Index">
+		<pages Theme="default"/>
+	</service>
+
+	<!-- application parameters
+	<parameters>
+	<parameter id="param1" value="value1" />
+	<parameter id="param2" value="value2" />
+	</parameters>
+	-->
+</application>

@@ -40,10 +40,7 @@
 			<database ConnectionString="mysql:host=localhost;dbname=tog_db" username="root" password=""/>
 		</module>
 		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
-		<module class="System.Web.THttpSession" Timeout="3600" />
-		<module id="globalization" class="TGlobalization" Charset="utf-8" Culture="en-US">
-			<translation type="XLIFF" source="Application.lang" marker="@@" autosave="true" cache="true" />
-		</module>
+		<module class="System.Web.THttpSession" Timeout="7200" />
 		<module id="mailer" class="System.Util.TEmailer" Type="Mail" EmailTemplateDirectory="Application.template">
 			<sender Field="Sender" Address="noreply@asiablaze.com" Name="AsiaBlaze" />
 		</module>

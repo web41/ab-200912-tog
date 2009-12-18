@@ -1,0 +1,6 @@
+﻿#banner{width:100%;height:60px;background:#2e2e2e;text-align:left;}
+
+#banner #logo{float:left;margin:20px 0 0 20px;text-align:left;}
+	#logo a{font-size:15px;font-weight:normal;color:#d5d5d5;}
+	#logo a b{font-weight:normal;text-transform:uppercase;}
+	#logo a:hover{cursor:pointer;}

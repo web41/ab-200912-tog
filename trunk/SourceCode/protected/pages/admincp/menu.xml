@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+	<menuNode ServiceParameter="admincp.ProductManager" Title="Product">
+		<menuNode ServiceParameter="admincp.ProductForm" Title="Add Product" />
+		<menuNode ServiceParameter="admincp.ProductManager" Title="Product List" />
+	</menuNode>
+	<menuNode ServiceParameter="admincp.BrandManager" Title="Brand">
+		<menuNode ServiceParameter="admincp.BrandForm" Title="Add Brand" />
+		<menuNode ServiceParameter="admincp.BrandManager" Title="Brand List" />
+	</menuNode>
+	<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Manufacturer">
+		<menuNode ServiceParameter="admincp.ManufacturerForm" Title="Add Manufacturer" />
+		<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Manufacturer List" />
+	</menuNode>
+</menu>

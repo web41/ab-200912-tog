@@ -1,0 +1,34 @@
+ul.potato-menu {
+
+}
+.potato-menu:after {
+	content: " ";
+	display: block;
+	visibility: hidden;
+	clear: both;
+	height: 0.1px;
+	font-size: 0.1em;
+	line-height: 0;
+}
+ul.potato-menu li.potato-menu-item {
+
+	position:relative;
+	list-style:none;
+	list-style-position:outside;
+	display:inline;
+	float:left;
+}
+ul.potato-menu li.potato-menu-item a {
+	display:block;
+	text-decoration:none;
+	outline:0;
+}
+ul.potato-menu-group 
+{
+	-webkit-padding-start:0;
+	-webkit-padding-end:0;
+	position:absolute;top:34px;
+	display:none;
+	z-index:5000;
+	color:#fff;
+}

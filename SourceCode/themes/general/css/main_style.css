@@ -1,4 +1,4 @@
-﻿body{font-family:tahoma;font-size:12px;margin:0 auto;background:#fbfbfb;border:solid 1px #fff;max-width:1280px;}
+﻿body{font-family:tahoma;font-size:12px;margin:0 auto;background:#fbfbfb;color:#5a5a5a;max-width:1000px;}
 
 h1,h2,h3,p,i{margin:0;padding:0;font-weight:normal;text-transform:capitalize;}
 img{border:0;}
@@ -8,4 +8,6 @@ a:link, a:visited{text-decoration:none;}
 a:hover{}
 
 .name{font-weight:normal;color:#f6ac00;}
+
+.textbox{width:200px;height:20px;border:solid 1px #e5e5e5;background:url(../images/textbox_bg.png) repeat-x;margin:0;padding:4px 0 0 4px;}
 

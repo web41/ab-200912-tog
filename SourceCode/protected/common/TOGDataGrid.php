@@ -19,6 +19,7 @@ class TOGDataGrid extends TDataGrid
 		$this->PagerStyle->Visible="False";
 		$this->PageSize = $this->Application->Parameters['ROW_PER_PAGE'];
 		$this->ShowFooter="True";
+		$this->Width = "100%";
 	}
 }
 

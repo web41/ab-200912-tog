@@ -67,4 +67,7 @@
 		<parameter id="param2" value="value2" />
 	</parameters>
 	-->
+	<parameters>
+		<parameter id="ROW_PER_PAGE" value="5" />
+	</parameters>
 </application>

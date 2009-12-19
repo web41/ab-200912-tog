@@ -1,1 +1,1 @@
-<com:TForm><com:PMenuList /></com:TForm>
+<com:TForm><com:PMenuList ID="list" /></com:TForm>

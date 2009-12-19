@@ -9,6 +9,9 @@
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/a.m/a.m.js"></script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/calendar/jquery.calendar.js"></script>
+	<script type="text/javascript">
+		var main_menu = "<%= $this->pmlMainMenu->ClientID %>";
+	</script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/javascript.js"></script>
 	<com:TContentPlaceHolder ID="script" />
 </com:THead>
@@ -21,20 +24,7 @@
 			</div>
 		</div>
 		<div id="main_menu">
-			<ul id="mainmenu">
-				<li><a href="">product</a></li>
-				<li><a href="">category</a>
-					<ul>
-						<li><a href="">sub cateogory 111111111111111111111111</a></li>
-						<li><a href="">sub cateogory 2 2 2</a></li>
-						<li><a href="">sub cateogory 3</a></li>
-						<li><a href="">sub cateogory 4 4</a></li>
-					</ul>
-				</li>
-				<li><a href="">user</a></li>
-				<li><a href="">order</a></li>
-				<li><a href="">something for admin</a></li>
-			</ul>
+			<com:PMenuList ID="pmlMainMenu" />
 		</div>
 		<div id="container">
 			<com:TContentPlaceHolder ID="content" />

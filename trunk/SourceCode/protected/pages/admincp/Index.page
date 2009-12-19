@@ -28,7 +28,30 @@
 						</div>
 					</div>
 					<div class="content">
-						test
+						<com:TOGDataGrid ID="datalist"
+							AutoGenerateColumns="false"
+							AllowSorting="false"
+							AllowPaging="false">
+							<com:TTemplateColumn HeaderStyle.Width="5%" HeaderText="#">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderText="Name">
+								<prop:ItemTemplate>
+									<com:TLabel ID="lblCategory" Text="Product<%# $this->Parent->ItemIndex + 1 %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>					
+							<com:TButtonColumn HeaderStyle.Width="10%" ID="btnPublish" ButtonType="ImageButton" HeaderText="Publish" CommandName="toogle_publish" />
+							<com:TTemplateColumn HeaderStyle.Width="5%">
+								<prop:HeaderTemplate>
+									<com:TCheckBox ID="chkAllItem" Attributes.onclick="_chk.check(this)" />
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TCheckBox ID="chkItem" Attributes.onclick="_chk.check(this)" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+						</com:TOGDataGrid>
 					</div>
 				</div>
 			</td>

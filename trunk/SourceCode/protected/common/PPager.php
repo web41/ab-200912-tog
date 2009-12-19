@@ -7,6 +7,7 @@ class PPager extends TWebControl
 	private $_pageButtonCount = 5;
 	private $_currentPage = 1;
 	private $_controlToPaginate = '';
+	private $_autoHide = false;
 	
 	public function getControlToPaginate()
 	{
@@ -74,6 +75,16 @@ class PPager extends TWebControl
 		return $this->getCurrentPage()===$this->getPageCount();
 	}
 	
+	public function setAutoHide($value)
+	{
+		$this->_autoHide = TPropertyValue::ensureBoolean($value);
+	}
+	
+	public function getAutoHide()
+	{
+		return $this->_autoHide;
+	}
+	
 	public function onPreRender($param)
 	{
 		parent::onPreRender($param);
@@ -93,6 +104,8 @@ class PPager extends TWebControl
 		}
 		else
 			$this->setPageCount(1);
+		
+		if ($this->AutoHide && $this->PageCount<=1) $this->Visible = false;
 	}
 	
 	public function render($writer)
@@ -113,9 +126,8 @@ class PPager extends TWebControl
 			unset($params[$this->PageID]);
 		$params[$this->PageID] = $page;
 		$link = new THyperLink;
-		$link->Enabled = $enabled;
 		$link->Text = $text;
-		$link->NavigateUrl = $this->Service->ConstructUrl($serviceParameter,$params);
+		if ($enabled) $link->NavigateUrl = $this->Service->ConstructUrl($serviceParameter,$params);
 		if ($class!='') $link->CssClass = $class;
 		return $link;
 	}
@@ -141,7 +153,7 @@ class PPager extends TWebControl
 		$page=(($currentPage+$halfPageButtonCount <= $maxPage) ? (($currentPage > $halfPageButtonCount) ? $currentPage-$halfPageButtonCount : 1) : (($maxPage > $pageButtonCount) ? $maxPage-($pageButtonCount-1) : 1));
 		for($i=0; $i<$pageButtonCount; $i++)
 		{
-			$controls->add($this->createPagerLink($page!==$currentPage,$page,$page));
+			$controls->add($this->createPagerLink($page!==$currentPage,$page,$page,(($page===$currentPage)?'active':'')));
 			$page++;
 		}
 		// create 'next' link

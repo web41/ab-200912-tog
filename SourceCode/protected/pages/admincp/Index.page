@@ -59,7 +59,7 @@
 							<input type="button" class="btn_uncheck" value="" />
 							<input type="button" class="btn_checkall" value="" />
 						</div>
-						<div class="table_paging">
+						<div class="table_paging" style="display:none;">
 							<a href="" class="text">First</a>
 							<a href="" class="text">Previous</a>
 							<a href="">1</a>

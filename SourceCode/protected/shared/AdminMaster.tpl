@@ -20,7 +20,7 @@
 	<com:TForm>
 		<div id="banner">
 			<div id="logo">
-				<a href="#"><b>TheOrganicGrocer.com</b> Administration</a>
+				<a href="<%= $this->Service->ConstructUrl("admincp.Index") %>"><b>TheOrganicGrocer.com</b> Administration</a>
 			</div>
             <div id="top_box">
             	<table border="0" cellpadding="0" cellspacing="0" width="auto" height="100%">

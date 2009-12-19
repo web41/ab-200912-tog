@@ -10,4 +10,6 @@ j(function() {
 		selectHandler: function(){},
 		closeHandler: function(){}
 	});
+	
+	j(".table_paging").css({"margin-left": (j('.main_box').width()-j('.table_paging').width())/2+"px", "display": "block"})
 });

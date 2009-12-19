@@ -1,7 +1,7 @@
 <!-- Box -->
 <div class="box">
 	<div class="title">
-		<div class="title_bg"><h2>sidebar menu</h2></div>
+		<div class="title_bg"><h2>Quick Links</h2></div>
 		<div class="title_border"><!-- --></div>
 	</div>
 	<div class="content nopadding">

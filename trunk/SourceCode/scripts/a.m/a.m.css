@@ -1,5 +1,5 @@
 ul.potato-menu {
-
+	
 }
 .potato-menu:after {
 	content: " ";
@@ -11,7 +11,7 @@ ul.potato-menu {
 	line-height: 0;
 }
 ul.potato-menu li.potato-menu-item {
-
+	
 	position:relative;
 	list-style:none;
 	list-style-position:outside;
@@ -25,10 +25,13 @@ ul.potato-menu li.potato-menu-item a {
 }
 ul.potato-menu-group 
 {
+	width:auto;
 	-webkit-padding-start:0;
 	-webkit-padding-end:0;
 	position:absolute;top:34px;
 	display:none;
 	z-index:5000;
-	color:#fff;
+	color:#ccc;border:solid 3px #CCC;background:#fff;
 }
+ul.potato-menu-group li{width:100%;float:none;}
+ul.potato-menu-group li a{width:auto;}

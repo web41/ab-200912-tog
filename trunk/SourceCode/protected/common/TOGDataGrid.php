@@ -7,12 +7,10 @@ class TOGDataGrid extends TDataGrid
 		parent::onInit($param);
 		$this->CellPadding="2";
 		$this->CellSpacing="1";
-		$this->HeaderStyle->CssClass="header";
-		$this->FooterStyle->CssClass="header";
-		$this->ItemStyle->BackColor="#f9f9f9";
-		$this->ItemStyle->CssClass="field_2";
-		$this->AlternatingItemStyle->CssClass="field_1";
-		$this->AlternatingItemStyle->BackColor="#f6f6f6";
+		$this->HeaderStyle->CssClass="table_header";
+		$this->FooterStyle->CssClass="hiding_footer";
+		$this->AlternatingItemStyle->CssClass="table_field1";
+		$this->ItemStyle->CssClass="table_field2";
 		$this->AutoGenerateColumns="false";
 		$this->AllowPaging="True";
 		$this->AllowCustomPaging="True";

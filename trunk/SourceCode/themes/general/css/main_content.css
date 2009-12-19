@@ -23,6 +23,33 @@
 	
 	#container .main_col .main_box .content{border-top:none;background:#fff;border:solid 1px #cdcdcd;border-top:none;padding:10px;}
 	#container .main_col .main_box .nopadding{padding:0;}
+
+.general_error, .general_success{width:100%;float:left;margin-bottom:10px;}
+
+/*General Error*/
+	.general_error .top{padding-left:8px;background:url(../images/error_topleft.png) no-repeat;}
+	.general_error .top div{padding-right:8px;background:url(../images/error_topright.png) no-repeat top right;}
+	.general_error .top div div{background:#ffcecf;height:7px;border-top:solid 1px #df8f90;}
+	
+	.general_error .bottom{padding-left:8px;background:url(../images/error_botleft.png) no-repeat;}
+	.general_error .bottom div{padding-right:8px;background:url(../images/error_botright.png) no-repeat top right;}
+	.general_error .bottom div div{background:#ffcecf;height:7px;border-bottom:solid 1px #df8f90;}
+	
+	.general_error .center{background:#ffcecf;border:solid 1px #df8f90;border-top:none;border-bottom:none;padding:2px 10px 2px 10px;color:#655254;font-size:13px;}
+	.general_error .center img{float:left;margin:0 10px 0 0 ;}
+	
+/*General Success*/
+	.general_success .top{padding-left:8px;background:url(../images/success_topleft.png) no-repeat;}
+	.general_success .top div{padding-right:8px;background:url(../images/success_topright.png) no-repeat top right;}
+	.general_success .top div div{background:#d5ffcf;height:7px;border-top:solid 1px #9adf8f;}
+	
+	.general_success .bottom{padding-left:8px;background:url(../images/success_botleft.png) no-repeat;}
+	.general_success .bottom div{padding-right:8px;background:url(../images/success_botright.png) no-repeat top right;}
+	.general_success .bottom div div{background:#d5ffcf;height:7px;border-bottom:solid 1px #9adf8f;}
+	
+	.general_success .center{background:#d5ffcf;border:solid 1px #9adf8f;border-top:none;border-bottom:none;padding:2px 10px 2px 10px;color:#556653;font-size:13px;}
+	.general_success .center img{float:left;margin:0 10px 0 0 ;}
+	
 	
 		
 	

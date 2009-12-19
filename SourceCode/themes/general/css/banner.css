@@ -4,3 +4,16 @@
 	#logo a{font-size:15px;font-weight:normal;color:#d5d5d5;}
 	#logo a b{font-weight:normal;text-transform:uppercase;}
 	#logo a:hover{cursor:pointer;}
+	
+#banner #top_box{float:right;height:60px;width:auto;color:#acacac;margin:0 20px 0 0;vertical-align:bottom;}
+	#top_box .box{height:auto;width:auto;}
+	#top_box .box .top{background:url(../images/topbox_left.png) no-repeat;padding-left:6px;}
+		#top_box .box .top div{background:url(../images/topbox_right.png) no-repeat top right;padding-right:6px;}
+		#top_box .box .top div div{background:url(../images/topbox_center.png) repeat-x;height:6px;}
+	#top_box .box .content{border:solid 1px #747474;border-bottom:none;border-top:none;background:url(../images/topbox_bg.png) repeat;padding:4px 10px 10px 10px;}
+		#top_box .box .content a, #top_box .box .content a:visited{margin:0 5px 0 5px;color:#acacac;text-transform:capitalize;}
+		#top_box .box .content a:hover{color:#ddd;}
+		#top_box .box .content a.username, #top_box .box .content a.username:visited{color:#ddd;text-transform:capitalize;margin-left:0;}
+		#top_box .box .content a.username:hover{color:#fff;}
+	
+	

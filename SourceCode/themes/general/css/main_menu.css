@@ -5,10 +5,6 @@
 #main_menu ul li a:hover{}
 #main_menu ul li:hover{background:url(../images/mmn_bg.png) repeat-x center -42px;border:solid 1px #5dba43;border-bottom:none;border-top:none;;cursor:pointer;padding:0;}
 
-
-
-
-
-
-
-
+#main_menu ul li ul{width:200px;height:auto;margin:7px 0 0 -1px;}
+#main_menu ul li ul li{width:100%;}
+#main_menu ul li ul li a{padding:8px 0 8px 0;float:none;color:#ccc;width:100%;}

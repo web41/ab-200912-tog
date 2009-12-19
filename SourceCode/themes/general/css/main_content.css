@@ -1,6 +1,6 @@
 ﻿#container{width:100%;height:100%;margin:0 auto;float:left;display:table;}
 
-#container .left_col{float:left;width:200px;height:100%;background:#2e2e2e;padding:20px 0 20px 0;display:table-column;}
+#container .left_col{float:left;width:200px;height:100%;background:#2e2e2e;padding:20px 0 20px 0;text-align:left}
 	#container .left_col .box{width:200px;height:auto;float:left;margin-bottom:30px;}
 	#container .left_col .box .title{width:190px;height:36px;float:left;}
 		#container .left_col .box .title .title_bg{width:180px;height:36px;background:url(../images/left_title_bg.png) repeat-x;float:left;}
@@ -15,13 +15,14 @@
 		
 
 #container .main_col{width:100%;padding:20px;vertical-align:top;}
-	#container .main_col .main_box{width:100%;float:left;margin-bottom:30px;}
+	#container .main_col .main_box{width:100%;float:left;margin-bottom:20px;}
 	#container .main_col .main_box .title{padding-left:6px;background:url(../images/mainbox_title_left.png) no-repeat;}
 	#container .main_col .main_box .title div{background:url(../images/mainbox_title_right.png) no-repeat top right;padding-right:6px;}
 	#container .main_col .main_box .title div div{background:url(../images/mainbox_title_center.png) repeat-x;padding:0;height:40px;}
 	#container .main_col .main_box .title div div h2{float:left;font:normal 16px "Trebuchet MS";text-transform:uppercase;color:#5a5a5a;margin:8px 0 0 10px;}
 	
 	#container .main_col .main_box .content{border-top:none;background:#fff;border:solid 1px #cdcdcd;border-top:none;padding:10px;}
+	#container .main_col .main_box .nopadding{padding:0;}
 	
 		
 	

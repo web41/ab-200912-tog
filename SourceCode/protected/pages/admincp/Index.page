@@ -6,11 +6,12 @@
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
 		<tr>
 			<td class="left_col" style="background:#2e2e2e;">
-				<com:Application.shared.CalendarPane />
+				<!-- com:Application.shared.CalendarPane / -->
 				<com:Application.shared.LeftMenu />
 				<com:Application.shared.StatisticsPane />
 			</td>	
 			<td class="main_col">
+            	<!-- Main box -->
 				<div class="main_box">
 					<div class="title">
 						<div>
@@ -21,39 +22,57 @@
 						test
 					</div>
 				</div>
+                <!-- Main box: END -->
+                
+                <!-- Main box -->
 				<div class="main_box">
-					<div class="title">
-						<div>
-							<div><h2>sample table</h2></div>
-						</div>
-					</div>
-					<div class="content">
+					<div class="title"><div><div><h2>sample table</h2></div></div></div>
+					<div class="content nopadding">
 						<com:TOGDataGrid ID="datalist"
 							AutoGenerateColumns="false"
 							AllowSorting="false"
 							AllowPaging="false">
-							<com:TTemplateColumn HeaderStyle.Width="5%" HeaderText="#">
+							<com:TTemplateColumn HeaderStyle.Width="40px" HeaderText="#">
 								<prop:ItemTemplate>
 									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderText="Name">
+							<com:TTemplateColumn HeaderText="Name" HeaderStyle.CssClass="align_left">
 								<prop:ItemTemplate>
+                                	<a href="">
 									<com:TLabel ID="lblCategory" Text="Product<%# $this->Parent->ItemIndex + 1 %>" />
+                                    </a>
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>					
 							<com:TButtonColumn HeaderStyle.Width="10%" ID="btnPublish" ButtonType="ImageButton" HeaderText="Publish" CommandName="toogle_publish" />
 							<com:TTemplateColumn HeaderStyle.Width="5%">
-								<prop:HeaderTemplate>
+								<!-- Bo phan nay di, mai mot se lam nut check all o ben duoi -- prop:HeaderTemplate>
 									<com:TCheckBox ID="chkAllItem" Attributes.onclick="_chk.check(this)" />
-								</prop:HeaderTemplate>
+								</prop:HeaderTemplate -->
 								<prop:ItemTemplate>
 									<com:TCheckBox ID="chkItem" Attributes.onclick="_chk.check(this)" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 						</com:TOGDataGrid>
+                        <div class="table_footer">
+                        	
+                        </div>
 					</div>
 				</div>
+                <!-- Main box: END -->
+                
+                <!-- Main box -->
+                <div class="main_box">
+					<div class="title">
+						<div>
+							<div><h2>sample form</h2></div>
+						</div>
+					</div>
+					<div class="content">
+						test
+					</div>
+				</div>
+                <!-- Main box: END -->
 			</td>
 		</tr>
 	</table>

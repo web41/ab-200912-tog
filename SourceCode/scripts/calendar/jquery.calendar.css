@@ -13,7 +13,7 @@ div.calendar.popup
 
 div.calendar table
 {
-  background-color: #ffffff;
+  background-color: transparent;
   border: 1px solid #e5e5e5;
   border-collapse: separate;
   border-spacing: 1px;

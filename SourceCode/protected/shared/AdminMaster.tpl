@@ -22,6 +22,22 @@
 			<div id="logo">
 				<a href="#"><b>TheOrganicGrocer.com</b> Administration</a>
 			</div>
+            <div id="top_box">
+            	<table border="0" cellpadding="0" cellspacing="0" width="auto" height="100%">
+                	<tr>
+                    	<td style="vertical-align:bottom">
+                        	<div class="box">
+                            	<div class="top">
+                                	<div><div><!-- --></div></div>
+                                </div>
+                                <div class="content">
+                                	Hello, <a href="" class="username">Administrator</a>::<a href="">Logout</a>::<a href="">Homepage</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 		</div>
 		<div id="main_menu">
 			<com:PMenuList ID="pmlMainMenu" />

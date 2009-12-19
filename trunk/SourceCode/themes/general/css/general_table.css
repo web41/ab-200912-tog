@@ -1,5 +1,7 @@
 ﻿.hiding_footer{display:none;}
 .table_header, .table_footer{height:40px;background:#eeeeee;color:#5a5a5a;padding:0 5px 0 5px;}
+.table_footer{height:33px;padding-top:7px;}
+	
 .table_field1{padding:5px;background:#f8f8f8}
 .table_field2{padding:5px;background:#fafafa}
 	.table_field1 td, .table_field2 td{color:#5a5a5a;text-align:center;}
@@ -7,3 +9,11 @@
 	.table_field1 td a, .table_field2 td a{display:block;height:100%;text-align:left;padding:6px 10px 6px 10px;color:#5a5a5a}
 	.table_field1 td a:hover, .table_field2 td a:hover{color:#006cc5;}
 .align_left{text-align:left;padding:0 0 0 10px;}
+
+.btn_addnew{width:102px;height:26px;background:url(../images/btn_addnew.png) no-repeat;border:0;float:left;clear:left;}
+.btn_checkall{width:78px;height:26px;background:url(../images/btn_checkall.png) no-repeat;border:0;float:right;margin-right:5px;}
+.btn_uncheck{width:78px;height:26px;background:url(../images/btn_uncheck.png) no-repeat;border:0;float:right;}
+.btn_addnew:hover, .btn_checkall:hover, .btn_uncheck:hover{background-position:center -26px;cursor:pointer}
+
+.table_paging{width:auto;height:auto;text-align:center;margin:10px 0 10px 0;}
+	.table_paging a{margin:0 5px 0 5px;}

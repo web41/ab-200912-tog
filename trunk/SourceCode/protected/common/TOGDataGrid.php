@@ -8,15 +8,14 @@ class TOGDataGrid extends TDataGrid
 		$this->CellPadding="2";
 		$this->CellSpacing="1";
 		$this->HeaderStyle->CssClass="table_header";
-		$this->FooterStyle->CssClass="hiding_footer";
 		$this->AlternatingItemStyle->CssClass="table_field1";
 		$this->ItemStyle->CssClass="table_field2";
 		$this->AutoGenerateColumns="false";
-		$this->AllowPaging="True";
-		$this->AllowCustomPaging="True";
+		$this->AllowPaging="true";
+		$this->AllowCustomPaging="true";
 		$this->PagerStyle->Visible="False";
 		$this->PageSize = $this->Application->Parameters['ROW_PER_PAGE'];
-		$this->ShowFooter="True";
+		$this->ShowFooter="false";
 		$this->Width = "100%";
 	}
 }

@@ -24,7 +24,7 @@
 	#container .main_col .main_box .content{border-top:none;background:#fff;border:solid 1px #cdcdcd;border-top:none;padding:10px;}
 	#container .main_col .main_box .nopadding{padding:0;}
 
-.general_error, .general_success{width:100%;float:left;margin-bottom:10px;}
+.general_error, .general_success, .general_inform, .general_attention{width:100%;float:left;margin-bottom:10px;}
 
 /*General Error*/
 	.general_error .top{padding-left:8px;background:url(../images/error_topleft.png) no-repeat;}
@@ -49,6 +49,30 @@
 	
 	.general_success .center{background:#d5ffcf;border:solid 1px #9adf8f;border-top:none;border-bottom:none;padding:2px 10px 2px 10px;color:#556653;font-size:13px;}
 	.general_success .center img{float:left;margin:0 10px 0 0 ;}
+	
+/*General Inform*/
+	.general_inform .top{padding-left:8px;background:url(../images/inform_topleft.png) no-repeat;}
+	.general_inform .top div{padding-right:8px;background:url(../images/inform_topright.png) no-repeat top right;}
+	.general_inform .top div div{background:#dce3ff;height:7px;border-top:solid 1px #a1b4ee;}
+	
+	.general_inform .bottom{padding-left:8px;background:url(../images/inform_botleft.png) no-repeat;}
+	.general_inform .bottom div{padding-right:8px;background:url(../images/inform_botright.png) no-repeat top right;}
+	.general_inform .bottom div div{background:#dce3ff;height:7px;border-bottom:solid 1px #a1b4ee;}
+	
+	.general_inform .center{background:#dce3ff;border:solid 1px #a1b4ee;border-top:none;border-bottom:none;padding:2px 10px 2px 10px;color:#5c5a67;font-size:13px;}
+	.general_inform .center img{float:left;margin:0 10px 0 0 ;}
+	
+/*General Attention*/
+	.general_attention .top{padding-left:8px;background:url(../images/attention_topleft.png) no-repeat;}
+	.general_attention .top div{padding-right:8px;background:url(../images/attention_topright.png) no-repeat top right;}
+	.general_attention .top div div{background:#fffbcc;height:7px;border-top:solid 1px #e5db55;}
+	
+	.general_attention .bottom{padding-left:8px;background:url(../images/attention_botleft.png) no-repeat;}
+	.general_attention .bottom div{padding-right:8px;background:url(../images/attention_botright.png) no-repeat top right;}
+	.general_attention .bottom div div{background:#fffbcc;height:7px;border-bottom:solid 1px #e5db55;}
+	
+	.general_attention .center{background:#fffbcc;border:solid 1px #e5db55;border-top:none;border-bottom:none;padding:2px 10px 2px 10px;color:#676455;font-size:13px;}
+	.general_attention .center img{float:left;margin:0 10px 0 0 ;}
 	
 	
 		

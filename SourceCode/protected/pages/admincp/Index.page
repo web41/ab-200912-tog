@@ -94,6 +94,28 @@
 					<div class="bottom"><div><div><!-- --></div></div></div>
 				</div>
 				<!-- Success box: END -->
+                
+                <!-- Inform box -->
+				<div class="general_inform">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_inform.png" alt=""/>
+						Information notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Inform box: END -->
+                
+                <!-- Attention box -->
+				<div class="general_attention">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_attention.png" alt=""/>
+						Attention notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Attention box: END -->
 
 				<!-- Main box -->
 				<div class="main_box">

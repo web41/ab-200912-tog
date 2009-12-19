@@ -14,12 +14,12 @@
 		#sidebar_menu li a:hover{color:#fff;background:#212121;}
 		
 
-#container .main_col{width:100%;padding:20px;vertical-align:top;}
+#container .main_col{width:100%;padding:20px;vertical-align:top;background:#fbfbfb}
 	#container .main_col .main_box{width:100%;float:left;margin-bottom:20px;}
 	#container .main_col .main_box .title{padding-left:6px;background:url(../images/mainbox_title_left.png) no-repeat;}
 	#container .main_col .main_box .title div{background:url(../images/mainbox_title_right.png) no-repeat top right;padding-right:6px;}
 	#container .main_col .main_box .title div div{background:url(../images/mainbox_title_center.png) repeat-x;padding:0;height:40px;}
-	#container .main_col .main_box .title div div h2{float:left;font:normal 16px "Trebuchet MS";text-transform:uppercase;color:#5a5a5a;margin:8px 0 0 10px;}
+	#container .main_col .main_box .title div div h2{float:left;font:normal 16px "Trebuchet MS";text-transform:uppercase;color:#309f26;margin:8px 0 0 10px;}
 	
 	#container .main_col .main_box .content{border-top:none;background:#fff;border:solid 1px #cdcdcd;border-top:none;padding:10px;}
 	#container .main_col .main_box .nopadding{padding:0;}

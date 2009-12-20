@@ -11,3 +11,6 @@
 
 .btn_addnew:hover, .btn_checkall:hover, .btn_uncheck:hover, .btn_publish:hover, .btn_unpublish:hover, .btn_delete:hover, .btn_edit:hover
 {background-position:center -26px;cursor:pointer}
+
+#calendar_box table{}
+#calendar_box table td{padding:2px;float:left;text-align:center;}

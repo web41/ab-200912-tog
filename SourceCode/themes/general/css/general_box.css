@@ -1,4 +1,4 @@
-﻿.general_error, .general_success, .general_inform, .general_attention{width:100%;float:left;margin-bottom:10px;}
+﻿.general_error, .general_success, .general_inform, .general_attention{width:100%;float:left;margin-bottom:10px;text-align:left;}
 
 /*General Error*/
 	.general_error .top{padding-left:8px;background:url(../images/error_topleft.png) no-repeat;}

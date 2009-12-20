@@ -56,11 +56,11 @@ class BrandManager extends TPage
 	
 	public function onLoad($param)
 	{
+		$this->CurrentPage = ($this->Request->contains('p')) ? intval($this->Request['p']) : 1;
+		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 1;
+		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		if (!$this->IsPostBack)
-		{
-			$this->CurrentPage = ($this->Request->contains('p')) ? intval($this->Request['p']) : 1;
-			$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 1;
-			$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
+		{	
 			$this->populateData();
 		}
 	}
@@ -100,12 +100,12 @@ class BrandManager extends TPage
 	public function populateSortUrl($sortBy, $sortType, $resetPage=true)
 	{
 		$params = $this->Request->toArray();
-		$serviceParameter = '';
-		if (isset($params[$this->Request->ServiceID]))
-		{
-			$serviceParameter = $params[$this->Request->ServiceID];
-			unset($params[$this->Request->ServiceID]);
-		}
+		$serviceParameter = $this->Request->ServiceParameter;
+		unset($params[$this->Request->ServiceID]);
+		// there is a couple of items shoule be removed too
+		unset($params["PRADO_PAGESTATE"]);
+		if (isset($params["PRADO_POSTBACK_TARGET"])) unset($params[$params["PRADO_POSTBACK_TARGET"]]);
+		unset($params["PRADO_POSTBACK_TARGET"]);
 		if ($resetPage)	$params['p'] = 1;
 		$params['sb'] = $sortBy;
 		$params['st'] = $sortType;

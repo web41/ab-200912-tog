@@ -31,7 +31,7 @@ ul.potato-menu-group
 	position:absolute;top:34px;
 	display:none;
 	z-index:5000;
-	color:#ccc;border:solid 3px #CCC;background:#fff;
+	color:#ccc;
 }
 ul.potato-menu-group li{width:100%;float:none;}
 ul.potato-menu-group li a{width:auto;}

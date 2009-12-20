@@ -3,8 +3,9 @@
 #main_menu ul li{width:auto;height:42px;float:left;display:inline;padding:0 1px 0 1px}
 #main_menu ul li a{padding:14px 20px 15px 20px;float:left;text-transform:uppercase;font-size:11px;font-weight:bold;color:#fff;}
 #main_menu ul li a:hover{}
-#main_menu ul li:hover{background:url(../images/mmn_bg.png) repeat-x center -42px;border:solid 1px #5dba43;border-bottom:none;border-top:none;;cursor:pointer;padding:0;}
+#main_menu ul li:hover{background:url(../images/mmn_bg.png) repeat-x center -42px;border:solid 1px #5dba43;border-bottom:none;border-top:none;cursor:pointer;padding:0;}
 
-#main_menu ul li ul{width:200px;height:auto;margin:7px 0 0 -1px;}
-#main_menu ul li ul li{width:100%;}
-#main_menu ul li ul li a{padding:8px 0 8px 0;float:none;color:#ccc;width:100%;}
+#main_menu ul li ul{width:200px;height:auto;margin:7px 0 0 -1px;border:solid 4px #309f26;background:#fefefe;text-align:left;}
+#main_menu ul li ul li{width:100%;height:auto;border-bottom:dotted 1px #cdcdcd;padding:0;}
+#main_menu ul li ul li a{padding:8px 0 8px 0;float:none;color:#5a5a5a;width:100%;text-indent:20px;font-size:10px;}
+#main_menu ul li ul li:hover{background:#f8f8f8;border-left:none;border-right:none;cursor:pointer;border-bottom:dotted 1px #cdcdcd;padding:0;}

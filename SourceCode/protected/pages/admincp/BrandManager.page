@@ -72,6 +72,22 @@
 					</div>
 				</div>
 				<!-- Main box: END -->
+                <!-- Control box -->
+				<div class="general_controlbox">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+                    	<input type="button" class="btn_delete" value="" />
+						<input type="button" class="btn_uncheck" value="" onclick="toogleCheckBox(this,false)" />
+						<input type="button" class="btn_checkall" value="" onclick="toogleCheckBox(this,true)" />
+						<input type="button" class="btn_unpublish" value="" />
+						<input type="button" class="btn_publish" value="" />
+						<input type="button" class="btn_edit" value="" />
+						<input type="button" class="btn_addnew" value="" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.BrandForm") %>'" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
 			</td>
 		</tr>
 	</table>

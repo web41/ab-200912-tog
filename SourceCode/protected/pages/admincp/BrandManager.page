@@ -11,6 +11,21 @@
 				<com:Application.shared.StatisticsPane />
 			</td>	
 			<td class="main_col">
+				<!-- Control box -->
+				<div class="general_controlbox">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<input type="button" class="btn_uncheck" value="" onclick="toogleCheckBox(this,false)" />
+						<input type="button" class="btn_checkall" value="" onclick="toogleCheckBox(this,true)" />
+						<input type="button" class="btn_unpublish" value="" />
+						<input type="button" class="btn_publish" value="" />
+						<input type="button" class="btn_delete" value="" />
+						<input type="button" class="btn_addnew" value="" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.BrandForm") %>'" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
 				<com:Application.shared.AdminNotice ID="Notice" Type="Information" />
 				<!-- Main box -->
 				<div class="main_box">
@@ -40,6 +55,7 @@
 									<com:TLabel ID="BrandID" Text="<%# $this->Parent->Data->ID %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
+							<com:TButtonColumn HeaderStyle.Width="4%" ButtonType="ImageButton" ImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/icon_minus.png" CommandName="delete" />
 							<com:TTemplateColumn ID="CheckBox" HeaderStyle.Width="4%">
 								<prop:ItemTemplate>
 									<com:TCheckBox ID="BrandChecked" />
@@ -48,11 +64,9 @@
 							<com:TBoundColumn ID="Alias" DataField="Alias" Visible="false" />
 						</com:TOGDataGrid>
 						<div class="table_footer">
-							<input id="btnAdd" type="button" class="btn_addnew" value="" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.BrandForm") %>'" />
-							<input id="btnUncheck" type="button" class="btn_uncheck" value="" onclick="toogleCheckBox(this,false)" />
-							<input id="btnCheck" type="button" class="btn_checkall" value="" onclick="toogleCheckBox(this,true)" />
+							<com:PPager PageID="p" ControlToPaginate="BrandList" PageButtonCount="5" AutoHide="true" />
 						</div>
-						<com:PPager PageID="p" ControlToPaginate="BrandList" PageButtonCount="5" AutoHide="true" />
+						
 					</div>
 				</div>
 				<!-- Main box: END -->

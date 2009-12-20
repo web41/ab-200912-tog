@@ -15,11 +15,12 @@
 				<div class="general_controlbox">
 					<div class="top"><div><div><!-- --></div></div></div>
 					<div class="center">
+                    	<input type="button" class="btn_delete" value="" />
 						<input type="button" class="btn_uncheck" value="" onclick="toogleCheckBox(this,false)" />
 						<input type="button" class="btn_checkall" value="" onclick="toogleCheckBox(this,true)" />
 						<input type="button" class="btn_unpublish" value="" />
 						<input type="button" class="btn_publish" value="" />
-						<input type="button" class="btn_delete" value="" />
+						<input type="button" class="btn_edit" value="" />
 						<input type="button" class="btn_addnew" value="" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.BrandForm") %>'" />
 						<h2>Action</h2>
 					</div>
@@ -57,7 +58,8 @@
 							</com:TTemplateColumn>
 							<com:TButtonColumn HeaderStyle.Width="4%" ButtonType="ImageButton" ImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/icon_minus.png" CommandName="delete" />
 							<com:TTemplateColumn ID="CheckBox" HeaderStyle.Width="4%">
-								<prop:ItemTemplate>
+
+                                <prop:ItemTemplate>
 									<com:TCheckBox ID="BrandChecked" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>

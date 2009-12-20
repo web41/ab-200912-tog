@@ -29,7 +29,7 @@
 #container .main_col .main_box .content .field{height:36px;border-bottom:dotted 1px #c2c2c2;margin-bottom:10px;text-align:left;}
 	#container .main_col .main_box .content .field .text{float:left;text-transform:capitalize;font-size:13px;width:180px;padding:5px;}
 	#container .main_col .main_box .content .field .control{float:left;width:auto;}
-	#container .main_col .main_box .content .field .control label{margin-right:10px;}
+	#container .main_col .main_box .content .field .control label{margin-right:10px;text-transform:capitalize;}
 	
 	
 	

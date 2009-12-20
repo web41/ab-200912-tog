@@ -31,11 +31,6 @@
 									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.BrandForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn ID="CheckBox" HeaderStyle.Width="4%">
-								<prop:ItemTemplate>
-									<com:TCheckBox ID="BrandChecked" />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="4%">
 								<prop:HeaderTemplate>
 									<com:THyperLink Width="10px" Height="10px" Text="ID" NavigateUrl="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc')) %>" />
@@ -43,6 +38,11 @@
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<%# $this->Parent->Data->ID %>
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn ID="CheckBox" HeaderStyle.Width="4%">
+								<prop:ItemTemplate>
+									<com:TCheckBox ID="BrandChecked" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TBoundColumn ID="Alias" DataField="Alias" Visible="false" />

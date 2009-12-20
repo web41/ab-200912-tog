@@ -334,7 +334,7 @@
 
 			// Title Placeholder
 			var row  = $('<tr />');
-			var cell = $('<td colspan="7" class="title" />');
+			var cell = $('<td colspan="7" class="title" style="float;left;width:180px;height:auto;padding:0;"/>');
 			row.append(cell);
 			thead.append(row);
 

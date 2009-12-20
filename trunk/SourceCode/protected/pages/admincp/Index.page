@@ -45,7 +45,7 @@
 				<div class="main_box">
 					<div class="title"><div><div>
                     	<h2>sample table</h2>
-                        <div style="float:right;padding:10px 5px 0 0;">
+                        <div style="float:right;padding:7px 5px 0 0;height:auto;">
                         	Filter
                             <select>
                             	<option>option 1</option>
@@ -170,6 +170,34 @@
                         <div class="field">
                         	<div class="text">normal field</div>
                             <div class="control"><input type="text" class="textbox" /></div>
+                        </div>
+                        <div class="field">
+                        	<div class="text">combo box</div>
+                            <div class="control">
+                            	<select>
+                                	<option>test combox box 1</option>
+                                    <option>test combox box 2</option>
+                                    <option>test combox box 3</option>
+                                    <option>test combox box 4</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                        	<div class="text">radio option</div>
+                            <div class="control">
+                            	<input type="radio" value="radio"/><label>sample radio</label>
+                                <input type="radio" value="radio"/><label>sample radio</label>
+                                <input type="radio" value="radio"/><label>sample radio</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                        	<div class="text">sample checkbox</div>
+                            <div class="control">
+                            	<input type="checkbox" /><label>sample checkbox</label>
+                                <input type="checkbox" /><label>sample checkbox 2</label>
+                                <input type="checkbox" /><label>sample checkbox 3</label>
+                                <input type="checkbox" /><label>sample checkbox 4</label>
+                            </div>
                         </div>
                         <table border="0" cellpadding="0" cellspacing="0" class="form" width="100%">
                         	<tr>

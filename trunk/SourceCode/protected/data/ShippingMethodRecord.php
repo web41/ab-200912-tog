@@ -7,6 +7,7 @@ class ShippingMethodRecord extends TActiveRecord
 	const TABLE='tbl_shipping_method';
 
 	public $ID;
+	public $Alias;
 	public $Name;
 	public $DiscountID;
 	public $Price;
@@ -15,6 +16,7 @@ class ShippingMethodRecord extends TActiveRecord
 	public static $COLUMN_MAPPING=array
 	(
 		'method_id'=>'ID',
+		'method_alias'=>'Alias',
 		'method_name'=>'Name',
 		'discount_id'=>'DiscountID',
 		'method_price'=>'Price',

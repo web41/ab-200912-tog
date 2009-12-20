@@ -97,7 +97,7 @@ class PPager extends TWebControl
 		{
 			$this->getControls()->clear();
 			$itemCount = ($targetControl->VirtualItemCount > 0) ? $targetControl->VirtualItemCount : count($targetControl->DataSource);
-			$this->setPageCount(ceil($itemCount/$targetControl->PageSize));
+			$this->setPageCount(ceil($itemCount/$targetControl->PageSize)>0 ? ceil($itemCount/$targetControl->PageSize) : 1);
 			$currentPage = $this->Request->Contains($this->PageID) ? (TPropertyValue::ensureInteger($this->Request[$this->PageID])>0 ? TPropertyValue::ensureInteger($this->Request[$this->PageID]) : 1) : 1;
 			$this->setCurrentPage($currentPage);
 			$this->buildPager();
@@ -110,7 +110,11 @@ class PPager extends TWebControl
 	
 	public function render($writer)
 	{
+		$writer->addAttribute("class","table_paging");
+		$writer->addAttribute("style","display:none;");
+		$writer->renderBeginTag("div");
 		parent::render($writer);
+		$writer->renderEndTag();
 	}
 	
 	protected function createPagerLink($enabled,$text,$page,$class='')
@@ -153,6 +157,7 @@ class PPager extends TWebControl
 		$page=(($currentPage+$halfPageButtonCount <= $maxPage) ? (($currentPage > $halfPageButtonCount) ? $currentPage-$halfPageButtonCount : 1) : (($maxPage > $pageButtonCount) ? $maxPage-($pageButtonCount-1) : 1));
 		for($i=0; $i<$pageButtonCount; $i++)
 		{
+			if ($page > $maxPage) break;
 			$controls->add($this->createPagerLink($page!==$currentPage,$page,$page,(($page===$currentPage)?'active':'')));
 			$page++;
 		}

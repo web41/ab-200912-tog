@@ -7,6 +7,7 @@ class UserAddressRecord extends TActiveRecord
 	const TABLE='tbl_user_address';
 
 	public $ID;
+	public $Alias;
 	public $UserID;
 	public $Type;
 	public $IsDefault;
@@ -29,6 +30,7 @@ class UserAddressRecord extends TActiveRecord
 	public static $COLUMN_MAPPING=array
 	(
 		'address_id'=>'ID',
+		'address_alias'=>'Alias',
 		'user_id'=>'UserID',
 		'address_type'=>'Type',
 		'is_default'=>'IsDefault',

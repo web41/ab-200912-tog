@@ -10,6 +10,7 @@ class ProductRecord extends TActiveRecord
 	public $MFID;
 	public $BrandID;
 	public $DiscountID;
+	public $Alias;
 	public $SKU;
 	public $Name;
 	public $Brief;
@@ -36,6 +37,7 @@ class ProductRecord extends TActiveRecord
 		'brand_id'=>'BrandID',
 		'discount_id'=>'DiscountID',
 		'product_sku'=>'SKU',
+		'product_alias'=>'Alias',
 		'product_name'=>'Name',
 		'product_brief'=>'Brief',
 		'product_desc'=>'Description',

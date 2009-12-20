@@ -7,12 +7,14 @@ class PaymentMethodRecord extends TActiveRecord
 	const TABLE='tbl_payment_method';
 
 	public $ID;
+	public $Alias;
 	public $Name;
 	public $IsPublished;
 	
 	public static $COLUMN_MAPPING=array
 	(
 		'method_id'=>'ID',
+		'method_alias'=>'Alias',
 		'method_name'=>'Name',
 		'method_publish'=>'IsPublished'
 	);

@@ -105,8 +105,8 @@
 					<div class="bottom"><div><div><!-- --></div></div></div>
 				</div>
 				<!-- Inform box: END -->
-                
-                <!-- Attention box -->
+
+				<!-- Attention box -->
 				<div class="general_attention">
 					<div class="top"><div><div><!-- --></div></div></div>
 					<div class="center">
@@ -116,6 +116,8 @@
 					<div class="bottom"><div><div><!-- --></div></div></div>
 				</div>
 				<!-- Attention box: END -->
+				
+				<com:Application.shared.AdminNotice Type="Information" />
 
 				<!-- Form sample-->
 				<div class="main_box">

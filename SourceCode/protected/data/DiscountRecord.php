@@ -7,6 +7,7 @@ class DiscountRecord extends TActiveRecord
 	const TABLE='tbl_product_discount';
 
 	public $ID;
+	public $Alias;
 	public $Name;
 	public $Amount;
 	public $IsPercent;
@@ -16,6 +17,7 @@ class DiscountRecord extends TActiveRecord
 	public static $COLUMN_MAPPING=array
 	(
 		'discount_id'=>'ID',
+		'discount_alias'=>'Alias',
 		'discount_name'=>'Name',
 		'discount_amount'=>'Amount',
 		'is_percent'=>'IsPercent',

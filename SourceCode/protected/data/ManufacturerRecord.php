@@ -7,15 +7,18 @@ class ManufacturerRecord extends TActiveRecord
 	const TABLE='tbl_manufacturer';
 
 	public $ID;
+	public $Alias;
 	public $Name;
-	public $mf_desc;
+	public $Description;
 	public $Email;
 	public $Url;
 	
 	public static $COLUMN_MAPPING=array
 	(
 		'mf_id'=>'ID',
+		'mf_alias'=>'Alias',
 		'mf_name'=>'Name',
+		'mf_desc'=>'Description',
 		'mf_email'=>'Email',
 		'mf_url'=>'Url'
 	);

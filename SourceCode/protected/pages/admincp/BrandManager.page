@@ -11,6 +11,7 @@
 				<com:Application.shared.StatisticsPane />
 			</td>	
 			<td class="main_col">
+				<com:Application.shared.AdminNotice ID="Notice" Type="Information" />
 				<!-- Main box -->
 				<div class="main_box">
 					<div class="title"><div><div><h2>Brand List</h2></div></div></div>
@@ -21,28 +22,37 @@
 									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderText="Name" HeaderStyle.CssClass="align_left">
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
+								<prop:HeaderTemplate>
+									<com:THyperLink Width="10px" Height="10px" Text="Name" NavigateUrl="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc')) %>" />
+									<com:TImage ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />
+								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<a href="">
-									<com:TLabel ID="lblCategory" Text="Product<%# $this->Parent->ItemIndex + 1 %>" />
-									</a>
+									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.BrandForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TButtonColumn HeaderStyle.Width="10%" ID="btnPublish" ButtonType="ImageButton" HeaderText="Publish" CommandName="toogle_publish" />
+							<com:TTemplateColumn ID="CheckBox" HeaderStyle.Width="4%">
+								<prop:ItemTemplate>
+									<com:TCheckBox ID="BrandChecked" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="4%">
+								<prop:HeaderTemplate>
+									<com:THyperLink Width="10px" Height="10px" Text="ID" NavigateUrl="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc')) %>" />
+									<com:TImage ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==0 %>" />
+								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TCheckBox ID="chkItem" />
+									<%# $this->Parent->Data->ID %>
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
+							<com:TBoundColumn ID="Alias" DataField="Alias" Visible="false" />
 						</com:TOGDataGrid>
 						<div class="table_footer">
-							<input type="button" class="btn_addnew" value="" />
-							<input type="button" class="btn_uncheck" value="" />
-							<input type="button" class="btn_checkall" value="" />
+							<input id="btnAdd" type="button" class="btn_addnew" value="" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.BrandForm") %>'" />
+							<input id="btnUncheck" type="button" class="btn_uncheck" value="" onclick="toogleCheckBox(this,false)" />
+							<input id="btnCheck" type="button" class="btn_checkall" value="" onclick="toogleCheckBox(this,true)" />
 						</div>
-						<div class="table_paging" style="display:none;">
-							<com:PPager PageID="p" ControlToPaginate="BrandList" PageButtonCount="5" />
-						</div>
+						<com:PPager PageID="p" ControlToPaginate="BrandList" PageButtonCount="5" AutoHide="true" />
 					</div>
 				</div>
 				<!-- Main box: END -->

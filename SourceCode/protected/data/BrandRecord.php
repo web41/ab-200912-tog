@@ -7,11 +7,13 @@ class BrandRecord extends TActiveRecord
 	const TABLE='tbl_brand';
 
 	public $ID;
+	public $Alias;
 	public $Name;
 	
 	public static $COLUMN_MAPPING=array
 	(
 		'brand_id'=>'ID',
+		'brand_alias'=>'Alias',
 		'brand_name'=>'Name'
 	);
 	

@@ -7,11 +7,13 @@ class UserTypeRecord extends TActiveRecord
 	const TABLE='tbl_user_type';
 
 	public $ID;
+	public $Alias;
 	public $Name;
 
 	public static $COLUMN_MAPPING=array
 	(
 		'user_type_id'=>'ID',
+		'user_type_alias'=>'Alias',
 		'user_type_name'=>'Name'
 	);
 	

@@ -1,6 +1,8 @@
 ﻿.hiding_footer{display:none;}
 .table_header, .table_footer{height:40px;background:#f1efef;color:#5a5a5a;padding:0 5px 0 5px;}
 .table_footer{height:33px;padding-top:7px;}
+	.table_header a{color:#5a5a5a;}
+	.table_header a:hover{color:#7a7a7a}
 .table_topcontrol{height:40px;background:#ffffff;color:#5a5a5a;padding:10px 5px 0 5px;border-bottom:solid 1px #cdcdcd;}
 	
 .table_field1{padding:5px;background:#f8f8f8}

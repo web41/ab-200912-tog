@@ -120,11 +120,12 @@ class PPager extends TWebControl
 	protected function createPagerLink($enabled,$text,$page,$class='')
 	{
 		$params = $this->Request->toArray();
+		foreach($params as $key=>$value)
+		{
+			if (!in_array($key,$this->Page->QueryParameters))
+				unset($params[$key]);
+		}
 		$serviceParameter = $this->Request->ServiceParameter;
-		unset($params[$this->Request->ServiceID]);
-		unset($params["PRADO_PAGESTATE"]);
-		if (isset($params["PRADO_POSTBACK_TARGET"])) unset($params[$params["PRADO_POSTBACK_TARGET"]]);
-		unset($params["PRADO_POSTBACK_TARGET"]);
 		$params[$this->PageID] = $page;
 		$link = new THyperLink;
 		$link->Text = $text;

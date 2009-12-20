@@ -51,21 +51,21 @@
 			
 			<url ServiceParameter="admincp.Index" pattern="admincp/"/>
 			<url ServiceParameter="admincp.Index" pattern="admincp/index"/>
-			<url ServiceParameter="admincp.ProductManager" pattern="admincp/product/"/>
+			<url ServiceParameter="admincp.ProductManager" pattern="admincp/product"/>
 			<url ServiceParameter="admincp.ProductManager" pattern="admincp/product/manager"/>
 			<url ServiceParameter="admincp.ProductForm" pattern="admincp/product/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.ProductForm" pattern="admincp/product/create-new"/>
-			<url ServiceParameter="admincp.BrandManager" pattern="admincp/brand/"/>
+			<url ServiceParameter="admincp.BrandManager" pattern="admincp/brand"/>
 			<url ServiceParameter="admincp.BrandManager" pattern="admincp/brand/manager"/>
 			<url ServiceParameter="admincp.BrandForm" pattern="admincp/brand/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.BrandForm" pattern="admincp/brand/create-new"/>
-			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/manufacturer/"/>
+			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/manufacturer"/>
 			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/manufacturer/manager"/>
 			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/manufacturer/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/manufacturer/create-new"/>
 		</module>
 		<!-- error module -->
-		<module id="message" class="System.Util.TErrorTranslator" ErrorMessageFile="Application.template.messages" />
+		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />
 	</modules>
 
 	<!-- configuration for available services -->

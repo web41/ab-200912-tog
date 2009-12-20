@@ -7,6 +7,7 @@ class BrandManager extends TPage
 	private $_sortBy = "";
 	private $_sortType = "";
 	private $_sortable = array("brand_id","brand_name");
+	private $_queryParams = array("p","st","sb");
 	const AR = "BrandRecord";
 	
 	public function getSortBy()
@@ -52,6 +53,11 @@ class BrandManager extends TPage
 	public function getCurrentPage()
 	{
 		return $this->_currentPage;
+	}
+	
+	public function getQueryParameters()
+	{
+		return $this->_queryParams;
 	}
 	
 	public function onLoad($param)
@@ -100,16 +106,106 @@ class BrandManager extends TPage
 	public function populateSortUrl($sortBy, $sortType, $resetPage=true)
 	{
 		$params = $this->Request->toArray();
+		foreach($params as $key=>$value)
+		{
+			if (!in_array($key,$this->QueryParameters))
+				unset($params[$key]);
+		}
 		$serviceParameter = $this->Request->ServiceParameter;
-		unset($params[$this->Request->ServiceID]);
-		// there is a couple of items shoule be removed too
-		unset($params["PRADO_PAGESTATE"]);
-		if (isset($params["PRADO_POSTBACK_TARGET"])) unset($params[$params["PRADO_POSTBACK_TARGET"]]);
-		unset($params["PRADO_POSTBACK_TARGET"]);
 		if ($resetPage)	$params['p'] = 1;
 		$params['sb'] = $sortBy;
 		$params['st'] = $sortType;
 		return $this->Service->ConstructUrl($serviceParameter,$params);
+	}
+	
+	protected function list_ItemCreated($sender, $param)
+	{
+		if ($param->Item->ItemType == "Item" || $param->Item->ItemType == "AlternatingItem")
+		{
+			if ($param->Item->Data)
+			{
+				$param->Item->colDeleteButton->Button->Attributes->onclick = 'if(!confirm(\''.$this->Application->getModule("message")->translate("DELETE_CONFIRM","brand",$param->Item->Data->Name).'\')) return false;';
+			}
+		}
+	}
+	
+	protected function list_ItemCommand($sender, $param)
+	{
+		switch($param->CommandName)
+		{
+			case "delete":
+				$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($param->Item->colID->lblBrandID->Text));
+				if ($activeRecord)
+				{
+					try
+					{
+						$activeRecord->delete();
+						//var_dump();
+						$this->Notice->Type = AdminNoticeType::Information;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_SUCCESS","Brand",$activeRecord->Name);
+						$this->populateData();
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_FAILED","Brand",$activeRecord->Name);
+					}
+				}
+				else
+				{
+					$this->Notice->Type = AdminNoticeType::Error;
+					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","brand");
+				}
+				break;
+		}
+	}
+	
+	protected function btnDelete_Clicked($sender, $param)
+	{
+		if($this->IsValid)  // when all validations succeed
+		{
+			$items = array();
+			foreach($this->BrandList->Items as $item) {
+				if ($item->colCheckBox->chkItem->Checked) {                                   
+					$items[] = $item->colID->lblBrandID->Text;
+				}
+			}
+			try
+			{
+				Prado::createComponent(self::AR)->finder()->deleteAllByPks($items);
+				//var_dump(implode(",",$items));
+				$this->Notice->Type = AdminNoticeType::Information;
+				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_SUCCESS","brand");
+				$this->populateData();
+			}
+			catch (TException $e)
+			{
+				$this->Notice->Type = AdminNoticeType::Error;
+				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_FAILED","brand");
+			}
+		}
+	}
+	
+	protected function btnEdit_Clicked($sender, $param)
+	{
+		if($this->IsValid)  // when all validations succeed
+		{
+			foreach($this->BrandList->Items as $item) {
+				if ($item->colCheckBox->chkItem->Checked) {                                   
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblBrandID->Text));
+					if ($activeRecord)
+					{	
+						$this->Response->redirect($this->Service->ConstructUrl("admincp.BrandForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias)));
+						return;
+					}
+					else
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","brand");
+					}
+				}
+			}
+		}
 	}
 }
 

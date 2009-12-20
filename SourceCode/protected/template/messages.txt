@@ -1,1 +1,9 @@
-ITEM_FOUND = {0} {1} found.
+ITEM_FOUND 					= {0} {1} found.
+ITEM_NOT_FOUND				= This {0} can not be found.
+DELETE_CONFIRM 				= Do you really want to delete {0}: {1}?
+DELETE_ALL_CONFIRM 			= Do you really want to delete selected {0}?
+DELETE_SUCCESS				= {0} {1} has been deleted successfully.
+DELETE_FAILED				= {0} {1} can not be deleted. Please contact administrator.
+DELETE_ALL_SUCCESS			= Selected {0} have been deleted successfully.
+DELETE_ALL_FAILED			= One or more {0} can not be deleted. Please contact administrator.
+SELECT_ITEM_REQUIRED		= Please select one or more {0}.

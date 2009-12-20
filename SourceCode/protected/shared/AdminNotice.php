@@ -2,21 +2,6 @@
 
 class AdminNotice extends TTemplateControl
 {
-	public function onPreRender($param)
-	{
-		parent::onPreRender($param);
-		if (strlen($this->Text)<=0) $this->setVisible(false);
-	}
-	public function getVisible()
-	{
-		return $this->getViewState('Visible',true);
-	}
-	
-	public function setVisible($value)
-	{
-		$this->setViewState('Visible',TPropertyValue::ensureBoolean($value),true);
-	}
-	
 	public function getIconImage()
 	{
 		switch($this->Type)
@@ -61,14 +46,14 @@ class AdminNotice extends TTemplateControl
 		return $this->getViewState('AdminNoticeType',AdminNoticeType::Error);
 	}
 	
-	public function getText()
-	{
-		return $this->getViewState('Text','');
-	}
-	
 	public function setText($value)
 	{
 		$this->setViewState('Text',$value,'');
+	}
+	
+	public function getText()
+	{
+		return $this->getViewState('Text','');
 	}
 }
 

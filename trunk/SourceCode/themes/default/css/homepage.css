@@ -1,0 +1,30 @@
+* { margin: 0px; padding: 0px; border: 0px;}
+body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #2c743b;margin:0 auto;}
+#contaner { width: 1000px; margin-right: auto; margin-left: auto;}
+
+/* NAVIGATION
+---------------------------------------------------------------*/
+#nav { width: 1000px; float: left; margin-top:10px;}
+	#nav ul { list-style-type: none; display: block; margin-right: auto; margin-left: auto; width: 560px;}
+	#nav ul li { display: block; float: left; padding-right: 22px; padding-left: 22px;}
+	#nav ul li a { text-decoration: none; text-transform: uppercase; font-weight: bold; font-size: 14px; color: #9fce5a; font-family: Arial, Helvetica, sans-serif;}
+	#nav ul li a:hover { color: #286F37;}
+
+/* CONTENT
+---------------------------------------------------------------*/
+#content { margin-top: 45px; width: 1000px; float: left;}
+#leftcol { float: left; width: 520px; margin-right: 60px; overflow: hidden;}
+#rightcol { float: left; width: 420px; }
+	#rightcol p { line-height: 20px; display: block; margin-top: 15px;}
+	div.bigtext { background: url(images/text.png) no-repeat; height: 90px; width: 420px; border-bottom: 4px solid #8fc741;}
+	a.shopnow { display: block; height: 73px; width: 208px; margin: 2px auto 0 auto;}
+	div.smalltext { background: url(images/text2.png) no-repeat; height: 26px; width: 420px; margin-top: 25px;}
+	ul#steps { display: block; list-style-type: decimal; list-style-position: inside; margin: 2px 0 2px 0; background: url(images/van.png) no-repeat right bottom; padding-bottom: 100px;}
+	ul#steps li{ margin-top: 11px; margin-bottom: 11px;}
+	ul#steps li.none { list-style-type: none;}
+
+/* FOOTER
+---------------------------------------------------------------*/
+#footer { width: 1000px; text-align: center; margin:50px 0 20px 0; float: left;}
+	#footer a { color: #2c743b; text-decoration: none;}
+	#footer a:hover { color: #3E9D52;}

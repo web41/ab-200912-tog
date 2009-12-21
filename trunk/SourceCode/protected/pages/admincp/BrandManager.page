@@ -7,7 +7,7 @@
 		<tr>
 			<td class="left_col" style="background:#2e2e2e;">
 				<com:Application.shared.CalendarPane />
-				<com:Application.shared.LeftMenu />
+				<com:Application.shared.AdminLeftMenu />
 				<com:Application.shared.StatisticsPane />
 			</td>	
 			<td class="main_col">
@@ -30,7 +30,21 @@
 				<com:Application.shared.AdminNotice ID="Notice" />
 				<!-- Main box -->
 				<div class="main_box">
-					<div class="title"><div><div><h2>Brand List</h2></div></div></div>
+					<div class="title"><div><div>
+						<h2>Brand List</h2>
+						<div style="float:right;padding:7px 5px 0 0;height:auto;">
+							<com:TRequiredFieldValidator ID="val1"
+								ControlToValidate="txtSearchText"
+								ErrorMessage="*"
+								Display="Dynamic"
+								FocusOnError="true"
+								InitialValue="Filter by ID or Name"
+								ValidationGroup="filter"/>
+							<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Filter by ID or Name" Attributes.onfocus="this.select()" />
+							<com:TButton ID="btnSearch" Text="Go" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
+							<com:TButton ID="btnSearchReset" Text="Reset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
+						</div>
+					</div></div></div>
 					<div class="content nopadding">
 						<com:TOGDataGrid ID="BrandList"
 							OnItemCreated="list_ItemCreated"
@@ -42,7 +56,7 @@
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc')) %>">Name
+									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Name
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />
 									</a>
 								</prop:HeaderTemplate>
@@ -52,7 +66,7 @@
 							</com:TTemplateColumn>
 							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc')) %>">ID
+									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">ID
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==0 %>" />
 									</a>
 								</prop:HeaderTemplate>

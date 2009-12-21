@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<com:THead>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>The Organic Grocer</title>
+<link href="<%= $this->Page->Theme->BaseUrl %>/css/homepage.css" rel="stylesheet" type="text/css" />
+</com:THead>
+<body>
+
+<div id="contaner">
+	<div id="nav">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">About us</a></li>
+			<li><a href="#">Why Organic</a></li>
+			<li><a href="#">Delivery</a></li>
+			<li><a href="#">Help</a></li>
+		</ul>
+	</div><!-- NAVIGATION ENDS -->
+
+	<div id="content">
+		<div id="leftcol">
+			<img src="<%= $this->Page->Theme->BaseUrl %>/images/banner.png" alt="The organic grocer" width="520" />
+			<img src="<%= $this->Page->Theme->BaseUrl %>/images/text3.png" alt="The organic grocer" style="margin-top:10px;" width="520" />
+		</div><!-- LEFT COLUMN ENDS -->
+
+		<div id="rightcol">
+			<div class="bigtext"></div><!-- Singapore ... -->
+			<p>At the Organic Grocer, we pride ourselves in putting together the best organic brands under one roof, which saves you time running from shop to shop getting various organic products... and best of all they’re just a click away and delivered straight to your door. Saving you both time & money!</p>
+
+			<a class="shopnow" href="#"><img src="<%= $this->Page->Theme->BaseUrl %>/images/btnshopnow.png" alt="shop now" /></a><!-- SHOP NOW BUTTON -->
+
+			<div class="smalltext"></div><!-- Ordering organic in 3 steps ... -->
+			<ul id="steps">
+				<li>Place your order online & make payment</li>
+				<li>We fill your basket with the freshest & best organic products</li>
+				<li style="margin-bottom:2px;">Delivered straight to your door</li>(Free delivery for orders over $100. Otherwise, charge of $8 applies)
+			</ul>
+		</div><!-- RIGHT COLUMN ENDS -->
+	</div><!-- CONTENT ENDS -->
+
+	<div id="footer">
+		<span>Copyright © 2009 <a href="#">The Organic Grocer</a>. All rights reserved. Designed by AsiaBlaze Design.</span>
+	</div>
+</div><!-- CONTAINER ENDS -->
+
+</body>
+</html>

@@ -1,12 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" >
-<head>
+<com:THead>
 	<title><com:TContentPlaceHolder ID="title" /></title>
 	<com:TContentPlaceHolder ID="meta" />
 	<com:TContentPlaceHolder ID="script" />
-</head>
+</com:THead>
 <body>
 <center>
+	<com:TForm>
 	<div id="container">
 		<!-- Banner -->
 		<div id="banner">
@@ -33,9 +34,10 @@
 		<!-- Main content: END -->
 
 		<div id="footer">
-			Copyright © 2009 The Organic Grocer. All rights reserved. Designed by AsiaBlaze Design.
+			Copyright © 2009 <a href="#">The Organic Grocer</a>. All rights reserved. Designed by AsiaBlaze Design.
 		</div>
 	</div>
+	</com:TForm>
 </center>
 </body>
 </html>

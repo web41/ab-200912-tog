@@ -1,0 +1,18 @@
+﻿body{font-family:Arial;font-size:13px;margin:0 auto;background:#749f24;color:#503a1d;}
+#container{width:960px;height:auto;margin:0 auto;}
+
+h1,h2,h3,p,i{margin:0;padding:0;font-weight:normal;text-transform:capitalize;}
+img{border:0;}
+a, input {outline:none;} 
+
+a:link, a:visited{text-decoration:none;color:#503a1d}
+a:hover{color:#9f743c}
+
+.name{font-weight:normal;color:#f6ac00;}
+
+a.btn_cart{display:block;width:72px;height:21px;background:url(../images/btn_cart.png) no-repeat;color:#fff;padding:13px 0 0 28px;text-align:left;font-size:12px;margin:0 0 10px 0;}
+a.btn_cart:hover{color:#e8e8e8;}
+
+a.btn_addtocart{display:block;width:66px;height:21px;background:url(../images/btn_addtocart.png) no-repeat;color:#fff;padding:11px 0 0 34px;text-align:left;font-size:12px;margin-top:-12px;}
+a.btn_addtocart:hover{color:#e8e8e8;}
+

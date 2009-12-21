@@ -49,6 +49,7 @@ class BrandForm extends TPage
 		{
 			$activeRecord = $this->getItem();
 			$activeRecord->Name = $this->txtName->SafeText;
+			$activeRecord->Alias = $this->txtAlias->SafeText;
 			try
 			{
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");

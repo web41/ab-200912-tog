@@ -1,5 +1,11 @@
 <?php
 
+define('PRADO_CHMOD',0755);
+
+// Alex: fix PATH_INFO problem
+if (!isset($_SERVER["PATH_INFO"]) && isset($_SERVER["ORIG_PATH_INFO"]))
+	$_SERVER["PATH_INFO"] = $_SERVER["ORIG_PATH_INFO"];
+
 $frameworkPath='../prado/framework/prado.php';
 
 // The following directory checks may be removed if performance is required

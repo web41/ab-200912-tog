@@ -41,8 +41,8 @@
 								InitialValue="Filter by ID or Name"
 								ValidationGroup="filter"/>
 							<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Filter by ID or Name" Attributes.onfocus="this.select()" />
-							<com:TButton ID="btnSearch" Text="Go" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
-							<com:TButton ID="btnSearchReset" Text="Reset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
+							<com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
+							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
 						</div>
 					</div></div></div>
 					<div class="content nopadding">

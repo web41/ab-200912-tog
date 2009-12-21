@@ -16,10 +16,10 @@ body { font-family: Arial, Helvetica, sans-serif; font-size: 14px; color: #2c743
 #leftcol { float: left; width: 520px; margin-right: 60px; overflow: hidden;}
 #rightcol { float: left; width: 420px; }
 	#rightcol p { line-height: 20px; display: block; margin-top: 15px;}
-	div.bigtext { background: url(images/text.png) no-repeat; height: 90px; width: 420px; border-bottom: 4px solid #8fc741;}
+	div.bigtext { background: url(../images/text.png) no-repeat; height: 90px; width: 420px; border-bottom: 4px solid #8fc741;}
 	a.shopnow { display: block; height: 73px; width: 208px; margin: 2px auto 0 auto;}
-	div.smalltext { background: url(images/text2.png) no-repeat; height: 26px; width: 420px; margin-top: 25px;}
-	ul#steps { display: block; list-style-type: decimal; list-style-position: inside; margin: 2px 0 2px 0; background: url(images/van.png) no-repeat right bottom; padding-bottom: 100px;}
+	div.smalltext { background: url(../images/text2.png) no-repeat; height: 26px; width: 420px; margin-top: 25px;}
+	ul#steps { display: block; list-style-type: decimal; list-style-position: inside; margin: 2px 0 2px 0; background: url(../images/van.png) no-repeat right bottom; padding-bottom: 100px;}
 	ul#steps li{ margin-top: 11px; margin-bottom: 11px;}
 	ul#steps li.none { list-style-type: none;}
 

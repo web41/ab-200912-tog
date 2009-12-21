@@ -68,6 +68,24 @@ class BrandManager extends TPage
 		if (!$this->IsPostBack)
 		{	
 			$this->populateData();
+			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
+			{
+				switch ($this->Request["action"])
+				{
+					case "add-success":
+					case "update-success":
+						$this->Notice->Type = AdminNoticeType::Information;
+						$this->Notice->Text = $this->Request["msg"];
+						break;
+					case "add-failed":
+					case "update-failed":
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Request["msg"];
+						break;
+					default:
+						break;
+				}
+			}
 		}
 	}
 	

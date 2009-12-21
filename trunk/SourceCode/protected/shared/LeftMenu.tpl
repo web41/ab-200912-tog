@@ -6,11 +6,11 @@
 	</div>
 	<div class="content nopadding">
 		<ul id="sidebar_menu">
-			<li><a href="">Sub Function</a></li>
-			<li><a href="">Sub Function</a></li>
-			<li><a href="">Sub Function</a></li>
-			<li><a href="">Sub Function</a></li>
-			<li><a href="">Sub Function</a></li>
+			<li><a href="">Pending Products (5)</a></li>
+			<li><a href="">Pending Users (19)</a></li>
+			<li><a href="">Today Orders (10)</a></li>
+			<li><a href="">Daily Report</a></li>
+			<li><a href="">Monthly Report</a></li>
 		</ul>
 	</div>
 </div>

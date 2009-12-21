@@ -1,0 +1,193 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<div class="box">
+		<h2>organic points</h2>
+	</div>
+	<div class="box">
+		<h2>newsletter</h2>
+		<div class="content">
+			Enter your email address to receive our FREE newsletter on the organic market
+		</div>
+	</div>
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<!-- Product box -->
+	<div class="product_box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
+		<div class="title">
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<div class="price">Price: $5.76</div>
+		</div>
+		<div class="content">
+			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
+			<div>Size: 200g</div>
+			<div>
+				<div style="float:left">
+				Quantity: 
+				<select>
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+				</select>
+				01 Unit = 200g
+				</div>
+				<div style="float:right;">
+					<a href="" class="btn_addtocart">Add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Product box: END -->
+
+	<!-- Product box -->
+	<div class="product_box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
+		<div class="title">
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<div class="price">Price: $5.76</div>
+		</div>
+		<div class="content">
+			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
+			<div>Size: 200g</div>
+			<div>
+				<div style="float:left">
+				Quantity: 
+				<select>
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+				</select>
+				01 Unit = 200g
+				</div>
+				<div style="float:right;">
+					<a href="" class="btn_addtocart">Add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Product box: END -->
+
+	<!-- Product box -->
+	<div class="product_box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
+		<div class="title">
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<div class="price">Price: $5.76</div>
+		</div>
+		<div class="content">
+			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
+			<div>Size: 200g</div>
+			<div>
+				<div style="float:left">
+				Quantity: 
+				<select>
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+				</select>
+				01 Unit = 200g
+				</div>
+				<div style="float:right;">
+					<a href="" class="btn_addtocart">Add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Product box: END -->
+
+	<!-- Product box -->
+	<div class="product_box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
+		<div class="title">
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<div class="price">Price: $5.76</div>
+		</div>
+		<div class="content">
+			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
+			<div>Size: 200g</div>
+			<div>
+				<div style="float:left">
+				Quantity: 
+				<select>
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+				</select>
+				01 Unit = 200g
+				</div>
+				<div style="float:right;">
+					<a href="" class="btn_addtocart">Add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Product box: END -->
+
+	<!-- Product box -->
+	<div class="product_box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
+		<div class="title">
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<div class="price">Price: $5.76</div>
+		</div>
+		<div class="content">
+			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
+			<div>Size: 200g</div>
+			<div>
+				<div style="float:left">
+				Quantity: 
+				<select>
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+				</select>
+				01 Unit = 200g
+				</div>
+				<div style="float:right;">
+					<a href="" class="btn_addtocart">Add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Product box: END -->
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<div class="box">
+		<div class="cart_title"><h2>Your Cart</h2></div>
+		<div class="content" style="text-align:center;">
+			<a href="">Login</a>  |  <a href="">Sign up</a>
+		</div>
+	</div>
+	<div class="shoppingcart_box">
+		<a href="" class="btn_cart">VIEW CART</a>
+		<a href="" class="btn_cart">CHECKOUT</a>
+	</div>
+	<div class="box">
+		<h2>Order Schedule</h2>
+		<div class="content" style="border-bottom:solid 1px #503a1d;padding-bottom:10px;">
+			Order by Tuesday 5 pm<br />
+			Delivery this Friday/Saturday
+		</div>
+	</div>
+	<div class="box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_1.png" alt=""/>&nbsp;&nbsp;
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" />
+	</div>
+</div>
+<!-- Right column: END -->
+</com:TContent>

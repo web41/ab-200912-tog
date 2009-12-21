@@ -7,7 +7,7 @@
 		<tr>
 			<td class="left_col" style="background:#2e2e2e;">
 				<com:Application.shared.CalendarPane />
-				<com:Application.shared.LeftMenu />
+				<com:Application.shared.AdminLeftMenu />
 				<com:Application.shared.StatisticsPane />
 			</td>	
 			<td class="main_col">

@@ -47,9 +47,10 @@
 		<!--module id="sitemap" class="CSitemap.CSitemapManager" SitemapFile="Application.sitemap"/-->
 		<module id="request" class="THttpRequest" UrlManager="friendly-url"/>
 		<module id="friendly-url" class="System.Web.TUrlMapping" EnableCustomUrl="true" UrlPrefix="/TOG">
-			<url ServiceParameter="home.Index" pattern="index"/>
 			
-			<url ServiceParameter="admincp.Index" pattern="admincp/"/>
+			<url ServiceParameter="shop.Index" pattern="shop"/>
+			
+			<url ServiceParameter="admincp.Index" pattern="admincp"/>
 			<url ServiceParameter="admincp.Index" pattern="admincp/index"/>
 			<url ServiceParameter="admincp.ProductManager" pattern="admincp/product"/>
 			<url ServiceParameter="admincp.ProductManager" pattern="admincp/product/manager"/>
@@ -70,7 +71,7 @@
 
 	<!-- configuration for available services -->
 	<services>
-		<service id="page" class="TPageService" BasePath="Application.pages" DefaultPage="home.Index">
+		<service id="page" class="TPageService" BasePath="Application.pages" DefaultPage="Index">
 			<pages StatePersisterClass="System.Web.UI.TSessionPageStatePersister" Theme="default"/>
 		</service>
 	</services>

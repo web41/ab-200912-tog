@@ -12,7 +12,7 @@ class BrandForm extends TPage
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
 				// Populates the input controls with the existing post data
-				$this->lblHeader->Text = "Edit brand: ".$activeRecord->Name;
+				$this->lblHeader->Text = "Update brand: ".$activeRecord->Name;
 				$this->txtName->Text = $activeRecord->Name;
 				$this->txtAlias->Text = $activeRecord->Alias;
 			}

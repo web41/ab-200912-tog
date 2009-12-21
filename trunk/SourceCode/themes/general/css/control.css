@@ -7,8 +7,8 @@
 .btn_unpublish{width:102px;height:26px;background:url(../images/btn_unpublish.png) no-repeat;border:0;float:right;margin-left:8px;}
 .btn_reset{width:102px;height:26px;background:url(../images/btn_reset.png) no-repeat;border:0;float:right;margin-left:8px;}
 
-.btn_smallenter{width:36px;height:26px;background:url(../images/btn_smallenter.png) no-repeat;border:0;margin-left:5px;}
-.btn_smallreset{width:36px;height:26px;background:url(../images/btn_smallreset.png) no-repeat;border:0;margin-left:5px;}
+.btn_smallenter{width:36px;height:26px;background:url(../images/btn_smallenter.png) no-repeat;border:0;margin-left:5px;float:right;}
+.btn_smallreset{width:36px;height:26px;background:url(../images/btn_smallreset.png) no-repeat;border:0;margin-left:5px;float:right;}
 
 
 

@@ -199,18 +199,14 @@
                                 <input type="checkbox" /><label>sample checkbox 4</label>
                             </div>
                         </div>
-                        <table border="0" cellpadding="0" cellspacing="0" class="form" width="100%">
-                        	<tr>
-                            	<td class="field">
-                                    <div class="text">normal field</div>
-                                    <div class="control"><input type="text" class="textbox" /></div>
-                                </td>
-                                <td class="field">                                
-                                    <div class="text">normal field</div>
-                                    <div class="control"><input type="text" class="textbox" /></div>
-                                </td>
-                            </tr>
-                        </table>
+                        
+                        <div class="field">
+                        	<div class="text"><!-- --></div>
+                            <div class="control">
+                            	<input type="button" class="btn_addnew" />
+                                <input type="button" class="btn_delete" />
+                            </div>
+                        </div>
 					</div>
 				</div>
                 <!-- Form sample: END -->

@@ -27,6 +27,7 @@
 									<div class="control">
 										<com:TTextBox ID="txtName" CssClass="textbox" /><br />
 										<com:TRequiredFieldValidator ID="val1"
+											CssClass="error"
 											ControlToValidate="txtName"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Brand name') %>"
 											Display="Dynamic"

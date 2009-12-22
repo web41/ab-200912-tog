@@ -49,8 +49,8 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="field">
-									<div class="text">Publish</div>
+								<td class="field" style="padding:5px 0 5px 0;">
+									<div class="text paddingtop">Publish</div>
 									<div class="control">
 										<com:TRadioButtonList ID="radPublish" RepeatDirection="Horizontal">
 											<com:TListItem Value="0" Text="No" />
@@ -58,8 +58,8 @@
 										</com:TRadioButtonList>
 									</div>
 								</td>
-								<td class="field">                                
-									<div class="text">Front page</div>
+								<td class="field" style="padding:5px 0 5px 0;">                             
+									<div class="text paddingtop">Front page</div>
 									<div class="control">
 										<com:TRadioButtonList ID="radFrontPage" RepeatDirection="Horizontal">
 											<com:TListItem Value="0" Text="No" Selected="true" />

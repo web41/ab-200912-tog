@@ -43,7 +43,7 @@
 									<div class="text">Alias</div>
 									<div class="control">
 										<com:TTextBox ID="txtAlias" CssClass="textbox" /><br />
-										<%= $this->Application->getModule('message')->translate('AUTO_FIELD') %>
+										<div class="notice"><%= $this->Application->getModule('message')->translate('AUTO_FIELD') %></div>
 									</div>
 								</td>
 							</tr>

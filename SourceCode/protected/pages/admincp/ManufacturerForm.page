@@ -115,7 +115,7 @@
 							<div class="control">
 								<com:TButton ID="btnSubmit" CssClass="btn_addnew" OnClick="btnSubmit_Clicked" />
 								<com:TButton CausesValidation="false" ButtonType="Reset" CssClass="btn_reset" />
-								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_delete" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('admincp.ManufacturerManager') %>'" />
+								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_cancel" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('admincp.ManufacturerManager') %>'" />
 							</div>
 						</div>
 					</div>

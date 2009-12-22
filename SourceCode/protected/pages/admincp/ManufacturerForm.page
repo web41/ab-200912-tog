@@ -101,7 +101,7 @@
 										media_external_list_url : "example_media_list.js",
 										file_browser_callback : "tinyBrowser",
 										theme_advanced_resize_horizontal : false,
-										theme_advanced_resizing : true,
+										theme_advanced_resizing : false,
 										nonbreaking_force_tab : true,
 										apply_source_formatting : true,
 										relative_urls : false,

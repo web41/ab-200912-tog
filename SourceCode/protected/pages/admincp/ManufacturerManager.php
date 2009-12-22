@@ -73,6 +73,7 @@ class ManufacturerManager extends TPage
 
 	public function onLoad($param)
 	{
+		parent::onLoad($param);
 		// register search button
 		$this->ClientScript->registerDefaultButton($this->txtSearchText,$this->btnSearch);
 		$this->CurrentPage = ($this->Request->contains('p')) ? intval($this->Request['p']) : 1;

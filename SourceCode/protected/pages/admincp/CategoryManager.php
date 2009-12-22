@@ -7,7 +7,7 @@ class CategoryManager extends TPage
 	private $_sortBy = "";
 	private $_sortType = "";
 	private $_searchText = "";
-	private $_parent = 0;
+	private $_parentID = 0;
 	private $_sortable = array("cat_id","cat_name");
 	private $_queryParams = array("p","st","sb","q","parent");
 	const AR = "CategoryRecord";
@@ -72,14 +72,14 @@ class CategoryManager extends TPage
 		$this->_searchText = $value;
 	}
 	
-	public function getParent()
+	public function getParentID()
 	{
-		return $this->_parent;
+		return $this->_parentID;
 	}
 	
-	public function setParent($value)
+	public function setParentID($value)
 	{
-		$this->_parent = TPropertyValue::ensureInteger($value);
+		$this->_parentID = TPropertyValue::ensureInteger($value);
 	}
 
 	public function onLoad($param)
@@ -87,11 +87,11 @@ class CategoryManager extends TPage
 		parent::onLoad($param);
 		// register search button
 		$this->ClientScript->registerDefaultButton($this->txtSearchText,$this->btnSearch);
-		$this->CurrentPage = ($this->Request->contains('p')) ? intval($this->Request['p']) : 1;
+		$this->CurrentPage = ($this->Request->contains('p')) ? TPropertyValue::ensureInteger($this->Request['p']) : 1;
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 1;
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
-		$this->Parent = ($this->Request->contains('parent')) ? TPropertyValue::ensureInteger($this->Request['parent']) : 0;
+		$this->ParentID = ($this->Request->contains('parent')) ? TPropertyValue::ensureInteger($this->Request['parent']) : 0;
 		if (!$this->IsPostBack)
 		{	
 			$this->populateData();
@@ -133,9 +133,9 @@ class CategoryManager extends TPage
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}
-		if ($this->Parent>0)
+		if ($this->ParentID>0)
 		{
-			$criteria->Condition .= " and (parent_id = '".$this->Parent."') ";
+			$criteria->Condition .= " and (parent_id = '".$this->ParentID."') ";
 		}
 		// -- 
 		$criteria->Condition .= ")";

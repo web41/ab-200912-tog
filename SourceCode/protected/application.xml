@@ -88,5 +88,6 @@
 	-->
 	<parameters>
 		<parameter id="ROW_PER_PAGE" value="10" />
+		<parameter id="AVAILABLE_IMAGES" value="('jpg','jpeg','gif','png')" />
 	</parameters>
 </application>

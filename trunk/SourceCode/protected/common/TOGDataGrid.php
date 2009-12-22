@@ -20,19 +20,4 @@ class TOGDataGrid extends TDataGrid
 	}
 }
 
-class TOGPager extends TPager
-{
-	public function onInit($param)
-	{
-		parent::onInit($param);
-		$this->Mode="Numeric";
-		$this->ButtonType="LinkButton";
-		$this->FirstPageText="First";
-		$this->PrevPageText="Prev";
-		$this->NextPageText="Next";
-		$this->LastPageText="Last";
-		$this->PageButtonCount=2;
-	}
-}
-
 ?>

@@ -12,4 +12,8 @@
 		<menuNode ServiceParameter="admincp.ManufacturerForm" Title="Add Manufacturer" />
 		<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Manufacturer List" />
 	</menuNode>
+	<menuNode ServiceParameter="admincp.CategoryManager" Title="Category">
+		<menuNode ServiceParameter="admincp.CategoryForm" Title="Add Category" />
+		<menuNode ServiceParameter="admincp.CategoryManager" Title="Category List" />
+	</menuNode>
 </menu>

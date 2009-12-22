@@ -34,7 +34,7 @@
 	#container .main_col .main_box .content .field .control label{margin-right:10px;text-transform:capitalize;}
 	#container .main_col .main_box .content .field .control .notice{font-size:11px;margin-top:5px;float:left;color:#b3b3b3;}
 	#container .main_col .main_box .content .field .control .error{font-size:11px;margin-top:5px;float:left;color:#ffcecf;}
-	#container .main_col .main_box .content .field .control .btn_addnew, #container .main_col .main_box .content .field .control .btn_delete, #container .main_col .main_box .content .field .control .btn_reset{margin:0 10px 0 0;float:left;}
+	#container .main_col .main_box .content .field .control .btn_addnew, #container .main_col .main_box .content .field .control .btn_delete, #container .main_col .main_box .content .field .control .btn_reset, #container .main_col .main_box .content .field .control .btn_cancel{margin:0 10px 0 0;float:left;}
 	
 	
 	

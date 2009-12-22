@@ -27,11 +27,13 @@
 									<div class="control">
 										<com:TTextBox ID="txtName" CssClass="textbox" /><br />
 										<com:TRequiredFieldValidator ID="val1"
+											CssClass="error"
 											ControlToValidate="txtName"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Manufacturer name') %>"
 											Display="Dynamic"
 											FocusOnError="True"/>
 										<com:TCustomValidator ID="val2"
+											CssClass="error"
 											ControlToValidate="txtName"
 											OnServerValidate="uniqueCheck_ServerValidated"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Manufacturer name') %>"
@@ -52,11 +54,13 @@
 									<div class="control">
 										<com:TTextBox ID="txtEmail" CssClass="textbox" /><br />
 										<com:TRequiredFieldValidator ID="val3"
+											CssClass="error"
 											ControlToValidate="txtEmail"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
 											Display="Dynamic"
 											FocusOnError="True"/>
 										<com:TEmailAddressValidator ID="val4"
+											CssClass="error"
 											ControlToValidate="txtEmail"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
 											Display="Dynamic"
@@ -76,7 +80,6 @@
 							<div class="control" style="height:auto;float:none;width:auto;padding-bottom:10px;">
 								<com:THtmlArea ID="txtDesc" Width="auto" Height="250px">
 									<prop:Options>
-
 										theme : "advanced",
 										skin: "o2k7",
 										plugins : "style,layer,table,save,advhr,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras",

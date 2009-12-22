@@ -42,7 +42,7 @@
 									<div class="text">Alias</div>
 									<div class="control">
 										<com:TTextBox ID="txtAlias" CssClass="textbox" /><br />
-										<%= $this->Application->getModule('message')->translate('AUTO_FIELD') %>
+										<div class="notice"><%= $this->Application->getModule('message')->translate('AUTO_FIELD') %></div>
 									</div>
 								</td>
 							</tr>
@@ -71,10 +71,10 @@
 								</td>
 							</tr>
 						</table>
-						<div class="field">
+						<div class="field" style="float:none;height:auto;">
 							<div class="text">Description</div>
-							<div class="control">
-								<com:THtmlArea ID="txtDesc" Width="100%" Height="250px">
+							<div class="control" style="height:auto;float:none;width:auto;padding-bottom:10px;">
+								<com:THtmlArea ID="txtDesc" Width="auto" Height="250px">
 									<prop:Options>
 
 										theme : "advanced",
@@ -107,7 +107,7 @@
 								</com:THtmlArea>  
 							</div>
 						</div>
-						<div class="field">
+						<div class="field" style="border:none;">
 							<div class="text">&nbsp;</div>
 							<div class="control">
 								<com:TButton ID="btnSubmit" CssClass="btn_addnew" OnClick="btnSubmit_Clicked" />

@@ -1,0 +1,158 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Add/Update Category
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Form sample-->
+				<com:TPanel ID="mainBox" CssClass="main_box">
+					<div class="title">
+						<div>
+							<div><h2><com:TLabel ID="lblHeader" /></h2></div>
+						</div>
+					</div>
+					<div class="content">
+						<table border="0" cellpadding="0" cellspacing="0" class="form" width="100%" style="margin-bottom:10px;">
+							<tr>
+								<td class="field">
+									<div class="text">Name<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtName" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val1"
+											CssClass="error"
+											ControlToValidate="txtName"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Category name') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+										<com:TCustomValidator ID="val2"
+											CssClass="error"
+											ControlToValidate="txtName"
+											OnServerValidate="uniqueCheck_ServerValidated"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Category name') %>"
+											Display="Dynamic"/>
+									</div>
+								</td>
+								<td class="field">                                
+									<div class="text">Alias</div>
+									<div class="control">
+										<com:TTextBox ID="txtAlias" CssClass="textbox" /><br />
+										<div class="notice"><%= $this->Application->getModule('message')->translate('AUTO_FIELD') %></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Publish</div>
+									<div class="control">
+										<com:TRadioButtonList ID="radPublish" RepeatDirection="Horizontal">
+											<com:TListItem Value="0" Text="No" />
+											<com:TListItem Value="1" Text="Yes"  Selected="true" />
+										</com:TRadioButtonList>
+									</div>
+								</td>
+								<td class="field">                                
+									<div class="text">Front page</div>
+									<div class="control">
+										<com:TRadioButtonList ID="radFrontPage" RepeatDirection="Horizontal">
+											<com:TListItem Value="0" Text="No" Selected="true" />
+											<com:TListItem Value="1" Text="Yes" />
+										</com:TRadioButtonList>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Image</div>
+									<div class="control">
+										<com:TFileUpload ID="fuImage" CssClass="textbox" /><br />
+										<com:TCustomValidator ID="val3"
+											ControlToValidate="fuImage"
+											OnServerValidate="checkImageExtension_ServerValidate"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('IMAGE_INVALID',implode(",",TPropertyValue::ensureArray($this->Application->Parameters["AVAILABLE_IMAGES"]))) %>"
+											Display="Dynamic" 
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">                                
+									<div class="text">Thumbnail</div>
+									<div class="control">
+										<com:TFileUpload ID="fuThumb" CssClass="textbox" /><br />
+										<com:TCustomValidator ID="val4"
+											ControlToValidate="fuImage"
+											OnServerValidate="checkImageExtension_ServerValidate"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('IMAGE_INVALID',implode(",",TPropertyValue::ensureArray($this->Application->Parameters["AVAILABLE_IMAGES"]))) %>"
+											Display="Dynamic" 
+											FocusOnError="True"/>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<div class="field" style="float:none;height:auto;">
+							<div class="text">Parent</div>
+							<div class="control" style="height:auto;float:none;width:auto;padding-bottom:10px;">
+								<com:TDropDownList ID="cboParentSelector" 
+									CssClass="textbox"
+									PromptText="No Parent"
+									PromptValue="0"
+									DataTextField="Name"
+									DataValueField="ID" />
+							</div>
+						</div>
+						<div class="field" style="float:none;height:auto;">
+							<div class="text">Description</div>
+							<div class="control" style="height:auto;float:none;width:auto;padding-bottom:10px;">
+								<com:THtmlArea ID="txtDesc" Width="auto" Height="250px">
+									<prop:Options>
+										theme : "advanced",
+										skin: "o2k7",
+										plugins : "style,layer,table,save,advhr,advlink,emotions,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras",
+										theme_advanced_buttons1_add_before : "save,newdocument,separator,styleselect",
+										theme_advanced_buttons1_add : "separator,insertdate,inserttime,preview,separator,advsearchreplace",
+										theme_advanced_buttons2_add_before: "cut,copy,paste,pastetext,pasteword,separator,search,replace,separator",
+										theme_advanced_buttons3 : "tablecontrols,separator,emotions,iespell,media,advhr,separator,print,separator,ltr,rtl,separator,fullscreen",
+										theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,|,cite,abbr,acronym,del,ins,|,visualchars,nonbreaking",
+										theme_advanced_toolbar_location : "top",
+										theme_advanced_toolbar_align : "left",
+										theme_advanced_path_location : "bottom",
+										content_css : "example_full.css",
+										plugin_insertdate_dateFormat : "%Y-%m-%d",
+										plugin_insertdate_timeFormat : "%H:%M:%S",
+										extended_valid_elements : "hr[class|width|size|noshade],font[face|size|color|style],span[class|align|style]",
+										external_link_list_url : "example_link_list.js",
+										external_image_list_url : "example_image_list.js",
+										flash_external_list_url : "example_flash_list.js",
+										media_external_list_url : "example_media_list.js",
+										file_browser_callback : "tinyBrowser",
+										theme_advanced_resize_horizontal : false,
+										theme_advanced_resizing : false,
+										nonbreaking_force_tab : true,
+										apply_source_formatting : true,
+										relative_urls : false,
+										document_base_url : "<%= $this->Request->getBaseUrl($this->Request->IsSecureConnection) %>"
+									</prop:Options>
+								</com:THtmlArea>  
+							</div>
+						</div>
+						<div class="field" style="border:none;margin-bottom:0;">
+							<div class="text">&nbsp;</div>
+							<div class="control">
+								<com:TButton ID="btnSubmit" CssClass="btn_addnew" OnClick="btnSubmit_Clicked" />
+								<com:TButton CausesValidation="false" ButtonType="Reset" CssClass="btn_reset" />
+								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_delete" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('admincp.ManufacturerManager') %>'" />
+							</div>
+						</div>
+					</div>
+				</com:TPanel>
+				<!-- Form sample: END -->
+			</td>
+		</tr>
+	</table>
+</com:TContent>

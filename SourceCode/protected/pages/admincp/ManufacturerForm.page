@@ -110,7 +110,7 @@
 								</com:THtmlArea>  
 							</div>
 						</div>
-						<div class="field" style="border:none;">
+						<div class="field" style="border:none;margin-bottom:0;">
 							<div class="text">&nbsp;</div>
 							<div class="control">
 								<com:TButton ID="btnSubmit" CssClass="btn_addnew" OnClick="btnSubmit_Clicked" />

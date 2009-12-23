@@ -17,3 +17,5 @@ ADD_FAILED					= {0} {1} can not be added. Please contact administrator.
 ADD_SUCCESS					= {0} {1} has been added successfully.
 ITEM_INVALID				= {0} is invalid. Please try another.
 IMAGE_INVALID				= Only {0} image types are allowed. Please try another.
+ITEM_ACTION_SUCCESS			= {0} has been {1} successfully.
+ITEM_ACTION_FAILED			= {0} can not be {1}. Pleasse contact administrator.

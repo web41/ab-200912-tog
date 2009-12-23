@@ -18,8 +18,8 @@
 						<com:TButton ID="btnDelete" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','category') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','category') %>'); return false; }" />
 						<com:TButton ID="btnUncheck" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
 						<com:TButton ID="btnCheck" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
-						<com:TButton ID="btnPublish" CssClass="btn_publish" OnClick="btnPublish_Clicked" Visible="false" />
-						<com:TButton ID="btnUnpublish" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" Visible="false" />
+						<com:TButton ID="btnPublish" CssClass="btn_publish" OnClick="btnPublish_Clicked" />
+						<com:TButton ID="btnUnpublish" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" />
 						<com:TButton ID="btnEdit" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','category') %>'); return false; }" />
 						<com:TButton ID="btnAdd" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.CategoryForm') %>'" />
 						<h2>Action</h2>
@@ -33,10 +33,14 @@
 					<div class="title"><div><div>
 						<h2>Category List</h2>
 						<div style="float:right;height:26px;padding:7px 5px 0 0;">
-							<com:TDropDownList ID="cboParentSelector" 
+							<com:TDropDownList ID="cboParentSelector"
+								AutoPostBack="true"
+								OnSelectedIndexChanged="cboParentSelector_SelectedIndexChanged"
 								CssClass="textbox" Width="175px" Height="Auto"
 								PromptText="All"
-								PromptValue="0" />
+								PromptValue="0"
+								DataTextField="Name"
+								DataValueField="ID" />
 							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
 							<com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
 							<com:TRequiredFieldValidator ID="val1"
@@ -61,7 +65,7 @@
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->Parent) %>">Name
+									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->ParentID) %>">Name
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />
 									</a>
 								</prop:HeaderTemplate>
@@ -69,9 +73,40 @@
 									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.CategoryForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left" HeaderText="Parent" HeaderStyle.Width="20%">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# ($this->Parent->Data->Parent && $this->Parent->Data->Parent->ID>0) ? $this->Parent->Data->Parent->Name : 'No Parent' %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderText="Published" HeaderStyle.Width="7%">
+								<prop:ItemTemplate>
+									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Parent->Data->IsPublished) ? 'tick' : 'stop' %>.png" CommandName="publish" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn ID="colOrder" HeaderStyle.Width="7%">
+								<prop:HeaderTemplate>
+									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_success.png" CommandName="order_save" />
+									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->ParentID) %>">Order
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TTextBox ID="txtOrder" Width="20px" Text="<%= $this->Parent->Data->Ordering %>" />
+									<com:TImageButton ImageURL="<%= $this->Page->Theme->BaseUrl %>/images/icon_up.png"
+										  AlternateText="Up"
+										  BorderWidth="0"
+										  CommandName="order_up"
+										  Visible="<%= $this->Parent->Data->Ordering > 1 %>" />
+									<com:TImageButton ImageURL="<%= $this->Page->Theme->BaseUrl %>/images/icon_down.png"
+										  AlternateText="Up"
+										  BorderWidth="0"
+										  CommandName="order_down"
+										  Visible="<%= $this->Parent->Data->Ordering < CategoryRecord::getTotalItemCount($this->Parent->Data->ID) %>"/>
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
 							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->Parent) %>">ID
+									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->ParentID) %>">ID
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==0 %>" />
 									</a>
 								</prop:HeaderTemplate>
@@ -100,8 +135,8 @@
 						<com:TButton ID="btnDelete2" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','category') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','category') %>'); return false; }" />
 						<com:TButton ID="btnUncheck2" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
 						<com:TButton ID="btnCheck2" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
-						<com:TButton ID="btnPublish2" CssClass="btn_publish" OnClick="btnPublish_Clicked" Visible="false" />
-						<com:TButton ID="btnUnpublish2" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" Visible="false" />
+						<com:TButton ID="btnPublish2" CssClass="btn_publish" OnClick="btnPublish_Clicked" />
+						<com:TButton ID="btnUnpublish2" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" />
 						<com:TButton ID="btnEdit2" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','category') %>'); return false; }" />
 						<com:TButton ID="btnAdd2" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.CategoryForm') %>'" />
 						<h2>Action</h2>

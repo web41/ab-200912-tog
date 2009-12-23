@@ -78,6 +78,16 @@
 									<com:TLabel Text="<%# ($this->Parent->Data->Parent && $this->Parent->Data->Parent->ID>0) ? $this->Parent->Data->Parent->Name : 'No Parent' %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.Width="10%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->ParentID) %>">Create Date
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# ($this->Parent->Data->Parent && $this->Parent->Data->Parent->ID>0) ? date('m/d/Y',$this->Parent->Data->Parent->CreateDate) : '--' %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderText="Published" HeaderStyle.Width="7%">
 								<prop:ItemTemplate>
 									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Parent->Data->IsPublished) ? 'tick' : 'stop' %>.png" CommandName="publish" />

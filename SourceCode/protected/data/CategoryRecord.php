@@ -66,5 +66,17 @@ class CategoryRecord extends TActiveRecord
 		$criteria->OrdersBy["cat_name"] = "asc";
 		return self::finder()->findAll($criteria);
 	}
+	
+	public function getTotalItemCount($id=0)
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "cat_id > 0 ";
+		if ($id>0)
+		{
+			$cat = self::finder()->withParent()->findByPk($id);
+			if ($cat) $criteria->Condition .= " and parent_id = '".$cat->Parent->ID."'";
+		}
+		return self::finder()->count($criteria);
+	}
 }
 ?>

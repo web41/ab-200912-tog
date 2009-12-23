@@ -8,7 +8,7 @@ class CategoryManager extends TPage
 	private $_sortType = "";
 	private $_searchText = "";
 	private $_parentID = 0;
-	private $_sortable = array("cat_id","cat_name");
+	private $_sortable = array("cat_id","cat_name","c_date","cat_order");
 	private $_queryParams = array("p","st","sb","q","parent");
 	const AR = "CategoryRecord";
 
@@ -93,7 +93,11 @@ class CategoryManager extends TPage
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
 		$this->ParentID = ($this->Request->contains('parent')) ? TPropertyValue::ensureInteger($this->Request['parent']) : 0;
 		if (!$this->IsPostBack)
-		{	
+		{
+			// fill parent selector combobox
+			$this->cboParentSelector->DataSource = Prado::createComponent(self::AR)->getAllParent();
+			$this->cboParentSelector->DataBind();
+			$this->cboParentSelector->SelectedValue = $this->ParentID;
 			$this->populateData();
 			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
 			{
@@ -151,7 +155,7 @@ class CategoryManager extends TPage
 
 		$criteria->Limit = $limit;
 		$criteria->Offset = $offset;
-		$items = $activeRecord->finder()->findAll($criteria);
+		$items = $activeRecord->finder()->withParent()->findAll($criteria);
 		$this->ItemList->DataSource = $items;
 		$this->ItemList->dataBind();
 		if (count($items) <= 0)
@@ -206,7 +210,6 @@ class CategoryManager extends TPage
 						//var_dump();
 						$this->Notice->Type = AdminNoticeType::Information;
 						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_SUCCESS","Category",$activeRecord->Name);
-						$this->populateData();
 					}
 					catch(TException $e)
 					{
@@ -220,7 +223,74 @@ class CategoryManager extends TPage
 					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","category");
 				}
 				break;
+			case "publish":
+				$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($param->Item->colID->lblItemID->Text));
+				if ($activeRecord)
+				{
+					try
+					{
+						$activeRecord->IsPublished = !$activeRecord->IsPublished;
+						$activeRecord->save();
+						$this->Notice->Type = AdminNoticeType::Information;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS",$activeRecord->Name,($activeRecord->IsPublished ? "published" : "unpublished"));
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Name,($activeRecord->IsPublished ? "published" : "unpublished"));
+					}	
+				}
+				else
+				{
+					$this->Notice->Type = AdminNoticeType::Error;
+					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","category");
+				}
+				break;
+			case "order_up":
+			case "order_down":
+				$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($param->Item->colID->lblItemID->Text));
+				if ($activeRecord)
+				{
+					try
+					{
+						$effectedRecord = Prado::createComponent(self::AR)->finder()->findByparent_idAndcat_order($activeRecord->ParentID, ($param->CommandName=="order_up"?$activeRecord->Ordering-1:$activeRecord->Ordering+1));
+						if ($effectedRecord)
+						{
+							$temp = $effectedRecord->Ordering;
+							$effectedRecord->Ordering = $activeRecord->Ordering;
+							$effectedRecord->save();
+							$activeRecord->Ordering = $temp;
+							$activeRecord->save();
+						}
+						$this->Notice->Type = AdminNoticeType::Information;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS",$activeRecord->Name,"ordered");
+					}
+					catch(TException $e)
+					{
+						throw new TException($e);
+						//$this->Notice->Type = AdminNoticeType::Error;
+						//$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Name,"ordered");
+					}
+				}
+				break;
+			case "order_save":
+				foreach($this->ItemList->Items as $item) 
+				{
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
+					$order = TPropertyValue::ensureInteger($item->colOrder->findControl("txtOrder")->Text);
+					if ($order < 0) $order = 0;
+					$criteria = new TActiveRecordCriteria;
+					$criteria->Condition = "cat_id <> '".$activeRecord->ID."' and cat_order = '".$order."' and parent_id = '".$activeRecord->ParentID."'";
+					$is_existed = (Prado::createComponent(self::AR)->finder()->find($criteria));
+					$activeRecord->Ordering = ($is_existed) ? 0 : $order;
+					$activeRecord->save();
+	
+				}
+				break;
+			default:
+				break;
 		}
+		$this->populateData();
 	}
 
 	protected function btnDelete_Clicked($sender, $param)
@@ -270,6 +340,63 @@ class CategoryManager extends TPage
 			}
 		}
 	}
+	
+	protected function btnPublish_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$items = array();
+			foreach($this->ItemList->Items as $item) 
+			{
+				if ($item->colCheckBox->chkItem->Checked) 
+				{
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
+					try
+					{
+						$activeRecord->IsPublished = true;
+						$activeRecord->save();
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS",$activeRecord->Name,($activeRecord->IsPublished ? "published" : "unpublished"));
+						break;
+					}
+				}
+			}
+			$this->Notice->Type = AdminNoticeType::Information;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS","Selected items","published");
+			$this->populateData();
+		}
+	}
+	
+	protected function btnUnpublish_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$items = array();
+			foreach($this->ItemList->Items as $item) {
+				if ($item->colCheckBox->chkItem->Checked) 
+				{
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
+					try
+					{
+						$activeRecord->IsPublished = false;
+						$activeRecord->save();
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Name,($activeRecord->IsPublished ? "published" : "unpublished"));
+						break;
+					}
+				}
+			}
+			$this->Notice->Type = AdminNoticeType::Information;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS","Selected items","unpublished");
+			$this->populateData();
+		}
+	}
 
 	protected function btnSearch_Clicked($sender, $param)
 	{
@@ -282,6 +409,11 @@ class CategoryManager extends TPage
 	protected function btnSearchReset_Clicked($sender, $param)
 	{
 		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$this->Parent));
+	}
+	
+	protected function cboParentSelector_SelectedIndexChanged($sender, $param)
+	{
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$sender->SelectedValue));
 	}
 }
 

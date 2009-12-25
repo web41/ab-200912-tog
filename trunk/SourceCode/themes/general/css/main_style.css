@@ -10,7 +10,5 @@ a:hover{}
 
 .name{font-weight:normal;color:#f6ac00;}
 
-.textbox{width:200px;height:20px;border:solid 1px #e5e5e5;background:url(../images/textbox_bg.png) repeat-x;margin:0;padding:4px 0 0 4px;color:#5a5a5a}
 
-select{width:auto;height:26px;border:solid 1px #e5e5e5;background:url(../images/textbox_bg.png) repeat-x;margin:0;color:#5a5a5a;padding:2px;}
 

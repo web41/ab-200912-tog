@@ -7,7 +7,7 @@ class ProductRecord extends TActiveRecord
 	const TABLE='tbl_product';
 
 	public $ID;
-	public $MFID;
+	public $MfID;
 	public $BrandID;
 	public $DiscountID;
 	public $Alias;
@@ -15,8 +15,8 @@ class ProductRecord extends TActiveRecord
 	public $Name;
 	public $Brief;
 	public $Description;
-	public $Image;
-	public $Thumbnail;
+	public $ImagePath;
+	public $ThumbnailPath;
 	public $Price;
 	public $RewardPoints;
 	public $IsBestSeller;
@@ -33,7 +33,7 @@ class ProductRecord extends TActiveRecord
 	public static $COLUMN_MAPPING=array
 	(
 		'product_id'=>'ID',
-		'mf_id'=>'MFID',
+		'mf_id'=>'MfID',
 		'brand_id'=>'BrandID',
 		'discount_id'=>'DiscountID',
 		'product_sku'=>'SKU',
@@ -41,8 +41,8 @@ class ProductRecord extends TActiveRecord
 		'product_name'=>'Name',
 		'product_brief'=>'Brief',
 		'product_desc'=>'Description',
-		'product_image'=>'Image',
-		'product_thumb'=>'Thumbnail',
+		'product_image'=>'ImagePath',
+		'product_thumb'=>'ThumbnailPath',
 		'product_price'=>'Price',
 		'product_reward_points'=>'RewardPoints',
 		'product_best_seller'=>'IsBestSeller',

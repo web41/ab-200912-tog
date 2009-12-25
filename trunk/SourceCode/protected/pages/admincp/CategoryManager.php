@@ -9,7 +9,7 @@ class CategoryManager extends TPage
 	private $_searchText = "";
 	private $_parentID = 0;
 	private $_sortable = array("cat_id","cat_name","c_date","cat_order");
-	private $_queryParams = array("p","st","sb","q","parent");
+	private $_queryParams = array("p","st","sb","parent","q");
 	const AR = "CategoryRecord";
 
 	public function getSortBy()
@@ -267,9 +267,9 @@ class CategoryManager extends TPage
 					}
 					catch(TException $e)
 					{
-						throw new TException($e);
-						//$this->Notice->Type = AdminNoticeType::Error;
-						//$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Name,"ordered");
+						//throw new TException($e);
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Name,"ordered");
 					}
 				}
 				break;

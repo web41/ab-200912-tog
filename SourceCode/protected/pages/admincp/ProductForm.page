@@ -32,6 +32,12 @@
                                             ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product SKU') %>"
                                             Display="Dynamic"
                                             FocusOnError="True"/>
+										<com:TCustomValidator ID="val2"
+											CssClass="error"
+											ControlToValidate="txtName"
+											OnServerValidate="uniqueCheck2_ServerValidated"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Product SKU') %>"
+											Display="Dynamic"/>
                                     </div>
                                 </td>
                                 <td class="field nopadding">&nbsp;</td>
@@ -41,17 +47,17 @@
 									<div class="text">Name<span>*</span></div>
 									<div class="control">
 										<com:TTextBox ID="txtName" CssClass="textbox" /><br />
-										<com:TRequiredFieldValidator ID="val2"
+										<com:TRequiredFieldValidator ID="val3"
 											CssClass="error"
 											ControlToValidate="txtName"
-											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Category name') %>"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product name') %>"
 											Display="Dynamic"
 											FocusOnError="True"/>
-										<com:TCustomValidator ID="val3"
+										<com:TCustomValidator ID="val4"
 											CssClass="error"
 											ControlToValidate="txtName"
 											OnServerValidate="uniqueCheck_ServerValidated"
-											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Category name') %>"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Product name') %>"
 											Display="Dynamic"/>
 									</div>
 								</td>
@@ -68,7 +74,7 @@
 									<div class="text">In Stock<span>*</span></div>
 									<div class="control">
 										<com:TTextBox ID="txtInStock" CssClass="textbox" /><br />
-										<com:TRequiredFieldValidator ID="val4"
+										<com:TRequiredFieldValidator ID="val5"
 											CssClass="error"
 											ControlToValidate="txtInStock"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product in stock') %>"
@@ -76,18 +82,19 @@
 											FocusOnError="True"/>
 								</td>
 								<td class="field">                                
-									<div class="text">Unit of Measure</div>
+									<div class="text">Unit of Measure<span>*</span></div>
 									<div class="control">
 										<com:TDropDownList ID="cboUOMSelector"
 											PromptText="Select..."
 											PromptValue="0"
 											DataTextField="Name"
 											DataValueField="ID" /><br />
-										<com:TRequiredFieldValidator ID="val5"
+										<com:TRequiredFieldValidator ID="val6"
 											CssClass="error"
 											ControlToValidate="cboUOMSelector"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','unit of measure') %>"
 											Display="Dynamic"
+											InitialValue="0"
 											FocusOnError="True"/>
 									</div>
 								</td>
@@ -101,11 +108,12 @@
 											PromptValue="0"
 											DataTextField="Name"
 											DataValueField="ID" /><br />
-										<com:TRequiredFieldValidator ID="val6"
+										<com:TRequiredFieldValidator ID="val7"
 											CssClass="error"
 											ControlToValidate="cboBrandSelector"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','brand') %>"
 											Display="Dynamic"
+											InitialValue="0"
 											FocusOnError="True"/>
 									</div>
 								</td>
@@ -117,28 +125,25 @@
 											PromptValue="0"
 											DataTextField="Name"
 											DataValueField="ID" /><br />
-										<com:TRequiredFieldValidator ID="val7"
+										<com:TRequiredFieldValidator ID="val8"
 											CssClass="error"
 											ControlToValidate="cboMfSelector"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','manufacturer') %>"
 											Display="Dynamic"
+											InitialValue="0"
 											FocusOnError="True"/>
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td class="field">
-									<div class="text">Category<span>*</span></div>
+									<div class="text">Price<span>*</span></div>
 									<div class="control">
-										<com:TDropDownList ID="cboCatSelector"
-											PromptText="Select..."
-											PromptValue="0"
-											DataTextField="Name"
-											DataValueField="ID" /><br />
-										<com:TRequiredFieldValidator ID="val8"
+										<com:TTextBox ID="txtPrice" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val9"
 											CssClass="error"
-											ControlToValidate="cboCatSelector"
-											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','category') %>"
+											ControlToValidate="txtPrice"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product price') %>"
 											Display="Dynamic"
 											FocusOnError="True"/>
 									</div>
@@ -153,6 +158,27 @@
 											DataValueField="ID" />
 									</div>
 								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Category<span>*</span></div>
+									<div class="control">
+										<com:TListBox ID="cboCatSelector"
+											Width="206px" Height="200px"
+											SelectionMode="Multiple"
+											DataTextField="Name"
+											DataValueField="ID" /><br />
+										<com:TRequiredFieldValidator ID="val10"
+											CssClass="error"
+											ControlToValidate="cboCatSelector"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','category') %>"
+											Display="Dynamic"
+											InitialValue="0"
+											FocusOnError="True"
+											Enabled="false"/>
+									</div>
+								</td>
+								<td class="field">&nbsp;</td>
 							</tr>
 							<tr>
 								<td class="field" style="padding:5px 0 5px 0;">
@@ -199,7 +225,7 @@
 									<div class="text">Image</div>
 									<div class="control">
 										<com:TFileUpload ID="fuImage" CssClass="textbox"  Width="208px" /><br />
-										<com:TCustomValidator ID="val9"
+										<com:TCustomValidator ID="val11"
 											ControlToValidate="fuImage"
 											OnServerValidate="checkImageExtension_ServerValidate"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('IMAGE_INVALID',implode(",",TPropertyValue::ensureArray($this->Application->Parameters["AVAILABLE_IMAGES"]))) %>"
@@ -211,7 +237,7 @@
 									<div class="text">Thumbnail</div>
 									<div class="control">
 										<com:TFileUpload ID="fuThumb" CssClass="textbox"  Width="208px" /><br />
-										<com:TCustomValidator ID="val10"
+										<com:TCustomValidator ID="val12"
 											ControlToValidate="fuImage"
 											OnServerValidate="checkImageExtension_ServerValidate"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('IMAGE_INVALID',implode(",",TPropertyValue::ensureArray($this->Application->Parameters["AVAILABLE_IMAGES"]))) %>"
@@ -224,7 +250,7 @@
 						<div class="field">
 							<div class="text">Brief Description</div>
 							<div class="control">
-								<com:TTextBox ID="txtBrief" CssClass="textbox" Width="630px" />
+								<com:TTextBox ID="txtBrief" TextMode="MultiLine" CssClass="textbox" Width="630px" />
 							</div>
 						</div>
 						<div class="field" style="float:none;height:auto;">

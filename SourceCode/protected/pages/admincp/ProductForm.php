@@ -10,18 +10,37 @@ class ProductForm extends TPage
 		if (!$this->IsPostBack)
 		{
 			// fill parent selector combobox
-			//$this->cboParentSelector->DataSource = Prado::createComponent(self::AR)->getAllParent();
-			//$this->cboParentSelector->DataBind();
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "brand_id > 0";
+			$criteria->OrdersBy["brand_name"] = "asc";
+			$this->cboBrandSelector->DataSource = BrandRecord::finder()->findAll($criteria);
+			$this->cboBrandSelector->DataBind();
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "mf_id > 0";
+			$criteria->OrdersBy["mf_name"] = "asc";
+			$this->cboMfSelector->DataSource = ManufacturerRecord::finder()->findAll($criteria);
+			$this->cboMfSelector->DataBind();
+			$this->cboUOMSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["UNITS_OF_MEASURE"]);
+			$this->cboUOMSelector->DataBind();
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
 				// Populates the input controls with the existing post data
 				$this->lblHeader->Text = "Update product: ".$activeRecord->Name;
+				$this->txtSKU->Text = $activeRecord->SKU;
 				$this->txtName->Text = $activeRecord->Name;
 				$this->txtAlias->Text = $activeRecord->Alias;
+				$this->txtInStock->Text = $activeRecord->InStock;
+				$this->cboUOMSelector->SelectedValue = $activeRecord->UOM;
+				$this->cboBrandSelector->SelectedValue = $activeRecord->BrandID;
+				$this->cboMfSelector->SelectedValue = $activeRecord->MfID;
+				$this->cboCatSelector->SelectedValues = $activeRecord->CategoryIDs;
+				$this->cboDiscountSelector->SelectedValue = $activeRecord->DiscountID;
 				$this->radPublish->SelectedValue = $activeRecord->IsPublished;
-				$this->radFrontPage->SelectedValue = $activeRecord->IsFrontPage;
-				$this->cboParentSelector->SelectedValue = $activeRecord->ParentID;
+				$this->radNewArrival->SelectedValue = $activeRecord->IsNewArrival;
+				$this->radBestSeller->SelectedValue = $activeRecord->IsBestSeller;
+				$this->radHotDeal->SelectedValue = $activeRecord->IsHotDeal;
+				$this->txtBrief->Text = $activeRecord->Brief;
 				$this->txtDesc->Text = $activeRecord->Description;
 			}
 			else
@@ -61,7 +80,7 @@ class ProductForm extends TPage
 			if($this->fuImage->HasFile) 
 			{
 				$hashImage = md5(uniqid(time()));
-				$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR;
+				$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."product".DIRECTORY_SEPARATOR;
 				if ($activeRecord->ImagePath != '') 
 				{
 					// Delete old thumbnail
@@ -80,7 +99,7 @@ class ProductForm extends TPage
 			if($this->fuThumb->HasFile) 
 			{
 				$hashThumb = md5(uniqid(time()));
-				$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR."thumbs".DIRECTORY_SEPARATOR;
+				$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."product".DIRECTORY_SEPARATOR."thumbs".DIRECTORY_SEPARATOR;
 				if ($activeRecord->ThumbnailPath != '') 
 				{
 					// Delete old thumbnail
@@ -95,11 +114,25 @@ class ProductForm extends TPage
 				$this->fuThumb->saveAs($filePath.$hashThumb, true);
 			}
 
+			$activeRecord->SKU = $this->txtSKU->SafeText;
 			$activeRecord->Name = $this->txtName->SafeText;
 			$activeRecord->Alias = $this->txtAlias->SafeText;
+			$activeRecord->InStock = TPropertyValue::ensureInteger($this->txtInStock->SafeText);
+			$activeRecord->UOM = $this->cboUOMSelector->SelectedValue;
+			$activeRecord->BrandID = $this->cboBrandSelector->SelectedValue;
+			$activeRecord->MfID = $this->cboMfSelector->SelectedValue;
+			if ($activeRecord->ID>0)
+			{
+				$criteria = new TActiveRecordCriteria;
+				$criteria->Condition = "product_id = '".$activeRecord->IDs."'";
+				ProductCatRecord::finder()->deleteAll($criteria);
+			}
+			$activeRecord->DiscountID = $this->cboDiscountSelector->SelectedValue;
 			$activeRecord->IsPublished = $this->radPublish->SelectedValue;
-			$activeRecord->IsFrontPage = $this->radFrontPage->SelectedValue;
-			$activeRecord->ParentID = $this->cboParentSelector->SelectedValue;
+			$activeRecord->IsNewArrival = $this->radNewArrival->SelectedValue;
+			$activeRecord->IsBestSeller = $this->radBestSeller->SelectedValue;
+			$activeRecord->IsHotDeal = $this->radHotDeal->SelectedValue;
+			$activeRecord->Brief = $this->txtBrief->SafeText;
 			$activeRecord->Description = $this->txtDesc->Text;
 			$activeRecord->ImagePath = (strlen($hashImage)>0)?$hashImage:($activeRecord->ID>0?$activeRecord->ImagePath:self::NO_IMAGE);
 			$activeRecord->ThumbnailPath = (strlen($hashThumb)>0)?$hashThumb:($activeRecord->ID>0?$activeRecord->ThumbnailPath:self::NO_IMAGE);
@@ -109,6 +142,11 @@ class ProductForm extends TPage
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
 				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Category",$this->txtName->SafeText);
 				$activeRecord->save();
+				foreach($this->cboCatSelector->SelectedValues as $catID)
+				{
+					$record = new ProductCatRecord(array("ProductID"=>$activeRecord->ID,"CatID"=>$catID));
+					$record->save();
+				}
 				$this->Response->redirect($this->Service->ConstructUrl("admincp.CategoryManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
@@ -124,9 +162,21 @@ class ProductForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "cat_name = '".$param->Value."' ";
+			$criteria->Condition = "product_name = '".$param->Value."' ";
 			$activeRecord = $this->getItem();
-			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and cat_id <> '".$activeRecord->ID."'";
+			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and product_id <> '".$activeRecord->ID."'";
+			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;
+		}
+	}
+	
+	protected function uniqueCheck2_ServerValidated($sender, $param)
+	{
+		if ($param->Value != '')
+		{
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "product_sku = '".$param->Value."' ";
+			$activeRecord = $this->getItem();
+			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and product_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;
 		}
 	}

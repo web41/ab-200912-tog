@@ -6,8 +6,8 @@ class ProductCatRecord extends TActiveRecord
 {
 	const TABLE='tbl_product_cat_xref';
 
-	public $product_id;
-	public $cat_id;
+	public $ProductID;
+	public $CatID;
 	
 	public static $COLUMN_MAPPING=array
 	(

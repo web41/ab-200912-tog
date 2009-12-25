@@ -8,6 +8,7 @@ DELETE_ALL_SUCCESS			= Selected {0} have been deleted successfully.
 DELETE_ALL_FAILED			= One or more {0} can not be deleted. Please contact administrator.
 SELECT_ITEM_REQUIRED		= Please select one or more {0}.
 ITEM_REQUIRED				= {0} can not be left blank.
+COMBOBOX_REQUIRED			= Please select a(an) {0}.
 AUTO_FIELD					= This field will be automatically generated unless you enter your text.
 ITEM_EXISTS					= {0} already exists. Please try another.
 CANCEL_CONFIRM				= All changes will be lost. Do you really want to cancel?

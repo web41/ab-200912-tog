@@ -20,21 +20,24 @@
 						</div>
 					</div>
 					<div class="content">
-						<div class="field">
-							<div class="text">SKU<span>*</span></div>
-							<div class="control">
-								<com:TTextBox ID="txtSKU" CssClass="textbox" /><br />
-								<com:TRequiredFieldValidator ID="val1"
-									CssClass="error"
-									ControlToValidate="txtSKU"
-									ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product SKU') %>"
-									Display="Dynamic"
-									FocusOnError="True"/>
-							</div>
-						</div>
 						<table border="0" cellpadding="0" cellspacing="0" class="form" width="100%" style="margin-bottom:10px;">
+                        	<tr>
+                            	<td class="field nopadding">
+                                	<div class="text">SKU<span>*</span></div>
+                                    <div class="control">
+                                        <com:TTextBox ID="txtSKU" CssClass="textbox" /><br />
+                                        <com:TRequiredFieldValidator ID="val1"
+                                            CssClass="error"
+                                            ControlToValidate="txtSKU"
+                                            ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product SKU') %>"
+                                            Display="Dynamic"
+                                            FocusOnError="True"/>
+                                    </div>
+                                </td>
+                                <td class="field nopadding">&nbsp;</td>
+                            </tr>
 							<tr>
-								<td class="field nopadding">
+								<td class="field">
 									<div class="text">Name<span>*</span></div>
 									<div class="control">
 										<com:TTextBox ID="txtName" CssClass="textbox" /><br />
@@ -52,7 +55,7 @@
 											Display="Dynamic"/>
 									</div>
 								</td>
-								<td class="field nopadding">                                
+								<td class="field">                                
 									<div class="text">Alias</div>
 									<div class="control">
 										<com:TTextBox ID="txtAlias" CssClass="textbox" /><br />

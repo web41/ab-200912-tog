@@ -69,5 +69,41 @@ class ProductRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	protected function getCategoryIDs()
+	{
+		if (self::finder()->withCategories()->findByPk($this->ID) instanceof ProductRecord)
+		{
+			$categories = self::finder()->withCategories()->findByPk($this->ID)->Categories;
+			if (count($categories>0))
+			{
+				$id = array();
+				foreach($categories as $cat)
+				{
+					$id[] = $cat->ID;
+				}
+				return $id;
+			}
+		}
+		return null;
+	}
+	
+	protected function getCategoryNames()
+	{
+		if (self::finder()->withCategories()->findByPk($this->ID) instanceof ProductRecord)
+		{
+			$categories = self::finder()->withCategories()->findByPk($this->ID)->Categories;
+			if (count($categories>0))
+			{
+				$name = "";
+				for($i=0;$i<count($categories);$i++)
+				{
+					$name = ($i==0?"":", ").$categories[$i]->Name;
+				}
+				return $name;
+			}
+		}
+		return null;
+	}
 }
 ?>

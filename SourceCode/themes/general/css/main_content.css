@@ -20,6 +20,8 @@
 	#container .main_col .main_box .title div{background:url(../images/mainbox_title_right.png) no-repeat top right;padding-right:6px;}
 	#container .main_col .main_box .title div div{background:url(../images/mainbox_title_center.png) repeat-x;padding:0;height:40px;}
 	#container .main_col .main_box .title div div h2{float:left;font:normal 16px "Trebuchet MS";text-transform:uppercase;color:#309f26;margin:8px 0 0 10px;}
+	#container .main_col .main_box .title div div select{float:right;margin:0 5px 0 0;}
+	#container .main_col .main_box .title div div .textbox{float:right;width:180px;}
 	
 	#container .main_col .main_box .content{border-top:none;background:#fff;border:solid 1px #cdcdcd;border-top:none;padding:10px;}
 	#container .main_col .main_box .nopadding{padding:0;}

@@ -33,22 +33,7 @@
 					<div class="title"><div><div>
 						<h2>Product List</h2>
 						<div style="float:right;height:26px;padding:7px 5px 0 0;">
-							<com:TDropDownList ID="cboMfSelector"
-								AutoPostBack="true"
-								OnSelectedIndexChanged="cboMfSelector_SelectedIndexChanged"
-								CssClass="textbox" Width="175px" Height="Auto"
-								PromptText="All"
-								PromptValue="0"
-								DataTextField="Name"
-								DataValueField="ID" />
-							<com:TDropDownList ID="cboBrandSelector"
-								AutoPostBack="true"
-								OnSelectedIndexChanged="cboBrandSelector_SelectedIndexChanged"
-								CssClass="textbox" Width="175px" Height="Auto"
-								PromptText="All"
-								PromptValue="0"
-								DataTextField="Name"
-								DataValueField="ID" />
+							
 							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
 							<com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
 							<com:TRequiredFieldValidator ID="val1"
@@ -59,7 +44,20 @@
 								InitialValue="Filter by ID or Name"
 								ValidationGroup="filter" Style="margin:0;padding:0;float:right;"/>
 							<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Filter by ID or Name" Attributes.onfocus="this.select()" />
-
+							<com:TDropDownList ID="cboMfSelector"
+								AutoPostBack="true"
+								OnSelectedIndexChanged="cboMfSelector_SelectedIndexChanged"
+								PromptText="All"
+								PromptValue="0"
+								DataTextField="Name"
+								DataValueField="ID" />
+							<com:TDropDownList ID="cboBrandSelector"
+								AutoPostBack="true"
+								OnSelectedIndexChanged="cboBrandSelector_SelectedIndexChanged"
+								PromptText="All"
+								PromptValue="0"
+								DataTextField="Name"
+								DataValueField="ID" />
 						</div>
 					</div></div></div>
 					<div class="content nopadding">

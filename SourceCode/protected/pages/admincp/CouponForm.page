@@ -1,0 +1,92 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Add/Update Coupon
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Form sample-->
+				<com:TPanel ID="mainBox" CssClass="main_box">
+					<div class="title">
+						<div>
+							<div><h2><com:TLabel ID="lblHeader" /></h2></div>
+						</div>
+					</div>
+					<div class="content">
+						<table border="0" cellpadding="0" cellspacing="0" class="form" width="100%" style="margin-bottom:10px;">
+							<tr>
+								<td class="field">
+									<div class="text">Code<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtCode" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val1"
+											CssClass="error"
+											ControlToValidate="txtCode"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Coupon code') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+										<com:TCustomValidator ID="val2"
+											CssClass="error"
+											ControlToValidate="txtCode"
+											OnServerValidate="uniqueCheck_ServerValidated"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Coupon code') %>"
+											Display="Dynamic"/>
+										<com:TRegularExpressionValidator ID="val3"
+											ControlToValidate="txtCode"
+											RegularExpression="^[0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*$"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Coupon amount') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">                                
+									<div class="text">Amount<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtAmount" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val4"
+											CssClass="error"
+											ControlToValidate="txtAmount"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Coupon amount') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+										<com:TRegularExpressionValidator ID="val5"
+											ControlToValidate="txtAmount"
+											RegularExpression="^(\d{1,12}|\d{1,5}\.\d{1,5})$"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Coupon amount') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+							</tr>
+						</table>
+						<div class="field" style="float:none;height:auto;">
+							<div class="text">Type</div>
+							<div class="control" style="height:auto;float:none;width:auto;padding-bottom:10px;">
+								<com:TDropDownList ID="cboTypeSelector" 
+									CssClass="textbox" Height="25px" Width="208px"
+									PromptText="Select..."
+									PromptValue="0" />
+							</div>
+						</div>
+						<div class="field" style="border:none;margin-bottom:0;">
+							<div class="text">&nbsp;</div>
+							<div class="control">
+								<com:TButton ID="btnSubmit" CssClass="<%= ($this->Item && $this->Item->ID > 0) ? 'btn_edit' : 'btn_addnew' %>" OnClick="btnSubmit_Clicked" />
+								<com:TButton CausesValidation="false" ButtonType="Reset" CssClass="btn_reset" />
+								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_cancel" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('admincp.CouponManager') %>'" />
+							</div>
+						</div>
+					</div>
+				</com:TPanel>
+				<!-- Form sample: END -->
+			</td>
+		</tr>
+	</table>
+</com:TContent>

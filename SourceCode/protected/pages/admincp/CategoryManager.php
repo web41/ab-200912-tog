@@ -402,13 +402,13 @@ class CategoryManager extends TPage
 	{
 		if ($this->IsValid)
 		{
-			$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,THttpUtility::htmlEncode($this->txtSearchText->SafeText),$this->Parent));
+			$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,THttpUtility::htmlEncode($this->txtSearchText->SafeText),$this->ParentID));
 		}
 	}
 
 	protected function btnSearchReset_Clicked($sender, $param)
 	{
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$this->Parent));
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$this->ParentID));
 	}
 	
 	protected function cboParentSelector_SelectedIndexChanged($sender, $param)

@@ -4,6 +4,13 @@
 	<title><com:TContentPlaceHolder ID="title" /></title>
 	<com:TContentPlaceHolder ID="meta" />
 	<com:TContentPlaceHolder ID="script" />
+    <link href="<%= $this->UrlPrefix %>/scripts/a.m/a.m.css" rel="stylesheet" type="text/css" />
+	<link href="<%= $this->UrlPrefix %>/scripts/calendar/jquery.calendar.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/jquery.js"></script>
+	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/jquery-ui.js"></script>
+	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/a.m/a.m.js"></script>
+	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/calendar/jquery.calendar.js"></script>
+	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/homepage.js"></script>
 </com:THead>
 <body>
 <center>

@@ -1,0 +1,5 @@
+﻿#statistics{width:200px;float:left;}
+#statistics .line{float:left;width:180px;height:auto;font-size:11px;padding:5px 10px 5px 10px;}
+#statistics .line .text{float:left;}
+#statistics .line .info{float:right;font-weight:bold;text-align:left;;}
+#statistics .line:hover{background:#212121;}

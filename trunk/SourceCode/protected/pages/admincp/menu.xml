@@ -16,4 +16,20 @@
 		<menuNode ServiceParameter="admincp.CategoryForm" Title="Add Category" />
 		<menuNode ServiceParameter="admincp.CategoryManager" Title="Category List" />
 	</menuNode>
+	<menuNode ServiceParameter="admincp.CouponManager" Title="Coupon">
+		<menuNode ServiceParameter="admincp.CouponForm" Title="Add Coupon" />
+		<menuNode ServiceParameter="admincp.CouponManager" Title="Coupon List" />
+	</menuNode>
+	<menuNode ServiceParameter="admincp.DiscountManager" Title="Discount">
+		<menuNode ServiceParameter="admincp.DiscountForm" Title="Add Discount" />
+		<menuNode ServiceParameter="admincp.DiscountManager" Title="Discount List" />
+	</menuNode>
+	<menuNode ServiceParameter="admincp.ShippingMethodManager" Title="Shipping Method">
+		<menuNode ServiceParameter="admincp.ShippingMethodForm" Title="Add Shipping Method" />
+		<menuNode ServiceParameter="admincp.ShippingMethodManager" Title="Shipping Method List" />
+	</menuNode>
+	<menuNode ServiceParameter="admincp.PaymentMethodManager" Title="Payment Method">
+		<menuNode ServiceParameter="admincp.PaymentMethodForm" Title="Add Payment Method" />
+		<menuNode ServiceParameter="admincp.PaymentMethodManager" Title="Payment Method List" />
+	</menuNode>
 </menu>

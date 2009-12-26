@@ -1,0 +1,150 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Discount Manager
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<!-- Control box -->
+				<div class="general_controlbox">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<com:TButton ID="btnDelete" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','discount') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','discount') %>'); return false; }" />
+						<com:TButton ID="btnUncheck" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
+						<com:TButton ID="btnCheck" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
+						<com:TButton ID="btnPublish" CssClass="btn_publish" OnClick="btnPublish_Clicked" />
+						<com:TButton ID="btnUnpublish" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" />
+						<com:TButton ID="btnEdit" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','discount') %>'); return false; }" />
+						<com:TButton ID="btnAdd" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.DiscountForm') %>'" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Main box -->
+				<div class="main_box">
+					<div class="title"><div><div>
+						<h2>Discount List</h2>
+						<div style="float:right;height:26px;padding:7px 5px 0 0;">
+							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
+							<com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
+							<com:TRequiredFieldValidator ID="val1"
+								ControlToValidate="txtSearchText"
+								ErrorMessage="*"
+								Display="Dynamic"
+								FocusOnError="true"
+								InitialValue="Filter by ID or Name"
+								ValidationGroup="filter" Style="margin:0;padding:0;float:right;"/> 
+							<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Filter by ID or Name" Attributes.onfocus="this.select()" />
+						</div>
+					</div></div></div>
+					<div class="content nopadding">
+						<com:TOGDataGrid ID="ItemList"
+							OnItemCreated="list_ItemCreated"
+							OnItemCommand="list_ItemCommand">
+							<com:TTemplateColumn HeaderStyle.Width="4%" HeaderText="#">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Name
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.DiscountForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.Width="10%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Amount
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Parent->Data->Amount %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.Width="10%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Start Date
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->StartDate>0) ? date('m/d/Y',$this->Parent->Data->StartDate) : '--' %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.Width="10%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(4,(($this->Page->SortBy==4 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">End Date
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==4 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->EndDate>0) ? date('m/d/Y',$this->Parent->Data->EndDate) : '--' %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">ID
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==0 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel ID="lblItemID" Text="<%# $this->Parent->Data->ID %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TButtonColumn ID="colDeleteButton" HeaderStyle.Width="4%" ButtonType="ImageButton" ImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/icon_minus.png" CommandName="delete" />
+							<com:TTemplateColumn ID="colCheckBox" HeaderStyle.Width="4%">
+								<prop:ItemTemplate>
+									<com:TCheckBox ID="chkItem" Attributes.onclick="_chk.toogle(this,this.checked)" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TBoundColumn ID="colAlias" DataField="Alias" Visible="false" />
+						</com:TOGDataGrid>
+						<div class="table_footer">
+							<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" />
+						</div>
+					</div>
+				</div>
+				<!-- Main box: END -->
+				<!-- Control box -->
+				<div class="general_controlbox">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<com:TButton ID="btnDelete2" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','category') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','category') %>'); return false; }" />
+						<com:TButton ID="btnUncheck2" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
+						<com:TButton ID="btnCheck2" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
+						<com:TButton ID="btnPublish2" CssClass="btn_publish" OnClick="btnPublish_Clicked" />
+						<com:TButton ID="btnUnpublish2" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" />
+						<com:TButton ID="btnEdit2" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','category') %>'); return false; }" />
+						<com:TButton ID="btnAdd2" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.CategoryForm') %>'" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		var _chk = new CheckBoxGroup();
+		_chk.setMasterBehavior("all");
+		var _form = document.forms['<%= $this->Form->ClientID %>'];
+		for(i=0;i<_form.length;i++)
+		{
+			if (_form[i].type == 'checkbox')
+				_chk.addToGroup(_form[i].name);
+		}
+	</script>
+</com:TContent>

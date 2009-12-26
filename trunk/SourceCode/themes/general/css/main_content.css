@@ -3,9 +3,9 @@
 #container .left_col{width:200px;height:100%;background:#2e2e2e;padding:20px 0 20px 0;text-align:left;vertical-align:top;}
 	#container .left_col .box{width:200px;height:auto;float:left;margin-bottom:30px;}
 	#container .left_col .box .title{width:190px;height:36px;float:left;}
-		#container .left_col .box .title .title_bg{width:180px;height:36px;background:url(../images/left_title_bg.png) repeat-x;float:left;}
+		#container .left_col .box .title .title_bg{width:200px;height:36px;background:url(../images/left_title_bg.png) repeat-x;float:left;}
 		#container .left_col .box .title .title_bg h2{font-weight:bold;text-transform:uppercase;color:#fff;padding:10px 0 0 20px;font-size:12px;float:left;}
-		#container .left_col .box .title .title_border{width:10px;height:36px;background:url(../images/left_title_border.png) repeat-x;float:left;}
+		/*#container .left_col .box .title .title_border{width:10px;height:36px;background:url(../images/left_title_border.png) repeat-x;float:left;}*/
 	#container .left_col .box .content{height:auto;padding:10px;color:#cdcdcd;float:left}
 	#container .left_col .box .nopadding{padding:0;}
 	#container .left_col .box .content #sidebar_menu{float:left;width:200px;margin:0;padding:0;list-style-type:none;}

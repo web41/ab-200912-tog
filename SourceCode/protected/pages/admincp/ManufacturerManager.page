@@ -53,6 +53,7 @@
 									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
+                            
 							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Name
@@ -63,7 +64,8 @@
 									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.ManufacturerForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.CssClass="align_left" HeaderStyle.Width="20%">
+                            
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left" HeaderStyle.Width="20%" ItemStyle.CustomStyle="text-align:left">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Email
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
@@ -73,7 +75,8 @@
 									<com:TLabel Text="<%# $this->Parent->Data->Email %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.CssClass="align_left" HeaderStyle.Width="20%">
+                            
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left" HeaderStyle.Width="20%" ItemStyle.CustomStyle="text-align:left">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Name
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />

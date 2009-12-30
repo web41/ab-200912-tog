@@ -77,7 +77,7 @@ class CategoryForm extends TPage
 		$hashThumb = "";
 		if($this->fuThumb->HasFile) 
 		{
-			$hashThumb = md5(uniqid(time()));
+			$hashThumb = md5(uniqid(time())).'.'.strtolower(array_pop(explode('.',$this->fuThumb->FileName)));
 			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR."thumbs".DIRECTORY_SEPARATOR;
 			if ($activeRecord->ThumbnailPath != '') 
 			{

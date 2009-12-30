@@ -77,7 +77,7 @@ class ProductForm extends TPage
 		$hashImage = "";
 		if($this->fuImage->HasFile) 
 		{
-			$hashImage = md5(uniqid(time()));
+			$hashImage = md5(uniqid(time())).'.'.strtolower(array_pop(explode('.',$this->fuImage->FileName)));
 			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."product".DIRECTORY_SEPARATOR;
 			if ($activeRecord->ImagePath != '') 
 			{
@@ -96,7 +96,7 @@ class ProductForm extends TPage
 		$hashThumb = "";
 		if($this->fuThumb->HasFile) 
 		{
-			$hashThumb = md5(uniqid(time()));
+			$hashThumb = md5(uniqid(time())).'.'.strtolower(array_pop(explode('.',$this->fuThumb->FileName)));
 			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."product".DIRECTORY_SEPARATOR."thumbs".DIRECTORY_SEPARATOR;
 			if ($activeRecord->ThumbnailPath != '') 
 			{

@@ -173,9 +173,7 @@
 											ControlToValidate="cboCatSelector"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','category') %>"
 											Display="Dynamic"
-											InitialValue="0"
-											FocusOnError="True"
-											Enabled="false"/>
+											FocusOnError="True"/>
 									</div>
 								</td>
 								<td class="field">&nbsp;</td>

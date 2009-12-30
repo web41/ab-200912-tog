@@ -22,6 +22,8 @@ class ProductForm extends TPage
 			$this->cboMfSelector->DataBind();
 			$this->cboUOMSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["UNITS_OF_MEASURE"]);
 			$this->cboUOMSelector->DataBind();
+			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree();
+			$this->cboCatSelector->DataBind();
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0)
 			{

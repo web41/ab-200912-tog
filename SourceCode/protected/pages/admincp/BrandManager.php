@@ -220,13 +220,13 @@ class BrandManager extends TPage
 				//var_dump(implode(",",$items));
 				$this->Notice->Type = AdminNoticeType::Information;
 				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_SUCCESS","brand");
-				$this->populateData();
 			}
 			catch (TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
 				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_FAILED","brand");
 			}
+			$this->populateData();
 		}
 	}
 	

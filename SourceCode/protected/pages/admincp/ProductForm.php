@@ -37,6 +37,7 @@ class ProductForm extends TPage
 				$this->cboBrandSelector->SelectedValue = $activeRecord->BrandID;
 				$this->cboMfSelector->SelectedValue = $activeRecord->MfID;
 				$this->cboCatSelector->SelectedValues = $activeRecord->CategoryIDs;
+				$this->txtPrice->Text = $activeRecord->Price;
 				$this->cboDiscountSelector->SelectedValue = $activeRecord->DiscountID;
 				$this->radPublish->SelectedValue = $activeRecord->IsPublished;
 				$this->radNewArrival->SelectedValue = $activeRecord->IsNewArrival;
@@ -127,6 +128,7 @@ class ProductForm extends TPage
 			$criteria->Condition = "product_id = '".$activeRecord->ID."'";
 			ProductCatRecord::finder()->deleteAll($criteria);
 		}
+		$activeRecord->Price = TPropertyValue::ensureFloat($this->txtPrice->Text);
 		$activeRecord->DiscountID = $this->cboDiscountSelector->SelectedValue;
 		$activeRecord->IsPublished = $this->radPublish->SelectedValue;
 		$activeRecord->IsNewArrival = $this->radNewArrival->SelectedValue;

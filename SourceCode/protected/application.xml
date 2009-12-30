@@ -106,7 +106,7 @@
 	<parameters>
 		<parameter id="ROW_PER_PAGE" value="10" />
 		<parameter id="AVAILABLE_IMAGES" value="('jpg','jpeg','gif','png')" />
-		<parameter id="UNITS_OF_MEASURE" value="('gram','ml','unit')" />
+		<parameter id="UNITS_OF_MEASURE" value="(1=>'gram',2=>'ml',3=>'unit')" />
 		<parameter id="COUPON_TYPES" value="(1=>'Type 1',2=>'Type 2',3=>'Type 3',4=>'Type 4',5=>'Type 5')" />
 	</parameters>
 </application>

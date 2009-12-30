@@ -72,7 +72,7 @@
 								<td class="field">
 									<div class="text">Image</div>
 									<div class="control">
-										<com:TFileUpload ID="fuImage" CssClass="textbox"  Width="208px" /><br />
+										<com:TFileUpload ID="fuImage"  Width="208px" /><br />
 										<com:TCustomValidator ID="val3"
 											ControlToValidate="fuImage"
 											OnServerValidate="checkImageExtension_ServerValidate"
@@ -84,7 +84,7 @@
 								<td class="field">                                
 									<div class="text">Thumbnail</div>
 									<div class="control">
-										<com:TFileUpload ID="fuThumb" CssClass="textbox"  Width="208px" /><br />
+										<com:TFileUpload ID="fuThumb" Width="208px" /><br />
 										<com:TCustomValidator ID="val4"
 											ControlToValidate="fuImage"
 											OnServerValidate="checkImageExtension_ServerValidate"
@@ -98,8 +98,7 @@
 						<div class="field" style="float:none;height:auto;">
 							<div class="text">Parent</div>
 							<div class="control" style="height:auto;float:none;width:auto;padding-bottom:10px;">
-								<com:TDropDownList ID="cboParentSelector" 
-									CssClass="textbox" Height="25px" Width="208px"
+								<com:TDropDownList ID="cboParentSelector"
 									PromptText="No Parent"
 									PromptValue="0"
 									DataTextField="Name"

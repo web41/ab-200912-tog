@@ -31,7 +31,7 @@
 				<!-- Main box -->
 				<div class="main_box">
 					<div class="title"><div><div>
-						<h2>Manufacturer List</h2>
+						<h2>Supplier List</h2>
 						<div style="float:right;height:26px;padding:7px 5px 0 0;">
 							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/><com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
 							<com:TRequiredFieldValidator ID="val1"

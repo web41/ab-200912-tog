@@ -12,7 +12,7 @@ class ManufacturerForm extends TPage
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
 				// Populates the input controls with the existing post data
-				$this->lblHeader->Text = "Update manufacturer: ".$activeRecord->Name;
+				$this->lblHeader->Text = "Update supplier: ".$activeRecord->Name;
 				$this->txtName->Text = $activeRecord->Name;
 				$this->txtAlias->Text = $activeRecord->Alias;
 				$this->txtEmail->Text = $activeRecord->Email;
@@ -21,7 +21,7 @@ class ManufacturerForm extends TPage
 			}
 			else
 			{
-				$this->lblHeader->Text = "Add new manufacturer";
+				$this->lblHeader->Text = "Add new supplier";
 			}
 		}
 	}
@@ -35,7 +35,7 @@ class ManufacturerForm extends TPage
 			if($activeRecord === null)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","manufacturer");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","supplier");
 				$this->mainBox->Visible = false;
 			}
 			return $activeRecord;
@@ -66,14 +66,14 @@ class ManufacturerForm extends TPage
 			try
 			{
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
-				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Manufacturer",$activeRecord->Name);
+				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Supplier",$activeRecord->Name);
 				$activeRecord->save();
 				$this->Response->redirect($this->Service->ConstructUrl("admincp.ManufacturerManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Manufacturer",$activeRecord->Name);
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Supplier",$activeRecord->Name);
 			}
 		}
 	}

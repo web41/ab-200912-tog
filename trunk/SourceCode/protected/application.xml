@@ -37,6 +37,7 @@
 		-->
 		<module id="db" class="System.Data.TDataSourceConfig">
 			<database ConnectionString="mysql:host=localhost;dbname=tog_db" username="root" password=""/>
+			<!--database ConnectionString="mysql:host=localhost;dbname=dosithuy_tog" username="dosithuy_tog" password="tog123"/-->
 		</module>
 		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
 		<module class="System.Web.THttpSession" Timeout="7200" />
@@ -60,8 +61,8 @@
 			<url ServiceParameter="admincp.BrandManager" pattern="admincp/brand/manager"/>
 			<url ServiceParameter="admincp.BrandForm" pattern="admincp/brand/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.BrandForm" pattern="admincp/brand/create-new"/>
-			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/manufacturer"/>
-			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/manufacturer/manager"/>
+			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/supplier"/>
+			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/supplier/manager"/>
 			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/manufacturer/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/manufacturer/create-new"/>
 			<url ServiceParameter="admincp.CategoryManager" pattern="admincp/category"/>

@@ -141,7 +141,7 @@ class ManufacturerManager extends TPage
 		if (count($items) <= 0)
 		{
 			$this->Notice->Type = AdminNoticeType::Information;
-			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"manufacturer");
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"supplier");
 		}
 	}
 
@@ -168,7 +168,7 @@ class ManufacturerManager extends TPage
 		{
 			if ($param->Item->Data)
 			{
-				$param->Item->colDeleteButton->Button->Attributes->onclick = 'if(!confirm("'.$this->Application->getModule("message")->translate("DELETE_CONFIRM","manufacturer",$param->Item->Data->Name).'")) return false;';
+				$param->Item->colDeleteButton->Button->Attributes->onclick = 'if(!confirm("'.$this->Application->getModule("message")->translate("DELETE_CONFIRM","supplier",$param->Item->Data->Name).'")) return false;';
 			}
 		}
 	}
@@ -186,19 +186,19 @@ class ManufacturerManager extends TPage
 						$activeRecord->delete();
 						//var_dump();
 						$this->Notice->Type = AdminNoticeType::Information;
-						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_SUCCESS","Manufacturer",$activeRecord->Name);
+						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_SUCCESS","Supplier",$activeRecord->Name);
 						$this->populateData();
 					}
 					catch(TException $e)
 					{
 						$this->Notice->Type = AdminNoticeType::Error;
-						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_FAILED","Manufacturer",$activeRecord->Name);
+						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_FAILED","Supplier",$activeRecord->Name);
 					}
 				}
 				else
 				{
 					$this->Notice->Type = AdminNoticeType::Error;
-					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","manufacturer");
+					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","supplier");
 				}
 				break;
 		}
@@ -219,13 +219,13 @@ class ManufacturerManager extends TPage
 				Prado::createComponent(self::AR)->finder()->deleteAllByPks($items);
 				//var_dump(implode(",",$items));
 				$this->Notice->Type = AdminNoticeType::Information;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_SUCCESS","manufacturer");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_SUCCESS","supplier");
 				$this->populateData();
 			}
 			catch (TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_FAILED","manufacturer");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_FAILED","supplier");
 			}
 		}
 	}
@@ -245,7 +245,7 @@ class ManufacturerManager extends TPage
 					else
 					{
 						$this->Notice->Type = AdminNoticeType::Error;
-						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","manufacturer");
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","supplier");
 					}
 				}
 			}

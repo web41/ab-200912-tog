@@ -8,9 +8,9 @@
 		<menuNode ServiceParameter="admincp.BrandForm" Title="Add Brand" />
 		<menuNode ServiceParameter="admincp.BrandManager" Title="Brand List" />
 	</menuNode>
-	<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Manufacturer">
-		<menuNode ServiceParameter="admincp.ManufacturerForm" Title="Add Manufacturer" />
-		<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Manufacturer List" />
+	<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Supplier">
+		<menuNode ServiceParameter="admincp.ManufacturerForm" Title="Add Supplier" />
+		<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Supplier List" />
 	</menuNode>
 	<menuNode ServiceParameter="admincp.CategoryManager" Title="Category">
 		<menuNode ServiceParameter="admincp.CategoryForm" Title="Add Category" />

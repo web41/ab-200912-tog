@@ -105,5 +105,19 @@ class ProductRecord extends TActiveRecord
 		}
 		return null;
 	}
+	
+	public function save()
+	{
+		if ($this->ID <= 0)
+		{
+			$this->Ordering = count(self::finder()->findAll())+1;
+			$this->CreateDate = time();
+		}
+		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Name);
+		$this->ModifyDate = time();
+		$this->RewardPoints = 0;
+		$this->AvailableDate = 0;
+		parent::save();
+	}
 }
 ?>

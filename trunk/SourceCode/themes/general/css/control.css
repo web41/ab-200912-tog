@@ -3,6 +3,7 @@
 select{width:auto;height:26px;border:solid 1px #e5e5e5;background:url(../images/textbox_bg.png) repeat-x;margin:0;color:#5a5a5a;padding:2px;min-width:100px;}
 
 .btn_addnew{width:102px;height:26px;background:url(../images/btn_addnew.png) no-repeat;border:0;float:right;margin-left:8px;}
+.btn_addmore{width:102px;height:26px;background:url(../images/btn_addmore.png) no-repeat;border:0;float:right;margin-left:8px;}
 .btn_edit{width:102px;height:26px;background:url(../images/btn_edit.png) no-repeat;border:0;float:right;margin-left:8px;}
 .btn_delete{width:102px;height:26px;background:url(../images/btn_delete.png) no-repeat;border:0;float:right;margin-left:8px;}
 .btn_checkall{width:102px;height:26px;background:url(../images/btn_checkall.png) no-repeat;border:0;float:right;margin-left:8px;}
@@ -18,7 +19,7 @@ select{width:auto;height:26px;border:solid 1px #e5e5e5;background:url(../images/
 
 
 
-.btn_addnew:hover, .btn_checkall:hover, .btn_uncheck:hover, .btn_publish:hover, .btn_unpublish:hover, .btn_delete:hover, .btn_edit:hover, .btn_smallenter:hover, .btn_smallreset:hover, .btn_reset:hover, .btn_cancel:hover
+.btn_addnew:hover, .btn_checkall:hover, .btn_uncheck:hover, .btn_publish:hover, .btn_unpublish:hover, .btn_delete:hover, .btn_edit:hover, .btn_smallenter:hover, .btn_smallreset:hover, .btn_reset:hover, .btn_cancel:hover, .btn_addmore:hover
 {background-position:center -26px;cursor:pointer}
 
 #calendar_box table{}

@@ -71,7 +71,7 @@
 									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.CategoryForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.CssClass="align_left" HeaderText="Parent" HeaderStyle.Width="20%">
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left" HeaderText="Parent" HeaderStyle.Width="20%" ItemStyle.CustomStyle="text-align:left">
 								<prop:ItemTemplate>
 									<com:TLabel Text="<%# ($this->Parent->Data->Parent && $this->Parent->Data->Parent->ID>0) ? $this->Parent->Data->Parent->Name : 'No Parent' %>" />
 								</prop:ItemTemplate>
@@ -91,7 +91,7 @@
 									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Parent->Data->IsPublished) ? 'tick' : 'stop' %>.png" CommandName="publish" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn ID="colOrder" HeaderStyle.Width="7%">
+							<com:TTemplateColumn ID="colOrder" HeaderStyle.Width="7%" ItemStyle.CustomStyle="text-align:left">
 								<prop:HeaderTemplate>
 									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_success.png" CommandName="order_save" />
 									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->ParentID) %>">Order

@@ -47,7 +47,7 @@
 								AutoPostBack="true"
 								OnSelectedIndexChanged="cboParentSelector_SelectedIndexChanged"
 								PromptText="All"
-								PromptValue="0"
+								PromptValue="-1"
 								DataTextField="Name"
 								DataValueField="ID" />
 						</div>

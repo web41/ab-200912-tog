@@ -69,7 +69,7 @@
 									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="10%">
+							<com:TTemplateColumn HeaderStyle.Width="8%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">SKU
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
@@ -89,7 +89,7 @@
 									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="15%">
+							<com:TTemplateColumn HeaderStyle.Width="15%" ItemStyle.CustomStyle="text-align:left" HeaderStyle.CssClass="align_left">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Brand
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
@@ -99,7 +99,7 @@
 									<com:TLabel Text="<%# $this->Parent->Data->Brand->Name %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="15%" HeaderText="Categories">
+							<com:TTemplateColumn HeaderStyle.Width="15%" HeaderText="Categories" ItemStyle.CustomStyle="text-align:left" HeaderStyle.CssClass="align_left">
 								<prop:ItemTemplate>
 									<com:TLabel Text="<%# $this->Parent->Data->CategoryNames %>" />
 								</prop:ItemTemplate>

@@ -78,7 +78,7 @@
                             
 							<com:TTemplateColumn HeaderStyle.CssClass="align_left" HeaderStyle.Width="20%" ItemStyle.CustomStyle="text-align:left">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Name
+									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Website
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
 									</a>
 								</prop:HeaderTemplate>

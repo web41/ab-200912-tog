@@ -191,7 +191,7 @@ class CategoryManager extends TPage
 		{
 			if ($param->Item->Data)
 			{
-				$param->Item->colDeleteButton->Button->Attributes->onclick = 'if(!confirm(\''.$this->Application->getModule("message")->translate("DELETE_CONFIRM","category",$param->Item->Data->Name).'\')) return false;';
+				$param->Item->colDeleteButton->Button->Attributes->onclick = 'if(!confirm("'.$this->Application->getModule("message")->translate("DELETE_CONFIRM","category",$param->Item->Data->Name).'")) return false;';
 			}
 		}
 	}

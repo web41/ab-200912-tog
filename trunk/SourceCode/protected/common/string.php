@@ -68,9 +68,9 @@ class String {
 		$c = array("ç","Ã§");
 		$n = array("ñ","Ã±");
 		$d = array("đ","Ď","Đ");
-		$chars = array(" ",",",".","?","!","@","#","$","%","*","/");
+		$chars = array(" ",",",".","?","!","@","#","$","%","*","/","'",'"');
 		$changeset = array($a,$e,$i,$o,$u,$y,$c,$n,$d,$chars);
-		$changeto = array("a","e","i","o","u","y","c","n","d","-");     
+		$changeto = array("a","e","i","o","u","y","c","n","d","-");
 	
 		$textarray=self::mb_str_split(mb_strtolower($text));//MODIFY TO mb_str_split_UTF8() IF NECESSARY.
 		$i=0;$j=0;

@@ -95,7 +95,8 @@ class BrandForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "brand_name = '".preg_replace("/'/", "/''/", $param->Value)."' ";
+			$criteria->Condition = "brand_name = ':name'";
+			$criteria->Parameters[":name"] = $param->Value;
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and brand_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;

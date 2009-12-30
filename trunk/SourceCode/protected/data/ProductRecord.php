@@ -98,12 +98,12 @@ class ProductRecord extends TActiveRecord
 				$name = "";
 				for($i=0;$i<count($categories);$i++)
 				{
-					$name = ($i==0?"":", ").$categories[$i]->Name;
+					$name .= ($i==0?"":", ").$categories[$i]->Name;
 				}
 				return $name;
 			}
 		}
-		return null;
+		return "--";
 	}
 	
 	public function save()

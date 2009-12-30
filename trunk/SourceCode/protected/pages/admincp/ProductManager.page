@@ -99,14 +99,9 @@
 									<com:TLabel Text="<%# $this->Parent->Data->Brand->Name %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="15%">
-								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(4,(($this->Page->SortBy==4 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Manufacturer
-										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==4 %>" />
-									</a>
-								</prop:HeaderTemplate>
+							<com:TTemplateColumn HeaderStyle.Width="15%" HeaderText="Categories">
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->Data->Manufacturer->Name %>" />
+									<com:TLabel Text="<%# $this->Parent->Data->CategoryNames %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="10%">

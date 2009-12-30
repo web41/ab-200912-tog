@@ -224,7 +224,7 @@
 								<td class="field">
 									<div class="text">Image</div>
 									<div class="control">
-										<com:TFileUpload ID="fuImage" CssClass="textbox"  Width="208px" /><br />
+										<com:TFileUpload ID="fuImage" Width="208px" /><br />
 										<com:TCustomValidator ID="val11"
 											ControlToValidate="fuImage"
 											OnServerValidate="checkImageExtension_ServerValidated"
@@ -236,7 +236,7 @@
 								<td class="field">                                
 									<div class="text">Thumbnail</div>
 									<div class="control">
-										<com:TFileUpload ID="fuThumb" CssClass="textbox"  Width="208px" /><br />
+										<com:TFileUpload ID="fuThumb"  Width="208px" /><br />
 										<com:TCustomValidator ID="val12"
 											ControlToValidate="fuImage"
 											OnServerValidate="checkImageExtension_ServerValidated"

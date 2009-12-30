@@ -191,7 +191,8 @@ class ProductForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "product_name = '".preg_replace("/'/", "/''/", $param->Value)."' ";
+			$criteria->Condition = "product_name = ':name'";
+			$criteria->Parameters[":name"] = $param->Value;
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and product_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;
@@ -203,7 +204,8 @@ class ProductForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "product_sku = '".$param->Value."' ";
+			$criteria->Condition = "product_sku = ':name'";
+			$criteria->Parameters[":name"] = $param->Value;
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and product_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;

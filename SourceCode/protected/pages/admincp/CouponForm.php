@@ -101,7 +101,8 @@ class CouponForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "coupon_code = '".preg_replace("/'/", "/''/", $param->Value)."' ";
+			$criteria->Condition = "coupon_code = ':name'";
+			$criteria->Parameters[":name"] = $param->Value;
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and coupon_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;

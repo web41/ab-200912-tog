@@ -311,13 +311,13 @@ class CategoryManager extends TPage
 				//var_dump(implode(",",$items));
 				$this->Notice->Type = AdminNoticeType::Information;
 				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_SUCCESS","catagory");
-				$this->populateData();
 			}
 			catch (TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
 				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_FAILED","catagory");
 			}
+			$this->populateData();
 		}
 	}
 
@@ -410,7 +410,7 @@ class CategoryManager extends TPage
 
 	protected function btnSearchReset_Clicked($sender, $param)
 	{
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$this->ParentID));
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',-1));
 	}
 	
 	protected function cboParentSelector_SelectedIndexChanged($sender, $param)

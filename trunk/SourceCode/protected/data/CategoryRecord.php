@@ -78,5 +78,35 @@ class CategoryRecord extends TActiveRecord
 		}
 		return self::finder()->count($criteria);
 	}
+	
+	public function getCategoryTree()
+	{
+		$this->_allRecords = array();
+		foreach($this->getAllParent() as $parent)
+		{
+			$this->_allRecords[] = $parent;
+			$this->getChildByParent($parent->ID);
+		}
+		return $this->_allRecords;
+	}
+	
+	private $_allRecords=array();
+	
+	protected function getChildByParent($parentID,$indent="--- ")
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "parent_id = :parent";
+		$criteria->Parameters[":parent"] = $parentID;
+		$criteria->OrdersBy["cat_name"] = "asc";
+		$childs = self::finder()->findAll($criteria);
+		if (count($childs)<=0) return;
+		foreach($childs as $child)
+		{
+			$child->Name = $indent.$child->Name;
+			$this->_allRecords[] = $child;
+			$this->getChildByParent($child->ID);
+		}
+	}
+
 }
 ?>

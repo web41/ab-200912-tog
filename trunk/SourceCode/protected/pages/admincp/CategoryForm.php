@@ -50,71 +50,95 @@ class CategoryForm extends TPage
 			return Prado::createComponent(self::AR);
 		}
 	}
+	
+	private function bindItem()
+	{
+		$activeRecord = $this->getItem();
+
+		$hashImage = "";
+		if($this->fuImage->HasFile) 
+		{
+			$hashImage = md5(uniqid(time())).'.'.strtolower(array_pop(explode('.',$this->fuImage->FileName)));
+			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR;
+			if ($activeRecord->ImagePath != '') 
+			{
+				// Delete old thumbnail
+				try
+				{
+					chmod($filePath.$activeRecord->ImagePath, 0777);
+					unlink($filePath.$activeRecord->ImagePath);
+				}
+				catch(TException $e){}
+			}
+
+			$this->fuImage->saveAs($filePath.$hashImage, true);
+		}
+
+		$hashThumb = "";
+		if($this->fuThumb->HasFile) 
+		{
+			$hashThumb = md5(uniqid(time()));
+			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR."thumbs".DIRECTORY_SEPARATOR;
+			if ($activeRecord->ThumbnailPath != '') 
+			{
+				// Delete old thumbnail
+				try
+				{
+					chmod($filePath.$activeRecord->ThumbnailPath, 0777);
+					unlink($filePath.$activeRecord->ThumbnailPath);
+				}
+				catch(TException $e){}
+			}
+
+			$this->fuThumb->saveAs($filePath.$hashThumb, true);
+		}
+
+		$activeRecord->Name = $this->txtName->SafeText;
+		$activeRecord->Alias = $this->txtAlias->SafeText;
+		$activeRecord->IsPublished = $this->radPublish->SelectedValue;
+		$activeRecord->IsFrontPage = $this->radFrontPage->SelectedValue;
+		$activeRecord->ParentID = $this->cboParentSelector->SelectedValue;
+		$activeRecord->Description = $this->txtDesc->Text;
+		$activeRecord->ImagePath = (strlen($hashImage)>0)?$hashImage:($activeRecord->ID>0?$activeRecord->ImagePath:self::NO_IMAGE);
+		$activeRecord->ThumbnailPath = (strlen($hashThumb)>0)?$hashThumb:($activeRecord->ID>0?$activeRecord->ThumbnailPath:self::NO_IMAGE);
+		
+		return $activeRecord;
+	}
 
 	protected function btnSubmit_Clicked($sender, $param)
 	{
 		if ($this->IsValid)
 		{
-			$activeRecord = $this->getItem();
-			
-			$hashImage = "";
-			if($this->fuImage->HasFile) 
-			{
-				$hashImage = md5(uniqid(time()));
-				$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR;
-				if ($activeRecord->ImagePath != '') 
-				{
-					// Delete old thumbnail
-					try
-					{
-						chmod($filePath.$activeRecord->ImagePath, 0777);
-						unlink($filePath.$activeRecord->ImagePath);
-					}
-					catch(TException $e){}
-				}
-
-				$this->fuImage->saveAs($filePath.$hashImage, true);
-			}
-
-			$hashThumb = "";
-			if($this->fuThumb->HasFile) 
-			{
-				$hashThumb = md5(uniqid(time()));
-				$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR."thumbs".DIRECTORY_SEPARATOR;
-				if ($activeRecord->ThumbnailPath != '') 
-				{
-					// Delete old thumbnail
-					try
-					{
-						chmod($filePath.$activeRecord->ThumbnailPath, 0777);
-						unlink($filePath.$activeRecord->ThumbnailPath);
-					}
-					catch(TException $e){}
-				}
-
-				$this->fuThumb->saveAs($filePath.$hashThumb, true);
-			}
-			
-			$activeRecord->Name = $this->txtName->SafeText;
-			$activeRecord->Alias = $this->txtAlias->SafeText;
-			$activeRecord->IsPublished = $this->radPublish->SelectedValue;
-			$activeRecord->IsFrontPage = $this->radFrontPage->SelectedValue;
-			$activeRecord->ParentID = $this->cboParentSelector->SelectedValue;
-			$activeRecord->Description = $this->txtDesc->Text;
-			$activeRecord->ImagePath = (strlen($hashImage)>0)?$hashImage:($activeRecord->ID>0?$activeRecord->ImagePath:self::NO_IMAGE);
-			$activeRecord->ThumbnailPath = (strlen($hashThumb)>0)?$hashThumb:($activeRecord->ID>0?$activeRecord->ThumbnailPath:self::NO_IMAGE);
-			
+			$activeRecord = $this->bindItem();
 			try
 			{
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
-				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Category",$this->txtName->SafeText);
+				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Category",$activeRecord->Name);
 				$activeRecord->save();
 				$this->Response->redirect($this->Service->ConstructUrl("admincp.CategoryManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Category",$this->txtName->SafeText);
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Category",$activeRecord->Name);
+			}
+		}
+	}
+	
+	protected function btnAddMore_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$activeRecord = $this->bindItem();
+			try
+			{
+				$activeRecord->save();
+				$this->Response->redirect($this->Service->ConstructUrl("admincp.CategoryForm"));
+			}
+			catch(TException $e)
+			{
+				$this->Notice->Type = AdminNoticeType::Error;
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Category",$activeRecord->Name);
 			}
 		}
 	}
@@ -124,7 +148,7 @@ class CategoryForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "cat_name = '".$param->Value."' ";
+			$criteria->Condition = "cat_name = '".preg_replace("/'/", "/''/", $param->Value)."' ";
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and cat_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;

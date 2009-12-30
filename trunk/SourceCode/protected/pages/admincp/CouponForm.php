@@ -46,28 +46,52 @@ class CouponForm extends TPage
 			return Prado::createComponent(self::AR);
 		}
 	}
+	
+	private function bindItem()
+	{
+		$activeRecord = $this->getItem();
+
+		$activeRecord->Code = $this->txtCode->SafeText;
+		$activeRecord->Amount = $this->txtAmount->SafeText;
+		$activeRecord->Type = $this->cboTypeSelector->SelectedValue;
+		
+		return $activeRecord;
+	}
 
 	protected function btnSubmit_Clicked($sender, $param)
 	{
 		if ($this->IsValid)
 		{
-			$activeRecord = $this->getItem();
-
-			$activeRecord->Code = $this->txtCode->SafeText;
-			$activeRecord->Amount = $this->txtAmount->SafeText;
-			$activeRecord->Type = $this->cboTypeSelector->SelectedValue;
-
+			$activeRecord = $this->bindItem();
 			try
 			{
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
-				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Coupon",$this->txtCode->SafeText);
+				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Coupon",$activeRecord->Code);
 				$activeRecord->save();
 				$this->Response->redirect($this->Service->ConstructUrl("admincp.CouponManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Coupon",$this->txtCode->SafeText);
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Coupon",$activeRecord->Code);
+			}
+		}
+	}
+	
+	protected function btnAddMore_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$activeRecord = $this->bindItem();
+			try
+			{
+				$activeRecord->save();
+				$this->Response->redirect($this->Service->ConstructUrl("admincp.CouponForm"));
+			}
+			catch(TException $e)
+			{
+				$this->Notice->Type = AdminNoticeType::Error;
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Coupon",$activeRecord->Code);
 			}
 		}
 	}
@@ -77,7 +101,7 @@ class CouponForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "coupon_code = '".$param->Value."' ";
+			$criteria->Condition = "coupon_code = '".preg_replace("/'/", "/''/", $param->Value)."' ";
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and coupon_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;

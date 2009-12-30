@@ -45,28 +45,53 @@ class ManufacturerForm extends TPage
 			return Prado::createComponent(self::AR);
 		}
 	}
+	
+	private function bindItem()
+	{
+		$activeRecord = $this->getItem();
+		$activeRecord->Name = $this->txtName->SafeText;
+		$activeRecord->Alias = $this->txtAlias->SafeText;
+		$activeRecord->Email = $this->txtEmail->SafeText;
+		$activeRecord->Url = $this->txtUrl->SafeText;
+		$activeRecord->Description = $this->txtDesc->Text;
+		
+		return $activeRecord;
+	}
 
 	protected function btnSubmit_Clicked($sender, $param)
 	{
 		if ($this->IsValid)
 		{
-			$activeRecord = $this->getItem();
-			$activeRecord->Name = $this->txtName->SafeText;
-			$activeRecord->Alias = $this->txtAlias->SafeText;
-			$activeRecord->Email = $this->txtEmail->SafeText;
-			$activeRecord->Url = $this->txtUrl->SafeText;
-			$activeRecord->Description = $this->txtDesc->Text;
+			$activeRecord = $this->bindItem();
 			try
 			{
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
-				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Manufacturer",$this->txtName->SafeText);
+				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Manufacturer",$activeRecord->Name);
 				$activeRecord->save();
 				$this->Response->redirect($this->Service->ConstructUrl("admincp.ManufacturerManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Manufacturer",$this->txtName->SafeText);
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Manufacturer",$activeRecord->Name);
+			}
+		}
+	}
+	
+	protected function btnAddMore_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$activeRecord = $this->bindItem();
+			try
+			{
+				$activeRecord->save();
+				$this->Response->redirect($this->Service->ConstructUrl("admincp.ManufacturerForm"));
+			}
+			catch(TException $e)
+			{
+				$this->Notice->Type = AdminNoticeType::Error;
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Manufacturer",$activeRecord->Name);
 			}
 		}
 	}
@@ -76,7 +101,7 @@ class ManufacturerForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "mf_name = '".$param->Value."' ";
+			$criteria->Condition = "mf_name = '".preg_replace("/'/", "/''/", $param->Value)."' ";
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and mf_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;

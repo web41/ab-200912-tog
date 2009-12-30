@@ -43,24 +43,49 @@ class BrandForm extends TPage
 		}
 	}
 	
+	private function bindItem()
+	{
+		$activeRecord = $this->getItem();
+		$activeRecord->Name = $this->txtName->SafeText;
+		$activeRecord->Alias = $this->txtAlias->SafeText;
+		
+		return $activeRecord;
+	}
+	
 	protected function btnSubmit_Clicked($sender, $param)
 	{
 		if ($this->IsValid)
 		{
-			$activeRecord = $this->getItem();
-			$activeRecord->Name = $this->txtName->SafeText;
-			$activeRecord->Alias = $this->txtAlias->SafeText;
+			$activeRecord = $this->bindItem();
 			try
 			{
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
-				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Brand",$this->txtName->SafeText);
+				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Brand",$activeRecord->Name);
 				$activeRecord->save();
 				$this->Response->redirect($this->Service->ConstructUrl("admincp.BrandManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Brand",$this->txtName->SafeText);
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Brand",$activeRecord->Name);
+			}
+		}
+	}
+	
+	protected function btnAddMore_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$activeRecord = $this->bindItem();
+			try
+			{
+				$activeRecord->save();
+				$this->Response->redirect($this->Service->ConstructUrl("admincp.BrandForm"));
+			}
+			catch(TException $e)
+			{
+				$this->Notice->Type = AdminNoticeType::Error;
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Brand",$activeRecord->Name);
 			}
 		}
 	}
@@ -70,7 +95,7 @@ class BrandForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "brand_name = '".$param->Value."' ";
+			$criteria->Condition = "brand_name = '".preg_replace("/'/", "/''/", $param->Value)."' ";
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and brand_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;

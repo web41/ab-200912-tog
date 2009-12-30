@@ -91,12 +91,14 @@ class CategoryManager extends TPage
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 1;
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
-		$this->ParentID = ($this->Request->contains('parent')) ? TPropertyValue::ensureInteger($this->Request['parent']) : 0;
+		$this->ParentID = ($this->Request->contains('parent')) ? TPropertyValue::ensureInteger($this->Request['parent']) : -1;
 		if (!$this->IsPostBack)
 		{
 			// fill parent selector combobox
 			$this->cboParentSelector->DataSource = Prado::createComponent(self::AR)->getAllParent();
 			$this->cboParentSelector->DataBind();
+			$noparent = new TListItem(); $noparent->Text = "No Parent"; $noparent->Value = 0;
+			$this->cboParentSelector->Items->insertAt(0,$noparent);
 			$this->cboParentSelector->SelectedValue = $this->ParentID;
 			$this->populateData();
 			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
@@ -137,7 +139,7 @@ class CategoryManager extends TPage
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}
-		if ($this->ParentID>0)
+		if ($this->ParentID>-1)
 		{
 			$criteria->Condition .= " and (parent_id = '".$this->ParentID."') ";
 		}
@@ -176,7 +178,7 @@ class CategoryManager extends TPage
 		$serviceParameter = $this->Request->ServiceParameter;
 		if (strlen($search)>0) $params['q'] = $search;
 		else if (isset($params['q'])) unset($params['q']);
-		if ($parent>0) $params['parent'] = $parent;
+		if ($parent>-1) $params['parent'] = $parent;
 		else if (isset($params['parent'])) unset($params['parent']);
 		if ($resetPage)	$params['p'] = 1;
 		$params['sb'] = $sortBy;
@@ -413,7 +415,7 @@ class CategoryManager extends TPage
 	
 	protected function cboParentSelector_SelectedIndexChanged($sender, $param)
 	{
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$sender->SelectedValue));
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',(strlen($sender->SelectedValue)>0?$sender->SelectedValue:-1)));
 	}
 }
 

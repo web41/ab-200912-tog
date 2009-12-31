@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <application id="TOG" mode="Debug">
-	<!-- alias definitions and namespace usings
-	<paths>
-		<alias id="myalias" path="./lib" />
-		<using namespace="Application.common.*" />
-	</paths>
-	-->
+	<!-- alias definitions and namespace usings -->
 	<paths>
 		<!--alias id="CSitemap" path="common/CSitemap"/--> 
 		<using namespace="System.I18N.*"/>
@@ -25,16 +20,18 @@
 		<!-- Remove this comment mark to enable caching
 		<module id="cache" class="System.Caching.TDbCache" />
 		-->
-	
-		<!-- Remove this comment mark to enable PATH url format
-		<module id="request" class="THttpRequest" UrlFormat="Path" />
-		-->
-	
 		<!-- Remove this comment mark to enable logging
 		<module id="log" class="System.Util.TLogRouter">
 		  <route class="TBrowserLogRoute" Categories="System" />
 		</module>
 		-->
+		<!-- user manager module -->
+		<module id="users" class="Application.common.TOGUserManager" UserClass="Application.common.TOGUser"/>
+		<!-- auth manager module -->
+		<module id="auth" class="Application.common.TOGAuthManager" UserManager="users" LoginPage="account.Login" AllowAutoLogin="True" />
+		<!-- security module -->
+		<module id="security" class="TSecurityManager" ValidationKey="TOG#AsiaBlaze!!" Validation="MD5" EncryptionKey="TOG#AsiaBlaze!!" />
+		
 		<module id="db" class="System.Data.TDataSourceConfig">
 			<database ConnectionString="mysql:host=localhost;dbname=tog_db" username="root" password=""/>
 			<!--database ConnectionString="mysql:host=localhost;dbname=dosithuy_tog" username="dosithuy_tog" password="tog123"/-->
@@ -48,6 +45,12 @@
 		<!--module id="sitemap" class="CSitemap.CSitemapManager" SitemapFile="Application.sitemap"/-->
 		<module id="request" class="THttpRequest" UrlManager="friendly-url"/>
 		<module id="friendly-url" class="System.Web.TUrlMapping" EnableCustomUrl="true" UrlPrefix="/TOG">
+			
+			<url ServiceParameter="shop.AboutUs" pattern="about-us.html"/>
+			<url ServiceParameter="shop.WhyOrganic" pattern="why-organic.html"/>
+			<url ServiceParameter="shop.Delivery" pattern="delivery.html"/>
+			<url ServiceParameter="shop.Help" pattern="help.html"/>
+			<url ServiceParameter="shop.ContactUs" pattern="contact-us.html"/>
 			
 			<url ServiceParameter="shop.Index" pattern="shop"/>
 			
@@ -97,12 +100,7 @@
 		</service>
 	</services>
 
-	<!-- application parameters
-	<parameters>
-		<parameter id="param1" value="value1" />
-		<parameter id="param2" value="value2" />
-	</parameters>
-	-->
+	<!-- application parameters -->
 	<parameters>
 		<parameter id="ROW_PER_PAGE" value="20" />
 		<parameter id="AVAILABLE_IMAGES" value="('jpg','jpeg','gif','png')" />

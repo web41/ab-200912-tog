@@ -12,10 +12,10 @@
 	<div id="nav">
 		<ul>
 			<li><a href="<%= $this->Service->ConstructUrl("shop.Index") %>">Home</a></li>
-			<li><a href="<%= $this->Service->ConstructUrl("home.AboutUs") %>">About us</a></li>
-			<li><a href="<%= $this->Service->ConstructUrl("home.WhyOrganic") %>">Why Organic</a></li>
-			<li><a href="<%= $this->Service->ConstructUrl("home.Delivery") %>">Delivery</a></li>
-			<li><a href="<%= $this->Service->ConstructUrl("home.Help") %>">Help</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("shop.AboutUs") %>">About us</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("shop.WhyOrganic") %>">Why Organic</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">Delivery</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("shop.Help") %>">Help</a></li>
 		</ul>
 	</div><!-- NAVIGATION ENDS -->
 

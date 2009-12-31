@@ -23,12 +23,12 @@
 			</div>
 			<div class="banner_right">
 				<ul>
-					<li><a href="">home</a></li>  |  
-					<li><a href="">About Us</a></li>  |   
-					<li><a href="">Why Organic</a></li>  |  
-					<li><a href="">Delivery</a></li>  |  
-					<li><a href="">Help</a></li>  |  
-					<li><a href="">Contact Us</a></li>
+					<li><a href="<%= $this->Service->ConstructUrl("shop.Index") %>">Home</a></li>  |  
+					<li><a href="<%= $this->Service->ConstructUrl("shop.AboutUs") %>">About Us</a></li>  |   
+					<li><a href="<%= $this->Service->ConstructUrl("shop.WhyOrganic") %>">Why Organic</a></li>  |  
+					<li><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">Delivery</a></li>  |  
+					<li><a href="<%= $this->Service->ConstructUrl("shop.Help") %>">Help</a></li>  |  
+					<li><a href="<%= $this->Service->ConstructUrl("shop.ContactUs") %>">Contact Us</a></li>
 				</ul>
 			</div>
 		</div>

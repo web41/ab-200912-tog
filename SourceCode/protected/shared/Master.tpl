@@ -19,7 +19,7 @@
 		<!-- Banner -->
 		<div id="banner">
 			<div id="logo">
-				<a href="#"><img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" width="364" height="119" alt="logo" /></a>
+				<a href="<%= $this->Service->ConstructUrl("shop.Index") %>"><img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" width="364" height="119" alt="logo" /></a>
 			</div>
 			<div class="banner_right">
 				<ul>
@@ -41,7 +41,7 @@
 		<!-- Main content: END -->
 
 		<div id="footer">
-			Copyright © 2009 <a href="#">The Organic Grocer</a>. All rights reserved. Designed by AsiaBlaze Design.
+			Copyright © 2009 <a href="<%= $this->Service->ConstructUrl("shop.Index") %>">The Organic Grocer</a>. All rights reserved. Designed by <a href="http://www.asiablaze.com">AsiaBlaze Design</a>.
 		</div>
 	</div>
 	</com:TForm>

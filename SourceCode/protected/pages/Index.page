@@ -11,11 +11,11 @@
 <div id="contaner">
 	<div id="nav">
 		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="#">About us</a></li>
-			<li><a href="#">Why Organic</a></li>
-			<li><a href="#">Delivery</a></li>
-			<li><a href="#">Help</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("shop.Index") %>">Home</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("static.AboutUs") %>">About us</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("static.WhyOrganic") %>">Why Organic</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("static.Delivery") %>">Delivery</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("static.Help") %>">Help</a></li>
 		</ul>
 	</div><!-- NAVIGATION ENDS -->
 

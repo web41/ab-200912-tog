@@ -204,20 +204,24 @@
 									</div>
 								</td>
 							</tr>
+                            <tr>
+                            	<td class="field" colspan="2">
+                                	<div class="text">Brief Description</div>
+                                    <div class="control">
+                                        cho nay tao muon no nhieu item xuong dong xuong dong, thi lam sao
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                            	<td class="field" colspan="2">
+                                	<div class="text">Brief Description</div>
+                                    <div class="control">
+                                        <com:TTextBox ID="txtBrief" TextMode="MultiLine" CssClass="textbox" Width="630px" />
+                                        <br />cho nay may set height no bi be layout
+                                    </div>
+                                </td>
+                            </tr>
 						</table>
-						<div class="field">
-							<div class="text">Brief Description</div>
-							<div class="control">
-								cho nay tao muon no nhieu item xuong dong xuong dong, thi lam sao
-							</div>
-						</div>
-						<div class="field">
-							<div class="text">Brief Description</div>
-							<div class="control">
-								<com:TTextBox ID="txtBrief" TextMode="MultiLine" CssClass="textbox" Width="630px" />
-								<br />cho nay may set height no bi be layout
-							</div>
-						</div>
 						<div class="field" style="float:none;height:auto;">
 							<div class="text">Description</div>
 							<div class="control" style="height:auto;float:none;width:auto;padding-bottom:10px;">

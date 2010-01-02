@@ -28,7 +28,7 @@
 		<!-- user manager module -->
 		<module id="users" class="Application.common.TOGUserManager" UserClass="Application.common.TOGUser"/>
 		<!-- auth manager module -->
-		<module id="auth" class="Application.common.TOGAuthManager" UserManager="users" LoginPage="account.Login" AllowAutoLogin="True" />
+		<module id="auth" class="Application.common.TOGAuthManager" UserManager="users" LoginPage="shop.account.Login" AllowAutoLogin="True" />
 		<!-- security module -->
 		<module id="security" class="TSecurityManager" ValidationKey="TOG#AsiaBlaze!!" Validation="MD5" EncryptionKey="TOG#AsiaBlaze!!" />
 		
@@ -53,6 +53,10 @@
 			<url ServiceParameter="shop.ContactUs" pattern="contact-us.html"/>
 			
 			<url ServiceParameter="shop.Index" pattern="shop"/>
+			
+			<url ServiceParameter="shop.account.Login" pattern="shop/account/login"/>
+			<url ServiceParameter="shop.account.Register" pattern="shop/account/register"/>
+			<url ServiceParameter="shop.account.ForgotPwd" pattern="shop/account/forgot-password"/>
 			
 			<url ServiceParameter="admincp.Index" pattern="admincp"/>
 			<url ServiceParameter="admincp.Index" pattern="admincp/index"/>

@@ -2,40 +2,49 @@
 
 class TOGUser extends TDbUser
 {
-	private $_ID;
-	private $_Username;
-	private $_Password;
-	private $_Email;
-	private $_UserTypeID;
-	private $_Credits;
-	private $_Status;
-	private $_Hash;
-	private $_IPAddress;
-	private $_LastIP;
-	private $_LastDate;
-	private $_CreateDate;
-	private $_ModifyDate;
+	public $ID;
+	public $Username;
+	public $Password;
+	public $Email;
+	public $UserTypeID;
+	public $Credits;
+	public $Status;
+	public $Hash;
+	public $IPAddress;
+	public $LastIP;
+	public $LastDate;
+	public $CreateDate;
+	public $ModifyDate;
 	
-	public function validateUser($username, $password)
+	public function validateUser($email, $password)
 	{
-		//$criteria = new TActiveRecordCriteria;
-		//$criteria->Condition = 'user_name = :user and user_pwd = :pwd';
-		//$criteria->Parameters[':user'] = $username;
-		//$criteria->Parameters[':pwd'] = md5($password);
-		//return (UserAccount::finder()->count($criteria) == 1) ? true : false;
+		return (UserRecord::finder()->findByuser_emailAnduser_pwd($email,md5($password)) instanceof UserRecord);
 	}
 	
 	public function createUser($username)
 	{
-		//$user_account = UserAccount::finder()->findByuser_name($username);
-		//if ($user_account instanceof UserAccount)
-		//{
-		//	$user = new BSJUser($this->Manager);
-		//	$user->Name = $user_account->user_name;
-		//	$user->Roles = UserType::finder()->findByPk($user_account->user_type_id)->user_type_name;
-		//	$user->IsGuest = false;
-		//	return $user;
-		//}
+		$activeRecord = UserRecord::finder()->findByuser_name($username);
+		if ($user instanceof UserRecord)
+		{
+			$user = new TOGUser($this->Manager);
+			$user->Name = $activeRecord->Username;
+			$user->ID = $activeRecord->ID;
+			$user->Username = $activeRecord->Username;
+			$user->Password = $activeRecord->Password;
+			$user->Email = $activeRecord->Email;
+			$user->UserTypeID = $activeRecord->UserTypeID;
+			$user->Credits = $activeRecord->Credits;
+			$user->Status = $activeRecord->Status;
+			$user->Hash = $activeRecord->Hash;
+			$user->IPAddress = $activeRecord->IPAddress;
+			$user->LastIP = $activeRecord->LastIP;
+			$user->LastDate = $activeRecord->LastDate;
+			$user->CreateDate = $activeRecord->CreateDate;
+			$user->ModifyDate = $activeRecord->ModifyDate;
+			$user->Roles = $activeRecord->UserType->Name;
+			$user->IsGuest = false;
+			return $user;
+		}
 	}
 }
 

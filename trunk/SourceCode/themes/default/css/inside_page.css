@@ -1,5 +1,4 @@
 ﻿/*Main column*/
-#container .main_content .main_col{float:left;width:524px;height:auto;background:#fbfbfb;margin:0 10px 0 10px;padding:20px;}
 	.main_col .inside_box{float:left;width:524px;height:auto;text-align:left;margin-bottom:20px;}
 	.main_col .inside_box table{border:solid 1px #dadada;}
 	.main_col .inside_box table td{border:solid 1px #dadada;}
@@ -7,7 +6,11 @@
 	.main_col .inside_box table .left{text-align:right;padding-right:20px;width:140px;text-transform:capitalize;}
 	.main_col .inside_box table .right .textbox{width:180px;}
 	
+	.main_col .inside_box div{margin-bottom:15px;}
+	
 /*Main column: END*/
+#container .main_content .main_col .error{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#ffcecf;color:#655254;padding:5px 10px 5px 10px;}
+#container .main_content .main_col .notice{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#fffbcc;color:#676455;padding:5px 10px 5px 10px;}
 	
 	
 	

@@ -29,7 +29,7 @@
             <tr>
             	<td valign="top">
                 	I am a new customer.<br />
-                    By creating an account at TheOrganicGrocer you will be able to shop faster, be up to date on an orders status, and keep track of the orders you have previously made.<br />
+                    By creating an account at <span class="name">TheOrganicGrocer</span> you will be able to shop faster, be up to date on an orders status, and keep track of the orders you have previously made.<br />
                     <div style="margin:0;padding:10px 0 0 0;text-align:right;"><input type="button" value="Register" /></div>
                 </td>
                 <td valign="top">

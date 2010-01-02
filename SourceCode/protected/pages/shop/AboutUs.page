@@ -1,1 +1,54 @@
 <%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - About Us</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<div class="box">
+		<h2>organic points</h2>
+	</div>
+	<div class="box">
+		<h2>newsletter</h2>
+		<div class="content">
+			Enter your email address to receive our FREE newsletter on the organic market
+		</div>
+	</div>
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<!-- Inside box -->
+	<div class="inside_box">
+		<div>asljf askfl klfd</div>
+	</div>
+	<!-- Inside box: END -->
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<div class="box">
+		<div class="cart_title"><h2>Your Cart</h2></div>
+		<div class="content" style="text-align:center;">
+			<a href="">Login</a>  |  <a href="">Sign up</a>
+		</div>
+	</div>
+	<div class="shoppingcart_box">
+		<a href="" class="btn_cart">VIEW CART</a>
+		<a href="" class="btn_cart">CHECKOUT</a>
+	</div>
+	<div class="box">
+		<h2>Order Schedule</h2>
+		<div class="content" style="border-bottom:solid 1px #503a1d;padding-bottom:10px;">
+			Order by Tuesday 5 pm<br />
+			Delivery this Friday/Saturday
+		</div>
+	</div>
+	<div class="box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_1.png" alt=""/>&nbsp;&nbsp;
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" />
+	</div>
+</div>
+<!-- Right column: END -->
+</com:TContent>

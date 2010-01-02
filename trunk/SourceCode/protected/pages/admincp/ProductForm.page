@@ -72,36 +72,6 @@
 							</tr>
 							<tr>
 								<td class="field">
-									<div class="text">In Stock<span>*</span></div>
-									<div class="control">
-										<com:TTextBox ID="txtInStock" CssClass="textbox" /><br />
-										<com:TRequiredFieldValidator ID="val5"
-											CssClass="error"
-											ControlToValidate="txtInStock"
-											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product in stock') %>"
-											Display="Dynamic"
-											FocusOnError="True"/>
-								</td>
-								<td class="field">                                
-									<div class="text">Unit of Measure<span>*</span></div>
-									<div class="control">
-										<com:TDropDownList ID="cboUOMSelector"
-											PromptText="Select..."
-											PromptValue="0"
-											DataTextField="Name"
-											DataValueField="ID" /><br />
-										<com:TRequiredFieldValidator ID="val6"
-											CssClass="error"
-											ControlToValidate="cboUOMSelector"
-											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','unit of measure') %>"
-											Display="Dynamic"
-											InitialValue="0"
-											FocusOnError="True"/>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="field">
 									<div class="text">Brand<span>*</span></div>
 									<div class="control">
 										<com:TDropDownList ID="cboBrandSelector"
@@ -138,18 +108,6 @@
 							</tr>
 							<tr>
 								<td class="field">
-									<div class="text">Price<span>*</span></div>
-									<div class="control">
-										<com:TTextBox ID="txtPrice" CssClass="textbox" /><br />
-										<com:TRequiredFieldValidator ID="val9"
-											CssClass="error"
-											ControlToValidate="txtPrice"
-											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product price') %>"
-											Display="Dynamic"
-											FocusOnError="True"/>
-									</div>
-								</td>
-								<td class="field">                                
 									<div class="text">Discount</div>
 									<div class="control">
 										<com:TDropDownList ID="cboDiscountSelector"
@@ -159,6 +117,7 @@
 											DataValueField="ID" />
 									</div>
 								</td>
+								<td class="field">&nbsp;</td>
 							</tr>
 							<tr>
 								<td class="field">
@@ -249,7 +208,14 @@
 						<div class="field">
 							<div class="text">Brief Description</div>
 							<div class="control">
+								cho nay tao muon no nhieu item xuong dong xuong dong, thi lam sao
+							</div>
+						</div>
+						<div class="field">
+							<div class="text">Brief Description</div>
+							<div class="control">
 								<com:TTextBox ID="txtBrief" TextMode="MultiLine" CssClass="textbox" Width="630px" />
+								<br />cho nay may set height no bi be layout
 							</div>
 						</div>
 						<div class="field" style="float:none;height:auto;">

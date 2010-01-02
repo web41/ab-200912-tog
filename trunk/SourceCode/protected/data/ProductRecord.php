@@ -17,15 +17,12 @@ class ProductRecord extends TActiveRecord
 	public $Description;
 	public $ImagePath;
 	public $ThumbnailPath;
-	public $Price;
 	public $RewardPoints;
 	public $IsBestSeller;
 	public $IsHotDeal;
 	public $IsNewArrival;
 	public $IsPublished;
 	public $Ordering;
-	public $InStock;
-	public $UOM;
 	public $AvailableDate;
 	public $CreateDate;
 	public $ModifyDate;
@@ -43,15 +40,12 @@ class ProductRecord extends TActiveRecord
 		'product_desc'=>'Description',
 		'product_image'=>'ImagePath',
 		'product_thumb'=>'ThumbnailPath',
-		'product_price'=>'Price',
 		'product_reward_points'=>'RewardPoints',
 		'product_best_seller'=>'IsBestSeller',
 		'product_hot_deal'=>'IsHotDeal',
 		'product_new_arrival'=>'IsNewArrival',
 		'product_publish'=>'IsPublished',
 		'product_order'=>'Ordering',
-		'product_in_stock'=>'InStock',
-		'product_uom'=>'UOM',
 		'product_available_date'=>'AvailableDate',
 		'c_date'=>'CreateDate',
 		'm_date'=>'ModifyDate'
@@ -62,7 +56,8 @@ class ProductRecord extends TActiveRecord
 		'Brand'=>array(self::BELONGS_TO,'BrandRecord','brand_id'),
 		'Manufacturer'=>array(self::BELONGS_TO,'ManufacturerRecord','mf_id'),
 		'Discount'=>array(self::BELONGS_TO,'DiscountRecord','discount_id'),
-		'Categories'=>array(self::MANY_TO_MANY,'CategoryRecord','tbl_product_cat_xref')
+		'Categories'=>array(self::MANY_TO_MANY,'CategoryRecord','tbl_product_cat_xref'),
+		'PackageTypes'=>array(self::HAS_MANY,'PackageTypeRecord','product_id')
 	);
 
 	public static function finder($className=__CLASS__)

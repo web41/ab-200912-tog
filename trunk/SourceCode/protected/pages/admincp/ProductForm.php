@@ -20,8 +20,8 @@ class ProductForm extends TPage
 			$criteria->OrdersBy["mf_name"] = "asc";
 			$this->cboMfSelector->DataSource = ManufacturerRecord::finder()->findAll($criteria);
 			$this->cboMfSelector->DataBind();
-			$this->cboUOMSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["UNITS_OF_MEASURE"]);
-			$this->cboUOMSelector->DataBind();
+			//$this->cboUOMSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["UNITS_OF_MEASURE"]);
+			//$this->cboUOMSelector->DataBind();
 			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree();
 			$this->cboCatSelector->DataBind();
 			$activeRecord = $this->getItem();
@@ -32,12 +32,12 @@ class ProductForm extends TPage
 				$this->txtSKU->Text = $activeRecord->SKU;
 				$this->txtName->Text = $activeRecord->Name;
 				$this->txtAlias->Text = $activeRecord->Alias;
-				$this->txtInStock->Text = $activeRecord->InStock;
-				$this->cboUOMSelector->SelectedValue = $activeRecord->UOM;
+				//$this->txtInStock->Text = $activeRecord->InStock;
+				//$this->cboUOMSelector->SelectedValue = $activeRecord->UOM;
 				$this->cboBrandSelector->SelectedValue = $activeRecord->BrandID;
 				$this->cboMfSelector->SelectedValue = $activeRecord->MfID;
 				$this->cboCatSelector->SelectedValues = $activeRecord->CategoryIDs;
-				$this->txtPrice->Text = $activeRecord->Price;
+				//$this->txtPrice->Text = $activeRecord->Price;
 				$this->cboDiscountSelector->SelectedValue = $activeRecord->DiscountID;
 				$this->radPublish->SelectedValue = $activeRecord->IsPublished;
 				$this->radNewArrival->SelectedValue = $activeRecord->IsNewArrival;
@@ -118,8 +118,8 @@ class ProductForm extends TPage
 		$activeRecord->SKU = $this->txtSKU->SafeText;
 		$activeRecord->Name = $this->txtName->SafeText;
 		$activeRecord->Alias = $this->txtAlias->SafeText;
-		$activeRecord->InStock = TPropertyValue::ensureInteger($this->txtInStock->SafeText);
-		$activeRecord->UOM = $this->cboUOMSelector->SelectedValue;
+		//$activeRecord->InStock = TPropertyValue::ensureInteger($this->txtInStock->SafeText);
+		//$activeRecord->UOM = $this->cboUOMSelector->SelectedValue;
 		$activeRecord->BrandID = $this->cboBrandSelector->SelectedValue;
 		$activeRecord->MfID = $this->cboMfSelector->SelectedValue;
 		if ($activeRecord->ID>0)
@@ -128,7 +128,7 @@ class ProductForm extends TPage
 			$criteria->Condition = "product_id = '".$activeRecord->ID."'";
 			ProductCatRecord::finder()->deleteAll($criteria);
 		}
-		$activeRecord->Price = TPropertyValue::ensureFloat($this->txtPrice->Text);
+		//$activeRecord->Price = TPropertyValue::ensureFloat($this->txtPrice->Text);
 		$activeRecord->DiscountID = $this->cboDiscountSelector->SelectedValue;
 		$activeRecord->IsPublished = $this->radPublish->SelectedValue;
 		$activeRecord->IsNewArrival = $this->radNewArrival->SelectedValue;

@@ -18,30 +18,31 @@
 
 <!-- Main column -->
 <div class="main_col">
+	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
 		<table border="0" cellpadding="10" cellspacing="0" width="100%">
         	<tr>
-            	<td class="table_title" colspan="2">Login</td>
+            	<td class="table_title">new customer</td>
+                <td class="table_title">returning customer</td>
             </tr>
             <tr>
-            	<td class="left">Username</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="left">password</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="left">&nbsp;</td>
-                <td class="right">
-                	<input type="submit" value="Login" />
-                    <input type="button" value="Cancel" />
-               	</td>
+            	<td valign="top">
+                	I am a new customer.<br />
+                    By creating an account at TheOrganicGrocer you will be able to shop faster, be up to date on an orders status, and keep track of the orders you have previously made.<br />
+                    <div style="margin:0;padding:10px 0 0 0;text-align:right;"><input type="button" value="Register" /></div>
+                </td>
+                <td valign="top">
+                	<div>Username: <input type="text" /></div>
+                    <div>Password: <input type="text" /></div>
+                    <div>Forgot password? <a href="">Click here</a>
+                    <div style="margin:0;padding:10px 0 0 0;text-align:right;"><input type="button" value="Login" /></div>
+                </td>
             </tr>
         </table>
 	</div>
 	<!-- Inside box: END -->
+    </div>
 </div>
 <!-- Main column: END -->
 

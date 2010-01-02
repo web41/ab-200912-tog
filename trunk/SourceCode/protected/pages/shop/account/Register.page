@@ -24,7 +24,7 @@
     <div class="notice">
         test
     </div>
-    <div class="prd_container">
+    <div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
 		<table border="0" cellpadding="10" cellspacing="0" width="100%">

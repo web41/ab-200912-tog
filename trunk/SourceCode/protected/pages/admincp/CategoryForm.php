@@ -148,7 +148,7 @@ class CategoryForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "cat_name = ':name'";
+			$criteria->Condition = "cat_name = :name";
 			$criteria->Parameters[":name"] = $param->Value;
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and cat_id <> '".$activeRecord->ID."'";

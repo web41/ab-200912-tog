@@ -37,7 +37,8 @@
 											ControlToValidate="txtCode"
 											OnServerValidate="uniqueCheck_ServerValidated"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Coupon code') %>"
-											Display="Dynamic"/>
+											Display="Dynamic"
+											FocusOnError="True"/>
 										<com:TRegularExpressionValidator ID="val3"
 											ControlToValidate="txtCode"
 											RegularExpression="^[0-9a-zA-Z]+([_.-]?[0-9a-zA-Z]+)*$"

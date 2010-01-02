@@ -68,7 +68,7 @@ class String {
 		$c = array("ç","Ã§");
 		$n = array("ñ","Ã±");
 		$d = array("đ","Ď","Đ");
-		$chars = array(" ",",",".","?","!","@","#","$","%","*","/","'",'"');
+		$chars = array(" ",",",".","?","!","@","#","$","%","*","/","'",'"',"(",")");
 		$changeset = array($a,$e,$i,$o,$u,$y,$c,$n,$d,$chars);
 		$changeto = array("a","e","i","o","u","y","c","n","d","-");
 	
@@ -88,6 +88,7 @@ class String {
 			$i++;$j=0;
 		}//2
 		return implode("",$textarray);
+
 	}//1 END removeAccents()
 	
 	function mb_str_split($str, $length = 1) 

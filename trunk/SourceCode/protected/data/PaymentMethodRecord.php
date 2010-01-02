@@ -10,13 +10,16 @@ class PaymentMethodRecord extends TActiveRecord
 	public $Alias;
 	public $Name;
 	public $IsPublished;
+	public $ImagePath;
 	
 	public static $COLUMN_MAPPING=array
 	(
 		'method_id'=>'ID',
 		'method_alias'=>'Alias',
 		'method_name'=>'Name',
-		'method_publish'=>'IsPublished'
+		'method_publish'=>'IsPublished',
+		'method_image'=>'ImagePath'
+		
 	);
 	
 	public static $RELATIONS=array
@@ -27,6 +30,12 @@ class PaymentMethodRecord extends TActiveRecord
 	public static function finder($className=__CLASS__)
 	{
 		return parent::finder($className);
+	}
+	
+	public function save()
+	{
+		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Name);
+		parent::save();
 	}
 }
 ?>

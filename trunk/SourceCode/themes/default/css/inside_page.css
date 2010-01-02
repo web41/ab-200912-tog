@@ -1,0 +1,16 @@
+﻿/*Main column*/
+#container .main_content .main_col{float:left;width:524px;height:auto;background:#fbfbfb;margin:0 10px 0 10px;padding:20px;}
+	.main_col .inside_box{float:left;width:524px;height:auto;text-align:left;margin-bottom:20px;}
+	.main_col .inside_box table{border:solid 1px #dadada;}
+	.main_col .inside_box table td{border:solid 1px #dadada;}
+	.main_col .inside_box table .table_title{text-transform:uppercase;color:#fff;background:#7aa825;padding:5px;font-size:12px;}
+	.main_col .inside_box table .left{text-align:right;padding-right:20px;width:140px;text-transform:capitalize;}
+	.main_col .inside_box table .right .textbox{width:180px;}
+	
+/*Main column: END*/
+	
+	
+	
+	
+		
+	

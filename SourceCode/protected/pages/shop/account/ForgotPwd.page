@@ -18,6 +18,7 @@
 
 <!-- Main column -->
 <div class="main_col">
+	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
 		<table border="0" cellpadding="10" cellspacing="0" width="100%">
@@ -42,6 +43,7 @@
         </table>
 	</div>
 	<!-- Inside box: END -->
+    </div>
 </div>
 <!-- Main column: END -->
 

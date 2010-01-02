@@ -21,6 +21,7 @@
 /*Main column*/
 #container .main_content .main_col{float:left;width:564px;height:auto;margin:0 10px 0 10px;}
 #container .main_content .main_col .prd_container{float:left;width:524px;height:auto;background:#fbfbfb;padding:20px;}
+#container .main_content .main_col .main_content{float:left;width:544px;height:auto;background:#fbfbfb;padding:10px;}
 
 	.main_col .product_box{float:left;width:524px;height:auto;text-align:left;padding:0 0 20px 0;border-bottom:solid 1px #503a1d;margin-bottom:20px;}
 	.main_col .product_box img{float:left;max-width:124px;max-height:124px;margin:0 20px 0 0;border:solid 1px #e9e9e9}

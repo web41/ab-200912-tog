@@ -37,7 +37,8 @@
 											ControlToValidate="txtName"
 											OnServerValidate="uniqueCheck2_ServerValidated"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Product SKU') %>"
-											Display="Dynamic"/>
+											Display="Dynamic"
+											FocusOnError="True"/>
                                     </div>
                                 </td>
                                 <td class="field nopadding">&nbsp;</td>

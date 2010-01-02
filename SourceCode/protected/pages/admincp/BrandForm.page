@@ -36,7 +36,8 @@
 											ControlToValidate="txtName"
 											OnServerValidate="uniqueCheck_ServerValidated"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Brand name') %>"
-											Display="Dynamic"/>
+											Display="Dynamic"
+											FocusOnError="True"/>
 									</div>
 								</td>
 								<td class="field">                                

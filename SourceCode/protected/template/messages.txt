@@ -20,3 +20,6 @@ ITEM_INVALID				= {0} is invalid. Please try another.
 IMAGE_INVALID				= Only {0} image types are allowed. Please try another.
 ITEM_ACTION_SUCCESS			= {0} has been {1} successfully.
 ITEM_ACTION_FAILED			= {0} can not be {1}. Pleasse contact administrator.
+USER_LOGIN_FAILED			= Email and/or Password is invalid. Please try again.
+PASSWORD_NOT_MATCH			= Confirm password is not matched.
+REGISTER_FAILED				= Register unsuccessful! Please try again or contact administrator.

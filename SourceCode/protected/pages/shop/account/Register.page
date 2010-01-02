@@ -1,5 +1,5 @@
 <%@ MasterClass="Application.shared.Master" %>
-<com:TContent ID="title">The Organic Grocer - Register new user</com:TContent>
+<com:TContent ID="title">The Organic Grocer - Register new account</com:TContent>
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
@@ -18,62 +18,78 @@
 
 <!-- Main column -->
 <div class="main_col">
-	<div class="error">
-        test
-    </div>
-    <div class="notice">
-        test
-    </div>
-    <div class="main_content">
+	<com:Application.shared.UserNotice ID="Notice" />
+	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
 		<table border="0" cellpadding="10" cellspacing="0" width="100%">
-        	<tr>
-            	<td class="table_title" colspan="2">register new user</td>
-            </tr>
-            <tr>
-            	<td class="left">Username</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="left">password</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="left">confirm password</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="table_title" colspan="2">personal info</td>
-            </tr>
-            <tr>
-            	<td class="left">email</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="left">address</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="left">city</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="left">country</td>
-                <td class="right"><input type="text" class="textbox" /></td>
-            </tr>
-            <tr>
-            	<td class="left">&nbsp;</td>
-                <td class="right">
-                	<input type="submit" value="Submit" />
-                    <input type="reset" value="Reset" />
-                    <input type="button" value="Cancel" />
-               	</td>
-            </tr>
-        </table>
+			<tr>
+				<td class="table_title" colspan="2">register new user</td>
+			</tr>
+			<tr>
+				<td class="left">Email</td>
+				<td class="right">
+					<com:TTextBox ID="txtEmail" CssClass="textbox"/><br />
+					<com:TRequiredFieldValidator ID="val1"
+						ControlToValidate="txtEmail"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+					<com:TEmailAddressValidator ID="val6"
+						ControlToValidate="txtEmail"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+					<com:TCustomValidator ID="val2"
+						ControlToValidate="txtEmail"
+						OnServerValidate="uniqueCheck_ServerValidated"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Email') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Password</td>
+				<td class="right">
+					<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="textbox"/><br />
+					<com:TRequiredFieldValidator ID="val3"
+						ControlToValidate="txtPassword"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Confirm password</td>
+				<td class="right">
+					<com:TTextBox ID="txtPassword2" TextMode="Password" CssClass="textbox"/><br />
+					<com:TRequiredFieldValidator ID="val4"
+						ControlToValidate="txtPassword2"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+					<com:TCompareValidator ID="val5"
+						ControlToValidate="txtPassword2"
+						DataType="String"
+						ControlToCompare="txtPassword"
+						Operator="Equal"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('PASSWORD_NOT_MATCH','Password') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">&nbsp;</td>
+				<td class="right">
+					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true"/>
+					<input type="reset" value="Reset" />
+					<input type="button" value="Cancel" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.Index") %>'" />
+				</td>
+			</tr>
+		</table>
 	</div>
 	<!-- Inside box: END -->
-    </div>
+	</div>
 </div>
 <!-- Main column: END -->
 

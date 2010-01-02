@@ -106,7 +106,7 @@ class DiscountForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "discount_name = ':name'";
+			$criteria->Condition = "discount_name = :name";
 			$criteria->Parameters[":name"] = $param->Value;
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and discount_id <> '".$activeRecord->ID."'";

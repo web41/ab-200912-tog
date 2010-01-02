@@ -15,8 +15,8 @@ class UserRecord extends TActiveRecord
 	public $Status;
 	public $Hash;
 	public $IPAddress;
-	public $LastIP;
-	public $LastDate;
+	public $LastVisitIP;
+	public $LastVisitDate;
 	public $CreateDate;
 	public $ModifyDate;
 	
@@ -31,8 +31,8 @@ class UserRecord extends TActiveRecord
 		'user_status'=>'Status',
 		'user_hash'=>'Hash',
 		'ip_address'=>'IPAddress',
-		'last_visit_ip'=>'LastIP',
-		'last_visit_date'=>'LastDate',
+		'last_visit_ip'=>'LastVisitIP',
+		'last_visit_date'=>'LastVisitDate',
 		'c_date'=>'CreateDate',
 		'm_date'=>'ModifyDate'
 	);

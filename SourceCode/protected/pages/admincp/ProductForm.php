@@ -24,7 +24,7 @@ class ProductForm extends TPage
 			//$this->cboUOMSelector->DataBind();
 			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree();
 			$this->cboCatSelector->DataBind();
-			$this->populatePackageTypes();
+			$this->populateProperties();
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
@@ -59,7 +59,7 @@ class ProductForm extends TPage
 		if ($this->Request->Contains("id") && $this->Request->Contains("alias"))
 		{
 			// use Active Record to look for the specified post ID
-			$activeRecord = Prado::createComponent(self::AR)->withPackageTypes()->finder()->findByproduct_idAndproduct_alias(TPropertyValue::ensureInteger($this->Request['id']), $this->Request['alias']);
+			$activeRecord = Prado::createComponent(self::AR)->withProperties()->finder()->findByproduct_idAndproduct_alias(TPropertyValue::ensureInteger($this->Request['id']), $this->Request['alias']);
 			if($activeRecord === null)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
@@ -74,16 +74,16 @@ class ProductForm extends TPage
 		}
 	}
 	
-	private function populatePackageTypes()
+	private function populateProperties()
 	{
-		$packageTypes = $this->getItem()->PackageTypes;
-		if (count($packageTypes)<=0)
+		$properties = $this->getItem()->Properties;
+		if (count($properties)<=0)
 		{
-			$packageTypes[] = new PackageTypeRecord;
-			$this->setViewState("NewPackageTypeCount",1,0);
+			$properties[] = new PropertyRecord;
+			$this->setViewState("NewPropertyCount",1,0);
 		}
-		$this->rptPackageType->DataSource = $packageTypes;
-		$this->rptPackageType->DataBind();
+		$this->rptProperty->DataSource = $properties;
+		$this->rptProperty->DataBind();
 	}
 	
 	private function bindItem()
@@ -166,26 +166,24 @@ class ProductForm extends TPage
 					$criteria->Condition = "product_id = :id";
 					$criteria->Parameters[":id"] = $activeRecord->ID;
 					ProductCatRecord::finder()->deleteAll($criteria);
-					PackageTypeRecord::finder()->deleteAll($criteria);
+					PropertyRecord::finder()->deleteAll($criteria);
 				}
 				foreach($this->cboCatSelector->SelectedValues as $catID)
 				{
 					$productCat = new ProductCatRecord(array("ProductID"=>$activeRecord->ID,"CatID"=>$catID));
 					$productCat->save();
 				}
-				foreach($this->rptPackageType->Items as $item)
+				foreach($this->rptProperty->Items as $item)
 				{
 					$price = TPropertyValue::ensureFloat($item->txtPrice->Text);
-					$unit = TPropertyValue::ensureInteger($item->txtUnit->Text);
-					$uom = $item->cboUOMSelector->SelectedValue;
+					$name = $item->txtName->SafeText;
 					$stock = TPropertyValue::ensureInteger($item->txtInStock->Text);
-					$packageType = new PackageTypeRecord;
-					if ($price>0&&$unit>0&&$stock>0)
+					$packageType = new PropertyRecord;
+					if ($price>0&&$stock>0&&strlen($name)>0)
 					{
 						$packageType->ProductID = $activeRecord->ID;
 						$packageType->Price = $price;
-						$packageType->Unit = $unit;
-						$packageType->UOM = $uom;
+						$packageType->Name = $name;
 						$packageType->InStock = $stock;
 						$packageType->save();
 					}
@@ -232,21 +230,21 @@ class ProductForm extends TPage
 		}
 	}
 	
-	protected function btnAddPackage_Clicked($sender, $param)
+	protected function btnAddProperty_Clicked($sender, $param)
 	{
-		$packages = array();
-		$count = $this->getViewState('NewPackageTypeCount',0)+1;
-		$this->setViewState('NewPackageTypeCount',$count,0);
+		$properties = array();
+		$count = $this->getViewState('NewPropertyCount',0)+1;
+		$this->setViewState('NewPropertyCount',$count,0);
 		if ($this->Item->ID>0)
 		{
-			$packages = $this->Item->PackageTypes;
+			$properties = $this->Item->Properties;
 		}
 		for($i=1;$i<=$count;$i++)
 		{
-			$packages[] = new PackageTypeRecord;
+			$properties[] = new PropertyRecord;
 		}
-		$this->rptPackageType->DataSource = $packages;
-		$this->rptPackageType->DataBind();
+		$this->rptProperty->DataSource = $properties;
+		$this->rptProperty->DataBind();
 	}
 
 	protected function uniqueCheck_ServerValidated($sender, $param)

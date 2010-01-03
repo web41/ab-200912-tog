@@ -58,7 +58,7 @@ class ProductRecord extends TActiveRecord
 		'Manufacturer'=>array(self::BELONGS_TO,'ManufacturerRecord','mf_id'),
 		'Discount'=>array(self::BELONGS_TO,'DiscountRecord','discount_id'),
 		'Categories'=>array(self::MANY_TO_MANY,'CategoryRecord','tbl_product_cat_xref'),
-		'PackageTypes'=>array(self::HAS_MANY,'PackageTypeRecord','product_id')
+		'Properties'=>array(self::HAS_MANY,'PropertyRecord','product_id')
 	);
 
 	public static function finder($className=__CLASS__)

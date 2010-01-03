@@ -21,8 +21,29 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-    	<h2>about us</h2>
-		<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus viverra lectus et commodo. Vestibulum volutpat purus vitae est adipiscing eu suscipit leo aliquam. Phasellus tellus enim, viverra id commodo ut, dictum et est. Nullam feugiat adipiscing velit, sed bibendum risus pretium a. Sed dui urna, mollis ac tempus et, bibendum et leo. Sed pellentesque scelerisque est, a adipiscing arcu auctor sed. Nam luctus luctus odio id condimentum. Nullam tortor neque, tristique in elementum eget, lobortis nec sapien. Curabitur augue purus, venenatis quis bibendum in, posuere a tellus. Nam eget lacus ante. Pellentesque quis odio magna, quis porta augue. Suspendisse risus velit, dignissim nec imperdiet sed, volutpat ac dolor. Curabitur nec arcu faucibus eros imperdiet semper ut at mauris. Sed sapien urna, lacinia eu semper ut, commodo in quam. Morbi nibh enim, blandit at adipiscing vitae, mattis sed augue. Pellentesque congue venenatis magna, vitae eleifend nisl sollicitudin non. Mauris ultrices neque eros, id interdum leo. Maecenas adipiscing rhoncus blandit. </div>
+    	<h2>Our Commitment</h2>
+        <div>The Organic Grocer is committed to delivering fresh organic produce as well as the best organic brands to our customers each week, while focusing on convenience and value.</div>
+        <h2>about us</h2>
+		<div>At the Organic Grocer, we pride ourselves in putting together the best organic brands under one roof, which saves you time running from shop to shop getting various organic products…… and best of all they’re just a click away and delivered straight to your door!</div>
+        <div>The Organic Grocer works directly with farms and wholesalers to deliver fresh organic produce as well as a wide range of all your favourite organic products to your door, all year-round.</div>
+        <div><b>How do your prices compare to those of other organic retailers?</b><br />
+        Our prices are very competitive compared to local organic stores and supermarkets. Most importantly, we bring it right to your door.</div>
+        <div><b>How fresh is your produce?</b><br />
+        In general, our fresh produce does not stay in our possession for more than 48 hours. When we receive our fresh produce from Australia or USA, our delivery team will quickly dispatch it out to you within 48 hours, so that it gets delivered to you fresh. We order only what we need for each delivery day.</div>
+        <div><b>Our customers can count on:</b><br />
+        	<b>Freshness & Quality</b>
+            <ul>
+            	<li>All our fresh produce is organic.</li>
+                <li>Our organic produce does not stay in our possession for more than 48 hours, so you know it's fresh when we deliver it to you!</li>
+                <li>We carry only the best organic brands, brands which you know and can trust!</li>
+            </ul>
+            <b>Convenience & Time Saving</b>
+            <ul>
+            	<li>We deliver your organic food directly to your doorstep, at your home or office.</li>
+                <li>We simplify your shopping trips, cutting down time you have to spend at the store as well as your time spent on getting to the store</li>
+                <li>We save you time going from shop to shop trying to find various organic products. By ordering online, all of your favourite organic products are at your fingertips, saving you both time and money.</li>
+            </ul>
+        </div>
 	</div>
 	<!-- Inside box: END -->
     </div>

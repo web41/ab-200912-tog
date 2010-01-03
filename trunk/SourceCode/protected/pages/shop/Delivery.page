@@ -1,1 +1,146 @@
 <%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Delivery</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<div class="box">
+		<h2>organic points</h2>
+	</div>
+	<div class="box">
+		<h2>newsletter</h2>
+		<div class="content">
+			Enter your email address to receive our FREE newsletter on the organic market
+		</div>
+	</div>
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+    	<h2>Delivery Schedule and Info</h2>
+        <div><b>Our Delivery Days</b><br />
+        	We currently deliver on 2 days: Wednesdays and Saturdays. Between 3 pm to 6pm.<br />
+            We delver all frozen items to you in a cooler bag and these items will remain frozen in the bags for several hours.
+        </div>
+        <div><b>Delivery Charges:</b>
+        	<div>1. Place an order of $100 and above for each delivery trip.</div>
+            <div>2. If you have a standing order, you can tag your new orders to your existing standing order to qualify for free delivery, if the total amount is $100 and above (provided that the new orders are submitted in time to be delivered at the same time as the existing standing order delivery).</div>
+            <div>Free delivery for orders $100 and above.* A delivery fee of $8 will be charged for orders below $100.**</div>
+            <div>* Please note that a minimum amount of $50 is required to make an online order.</div>
+            <div>We can deliver items within 24 hours of an order being placed under the Express Delivery Service. You may use the Express Delivery option if you've missed the window for ordering or if our delivery schedule doesn't suit you. The Express Delivery service costs S$20 per delivery trip and the minimum order of $100 must be made for this express Delivery option. Howver, this is subject to stock availability and subject to our delivery schedule.</div>
+        </div>	
+        <div><b>Acceptance of Deliveries</b>
+        	<div>Please make sure that there is someone available to accept the order during the specified delivery time. In any instance that there is no one at home to accept the order, a re-delivery charge of $15 may be charged. Please note that the delivery man will only wait a maximum of 10 minutes for your arrival.</div>
+            <div>We prefer to deliver to homes, but we can deliver to work addresses as long as the work hours are flexible and the workplace is in one of our delivery areas.**</div>
+            <div>If the day we deliver to your home address area does not suit you, we may be able to deliver to your workplace if we deliver to that area.</div>
+            <div>If you're not home, we can leave your items at your front door, at the guardhouse, or with your neighbour. However, please note that we will not bear any responsibility for losses or damages to your purchased items. If you have a preferred drop-off location, please let us know via the comments box on the checkout page and we will do our best to accommodate.</div>
+            <div>** Deliveries to office buildings in the CBD incurring additional CBD and ERP charges, an extra delivery charge will apply.</div>
+            <div>** In buildings where parking availablity is a problem, extra delivery charges will also apply.</div>
+            <div>Items purchased cannot be exchanged, returned, or refunded, unless the item has been delivered in a damaged condition. If you've received a damaged item from us, let us know within 24 hours by calling +65 91150702 or emailing sales@theorganicgrocer.com.sg. The damaged item will be replaced as soon as possible with the next delivery to your zone and subject to stock availability.</div>
+        </div>
+        <div><b>Order deadlines</b><br />
+            You can place an order anytime during the week.<br /> 
+            All orders for Wednesday deliveries must be in by the previous week Saturday 10am.<br />
+            All orders for Saturday delivery must be in by Tuesday 12pm the previous week.
+		</div>
+        <div><b>Postponing or Canceling Your Order</b><br />
+        You can postpone your order from the website by clicking on the Postponing in the 'My Account' section. This takes you to a preformatted email which will help you to complete your instructions before sending them to us. Postponements must be received at least 24 hours before the actual delivery date. No changes will be allowed to the delivery schedule if less than 24 hours notice is given. We are sorry to inform you that once your order is put in and confirmed, as well as when payment is made, you are unable to cancel your order and refund any payment which have been made. Any orders which are cancelled, no refunds will be given.
+        </div>
+        <div><b>Delivery Times</b><br />
+        In most cases delivery times will be approximately at around the same time each week. However, due to possible changes in the driver's delivery routes, because of extra or reduced delivery numbers, and/or traffic flow issues, we cannot guarantee exact delivery times or offer specific time slots.
+        </div>
+        
+        <h2>PURCHASE ORDERS AND DELIVERY OF GOODS</h2>
+        <div><b>Orders</b><br />
+        An order is deemed to be received when the goods are selected and placed in your shopping basket and the order is successfully transmitted online.
+        </div>
+        <div><b>Delivery of Goods</b>
+        	<ul>
+            	<li>Subject to clause 5, TOG will deliver goods to You according to the Delivery schedule set out by TOG.</li>
+                <li>The goods You ordered will be delivered from TOG to the address You provided on your TOG customer application form. TOG takes no responsibility for the goods ordered if the address You provided ceases to be the address for delivery and you fail to inform Cash & Carry prior to placing an on-line order. </li>
+                <li>Risk in the goods passes to You upon delivery of the goods to the delivery address You have nominated.</li>
+                <li>If any of the goods you have ordered are not delivered it may be because the stock is unavailable, and clause 3 applies. </li>
+            </ul>
+        </div>
+        <div><b>Unavailable stock</b>
+        	<ul>
+            	<li>Whilst TOG will use its best endeavors to ensure that the goods ordered by you are supplied to You there may be times when stock is unavailable because the product ordered is out of stock or a deleted line.</li>
+                <li>Due to the expediency of delivery time of Your order if goods You have ordered on-line are unavailable You will only be informed of this when your products are delivered.</li>
+                <li>If any products you have ordered are unavailable you will not be charged for the product.</li>
+            </ul>
+        </div>
+        <div><b>Returns or refunds</b>
+        	<ul>
+            	<li>If the goods You have ordered are damaged or if you are not satisfied with the quality of the goods delivered, you must contact TOG within 24 hours of receiving them and register your complaint.</li>
+                <li>Once notified of your request for credit or return, TOG will arrange for you to return the goods or issue a credit.</li>
+            </ul>
+        </div>
+        <div><b>Delivery Info</b>
+        	<div>Please let us have your order by Tuesday 12pm before desired delivery which is on Saturday of the same week. For Tuesday deliveries of the following week, please order by Saturday 10am of the previous week.</div>
+            <div>Delivery order minimum $50 and a delivery charge of $8 applies. Free delivery for orders $100 and above.</div>
+            <div>If you cancel your order within 24 hours of delivery, or, you are a NO SHOW at time of delivery, you will be charged the total cost of the order.</div>
+            <div>We endeavour to keep your delivery day the same, but we reserve the right to change it temporarily or permanently and will tell you if we so do. If we are unable to deliver to you, or have to deliver late, for reasons beyond our control, for example adverse weather conditions, strike actions, vehicle breakdown, traffic congestion or supplier failure, we cannot accept liability for any inconvenience or loss this causes.</div>
+            <div>Company reserves the right to stop servicing certain area at any time if a minimum number of customers (10) are not met.</div>
+        </div>
+        <div><b>Security</b><br />
+        TOG uses secure server software (SSL), which is the industry standard and among the best software available today for secure commerce transactions. It encrypts all of your personal information, including credit card number, name, and address, so that it cannot be read as the information travels over the Internet.
+        </div>
+        <div><b>Placing Order</b><br />
+        No order is considered Placed or Accepted from the customer until customer receives a confirmation from TOG. A contract of sale of arises on our acceptance of customer's order.
+        </div>
+        <div><b>Pricing</b><br />
+        All products offered by us are subject to occasional change in price. This is particularly likely with fruits and vegetables which are subject to seasonal changes in supply levels. We reserve the right to change our prices and products without notice to reflect such changes. Some of our products are priced by weight. The guide weight and associated price are for guidance only. The weight you receive may vary significantly from this guide and the price you are charged will be for the weight of product delivered.</div>
+        <div><b>Returns, Exchanges & Missing Items</b><br />
+        Your satisfaction is most important to us. However, we do realize that problems occur. At the time of delivery, upon your request, our delivery person will check through your order for any item that is missing or not acceptable due to damage or quality issue. A note should be made on the driver's copy of the invoice and customer service will issue you a credit. If your order was left for you, please contact us by email and tell us your name, the Invoice/order number and exactly what was missing or unacceptable about your order. Depending on your location, we will either arrange for a re-delivery or issue a credit for the item to your credit card. Same day re-delivery is not available. Any complaints regarding your order (damage, shortage, spoilage) will only be accepted within 24 hours after delivery.
+        </div>
+        <div><b>What If No One is Available to Receive an Order</b><br />
+        Customer is responsible for making suitable arrangements to receive your delivery and giving us appropriate instructions. If no one is available to receive your order during the scheduled delivery time window, you will be charged the delivery fee and 100% of the cost of your order. We will be happy to set up another delivery date if you call customer service. In the event that your delivery is stolen from your doorstep or damaged while there, we do not accept liability. We reserve the right to refuse to accept orders from any customer, considerations of delivery problems may give rise to such a refusal.
+        </div>
+        <div><b>Product Availability, Out of stock & Substitutions</b><br />
+        We try to keep the products in our inventory in stock at all times. However, from time to time, due to increased demand, an item you ordered may be out of stock. In these cases, we will try to substitute the out of stock item for an item of equal value and quality. If the substituted item is a different brand, it has been offered to you for your convenience and not to save us money. You will always have the option of refusing any substitution. If an order with a substitution is left with your doorman or on your porch, you have the option of calling us to have the substituted item exchanged.
+        </div>
+        <div><b>Promotions</b><br />
+        We limit our special offers (first time customer, referral bonus and others) to one per household / per person / per address. These offers cannot be combined with any other offers. It is a responsibility of a customer to notify TOG's sales department about the promotion that should be applied to order.</div>
+        <div><b>Privacy Policy</b><br />
+        We will not rent, sell, purchase history information or give your name or credit card information to any other company, agency or individual. We will not store cardholder data on the website or hard drive . If you submit and we process a fraudulent order we will forward the transaction to the proper authorities in your area, no matter how small the transaction. At times, civil litigation will also be imposed.
+        </div>
+        <div><b>Resources</b><br />
+        TOG includes links to other sites. These are provided as a convenience to you. We do not endorse or take responsibility for any of the information found on linked sites. Linked sites are not necessarily associated with TOG.
+        </div>
+        
+	</div>
+	<!-- Inside box: END -->
+    </div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<div class="box">
+		<div class="cart_title"><h2>Your Cart</h2></div>
+		<div class="content" style="text-align:center;">
+			<a href="">Login</a>  |  <a href="">Sign up</a>
+		</div>
+	</div>
+	<div class="shoppingcart_box">
+		<a href="" class="btn_cart">VIEW CART</a>
+		<a href="" class="btn_cart">CHECKOUT</a>
+	</div>
+	<div class="box">
+		<h2>Order Schedule</h2>
+		<div class="content" style="border-bottom:solid 1px #503a1d;padding-bottom:10px;">
+			Order by Tuesday 5 pm<br />
+			Delivery this Friday/Saturday
+		</div>
+	</div>
+	<div class="box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_1.png" alt=""/>&nbsp;&nbsp;
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" />
+	</div>
+</div>
+<!-- Right column: END -->
+</com:TContent>

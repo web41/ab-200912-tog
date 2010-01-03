@@ -1,1 +1,80 @@
 <%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Why Organic</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<div class="box">
+		<h2>organic points</h2>
+	</div>
+	<div class="box">
+		<h2>newsletter</h2>
+		<div class="content">
+			Enter your email address to receive our FREE newsletter on the organic market
+		</div>
+	</div>
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+    	<h2>why organic</h2>
+        <div>Organic food is grown free of pesticides and chemical fertilizers. They are grown with natural fertilizers and pests are kept at a minimum using other methods that do not involve pesticides. They are as natural as you can get.</div>
+        
+        <div>Organic food contains higher levels of vitamin C and essential minerals such as calcium, magnesium, iron and chromium as well as powerful antioxidants. Organic foods are generally much richer in nutrients than regular foods. This is because the soil used in organic farming is generally much richer in nutrition. Organic food is known to contain 50% more nutrients, minerals and vitamins than produce that have been commercially farmed.</div>
+        
+        <div>Even though organic veggies and fruits may not look perfect, this does not mean that they have gone bad. It is normal for a fruit to have a few scars on it.</div>
+        
+        <div>Many people buy organic food simply because it tastes better than non-organic. This could be because organic fruit and vegetables tend to grow more slowly and have a lower water content, which may contribute to the fuller flavor.</div>
+        
+        <div>Going organic is also the only practical way to avoid eating genetically modified (GM) food.</div>
+        <div><b>Did you know the following?</b>
+            <ul>
+            	<li>In the rush to produce more and more crops to satisfy growing demand, producers have had to resort to using a lethal cocktail of pesticides to control disease and insect attack. Pesticides in food have been linked to many diseases which we see so many of nowadays. In fact, your body will be more resistant to disease as it will have higher levels of the essential nutrients it needs to fight off infection and diseases.</li>
+                <li>You will have more energy in your body by eating Organic food, as you will be consuming lower levels of toxins and chemicals which slow your body down.</li>
+                <li>The average non organic fruit contains more than 20 pesticides. An average apple contains over 30 pesticides, even after you have washed it. Imagine the detrimental effects it has us, not to mention babies or children. </li>
+                <li>Even our chickens are force fed with a cocktail of antibiotics and hormones, to make them grow bigger faster.></li>
+                <li>As for the salmon sold in the supermarket, some even have coloring added to them. On the other hand, when you buy wild or organic fish, all you get are healthy ones that were raised naturally, instead of one with additives. </li>
+                <li>Intensively-reared dairy cows are fed a cocktail of anti-biotics, growth promoting drugs, anti-parasite drugs and many other medicines on a daily basis, whether they have an illness or not. Therefore, the chemicals in the dairy foods such as our milk and cheeses, which our babies and children consume so much of on a daily basis, will be passed directly onto them.</li>
+            </ul>
+        </div>
+        <div><b>Why do organic foods cost more?</b>
+        	<div>Organic food will cost more than the regular variety, simply because they do cost more to grow. Also, the yield from organic farming is less so fewer fruits are produced.</div>
+            <div>However, as organic food is known to contain 50% more nutrients, minerals and vitamins than produce that have been commercially farmed, isn’t it better to eat less of that particular fruit, still get the same amount of nutrients and vitamins, whilst cutting out the chemicals and toxins from your body. If that is the case, doesn’t it make more sense to buy organic?</div>
+            <div>That is why, at The Organic Grocer, we will not only offer you the best organic brands and a wide range of organic products, but also competitive prices … so as to enable you and your family to lead the healthy organic lifestyle!  Press Order Now to select your organic groceries.</div>
+        </div>
+	</div>
+	<!-- Inside box: END -->
+    </div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<div class="box">
+		<div class="cart_title"><h2>Your Cart</h2></div>
+		<div class="content" style="text-align:center;">
+			<a href="">Login</a>  |  <a href="">Sign up</a>
+		</div>
+	</div>
+	<div class="shoppingcart_box">
+		<a href="" class="btn_cart">VIEW CART</a>
+		<a href="" class="btn_cart">CHECKOUT</a>
+	</div>
+	<div class="box">
+		<h2>Order Schedule</h2>
+		<div class="content" style="border-bottom:solid 1px #503a1d;padding-bottom:10px;">
+			Order by Tuesday 5 pm<br />
+			Delivery this Friday/Saturday
+		</div>
+	</div>
+	<div class="box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_1.png" alt=""/>&nbsp;&nbsp;
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" />
+	</div>
+</div>
+<!-- Right column: END -->
+</com:TContent>

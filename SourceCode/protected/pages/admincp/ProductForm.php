@@ -24,6 +24,7 @@ class ProductForm extends TPage
 			//$this->cboUOMSelector->DataBind();
 			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree();
 			$this->cboCatSelector->DataBind();
+			$this->populatePackageTypes();
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
@@ -58,7 +59,7 @@ class ProductForm extends TPage
 		if ($this->Request->Contains("id") && $this->Request->Contains("alias"))
 		{
 			// use Active Record to look for the specified post ID
-			$activeRecord = Prado::createComponent(self::AR)->finder()->findByproduct_idAndproduct_alias(TPropertyValue::ensureInteger($this->Request['id']), $this->Request['alias']);
+			$activeRecord = Prado::createComponent(self::AR)->withPackageTypes()->finder()->findByproduct_idAndproduct_alias(TPropertyValue::ensureInteger($this->Request['id']), $this->Request['alias']);
 			if($activeRecord === null)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
@@ -71,6 +72,18 @@ class ProductForm extends TPage
 		{
 			return Prado::createComponent(self::AR);
 		}
+	}
+	
+	private function populatePackageTypes()
+	{
+		$packageTypes = $this->getItem()->PackageTypes;
+		if (count($packageTypes)<=0)
+		{
+			$packageTypes[] = new PackageTypeRecord;
+			$this->setViewState("NewPackageTypeCount",1,0);
+		}
+		$this->rptPackageType->DataSource = $packageTypes;
+		$this->rptPackageType->DataBind();
 	}
 	
 	private function bindItem()
@@ -122,12 +135,7 @@ class ProductForm extends TPage
 		//$activeRecord->UOM = $this->cboUOMSelector->SelectedValue;
 		$activeRecord->BrandID = $this->cboBrandSelector->SelectedValue;
 		$activeRecord->MfID = $this->cboMfSelector->SelectedValue;
-		if ($activeRecord->ID>0)
-		{
-			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "product_id = '".$activeRecord->ID."'";
-			ProductCatRecord::finder()->deleteAll($criteria);
-		}
+		
 		//$activeRecord->Price = TPropertyValue::ensureFloat($this->txtPrice->Text);
 		$activeRecord->DiscountID = $this->cboDiscountSelector->SelectedValue;
 		$activeRecord->IsPublished = $this->radPublish->SelectedValue;
@@ -152,17 +160,43 @@ class ProductForm extends TPage
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
 				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Product",$activeRecord->Name);
 				$activeRecord->save();
+				if ($activeRecord->ID>0)
+				{
+					$criteria = new TActiveRecordCriteria;
+					$criteria->Condition = "product_id = :id";
+					$criteria->Parameters[":id"] = $activeRecord->ID;
+					ProductCatRecord::finder()->deleteAll($criteria);
+					PackageTypeRecord::finder()->deleteAll($criteria);
+				}
 				foreach($this->cboCatSelector->SelectedValues as $catID)
 				{
-					$record = new ProductCatRecord(array("ProductID"=>$activeRecord->ID,"CatID"=>$catID));
-					$record->save();
+					$productCat = new ProductCatRecord(array("ProductID"=>$activeRecord->ID,"CatID"=>$catID));
+					$productCat->save();
+				}
+				foreach($this->rptPackageType->Items as $item)
+				{
+					$price = TPropertyValue::ensureFloat($item->txtPrice->Text);
+					$unit = TPropertyValue::ensureInteger($item->txtUnit->Text);
+					$uom = $item->cboUOMSelector->SelectedValue;
+					$stock = TPropertyValue::ensureInteger($item->txtInStock->Text);
+					$packageType = new PackageTypeRecord;
+					if ($price>0&&$unit>0&&$stock>0)
+					{
+						$packageType->ProductID = $activeRecord->ID;
+						$packageType->Price = $price;
+						$packageType->Unit = $unit;
+						$packageType->UOM = $uom;
+						$packageType->InStock = $stock;
+						$packageType->save();
+					}
+					//var_dump($uom);
 				}
 				$this->Response->redirect($this->Service->ConstructUrl("admincp.ProductManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Product",$activeRecord->Name);
+				$this->Notice->Text = $e;//$this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Product",$activeRecord->Name);
 			}
 		}
 	}
@@ -175,6 +209,14 @@ class ProductForm extends TPage
 			try
 			{
 				$activeRecord->save();
+				if ($activeRecord->ID>0)
+				{
+					$criteria = new TActiveRecordCriteria;
+					$criteria->Condition = "product_id = :id";
+					$criteria->Parameters[":id"] = $activeRecord->ID;
+					ProductCatRecord::finder()->deleteAll($criteria);
+					PackageTypeRecord::finder()->deleteAll($criteria);
+				}
 				foreach($this->cboCatSelector->SelectedValues as $catID)
 				{
 					$record = new ProductCatRecord(array("ProductID"=>$activeRecord->ID,"CatID"=>$catID));
@@ -188,6 +230,23 @@ class ProductForm extends TPage
 				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Product",$activeRecord->Name);
 			}
 		}
+	}
+	
+	protected function btnAddPackage_Clicked($sender, $param)
+	{
+		$packages = array();
+		$count = $this->getViewState('NewPackageTypeCount',0)+1;
+		$this->setViewState('NewPackageTypeCount',$count,0);
+		if ($this->Item->ID>0)
+		{
+			$packages = $this->Item->PackageTypes;
+		}
+		for($i=1;$i<=$count;$i++)
+		{
+			$packages[] = new PackageTypeRecord;
+		}
+		$this->rptPackageType->DataSource = $packages;
+		$this->rptPackageType->DataBind();
 	}
 
 	protected function uniqueCheck_ServerValidated($sender, $param)

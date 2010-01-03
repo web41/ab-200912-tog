@@ -34,7 +34,7 @@
                                             FocusOnError="True"/>
 										<com:TCustomValidator ID="val2"
 											CssClass="error"
-											ControlToValidate="txtName"
+											ControlToValidate="txtSKU"
 											OnServerValidate="uniqueCheck2_ServerValidated"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Product SKU') %>"
 											Display="Dynamic"
@@ -204,20 +204,21 @@
 									</div>
 								</td>
 							</tr>
-                            <tr>
-                            	<td class="field" colspan="2">
-                                	<div class="text">Brief Description</div>
-                                    <div class="control">
-                                        cho nay tao muon no nhieu item xuong dong xuong dong, thi lam sao
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                            	<td class="field" colspan="2">
-                                	<div class="text">Brief Description</div>
-                                    <div class="control">
-                                        <com:TTextBox ID="txtBrief" TextMode="MultiLine" CssClass="textbox" Width="630px" />
-                                        <br />cho nay may set height no bi be layout
+							<tr>
+								<td class="field" colspan="2">
+									<div class="text">Package Type</div>
+									<div class="control">
+										<com:TRepeater ID="rptPackageType" ItemRenderer="Application.pages.admincp.PackageTypeTemplate" />
+										<com:TButton ID="btnAddPackage" OnClick="btnAddPackage_Clicked" CausesValidation="false" CssClass="btn_smallreset" />
+										<div class="notice"><%= $this->Application->getModule('message')->translate('MAKE_SURE_FILL_DATA') %></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field" colspan="2">
+									<div class="text">Brief Description</div>
+									<div class="control">
+										<com:TTextBox ID="txtBrief" TextMode="MultiLine" CssClass="textbox" Width="630px" Height="50px"/>
                                     </div>
                                 </td>
                             </tr>

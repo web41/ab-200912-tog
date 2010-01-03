@@ -206,10 +206,10 @@
 							</tr>
 							<tr>
 								<td class="field" colspan="2">
-									<div class="text">Package Type</div>
+									<div class="text">Properties</div>
 									<div class="control">
-										<com:TRepeater ID="rptPackageType" ItemRenderer="Application.pages.admincp.PackageTypeTemplate" />
-										<com:TButton ID="btnAddPackage" OnClick="btnAddPackage_Clicked" CausesValidation="false" CssClass="btn_smallreset" />
+										<com:TRepeater ID="rptProperty" ItemRenderer="Application.pages.admincp.PropertyTemplate" />
+										<com:TButton ID="btnAddProperty" OnClick="btnAddProperty_Clicked" CausesValidation="false" CssClass="btn_smallreset" />
 										<div class="notice"><%= $this->Application->getModule('message')->translate('MAKE_SURE_FILL_DATA') %></div>
 									</div>
 								</td>

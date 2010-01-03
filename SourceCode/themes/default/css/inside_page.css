@@ -9,7 +9,12 @@
 	.main_col .inside_box table .left{text-align:right;padding-right:20px;width:140px;text-transform:capitalize;}
 	.main_col .inside_box table .right .textbox{width:180px;}
 	
-	.main_col .inside_box div{margin-bottom:15px;}
+	.main_col .inside_box div{margin-bottom:15px;line-height:18px;}
+	
+	.main_col .inside_box div ol{list-style-type:upper-roman;}
+	.main_col .inside_box div ol ol{list-style-type:decimal;margin-bottom:10px;font-weight:bold;}
+	.main_col .inside_box div ol ol ul{list-style-type:lower-latin;margin-bottom:10px;font-weight:normal;}
+	.main_col .inside_box h2{text-transform:capitalize;font-weight:normal;font-size:20px;margin-bottom:10px;color:#7aa825;}
 	
 /*Main column: END*/
 #container .main_content .main_col .error{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#ffcecf;color:#655254;padding:5px 10px 5px 10px;}

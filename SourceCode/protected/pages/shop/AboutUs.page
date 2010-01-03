@@ -18,11 +18,14 @@
 
 <!-- Main column -->
 <div class="main_col">
+	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<div>asljf askfl klfd</div>
+    	<h2>about us</h2>
+		<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque faucibus viverra lectus et commodo. Vestibulum volutpat purus vitae est adipiscing eu suscipit leo aliquam. Phasellus tellus enim, viverra id commodo ut, dictum et est. Nullam feugiat adipiscing velit, sed bibendum risus pretium a. Sed dui urna, mollis ac tempus et, bibendum et leo. Sed pellentesque scelerisque est, a adipiscing arcu auctor sed. Nam luctus luctus odio id condimentum. Nullam tortor neque, tristique in elementum eget, lobortis nec sapien. Curabitur augue purus, venenatis quis bibendum in, posuere a tellus. Nam eget lacus ante. Pellentesque quis odio magna, quis porta augue. Suspendisse risus velit, dignissim nec imperdiet sed, volutpat ac dolor. Curabitur nec arcu faucibus eros imperdiet semper ut at mauris. Sed sapien urna, lacinia eu semper ut, commodo in quam. Morbi nibh enim, blandit at adipiscing vitae, mattis sed augue. Pellentesque congue venenatis magna, vitae eleifend nisl sollicitudin non. Mauris ultrices neque eros, id interdum leo. Maecenas adipiscing rhoncus blandit. </div>
 	</div>
 	<!-- Inside box: END -->
+    </div>
 </div>
 <!-- Main column: END -->
 

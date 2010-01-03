@@ -7,7 +7,7 @@
 
 Dear <com:TLabel ID="SENDER_USERNAME"/>,<br /><br />
 
-We are pleased to advise that you have been added as a Registered User to the BestSportsJersey website. <br />
+We are pleased to advise that you have been added as a Registered User to The Organic Grocer website. <br />
 Please read the following information carefully and be sure to save this message in a safe location for future reference.<br /><br />
 
 Portal Website Address: <a href="http://www.theorganicgrocer.com.sg">http://www.theorganicgrocer.com.sg</a> <br />

@@ -106,7 +106,9 @@ class ProductRecord extends TActiveRecord
 	{
 		if ($this->ID <= 0)
 		{
-			$this->Ordering = count(self::finder()->findAll())+1;
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "product_id <> 0";
+			$this->Ordering = self::finder()->count($criteria)+1;
 			$this->CreateDate = time();
 		}
 		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Name);

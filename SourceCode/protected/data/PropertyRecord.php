@@ -10,7 +10,7 @@ class PropertyRecord extends TActiveRecord
 	public $ProductID;
 	public $Name;
 	public $Price;
-	public $InStock;
+	public $InStock=99;
 	
 	public static $COLUMN_MAPPING=array
 	(

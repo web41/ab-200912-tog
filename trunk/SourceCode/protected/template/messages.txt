@@ -23,3 +23,5 @@ ITEM_ACTION_FAILED			= {0} can not be {1}. Pleasse contact administrator.
 USER_LOGIN_FAILED			= Email and/or Password is invalid. Please try again.
 PASSWORD_NOT_MATCH			= Confirm password is not matched.
 REGISTER_FAILED				= Register unsuccessful! Please try again or contact administrator.
+UNKNOWN_ERROR				= There is an unknown error found when processing the data. Please contact administrator.
+MAKE_SURE_FILL_DATA			= Please make sure all fields in each row must be filled. Row will be delete if one of fields is left blank.

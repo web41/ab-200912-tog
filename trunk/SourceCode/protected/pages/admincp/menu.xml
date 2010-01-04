@@ -32,4 +32,8 @@
 		<menuNode ServiceParameter="admincp.PaymentMethodForm" Title="Add Payment Method" />
 		<menuNode ServiceParameter="admincp.PaymentMethodManager" Title="Payment Method List" />
 	</menuNode>
+	<menuNode ServiceParameter="admincp.UserManager" Title="User">
+		<menuNode ServiceParameter="admincp.UserForm" Title="Add User" />
+		<menuNode ServiceParameter="admincp.UserManager" Title="User List" />
+	</menuNode>
 </menu>

@@ -3,11 +3,18 @@
 #container .main_content .left_col{float:left;width:178px;height:auto;}
 #container .main_content .right_col{float:left;width:178px;height:auto;}
 
-.left_col ul{width:178px;height:auto;margin:0;padding:0;list-style-type:none;text-align:left;margin:0 0 20px 0;background:#e2e2bc url(../images/left_col_top.png) no-repeat;}
-	.left_col ul li{width:auto;height:auto;margin:0;padding:0;border-bottom:solid 1px #fff;}
-	.left_col ul li a{font:normal 14px Arial;text-transform:capitalize;display:block;padding:10px 0 10px 20px;color:#503a1d;}
-	.left_col ul li a:hover{color:#8f6936;background:#eaeac4}
-	.left_col ul li.title{background:#fff url(../images/leftmn_title.png) no-repeat top right;color:#749f24;padding:10px 0 10px 20px;font-size:14px;}
+.left_col #left_category{width:178px;height:auto;margin:0;padding:0;list-style-type:none;text-align:left;margin:0 0 20px 0;background:#e2e2bc url(../images/left_col_top.png) no-repeat;}
+	#left_category li{width:auto;height:auto;margin:0;padding:0;border-bottom:solid 1px #fff;}
+	#left_category li a{font:normal 14px Arial;text-transform:capitalize;display:block;padding:10px 0 10px 20px;color:#503a1d;}
+	#left_category li a:hover{color:#8f6936;background:#eaeac4}
+	
+	#left_category li.title{background:#fff url(../images/leftmn_title.png) no-repeat top right;color:#749f24;padding:10px 0 10px 20px;font-size:14px;}
+	
+	#left_category li ul{margin:-37px 0 0 178px;padding:0;position:absolute;visibility:hidden;border-top:1px solid white;border:solid 1px #fff;background:#e2e2bc;width:178px;list-style-type:none;}
+		#left_category li ul li{width:auto;height:auto;margin:0;padding:0;border-bottom:solid 1px #fff;}
+			#left_category li ul li a, #left_category li ul li a:visited{font:normal 13px Arial;text-transform:capitalize;display:block;padding:10px 0 10px 20px;color:#503a1d;}
+			#left_category li ul li a:hover{color:#8f6936;background:#eaeac4;cursor:pointer;}
+			#left_category li ul li a.active{font:bold 13px Arial;text-transform:capitalize;display:block;padding:10px 0 10px 20px;color:#749f24;background:#eaeac4;}
 
 .left_col .box, .right_col .box{float:left;width:178px;height:auto;margin:0 0 20px 0;}
 	.box h2{background:#e2e2bc url(../images/left_col_top.png) no-repeat;width:158px;text-align:left;float:left;padding:10px 0 10px 20px;font-size:14px;}

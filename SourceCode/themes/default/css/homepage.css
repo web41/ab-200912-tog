@@ -39,7 +39,9 @@ a, input {outline:none;}
 		#slideshow .ss_content div{margin-bottom:10px;font-size:18px;color:#2c743b;z-index:100;}
 		#slideshow .ss_content .btn_morewhyorganic{display:block;height:52px;width:220px;background:url(../images/ss_btn_morewhyorganic.png) no-repeat;}
 		#slideshow .ss_content .btn_morewhyorganic:hover{background-position:center -52px;}
+		#slideshow .ss_content .btn_order{color:#fff;}
+		#slideshow .ss_content .btn_order:hover{color:#f2f2f2;}
 	#slideshow .img{float:left;border:solid 2px #2c743b;padding:1px;margin:5px 10px 0 0;}
-#slideshow_container .navigation{position:absolute;top:0;right:0;margin:25px 15px 0 0;z-index:101;}
-	#slideshow_container .navigation a{display:block;margin:0 4px 0 4px;background:url(../images/ss_btn_link.png) no-repeat;height:19px;width:24px;text-decoration:underline;text-align:center;color:#fff;padding-top:5px;float:left;font-weight:bold;font-size:11px;}
+#slideshow_container .navigation{position:absolute;bottom:0;right:0;margin:0 10px 5px 0;z-index:101;}
+	#slideshow_container .navigation a{display:block;margin:0 4px 0 4px;background:url(../images/ss_btn_link.png) no-repeat;height:20px;width:24px;text-decoration:underline;text-align:center;color:#fff;padding-top:4px;float:left;font-weight:bold;font-size:11px;}
 	#slideshow_container .navigation a:hover{background-position:center -24px;color:#f2f2f2;}

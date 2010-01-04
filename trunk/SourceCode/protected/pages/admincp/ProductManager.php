@@ -119,9 +119,21 @@ class ProductManager extends TPage
 		if (!$this->IsPostBack)
 		{
 			// fill parent selector combobox
-			//$this->cboParentSelector->DataSource = Prado::createComponent(self::AR)->getAllParent();
-			//$this->cboParentSelector->DataBind();
-			//$this->cboParentSelector->SelectedValue = $this->ParentID;
+			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree();
+			$this->cboCatSelector->DataBind();
+			$this->cboCatSelector->SelectedValue = $this->CatID;
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "brand_id > 0";
+			$criteria->OrdersBy["brand_name"] = "asc";
+			$this->cboBrandSelector->DataSource = BrandRecord::finder()->findAll($criteria);
+			$this->cboBrandSelector->DataBind();
+			$this->cboBrandSelector->SelectedValue = $this->BrandID;
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "mf_id > 0";
+			$criteria->OrdersBy["mf_name"] = "asc";
+			$this->cboMfSelector->DataSource = ManufacturerRecord::finder()->findAll($criteria);
+			$this->cboMfSelector->DataBind();
+			$this->cboMfSelector->SelectedValue = $this->MfID;
 			$this->populateData();
 			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
 			{
@@ -150,13 +162,13 @@ class ProductManager extends TPage
 		$criteria->OrdersBy[$this->Sortable[$this->SortBy]] = $this->SortType;
 		// addtional condition here
 		// this part will be hard-code on each page
-		$criteria->Condition = "product_id in (select distinct product_id from tbl_product p ";
+		$criteria->Condition = "product_id in (select distinct p.product_id from tbl_product p ";
 		if ($this->CatID>0)
 		{
 			$criteria->Condition .= " left join tbl_product_cat_xref pcx on p.product_id = pcx.product_id 
 									 left join tbl_category c on pcx.cat_id = c.cat_id ";
 		}
-		$criteria->Condition .= " where product_id > 0 ";
+		$criteria->Condition .= " where p.product_id > 0 ";
 		if (strlen($this->SearchText)>0)
 		{
 			$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));
@@ -450,6 +462,21 @@ class ProductManager extends TPage
 	protected function btnSearchReset_Clicked($sender, $param)
 	{
 		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$this->BrandID,$this->MfID,$this->CatID));
+	}
+	
+	protected function cboMfSelector_SelectedIndexChanged($sender, $param)
+	{
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$this->BrandID,$sender->SelectedValue,$this->CatID));
+	}
+	
+	protected function cboBrandSelector_SelectedIndexChanged($sender, $param)
+	{
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$sender->SelectedValue,$this->MfID,$this->CatID));
+	}
+	
+	protected function cboCatSelector_SelectedIndexChanged($sender, $param)
+	{
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$this->BrandID,$this->MfID,$sender->SelectedValue));
 	}
 }
 

@@ -37,14 +37,14 @@ class Register extends TPage
 				$receiver->Address = $this->txtEmail->SafeText;
 				$receiver->Name = $this->txtEmail->SafeText;
 				$email->getEmailAddresses()->add($receiver);
-				//$emailer->send($email);
+				$emailer->send($email);
 				$this->Application->getModule("auth")->login($this->txtEmail->SafeText,$this->txtPassword->SafeText);
 				$this->Response->redirect($this->Service->ConstructUrl("shop.Index"));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = UserNoticeType::Error;
-				$this->Notice->Text = $e;//$this->Application->getModule('message')->translate('REGISTER_FAILED');
+				$this->Notice->Text = $this->Application->getModule('message')->translate('REGISTER_FAILED');
 			}
 		}
 	}

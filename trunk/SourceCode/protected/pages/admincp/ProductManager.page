@@ -58,6 +58,13 @@
 								PromptValue="0"
 								DataTextField="Name"
 								DataValueField="ID" />
+							<com:TDropDownList ID="cboCatSelector"
+								AutoPostBack="true"
+								OnSelectedIndexChanged="cboCatSelector_SelectedIndexChanged"
+								PromptText="All"
+								PromptValue="0"
+								DataTextField="Name"
+								DataValueField="ID" />
 						</div>
 					</div></div></div>
 					<div class="content nopadding">

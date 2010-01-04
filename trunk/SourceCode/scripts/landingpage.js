@@ -4,6 +4,6 @@ j(function() {
 		fx:     'fade', 
 		speed:   800, 
 		timeout: 8000,
-		pager:  '.navigation' 
+		pager:  '.navigation'
 	});
 });

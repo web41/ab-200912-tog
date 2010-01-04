@@ -166,6 +166,8 @@
 <!-- Main column: END -->
 
 <!-- Right column -->
-<com:Application.shared.RightColumn />
+<div class="right_col">
+	<com:Application.shared.RightColumn />
+</div>
 <!-- Right column: END -->
 </com:TContent>

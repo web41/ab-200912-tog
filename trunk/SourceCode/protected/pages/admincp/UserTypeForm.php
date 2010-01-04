@@ -1,8 +1,9 @@
 <?php
 
-class ManufacturerForm extends TPage
+class UserTypeForm extends TPage
 {
-	const AR = "ManufacturerRecord";
+	const AR = "UserTypeRecord";
+	const NO_IMAGE = "noimage.png";
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
@@ -12,16 +13,13 @@ class ManufacturerForm extends TPage
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
 				// Populates the input controls with the existing post data
-				$this->lblHeader->Text = "Update supplier: ".$activeRecord->Name;
+				$this->lblHeader->Text = "Update user type: ".$activeRecord->Name;
 				$this->txtName->Text = $activeRecord->Name;
 				$this->txtAlias->Text = $activeRecord->Alias;
-				$this->txtEmail->Text = $activeRecord->Email;
-				$this->txtUrl->Text = $activeRecord->Url;
-				$this->txtDesc->Text = $activeRecord->Description;
 			}
 			else
 			{
-				$this->lblHeader->Text = "Add new supplier";
+				$this->lblHeader->Text = "Add new user type";
 			}
 		}
 	}
@@ -31,11 +29,11 @@ class ManufacturerForm extends TPage
 		if ($this->Request->Contains("id") && $this->Request->Contains("alias"))
 		{
 			// use Active Record to look for the specified post ID
-			$activeRecord = Prado::createComponent(self::AR)->finder()->findBymf_idAndmf_alias(TPropertyValue::ensureInteger($this->Request['id']), $this->Request['alias']);
+			$activeRecord = Prado::createComponent(self::AR)->finder()->findByuser_type_idAnduser_type_alias(TPropertyValue::ensureInteger($this->Request['id']), $this->Request['alias']);
 			if($activeRecord === null)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","supplier");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","user type");
 				$this->mainBox->Visible = false;
 			}
 			return $activeRecord;
@@ -45,16 +43,14 @@ class ManufacturerForm extends TPage
 			return Prado::createComponent(self::AR);
 		}
 	}
-	
+
 	private function bindItem()
 	{
 		$activeRecord = $this->getItem();
+
 		$activeRecord->Name = $this->txtName->SafeText;
 		$activeRecord->Alias = $this->txtAlias->SafeText;
-		$activeRecord->Email = $this->txtEmail->SafeText;
-		$activeRecord->Url = $this->txtUrl->SafeText;
-		$activeRecord->Description = $this->txtDesc->Text;
-		
+
 		return $activeRecord;
 	}
 
@@ -66,18 +62,18 @@ class ManufacturerForm extends TPage
 			try
 			{
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
-				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Supplier",$activeRecord->Name);
+				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"User type",$activeRecord->Name);
 				$activeRecord->save();
-				$this->Response->redirect($this->Service->ConstructUrl("admincp.ManufacturerManager",array("action"=>$action, "msg"=>$msg)));
+				$this->Response->redirect($this->Service->ConstructUrl("admincp.UserTypeManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Supplier",$activeRecord->Name);
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"User type",$activeRecord->Name);
 			}
 		}
 	}
-	
+
 	protected function btnAddMore_Clicked($sender, $param)
 	{
 		if ($this->IsValid)
@@ -86,12 +82,12 @@ class ManufacturerForm extends TPage
 			try
 			{
 				$activeRecord->save();
-				$this->Response->redirect($this->Service->ConstructUrl("admincp.ManufacturerForm"));
+				$this->Response->redirect($this->Service->ConstructUrl("admincp.UserTypeForm"));
 			}
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Supplier",$activeRecord->Name);
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"User type",$activeRecord->Name);
 			}
 		}
 	}
@@ -101,10 +97,10 @@ class ManufacturerForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "mf_name = :name";
+			$criteria->Condition = "user_type_name = :name";
 			$criteria->Parameters[":name"] = $param->Value;
 			$activeRecord = $this->getItem();
-			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and mf_id <> '".$activeRecord->ID."'";
+			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and user_type_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;
 		}
 	}

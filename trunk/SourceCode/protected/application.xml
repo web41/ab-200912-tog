@@ -96,6 +96,10 @@
 			<url ServiceParameter="admincp.UserManager" pattern="admincp/user/manager"/>
 			<url ServiceParameter="admincp.UserForm" pattern="admincp/user/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.UserForm" pattern="admincp/user/create-new"/>
+			<url ServiceParameter="admincp.UserTypeManager" pattern="admincp/user-type"/>
+			<url ServiceParameter="admincp.UserTypeManager" pattern="admincp/user-type/manager"/>
+			<url ServiceParameter="admincp.UserTypeForm" pattern="admincp/user-type/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
+			<url ServiceParameter="admincp.UserTypeForm" pattern="admincp/user-type/create-new"/>
 		</module>
 		<!-- error module -->
 		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />

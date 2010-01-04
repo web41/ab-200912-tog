@@ -26,5 +26,11 @@ class UserTypeRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	public function save()
+	{
+		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Name);
+		parent::save();
+	}
 }
 ?>

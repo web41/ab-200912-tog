@@ -1,6 +1,6 @@
 <%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
 <com:TContent ID="title">
-	Administration :: Shipping Method Manager
+	Administration :: User Type Manager
 </com:TContent>
 <com:TContent ID="content">
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
@@ -15,13 +15,13 @@
 				<div class="general_controlbox">
 					<div class="top"><div><div><!-- --></div></div></div>
 					<div class="center">
-						<com:TButton ID="btnDelete" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','shipping method') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','shipping method') %>'); return false; }" />
+						<com:TButton ID="btnDelete" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','user type') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','user type') %>'); return false; }" />
 						<com:TButton ID="btnUncheck" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
 						<com:TButton ID="btnCheck" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
-						<com:TButton ID="btnPublish" CssClass="btn_publish" OnClick="btnPublish_Clicked" />
-						<com:TButton ID="btnUnpublish" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" />
-						<com:TButton ID="btnEdit" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','shipping method') %>'); return false; }" />
-						<com:TButton ID="btnAdd" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.ShippingMethodForm') %>'" />
+						<com:TButton ID="btnPublish" CssClass="btn_publish" OnClick="btnPublish_Clicked" Visible="fasle" />
+						<com:TButton ID="btnUnpublish" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" Visible="fasle" />
+						<com:TButton ID="btnEdit" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','user type') %>'); return false; }" />
+						<com:TButton ID="btnAdd" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.UserTypeForm') %>'" />
 						<h2>Action</h2>
 					</div>
 					<div class="bottom"><div><div><!-- --></div></div></div>
@@ -31,7 +31,7 @@
 				<!-- Main box -->
 				<div class="main_box">
 					<div class="title"><div><div>
-						<h2>Shipping Method List</h2>
+						<h2>User Type List</h2>
 						<div style="float:right;height:26px;padding:7px 5px 0 0;">
 							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
 							<com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
@@ -61,22 +61,7 @@
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.ShippingMethodForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="10%">
-								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Price
-										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
-									</a>
-								</prop:HeaderTemplate>
-								<prop:ItemTemplate>
-									<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Parent->Data->Price %>" />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderText="Published" HeaderStyle.Width="7%">
-								<prop:ItemTemplate>
-									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Parent->Data->IsPublished) ? 'tick' : 'stop' %>.png" CommandName="publish" />
+									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.UserTypeForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">
@@ -107,13 +92,13 @@
 				<div class="general_controlbox">
 					<div class="top"><div><div><!-- --></div></div></div>
 					<div class="center">
-						<com:TButton ID="btnDelete2" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','shipping method') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','shipping method') %>'); return false; }" />
+						<com:TButton ID="btnDelete2" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','user type') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','user type') %>'); return false; }" />
 						<com:TButton ID="btnUncheck2" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
 						<com:TButton ID="btnCheck2" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
-						<com:TButton ID="btnPublish2" CssClass="btn_publish" OnClick="btnPublish_Clicked" />
-						<com:TButton ID="btnUnpublish2" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" />
-						<com:TButton ID="btnEdit2" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','shipping method') %>'); return false; }" />
-						<com:TButton ID="btnAdd2" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.ShippingMethodForm') %>'" />
+						<com:TButton ID="btnPublish2" CssClass="btn_publish" OnClick="btnPublish_Clicked" Visible="fasle" />
+						<com:TButton ID="btnUnpublish2" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" Visible="fasle" />
+						<com:TButton ID="btnEdit2" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','user type') %>'); return false; }" />
+						<com:TButton ID="btnAdd2" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.UserTypeForm') %>'" />
 						<h2>Action</h2>
 					</div>
 					<div class="bottom"><div><div><!-- --></div></div></div>

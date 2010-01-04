@@ -1,16 +1,15 @@
 <?php
 
-class UserManager extends TPage
+class UserTypeManager extends TPage
 {
 	private $_maxPage = 1;
 	private $_currentPage = 1;
 	private $_sortBy = "";
 	private $_sortType = "";
 	private $_searchText = "";
-	private $_typeID = 0;
-	private $_sortable = array("user_id","user_email","user_status","last_visit_date","c_date","user_type_id");
-	private $_queryParams = array("p","st","sb","parent","q");
-	const AR = "UserRecord";
+	private $_sortable = array("user_type_id","user_type_name");
+	private $_queryParams = array("p","st","sb","q");
+	const AR = "UserTypeRecord";
 
 	public function getSortBy()
 	{
@@ -72,21 +71,6 @@ class UserManager extends TPage
 		$this->_searchText = $value;
 	}
 
-	public function getTypeID()
-	{
-		return $this->_typeID;
-	}
-
-	public function setTypeID($value)
-	{
-		$this->_typeID = TPropertyValue::ensureInteger($value);
-	}
-	
-	public function getUserStatus()
-	{
-		return TPropertyValue::ensureArray($this->Application->Parameters["USER_STATUS"]);
-	}
-
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
@@ -96,16 +80,8 @@ class UserManager extends TPage
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 1;
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
-		$this->TypeID = ($this->Request->contains('t')) ? TPropertyValue::ensureInteger($this->Request['t']) : 0;
 		if (!$this->IsPostBack)
 		{
-			// fill parent selector combobox
-			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "user_type_id > 0";
-			$criteria->OrdersBy["user_type_name"] = "asc";
-			$this->cboTypeSelector->DataSource = UserTypeRecord::finder()->findAll($criteria);
-			$this->cboTypeSelector->DataBind();
-			$this->cboTypeSelector->SelectedValue = $this->TypeID;
 			$this->populateData();
 			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
 			{
@@ -134,20 +110,16 @@ class UserManager extends TPage
 		$criteria->OrdersBy[$this->Sortable[$this->SortBy]] = $this->SortType;
 		// addtional condition here
 		// this part will be hard-code on each page
-		$criteria->Condition = "user_id in (select distinct user_id from tbl_user where user_id > 0 ";
+		$criteria->Condition = "user_type_id in (select distinct user_type_id from tbl_user_type where user_type_id > 0 ";
 		if (strlen($this->SearchText)>0)
 		{
 			$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." user_id like '%".$searchArray[$index]."%' or user_email like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." user_type_id like '%".$searchArray[$index]."%' or user_type_name like '%".$searchArray[$index]."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
-		}
-		if ($this->TypeID>0)
-		{
-			$criteria->Condition .= " and (user_type_id = '".$this->TypeID."') ";
 		}
 		// -- 
 		$criteria->Condition .= ")";
@@ -169,11 +141,11 @@ class UserManager extends TPage
 		if (count($items) <= 0)
 		{
 			$this->Notice->Type = AdminNoticeType::Information;
-			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"user");
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"user type");
 		}
 	}
 
-	public function populateSortUrl($sortBy, $sortType, $search="", $type=0, $resetPage=true)
+	public function populateSortUrl($sortBy, $sortType, $search="", $resetPage=true)
 	{
 		$params = $this->Request->toArray();
 		foreach($params as $key=>$value)
@@ -184,8 +156,6 @@ class UserManager extends TPage
 		$serviceParameter = $this->Request->ServiceParameter;
 		if (strlen($search)>0) $params['q'] = $search;
 		else if (isset($params['q'])) unset($params['q']);
-		if ($type>0) $params['t'] = $type;
-		else if (isset($params['t'])) unset($params['t']);
 		if ($resetPage)	$params['p'] = 1;
 		$params['sb'] = $sortBy;
 		$params['st'] = $sortType;
@@ -199,7 +169,7 @@ class UserManager extends TPage
 		{
 			if ($param->Item->Data)
 			{
-				$param->Item->colDeleteButton->Button->Attributes->onclick = 'if(!confirm("'.$this->Application->getModule("message")->translate("DELETE_CONFIRM","user",$param->Item->Data->Email).'")) return false;';
+				$param->Item->colDeleteButton->Button->Attributes->onclick = 'if(!confirm("'.$this->Application->getModule("message")->translate("DELETE_CONFIRM","user type",$param->Item->Data->Name).'")) return false;';
 			}
 		}
 	}
@@ -217,18 +187,18 @@ class UserManager extends TPage
 						$activeRecord->delete();
 						//var_dump();
 						$this->Notice->Type = AdminNoticeType::Information;
-						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_SUCCESS","User",$activeRecord->Email);
+						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_SUCCESS","User type",$activeRecord->Name);
 					}
 					catch(TException $e)
 					{
 						$this->Notice->Type = AdminNoticeType::Error;
-						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_FAILED","User",$activeRecord->Email);
+						$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_FAILED","User type",$activeRecord->Name);
 					}
 				}
 				else
 				{
 					$this->Notice->Type = AdminNoticeType::Error;
-					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","user");
+					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","user type");
 				}
 				break;
 			default:
@@ -252,12 +222,12 @@ class UserManager extends TPage
 				Prado::createComponent(self::AR)->finder()->deleteAllByPks($items);
 				//var_dump(implode(",",$items));
 				$this->Notice->Type = AdminNoticeType::Information;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_SUCCESS","user");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_SUCCESS","user type");
 			}
 			catch (TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_FAILED","user");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("DELETE_ALL_FAILED","user type");
 			}
 			$this->populateData();
 		}
@@ -272,13 +242,13 @@ class UserManager extends TPage
 					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					if ($activeRecord)
 					{	
-						$this->Response->redirect($this->Service->ConstructUrl("admincp.UserForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Email)));
+						$this->Response->redirect($this->Service->ConstructUrl("admincp.UserTypeForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias)));
 						return;
 					}
 					else
 					{
 						$this->Notice->Type = AdminNoticeType::Error;
-						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","user");
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","user type");
 					}
 				}
 			}
@@ -289,18 +259,13 @@ class UserManager extends TPage
 	{
 		if ($this->IsValid)
 		{
-			$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,THttpUtility::htmlEncode($this->txtSearchText->SafeText),$this->TypeID));
+			$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,THttpUtility::htmlEncode($this->txtSearchText->SafeText)));
 		}
 	}
 
 	protected function btnSearchReset_Clicked($sender, $param)
 	{
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',0));
-	}
-
-	protected function cboTypeSelector_SelectedIndexChanged($sender, $param)
-	{
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$sender->SelectedValue));
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,''));
 	}
 }
 

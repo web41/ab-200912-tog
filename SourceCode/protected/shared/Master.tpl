@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/jquery.js"></script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/a.m/a.m.js"></script>
+    
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/calendar/jquery.calendar.js"></script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/homepage.js"></script>
 </com:THead>

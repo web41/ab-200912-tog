@@ -1,9 +1,3 @@
-<div class="box">
-	<div class="cart_title"><h2>Your Cart</h2></div>
-	<div class="content" style="text-align:center;">
-		<a href="<%= $this->Service->ConstructUrl("shop.account.Login") %>">Login</a> | <a href="<%= $this->Service->ConstructUrl("shop.account.Register") %>">Sign up</a> | <com:TLinkButton Text="Logout" OnClick="btnLogout_Clicked" CausesValidation="false"/>
-	</div>
-</div>
 <div class="shoppingcart_box">
 	<a href="<%= $this->Service->ConstructUrl("shop.cart.Index") %>" class="btn_cart">VIEW CART</a>
 	<a href="<%= $this->Service->ConstructUrl("shop.checkout.Index") %>" class="btn_cart">CHECKOUT</a>

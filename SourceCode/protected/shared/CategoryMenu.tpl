@@ -6,11 +6,11 @@
 	<li class="title">Shop by products</li>
 	<com:TRepeater ID="rptCategoryMenu" OnItemCreated="rptCategoryMenu_ItemCreated">
 		<prop:ItemTemplate>
-			<li><a href="<%= $this->Service->ConstructUrl('shop.Index',array('id'=>$this->Data->ID,'alias'=>$this->Data->Alias)) %>" <%= $this->Request["id"]==$this->Data->ID?"class='active'":"" %>><%= $this->Data->Name %></a>
+			<li><a href="<%# $this->Data ? $this->Service->ConstructUrl('shop.Index',array('id'=>$this->Data->ID,'alias'=>$this->Data->Alias)) : "" %>" <%# $this->Data ? ($this->Request["id"]==$this->Data->ID?"class='active'":"") : "" %>><%= $this->Data ? $this->Data->Name : "" %></a>
 				<com:TRepeater ID="ChildCategory">
 					<prop:HeaderTemplate><ul></prop:HeaderTemplate>
 					<prop:ItemTemplate>
-						<li><a href="<%= $this->Service->ConstructUrl('shop.Index',array('id'=>$this->Data->Parent->ID,'alias'=>$this->Data->Parent->Alias,'subid'=>$this->Data->ID,'subalias'=>$this->Data->Alias)) %>" <%= $this->Request["subid"]==$this->Data->ID?"class='active'":"" %>><%= $this->Data->Name %></a></li>
+						<li><a href="<%# $this->Data ? $this->Service->ConstructUrl('shop.Index',array('id'=>$this->Data->Parent->ID,'alias'=>$this->Data->Parent->Alias,'subid'=>$this->Data->ID,'subalias'=>$this->Data->Alias)) : "" %>" <%= $this->Data ? ($this->Request["subid"]==$this->Data->ID?"class='active'":"") : "" %>><%= $this->Data ? $this->Data->Name : "" %></a></li>
 					</prop:ItemTemplate>
 					<prop:FooterTemplate></ul></prop:FooterTemplate>
 				</com:TRepeater>

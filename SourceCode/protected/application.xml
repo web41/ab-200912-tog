@@ -31,7 +31,8 @@
 		<module id="auth" class="Application.common.TOGAuthManager" UserManager="users" LoginPage="shop.account.Login" AllowAutoLogin="True" />
 		<!-- security module -->
 		<module id="security" class="TSecurityManager" ValidationKey="TOG#AsiaBlaze!!" Validation="MD5" EncryptionKey="TOG#AsiaBlaze!!" />
-		
+		<!-- globalization module -->
+		<module id="globalization" class="TGlobalization" Charset="utf-8" Culture="en-US" />
 		<module id="db" class="System.Data.TDataSourceConfig">
 			<database ConnectionString="mysql:host=localhost;dbname=tog_db" username="root" password=""/>
 			<!--database ConnectionString="mysql:host=localhost;dbname=dosithuy_tog" username="dosithuy_tog" password="tog123"/-->

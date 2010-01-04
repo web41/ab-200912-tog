@@ -95,7 +95,7 @@ class CategoryManager extends TPage
 		if (!$this->IsPostBack)
 		{
 			// fill parent selector combobox
-			$this->cboParentSelector->DataSource = Prado::createComponent(self::AR)->getAllParent();
+			$this->cboParentSelector->DataSource = Prado::createComponent(self::AR)->getAllParent(true);
 			$this->cboParentSelector->DataBind();
 			$noparent = new TListItem(); $noparent->Text = "No Parent"; $noparent->Value = 0;
 			$this->cboParentSelector->Items->insertAt(0,$noparent);

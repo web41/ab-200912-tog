@@ -22,7 +22,7 @@ class ProductForm extends TPage
 			$this->cboMfSelector->DataBind();
 			//$this->cboUOMSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["UNITS_OF_MEASURE"]);
 			//$this->cboUOMSelector->DataBind();
-			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree();
+			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree(true);
 			$this->cboCatSelector->DataBind();
 			$this->populateProperties();
 			$activeRecord = $this->getItem();
@@ -44,6 +44,8 @@ class ProductForm extends TPage
 				$this->radNewArrival->SelectedValue = $activeRecord->IsNewArrival;
 				$this->radBestSeller->SelectedValue = $activeRecord->IsBestSeller;
 				$this->radHotDeal->SelectedValue = $activeRecord->IsHotDeal;
+				$this->txtFreeText1->Text = $activeRecord->FreeText1;
+				$this->txtFreeText2->Text = $activeRecord->FreeText2;
 				$this->txtBrief->Text = $activeRecord->Brief;
 				$this->txtDesc->Text = $activeRecord->Description;
 			}
@@ -142,6 +144,8 @@ class ProductForm extends TPage
 		$activeRecord->IsNewArrival = $this->radNewArrival->SelectedValue;
 		$activeRecord->IsBestSeller = $this->radBestSeller->SelectedValue;
 		$activeRecord->IsHotDeal = $this->radHotDeal->SelectedValue;
+		$activeRecord->FreeText1 = $this->txtFreeText1->SafeText;
+		$activeRecord->FreeText2 = $this->txtFreeText2->SafeText;
 		$activeRecord->Brief = $this->txtBrief->SafeText;
 		$activeRecord->Description = $this->txtDesc->Text;
 		$activeRecord->ImagePath = (strlen($hashImage)>0)?$hashImage:($activeRecord->ID>0?$activeRecord->ImagePath:self::NO_IMAGE);

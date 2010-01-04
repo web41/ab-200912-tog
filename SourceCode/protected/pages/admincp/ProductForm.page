@@ -216,6 +216,22 @@
 							</tr>
 							<tr>
 								<td class="field" colspan="2">
+									<div class="text">Free Text 1</div>
+									<div class="control">
+										<com:TTextBox ID="txtFreeText1" CssClass="textbox" Width="630px"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field" colspan="2">
+									<div class="text">Free Text 2</div>
+									<div class="control">
+										<com:TTextBox ID="txtFreeText2" CssClass="textbox" Width="630px"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field" colspan="2">
 									<div class="text">Brief Description</div>
 									<div class="control">
 										<com:TTextBox ID="txtBrief" TextMode="MultiLine" CssClass="textbox" Width="630px" Height="50px"/>

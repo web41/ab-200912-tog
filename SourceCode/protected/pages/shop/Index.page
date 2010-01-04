@@ -26,28 +26,32 @@
 			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
 			
 			<div>
-				<div style="float:left;width:262px;">
-                    <div><b>Available in 9 organic choices</b></div>
-                    <div><b>Size</b>: 200g</div>
-                    <div style="color:#eb0010">NOT AVAILABLE - Apple Mango Delight</div>
-                    Select: 
-                    <select>
-                        <option>Selection</option>
-                        <option>Selection 02</option>
-                        <option>Selection 03</option>
-                        <option>Selection 04</option>
-                    </select>
-				</div>
-				<div style="float:right;display:table-cell">
-                	Quantity: 
-                    <select style="margin-bottom:5px;">
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                    </select><br /><br />
-					<a href="" class="btn_addtocart">Add to cart</a>
-				</div>
+            	<table border="0" cellpadding="0" cellspacing="0">
+                	<tr>
+                    	<td style="width:300px;" valign="bottom">
+                        	<div><b>Available in 9 organic choices</b></div>
+                            <div><b>Size</b>: 200g</div>
+                            <div style="color:#eb0010">NOT AVAILABLE - Apple Mango Delight</div>
+                            Select: 
+                            <select>
+                                <option>Selection</option>
+                                <option>Selection 02</option>
+                                <option>Selection 03</option>
+                                <option>Selection 04</option>
+                            </select>
+                        </td>
+                        <td valign="bottom">
+                        	Quantity: 
+                            <select style="margin-bottom:5px;">
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                                <option>04</option>
+                            </select><br /><br />
+                            <a href="" class="btn_addtocart">Add to cart</a>
+                        </td>
+                    </tr>
+                </table>
 			</div>
 		</div>
 	</div>

@@ -5,6 +5,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>The Organic Grocer</title>
 <link href="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/css/homepage.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/scripts/jquery.js"></script>
+<script type="text/javascript" src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/scripts/jquery-ui.js"></script>
+<script type="text/javascript" src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/scripts/j.c/j.c.js"></script>
+<script type="text/javascript" src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/scripts/landingpage.js"></script>
 </com:THead>
 <body>
 
@@ -21,7 +25,42 @@
 
 	<div id="content">
 		<div id="leftcol">
-			<img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/banner.png" alt="The organic grocer" width="520" />
+        	<div id="slideshow_container">
+                <div class="navigation"></div>
+                <div id="slideshow">
+                    <div>
+                    <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/banner.png" alt="The organic grocer" width="520" />
+                    </div>
+                    <div class="ss_content">
+                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_whyorganic.png" alt=""/><br />
+                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image1.png" alt="" class="img"/>
+                        <div>The average non organic fruit contains more than 20 pesticides.</div>
+                        <div>Pesticides in food have been linked to many diseases.</div>
+                        <div>Commercially raised cows and chickens are fed antibiotics, growth promoting drugs and anti-parasite drugs daily.</div>
+                        <div>Colour ink have been added to salmon found in supermarkets.</div>
+                        
+                        <div style="margin-top:15px;text-align:center;" id="morewhyorganic">
+                        	<a href="" class="btn_morewhyorganic"></a>
+                        </div>
+						<script type="text/javascript">
+							j(".btn_morewhyorganic").css({"margin-left": (j('#morewhyorganic').width()-j('.btn_morewhyorganic').width())/2+"px", "display": "inherit"})
+						</script>
+                    </div>
+                    <div class="ss_content">
+                    	<div style="height:20px;"></div>
+                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image2.jpg" alt="" class="img" width="150" style="margin-bottom:80px;"/>
+                        <div>Fresh Organic Fruits &Veggies Air-Flown in From Australia & USA</div> 
+                        <div>Order by Tuesday 4 pm for delivery on Friday/Saturday</div>
+                        <div>Order by Saturday 10am for delivery the following Tuesday/Wednesday</div>
+                        <div>Orders without fresh fruits and veggies will be delivered after 2 working days
+                        (for orders placed before 12pm)</div>
+                        <div>Click here to see delivery schedule</div>
+                    </div>
+                    <div class="ss_content">
+                        
+                    </div>
+                </div>
+            </div>
 			<img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/text3.png" alt="The organic grocer" style="margin-top:10px;" width="520" />
 		</div><!-- LEFT COLUMN ENDS -->
 

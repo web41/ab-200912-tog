@@ -18,7 +18,7 @@ a, input {outline:none;}
 #rightcol { float: left; width: 420px; }
 	#rightcol p { line-height: 20px; display: block; margin-top: 15px;}
 	div.bigtext { background: url(../images/text.png) no-repeat; height: 90px; width: 420px; border-bottom: 4px solid #8fc741;}
-	a.shopnow {display: block; height: 73px; width: 208px; margin: 2px auto 0 auto;background:url(../images/btn_shopnow.png) no-repeat;}
+	a.shopnow {display: block; height: 73px; width: 208px; margin: 2px auto 0 auto;background:url(../images/btnshopnow.png) no-repeat;}
 	a.shopnow:hover {background-position:center -73px;cursor:pointer;}
 	div.smalltext { background: url(../images/text2.png) no-repeat; height: 26px; width: 420px; margin-top: 25px;}
 	ul#steps { display: block; list-style-type: decimal; list-style-position: inside; margin: 2px 0 2px 0; background: url(../images/van.png) no-repeat right bottom; padding-bottom: 100px;}

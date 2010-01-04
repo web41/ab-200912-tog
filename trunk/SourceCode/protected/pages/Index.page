@@ -53,7 +53,7 @@
                         <div>Order by Saturday 10am for delivery the following Tuesday/Wednesday</div>
                         <div>Orders without fresh fruits and veggies will be delivered after 2 working days
                         (for orders placed before 12pm)</div>
-                        <div>Click here to see delivery schedule</div>
+                        <div>Click <a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">here to see delivery schedule</div>
                     </div>
                     <div class="ss_content">
                         <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_theorganic.png" alt=""/><br />
@@ -61,7 +61,7 @@
                         <div>Have you been disappointed making a wasted trip to the shop to find that your favourite organic product is out of stock?</div>
                         <div>Have you bought a non-organic product for your family just because the organic one was not available?</div>
                         <div>Do you find your entire week taken up just to fill up your refrigerator with your favourite organic brands?</div>
-                        <div><b>If you have answered YES to any of the above, look no more! <a href="" class="btn_order">Click here to Order Now!</a></b></div>
+                        <div><b>If you have answered YES to any of the above, look no more! <a href="<%= $this->Service->ConstructUrl("shop.Index") %>" class="btn_order">Click here to Order Now!</a></b></div>
                     </div>
                 </div>
             </div>

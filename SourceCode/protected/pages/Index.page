@@ -53,7 +53,7 @@
                         <div>Order by Saturday 10am for delivery the following Tuesday/Wednesday</div>
                         <div>Orders without fresh fruits and veggies will be delivered after 2 working days
                         (for orders placed before 12pm)</div>
-                        <div><a href="<%= $this->Service->ConstructUrl('shop.Delivery') %>" class="btn_link">Click here to see delivery schedule</a></div>
+                        <div><a href="<%= $this->Service->ConstructUrl('shop.Delivery') %>" class="btn_order">Click here to see delivery schedule</a></div>
                     </div>
                     <div class="ss_content">
                         <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_theorganic.png" alt=""/><br />

@@ -4,16 +4,17 @@
 	<li><a href="">Promotions</a></li>
 	<li style="border-bottom:none;"><a href=""><b>Shop by brands</b></a></li>
 	<li class="title">Shop by products</li>
-	<com:TRepeater ID="rptCategoryMenu">
+	<com:TRepeater ID="rptCategoryMenu" OnItemCreated="rptCategoryMenu_ItemCreated">
 		<prop:ItemTemplate>
-			<li><a href="###"><%= $this->Data->Name %></a>
-            	<ul>
-                	<li><a class="active">sub cateogory 1</a></li>
-                    <li><a>sub cateogory 2</a></li>
-                    <li><a>sub cateogory 3</a></li>
-                    <li><a>sub cateogory 4</a></li>
-                </ul>
-            </li>
+			<li><a href="<%= $this->Service->ConstructUrl('shop.Index',array('id'=>$this->Data->ID,'alias'=>$this->Data->Alias)) %>" <%= $this->Request["id"]==$this->Data->ID?"class='active'":"" %>><%= $this->Data->Name %></a>
+				<com:TRepeater ID="ChildCategory">
+					<prop:HeaderTemplate><ul></prop:HeaderTemplate>
+					<prop:ItemTemplate>
+						<li><a href="<%= $this->Service->ConstructUrl('shop.Index',array('id'=>$this->Data->Parent->ID,'alias'=>$this->Data->Parent->Alias,'subid'=>$this->Data->ID,'subalias'=>$this->Data->Alias)) %>" <%= $this->Request["subid"]==$this->Data->ID?"class='active'":"" %>><%= $this->Data->Name %></a></li>
+					</prop:ItemTemplate>
+					<prop:FooterTemplate></ul></prop:FooterTemplate>
+				</com:TRepeater>
+			</li>
 		</prop:ItemTemplate>
 	</com:TRepeater>
 </ul>

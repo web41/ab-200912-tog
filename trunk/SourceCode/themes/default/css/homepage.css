@@ -44,5 +44,6 @@ a, input {outline:none;}
 	#slideshow .img{float:left;border:solid 2px #2c743b;padding:1px;margin:5px 10px 0 0;}
 #slideshow_container .navigation{position:absolute;bottom:0;right:0;margin:0 10px 5px 0;z-index:101;}
 	#slideshow_container .navigation a{display:block;margin:0 4px 0 4px;background:url(../images/ss_btn_link.png) no-repeat;height:20px;width:24px;text-decoration:underline;text-align:center;color:#fff;padding-top:4px;float:left;font-weight:bold;font-size:11px;}
-	#slideshow_container .navigation a:hover{background-position:center -24px;color:#f2f2f2;}
+	#slideshow_container .navigation a:hover{background-position:center -24px;color:#2d7d3e;}
+	#slideshow_container .navigation a.active{background-position:center -24px;color:#2d7d3e;}
 	#slideshow_container .navigation a.activeSlide{background-position:center -24px;color:#2d7d3e;}

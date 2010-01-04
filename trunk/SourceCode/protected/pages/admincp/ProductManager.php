@@ -119,7 +119,7 @@ class ProductManager extends TPage
 		if (!$this->IsPostBack)
 		{
 			// fill parent selector combobox
-			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree();
+			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree(true);
 			$this->cboCatSelector->DataBind();
 			$this->cboCatSelector->SelectedValue = $this->CatID;
 			$criteria = new TActiveRecordCriteria;

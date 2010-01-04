@@ -47,7 +47,19 @@
 			<div>Enter your e-mail address and we'll send you a new password immediately.</div>
 			<div>For security purposes, your billing information will be cleared from Your Account. Please call our Customer Service with any questions at (65) 91150702 </div>
 			<div>Email Address:</div>
-			<div><com:TTextBox ID="txtEmail" /></div>
+			<div>
+				<com:TTextBox ID="txtEmail" />
+				<com:TRequiredFieldValidator ID="val1"
+					ControlToValidate="txtEmail"
+					ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
+					Display="Dynamic"
+					FocusOnError="True"/>
+				<com:TEmailAddressValidator ID="val2"
+					ControlToValidate="txtEmail"
+					ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
+					Display="Dynamic"
+					FocusOnError="True"/>
+			</div>
 			<div><com:TButton ID="btnSendPassword" OnClick="btnSendPassword_Clicked" Text="Send New Password" /></div>
 		</com:TPanel>
 	</div>
@@ -58,6 +70,7 @@
 
 <!-- Right column -->
 <div class="right_col">
+	<com:Application.shared.UserState />
 	<com:Application.shared.RightColumn />
 </div>
 <!-- Right column: END -->

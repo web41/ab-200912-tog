@@ -10,15 +10,17 @@ class UserRecord extends TActiveRecord
 	public $Username;
 	public $Password;
 	public $Email;
-	public $UserTypeID;
-	public $Credits;
-	public $Status;
-	public $Hash;
-	public $IPAddress;
-	public $LastVisitIP;
-	public $LastVisitDate;
-	public $CreateDate;
-	public $ModifyDate;
+	public $FirstName;
+	public $LastName;
+	public $UserTypeID=0;
+	public $Credits=0;
+	public $Status=0;
+	public $Hash="";
+	public $IPAddress="";
+	public $LastVisitIP="";
+	public $LastVisitDate=0;
+	public $CreateDate=0;
+	public $ModifyDate=0;
 	
 	public static $COLUMN_MAPPING=array
 	(
@@ -26,6 +28,8 @@ class UserRecord extends TActiveRecord
 		'user_name'=>'Username',
 		'user_pwd'=>'Password',
 		'user_email'=>'Email',
+		'first_name'=>'FirstName',
+		'last_name'=>'LastName',
 		'user_type_id'=>'UserTypeID',
 		'user_credits'=>'Credits',
 		'user_status'=>'Status',

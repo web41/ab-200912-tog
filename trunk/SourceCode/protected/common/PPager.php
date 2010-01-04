@@ -9,6 +9,36 @@ class PPager extends TWebControl
 	private $_controlToPaginate = '';
 	private $_autoHide = false;
 	
+	public function getTextCssClass()
+	{
+		return $this->getViewState("TextCssClass","");
+	}
+	
+	public function setTextCssClass($value)
+	{
+		$this->setViewState("TextCssClass", $value, "");
+	}
+	
+	public function getPageNumberCssClass()
+	{
+		return $this->getViewState("NumberCssClass","");
+	}
+	
+	public function setPageNumberCssClass($value)
+	{
+		$this->setViewState("NumberCssClass", $value, "");
+	}
+	
+	public function getActivePageCssClass()
+	{
+		return $this->getViewState("ActivePageCssClass","");
+	}
+
+	public function setActivePageCssClass($value)
+	{
+		$this->setViewState("ActivePageCssClass", $value, "");
+	}
+	
 	public function getControlToPaginate()
 	{
 		return $this->_controlToPaginate;
@@ -110,8 +140,8 @@ class PPager extends TWebControl
 	
 	public function render($writer)
 	{
-		$writer->addAttribute("class","table_paging");
-		$writer->addAttribute("style","display:none;");
+		//$writer->addAttribute("class","table_paging");
+		//$writer->addAttribute("style","display:none;");
 		$writer->renderBeginTag("div");
 		parent::render($writer);
 		$writer->renderEndTag();
@@ -147,22 +177,22 @@ class PPager extends TWebControl
 		$pageButtonCount=$this->getPageButtonCount();
 		
 		// create 'first' link
-		$controls->add($this->createPagerLink(!$this->IsFirstPage,"First",1,"text"));
+		$controls->add($this->createPagerLink(!$this->IsFirstPage,"First",1,$this->TextCssClass));
 		// create 'prev' link
-		$controls->add($this->createPagerLink(!$this->IsFirstPage,"Prev",$currentPage-1,"text"));
+		$controls->add($this->createPagerLink(!$this->IsFirstPage,"Prev",$currentPage-1,$this->TextCssClass));
 		// create numeric links
 		$halfPageButtonCount = TPropertyValue::ensureInteger($pageButtonCount/2);
 		$page=(($currentPage+$halfPageButtonCount <= $maxPage) ? (($currentPage > $halfPageButtonCount) ? $currentPage-$halfPageButtonCount : 1) : (($maxPage > $pageButtonCount) ? $maxPage-($pageButtonCount-1) : 1));
 		for($i=0; $i<$pageButtonCount; $i++)
 		{
 			if ($page > $maxPage) break;
-			$controls->add($this->createPagerLink($page!==$currentPage,$page,$page,(($page===$currentPage)?'active':'')));
+			$controls->add($this->createPagerLink($page!==$currentPage,$page,$page,(($page===$currentPage)?$this->ActivePageCssClass:'')));
 			$page++;
 		}
 		// create 'next' link
-		$controls->add($this->createPagerLink(!$this->IsLastPage,"Next",$currentPage+1,"text"));
+		$controls->add($this->createPagerLink(!$this->IsLastPage,"Next",$currentPage+1,$this->TextCssClass));
 		// create 'last' link
-		$controls->add($this->createPagerLink(!$this->IsLastPage,"Last",$maxPage,"text"));
+		$controls->add($this->createPagerLink(!$this->IsLastPage,"Last",$maxPage,$this->TextCssClass));
 	}
 }
 

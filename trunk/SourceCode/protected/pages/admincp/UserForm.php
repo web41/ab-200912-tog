@@ -59,7 +59,7 @@ class UserForm extends TPage
 	private function bindItem()
 	{
 		$activeRecord = $this->getItem();
-		$activeRecord->Email = $this->txtEmail->SafeText;
+		$activeRecord->Email = $activeRecord->Username = $this->txtEmail->SafeText;
 		$activeRecord->Password = ($activeRecord->Password != $this->txtPassword->SafeText) ? md5($this->txtPassword->SafeText) : $activeRecord->Password;
 		$activeRecord->UserTypeID = $this->cboTypeSelector->SelectedValue;
 		$activeRecord->Status = $this->cboStatusSelector->SelectedValue;

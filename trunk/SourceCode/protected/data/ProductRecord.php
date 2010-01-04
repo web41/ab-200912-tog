@@ -14,6 +14,8 @@ class ProductRecord extends TActiveRecord
 	public $Alias;
 	public $SKU;
 	public $Name;
+	public $FreeText1;
+	public $FreeText2;
 	public $Brief;
 	public $Description;
 	public $ImagePath;
@@ -37,6 +39,8 @@ class ProductRecord extends TActiveRecord
 		'product_sku'=>'SKU',
 		'product_alias'=>'Alias',
 		'product_name'=>'Name',
+		'product_free_text_1'=>'FreeText1',
+		'product_free_text_2'=>'FreeText2',
 		'product_brief'=>'Brief',
 		'product_desc'=>'Description',
 		'product_image'=>'ImagePath',

@@ -38,6 +38,24 @@ class TOGUser extends TDbUser
 		$this->setState("Email",$value,"");
 	}
 	
+	public function getFirstName()
+	{
+		return $this->getState("FirstName","");
+	}
+	public function setFirstName($value)
+	{
+		$this->setState("FirstName",$value,"");
+	}
+	
+	public function getLastName()
+	{
+		return $this->getState("LastName","");
+	}
+	public function setLastName($value)
+	{
+		$this->setState("LastName",$value,"");
+	}
+	
 	public function getUserTypeID()
 	{
 		return $this->getState("UserTypeID",0);
@@ -135,6 +153,8 @@ class TOGUser extends TDbUser
 			$user->Username = $activeRecord->Username;
 			$user->Password = $activeRecord->Password;
 			$user->Email = $activeRecord->Email;
+			$user->FirstName = $activeRecord->FirstName;
+			$user->LastName = $activeRecord->LastName;
 			$user->UserTypeID = $activeRecord->UserTypeID;
 			$user->Credits = $activeRecord->Credits;
 			$user->Status = $activeRecord->Status;

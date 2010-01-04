@@ -62,10 +62,11 @@ class CategoryRecord extends TActiveRecord
 		parent::save();
 	}
 	
-	public function getAllParent()
+	public function getAllParent($publishedOnly=false)
 	{
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "cat_id > 0 and parent_id = 0";
+		if ($publishedOnly) $criteria->Condition .= " and cat_publish = 1";
 		$criteria->OrdersBy["cat_name"] = "asc";
 		return self::finder()->findAll($criteria);
 	}
@@ -82,23 +83,24 @@ class CategoryRecord extends TActiveRecord
 		return self::finder()->count($criteria);
 	}
 	
-	public function getCategoryTree()
+	public function getCategoryTree($publishedOnly=false)
 	{
 		$this->_allRecords = array();
-		foreach($this->getAllParent() as $parent)
+		foreach($this->getAllParent($publishedOnly) as $parent)
 		{
 			$this->_allRecords[] = $parent;
-			$this->getChildByParent($parent->ID);
+			$this->getChildByParent($parent->ID,"--- ",$publishedOnly);
 		}
 		return $this->_allRecords;
 	}
 	
 	private $_allRecords=array();
 	
-	protected function getChildByParent($parentID,$indent="--- ")
+	protected function getChildByParent($parentID,$indent="--- ",$publishedOnly=false)
 	{
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "parent_id = :parent";
+		if ($publishedOnly) $criteria->Condition .= " and cat_publish = 1";
 		$criteria->Parameters[":parent"] = $parentID;
 		$criteria->OrdersBy["cat_name"] = "asc";
 		$childs = self::finder()->findAll($criteria);

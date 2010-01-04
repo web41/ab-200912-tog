@@ -47,6 +47,7 @@
 
 <!-- Right column -->
 <div class="right_col">
+	<com:Application.shared.UserState />
 	<com:Application.shared.RightColumn />
 </div>
 <!-- Right column: END -->

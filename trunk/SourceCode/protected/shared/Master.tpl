@@ -31,6 +31,17 @@
 					<li><a href="<%= $this->Service->ConstructUrl("shop.Help") %>">Help</a></li>  |  
 					<li><a href="<%= $this->Service->ConstructUrl("shop.ContactUs") %>">Contact Us</a></li>
 				</ul>
+                <div class="search_container">
+	                <input type="button" value="Search" class="button" />
+                    <select>
+                    	<option>All brand</option>
+                        <option>Shop by brand 1</option>
+                        <option>Shop by brand 2</option>
+                        <option>Shop by brand 3</option>
+                        <option>Shop by brand 4</option>
+                    </select>
+                    <input type="text" class="textbox" />
+                </div>
 			</div>
 		</div>
 		<!-- Banner: END --> 

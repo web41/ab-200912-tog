@@ -1,0 +1,138 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Add/Update User
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Form sample-->
+				<com:TPanel ID="mainBox" CssClass="main_box">
+					<div class="title">
+						<div>
+							<div><h2><com:TLabel ID="lblHeader" /></h2></div>
+						</div>
+					</div>
+					<div class="content">
+						<table border="0" cellpadding="0" cellspacing="0" class="form" width="100%" style="margin-bottom:10px;">
+							<tr>
+								<td class="field">
+									<div class="text">Email<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtEmail" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val1"
+											CssClass="error"
+											ControlToValidate="txtEmail"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+										<com:TEmailAddressValidator ID="val2"
+											CssClass="error"
+											ControlToValidate="txtEmail"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+										<com:TCustomValidator ID="val3"
+											CssClass="error"
+											ControlToValidate="txtEmail"
+											OnServerValidate="uniqueCheck_ServerValidated"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Email') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">                                
+									<div class="text">Password</div>
+									<div class="control">
+										<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="textbox" PersistPassword="true" /><br />
+										<com:TRequiredFieldValidator ID="val4"
+											CssClass="error"
+											ControlToValidate="txtPassword"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">User Role<span>*</span></div>
+									<div class="control">
+										<com:TDropDownList ID="cboTypeSelector"
+											PromptText="Select..."
+											PromptValue="0"
+											DataTextField="Name"
+											DataValueField="ID" /><br />
+										<com:TRequiredFieldValidator ID="val5"
+											CssClass="error"
+											ControlToValidate="cboTypeSelector"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','role') %>"
+											Display="Dynamic"
+											InitialValue="0"
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">                                
+									<div class="text">Status</div>
+									<div class="control">
+										<com:TDropDownList ID="cboStatusSelector"/><br />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Credits</div>
+									<div class="control">
+										<com:TTextBox ID="txtCredits" CssClass="textbox" />
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">IP address</div>
+									<div class="control">
+										<com:TTextBox ID="txtIPAddress" CssClass="textbox" /><br />
+										<com:TRegularExpressionValidator ID="val6"
+											ControlToValidate="txtIPAddress"
+											RegularExpression="^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})$"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','IP address') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Last visit date</div>
+									<div class="control">
+										<com:TLabel ID="lblLastVisitDate" />
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">Last visit IP</div>
+									<div class="control">
+										<com:TLabel ID="lblLastVisitIP" />
+									</div>
+								</td>
+							</tr>
+						</table>
+						<div class="field" style="border:none;margin-bottom:0;">
+							<div class="text">&nbsp;</div>
+							<div class="control">
+								<com:TButton ID="btnSubmit" CssClass="<%= ($this->Item && $this->Item->ID > 0) ? 'btn_edit' : 'btn_addnew' %>" OnClick="btnSubmit_Clicked" />
+								<com:TButton ID="btnAddMore" CssClass="btn_addmore" OnClick="btnAddMore_Clicked" />
+								<com:TButton CausesValidation="false" ButtonType="Reset" CssClass="btn_reset" />
+								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_cancel" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('admincp.UserManager') %>'" />
+							</div>
+						</div>
+					</div>
+				</com:TPanel>
+				<!-- Form sample: END -->
+			</td>
+		</tr>
+	</table>
+</com:TContent>

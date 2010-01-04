@@ -73,6 +73,16 @@
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="10%">
 								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(4,(($this->Page->SortBy==4 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->TypeID) %>">Role
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==4 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->Data->UserType->Name %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.Width="10%">
+								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->TypeID) %>">Status
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
 									</a>

@@ -42,7 +42,14 @@
 	.main_col .product_box .content{float:left;width:408px;margin:10px 0 0 0;line-height:18px;}
 	.main_col .product_box .content div{margin:0 0 5px 0;}
 	
+	.main_col .pagination{}
+	.main_col .pagination a{margin:0 5px 0 5px;text-decoration:underline;}
+	.main_col .pagination a:hover{text-decoration:none;}
+	.main_col .pagination a.text{font-size:11px;font-weight:bold;text-decoration:none;}
+	.main_col .pagination a.active{font-weight:bold;color:#83ae00;text-decoration:none;}
 /*Main column: END*/
+
+
 
 	
 

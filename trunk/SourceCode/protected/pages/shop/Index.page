@@ -16,12 +16,54 @@
 	<div class="product_box">
 		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
 		<div class="title">
+			<h2>brand name</h2>
+			<div class="price">Price: $5.76</div>
+		</div>
+        <div class="title">
+        	<h3>Stage One Baby Food Jars</h3>
+        </div>
+		<div class="content">
+			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
+			
+			<div>
+				<div style="float:left;width:262px;">
+                    <div><b>Available in 9 organic choices</b></div>
+                    <div><b>Size</b>: 200g</div>
+                    <div style="color:#eb0010">NOT AVAILABLE - Apple Mango Delight</div>
+                    Select: 
+                    <select>
+                        <option>Selection</option>
+                        <option>Selection 02</option>
+                        <option>Selection 03</option>
+                        <option>Selection 04</option>
+                    </select>
+				</div>
+				<div style="float:right;display:table-cell">
+                	Quantity: 
+                    <select style="margin-bottom:5px;">
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                    </select><br /><br />
+					<a href="" class="btn_addtocart">Add to cart</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Product box: END -->
+
+	<!-- Product box -->
+	<div class="product_box">
+		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
+		<div class="title">
 			<h2>Lorem ipsum dolor sit amet</h2>
 			<div class="price">Price: $5.76</div>
 		</div>
 		<div class="content">
 			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
-			<div>Size: 200g</div>
+            <div><b>Available in 9 organic choices</b></div>
+			<div><b>Size</b>: 200g</div>
 			<div>
 				<div style="float:left">
 				Quantity: 
@@ -50,36 +92,8 @@
 		</div>
 		<div class="content">
 			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
-			<div>Size: 200g</div>
-			<div>
-				<div style="float:left">
-				Quantity: 
-				<select>
-					<option>01</option>
-					<option>02</option>
-					<option>03</option>
-					<option>04</option>
-				</select>
-				01 Unit = 200g
-				</div>
-				<div style="float:right;">
-					<a href="" class="btn_addtocart">Add to cart</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Product box: END -->
-
-	<!-- Product box -->
-	<div class="product_box">
-		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
-		<div class="title">
-			<h2>Lorem ipsum dolor sit amet</h2>
-			<div class="price">Price: $5.76</div>
-		</div>
-		<div class="content">
-			<div>Fusce dui justo, porttitor eu tempor vulputate, interdum vel lacus. In vel mauris quis eros imperdiet tempus. Vivamus sit amet sem nulla. Mauris vulputate venenatis semper.</div>
-			<div>Size: 200g</div>
+			<div><b>Available in 9 organic choices</b></div>
+            <div>Size: 200g</div>
 			<div>
 				<div style="float:left">
 				Quantity: 

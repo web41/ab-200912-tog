@@ -51,6 +51,7 @@
 			<url ServiceParameter="shop.Delivery" pattern="delivery.html"/>
 			<url ServiceParameter="shop.Help" pattern="help.html"/>
 			<url ServiceParameter="shop.ContactUs" pattern="contact-us.html"/>
+			<url ServiceParameter="shop.TermandCondition" pattern="terms-and-conditions.html"/>
 			
 			<url ServiceParameter="shop.Index" pattern="shop"/>
 			

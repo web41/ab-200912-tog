@@ -40,7 +40,7 @@
                         <div>Colour ink have been added to salmon found in supermarkets.</div>
                         
                         <div style="margin-top:15px;text-align:center;" id="morewhyorganic">
-                        	<a href="" class="btn_morewhyorganic"></a>
+                        	<a href="<%= $this->Service->ConstructUrl("shop.WhyOrganic") %>" class="btn_morewhyorganic"></a>
                         </div>
 						<script type="text/javascript">
 							j(".btn_morewhyorganic").css({"margin-left": (j('#morewhyorganic').width()-j('.btn_morewhyorganic').width())/2+"px", "display": "inherit"})

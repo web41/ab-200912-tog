@@ -11,6 +11,7 @@
 
 <!-- Main column -->
 <div class="main_col">
+	<div class="main_content">
 	<!-- Product box -->
 	<div class="product_box">
 		<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
@@ -155,6 +156,7 @@
 		</div>
 	</div>
 	<!-- Product box: END -->
+    </div>
 </div>
 <!-- Main column: END -->
 

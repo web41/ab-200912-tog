@@ -8,6 +8,9 @@ a, input {outline:none;}
 a:link, a:visited{text-decoration:none;color:#503a1d}
 a:hover{color:#9f743c}
 
+a.mail, a.mail:visited{text-decoration:none;color:#0044dd}
+a.mail:hover{color:#0034aa}
+
 .name{font-weight:normal;color:#83ae00;}
 
 a.btn_cart{display:block;width:72px;height:21px;background:url(../images/btn_cart.png) no-repeat;color:#fff;padding:13px 0 0 28px;text-align:left;font-size:12px;margin:0 0 10px 0;}

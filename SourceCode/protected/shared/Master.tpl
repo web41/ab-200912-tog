@@ -41,7 +41,7 @@
 		<!-- Main content: END -->
 
 		<div id="footer">
-			Copyright © 2009 <a href="<%= $this->Service->ConstructUrl("shop.Index") %>">The Organic Grocer</a>. All rights reserved.
+			Copyright &copy; 2009 <a href="<%= $this->Service->ConstructUrl("shop.Index") %>">The Organic Grocer</a>. All rights reserved.
             <a href="<%= $this->Service->ConstructUrl("shop.TermandCondition") %>">Terms and Conditions</a><br />
             Designed by <a href="http://www.asiablaze.com">AsiaBlaze Design</a>.
 		</div>

@@ -48,5 +48,15 @@ class UserRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	public function save()
+	{
+		if ($this->ID <= 0)
+		{
+			$this->CreateDate = time();
+		}
+		$this->ModifyDate = time();
+		parent::save();
+	}
 }
 ?>

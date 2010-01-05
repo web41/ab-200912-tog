@@ -1,0 +1,57 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Product Detail</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+    <com:Application.shared.OrganicPoints />
+    <com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+    	<div class="title">
+    		<h2 class="productdetail_title">product detail - <span>product name</span></h2>
+            <div class="price">Price: $100</div>
+        </div>
+        <div class="productdetail_container">
+        	<div style="float:left;width:214px;" id="productdetail_img">
+                <img src="<%= $this->Page->Theme->BaseUrl %>/images/img_aboutus.png" alt="" class="img"/>
+            </div>
+            <div class="item_container">
+            	<div>
+                	<b>Product description</b><br />
+                	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae lacus vel libero malesuada vehicula ac vel turpis. Proin ac lectus dolor. Nullam vel justo nec neque elementum convallis. In hac habitasse platea dictumst. Nam nec neque leo. Praesent ligula dolor, cursus in lobortis in, ultrices in elit.</div>
+                    <div>Vivamus sodales varius felis, eu hendrerit augue rhoncus id. Nunc vulputate erat sed massa pulvinar eu commodo purus laoreet. Etiam eget eros auctor nisl sagittis faucibus elementum id nulla. Phasellus vestibulum accumsan consequat</div>
+                </div>
+                <div>
+                	<b>Quantity</b>
+                    <select>
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                        <option>04</option>
+                    </select>
+                </div>
+                <div style="padding-top:10px;">
+                	<com:TLinkButton ID="btnAddToCart" Text="Add to cart" CssClass="btn_addtocart" />
+                </div>
+            </div>
+        </div>
+	</div>
+	<!-- Inside box: END -->
+    </div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

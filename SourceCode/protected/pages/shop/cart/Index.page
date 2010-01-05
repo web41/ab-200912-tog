@@ -47,7 +47,7 @@
 						<div class="couponcode">
 							Enter Coupon Code <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
 						</div>
-						<div>Total: $132</div>
+						<div>Subtotal: <com:TActiveLabel ID="lblSubtotal" /></div>
 					</div>
 					<!-- Cart total price: END -->
 				</prop:FooterTemplate>

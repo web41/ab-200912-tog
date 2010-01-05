@@ -54,13 +54,14 @@
 		<!-- Product box: END -->
         
         <!-- Product box -->
-		<com:TRepeater ID="ItemList" ItemRenderer="Application.pages.shop.ProductBoxTemplate" />
+		<com:TRepeater ID="ItemList" 
+			AllowPaging="true" PageSize="5"
+			ItemRenderer="Application.pages.shop.ProductBoxTemplate" />
         <!-- Product box: END -->
         
 		<!-- Pagination: END -->
 		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" />
 		<!-- Pagination: END -->
-		<com:TJavascriptLogger ToggleKey="j"/>
 	</div>
 </div>
 <!-- Main column: END -->

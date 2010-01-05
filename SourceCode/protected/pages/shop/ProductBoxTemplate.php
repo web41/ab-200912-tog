@@ -85,7 +85,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 			catch(TException $e)
 			{
 				$this->Page->Notice->Type = UserNoticeType::Error;
-				$this->Page->Notice->Text = $e;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+				$this->Page->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 				$this->Page->categoryMenu->populateData();
 				$this->Page->populateData();
 			}

@@ -3,7 +3,7 @@
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
-	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.CategoryMenu ID="categoryMenu" />
     <com:Application.shared.OrganicPoints />
     <com:Application.shared.Newsletter />
 </div>
@@ -11,54 +11,42 @@
 
 <!-- Main column -->
 <div class="main_col">
-	<div class="main_content">
+	<com:Application.shared.UserNotice ID="Notice" />
+	<com:TPanel ID="mainContent" CssClass="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-    	<div class="title">
-    		<h2 class="productdetail_title">brand name - <span>product name</span></h2>
-            <div class="price">Price: $100</div>
-        </div>
-        <div class="productdetail_container">
-        	<div style="float:left;width:214px;">
-                <img src="<%= $this->Page->Theme->BaseUrl %>/images/img_aboutus.png" alt="" class="img"/>
-            </div>
-            <div class="item_container">
-            	<div>
-                	<b>Brief desctiption</b><br />
-                    <div>Vivamus sodales varius felis, eu hendrerit augue rhoncus id. Nunc vulputate erat sed massa pulvinar eu commodo purus laoreet.
-                    </div>
-                </div>
-                <div style="margin-bottom:5px;"><i><b>Available in 9 organic choices</b></i></div>
-				<div style="margin-bottom:5px;"><b>Size</b>: 200g</div>
-				<div style="color:#eb0010;margin-bottom:5px;">NOT AVAILABLE - Apple Mango Delight</div>
-                <div>
-                	<b>Quantity</b>
-                    <select>
-                        <option>01</option>
-                        <option>02</option>
-                        <option>03</option>
-                        <option>04</option>
-                    </select>
-                    <select>
-                        <option>Please select...</option>
-                        <option>Please select...Please select</option>
-                        <option>Selection 03</option>
-                        <option>Selection 04</option>
-                    </select>
-                </div>
-            </div>
-            <div style="float:left;width:544px;">
-                	<b style="font-size:14px;">Detail desctiption</b><br />
-                    <div>Vivamus sodales varius felis, eu hendrerit augue rhoncus id. Nunc vulputate erat sed massa pulvinar eu commodo purus laoreet.
-                    </div>
-                    <div style="width:544px;text-align:center;float:none;">
-                        <a href="" class="btn_addtocart" style="margin-left:222px;">Add to cart</a>
-                    </div>
-            </div>
-        </div>
+		<div class="title">
+			<h2 class="productdetail_title"><%= $this->Item->Brand->Name %> - <span><%= $this->Item->Name %></span></h2>
+			<div class="price">Price: <com:TActiveLabel ID="lblPrice" /></div>
+		</div>
+		<div class="productdetail_container">
+			<div style="float:left;width:214px;">
+				<img src="<%= $this->Page->Master->UrlPrefix %>/useruploads/images/product/thumbs/<%= $this->Item->ImagePath%>" alt="" class="img"/>
+			</div>
+			<div class="item_container">
+				<div>
+					<b>Brief desctiption</b><br />
+					<div><%= $this->Item->Brief %></div>
+				</div>
+				<div style="margin-bottom:5px;"><i><b><%= $this->Item->FreeText1 %></b></i></div>
+				<div style="color:#eb0010;margin-bottom:5px;"><%= $this->Item->FreeText2 %></div>
+				<div>
+					<b>Quantity</b>
+					<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false" />
+					<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" />
+				</div>
+			</div>
+			<div style="float:left;width:544px;">
+					<b style="font-size:14px;">Detail desctiption</b><br />
+					<div><%= $this->Item->Description %></div>
+					<div style="width:544px;text-align:center;float:none;">
+						<com:TLinkButton CssClass="btn_addtocart" Style="margin-left:222px;" Text="Add to cart" OnClick="btnAddToCart_Clicked"/>
+					</div>
+			</div>
+		</div>
 	</div>
 	<!-- Inside box: END -->
-    </div>
+	</com:TPanel>
 </div>
 <!-- Main column: END -->
 

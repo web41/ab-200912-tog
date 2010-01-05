@@ -1,0 +1,66 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Product Detail</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+    <com:Application.shared.OrganicPoints />
+    <com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+  		<h2>view cart</h2>
+        <div class="viewcart_container">
+        	<div class="cart_title" style="margin:0;">
+            	<div class="prd_item">product item</div>
+                <div class="qty">Quantity</div>
+                <div class="price">total price</div>
+                <div class="price">remove</div>
+            </div>
+            <div class="cart_item">
+            	<div class="prd_item">Organic Brown Rice Miso Jar 300g</div>
+                <div class="qty"><input type="text" class="textbox" /><input type="button" class="btn_refresh" value="" /></div>
+                <div class="price">$1252</div>
+                <div class="price"><input type="button" class="btn_delete" value="" /></div>
+            </div>
+            <div class="cart_item">
+            	<div class="prd_item">Organic Brown Rice Miso Jar 300g</div>
+                <div class="qty"><input type="text" class="textbox" /><input type="button" class="btn_refresh" value="" /></div>
+                <div class="price">$1252</div>
+                <div class="price"><input type="button" class="btn_delete" value="" /></div>
+            </div>
+            <div class="cart_item">
+            	<div class="prd_item">Organic Brown Rice Miso Jar 300g Organic Brown Rice Miso Jar 300g</div>
+                <div class="qty"><input type="text" class="textbox" /><input type="button" class="btn_refresh" value="" /></div>
+                <div class="price">$1252</div>
+                <div class="price"><input type="button" class="btn_delete" value="" /></div>
+            </div>
+            <div class="totalprice" style="margin:0;">
+            	<div class="couponcode">
+                	Enter Coupon Code <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
+                </div>
+            	<div>total: $132</div>
+            </div>
+            <div class="button_container">
+            	<input type="button" style="float:left;" class="button" value="< Continue shopping" />
+                <input type="button" style="float:right;" class="button" value="Checkout >" />
+            </div>
+        </div>
+	</div>
+	<!-- Inside box: END -->
+    </div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

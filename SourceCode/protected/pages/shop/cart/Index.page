@@ -40,7 +40,7 @@
                 <div class="price">$1252</div>
                 <div class="price"><input type="button" class="btn_delete" value="" /></div>
             </div>
-            <div class="totalprice" style="margin:0;">
+            <div class="totalprice">
             	<div class="couponcode">
                 	Enter Coupon Code <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
                 </div>

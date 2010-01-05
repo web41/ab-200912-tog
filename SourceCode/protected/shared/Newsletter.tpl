@@ -2,8 +2,8 @@
 	<h2>newsletter</h2>
 	<div class="content">
 		Enter your email address to receive our FREE newsletter on the organic market
-		<com:TTextBox ID="txtEmail" CssClass="textbox" Width="125px" Text="Enter your email" Attributes.onclick="this.select()"/>
-		<com:TButton ID="btnSubmit" CssClass="button" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="Newsletter"/><br />
+		<com:TTextBox ID="txtEmail" CssClass="textbox" Width="110px" Text="Enter your email" Attributes.onclick="this.select()"/>
+		<com:TButton ID="btnSubmit" CssClass="button" Style="margin:10px 0 0 0" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="Newsletter"/><br />
 		<com:TRequiredFieldValidator ID="val3"
 			CssClass="newsletter_error"
 			ControlToValidate="txtEmail"

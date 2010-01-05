@@ -27,3 +27,6 @@ REGISTER_FAILED				= Register unsuccessful! Please try again or contact administ
 UNKNOWN_ERROR				= There is an unknown error found when processing the data. Please contact administrator.
 MAKE_SURE_FILL_DATA			= Please make sure all fields in each row must be filled. Row will be delete if one of fields is left blank.
 NEW_PASSWORD_SENT			= A new password has been sent to your email.
+NEWSLETTER_REG_SUCCESS		= Your email has been added to our mailing list.
+NEWSLETTER_REG_FAILED		= Your email could not be added to our mailing list. Please try again later.
+NEWSLETTER_EXISTS			= Your email is already in our mailing list.

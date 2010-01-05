@@ -3,25 +3,28 @@
 	<div class="content">
 		Enter your email address to receive our FREE newsletter on the organic market
 		<com:TTextBox ID="txtEmail" CssClass="textbox" Width="125px" Text="Enter your email" Attributes.onclick="this.select()"/>
-		<com:TButton ID="btnSubmit" CssClass="button" Text="Submit" OnClick="btnSubmit_Clicked" /><br />
+		<com:TButton ID="btnSubmit" CssClass="button" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="Newsletter"/><br />
 		<com:TRequiredFieldValidator ID="val3"
 			CssClass="newsletter_error"
 			ControlToValidate="txtEmail"
 			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
 			Display="Dynamic"
-			FocusOnError="True"/>
+			FocusOnError="True"
+			ValidationGroup="Newsletter"/>
 		<com:TEmailAddressValidator ID="val4"
 			CssClass="newsletter_error"
 			ControlToValidate="txtEmail"
 			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
 			Display="Dynamic"
-			FocusOnError="True"/>
+			FocusOnError="True"
+			ValidationGroup="Newsletter"/>
 		<com:TCustomValidator ID="val5"
 			CssClass="newsletter_error"
 			ControlToValidate="txtEmail"
 			OnServerValidate="uniqueCheck_ServerValidated"
-			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Email') %>"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('NEWSLETTER_EXISTS') %>"
 			Display="Dynamic"
-			FocusOnError="True"/>
+			FocusOnError="True"
+			ValidationGroup="Newsletter"/>
 	</div>
 </div>

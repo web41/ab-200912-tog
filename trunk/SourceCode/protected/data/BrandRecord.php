@@ -32,5 +32,13 @@ class BrandRecord extends TActiveRecord
 		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Name);
 		parent::save();
 	}
+	
+	public function getAllItems()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "brand_id > 0";
+		$criteria->OrdersBy["brand_name"] = "asc";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

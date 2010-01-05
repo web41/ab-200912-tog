@@ -12,17 +12,17 @@ class DiscountForm extends TPage
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
 				// Populates the input controls with the existing post data
-				$this->lblHeader->Text = "Update category: ".$activeRecord->Name;
+				$this->lblHeader->Text = "Update discount: ".$activeRecord->Name;
 				$this->txtName->Text = $activeRecord->Name;
 				$this->txtAlias->Text = $activeRecord->Alias;
-				$this->txtAmount->Text = $activeRecord->Amount;
-				$this->dpStartDate->TimeStamp = $activeRecord->StartDate;
-				$this->dpEndDate->TimeStamp = $activeRecord->EndDate;
+				$this->txtAmount->Text = $activeRecord->IsPercent ? $activeRecord->Amount*100 : $activeRecord->Amount;
+				$this->dpStartDate->Data = $activeRecord->StartDate;
+				$this->dpEndDate->Data = $activeRecord->EndDate;
 				$this->radIsPercent->SelectedValue = $activeRecord->IsPercent;
 			}
 			else
 			{
-				$this->lblHeader->Text = "Add new category";
+				$this->lblHeader->Text = "Add new discount";
 				$this->dpStartDate->Data = time();
 				$this->dpEndDate->Data = time();
 			}
@@ -55,10 +55,10 @@ class DiscountForm extends TPage
 
 		$activeRecord->Name = $this->txtName->SafeText;
 		$activeRecord->Alias = $this->txtAlias->SafeText;
-		$activeRecord->Amount = TPropertyValue::ensureFloat($this->txtAmount->SafeText);
-		$activeRecord->StartDate = $this->dpStartDate->TimeStamp;
-		$activeRecord->EndDate = $this->dpEndDate->TimeStamp;
+		$activeRecord->StartDate = $this->dpStartDate->Data;
+		$activeRecord->EndDate = $this->dpEndDate->Data;
 		$activeRecord->IsPercent = $this->radIsPercent->SelectedValue;
+		$activeRecord->Amount = $activeRecord->IsPercent ? TPropertyValue::ensureFloat($this->txtAmount->SafeText/100) : TPropertyValue::ensureFloat($this->txtAmount->SafeText);
 		
 		return $activeRecord;
 	}

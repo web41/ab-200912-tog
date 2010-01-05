@@ -28,5 +28,13 @@ class CouponRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	public function getAllItems()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "coupon_id > 0";
+		$criteria->OrdersBy["coupon_code"] = "asc";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

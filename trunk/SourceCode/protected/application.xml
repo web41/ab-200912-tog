@@ -89,6 +89,7 @@
 			<url ServiceParameter="admincp.DiscountManager" pattern="admincp/discount/manager"/>
 			<url ServiceParameter="admincp.DiscountForm" pattern="admincp/discount/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.DiscountForm" pattern="admincp/discount/create-new"/>
+			<url ServiceParameter="admincp.ApplyDiscount" pattern="admincp/discount/apply-discount"/>
 			<url ServiceParameter="admincp.ShippingMethodManager" pattern="admincp/shipping-method"/>
 			<url ServiceParameter="admincp.ShippingMethodManager" pattern="admincp/shipping-method/manager"/>
 			<url ServiceParameter="admincp.ShippingMethodForm" pattern="admincp/shipping-method/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>

@@ -35,5 +35,12 @@ class PaymentRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	public function getAllItems()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "payment_id > 0";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

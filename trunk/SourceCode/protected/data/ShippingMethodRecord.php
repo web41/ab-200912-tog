@@ -39,5 +39,14 @@ class ShippingMethodRecord extends TActiveRecord
 		$this->DiscountID=0;
 		parent::save();
 	}
+	
+	public function getAllItems($publishedOnly=false)
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "method_id > 0";
+		if ($publishedOnly) $criteria->Condition .= " and method_publish = 1";
+		$criteria->OrdersBy["method_name"] = "asc";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

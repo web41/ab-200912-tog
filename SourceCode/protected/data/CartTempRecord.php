@@ -7,16 +7,16 @@ class CartTempRecord extends TActiveRecord
 	const TABLE='tbl_cart_temp';
 
 	public $SessionID;
-	public $UserID;
-	public $BillingID;
-	public $ShippingID;
-	public $Subtotal;
-	public $ShippingMethodID;
-	public $ShippingAmount;
-	public $CouponCode;
-	public $CouponAmount;
-	public $TaxAmount;
-	public $CreateDate;
+	public $UserID=0;
+	public $BillingID=0;
+	public $ShippingID=0;
+	public $Subtotal=0;
+	public $ShippingMethodID=0;
+	public $ShippingAmount=0;
+	public $CouponCode=0;
+	public $CouponAmount=0;
+	public $TaxAmount=0;
+	public $CreateDate=0;
 	
 	public static $COLUMN_MAPPING=array
 	(
@@ -39,7 +39,8 @@ class CartTempRecord extends TActiveRecord
 		'BillingAddress'=>array(self::BELONGS_TO,'UserAddressRecord','billing_id'),
 		'ShippingAddress'=>array(self::BELONGS_TO,'UserAddressRecord','shipping_id'),
 		'ShippingMethod'=>array(self::BELONGS_TO,'ShippingMethodRecord','shipping_method_id'),
-		'Coupon'=>array(self::BELONGS_TO,'CouponRecord','coupon_code')
+		'Coupon'=>array(self::BELONGS_TO,'CouponRecord','coupon_code'),
+		'CartTempDetails'=>array(self::HAS_MANY,'CartTempDetailRecord','session_id')
 	);
 	public static function finder($className=__CLASS__)
 	{

@@ -25,7 +25,7 @@ a.btn_addtocart:hover{color:#e8e8e8;}
 .button:hover{cursor:pointer;background:#83b32a;}
 .textbox{color:#7c5a2c;font-size:11px;height:14px;border:solid 1px #9f9f9f;background:#fff;padding-top:2px;width:100px;margin:10px 5px 0 0;float:left;}
 
-.btn_refresh{height:16px;width:16px;background:url(../images/btn_refresh.png) no-repeat;float:left;border:none;}
-.btn_delete{height:16px;width:16px;background:url(../images/btn_delete.png) no-repeat;border:none;}
+.btn_refresh{height:16px;width:16px;background:url(../images/btn_refresh.png) no-repeat;float:left;border:none;margin:2px 0 0 0;}
+.btn_delete{height:16px;width:16px;background:url(../images/btn_delete.png) no-repeat;border:none;margin:2px 0 0 0;}
 .btn_refresh:hover, .btn_delete:hover{cursor:pointer;filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;cursor:pointer;}
 

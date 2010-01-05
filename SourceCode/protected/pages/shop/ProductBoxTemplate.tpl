@@ -1,12 +1,12 @@
 <!-- Product box -->
 <div class="product_box">
-	<img src="<%# $this->Page->Master->UrlPrefix %>/useruploads/images/product/thumbs/<%# $this->Data ? $this->Data->ThumbnailPath : "" %>" alt="<%= $this->Data ? $this->Data->Name : "" %>" style="width:124px;height:124px;"/>
+	<a href=""><img src="<%# $this->Page->Master->UrlPrefix %>/useruploads/images/product/thumbs/<%# $this->Data ? $this->Data->ThumbnailPath : "" %>" alt="<%= $this->Data ? $this->Data->Name : "" %>" style="width:124px;height:124px;"/></a>
 	<div class="title">
 		<h2><%# $this->Data ? $this->Data->Brand->Name : "" %></h2>
 		<div class="price">Price: <com:TActiveLabel ID="lblPrice" /></div>
 	</div>
 	<div class="title">
-		<h3><%= $this->Data ? $this->Data->Name : "" %></h3>
+		<h3><a href=""><%= $this->Data ? $this->Data->Name : "" %></a></h3>
 	</div>
 	<div class="content">
 		<div><%= $this->Data ? $this->Data->Description : "" %></div>

@@ -16,12 +16,30 @@
 	<div class="inside_box">
   		<h2>view cart</h2>
         <div class="viewcart_container">
+        	<!-- Cart step -->
+        	<div class="cart_step">
+            	<ul>
+                	<li class="active"><a href="">view cart</a></li>
+                    <li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
+                    <li>bill/ship info</li>
+                    <li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
+                    <li>confirm/edit info</li>
+                    <li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
+                    <li>order confirmation</li>
+                </ul>
+            </div>
+            <!-- Cart step: END -->
+            
+            <!-- Cart title -->
         	<div class="cart_title" style="margin:0;">
             	<div class="prd_item">product item</div>
                 <div class="qty">Quantity</div>
                 <div class="price">total price</div>
                 <div class="price">remove</div>
             </div>
+            <!-- Cart title: END -->
+            
+            <!-- Cart items -->
             <div class="cart_item">
             	<div class="prd_item">Organic Brown Rice Miso Jar 300g</div>
                 <div class="qty"><input type="text" class="textbox" /><input type="button" class="btn_refresh" value="" /></div>
@@ -40,16 +58,23 @@
                 <div class="price">$1252</div>
                 <div class="price"><input type="button" class="btn_delete" value="" /></div>
             </div>
+            <!-- Cart items: END -->
+            
+            <!-- Cart total price -->
             <div class="totalprice">
             	<div class="couponcode">
                 	Enter Coupon Code <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
                 </div>
             	<div>total: $132</div>
             </div>
+            <!-- Cart total price: END -->
+            
+            <!-- Cart button -->
             <div class="button_container">
             	<input type="button" style="float:left;" class="button" value="< Continue shopping" />
                 <input type="button" style="float:right;" class="button" value="Checkout >" />
             </div>
+            <!-- Cart button: END -->
         </div>
 	</div>
 	<!-- Inside box: END -->

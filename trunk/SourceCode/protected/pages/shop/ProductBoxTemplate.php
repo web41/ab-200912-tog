@@ -34,6 +34,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 		if ($prop instanceof PropertyRecord)
 		{
 			$this->lblPrice->Text = $this->getFormattedValue($prop->Price);
+			$this->cboQuantitySelector->Items->clear();
 			for($i=1;$i<=$prop->InStock;$i++)
 			{
 				$item = new TListItem;

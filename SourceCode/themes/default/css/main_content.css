@@ -17,7 +17,7 @@
 			#left_category li ul li a.active{font:bold 13px Arial;text-transform:capitalize;display:block;padding:10px 0 10px 20px;color:#749f24;background:#eaeac4;}
 
 .left_col .box, .right_col .box{float:left;width:178px;height:auto;margin:0 0 20px 0;}
-	.box h2{background:#e2e2bc url(../images/left_col_top.png) no-repeat;width:158px;text-align:left;float:left;padding:10px 0 10px 20px;font-size:14px;}
+	.box h2{background:#e2e2bc url(../images/left_col_top.png) no-repeat;width:158px;text-align:left;float:left;padding:10px 0 10px 20px;font-size:14px;font-weight:bold;}
 	.box .content{padding:8px 4px 0 4px;text-align:left;float:left;width:170px;}
 	.box .special_box{text-align:left;float:left;width:178px;background:url(../images/specialbox_top.png) no-repeat;padding-top:8px;margin-top:10px;line-height:18px;}
 	.box .special_box div{background:url(../images/specialbox_bottom.png) no-repeat bottom center;padding-bottom:10px;}

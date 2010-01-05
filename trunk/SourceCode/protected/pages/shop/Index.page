@@ -14,7 +14,7 @@
 	<com:Application.shared.UserNotice ID="Notice" />
 	<div class="main_content">
 		<!-- Product box -->
-		<div class="product_box">
+		<!--<div class="product_box">
 			<img src="<%= $this->Page->Theme->BaseUrl %>/images/img_prd.png" alt="Product 1"/>
 			<div class="title">
 				<h2>brand name</h2>
@@ -50,9 +50,13 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 		<!-- Product box: END -->
+        
+        <!-- Product box -->
 		<com:TRepeater ID="ItemList" ItemRenderer="Application.pages.shop.ProductBoxTemplate" />
+        <!-- Product box: END -->
+        
 		<!-- Pagination: END -->
 		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" />
 		<!-- Pagination: END -->

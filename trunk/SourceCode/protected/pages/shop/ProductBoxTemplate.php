@@ -58,11 +58,14 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 			// do add cart here
 			try
 			{
-				$cartTemp = new CartTempRecord;
-				$cartTemp->SessionID = $this->Session->SessionID;
-				if (!$this->User->IsGuest) $cartTemp->UserID = $this->User->ID;
-				$cartTemp->save();
-				
+				$cartTemp = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+				if (!($cartTemp instanceof CartTempRecord))
+				{
+					$cartTemp = new CartTempRecord;
+					$cartTemp->SessionID = $this->Session->SessionID;
+					if (!$this->User->IsGuest) $cartTemp->UserID = $this->User->ID;
+					$cartTemp->save();
+				}
 				$cartDetail = new CartTempDetailRecord;
 				$cartDetail->HashID = md5(uniqid(time()));
 				$cartDetail->SessionID = $cartTemp->SessionID;

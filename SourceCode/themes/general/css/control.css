@@ -15,11 +15,12 @@ select{width:auto;height:26px;border:solid 1px #e5e5e5;background:url(../images/
 
 .btn_smallenter{width:36px;height:26px;background:url(../images/btn_smallenter.png) no-repeat;border:0;margin-left:5px;float:right;}
 .btn_smallreset{width:36px;height:26px;background:url(../images/btn_smallreset.png) no-repeat;border:0;margin-left:5px;float:right;}
+.btn_smalladd{width:36px;height:26px;background:url(../images/btn_smalladd.png) no-repeat;border:0;margin-left:5px;float:right;}
 
 
 
 
-.btn_addnew:hover, .btn_checkall:hover, .btn_uncheck:hover, .btn_publish:hover, .btn_unpublish:hover, .btn_delete:hover, .btn_edit:hover, .btn_smallenter:hover, .btn_smallreset:hover, .btn_reset:hover, .btn_cancel:hover, .btn_addmore:hover
+.btn_addnew:hover, .btn_checkall:hover, .btn_uncheck:hover, .btn_publish:hover, .btn_unpublish:hover, .btn_delete:hover, .btn_edit:hover, .btn_smallenter:hover, .btn_smallreset:hover, .btn_reset:hover, .btn_cancel:hover, .btn_addmore:hover, .btn_smalladd:hover
 {background-position:center -26px;cursor:pointer}
 
 #calendar_box table{}

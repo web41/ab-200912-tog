@@ -46,5 +46,19 @@ class CartTempRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	public function getSubtotalInSession()
+	{
+		$activeRecord = self::finder()->withCartTempDetails()->findByPk(Prado::getApplication()->Session->SessionID);
+		if ($activeRecord instanceof CartTempRecord)
+		{
+			$subtotal = 0;
+			foreach($activeRecord->CartTempDetails as $item)
+			{
+				$subtotal += $item->Subtotal;
+			}
+		}
+		return $subtotal;
+	}
 }
 ?>

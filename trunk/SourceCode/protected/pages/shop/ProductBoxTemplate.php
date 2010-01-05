@@ -56,6 +56,36 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 		else
 		{
 			// do add cart here
+			try
+			{
+				$cartTemp = new CartTempRecord;
+				$cartTemp->SessionID = $this->Session->SessionID;
+				if (!$this->User->IsGuest) $cartTemp->UserID = $this->User->ID;
+				$cartTemp->save();
+				
+				$cartDetail = new CartTempDetailRecord;
+				$cartDetail->HashID = md5(uniqid(time()));
+				$cartDetail->SessionID = $cartTemp->SessionID;
+				if (!$this->User->IsGuest) $cartDetail->UserID = $this->User->ID;
+				$cartDetail->ProductID = $this->txtID->Value;
+				$cartDetail->Quantity = $this->cboQuantitySelector->SelectedValue;
+				$prop = PropertyRecord::finder()->findByPk($this->cboPropertySelector->SelectedValue);
+				if ($prop instanceof PropertyRecord)
+				{
+					$cartDetail->PropertyID = $prop->ID;
+				}
+				$cartDetail->Subtotal = $cartDetail->Quantity*$prop->Price;
+				$cartDetail->CreateDate = time();
+				$cartDetail->save();
+				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
+			}
+			catch(TException $e)
+			{
+				$this->Page->Notice->Type = UserNoticeType::Error;
+				$this->Page->Notice->Text = $e;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+				$this->Page->categoryMenu->populateData();
+				$this->Page->populateData();
+			}
 		}
 	}
 }

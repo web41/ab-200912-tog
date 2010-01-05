@@ -38,7 +38,7 @@
 			<!--database ConnectionString="mysql:host=localhost;dbname=dosithuy_tog" username="dosithuy_tog" password="tog123"/-->
 		</module>
 		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
-		<module class="System.Web.THttpSession" Timeout="7200" />
+		<module id="session" class="System.Web.THttpSession" Timeout="7200" />
 		<module id="mailer" class="System.Util.TEmailer" Type="Mail" EmailTemplateDirectory="Application.template">
 			<sender Field="Sender" Address="noreply@asiablaze.com" Name="The Organic Grocer" />
 		</module>
@@ -62,6 +62,8 @@
 			<url ServiceParameter="shop.account.Login" pattern="shop/account/login"/>
 			<url ServiceParameter="shop.account.Register" pattern="shop/account/register"/>
 			<url ServiceParameter="shop.account.ForgotPwd" pattern="shop/account/forgot-password"/>
+			
+			<url ServiceParameter="shop.cart.Index" pattern="shop/view-cart"/>
 			
 			<url ServiceParameter="admincp.Index" pattern="admincp"/>
 			<url ServiceParameter="admincp.Index" pattern="admincp/index"/>

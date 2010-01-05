@@ -6,20 +6,22 @@ class CartTempDetailRecord extends TActiveRecord
 {
 	const TABLE='tbl_cart_temp_detail';
 
-	public $SessionID;
-	public $UserID;
-	public $ProductID;
-	public $UnitPrice;
-	public $Quantity;
-	public $Subtotal;
-	public $CreateDate;
+	public $HashID;
+	public $SessionID="";
+	public $UserID=0;
+	public $ProductID=0;
+	public $PropertyID=0;
+	public $Quantity=0;
+	public $Subtotal=0;
+	public $CreateDate=0;
 	
 	public static $COLUMN_MAPPING=array
 	(
+		'hash_id'=>'HashID',
 		'session_id'=>'SessionID',
 		'user_id'=>'UserID',
 		'product_id'=>'ProductID',
-		'unit_price'=>'UnitPrice',
+		'prop_id'=>'PropertyID',
 		'quantity'=>'Quantity',
 		'subtotal'=>'Subtotal',
 		'c_date'=>'CreateDate'
@@ -28,7 +30,9 @@ class CartTempDetailRecord extends TActiveRecord
 	public static $RELATIONS=array
 	(
 		'User'=>array(self::BELONGS_TO,'UserRecord','user_id'),
-		'Product'=>array(self::BELONGS_TO,'ProductRecord','product_id')
+		'Product'=>array(self::BELONGS_TO,'ProductRecord','product_id'),
+		'Property'=>array(self::BELONGS_TO,'PropertyRecord','prop_id'),
+		'CartTemp'=>array(self::BELONGS_TO,'CartTempRecord','session_id')
 	);
 
 	public static function finder($className=__CLASS__)

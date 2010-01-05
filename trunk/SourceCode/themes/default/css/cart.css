@@ -13,7 +13,7 @@
 .viewcart_container .totalprice{float:left;width:544px;height:auto;padding:5px 0 5px 0;font-size:12px;text-transform:capitalize;}
 .viewcart_container .totalprice .couponcode{float:left;color:#503a1d;font-size:12px;font-weight:bold;}
 .viewcart_container .totalprice .couponcode .textbox{float:none;}
-.viewcart_container .totalprice .couponcode .button{float:none;width:auto;height:auto;padding:1px;}
+.viewcart_container .totalprice .couponcode .button{float:none;}
 .viewcart_container .totalprice div{float:right;text-transform:capitalize;color:#7aa825;font-size:18px;margin:0;}
 
 .viewcart_container .button_container{float:left;width:544px;height:auto;padding:5px 0 5px 0;font-size:12px;text-transform:capitalize;}

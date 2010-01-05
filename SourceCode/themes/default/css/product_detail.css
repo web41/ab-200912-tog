@@ -1,0 +1,10 @@
+﻿.main_col .inside_box .title{float:left;width:544px;border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;}
+	.main_col .inside_box .title h2.productdetail_title{text-transform:capitalize;font-weight:normal;font-size:20px;color:#7aa825;float:left;border:none;padding:0;margin:0;}
+	.main_col .inside_box .title h2 span{color:#996500;font-size:16px;}
+	.main_col .inside_box .title .price{float:right;font-weight:bold;font-size:16px;color:#9e632a;margin:0;}
+
+.productdetail_container{float:left;width:544px;height:auto;text-align:left;margin:5px 0 0 0;}
+.productdetail_container img{float:left;width:200px;height:200px;border:solid 1px #cccca5;padding:1px;margin:0 10px 0 0;}
+.productdetail_container .item_container{float:left;width:330px;height:auto;}
+.productdetail_container .item_container div b{font-size:14px;}
+.productdetail_container .item_container div div{margin-bottom:8px;}

@@ -15,19 +15,22 @@
 	<!-- Inside box -->
 	<div class="inside_box">
     	<div class="title">
-    		<h2 class="productdetail_title">product detail - <span>product name</span></h2>
+    		<h2 class="productdetail_title">brand name - <span>product name</span></h2>
             <div class="price">Price: $100</div>
         </div>
         <div class="productdetail_container">
-        	<div style="float:left;width:214px;" id="productdetail_img">
+        	<div style="float:left;width:214px;">
                 <img src="<%= $this->Page->Theme->BaseUrl %>/images/img_aboutus.png" alt="" class="img"/>
             </div>
             <div class="item_container">
             	<div>
-                	<b>Product description</b><br />
-                	<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae lacus vel libero malesuada vehicula ac vel turpis. Proin ac lectus dolor. Nullam vel justo nec neque elementum convallis. In hac habitasse platea dictumst. Nam nec neque leo. Praesent ligula dolor, cursus in lobortis in, ultrices in elit.</div>
-                    <div>Vivamus sodales varius felis, eu hendrerit augue rhoncus id. Nunc vulputate erat sed massa pulvinar eu commodo purus laoreet. Etiam eget eros auctor nisl sagittis faucibus elementum id nulla. Phasellus vestibulum accumsan consequat</div>
+                	<b>Brief desctiption</b><br />
+                    <div>Vivamus sodales varius felis, eu hendrerit augue rhoncus id. Nunc vulputate erat sed massa pulvinar eu commodo purus laoreet.
+                    </div>
                 </div>
+                <div style="margin-bottom:5px;"><i><b>Available in 9 organic choices</b></i></div>
+				<div style="margin-bottom:5px;"><b>Size</b>: 200g</div>
+				<div style="color:#eb0010;margin-bottom:5px;">NOT AVAILABLE - Apple Mango Delight</div>
                 <div>
                 	<b>Quantity</b>
                     <select>
@@ -36,10 +39,21 @@
                         <option>03</option>
                         <option>04</option>
                     </select>
+                    <select>
+                        <option>Please select...</option>
+                        <option>Please select...Please select</option>
+                        <option>Selection 03</option>
+                        <option>Selection 04</option>
+                    </select>
                 </div>
-                <div style="padding-top:10px;">
-                	<com:TLinkButton ID="btnAddToCart" Text="Add to cart" CssClass="btn_addtocart" />
-                </div>
+            </div>
+            <div style="float:left;width:544px;">
+                	<b style="font-size:14px;">Detail desctiption</b><br />
+                    <div>Vivamus sodales varius felis, eu hendrerit augue rhoncus id. Nunc vulputate erat sed massa pulvinar eu commodo purus laoreet.
+                    </div>
+                    <div style="width:544px;text-align:center;float:none;">
+                        <a href="" class="btn_addtocart" style="margin-left:222px;">Add to cart</a>
+                    </div>
             </div>
         </div>
 	</div>

@@ -54,6 +54,7 @@
 			<url ServiceParameter="shop.ContactUs" pattern="contact-us.html"/>
 			<url ServiceParameter="shop.TermandCondition" pattern="terms-and-conditions.html"/>
 			
+			<url ServiceParameter="shop.ProductDetail" pattern="shop/product-detail/{id}-{alias}" parameters.id="\d+" parameters.alias=".*" />
 			<url ServiceParameter="shop.Index" pattern="shop/category/{id}-{alias}/{subid}-{subalias}" parameters.id="\d+" parameters.alias=".*" parameters.subid="\d+" parameters.subalias=".*" />
 			<url ServiceParameter="shop.Index" pattern="shop/category/{id}-{alias}" parameters.id="\d+" parameters.alias=".*" />
 			<url ServiceParameter="shop.Index" pattern="shop"/>

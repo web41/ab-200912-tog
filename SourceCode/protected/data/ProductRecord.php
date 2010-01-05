@@ -121,5 +121,13 @@ class ProductRecord extends TActiveRecord
 		$this->AvailableDate = 0;
 		parent::save();
 	}
+	
+	public function getAllItems($publishedOnly=false)
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "product_id > 0";
+		if ($publishedOnly) $criteria->Condition .= " and product_publish = 1";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

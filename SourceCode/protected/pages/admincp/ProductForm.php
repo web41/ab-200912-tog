@@ -10,18 +10,12 @@ class ProductForm extends TPage
 		if (!$this->IsPostBack)
 		{
 			// fill parent selector combobox
-			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "brand_id > 0";
-			$criteria->OrdersBy["brand_name"] = "asc";
-			$this->cboBrandSelector->DataSource = BrandRecord::finder()->findAll($criteria);
+			$this->cboBrandSelector->DataSource = BrandRecord::finder()->getAllItems();
 			$this->cboBrandSelector->DataBind();
-			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "mf_id > 0";
-			$criteria->OrdersBy["mf_name"] = "asc";
-			$this->cboMfSelector->DataSource = ManufacturerRecord::finder()->findAll($criteria);
+			$this->cboMfSelector->DataSource = ManufacturerRecord::finder()->getAllItems();
 			$this->cboMfSelector->DataBind();
-			//$this->cboUOMSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["UNITS_OF_MEASURE"]);
-			//$this->cboUOMSelector->DataBind();
+			$this->cboDiscountSelector->DataSource = DiscountRecord::finder()->getAllItems();
+			$this->cboDiscountSelector->DataBind();
 			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree(true);
 			$this->cboCatSelector->DataBind();
 			$this->populateProperties();

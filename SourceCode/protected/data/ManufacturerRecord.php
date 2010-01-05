@@ -38,5 +38,13 @@ class ManufacturerRecord extends TActiveRecord
 		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Name);
 		parent::save();
 	}
+	
+	public function getAllItems()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "mf_id > 0";
+		$criteria->OrdersBy["mf_name"] = "asc";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

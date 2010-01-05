@@ -85,8 +85,7 @@
 										<com:TDatePicker ID="dpStartDate"
 											Mode="ImageButton" InputMode="TextBox"
 											ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
-											DateFormat="MM/dd/yyyy"
-											ReadOnly="true"/>
+											DateFormat="MM/dd/yyyy"/>
 									</div>
 								</td>
 								<td class="field">                                
@@ -95,8 +94,7 @@
 										<com:TDatePicker ID="dpEndDate"
 											Mode="ImageButton" InputMode="TextBox"
 											ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
-											DateFormat="MM/dd/yyyy"
-											ReadOnly="true"/>
+											DateFormat="MM/dd/yyyy"/>
 									</div>
 								</td>
 							</tr>

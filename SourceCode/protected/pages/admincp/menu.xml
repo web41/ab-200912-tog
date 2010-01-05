@@ -23,6 +23,7 @@
 	<menuNode ServiceParameter="admincp.DiscountManager" Title="Discount">
 		<menuNode ServiceParameter="admincp.DiscountForm" Title="Add Discount" />
 		<menuNode ServiceParameter="admincp.DiscountManager" Title="Discount List" />
+		<menuNode ServiceParameter="admincp.ApplyDiscount" Title="Apply Discount" />
 	</menuNode>
 	<menuNode ServiceParameter="admincp.ShippingMethodManager" Title="Shipping Method">
 		<menuNode ServiceParameter="admincp.ShippingMethodForm" Title="Add Shipping Method" />

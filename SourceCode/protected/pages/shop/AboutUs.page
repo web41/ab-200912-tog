@@ -17,7 +17,8 @@
     	<h2>Our Commitment</h2>
         <div><span class="name">The Organic Grocer</span> is committed to delivering fresh organic produce as well as the best organic brands to our customers each week, while focusing on convenience and value.</div>
         <h2>about us</h2>
-		<div>At <span class="name">the Organic Grocer</span>, we pride ourselves in putting together the best organic brands under one roof, which saves you time running from shop to shop getting various organic products... and best of all they’re just a click away and delivered straight to your door!</div>
+        <img src="<%= $this->Page->Theme->BaseUrl %>/images/img_aboutus.png" alt="" class="img"/>
+		<div>At <span class="name">the Organic Grocer</span>, we pride ourselves in putting together the best organic brands under one roof, which saves you time running from shop to shop getting various organic products... and best of all they're just a click away and delivered straight to your door!</div>
         <div><span class="name">The Organic Grocer</span> works directly with farms and wholesalers to deliver fresh organic produce as well as a wide range of all your favourite organic products to your door, all year-round.</div>
         <div><b>How do your prices compare to those of other organic retailers?</b><br />
         Our prices are very competitive compared to local organic stores and supermarkets. Most importantly, we bring it right to your door.</div>

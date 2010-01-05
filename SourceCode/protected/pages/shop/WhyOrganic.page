@@ -14,7 +14,8 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-    	<h2>why organic</h2>
+    	<h2>why organic?</h2>
+        <img src="<%= $this->Page->Theme->BaseUrl %>/images/img_whyorganic.png" alt="" class="img"/>
         <div>Organic food is grown free of pesticides and chemical fertilizers. They are grown with natural fertilizers and pests are kept at a minimum using other methods that do not involve pesticides. They are as natural as you can get.</div>
         
         <div>Organic food contains higher levels of vitamin C and essential minerals such as calcium, magnesium, iron and chromium as well as powerful antioxidants. Organic foods are generally much richer in nutrients than regular foods. This is because the soil used in organic farming is generally much richer in nutrition. Organic food is known to contain 50% more nutrients, minerals and vitamins than produce that have been commercially farmed.</div>
@@ -36,8 +37,8 @@
         </div>
         <div><b>Why do organic foods cost more?</b>
         	<div>Organic food will cost more than the regular variety, simply because they do cost more to grow. Also, the yield from organic farming is less so fewer fruits are produced.</div>
-            <div>However, as organic food is known to contain 50% more nutrients, minerals and vitamins than produce that have been commercially farmed, isn’t it better to eat less of that particular fruit, still get the same amount of nutrients and vitamins, whilst cutting out the chemicals and toxins from your body. If that is the case, doesn’t it make more sense to buy organic?</div>
-            <div>That is why, at <span class="name">The Organic Grocer</span>, we will not only offer you the best organic brands and a wide range of organic products, but also competitive prices … so as to enable you and your family to lead the healthy organic lifestyle!  Press Order Now to select your organic groceries.</div>
+            <div>However, as organic food is known to contain 50% more nutrients, minerals and vitamins than produce that have been commercially farmed, isn't it better to eat less of that particular fruit, still get the same amount of nutrients and vitamins, whilst cutting out the chemicals and toxins from your body. If that is the case, doesn't it make more sense to buy organic?</div>
+            <div>That is why, at <span class="name">The Organic Grocer</span>, we will not only offer you the best organic brands and a wide range of organic products, but also competitive prices... so as to enable you and your family to lead the healthy organic lifestyle!  Press Order Now to select your organic groceries.</div>
         </div>
 	</div>
 	<!-- Inside box: END -->

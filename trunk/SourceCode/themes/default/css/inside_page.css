@@ -1,5 +1,6 @@
 ﻿/*Main column*/
 	.main_col .inside_box{float:left;width:544px;height:auto;text-align:left;margin-bottom:20px;}
+	.main_col .inside_box .img{float:left;width:180px;border:solid 1px #ececec;padding:1px;margin:3px 10px 0 0;width:200px;}
 	
 	.main_col .inside_box table{border:solid 1px #dadada;}
 	.main_col .inside_box table tr.noborder{border:solid 1px #dadada;border-width:0 1px 0 1px;width:50%}
@@ -9,7 +10,7 @@
 	.main_col .inside_box table .left{text-align:right;padding-right:20px;width:140px;text-transform:capitalize;}
 	.main_col .inside_box table .right .textbox{width:180px;}
 	
-	.main_col .inside_box div{margin-bottom:15px;line-height:18px;}
+	.main_col .inside_box div{margin-bottom:15px;line-height:20px;}
 	
 	.main_col .inside_box div ol{list-style-type:upper-roman;}
 	.main_col .inside_box div ol ol{list-style-type:decimal;margin-bottom:10px;font-weight:bold;}

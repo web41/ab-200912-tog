@@ -36,10 +36,15 @@
                     <td class="right"><input type="text" class="textbox" /></td>
                 </tr>
                 <tr>
+                    <td class="left" valign="top">Message</td>
+                    <td class="right">
+                    	<textarea style="width:300px" cols="15" rows="5"></textarea>
+                    </td>
+                </tr>
+                <tr>
                 	<td class="left">&nbsp;</td>
                     <td class="right">
                     	<input type="submit" value="Submit" />
-                        <input type="reset" value="Reset" />
                         <input type="button" value="Cancel" />
                     </td>
                 </tr>

@@ -19,3 +19,6 @@ a.btn_cart:hover{color:#e8e8e8;}
 a.btn_addtocart{display:block;width:66px;height:21px;background:url(../images/btn_addtocart.png) no-repeat;color:#fff;padding:11px 0 0 34px;text-align:left;font-size:12px;margin-top:-12px;}
 a.btn_addtocart:hover{color:#e8e8e8;}
 
+.button{background:#749f24;border:solid 1px #749f24;height:19px;padding:0 0 1px 0;color:#fff;float:right;font-size:11px;float:left;margin:10px 0 0 0;}
+.button:hover{cursor:pointer;background:#83b32a;}
+.textbox{color:#7c5a2c;font-size:11px;height:14px;border:solid 1px #9f9f9f;background:#fff;padding-top:2px;width:120px;margin:10px 5px 0 0;float:left;}

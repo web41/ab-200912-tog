@@ -47,7 +47,7 @@
 						</script>
                     </div>
                     <div class="ss_content">
-                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image2.jpg" alt="" class="img" width="150" style="margin-bottom:80px;"/>
+                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image2.png" alt="" class="img" width="150" style="margin-bottom:80px;"/>
                         <div>Fresh Organic Fruits &Veggies Air-Flown in From Australia & USA</div> 
                         <div>Order by Tuesday 4 pm for delivery on Friday/Saturday</div>
                         <div>Order by Saturday 10am for delivery the following Tuesday/Wednesday</div>

@@ -11,6 +11,7 @@
 	.main_col .inside_box table .left span{color:red;font-weight:bold;}
 	.main_col .inside_box table .right{vertical-align:middle;width:65%;font-size:11px;}
 	.main_col .inside_box table .right .frm_textbox{width:180px;float:none;}
+	.main_col .inside_box table .right .button{margin-right:5px;}
 	
 	.main_col .inside_box div{margin-bottom:15px;line-height:20px;}
 	

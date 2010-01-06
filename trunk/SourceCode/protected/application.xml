@@ -70,6 +70,11 @@
 			<url ServiceParameter="shop.account.Login" pattern="shop/account/login"/>
 			<url ServiceParameter="shop.account.Register" pattern="shop/account/register"/>
 			<url ServiceParameter="shop.account.ForgotPwd" pattern="shop/account/forgot-password"/>
+			<url ServiceParameter="shop.account.profile.Index" pattern="shop/account"/>
+			<url ServiceParameter="shop.account.profile.ChangePassword" pattern="shop/account/change-password"/>
+			<url ServiceParameter="shop.account.profile.ChangeProfile" pattern="shop/account/change-profile"/>
+			
+			<url ServiceParameter="shop.account.addresses.Index" pattern="shop/account/addresses-manager"/>
 			
 			<url ServiceParameter="shop.cart.Index" pattern="shop/view-cart"/>
 			

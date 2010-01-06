@@ -34,10 +34,10 @@
 					<div style="margin:0;padding:10px 0 0 0;text-align:right;"><input type="button" value="Register" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.account.Register") %>'" /></div>
 				</td>
 				<td valign="top">
-					<div>Email: <com:TTextBox ID="txtEmail" /><com:TRequiredFieldValidator ID="val1" ControlToValidate="txtEmail" ErrorMessage="*" Display="Dynamic" FocusOnError="true"/></div>
-					<div>Password: <com:TTextBox ID="txtPassword" TextMode="Password" /><com:TRequiredFieldValidator ID="val2" ControlToValidate="txtPassword" ErrorMessage="*" Display="Dynamic" FocusOnError="true"/></div>
+					<div>Email: <com:TTextBox ID="txtEmail" /><com:TRequiredFieldValidator ID="val1" ControlToValidate="txtEmail" ErrorMessage="*" Display="Dynamic" FocusOnError="true" ValidationGroup="Login"/></div>
+					<div>Password: <com:TTextBox ID="txtPassword" TextMode="Password" /><com:TRequiredFieldValidator ID="val2" ControlToValidate="txtPassword" ErrorMessage="*" Display="Dynamic" FocusOnError="true" ValidationGroup="Login"/></div>
 					<div>Forgot password? <a href="<%= $this->Service->ConstructUrl("shop.account.ForgotPwd") %>">Click here</a></div>
-					<div style="margin:0;padding:10px 0 0 0;text-align:right;"><com:TButton ID="btnLogin" Text="Login" OnClick="btnLogin_Clicked" IsDefaultButton="true" /></div>
+					<div style="margin:0;padding:10px 0 0 0;text-align:right;"><com:TButton ID="btnLogin" Text="Login" OnClick="btnLogin_Clicked" IsDefaultButton="true" ValidationGroup="Login"/></div>
 				</td>
 			</tr>
 		</table>

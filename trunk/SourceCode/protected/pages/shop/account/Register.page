@@ -105,13 +105,19 @@
 				</td>
 			</tr>
             <tr>
-				<td class="right" style="font-size:12px;" colspan="2">
-					<com:TCheckBox ID="chkAgree" Text="I have read and agreed to the The Organic Grocer <a href='<%= $this->Service->ConstructUrl('shop.TermandCondition') %>'>Terms and Conditions</a>." /><br />
+            	<td>&nbsp;</td>
+				<td class="right" style="font-size:12px;">
+					<com:TCheckBox ID="chkAgree" Text="Agreed to the The Organic Grocer <a href='<%= $this->Service->ConstructUrl('shop.TermandCondition') %>'>Terms and Conditions</a>." /><br />
 					<com:TRequiredFieldValidator ID="val9"
 						ControlToValidate="chkAgree"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','This checkbox') %>"
 						Display="Dynamic"
-						FocusOnError="True"/>
+						FocusOnError="True" Style="font-size:11px;"/>
+				</td>
+			</tr>
+            <tr>
+            	<td>&nbsp;</td>
+				<td class="right" style="font-size:12px;">
 					<com:TCheckBox ID="chkSubcribe" Text="I would like to subscibe and receive newsletters." />
 				</td>
 			</tr>

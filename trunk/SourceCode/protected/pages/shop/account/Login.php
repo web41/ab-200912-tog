@@ -6,6 +6,7 @@ class Login extends TPage
 	{
 		if (!$this->Application->User->IsGuest)
 			$this->Response->redirect($this->Service->ConstructUrl("shop.Index"));
+		$this->ClientScript->registerDefaultButton($this,$this->btnLogin);
 		parent::onLoad($param);
 	}
 	public function btnLogin_Clicked($sender, $param)

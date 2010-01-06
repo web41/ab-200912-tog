@@ -17,7 +17,7 @@
 	<div class="inside_box">
 		<div class="title">
 			<h2 class="productdetail_title"><%= $this->Item->Brand->Name %> - <span><%= $this->Item->Name %></span></h2>
-			<div class="price">Price: <com:TActiveLabel ID="lblPrice" /></div>
+			<div class="price">Price: <com:TActiveLabel ID="lblPrice" /><com:TActiveLabel ID="lblDiscountPrice" /></div>
 		</div>
 		<div class="productdetail_container">
 			<div style="float:left;width:214px;">

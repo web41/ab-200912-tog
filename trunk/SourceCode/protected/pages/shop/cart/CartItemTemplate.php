@@ -10,11 +10,11 @@ class CartItemTemplate extends TRepeaterItemRenderer
 	}
 	protected function btnUpdate_Clicked($sender, $param)
 	{
-		$cartDetail = CartTempDetailRecord::finder()->withProperty()->findByPk($this->txtID->Value);
+		$cartDetail = CartTempDetailRecord::finder()->withProperty()->withProduct()->findByPk($this->txtID->Value);
 		if ($cartDetail instanceof CartTempDetailRecord)
 		{
 			$cartDetail->Quantity = TPropertyValue::ensureInteger($this->txtQty->SafeText);
-			$cartDetail->Subtotal = $cartDetail->Quantity*$cartDetail->Property->Price;
+			$cartDetail->Subtotal = $cartDetail->Quantity*$cartDetail->Product->getDiscountPrice($cartDetail->Property->Price);
 			$cartDetail->save();
 		}
 		$this->Page->categoryMenu->populateData();

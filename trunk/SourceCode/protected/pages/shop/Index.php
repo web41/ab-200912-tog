@@ -11,8 +11,11 @@ class Index extends TPage
 	private $_mfID = 0;
 	private $_catID = 0;
 	private $_subcatID = 0;
+	private $_isBestSeller = 0;
+	private $_isNewArrival = 0;
+	private $_isPromoted= 0;
 	private $_sortable = array("product_id","product_name","product_sku","brand_id","mf_id","c_date","product_order");
-	private $_queryParams = array("p","st","sb","b","mf","q","id","alias","subid","subalias");
+	private $_queryParams = array("p","st","sb","b","mf","q","id","alias","subid","subalias","best_seller","new_arrival","promotion");
 
 	public function getSortBy()
 	{
@@ -113,6 +116,36 @@ class Index extends TPage
 	{
 		$this->_subcatID = TPropertyValue::ensureInteger($value);
 	}
+	
+	public function getIsBestSeller()
+	{
+		return $this->_isBestSeller;
+	}
+
+	public function setIsBestSeller($value)
+	{
+		$this->_isBestSeller = TPropertyValue::ensureBoolean($value);
+	}
+	
+	public function getIsNew()
+	{
+		return $this->_isNewArrival;
+	}
+
+	public function setIsNew($value)
+	{
+		$this->_isNewArrival = TPropertyValue::ensureBoolean($value);
+	}
+	
+	public function getIsPromoted()
+	{
+		return $this->_isPromoted;
+	}
+
+	public function setIsPromoted($value)
+	{
+		$this->_isPromoted = TPropertyValue::ensureBoolean($value);
+	}
 
 	public function onLoad($param)
 	{
@@ -124,6 +157,9 @@ class Index extends TPage
 		$this->MfID = ($this->Request->contains('mf')) ? TPropertyValue::ensureInteger($this->Request['mf']) : 0;
 		$this->CatID = ($this->Request->contains('id')) ? TPropertyValue::ensureInteger($this->Request['id']) : 0;
 		$this->SubCatID = ($this->Request->contains('subid')) ? TPropertyValue::ensureInteger($this->Request['subid']) : 0;
+		$this->IsBestSeller = ($this->Request->contains('best_seller')) ? TPropertyValue::ensureBoolean($this->Request['best_seller']) : false;
+		$this->IsNew = ($this->Request->contains('new_arrival')) ? TPropertyValue::ensureBoolean($this->Request['new_arrival']) : false;
+		$this->IsPromoted = ($this->Request->contains('promotion')) ? TPropertyValue::ensureBoolean($this->Request['promotion']) : false;
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
 		if (!$this->IsPostBack)
 		{
@@ -169,6 +205,18 @@ class Index extends TPage
 		if ($this->SubCatID>0)
 		{
 			$criteria->Condition .= " and c.cat_id = '".$this->SubCatID."' ";
+		}
+		if ($this->IsBestSeller)
+		{
+			$criteria->Condition .= " and p.product_best_seller = 1 ";
+		}
+		if ($this->IsNew)
+		{
+			$criteria->Condition .= " and p.product_new_arrival = 1";
+		}
+		if ($this->IsPromoted)
+		{
+			$criteria->Condition .= " and p.discount_id > 0";
 		}
 		// -- 
 		$criteria->Condition .= ")";

@@ -129,5 +129,17 @@ class ProductRecord extends TActiveRecord
 		if ($publishedOnly) $criteria->Condition .= " and product_publish = 1";
 		return self::finder()->findAll($criteria);
 	}
+	
+	public function getDiscountPrice($originalPrice=0)
+	{
+		$discount = DiscountRecord::finder()->findByPk($this->DiscountID);
+		if ($discount instanceof DiscountRecord && $discount->StartDate <= time() && $discount->EndDate >= time())
+		{
+			if ($discount->IsPercent)
+				$originalPrice = $originalPrice-($originalPrice*$discount->Amount);
+			else $originalPrice = $originalPrice-$discount->Amount;
+		}
+		return $originalPrice;
+	}
 }
 ?>

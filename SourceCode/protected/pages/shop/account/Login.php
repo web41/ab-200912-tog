@@ -17,7 +17,7 @@ class Login extends TPage
 			$auth = $this->Application->getModule('auth');
 			$mail = $this->txtEmail->Text;
 			$pass = $this->txtPassword->Text;
-			if ($auth->login($mail, $pass))
+			if ($auth->login($mail, $pass, TPropertyValue::ensureInteger($this->Application->Parameters["USER_TIMEOUT"])))
 			{
 				$url = $auth->ReturnUrl;
 				if (empty($url))

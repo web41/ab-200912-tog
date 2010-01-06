@@ -5,7 +5,7 @@
 	</a>
 	<div class="title">
 		<h2><%# $this->Data ? $this->Data->Brand->Name : "" %></h2>
-		<div class="price">Price: <com:TActiveLabel ID="lblPrice" /><com:TActiveLabel ID="lblDiscountPrice" /></div>
+		<div class="price">Price: <b><com:TActiveLabel ID="lblPrice" /></b> <com:TActiveLabel ID="lblDiscountPrice" /></div>
 	</div>
 	<div class="title">
 		<h3><a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>"><%= $this->Data ? $this->Data->Name : "" %></a></h3>

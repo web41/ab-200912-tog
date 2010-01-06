@@ -24,9 +24,21 @@ class Register extends TPage
 			$activeRecord->LastVisitDate = 0;
 			$activeRecord->CreateDate = $activeRecord->ModifyDate = time();
 			
+			
 			try
 			{
 				$activeRecord->save();
+				if ($this->chkSubcribe->Checked)
+				{
+					$mailing = MailingListRecord::finder()->findBymailing_address($activeRecord->Email);
+					if (!$mailing)
+					{
+						$mailing = new MailingListRecord;
+						$mailing->Address = $activeRecord->Email;
+						$mailing->UserID = $activeRecord->ID;
+						$mailing->save();
+					}
+				}
 				// if register successsful, send email
 				$emailer = $this->Application->getModule('mailer');
 				$email = $emailer->createNewEmail("RegisterSuccess");

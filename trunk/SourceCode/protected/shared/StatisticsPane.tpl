@@ -7,23 +7,19 @@
 	<div class="content" id="statistics" style="padding:5px 0 5px 0;">
 		<div class="line">
         	<div class="text">Purchases in last 24h</div>
-            <div class="info">55</div>
-        </div>
-        <div class="line">
-        	<div class="text">Waiting approval</div>
-            <div class="info">10</div>
+            <div class="info"><com:TLabel ID="lblTodayPurchases" /></div>
         </div>
         <div class="line">
         	<div class="text">Product in stock</div>
-            <div class="info">150</div>
+            <div class="info"><com:TLabel ID="lblTotalInStock" /></div>
         </div>
         <div class="line">
         	<div class="text">Total customers</div>
-            <div class="info">826</div>
+            <div class="info"><com:TLabel ID="lblTotalUser" /></div>
         </div>
         <div class="line">
         	<div class="text">Currently online</div>
-            <div class="info">14</div>
+            <div class="info"><com:TLabel ID="lblOnlineUser" /></div>
         </div>
 	</div>
 </div>

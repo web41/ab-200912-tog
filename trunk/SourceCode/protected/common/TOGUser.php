@@ -139,7 +139,10 @@ class TOGUser extends TDbUser
 	
 	public function validateUser($email, $password)
 	{
-		return (UserRecord::finder()->findByuser_emailAnduser_pwd($email,md5($password)) instanceof UserRecord);
+		$user = UserRecord::finder()->findByuser_emailAnduser_pwd($email,md5($password));
+		$user->LastVisitDate = time();
+		$user->save();
+		return ($user instanceof UserRecord);
 	}
 	
 	public function createUser($username)

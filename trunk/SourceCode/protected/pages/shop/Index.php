@@ -10,9 +10,9 @@ class Index extends TPage
 	private $_brandID = 0;
 	private $_mfID = 0;
 	private $_catID = 0;
+	private $_subcatID = 0;
 	private $_sortable = array("product_id","product_name","product_sku","brand_id","mf_id","c_date","product_order");
-	private $_queryParams = array("p","st","sb","b","mf","c","q");
-	const AR = "ProductRecord";
+	private $_queryParams = array("p","st","sb","b","mf","q","id","alias","subid","subalias");
 
 	public function getSortBy()
 	{
@@ -103,6 +103,16 @@ class Index extends TPage
 	{
 		$this->_catID = TPropertyValue::ensureInteger($value);
 	}
+	
+	public function getSubCatID()
+	{
+		return $this->_subcatID;
+	}
+
+	public function setSubCatID($value)
+	{
+		$this->_subcatID = TPropertyValue::ensureInteger($value);
+	}
 
 	public function onLoad($param)
 	{
@@ -112,29 +122,12 @@ class Index extends TPage
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		$this->BrandID = ($this->Request->contains('b')) ? TPropertyValue::ensureInteger($this->Request['b']) : 0;
 		$this->MfID = ($this->Request->contains('mf')) ? TPropertyValue::ensureInteger($this->Request['mf']) : 0;
-		$this->CatID = ($this->Request->contains('c')) ? TPropertyValue::ensureInteger($this->Request['c']) : 0;
+		$this->CatID = ($this->Request->contains('id')) ? TPropertyValue::ensureInteger($this->Request['id']) : 0;
+		$this->SubCatID = ($this->Request->contains('subid')) ? TPropertyValue::ensureInteger($this->Request['subid']) : 0;
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
 		if (!$this->IsPostBack)
 		{
 			$this->populateData();
-			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
-			{
-				switch ($this->Request["action"])
-				{
-					case "add-success":
-					case "update-success":
-						$this->Notice->Type = AdminNoticeType::Information;
-						$this->Notice->Text = $this->Request["msg"];
-						break;
-					case "add-failed":
-					case "update-failed":
-						$this->Notice->Type = AdminNoticeType::Error;
-						$this->Notice->Text = $this->Request["msg"];
-						break;
-					default:
-						break;
-				}
-			}
 		}
 	}
 
@@ -163,20 +156,23 @@ class Index extends TPage
 		}
 		if ($this->BrandID>0)
 		{
-			$criteria->Condition .= " and (p.brand_id = '".$this->BrandID."') ";
+			$criteria->Condition .= " and p.brand_id = '".$this->BrandID."' ";
 		}
 		if ($this->MfID>0)
 		{
-			$criteria->Condition .= " and (p.mf_id = '".$this->MfID."') ";
+			$criteria->Condition .= " and p.mf_id = '".$this->MfID."' ";
 		}
 		if ($this->CatID>0)
 		{
-			$criteria->Condition .= " and (c.cat_id = '".$this->CatID."' or c.parent_id = '".$this->CatID."') ";
+			$criteria->Condition .= " and c.parent_id = '".$this->CatID."' or c.cat_id = '".$this->CatID."' ";
+		}
+		if ($this->SubCatID>0)
+		{
+			$criteria->Condition .= " and c.cat_id = '".$this->SubCatID."' ";
 		}
 		// -- 
 		$criteria->Condition .= ")";
-		$activeRecord = Prado::createComponent(self::AR);
-		$this->ItemList->VirtualItemCount = count($activeRecord->finder()->findAll($criteria));
+		$this->ItemList->VirtualItemCount = count(ProductRecord::finder()->findAll($criteria));
 		$this->MaxPage = ceil($this->ItemList->VirtualItemCount/$this->ItemList->PageSize);
 		if ($this->CurrentPage > $this->MaxPage) $this->CurrentPage = $this->MaxPage;
 		$limit = $this->ItemList->PageSize;
@@ -187,12 +183,12 @@ class Index extends TPage
 
 		$criteria->Limit = $limit;
 		$criteria->Offset = $offset;
-		$items = $activeRecord->finder()->withBrand()->withManufacturer()->withProperties()->findAll($criteria);
+		$items = ProductRecord::finder()->withBrand()->withManufacturer()->withProperties()->findAll($criteria);
 		$this->ItemList->DataSource = $items;
 		$this->ItemList->dataBind();
 		if (count($items) <= 0)
 		{
-			$this->Notice->Type = AdminNoticeType::Information;
+			$this->Notice->Type = UserNoticeType::Notice;
 			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"product");
 		}
 	}

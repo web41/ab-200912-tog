@@ -23,7 +23,7 @@
 	<!-- Inside box -->
 	<div class="inside_box">
     	<h2>register new account</h2>
-        <div>Creating an account speeds up checkout time by saving your billing, shipping and credit card information to your account. You can also view detailed order status and purchase history.
+        <div>Creating an account speeds up checkout time by saving your billing, shipping addresses to your account. You can also view detailed order status and purchase history.
         </div>
         <div>If you already have an account, please sign in now.</div>
 		<table border="0" cellpadding="7" cellspacing="0" width="100%">
@@ -105,13 +105,18 @@
 				</td>
 			</tr>
             <tr>
-				<td class="left">&nbsp;</td>
-				<td class="right" style="font-size:12px;">
-					<input type="checkbox" /> Send me newsletter</td>
+				<td class="right" style="font-size:12px;" colspan="2">
+					<com:TCheckBox ID="chkAgree" Text="I have read and agreed to the The Organic Grocer <a href='<%= $this->Service->ConstructUrl('shop.TermandCondition') %>'>Terms and Conditions</a>." /><br />
+					<com:TRequiredFieldValidator ID="val9"
+						ControlToValidate="chkAgree"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','This checkbox') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+					<com:TCheckBox ID="chkSubcribe" Text="I would like to subscibe and receive newsletters." />
 				</td>
 			</tr>
 			<tr>
-				<td class="left"><span>(*) Required</span></td>
+				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
 					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true"/>
 					<input type="reset" value="Reset" />

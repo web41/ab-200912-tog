@@ -57,10 +57,11 @@ class ProductDetail extends TPage
 	
 	protected function cboPropertySelector_CallBack($sender, $param)
 	{
-		$prop = PropertyRecord::finder()->findByPk($sender->SelectedValue);
+		$prop = PropertyRecord::finder()->withProduct()->findByPk($sender->SelectedValue);
 		if ($prop instanceof PropertyRecord)
 		{
 			$this->lblPrice->Text = $this->getFormattedValue($prop->Price);
+			$this->lblDiscountPrice->Text = $this->getFormattedValue($prop->Product->getDiscountPrice($prop->Price));
 			$this->cboQuantitySelector->Items->clear();
 			for($i=1;$i<=$prop->InStock;$i++)
 			{
@@ -98,12 +99,12 @@ class ProductDetail extends TPage
 				if (!$this->User->IsGuest) $cartDetail->UserID = $this->User->ID;
 				$cartDetail->ProductID = $this->Item->ID;
 				$cartDetail->Quantity = $this->cboQuantitySelector->SelectedValue;
-				$prop = PropertyRecord::finder()->findByPk($this->cboPropertySelector->SelectedValue);
+				$prop = PropertyRecord::finder()->withProduct()->findByPk($this->cboPropertySelector->SelectedValue);
 				if ($prop instanceof PropertyRecord)
 				{
 					$cartDetail->PropertyID = $prop->ID;
 				}
-				$cartDetail->Subtotal = $cartDetail->Quantity*$prop->Price;
+				$cartDetail->Subtotal = $cartDetail->Quantity*$prop->Product->getDiscountPrice($prop->Price);
 				$cartDetail->CreateDate = time();
 				$cartDetail->save();
 				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));

@@ -74,9 +74,18 @@
 			<url ServiceParameter="shop.account.profile.ChangePassword" pattern="shop/account/change-password"/>
 			<url ServiceParameter="shop.account.profile.ChangeProfile" pattern="shop/account/change-profile"/>
 			
-			<url ServiceParameter="shop.account.addresses.Index" pattern="shop/account/addresses-manager"/>
+			<url ServiceParameter="shop.account.addresses.Index" pattern="shop/account/address-manager"/>
+			
 			
 			<url ServiceParameter="shop.cart.Index" pattern="shop/view-cart"/>
+			
+			<url ServiceParameter="shop.checkout.Index" pattern="shop/checkout"/>
+			<url ServiceParameter="shop.checkout.Billing" pattern="shop/checkout/billing-address"/>
+			<url ServiceParameter="shop.checkout.Shipping" pattern="shop/checkout/shipping-address"/>
+			<url ServiceParameter="shop.checkout.ShippingMethod" pattern="shop/checkout/shipping-method"/>
+			<url ServiceParameter="shop.checkout.Review" pattern="shop/checkout/review-order"/>
+			<url ServiceParameter="shop.checkout.Confirmation" pattern="shop/checkout/order-confirmation"/>
+			<url ServiceParameter="shop.checkout.Declination" pattern="shop/checkout/order-declined"/>
 			
 			<url ServiceParameter="admincp.Index" pattern="admincp"/>
 			<url ServiceParameter="admincp.Index" pattern="admincp/index"/>
@@ -121,6 +130,12 @@
 			<url ServiceParameter="admincp.UserTypeManager" pattern="admincp/user-type/manager"/>
 			<url ServiceParameter="admincp.UserTypeForm" pattern="admincp/user-type/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.UserTypeForm" pattern="admincp/user-type/create-new"/>
+			<url ServiceParameter="admincp.OrderStatusManager" pattern="admincp/order-status"/>
+			<url ServiceParameter="admincp.OrderStatusManager" pattern="admincp/order-status/manager"/>
+			<url ServiceParameter="admincp.OrderStatusForm" pattern="admincp/order-status/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
+			<url ServiceParameter="admincp.OrderStatusForm" pattern="admincp/order-status/create-new"/>
+			<url ServiceParameter="admincp.OrderManager" pattern="admincp/order"/>
+			<url ServiceParameter="admincp.OrderManager" pattern="admincp/order/manager"/>
 		</module>
 		<!-- error module -->
 		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />

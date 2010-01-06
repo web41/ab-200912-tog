@@ -17,7 +17,7 @@ class ProductDetail extends TPage
 					$item->Value = $prop->ID;
 					$this->cboPropertySelector->Items->add($item);
 				}
-				$this->lblPrice->Text = count($activeRecord->Properties)>0?$this->getFormattedValue($activeRecord->Properties[0]->Price):"$0.00";
+				//$this->lblPrice->Text = count($activeRecord->Properties)>0?$this->getFormattedValue($activeRecord->Properties[0]->Price):"$0.00";
 				if (count($this->cboPropertySelector->Items)>0) 
 				{
 					$this->cboPropertySelector->SelectedIndex = 0;
@@ -61,6 +61,7 @@ class ProductDetail extends TPage
 		if ($prop instanceof PropertyRecord)
 		{
 			$this->lblPrice->Text = $this->getFormattedValue($prop->Price);
+			$this->lblPrice->Visible = $prop->Product->DiscountID > 0;
 			$this->lblDiscountPrice->Text = $this->getFormattedValue($prop->Product->getDiscountPrice($prop->Price));
 			$this->cboQuantitySelector->Items->clear();
 			for($i=1;$i<=$prop->InStock;$i++)

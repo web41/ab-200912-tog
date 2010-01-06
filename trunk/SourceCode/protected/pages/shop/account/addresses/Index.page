@@ -1,5 +1,5 @@
 <%@ MasterClass="Application.shared.Master" %>
-<com:TContent ID="title">The Organic Grocer - Register new account</com:TContent>
+<com:TContent ID="title">The Organic Grocer - Address</com:TContent>
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
@@ -22,16 +22,15 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-    	<h2>register new account</h2>
-        <div>Creating an account speeds up checkout time by saving your billing, shipping and credit card information to your account. You can also view detailed order status and purchase history.
+    	<h2>shipping addresses</h2>
+        <div>Creating an account speeds up checkout time by saving your billing, shipping addresses to your account. You can also view detailed order status and purchase history.
         </div>
-        <div>If you already have an account, please sign in now.</div>
 		<table border="0" cellpadding="7" cellspacing="0" width="100%">
 			<tr>
-				<td class="table_title" colspan="2">register information</td>
+				<td class="table_title" colspan="2">address information</td>
 			</tr>
 			<tr>
-				<td class="left">First name <span>*</span></td>
+				<td class="left">address 1 <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val1"
@@ -42,7 +41,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">Last name <span>*</span></td>
+				<td class="left">address 2 <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val2"
@@ -53,69 +52,53 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">Email <span>*</span></td>
+				<td class="left">City <span>*</span></td>
 				<td class="right">
-					<com:TTextBox ID="txtEmail" CssClass="frm_textbox"/><br />
-					<com:TRequiredFieldValidator ID="val3"
-						ControlToValidate="txtEmail"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-					<com:TEmailAddressValidator ID="val4"
-						ControlToValidate="txtEmail"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-					<com:TCustomValidator ID="val5"
-						ControlToValidate="txtEmail"
-						OnServerValidate="uniqueCheck_ServerValidated"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Email') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="left">Password <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="frm_textbox"/><br />
-					<com:TRequiredFieldValidator ID="val6"
-						ControlToValidate="txtPassword"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="left">Confirm password <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtPassword2" TextMode="Password" CssClass="frm_textbox"/><br />
-					<com:TRequiredFieldValidator ID="val7"
-						ControlToValidate="txtPassword2"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-					<com:TCompareValidator ID="val8"
-						ControlToValidate="txtPassword2"
-						DataType="String"
-						ControlToCompare="txtPassword"
-						Operator="Equal"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('PASSWORD_NOT_MATCH','Password') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
+					<com:TTextBox ID="txtCity" CssClass="frm_textbox"/><br />
 				</td>
 			</tr>
             <tr>
-				<td class="left">&nbsp;</td>
-				<td class="right" style="font-size:12px;">
-					<input type="checkbox" /> Send me newsletter</td>
+				<td class="left">State <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtState" CssClass="frm_textbox"/><br />
+				</td>
+			</tr>
+            <tr>
+				<td class="left">Zip <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtZip" CssClass="frm_textbox"/><br />
+				</td>
+			</tr>
+            <tr>
+				<td class="left">Country <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtCountry" CssClass="frm_textbox"/><br />
+				</td>
+			</tr>
+            <tr>
+				<td class="left">Phone 1 <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtPhone1" CssClass="frm_textbox"/><br />
+				</td>
+			</tr>
+            <tr>
+				<td class="left">Phone 2 <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtPhone2" CssClass="frm_textbox"/><br />
+				</td>
+			</tr>
+            <tr>
+				<td class="left">Fax <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtFax" CssClass="frm_textbox"/><br />
 				</td>
 			</tr>
 			<tr>
-				<td class="left"><span>(*) Required</span></td>
+				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
-					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true"/>
-					<input type="reset" value="Reset" />
-					<input type="button" value="Cancel" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.Index") %>'" />
+					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
+					<input type="reset" value="Reset" class="button" />
+					<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.Index") %>'" />
 				</td>
 			</tr>
 		</table>

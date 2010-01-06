@@ -7,6 +7,7 @@ class OrderStatusRecord extends TActiveRecord
 	const TABLE='tbl_order_status';
 
 	public $ID;
+	public $Alias;
 	public $Code;
 	public $Name;
 	public $Description;
@@ -14,6 +15,7 @@ class OrderStatusRecord extends TActiveRecord
 	public static $COLUMN_MAPPING=array
 	(
 		'status_id'=>'ID',
+		'status_alias'=>'Alias',
 		'status_code'=>'Code',
 		'status_name'=>'Name',
 		'status_desc'=>'Description'
@@ -22,6 +24,12 @@ class OrderStatusRecord extends TActiveRecord
 	public static function finder($className=__CLASS__)
 	{
 		return parent::finder($className);
+	}
+	
+	public function save()
+	{
+		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Name);
+		parent::save();
 	}
 }
 ?>

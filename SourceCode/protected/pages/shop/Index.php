@@ -15,7 +15,7 @@ class Index extends TPage
 	private $_isNewArrival = 0;
 	private $_isPromoted= 0;
 	private $_sortable = array("product_id","product_name","product_sku","brand_id","mf_id","c_date","product_order");
-	private $_queryParams = array("p","st","sb","b","mf","q","id","alias","subid","subalias","best_seller","new_arrival","promotion");
+	private $_queryParams = array("p","st","sb","b","balias","mf","q","c","calias","subc","subcalias","best_seller","new_arrival","promotion");
 
 	public function getSortBy()
 	{
@@ -155,8 +155,8 @@ class Index extends TPage
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		$this->BrandID = ($this->Request->contains('b')) ? TPropertyValue::ensureInteger($this->Request['b']) : 0;
 		$this->MfID = ($this->Request->contains('mf')) ? TPropertyValue::ensureInteger($this->Request['mf']) : 0;
-		$this->CatID = ($this->Request->contains('id')) ? TPropertyValue::ensureInteger($this->Request['id']) : 0;
-		$this->SubCatID = ($this->Request->contains('subid')) ? TPropertyValue::ensureInteger($this->Request['subid']) : 0;
+		$this->CatID = ($this->Request->contains('c')) ? TPropertyValue::ensureInteger($this->Request['c']) : 0;
+		$this->SubCatID = ($this->Request->contains('subc')) ? TPropertyValue::ensureInteger($this->Request['subc']) : 0;
 		$this->IsBestSeller = ($this->Request->contains('best_seller')) ? TPropertyValue::ensureBoolean($this->Request['best_seller']) : false;
 		$this->IsNew = ($this->Request->contains('new_arrival')) ? TPropertyValue::ensureBoolean($this->Request['new_arrival']) : false;
 		$this->IsPromoted = ($this->Request->contains('promotion')) ? TPropertyValue::ensureBoolean($this->Request['promotion']) : false;

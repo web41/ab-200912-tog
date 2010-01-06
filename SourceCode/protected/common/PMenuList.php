@@ -74,7 +74,8 @@ class PMenuList extends TBulletedList
 	{
 		$item = new TListItem;
 		$item->Text = $node->Title;
-		$item->Value = $this->Service->ConstructUrl($node->ServiceParameter,$node->Parameters);
+		if ($node->ServiceParameter) $item->Value = $this->Service->ConstructUrl($node->ServiceParameter,$node->Parameters);
+		else $item->Value = "#";
 		if($item->getHasAttributes())
 			$writer->addAttributes($item->getAttributes());
 		$writer->renderBeginTag('li');

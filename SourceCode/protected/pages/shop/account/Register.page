@@ -22,12 +22,16 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
+    	<h2>register new account</h2>
+        <div>Creating an account speeds up checkout time by saving your billing, shipping and credit card information to your account. You can also view detailed order status and purchase history.
+        </div>
+        <div>If you already have an account, please sign in now.</div>
 		<table border="0" cellpadding="7" cellspacing="0" width="100%">
 			<tr>
-				<td class="table_title" colspan="2">register new user</td>
+				<td class="table_title" colspan="2">register information</td>
 			</tr>
 			<tr>
-				<td class="left">First name</td>
+				<td class="left">First name <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val1"
@@ -38,7 +42,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">Last name</td>
+				<td class="left">Last name <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val2"
@@ -49,7 +53,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">Email</td>
+				<td class="left">Email <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtEmail" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val3"
@@ -71,7 +75,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">Password</td>
+				<td class="left">Password <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val6"
@@ -82,7 +86,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">Confirm password</td>
+				<td class="left">Confirm password <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtPassword2" TextMode="Password" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val7"
@@ -100,8 +104,14 @@
 						FocusOnError="True"/>
 				</td>
 			</tr>
-			<tr>
+            <tr>
 				<td class="left">&nbsp;</td>
+				<td class="right" style="font-size:12px;">
+					<input type="checkbox" /> Send me newsletter</td>
+				</td>
+			</tr>
+			<tr>
+				<td class="left"><span>(*) Required</span></td>
 				<td class="right">
 					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true"/>
 					<input type="reset" value="Reset" />

@@ -33,6 +33,8 @@
 		<module id="security" class="TSecurityManager" ValidationKey="TOG#AsiaBlaze!!" Validation="MD5" EncryptionKey="TOG#AsiaBlaze!!" />
 		<!-- globalization module -->
 		<module id="globalization" class="TGlobalization" Charset="utf-8" Culture="en-US" />
+		<!-- error handler -->
+		<module id="error" class="Application.common.TOGErrorHandler" />
 		<module id="db" class="System.Data.TDataSourceConfig">
 			<database ConnectionString="mysql:host=localhost;dbname=tog_db" username="root" password=""/>
 			<!--database ConnectionString="mysql:host=localhost;dbname=dosithuy_tog" username="dosithuy_tog" password="tog123"/-->

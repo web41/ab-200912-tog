@@ -39,7 +39,7 @@
 	.main_col .product_box .title h2{float:left;font-weight:bold;font-size:14px;width:auto;text-transform:uppercase;color:#749f24;}
 	.main_col .product_box .title h3{float:left;font-weight:bold;font-size:12px;width:auto;text-transform:capitalize;color:#996500;}
 	.main_col .product_box .title .price{float:right;font-weight:bold;font-size:14px;color:#9e632a;}
-	.main_col .product_box .title .price b{text-decoration:line-through;}
+	.main_col .product_box .title .price b{text-decoration:line-through;font-size:12px;color:#d2ae8a}
 	.main_col .product_box .content{float:left;width:408px;margin:10px 0 0 0;line-height:18px;}
 	.main_col .product_box .content div{margin:0 0 5px 0;}
 	

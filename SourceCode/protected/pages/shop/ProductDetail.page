@@ -34,7 +34,7 @@
 					<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false" />
 					<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" />
 				</div>
-                <div class="price">Price: <span><b><com:TActiveLabel ID="lblPrice" /></b> <com:TActiveLabel ID="lblDiscountPrice" /></span></div>
+                <div class="price">Price: <span><com:TActiveLabel ID="lblPrice" CssClass="discount" /> <com:TActiveLabel ID="lblDiscountPrice" /></span></div>
 			</div>
 			<div style="float:left;width:544px;">
 					<b style="font-size:14px;">Detail desctiption</b><br />

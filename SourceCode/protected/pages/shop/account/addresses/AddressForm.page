@@ -15,9 +15,9 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-    	<h2>shipping addresses</h2>
-        <div>Creating an account speeds up checkout time by saving your billing, shipping addresses to your account. You can also view detailed order status and purchase history.
-        </div>
+		<h2>shipping addresses</h2>
+		<div>Creating an account speeds up checkout time by saving your billing, shipping addresses to your account. You can also view detailed order status and purchase history.
+		</div>
 		<table border="0" cellpadding="7" cellspacing="0" width="100%">
 			<tr>
 				<td class="table_title" colspan="2">address information</td>
@@ -50,37 +50,37 @@
 					<com:TTextBox ID="txtCity" CssClass="frm_textbox"/><br />
 				</td>
 			</tr>
-            <tr>
+			<tr>
 				<td class="left">State <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtState" CssClass="frm_textbox"/><br />
 				</td>
 			</tr>
-            <tr>
+			<tr>
 				<td class="left">Zip <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtZip" CssClass="frm_textbox"/><br />
 				</td>
 			</tr>
-            <tr>
+			<tr>
 				<td class="left">Country <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtCountry" CssClass="frm_textbox"/><br />
 				</td>
 			</tr>
-            <tr>
+			<tr>
 				<td class="left">Phone 1 <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtPhone1" CssClass="frm_textbox"/><br />
 				</td>
 			</tr>
-            <tr>
+			<tr>
 				<td class="left">Phone 2 <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtPhone2" CssClass="frm_textbox"/><br />
 				</td>
 			</tr>
-            <tr>
+			<tr>
 				<td class="left">Fax <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtFax" CssClass="frm_textbox"/><br />

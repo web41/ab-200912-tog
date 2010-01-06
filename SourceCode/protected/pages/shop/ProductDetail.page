@@ -17,7 +17,6 @@
 	<div class="inside_box">
 		<div class="title">
 			<h2 class="productdetail_title"><%= $this->Item->Brand->Name %> - <span><%= $this->Item->Name %></span></h2>
-			<div class="price">Price: <com:TActiveLabel ID="lblPrice" /><com:TActiveLabel ID="lblDiscountPrice" /></div>
 		</div>
 		<div class="productdetail_container">
 			<div style="float:left;width:214px;">
@@ -35,6 +34,7 @@
 					<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false" />
 					<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" />
 				</div>
+                <div class="price">Price: <span><b><com:TActiveLabel ID="lblPrice" /></b> <com:TActiveLabel ID="lblDiscountPrice" /></span></div>
 			</div>
 			<div style="float:left;width:544px;">
 					<b style="font-size:14px;">Detail desctiption</b><br />

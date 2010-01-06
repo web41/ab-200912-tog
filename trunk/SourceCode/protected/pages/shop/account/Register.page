@@ -22,14 +22,14 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<table border="0" cellpadding="10" cellspacing="0" width="100%">
+		<table border="0" cellpadding="7" cellspacing="0" width="100%">
 			<tr>
 				<td class="table_title" colspan="2">register new user</td>
 			</tr>
 			<tr>
 				<td class="left">First name</td>
 				<td class="right">
-					<com:TTextBox ID="txtFirstName" CssClass="textbox"/><br />
+					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val1"
 						ControlToValidate="txtFirstName"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
@@ -40,7 +40,7 @@
 			<tr>
 				<td class="left">Last name</td>
 				<td class="right">
-					<com:TTextBox ID="txtLastName" CssClass="textbox"/><br />
+					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val2"
 						ControlToValidate="txtLastName"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Last name') %>"
@@ -51,7 +51,7 @@
 			<tr>
 				<td class="left">Email</td>
 				<td class="right">
-					<com:TTextBox ID="txtEmail" CssClass="textbox"/><br />
+					<com:TTextBox ID="txtEmail" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val3"
 						ControlToValidate="txtEmail"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
@@ -73,7 +73,7 @@
 			<tr>
 				<td class="left">Password</td>
 				<td class="right">
-					<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="textbox"/><br />
+					<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val6"
 						ControlToValidate="txtPassword"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
@@ -84,7 +84,7 @@
 			<tr>
 				<td class="left">Confirm password</td>
 				<td class="right">
-					<com:TTextBox ID="txtPassword2" TextMode="Password" CssClass="textbox"/><br />
+					<com:TTextBox ID="txtPassword2" TextMode="Password" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val7"
 						ControlToValidate="txtPassword2"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"

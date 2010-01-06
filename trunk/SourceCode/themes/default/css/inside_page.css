@@ -8,6 +8,7 @@
 	.main_col .inside_box table td{border:solid 1px #dadada;}
 	.main_col .inside_box table .table_title{text-transform:uppercase;color:#fff;background:#7aa825;padding:5px;font-size:12px;width:50%}
 	.main_col .inside_box table .left{text-align:right;padding-right:20px;width:35%;text-transform:capitalize;vertical-align:middle;}
+	.main_col .inside_box table .left span{color:red;font-weight:bold;}
 	.main_col .inside_box table .right{vertical-align:middle;width:65%;font-size:11px;}
 	.main_col .inside_box table .right .frm_textbox{width:180px;float:none;}
 	

@@ -1,0 +1,42 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Shop By Brands</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+    <com:Application.shared.OrganicPoints />
+    <com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+    	<h2>shop by brands</h2>
+        <div id="brand_container">
+        	<ul>
+            	<li><a href="">brand 1 text dài quá nè nè nè nè</a></li>
+                <li><a href="">brand 2 brand 2</a></li>
+                <li><a href="">brand 2 xà lê mên tê</a></li>
+                <li><a href="">brand 2 a b c d e f g h i g k</a></li>
+                <li><a href="">brand 2</a></li>
+                <li><a href="">brand 2</a></li>
+                <li><a href="">brand 2</a></li>
+                <li><a href="">brand 2</a></li>
+            </ul>
+        </div>
+	</div>
+	<!-- Inside box: END -->
+    </div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

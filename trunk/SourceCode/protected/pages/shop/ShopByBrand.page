@@ -3,7 +3,7 @@
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
-	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.CategoryMenu ID="categoryMenu" />
     <com:Application.shared.OrganicPoints />
     <com:Application.shared.Newsletter />
 </div>
@@ -11,25 +11,23 @@
 
 <!-- Main column -->
 <div class="main_col">
+	<com:Application.shared.UserNotice ID="Notice" />
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-    	<h2>shop by brands</h2>
-        <div id="brand_container">
-        	<ul>
-            	<li><a href="">brand 1 text dài quá nè nè nè nè</a></li>
-                <li><a href="">brand 2 brand 2</a></li>
-                <li><a href="">brand 2 xà lê mên tê</a></li>
-                <li><a href="">brand 2 a b c d e f g h i g k</a></li>
-                <li><a href="">brand 2</a></li>
-                <li><a href="">brand 2</a></li>
-                <li><a href="">brand 2</a></li>
-                <li><a href="">brand 2</a></li>
-            </ul>
-        </div>
+		<h2>shop by brands</h2>
+		<div id="brand_container">
+			<com:TRepeater ID="rptBrandList">
+				<prop:HeaderTemplate><ul></prop:HeaderTemplate>
+				<prop:ItemTemplate>
+					<li><a href="<%= $this->Service->ConstructUrl("shop.Index",array("b"=>$this->Data->ID,"balias"=>$this->Data->Alias)) %>"><%= $this->Data->Name %></a></li>
+				</prop:ItemTemplate>
+				<prop:FooterTemplate></ul></prop:FooterTemplate>
+			</com:TRepeater>
+		</div>
 	</div>
 	<!-- Inside box: END -->
-    </div>
+	</div>
 </div>
 <!-- Main column: END -->
 

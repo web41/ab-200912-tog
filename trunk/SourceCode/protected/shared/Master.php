@@ -35,8 +35,9 @@ class Master extends TTemplateControl
 			if (!in_array($key,$this->QueryParameters))
 				unset($params[$key]);
 		}
-		if (!isset($params["id"])) unset($params["alias"]);
-		if (!isset($params["subid"])) unset($params["subalias"]);
+		if (!isset($params["c"])) unset($params["calias"]);
+		if (!isset($params["subc"])) unset($params["subcalias"]);
+		if (!isset($params["b"])) unset($params["balias"]);
 		//$serviceParameter = $this->Request->ServiceParameter;
 		if (strlen($search)>0) $params['q'] = $search;
 		else if (isset($params['q'])) unset($params['q']);

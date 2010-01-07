@@ -1,0 +1,122 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Shipping Method</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.OrganicPoints />
+	<com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+		<h2>Review</h2>
+		<div>
+        	Please check all the information below to make sure it is correct. If you need to change shipping options or remove an item from your order, select the Edit Address button.<br />
+You will receive a full order summary and order number on the next page.
+		</div>
+        
+        <!-- Review -->
+        <h2 style="font-size:16px;">Order Summary</h2>
+        <div class="viewcart_container" style="margin-bottom:20px;">
+            <!-- Review title -->
+            <div class="cart_title" style="margin:0;">
+                <div class="prd_item">Product Name</div>
+                <div class="qty">Quantity</div>
+                <div class="price">Price</div>
+                <div class="remove">Remove</div>
+            </div>
+            <!-- Review title: END -->
+
+			<!-- Product item -->
+            <div class="cart_item" style="margin:0;">
+                <div class="prd_item">Product Name</div>
+                <div class="qty">1</div>
+                <div class="price">$123</div>
+                <div class="remove">
+                	<com:TButton ID="btnDelete" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if (!confirm('Are you sure?')) return false;"/>
+                </div>
+            </div>
+            <div class="cart_item" style="margin:0;">
+                <div class="prd_item">Product Name</div>
+                <div class="qty">1</div>
+                <div class="price">$123</div>
+                <div class="remove">
+                	<com:TButton CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if (!confirm('Are you sure?')) return false;"/>
+                </div>
+            </div>
+            <!-- Product title: END -->
+		</div>
+        <!-- Review: END -->
+        <!-- Address -->
+        <h2 style="font-size:16px;">Address information</h2>
+        <div class="address_container" style="margin-bottom:20px;">
+            <!-- Address title -->
+            <div class="address_title" style="margin:0;">
+                <div class="adr_item2">Billing Address</div>
+                <div class="adr_item2">Shipping Address</div>
+            </div>
+            <!-- Address title: END -->
+            
+            <!-- Address content -->
+            <div class="address_item">
+                <div class="adr_item2">
+                	Address: 123 Quang Trung<br />
+                    City: Thành phố kim cương<br />
+                    State: ko có<br />
+                    Country: hòn cuội viễn đông<br />
+                </div>
+                <div class="adr_item2">
+                	Address: 123 Quang Trung<br />
+                    City: Thành phố kim cương<br />
+                    State: ko có<br />
+                    Country: hòn cuội viễn đông<br />
+                </div>
+            </div>
+            <!-- Address content: END -->
+            
+            <!-- Address button -->
+			<div class="button_container">
+				<input type="button" style="float:left;" class="button" value="Edit Address" />
+			</div>
+			<!-- Address button: END -->
+		</div>
+        <!-- Address: END -->
+        
+        <div class="viewcart_container">
+        	<div class="cart_review">
+            	<div class="price">
+                	<div class="text">product total</div>
+                    <div class="value">$100</div>
+                </div>
+                <div class="price">
+                	<div class="text">shipping fee</div>
+                    <div class="value">$25</div>
+                </div>
+                <div class="price" style="font-size:18px;margin-top:5px;">
+                	<div class="text">order total</div>
+                    <div class="value" style="color:#7aa825">$25</div>
+                </div>
+                <div class="price">
+                	<input type="button" class="button" value="Cancel Order" />
+                    <input type="button" class="button" value="Submit Your Order" />
+                </div>
+            </div>
+        </div>
+	</div>
+	<!-- Inside box: END -->
+	</div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

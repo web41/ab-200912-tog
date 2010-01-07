@@ -16,6 +16,23 @@
 	<!-- Inside box -->
 	<div class="inside_box">
 		<h2>Shipping address</h2>
+        <div class="viewcart_container" style="margin:0;">
+			<!-- Cart step -->
+			<div class="cart_step">
+				<ul>
+					<li class="active"><a href="">view cart</a></li>
+					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
+					<li class="active"><a href="">billing</a></li>
+					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
+                    <li class="active">shipping</li>
+					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
+					<li>confirm/edit info</li>
+					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
+					<li>order confirmation</li>
+				</ul>
+			</div>
+			<!-- Cart step: END -->
+        </div>
 		<table border="0" cellpadding="7" cellspacing="0" width="100%">
 			<tr>
 				<td class="table_title" colspan="2">address information</td>

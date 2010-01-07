@@ -1,0 +1,192 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Shipping Address</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu ID="categoryMenu" />
+	<com:Application.shared.OrganicPoints />
+	<com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<com:Application.shared.UserNotice ID="Notice" />
+    <com:TPanel ID="mainBox" CssClass="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+		<h2>Shipping address</h2>
+		<table border="0" cellpadding="7" cellspacing="0" width="100%">
+			<tr>
+				<td class="table_title" colspan="2">address information</td>
+			</tr>
+			<tr>
+				<td class="left">Alias</td>
+				<td class="right">
+					<com:TTextBox ID="txtAlias" CssClass="frm_textbox"/><br />
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Title</td>
+				<td class="right">
+					<com:TDropDownList ID="cboTitleSelector"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Address Type</td>
+				<td class="right">
+					
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Set as default</td>
+				<td class="right">
+					<com:TDropDownList ID="cboDefaultSelector">
+						<com:TListItem Text="No" Value="1"/>
+						<com:TListItem Text="Yes" Value="1" />
+					</com:TDropDownList>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">First Name <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
+					<com:TRequiredFieldValidator ID="val1"
+						ControlToValidate="txtFirstName"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Last Name <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
+					<com:TRequiredFieldValidator ID="val2"
+						ControlToValidate="txtLastName"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Last name') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Company Name</td>
+				<td class="right">
+					<com:TTextBox ID="txtCompanyName" CssClass="frm_textbox" />
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Address 1 <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtAddress1" CssClass="frm_textbox" Width="275px"/><br />
+					<com:TRequiredFieldValidator ID="va3"
+						ControlToValidate="txtAddress1"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Address') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Address 2</td>
+				<td class="right">
+					<com:TTextBox ID="txtAddress2" CssClass="frm_textbox" Width="275px"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">City/Town</td>
+				<td class="right">
+					<com:TTextBox ID="txtCity" CssClass="frm_textbox"/><br />
+					<com:TRequiredFieldValidator ID="va4"
+						ControlToValidate="txtCity"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','City') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">State</td>
+				<td class="right">
+					<com:TTextBox ID="txtState" CssClass="frm_textbox"/><br />
+					<com:TRequiredFieldValidator ID="va5"
+						ControlToValidate="txtState"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','State') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Postal code</td>
+				<td class="right">
+					<com:TTextBox ID="txtZip" CssClass="frm_textbox" Width="75px"/><br />
+					<com:TRequiredFieldValidator ID="val6"
+						ControlToValidate="txtZip"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Postal code') %>"
+						FocusOnError="true"
+						Display="Dynamic" />
+					<com:TRegularExpressionValidator ID="val7" 
+						ControlToValidate="txtZip" 
+						RegularExpression="^\d{5,6}$"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Postal code') %>"
+						Display="Dynamic" />
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Country <span>*</span></td>
+				<td class="right">
+					<com:TDropDownList ID="cboCountrySelector" 
+						PromptText="Select..." PromptValue="0"
+						DataTextField="Name"
+						DataValueField="Code"/><br />
+					<com:TRequiredFieldValidator ID="val8"
+						ControlToValidate="cboCountrySelector"
+						InitialValue="0"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Country') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Phone 1 <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtPhone1" CssClass="frm_textbox" Width="100px"/><br />
+					<com:TRequiredFieldValidator ID="val9"
+						ControlToValidate="txtPhone1"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Phone') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Phone 2</td>
+				<td class="right">
+					<com:TTextBox ID="txtPhone2" CssClass="frm_textbox" Width="100px"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Fax</td>
+				<td class="right">
+					<com:TTextBox ID="txtFax" CssClass="frm_textbox" Width="100px"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
+				<td class="right">
+                	<input type="button" value="Back" class="button" />
+                    <input type="button" value="Next" class="button" />
+                    <input type="button" value="Cancel" class="button" />
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!-- Inside box: END -->
+    </com:TPanel>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

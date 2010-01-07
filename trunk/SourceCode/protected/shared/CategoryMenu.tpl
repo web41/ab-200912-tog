@@ -2,7 +2,7 @@
 	<li><a href="<%= $this->Service->ConstructUrl("shop.Index",array("best_seller"=>1)) %>">Best Sellers</a></li>
 	<li><a href="<%= $this->Service->ConstructUrl("shop.Index",array("new_arrival"=>1)) %>">New Arrivals</a></li>
 	<li><a href="<%= $this->Service->ConstructUrl("shop.Index",array("promotion"=>1)) %>">Promotions</a></li>
-	<li style="border-bottom:none;"><a href="<%= $this->Service->ConstructUrl("shop.ShopByBrand") %>"><b>Shop by brands</b></a></li>
+	<li style="border-bottom:none;"><a href="<%= $this->Service->ConstructUrl("shop.ShopByBrand") %>"><b style="padding:0;margin:0;">Shop by brands</b></a></li>
 	<li class="title">Shop by categories</li>
 	<com:TRepeater ID="rptCategoryMenu" OnItemCreated="rptCategoryMenu_ItemCreated">
 		<prop:HeaderTemplate>

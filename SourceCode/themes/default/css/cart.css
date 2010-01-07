@@ -20,12 +20,14 @@
 .viewcart_container .cart_item .remove{float:left;width:50px;height:auto;margin:0;font-weight:bold;}
 
 .viewcart_container .totalprice{float:left;width:544px;height:auto;padding:5px 0 5px 0;font-size:12px;text-transform:capitalize;margin:20px 0 0 0;}
-.viewcart_container .totalprice .couponcode{float:left;color:#503a1d;font-size:12px;font-weight:bold;margin:0;}
+.viewcart_container .totalprice .couponcode{float:left;color:#503a1d;font-size:12px;font-weight:bold;margin:0;clear:right;}
 .viewcart_container .totalprice .couponcode .textbox{float:none;margin:0 5px 0 0;}
 .viewcart_container .totalprice .couponcode .button{float:none;margin:0;}
 .viewcart_container .totalprice .couponcode .code_error{font-size:11px;color:red;float:none;padding-left:120px;margin:0;text-transform:none;}
 .viewcart_container .totalprice .couponcode .code_notice{font-size:11px;color:blue;float:none;padding-left:120px;margin:0;text-transform:none;}
-.viewcart_container .totalprice div{float:right;text-transform:capitalize;color:#7aa825;font-size:18px;margin:0;}
+.viewcart_container .totalprice .price{float:right;width:auto;height:auto;margin:0 0 2px 0;clear:right;font-size:13px;}
+	.viewcart_container .totalprice .price .text{width:auto;float:left;text-align:left;text-transform:capitalize;margin:0;}
+	.viewcart_container .totalprice .price .value{width:80px;float:left;font-weight:bold;margin:0;text-align:right;}
 
 .viewcart_container .button_container{float:left;width:544px;height:auto;padding:5px 0 5px 0;font-size:12px;text-transform:capitalize;margin:10px 0 0 0;}
 .viewcart_container .button_container .button{width:auto;height:auto;padding:3px;font-size:12px;font-family:arial;background:#e45a00;border:solid 1px #d9d9d9;}

@@ -1,5 +1,5 @@
 <%@ MasterClass="Application.shared.Master" %>
-<com:TContent ID="title">The Organic Grocer - Address</com:TContent>
+<com:TContent ID="title">The Organic Grocer - Billing/Shipping Addresses</com:TContent>
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
@@ -15,86 +15,79 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-    	<h2>shipping addresses</h2>
+    	<h2>billing / shipping addresses</h2>
         <div>Creating an account speeds up checkout time by saving your billing, shipping addresses to your account. You can also view detailed order status and purchase history.
         </div>
-		<table border="0" cellpadding="7" cellspacing="0" width="100%">
-			<tr>
-				<td class="table_title" colspan="2">address information</td>
-			</tr>
-			<tr>
-				<td class="left">address 1 <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
-					<com:TRequiredFieldValidator ID="val1"
-						ControlToValidate="txtFirstName"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="left">address 2 <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
-					<com:TRequiredFieldValidator ID="val2"
-						ControlToValidate="txtLastName"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Last name') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="left">City <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtCity" CssClass="frm_textbox"/><br />
-				</td>
-			</tr>
-            <tr>
-				<td class="left">State <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtState" CssClass="frm_textbox"/><br />
-				</td>
-			</tr>
-            <tr>
-				<td class="left">Zip <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtZip" CssClass="frm_textbox"/><br />
-				</td>
-			</tr>
-            <tr>
-				<td class="left">Country <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtCountry" CssClass="frm_textbox"/><br />
-				</td>
-			</tr>
-            <tr>
-				<td class="left">Phone 1 <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtPhone1" CssClass="frm_textbox"/><br />
-				</td>
-			</tr>
-            <tr>
-				<td class="left">Phone 2 <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtPhone2" CssClass="frm_textbox"/><br />
-				</td>
-			</tr>
-            <tr>
-				<td class="left">Fax <span>*</span></td>
-				<td class="right">
-					<com:TTextBox ID="txtFax" CssClass="frm_textbox"/><br />
-				</td>
-			</tr>
-			<tr>
-				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
-				<td class="right">
-					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
-					<input type="reset" value="Reset" class="button" />
-					<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.Index") %>'" />
-				</td>
-			</tr>
-		</table>
+        
+		<div class="address_container">
+            <!-- Address title -->
+            <div class="address_title" style="margin:0;">
+                <div class="adr_item">Billing Address</div>
+                <div class="action">Action</div>
+            </div>
+            <!-- Address title: END -->
+            
+            <!-- Address content -->
+            <div class="address_item">
+                <div class="adr_item">
+                	Address: 123 Quang Trung<br />
+                    City: Thành phố kim cương<br />
+                    State: ko có<br />
+                    Country: hòn cuội viễn đông<br />
+                </div>
+                <div class="action">
+                	<a href="">Edit</a> | <a href="">Remove</a>
+                </div>
+            </div>
+            <!-- Address content: END -->
+		</div>
+        
+        <div class="address_container">
+            <!-- Address title -->
+            <div class="address_title" style="margin:0;">
+                <div class="adr_item">Shipping Addresses</div>
+                <div class="action">Action</div>
+            </div>
+            <!-- Address title: END -->
+            
+            <!-- Address content -->
+            <div class="address_item">
+                <div class="adr_item">
+                	Address: 123 Quang Trung<br />
+                    City: Thành phố kim cương<br />
+                    State: ko có<br />
+                    Country: hòn cuội viễn đông<br />
+                </div>
+                <div class="action">
+                	<a href="">Edit</a> | <a href="">Remove</a>
+                </div>
+            </div>
+            <div class="address_item">
+                <div class="adr_item">
+                	Address: 123 Quang Trung<br />
+                    City: Thành phố kim cương<br />
+                    State: ko có<br />
+                    Country: hòn cuội viễn đông<br />
+                </div>
+                <div class="action">
+                	<a href="">Edit</a> | <a href="">Remove</a>
+                </div>
+            </div>
+            <div class="address_item" style="margin:0 0 5px 0;">
+                <div class="adr_item">
+                	Address: 123 Quang Trung<br />
+                    City: Thành phố kim cương<br />
+                    State: ko có<br />
+                    Country: hòn cuội viễn đông<br />
+                </div>
+                <div class="action">
+                	<a href="">Edit</a> | <a href="">Remove</a>
+                </div>
+            </div>
+            <!-- Address content: END -->
+            <div style="padding:0 0 0 10px;"><b><a href="">Add New</a></b></div>
+		</div>
+        
 	</div>
 	<!-- Inside box: END -->
 	</div>

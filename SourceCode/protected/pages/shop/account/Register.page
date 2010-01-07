@@ -12,7 +12,7 @@
 <!-- Main column -->
 <div class="main_col">
 	<com:Application.shared.UserNotice ID="Notice" />
-	<div class="main_content">
+	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
     	<h2>register new account</h2>
@@ -125,7 +125,7 @@
 		</table>
 	</div>
 	<!-- Inside box: END -->
-	</div>
+	</com:TPanel>
 </div>
 <!-- Main column: END -->
 

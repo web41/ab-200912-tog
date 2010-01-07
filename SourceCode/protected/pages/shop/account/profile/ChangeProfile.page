@@ -12,7 +12,7 @@
 <!-- Main column -->
 <div class="main_col">
 	<com:Application.shared.UserNotice ID="Notice" />
-	<div class="main_content">
+	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
     	<h2>change profile</h2>
@@ -24,7 +24,13 @@
 				<td class="table_title" colspan="2">profile information</td>
 			</tr>
 			<tr>
-				<td class="left">Current password <span>*</span></td>
+				<td class="left">Email</td>
+				<td class="right">
+					<com:TLabel ID="lblEmail" CssClass="frm_textbox"/>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">First Name <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val1"
@@ -35,7 +41,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">New password <span>*</span></td>
+				<td class="left">Last Name <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val2"
@@ -46,23 +52,12 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">confirm new password <span>*</span></td>
+				<td class="left">Verify by password <span>*</span></td>
 				<td class="right">
-					<com:TTextBox ID="txtEmail" CssClass="frm_textbox"/><br />
+					<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val3"
-						ControlToValidate="txtEmail"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-					<com:TEmailAddressValidator ID="val4"
-						ControlToValidate="txtEmail"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-					<com:TCustomValidator ID="val5"
-						ControlToValidate="txtEmail"
-						OnServerValidate="uniqueCheck_ServerValidated"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Email') %>"
+						ControlToValidate="txtPassword"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
 				</td>
@@ -71,13 +66,13 @@
 				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
 					<com:TButton ID="btnSubmit" Text="Change" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
-					<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.Index") %>'" />
+					<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.account.profile.Index") %>'" />
 				</td>
 			</tr>
 		</table>
 	</div>
 	<!-- Inside box: END -->
-	</div>
+	</com:TPanel>
 </div>
 <!-- Main column: END -->
 

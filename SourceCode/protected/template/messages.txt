@@ -1,5 +1,5 @@
 ITEM_FOUND 					= {0} {1} found.
-ITEM_NOT_FOUND				= This {0} can not be found.
+ITEM_NOT_FOUND				= This {0} could not be found.
 DELETE_CONFIRM 				= Do you really want to delete {0}: {1}?
 DELETE_ALL_CONFIRM 			= Do you really want to delete selected {0}?
 DELETE_SUCCESS				= {0} {1} has been deleted successfully.

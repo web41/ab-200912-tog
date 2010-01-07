@@ -5,8 +5,9 @@ class Register extends TPage
 	public function onLoad($param)
 	{
 		if (!$this->Application->User->IsGuest)
-				$this->Response->redirect($this->Service->ConstructUrl("shop.Index"));
-			parent::onLoad($param);
+			$this->Response->redirect($this->Service->ConstructUrl("shop.Index"));
+		parent::onLoad($param);
+		$this->ClientScript->registerDefaultButton($this->mainBox,$this->btnLogin);
 	}
 	
 	protected function btnSubmit_Clicked($sender, $param)

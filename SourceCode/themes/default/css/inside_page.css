@@ -19,6 +19,7 @@
 	.main_col .inside_box div ol ol{list-style-type:decimal;margin-bottom:10px;font-weight:bold;}
 	.main_col .inside_box div ol ol ul{list-style-type:lower-latin;margin-bottom:10px;font-weight:normal;}
 	.main_col .inside_box h2{text-transform:capitalize;font-weight:normal;font-size:20px;margin-bottom:10px;color:#7aa825;border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;}
+	.main_col .inside_box h3{text-transform:capitalize;font-weight:normal;font-size:16px;margin-bottom:5px;color:#7aa825;}
 	
 /*Main column: END*/
 #container .main_content .main_col .error{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#ffcecf;color:#655254;padding:5px 10px 5px 10px;}

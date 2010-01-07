@@ -29,7 +29,7 @@
 .viewcart_container .button_container .button{width:auto;height:auto;padding:3px;font-size:12px;font-family:arial;background:#e45a00;border:solid 1px #d9d9d9;}
 .viewcart_container .button_container .button:hover{cursor:pointer;background:#83b32a;background:#ef5e00}
 
-.viewcart_container .cart_review{float:right;width:544px;height:auto;padding:10px 0 5px 0;font-size:12px;text-transform:capitalize;margin:10px 0 0 0;border-top:solid 1px #e2e2bc;text-align:right;}
+.viewcart_container .cart_review{float:right;width:544px;height:auto;padding:10px 0 5px 0;font-size:12px;text-transform:capitalize;text-align:right;}
 .viewcart_container .cart_review .price{float:right;width:auto;height:auto;margin:0 0 4px 0;clear:both;}
 	.viewcart_container .cart_review .price .text{width:auto;float:left;text-align:left;text-transform:capitalize;margin:0;}
 	.viewcart_container .cart_review .price .value{width:100px;float:left;font-weight:bold;margin:0;}

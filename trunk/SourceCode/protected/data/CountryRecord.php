@@ -26,5 +26,12 @@ class CountryRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	public function getAllItems()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "country_id > 0";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

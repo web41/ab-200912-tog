@@ -61,5 +61,21 @@ class UserAddressRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	public function getAddressesByType($type="B")
+	{
+		return self::finder()->findAllByuser_idAndaddress_type(Prado::getApplication()->User->ID,$type);
+	}
+	
+	public function save()
+	{
+		if ($this->ID <= 0)
+		{
+			$this->CreateDate = time();
+		}
+		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Title." ".$this->FirstName." ".$this->LastName);
+		$this->ModifyDate = time();
+		parent::save();
+	}
 }
 ?>

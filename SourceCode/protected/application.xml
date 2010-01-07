@@ -49,6 +49,7 @@
 		<module id="request" class="THttpRequest" UrlManager="friendly-url"/>
 		<module id="friendly-url" class="System.Web.TUrlMapping" EnableCustomUrl="true" UrlPrefix="/TOG">
 			
+			<url ServiceParameter="Index" pattern="home-page.html"/>
 			<url ServiceParameter="shop.AboutUs" pattern="about-us.html"/>
 			<url ServiceParameter="shop.WhyOrganic" pattern="why-organic.html"/>
 			<url ServiceParameter="shop.Delivery" pattern="delivery.html"/>

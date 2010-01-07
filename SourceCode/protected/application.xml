@@ -75,10 +75,12 @@
 			<url ServiceParameter="shop.account.profile.ChangePassword" pattern="shop/account/change-password"/>
 			<url ServiceParameter="shop.account.profile.ChangeProfile" pattern="shop/account/change-profile"/>
 			
-			<url ServiceParameter="shop.account.addresses.Index" pattern="shop/account/address/manager"/>
+			<url ServiceParameter="shop.account.addresses.Index" pattern="shop/account/address"/>
 			<url ServiceParameter="shop.account.addresses.AddressForm" pattern="shop/account/address/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="shop.account.addresses.AddressForm" pattern="shop/account/address/create-new"/>
 			
+			<url ServiceParameter="shop.account.orders.Index" pattern="shop/account/order"/>
+			<url ServiceParameter="shop.account.orders.OrderDetail" pattern="shop/account/order-detail/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			
 			<url ServiceParameter="shop.cart.Index" pattern="shop/view-cart"/>
 			

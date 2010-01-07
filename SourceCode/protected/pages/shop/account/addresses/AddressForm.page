@@ -97,7 +97,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">City/Town</td>
+				<td class="left">City/Town <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtCity" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="va4"
@@ -108,7 +108,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">State</td>
+				<td class="left">State <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtState" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="va5"

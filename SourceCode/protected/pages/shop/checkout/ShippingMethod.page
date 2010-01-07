@@ -3,7 +3,7 @@
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
-	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.CategoryMenu ID="categoryMenu" />
 	<com:Application.shared.OrganicPoints />
 	<com:Application.shared.Newsletter />
 </div>
@@ -11,7 +11,8 @@
 
 <!-- Main column -->
 <div class="main_col">
-	<div class="main_content">
+	<com:Application.shared.UserNotice ID="Notice" />
+	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
 		<h2>Shipping Method</h2>
@@ -19,12 +20,10 @@
 			<!-- Cart step -->
 			<div class="cart_step">
 				<ul>
-					<li class="active"><a href="">view cart</a></li>
+					<li class="active"><a href="<%= $this->Service->ConstructUrl("shop.cart.Index") %>">view cart</a></li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">billing</li>
+					<li class="active"><a href="<%= $this->Service->ConstructUrl("shop.checkout.Billing") %>">bill/ship info</a></li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-                    <li>shipping</li>
-					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
 					<li>confirm/edit info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
 					<li>order confirmation</li>
@@ -37,41 +36,30 @@
 				<td class="table_title" colspan="2">choose shipping method</td>
 			</tr>
 			<tr>
-				<td class="left">Shipping Type</td>
+				<td class="left">Shipping method</td>
 				<td class="right">
-					<com:TTextBox ID="txtAlias" CssClass="frm_textbox"/><br />
-				</td>
-			</tr>
-			<tr>
-				<td class="left">Normal Shipping Rate</td>
-				<td class="right" style="font-size:13px;">
-					$100
-				</td>
-			</tr>
-			<tr>
-				<td class="left">Discount</td>
-				<td class="right" style="font-size:13px;">
-					50%
-				</td>
-			</tr>
-			<tr>
-				<td class="left">Final Shipping Rate</td>
-				<td class="right" style="font-size:13px;">
-					$50
+					<com:TDropDownList ID="cboMethodSelector" 
+						CssClass="frm_textbox" 
+						PromptText="Select..." PromptValue="0" /><br />
+					<com:TRequiredFieldValidator ID="val8"
+						ControlToValidate="cboMethodSelector"
+						InitialValue="0"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Shipping method') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
 				</td>
 			</tr>
 			<tr>
 				<td class="left">&nbsp;</td>
 				<td class="right">
-                	<input type="button" value="Back" class="button" />
-                    <input type="button" value="Next" class="button" />
-                    <input type="button" value="Cancel" class="button" />
+					<input type="button" value="Back" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.Shipping') %>'" />
+					<com:TButton Text="Next" CssClass="button" OnClick="btnSubmit_Clicked"/>
 				</td>
 			</tr>
 		</table>
 	</div>
 	<!-- Inside box: END -->
-	</div>
+	</com:TPanel>
 </div>
 <!-- Main column: END -->
 

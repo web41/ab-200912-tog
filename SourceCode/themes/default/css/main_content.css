@@ -3,8 +3,9 @@
 #container .main_content .left_col{float:left;width:178px;height:auto;}
 #container .main_content .right_col{float:left;width:178px;height:auto;}
 
-.left_col #left_category{width:178px;height:auto;margin:0;padding:0;list-style-type:none;text-align:left;margin:0 0 20px 0;background:#e2e2bc url(../images/left_col_top.png) no-repeat;}
+#left_category{width:178px;height:auto;margin:0;padding:0;list-style-type:none;text-align:left;margin:0 0 20px 0;background:#e2e2bc url(../images/left_col_top.png) no-repeat;}
 	#left_category li{width:auto;height:auto;margin:0;padding:0;border-bottom:solid 1px #fff;}
+	#left_category li b{font:bold 14px Arial;text-transform:capitalize;display:block;padding:10px 0 10px 20px;color:#503a1d;}
 	#left_category li a{font:normal 14px Arial;text-transform:capitalize;display:block;padding:10px 0 10px 20px;color:#503a1d;}
 	#left_category li a:hover{color:#8f6936;background:#eaeac4}
 	#left_category li a.active{font:normal 14px Arial;text-transform:capitalize;display:block;padding:10px 0 10px 20px;color:#749f24;background:#eaeac4}

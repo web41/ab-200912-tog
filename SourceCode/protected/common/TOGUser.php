@@ -145,9 +145,9 @@ class TOGUser extends TDbUser
 		return ($user instanceof UserRecord);
 	}
 	
-	public function createUser($username)
+	public function createUser($email)
 	{
-		$activeRecord = UserRecord::finder()->findByuser_name($username);
+		$activeRecord = UserRecord::finder()->findByuser_email($email);
 		if ($activeRecord instanceof UserRecord)
 		{
 			$user = new TOGUser($this->Manager);
@@ -171,6 +171,43 @@ class TOGUser extends TDbUser
 			$user->IsGuest = false;
 			return $user;
 		}
+	}
+	
+	public function createUserFromCookie($cookie)
+	{
+		if(($data = $cookie->Value)!=='')
+		{
+			$application = Prado::getApplication();
+			if(($data = $application->SecurityManager->validateData($data))!==false)
+			{
+				$data=unserialize($data);
+				if(is_array($data) && count($data)===3)
+				{
+					list($email,$address,$token)=$data;
+					//var_dump($application->SecurityManager->validateData(base64_decode($token)));
+					
+					if(($userRecord = UserRecord::finder()->findByuser_email($application->SecurityManager->validateData(base64_decode($email))))!==null)
+					{
+						if(!empty($token) && $userRecord->Password==$application->SecurityManager->validateData(base64_decode($token)))
+							return $this->createUser($userRecord->Email);
+					}
+				}
+			}
+		}
+		return null;
+
+	}
+
+	public function saveUserToCookie($cookie)
+	{
+		$application = Prado::getApplication();
+		$email = $this->Name;
+		$address = base64_encode($application->SecurityManager->hashData($application->Request->UserHostAddress));
+		$userRecord = UserRecord::finder()->findByuser_email($email);
+		$token = $userRecord===null?'':base64_encode($application->SecurityManager->hashData($userRecord->Password));
+		$data = array(base64_encode($application->SecurityManager->hashData(strtolower($email))),$address,$token);
+		$data = $application->SecurityManager->hashData(serialize($data));
+		$cookie->Value = $data;
 	}
 }
 

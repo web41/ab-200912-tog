@@ -2,7 +2,7 @@
 
 class TOGUserManager extends TDbUserManager
 {
-
+	
 }
 
 ?>

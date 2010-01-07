@@ -44,7 +44,7 @@
 				</prop:ItemTemplate>
 			</com:TRepeater>
 			<!-- Address content -->
-			<!--div class="address_item">
+			<!-- div class="address_item">
 				<div class="adr_item">
 					Address: 123 Quang Trung<br />
 					City: Thành phố kim cương<br />
@@ -54,7 +54,7 @@
 				<div class="action">
 					<a href="">Edit</a> | <a href="">Remove</a>
 				</div>
-			</div-->
+			</div -->
 			<!-- Address content: END -->
 			<div style="margin:5px 0 0 10px;"><b><com:THyperLink ID="lnkAddBilling" NavigateUrl="<%= $this->Service->ConstructUrl('shop.account.addresses.AddressForm') %>" Text="Add New" /></b></div>
 		</div>
@@ -85,40 +85,6 @@
 					<!-- Address content: END -->
 				</prop:ItemTemplate>
 			</com:TRepeater>
-			<!-- Address content -->
-			<!--div class="address_item">
-				<div class="adr_item">
-					Address: 123 Quang Trung<br />
-					City: Thành phố kim cương<br />
-					State: ko có<br />
-					Country: hòn cuội viễn đông<br />
-				</div>
-				<div class="action">
-					<a href="">Edit</a> | <a href="">Remove</a>
-				</div>
-			</div>
-			<div class="address_item">
-				<div class="adr_item">
-					Address: 123 Quang Trung<br />
-					City: Thành phố kim cương<br />
-					State: ko có<br />
-					Country: hòn cuội viễn đông<br />
-				</div>
-				<div class="action">
-					<a href="">Edit</a> | <a href="">Remove</a>
-				</div>
-			</div>
-			<div class="address_item" style="margin:0 0 5px 0;">
-				<div class="adr_item">
-					Address: 123 Quang Trung<br />
-					City: Thành phố kim cương<br />
-					State: ko có<br />
-					Country: hòn cuội viễn đông<br />
-				</div>
-				<div class="action">
-					<a href="">Edit</a> | <a href="">Remove</a>
-				</div>
-			</div>
 			<!-- Address content: END -->
 			<div style="margin:5px 0 0 10px;"><b><com:THyperLink ID="lnkAddShipping" NavigateUrl="<%= $this->Service->ConstructUrl('shop.account.addresses.AddressForm') %>" Text="Add New" /></b></div>
 		</div>

@@ -20,12 +20,10 @@
 			<!-- Cart step -->
 			<div class="cart_step">
 				<ul>
-					<li class="active"><a href="">view cart</a></li>
+					<li class="active"><a href="<%= $this->Service->ConstructUrl("shop.cart.Index") %>">view cart</a></li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">billing</li>
+					<li class="active"><a href="<%= $this->Service->ConstructUrl("shop.checkout.Billing") %>">bill/ship info</a></li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-                    <li>shipping</li>
-					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
 					<li>confirm/edit info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
 					<li>order confirmation</li>
@@ -35,33 +33,12 @@
         </div>
 		<table border="0" cellpadding="7" cellspacing="0" width="100%">
 			<tr>
-				<td class="table_title" colspan="2">address information</td>
-			</tr>
-			<tr>
-				<td class="left">Alias</td>
-				<td class="right">
-					<com:TTextBox ID="txtAlias" CssClass="frm_textbox"/><br />
-				</td>
+				<td class="table_title" colspan="2">Address information</td>
 			</tr>
 			<tr>
 				<td class="left">Title</td>
 				<td class="right">
 					<com:TDropDownList ID="cboTitleSelector"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="left">Address Type</td>
-				<td class="right">
-					
-				</td>
-			</tr>
-			<tr>
-				<td class="left">Set as default</td>
-				<td class="right">
-					<com:TDropDownList ID="cboDefaultSelector">
-						<com:TListItem Text="No" Value="1"/>
-						<com:TListItem Text="Yes" Value="1" />
-					</com:TDropDownList>
 				</td>
 			</tr>
 			<tr>
@@ -110,7 +87,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">City/Town</td>
+				<td class="left">City/Town <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtCity" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="va4"
@@ -121,7 +98,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">State</td>
+				<td class="left">State <span>*</span></td>
 				<td class="right">
 					<com:TTextBox ID="txtState" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="va5"
@@ -186,11 +163,16 @@
 				</td>
 			</tr>
 			<tr>
+				<td class="left">&nbsp;</td>
+				<td class="right">
+					<com:TCheckBox ID="chkBillShip" Text="Shiping address is the same billing address" Checked="true" />
+				</td>
+			</tr>
+			<tr>
 				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
-                	<input type="button" value="Back" class="button" />
-                    <input type="button" value="Next" class="button" />
-                    <input type="button" value="Cancel" class="button" />
+					<com:TButton Text="Back" CssClass="button" Attributes.onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.cart.Index') %>'" />
+					<com:TButton Text="Next" CssClass="button" OnClick="btnSubmit_Clicked"/>
 				</td>
 			</tr>
 		</table>

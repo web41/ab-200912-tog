@@ -47,11 +47,12 @@
 						<div class="couponcode">
 							Enter Coupon Code <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
 						</div>
-						<div>Subtotal: <com:TActiveLabel ID="lblSubtotal" /></div>
+						<div>Cart total: <com:TActiveLabel ID="lblSubtotal" /></div>
 					</div>
 					<!-- Cart total price: END -->
 				</prop:FooterTemplate>
 			</com:TRepeater>
+			<div>* If you have changed the quantity of any of your items, please make sure to update the cart before checking out.</div>
 			<!-- Cart button -->
 			<div class="button_container">
 				<input type="button" style="float:left;" class="button" value="< Continue shopping" />

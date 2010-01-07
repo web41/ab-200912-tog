@@ -1,14 +1,14 @@
 ﻿.address_container{float:left;width:544px;height:auto;text-align:left;margin:0;}
 
 .address_container .address_title{float:left;width:544px;height:auto;padding:5px 0 5px 0;background:#e2e2bc;font-size:12px;font-weight:bold;text-transform:capitalize;text-align:left;}
-.address_container .address_title .adr_item{float:left;width:400px;height:auto;padding:0 0 0 10px;margin:0;}
+.address_container .address_title .adr_item{float:left;width:360px;height:auto;padding:0 0 0 10px;margin:0;}
 .address_container .address_title .adr_item2{float:left;width:252px;height:auto;padding:0 10px 0 10px;margin:0;}
-.address_container .address_title .action{float:left;width:134px;height:auto;margin:0;text-align:center;}
+.address_container .address_title .action{float:left;width:174px;height:auto;margin:0;text-align:center;}
 
 .address_container .address_item{float:left;width:544px;height:auto;padding:5px 0 5px 0;font-size:12px;text-align:center;border-bottom:1px solid #e2e2bc;margin:0 0 5px 0;}
-.address_container .address_item .adr_item{float:left;width:400px;height:auto;padding:0 0 0 10px;margin:0;text-align:left;}
+.address_container .address_item .adr_item{float:left;width:360px;height:auto;padding:0 0 0 10px;margin:0;text-align:left;}
 .address_container .address_item .adr_item2{float:left;width:252px;height:auto;padding:0 10px 0 10px;margin:0;text-align:left;}
-.address_container .address_item .action{float:left;width:134px;height:auto;margin:0;text-align:center;}
+.address_container .address_item .action{float:left;width:174px;height:auto;margin:0;text-align:center;}
 	.address_container .address_item .action a{margin:0 5px 0 5px;}
 ight;text-transform:capitalize;color:#7aa825;font-size:18px;margin:0;}
 

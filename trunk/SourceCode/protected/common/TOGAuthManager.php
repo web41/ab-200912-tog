@@ -12,6 +12,11 @@ class TOGAuthManager extends TAuthManager
 		CartTempDetailRecord::finder()->deleteAll($criteria);
 		parent::logout();
 	}
+	
+	public function login($username, $password,$expire=0)
+	{
+		return parent::login($username, $password, 7200);
+	}
 }
 
 ?>

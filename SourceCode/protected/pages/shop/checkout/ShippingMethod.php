@@ -39,9 +39,12 @@ class ShippingMethod extends TPage
 		if ($this->IsValid)
 		{
 			$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+			$method = ShippingMethodRecord::finder()->findByPk($this->cboMethodSelector->SelectedValue);
 			if ($cartRecord instanceof CartTempRecord)
 			{
-				$cartRecord->ShippingMethodID = $this->cboMethodSelector->SelectedValue;
+				$cartRecord->ShippingMethodID = $method->ID;
+				$cartRecord->ShippingAmount = $method->Price;
+				$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
 				try
 				{
 					$cartRecord->save();

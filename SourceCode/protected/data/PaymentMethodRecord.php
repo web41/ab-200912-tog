@@ -43,7 +43,7 @@ class PaymentMethodRecord extends TActiveRecord
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "method_id > 0";
 		if ($publishedOnly) $criteria->Condition .= " and method_publish = 1";
-		$criteria->OrdersBy["method_name"] = "asc";
+		$criteria->OrdersBy["method_id"] = "asc";
 		return self::finder()->findAll($criteria);
 	}
 }

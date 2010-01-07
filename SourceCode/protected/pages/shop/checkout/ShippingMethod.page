@@ -40,7 +40,8 @@
 				<td class="right">
 					<com:TDropDownList ID="cboMethodSelector" 
 						CssClass="frm_textbox" 
-						PromptText="Select..." PromptValue="0" /><br />
+						PromptText="Select..." PromptValue="0" />
+					<a href="<%= $this->Service->ConstructUrl('shop.Delivery') %>" target="_blank">More info</a><br />
 					<com:TRequiredFieldValidator ID="val8"
 						ControlToValidate="cboMethodSelector"
 						InitialValue="0"

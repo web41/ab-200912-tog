@@ -55,8 +55,8 @@
 			<div>* If you have changed the quantity of any of your items, please make sure to update the cart before checking out.</div>
 			<!-- Cart button -->
 			<div class="button_container">
-				<input type="button" style="float:left;" class="button" value="< Continue shopping" />
-				<input type="button" style="float:right;" class="button" value="Checkout >" />
+				<input type="button" style="float:left;" class="button" value="< Continue shopping" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'"/>
+				<input type="button" style="float:right;" class="button" value="Checkout >" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.Index') %>'" />
 			</div>
 			<!-- Cart button: END -->
 		</div>

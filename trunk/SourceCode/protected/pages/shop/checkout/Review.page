@@ -16,110 +16,110 @@
 	<div class="inside_box">
 		<h2>Review</h2>
 		<div>
-        	Please check all the information below to make sure it is correct. If you need to change shipping options or remove an item from your order, select the Edit Address button.<br />
+			Please check all the information below to make sure it is correct. If you need to change shipping options or remove an item from your order, select the Edit Address button.<br />
 You will receive a full order summary and order number on the next page.
 		</div>
-        
-        <!-- Review -->
-        <h3>Order Summary</h3>
-        <div class="viewcart_container" style="margin-bottom:20px;">
-            <!-- Review title -->
-            <div class="cart_title" style="margin:0;">
-                <div class="prd_item">Product Name</div>
-                <div class="qty">Quantity</div>
-                <div class="price">Price</div>
-                <div class="remove">Remove</div>
-            </div>
-            <!-- Review title: END -->
+
+		<!-- Review -->
+		<h3>Order Summary</h3>
+		<div class="viewcart_container" style="margin-bottom:20px;">
+			<!-- Review title -->
+			<div class="cart_title" style="margin:0;">
+				<div class="prd_item">Product Name</div>
+				<div class="qty">Quantity</div>
+				<div class="price">Price</div>
+				<div class="remove">Remove</div>
+			</div>
+			<!-- Review title: END -->
 
 			<!-- Product item -->
-            <div class="cart_item" style="margin:0;">
-                <div class="prd_item">Product Name</div>
-                <div class="qty">1</div>
-                <div class="price">$123</div>
-                <div class="remove">
-                	<com:TButton ID="btnDelete" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if (!confirm('Are you sure?')) return false;"/>
-                </div>
-            </div>
-            <div class="cart_item" style="margin:0;">
-                <div class="prd_item">Product Name</div>
-                <div class="qty">1</div>
-                <div class="price">$123</div>
-                <div class="remove">
-                	<com:TButton CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if (!confirm('Are you sure?')) return false;"/>
-                </div>
-            </div>
-            <!-- Product title: END -->
+			<div class="cart_item" style="margin:0;">
+				<div class="prd_item">Product Name</div>
+				<div class="qty">1</div>
+				<div class="price">$123</div>
+				<div class="remove">
+					<com:TButton ID="btnDelete" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if (!confirm('Are you sure?')) return false;"/>
+				</div>
+			</div>
+			<div class="cart_item" style="margin:0;">
+				<div class="prd_item">Product Name</div>
+				<div class="qty">1</div>
+				<div class="price">$123</div>
+				<div class="remove">
+					<com:TButton CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if (!confirm('Are you sure?')) return false;"/>
+				</div>
+			</div>
+			<!-- Product title: END -->
 		</div>
-        <!-- Review: END -->
-        
-        <!-- Address -->
-        <h3>Address information</h3>
-        <div class="address_container" style="margin-bottom:5px;">
-            <!-- Address title -->
-            <div class="address_title" style="margin:0;">
-                <div class="adr_item2">Billing Address</div>
-                <div class="adr_item2">Shipping Address</div>
-            </div>
-            <!-- Address title: END -->
-            
-            <!-- Address content -->
-            <div class="address_item">
-                <div class="adr_item2">
-                	Address: 123 Quang Trung<br />
-                    City: Thành phố kim cương<br />
-                    State: ko có<br />
-                    Country: hòn cuội viễn đông<br />
-                    <input type="button" style="float:left;margin:5px 0 5px 0;" class="button" value="Edit Address" />
-                </div>
-                <div class="adr_item2">
-                	Address: 123 Quang Trung<br />
-                    City: Thành phố kim cương<br />
-                    State: ko có<br />
-                    Country: hòn cuội viễn đông<br />
-                    <input type="button" style="float:left;margin:5px 0 5px 0;" class="button" value="Edit Address" />
-                </div>
-            </div>
-            <!-- Address content: END -->
+		<!-- Review: END -->
+
+		<!-- Address -->
+		<h3>Address information</h3>
+		<div class="address_container" style="margin-bottom:5px;">
+			<!-- Address title -->
+			<div class="address_title" style="margin:0;">
+				<div class="adr_item2">Billing Address</div>
+				<div class="adr_item2">Shipping Address</div>
+			</div>
+			<!-- Address title: END -->
+
+			<!-- Address content -->
+			<div class="address_item">
+				<div class="adr_item2">
+					Address: 123 Quang Trung<br />
+					City: Thành phố kim cương<br />
+					State: ko có<br />
+					Country: hòn cuội viễn đông<br />
+					<input type="button" style="float:left;margin:5px 0 5px 0;" class="button" value="Edit Address" />
+				</div>
+				<div class="adr_item2">
+					Address: 123 Quang Trung<br />
+					City: Thành phố kim cương<br />
+					State: ko có<br />
+					Country: hòn cuội viễn đông<br />
+					<input type="button" style="float:left;margin:5px 0 5px 0;" class="button" value="Edit Address" />
+				</div>
+			</div>
+			<!-- Address content: END -->
 		</div>
-        <!-- Address: END -->
-        
-        <h3>shipping method</h3>
-        <div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;">
-        	Shipping name: text here <input type="button" class="button" value="Edit" style="float:none;" />
-        </div>
-        
-        <h3>payment method</h3>
-        <div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
-        	<select style="float:left;margin:5px 10px 0 0;">
-            	<option>option 1</option>
-                <option>option 2</option>
-                <option>option 3</option>
-                <option>option 4</option>
-            </select>
-            <img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_paypal.png" alt="" width="30" style="float:left;"/>
-        </div>
-        
-        <div class="viewcart_container">
-        	<div class="cart_review">
-            	<div class="price">
-                	<div class="text">product total</div>
-                    <div class="value">$100</div>
-                </div>
-                <div class="price">
-                	<div class="text">shipping fee</div>
-                    <div class="value">$25</div>
-                </div>
-                <div class="price" style="font-size:18px;margin-top:5px;">
-                	<div class="text">order total</div>
-                    <div class="value" style="color:#7aa825">$25</div>
-                </div>
-                <div class="price">
-                	<input type="button" class="button" value="Cancel Order" />
-                    <input type="button" class="button" value="Submit Your Order" />
-                </div>
-            </div>
-        </div>
+		<!-- Address: END -->
+
+		<h3>shipping method</h3>
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;">
+			Shipping name: text here <input type="button" class="button" value="Edit" style="float:none;" />
+		</div>
+
+		<h3>payment method</h3>
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
+			<select style="float:left;margin:5px 10px 0 0;">
+				<option>option 1</option>
+				<option>option 2</option>
+				<option>option 3</option>
+				<option>option 4</option>
+			</select>
+			<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_paypal.png" alt="" width="30" style="float:left;"/>
+		</div>
+
+		<div class="viewcart_container">
+			<div class="cart_review">
+				<div class="price">
+					<div class="text">product total</div>
+					<div class="value">$100</div>
+				</div>
+				<div class="price">
+					<div class="text">shipping fee</div>
+					<div class="value">$25</div>
+				</div>
+				<div class="price" style="font-size:18px;margin-top:5px;">
+					<div class="text">order total</div>
+					<div class="value" style="color:#7aa825">$25</div>
+				</div>
+				<div class="price">
+					<input type="button" class="button" value="Cancel Order" />
+					<input type="button" class="button" value="Submit Your Order" />
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- Inside box: END -->
 	</div>

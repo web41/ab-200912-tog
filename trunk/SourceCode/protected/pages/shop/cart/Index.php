@@ -34,6 +34,34 @@ class Index extends TPage
 		$formatter = new NumberFormat($this->Application->Globalization->Culture);
 		return $formatter->format($value,$pattern,$currency,$this->Application->Globalization->Charset);
 	}
+	
+	public function btnSubmit_Clicked($sender, $param)
+	{
+		$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+		if ($cartRecord instanceof CartTempRecord)
+		{
+			$cartRecord->Subtotal = CartTempRecord::finder()->getSubtotalInSession();
+			$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
+			try
+			{
+				$cartRecord->save();
+				$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Index"));
+			}
+			catch(TException $ex)
+			{
+				$this->Notice->Type = UserNoticeType::Error;
+				$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+			}
+			
+		}
+		else
+		{
+			$this->Notice->Type = UserNoticeType::Error;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","cart");
+		}
+		$this->populateData();
+		$this->categoryMenu->populateData();
+	}
 }
 
 ?>

@@ -6,7 +6,7 @@ class TOGAuthManager extends TAuthManager
 	{
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "session_id = ':id' and user_id = ':user'";
-		$criteria->Parameters[':id'] = $this->Application->Session->ID;
+		$criteria->Parameters[':id'] = $this->Application->Session->SessionID;
 		$criteria->Parameters[':user'] = $this->Application->User->ID;
 		CartTempRecord::finder()->deleteAll($criteria);
 		CartTempDetailRecord::finder()->deleteAll($criteria);

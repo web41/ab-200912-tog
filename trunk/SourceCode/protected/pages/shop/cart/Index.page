@@ -45,35 +45,18 @@
 					<!-- Cart total price -->
 					<div class="totalprice">
 						<div class="couponcode">
-							<p style="float:left;width:120px;font-weight:bold;">Enter Coupon Code</p> <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" /><br />
-                            <div class="code_error" style="margin:0 0 -5px 0;">
-                            	You code is not valid.
-                            </div>
-                            <div class="code_notice" style="margin:0 0 -5px 0;">
-                            	Successfully apply code. Discount: 10%
-                            </div>
+							Enter Coupon Code <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
 						</div>
-						<div class="price">
-                        	<div class="text">Cart total: </div>
-                            <div class="value"> <com:TActiveLabel ID="lblSubtotal" /></div>
-                        </div>
-                        <div class="price">
-                        	<div class="text">discount: </div>
-                            <div class="value"> 0%</div>
-                        </div>
-                        <div class="price" style="font-size:18px;">
-                        	<div class="text">total: </div>
-                            <div class="value" style="color:#7aa825">$100</div>
-                        </div>
+						<div>Cart total: <com:TActiveLabel ID="lblSubtotal" /></div>
 					</div>
 					<!-- Cart total price: END -->
 				</prop:FooterTemplate>
 			</com:TRepeater>
-			<div style="margin:0;padding:0;">* If you have changed the quantity of any of your items, please make sure to update the cart before checking out.</div>
+			<div>* If you have changed the quantity of any of your items, please make sure to update the cart before checking out.</div>
 			<!-- Cart button -->
 			<div class="button_container">
 				<input type="button" style="float:left;" class="button" value="< Continue shopping" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'"/>
-				<input type="button" style="float:right;" class="button" value="Checkout >" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.Index') %>'" />
+				<com:TButton Style="float:right;" CssClass="button" Text="Checkout >" OnClick="btnSubmit_Clicked" />
 			</div>
 			<!-- Cart button: END -->
 		</div>

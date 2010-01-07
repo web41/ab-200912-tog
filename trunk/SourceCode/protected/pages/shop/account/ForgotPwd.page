@@ -11,31 +11,10 @@
 
 <!-- Main column -->
 <div class="main_col">
-	<com:Application.shared.UserNotice ID="Notice" />
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<!--table border="0" cellpadding="10" cellspacing="0" width="100%">
-			<tr>
-				<td class="table_title" colspan="2">Forgot Password</td>
-			</tr>
-			<tr>
-				<td class="left">Email</td>
-				<td class="right"><input type="text" class="textbox" /></td>
-			</tr>
-			<tr>
-				<td class="left">Word Verification</td>
-				<td class="right"><input type="text" class="textbox" /></td>
-			</tr>
-			<tr>
-				<td class="left">&nbsp;</td>
-				<td class="right">
-					<input type="submit" value="Login" />
-					<input type="button" value="Cancel" />
-				</td>
-			</tr>
-		</table-->
-		<h3>Forgot Your Password</h3><br /><br />
+		<h2>forgot your password?</h2>
 		<com:TPanel ID="MainContent">
 			<div>Enter your e-mail address and we'll send you a new password immediately.</div>
 			<div>For security purposes, your billing information will be cleared from Your Account. Please call our Customer Service with any questions at (65) 91150702 </div>

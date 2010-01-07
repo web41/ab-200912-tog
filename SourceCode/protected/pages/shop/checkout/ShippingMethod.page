@@ -32,9 +32,43 @@
 			</div>
 			<!-- Cart step: END -->
         </div>
-		<div>
-        	để gì?
-		</div>
+       	<table border="0" cellpadding="7" cellspacing="0" width="100%" style="font-size:13px;">
+			<tr>
+				<td class="table_title" colspan="2">choose shipping method</td>
+			</tr>
+			<tr>
+				<td class="left">Shipping Type</td>
+				<td class="right">
+					<com:TTextBox ID="txtAlias" CssClass="frm_textbox"/><br />
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Normal Shipping Rate</td>
+				<td class="right" style="font-size:13px;">
+					$100
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Discount</td>
+				<td class="right" style="font-size:13px;">
+					50%
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Final Shipping Rate</td>
+				<td class="right" style="font-size:13px;">
+					$50
+				</td>
+			</tr>
+			<tr>
+				<td class="left">&nbsp;</td>
+				<td class="right">
+                	<input type="button" value="Back" class="button" />
+                    <input type="button" value="Next" class="button" />
+                    <input type="button" value="Cancel" class="button" />
+				</td>
+			</tr>
+		</table>
 	</div>
 	<!-- Inside box: END -->
 	</div>

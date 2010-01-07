@@ -70,6 +70,7 @@ class AddressForm extends TPage
 		$activeRecord->Title = $this->cboTitleSelector->SelectedValue;
 		$activeRecord->Type = $this->cboTypeSelector->SelectedValue;
 		$activeRecord->IsDefault = $this->cboDefaultSelector->SelectedValue;
+		if ($activeRecord->Type =="B") $activeRecord->IsDefault = true;
 		$activeRecord->FirstName = $this->txtFirstName->SafeText;
 		$activeRecord->LastName = $this->txtLastName->SafeText;
 		$activeRecord->CompanyName = $this->txtCompanyName->SafeText;
@@ -96,6 +97,20 @@ class AddressForm extends TPage
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
 				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Address","");
 				$activeRecord->save();
+				
+				// if set default = true, reset all others items
+				if($activeRecord->Type=="S"&&$activeRecord->IsDefault)
+				{
+					$shippingAddresses = Prado::createComponent(self::AR)->finder()->getAddressesByType("S");
+					foreach($shippingAddresses as $address)
+					{
+						if ($address->ID != $activeRecord->ID)
+						{
+							$address->IsDefault = false;
+							$address->save();
+						}
+					}
+				}
 				$this->Response->redirect($this->Service->ConstructUrl("shop.account.addresses.Index",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
@@ -108,7 +123,8 @@ class AddressForm extends TPage
 	
 	public function getHasBillingAddress()
 	{
-		return count(Prado::createComponent(self::AR)->finder()->getAddressesByType("B"));
+		if ($this->Item->Type=="B") return false;
+		else return count(Prado::createComponent(self::AR)->finder()->getAddressesByType("B"));
 	}
 }
 

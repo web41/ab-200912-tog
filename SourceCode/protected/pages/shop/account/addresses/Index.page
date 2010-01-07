@@ -15,79 +15,114 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-    	<h2>billing / shipping addresses</h2>
-        <div>Creating an account speeds up checkout time by saving your billing, shipping addresses to your account. You can also view detailed order status and purchase history.
-        </div>
-        
+		<h2>billing / shipping addresses</h2>
+		<div>Creating an account speeds up checkout time by saving your billing, shipping addresses to your account. You can also view detailed order status and purchase history.
+		</div>
+
 		<div class="address_container">
-            <!-- Address title -->
-            <div class="address_title" style="margin:0;">
-                <div class="adr_item">Billing Address</div>
-                <div class="action">Action</div>
-            </div>
-            <!-- Address title: END -->
-            
-            <!-- Address content -->
-            <div class="address_item">
-                <div class="adr_item">
-                	Address: 123 Quang Trung<br />
-                    City: Thành phố kim cương<br />
-                    State: ko có<br />
-                    Country: hòn cuội viễn đông<br />
-                </div>
-                <div class="action">
-                	<a href="">Edit</a> | <a href="">Remove</a>
-                </div>
-            </div>
-            <!-- Address content: END -->
+			<!-- Address title -->
+			<div class="address_title" style="margin:0;">
+				<div class="adr_item">Billing Address</div>
+				<div class="action">Action</div>
+			</div>
+			<!-- Address title: END -->
+			<com:TRepeater ID="rptBilling" OnItemCommand="RepeaterItemCommand">
+				<prop:ItemTemplate>
+					<!-- Address content -->
+					<div class="address_item">
+						<div class="adr_item">
+							<%# $this->Data ? $this->Data->Title." ".$this->Data->FirstName." ".$this->Data->LastName : "" %><br />
+							<%# $this->Data ? $this->Data->Address1.(strlen($this->Data->Address2)>0?", ".$this->Data->Address2:"").", ".$this->Data->City.", ".$this->Data->State." ".$this->Data->ZipCode.", ".$this->Data->Country->Name : "" %><br />
+							<%# $this->Data ? "Phone: ".$this->Data->Phone1.", Fax: ".$this->Data->Fax : "" %><br />
+						</div>
+						<div class="action">
+							<a href="<%= $this->Data ? $this->Service->ConstructUrl('shop.account.addresses.AddressForm',array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>">Edit</a> | <com:TLinkButton Text="Remove" CommandName="delete" Attributes.onclick="if(!confirm('<%# $this->Application->getModule('message')->translate('DELETE_CONFIRM','address','') %>')) return false;" />
+							<com:THiddenField ID="txtID" Value="<%# $this->Data ? $this->Data->ID : 0 %>" />
+						</div>
+					</div>
+					<!-- Address content: END -->
+				</prop:ItemTemplate>
+			</com:TRepeater>
+			<!-- Address content -->
+			<!--div class="address_item">
+				<div class="adr_item">
+					Address: 123 Quang Trung<br />
+					City: Thành phố kim cương<br />
+					State: ko có<br />
+					Country: hòn cuội viễn đông<br />
+				</div>
+				<div class="action">
+					<a href="">Edit</a> | <a href="">Remove</a>
+				</div>
+			</div-->
+			<!-- Address content: END -->
+			<div style="margin:5px 0 0 10px;"><b><com:THyperLink ID="lnkAddBilling" NavigateUrl="<%= $this->Service->ConstructUrl('shop.account.addresses.AddressForm') %>" Text="Add New" /></b></div>
 		</div>
-        
-        <div class="address_container">
-            <!-- Address title -->
-            <div class="address_title" style="margin:0;">
-                <div class="adr_item">Shipping Addresses</div>
-                <div class="action">Action</div>
-            </div>
-            <!-- Address title: END -->
-            
-            <!-- Address content -->
-            <div class="address_item">
-                <div class="adr_item">
-                	Address: 123 Quang Trung<br />
-                    City: Thành phố kim cương<br />
-                    State: ko có<br />
-                    Country: hòn cuội viễn đông<br />
-                </div>
-                <div class="action">
-                	<a href="">Edit</a> | <a href="">Remove</a>
-                </div>
-            </div>
-            <div class="address_item">
-                <div class="adr_item">
-                	Address: 123 Quang Trung<br />
-                    City: Thành phố kim cương<br />
-                    State: ko có<br />
-                    Country: hòn cuội viễn đông<br />
-                </div>
-                <div class="action">
-                	<a href="">Edit</a> | <a href="">Remove</a>
-                </div>
-            </div>
-            <div class="address_item" style="margin:0 0 5px 0;">
-                <div class="adr_item">
-                	Address: 123 Quang Trung<br />
-                    City: Thành phố kim cương<br />
-                    State: ko có<br />
-                    Country: hòn cuội viễn đông<br />
-                </div>
-                <div class="action">
-                	<a href="">Edit</a> | <a href="">Remove</a>
-                </div>
-            </div>
-            <!-- Address content: END -->
-            <div style="padding:0 0 0 10px;"><b><a href="">Add New</a></b></div>
+
+		<div class="address_container">
+			<!-- Address title -->
+			<div class="address_title" style="margin:0;">
+				<div class="adr_item">Shipping Addresses</div>
+				<div class="action">Action</div>
+			</div>
+			<!-- Address title: END -->
+			<com:TRepeater ID="rptShipping" OnItemCommand="RepeaterItemCommand">
+				<prop:ItemTemplate>
+					<!-- Address content -->
+					<div class="address_item">
+						<div class="adr_item">
+							<%# $this->Data ? $this->Data->Title." ".$this->Data->FirstName." ".$this->Data->LastName : "" %><br />
+							<%# $this->Data ? $this->Data->Address1.(strlen($this->Data->Address2)>0?", ".$this->Data->Address2:"").", ".$this->Data->City.", ".$this->Data->State." ".$this->Data->ZipCode.", ".$this->Data->Country->Name : "" %><br />
+							<%# $this->Data ? "Phone: ".$this->Data->Phone1.", Fax: ".$this->Data->Fax : "" %><br />
+						</div>
+						<div class="action">
+							<com:TLinkButton Text="<%# $this->Data && $this->Data->IsDefault ? 'Default' : 'Set as default' %>" CommandName="set-default" Enabled="<%# $this->Data ? !$this->Data->IsDefault : true %>" /> | 
+							<a href="<%= $this->Data ? $this->Service->ConstructUrl('shop.account.addresses.AddressForm',array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>">Edit</a> | 
+							<com:TLinkButton Text="Remove" CommandName="delete" Attributes.onclick="if(!confirm('<%# $this->Application->getModule('message')->translate('DELETE_CONFIRM','address','') %>')) return false;" />
+							<com:THiddenField ID="txtID" Value="<%# $this->Data ? $this->Data->ID : 0 %>" />
+						</div>
+					</div>
+					<!-- Address content: END -->
+				</prop:ItemTemplate>
+			</com:TRepeater>
+			<!-- Address content -->
+			<!--div class="address_item">
+				<div class="adr_item">
+					Address: 123 Quang Trung<br />
+					City: Thành phố kim cương<br />
+					State: ko có<br />
+					Country: hòn cuội viễn đông<br />
+				</div>
+				<div class="action">
+					<a href="">Edit</a> | <a href="">Remove</a>
+				</div>
+			</div>
+			<div class="address_item">
+				<div class="adr_item">
+					Address: 123 Quang Trung<br />
+					City: Thành phố kim cương<br />
+					State: ko có<br />
+					Country: hòn cuội viễn đông<br />
+				</div>
+				<div class="action">
+					<a href="">Edit</a> | <a href="">Remove</a>
+				</div>
+			</div>
+			<div class="address_item" style="margin:0 0 5px 0;">
+				<div class="adr_item">
+					Address: 123 Quang Trung<br />
+					City: Thành phố kim cương<br />
+					State: ko có<br />
+					Country: hòn cuội viễn đông<br />
+				</div>
+				<div class="action">
+					<a href="">Edit</a> | <a href="">Remove</a>
+				</div>
+			</div>
+			<!-- Address content: END -->
+			<div style="margin:5px 0 0 10px;"><b><com:THyperLink ID="lnkAddShipping" NavigateUrl="<%= $this->Service->ConstructUrl('shop.account.addresses.AddressForm') %>" Text="Add New" /></b></div>
 		</div>
-        
+
 	</div>
 	<!-- Inside box: END -->
 	</div>

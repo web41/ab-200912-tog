@@ -46,7 +46,7 @@
 				<td class="left">Set as default</td>
 				<td class="right">
 					<com:TDropDownList ID="cboDefaultSelector">
-						<com:TListItem Text="No" Value="1"/>
+						<com:TListItem Text="No" Value="0"/>
 						<com:TListItem Text="Yes" Value="1" />
 					</com:TDropDownList>
 				</td>
@@ -177,7 +177,7 @@
 				<td class="right">
 					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
 					<input type="reset" value="Reset" class="button" />
-					<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.Index") %>'" />
+					<input type="button" value="Cancel" class="button" onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('shop.account.addresses.Index') %>'" />
 				</td>
 			</tr>
 		</table>

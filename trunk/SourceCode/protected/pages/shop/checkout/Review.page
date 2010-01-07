@@ -21,7 +21,7 @@ You will receive a full order summary and order number on the next page.
 		</div>
         
         <!-- Review -->
-        <h2 style="font-size:16px;">Order Summary</h2>
+        <h3>Order Summary</h3>
         <div class="viewcart_container" style="margin-bottom:20px;">
             <!-- Review title -->
             <div class="cart_title" style="margin:0;">
@@ -52,9 +52,10 @@ You will receive a full order summary and order number on the next page.
             <!-- Product title: END -->
 		</div>
         <!-- Review: END -->
+        
         <!-- Address -->
-        <h2 style="font-size:16px;">Address information</h2>
-        <div class="address_container" style="margin-bottom:20px;">
+        <h3>Address information</h3>
+        <div class="address_container" style="margin-bottom:5px;">
             <!-- Address title -->
             <div class="address_title" style="margin:0;">
                 <div class="adr_item2">Billing Address</div>
@@ -69,23 +70,35 @@ You will receive a full order summary and order number on the next page.
                     City: Thành phố kim cương<br />
                     State: ko có<br />
                     Country: hòn cuội viễn đông<br />
+                    <input type="button" style="float:left;margin:5px 0 5px 0;" class="button" value="Edit Address" />
                 </div>
                 <div class="adr_item2">
                 	Address: 123 Quang Trung<br />
                     City: Thành phố kim cương<br />
                     State: ko có<br />
                     Country: hòn cuội viễn đông<br />
+                    <input type="button" style="float:left;margin:5px 0 5px 0;" class="button" value="Edit Address" />
                 </div>
             </div>
             <!-- Address content: END -->
-            
-            <!-- Address button -->
-			<div class="button_container">
-				<input type="button" style="float:left;" class="button" value="Edit Address" />
-			</div>
-			<!-- Address button: END -->
 		</div>
         <!-- Address: END -->
+        
+        <h3>shipping method</h3>
+        <div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;">
+        	Shipping name: text here <input type="button" class="button" value="Edit" style="float:none;" />
+        </div>
+        
+        <h3>payment method</h3>
+        <div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
+        	<select style="float:left;margin:5px 10px 0 0;">
+            	<option>option 1</option>
+                <option>option 2</option>
+                <option>option 3</option>
+                <option>option 4</option>
+            </select>
+            <img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_paypal.png" alt="" width="30" style="float:left;"/>
+        </div>
         
         <div class="viewcart_container">
         	<div class="cart_review">

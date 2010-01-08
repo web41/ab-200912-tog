@@ -106,8 +106,8 @@
 			<url ServiceParameter="admincp.BrandForm" pattern="admincp/brand/create-new"/>
 			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/supplier"/>
 			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/supplier/manager"/>
-			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/manufacturer/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
-			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/manufacturer/create-new"/>
+			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/supplier/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
+			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/supplier/create-new"/>
 			<url ServiceParameter="admincp.CategoryManager" pattern="admincp/category"/>
 			<url ServiceParameter="admincp.CategoryManager" pattern="admincp/category/manager"/>
 			<url ServiceParameter="admincp.CategoryForm" pattern="admincp/category/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>

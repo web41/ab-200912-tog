@@ -1,5 +1,5 @@
 <%@ MasterClass="Application.shared.Master" %>
-<com:TContent ID="title">The Organic Grocer - Your Profile</com:TContent>
+<com:TContent ID="title">The Organic Grocer - Account Profile</com:TContent>
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
@@ -11,16 +11,60 @@
 
 <!-- Main column -->
 <div class="main_col">
-	<div class="main_content">
+	<com:Application.shared.UserNotice ID="Notice" />
+	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<h2>Your Profile</h2>
-		<div>
-        	test
-		</div>
+    	<h2>account profile</h2>
+        <div>
+        	Welcome to <span class="name">The Organic Grocer</span>,<br />
+            Manage your account: Change or retrieve your password, and update your billing and shipping information.
+        </div>
+		<table border="0" cellpadding="7" cellspacing="0" width="100%">
+			<tr>
+				<td class="table_title" colspan="2">account information</td>
+			</tr>
+			<tr>
+				<td class="left">Email</td>
+				<td class="right" style="font-size:12px;">
+					tieuchu@gmail.com &nbsp;
+				</td>
+			</tr>
+			<tr>
+				<td class="left">First Name</td>
+				<td class="right" style="font-size:12px;">
+					text
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Last Name</td>
+				<td class="right" style="font-size:12px;">
+					text
+				</td>
+			</tr>
+			<tr>
+				<td class="left">password</td>
+				<td class="right" style="font-size:12px;">
+					<a href="<%= $this->Service->ConstructUrl("shop.account.profile.ChangePassword") %>" class="mail">Change password</a>
+				</td>
+			</tr>
+            <tr>
+				<td class="left">billing / shipping</td>
+				<td class="right" style="font-size:12px;">
+					<a href="<%= $this->Service->ConstructUrl("shop.account.addresses.Index") %>" class="mail">Change billing / shipping information</a>
+				</td>
+			</tr>
+			<tr>
+				<td class="left">&nbsp;</td>
+				<td class="right">
+					<input type="button" class="button" value="update profile" />
+                    <input type="button" class="button" value="go to shopping" />
+				</td>
+			</tr>
+		</table>
 	</div>
 	<!-- Inside box: END -->
-	</div>
+	</com:TPanel>
 </div>
 <!-- Main column: END -->
 

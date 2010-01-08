@@ -146,7 +146,7 @@ class TOGUser extends TDbUser
 			$user->save();
 			return true;
 		}
-		else return false
+		else return false;
 	}
 	
 	public function createUser($email)

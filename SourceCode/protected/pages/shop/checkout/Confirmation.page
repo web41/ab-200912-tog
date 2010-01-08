@@ -1,0 +1,118 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Order Confirmation</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu ID="categoryMenu" />
+	<com:Application.shared.OrganicPoints />
+	<com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<com:Application.shared.UserNotice ID="Notice" />
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+		<h2>Order Confirmation</h2>
+        
+		<div class="order_confirmation">
+			<div class="field" style="margin:0;">
+            	<div class="text">order number:</div>
+                <div class="value">123</div>
+            </div>
+            <div class="field" style="margin:0;">
+            	<div class="text">order date:</div>
+                <div class="value">07/01/2010</div>
+            </div>
+            <div class="field" style="margin:0;">
+            	<div class="text">order status:</div>
+                <div class="value">Pending</div>
+            </div>
+		</div>
+
+		<!-- Review -->
+		<h3>Order Summary</h3>
+		<div class="viewcart_container" style="margin-bottom:20px;">
+            <!-- Review title -->
+            <div class="cart_title" style="margin:0;">
+                <div class="prd_item" style="width:380px;">Product Name</div>
+                <div class="qty">Quantity</div>
+                <div class="price">Price</div>
+            </div>
+            <!-- Review title: END -->
+		</div>
+		<!-- Review: END -->
+
+		<!-- Address -->
+		<h3>Address information</h3>
+		<div class="address_container" style="margin-bottom:5px;">
+			<!-- Address title -->
+			<div class="address_title" style="margin:0;">
+				<div class="adr_item2">Billing Address</div>
+				<div class="adr_item2">Shipping Address</div>
+			</div>
+			<!-- Address title: END -->
+
+			<!-- Address content -->
+			<div class="address_item">
+				<div class="adr_item2">
+					text here
+				</div>
+				<div class="adr_item2">
+					text here
+				</div>
+			</div>
+			<!-- Address content: END -->
+		</div>
+		<!-- Address: END -->
+
+		<h3>shipping method</h3>
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;">
+			Shipping Type: abc
+		</div>
+
+		<h3>payment method</h3>
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
+			Payment type: Paypa;
+		</div>
+
+		<div class="viewcart_container" style="margin:0;">
+			<div class="cart_review">
+				<div class="price">
+					<div class="text">cart total</div>
+					<div class="value">
+                    
+                    </div>
+				</div>
+				<div class="price">
+					<div class="text">shipping cost</div>
+					<div class="value">
+                    
+                    </div>
+				</div>
+				<div class="price" style="font-size:18px;margin:5px 0 0 0;">
+					<div class="text">order total</div>
+					<div class="value" style="color:#7aa825">
+                    
+                    </div>
+				</div>
+                <div class="price" style="font-size:18px;margin:10px 0 0 0;">
+					<input type="button" class="button" value="Print this order" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Inside box: END -->
+	</div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

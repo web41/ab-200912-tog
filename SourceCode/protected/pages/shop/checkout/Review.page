@@ -18,7 +18,7 @@
 		<h2>Review</h2>
 		<div class="viewcart_container">
 			<!-- Cart step -->
-			<div class="cart_step">
+			<div class="cart_step" style="margin:0;">
 				<ul>
 					<li class="active"><a href="">view cart</a></li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
@@ -96,7 +96,7 @@
 			<com:TActiveImage ID="imgPayment" Visible="false" ImageAlign="middle" Height="32px" />
 		</div>
 
-		<div class="viewcart_container">
+		<div class="viewcart_container" style="margin:0;">
 			<div class="cart_review">
 				<div class="price">
 					<div class="text">cart total</div>
@@ -106,11 +106,11 @@
 					<div class="text">shipping cost</div>
 					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod ? $this->ShippingMethod->Price : 0 %>" /></div>
 				</div>
-				<div class="price" style="font-size:18px;margin-top:5px;">
+				<div class="price" style="font-size:18px;margin:5px 0 10px 0;">
 					<div class="text">order total</div>
 					<div class="value" style="color:#7aa825"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart ? $this->Cart->Total : 0 %>" /></div>
 				</div>
-				<div class="price">
+				<div class="price" style="margin:0;">
 					<input type="button" class="button" value="Cancel Order" />
 					<input type="button" class="button" value="Submit Your Order" />
 				</div>

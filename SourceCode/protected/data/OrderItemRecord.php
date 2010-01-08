@@ -9,8 +9,8 @@ class OrderItemRecord extends TActiveRecord
 	public $ID;
 	public $OrderID;
 	public $ProductID;
+	public $PropertyID;
 	public $Quantity;
-	public $UnitPrice;
 	public $Subtotal;
 	public $CreateDate;
 	public $ModifyDate;
@@ -20,8 +20,8 @@ class OrderItemRecord extends TActiveRecord
 		'item_id'=>'ID',
 		'order_id'=>'OrderID',
 		'product_id'=>'ProductID',
+		'prop_id'=>'PropertyID',
 		'quantity'=>'Quantity',
-		'unit_price'=>'UnitPrice',
 		'subtotal'=>'Subtotal',
 		'c_date'=>'CreateDate',
 		'm_date'=>'ModifyDate'
@@ -36,6 +36,16 @@ class OrderItemRecord extends TActiveRecord
 	public static function finder($className=__CLASS__)
 	{
 		return parent::finder($className);
+	}
+	
+	public function save()
+	{
+		if ($this->ID<=0)
+		{
+			$this->CreateDate = time();
+		}
+		$this->ModifyDate = time();
+		parent::save();
 	}
 }
 ?>

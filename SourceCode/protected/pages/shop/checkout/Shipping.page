@@ -145,7 +145,7 @@
 					<com:TRequiredFieldValidator ID="val8"
 						ControlToValidate="cboCountrySelector"
 						InitialValue="0"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Country') %>"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','Country') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
 				</td>

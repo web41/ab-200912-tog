@@ -16,7 +16,21 @@
 	<!-- Inside box -->
 	<div class="inside_box">
 		<h2>Order Confirmation</h2>
-        
+        <div class="viewcart_container" style="margin:0;">
+			<!-- Cart step -->
+			<div class="cart_step">
+				<ul>
+					<li class="active">view cart</li>
+					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
+					<li class="active">billing/shipping info</li>
+					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
+					<li class="active">confirm/edit info</li>
+					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
+					<li class="active">order confirmation</li>
+				</ul>
+			</div>
+			<!-- Cart step: END -->
+        </div>
 		<div class="order_confirmation">
 			<div class="field" style="margin:0;">
             	<div class="text">order number:</div>

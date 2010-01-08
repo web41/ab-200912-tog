@@ -16,13 +16,13 @@
 	<!-- Inside box -->
 	<div class="inside_box">
 		<h2>Review</h2>
-		<div class="viewcart_container">
+		<div class="viewcart_container" style="margin-bottom:0;">
 			<!-- Cart step -->
-			<div class="cart_step" style="margin:0;">
+			<div class="cart_step">
 				<ul>
-					<li class="active"><a href="">view cart</a></li>
+					<li class="active">view cart</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">bill/ship info</li>
+					<li class="active">billing/shipping info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
 					<li class="active">confirm/edit info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>

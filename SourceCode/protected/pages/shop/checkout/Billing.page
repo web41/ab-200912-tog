@@ -171,7 +171,7 @@
 			<tr>
 				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
-					<com:TButton Text="Back" CssClass="button" Attributes.onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.cart.Index') %>'" />
+					<input type="button" value="Back" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.cart.Index') %>'" />
 					<com:TButton Text="Next" CssClass="button" OnClick="btnSubmit_Clicked"/>
 				</td>
 			</tr>

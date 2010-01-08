@@ -24,8 +24,8 @@
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
 					<li class="active">billing/shipping info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">confirm/edit info</li>
-					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
+					<li>confirm/edit info</li>
+					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
 					<li>order confirmation</li>
 				</ul>
 			</div>

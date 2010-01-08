@@ -7,6 +7,9 @@ class Billing extends TPage
 		parent::onLoad($param);
 		if (!$this->IsPostBack)
 		{
+			$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+			if (!$cartRecord)
+				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
 			// populate drop down lists
 			$this->cboTitleSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["USER_TITLE"]);
 			$this->cboTitleSelector->DataBind();

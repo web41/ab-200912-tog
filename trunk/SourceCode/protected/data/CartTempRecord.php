@@ -52,9 +52,9 @@ class CartTempRecord extends TActiveRecord
 	public function getSubtotalInSession()
 	{
 		$activeRecord = self::finder()->withCartTempDetails()->findByPk(Prado::getApplication()->Session->SessionID);
+		$subtotal = 0;
 		if ($activeRecord instanceof CartTempRecord)
 		{
-			$subtotal = 0;
 			foreach($activeRecord->CartTempDetails as $item)
 			{
 				$subtotal += $item->Subtotal;

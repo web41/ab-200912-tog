@@ -182,7 +182,6 @@
 			</tr>
 		</table>
 	</div>
-	<com:TJavascriptLogger ToggleKey="j"/>
 	<!-- Inside box: END -->
 	</com:TPanel>
 </div>

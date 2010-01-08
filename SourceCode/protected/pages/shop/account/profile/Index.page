@@ -32,13 +32,13 @@
 			</tr>
 			<tr>
 				<td class="left">First Name</td>
-				<td class="right" style="font-size:12px;">
+				<td class="right" style="font-size:12px;text-transform:capitalize;">
 					<%= $this->Application->User->FirstName %>
 				</td>
 			</tr>
 			<tr>
 				<td class="left">Last Name</td>
-				<td class="right" style="font-size:12px;">
+				<td class="right" style="font-size:12px;text-transform:capitalize;">
 					<%= $this->Application->User->LastName %>
 				</td>
 			</tr>

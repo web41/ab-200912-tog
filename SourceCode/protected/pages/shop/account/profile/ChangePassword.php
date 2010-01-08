@@ -31,7 +31,7 @@ class ChangePassword extends TPage
 			else
 			{
 				$this->Notice->Type = UserNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule('message')->translate('ITEM_INVALID','Password');
+				$this->Notice->Text = $this->Application->getModule('message')->translate('PASSWORD_INCORRECT');
 			}
 			$this->categoryMenu->populateData();
 		}

@@ -15,6 +15,8 @@ class Register extends TPage
 		if ($this->IsValid)
 		{
 			$activeRecord = new UserRecord;
+			$activeRecord->FirstName = $this->txtFirstName->SafeText;
+			$activeRecord->LastName = $this->txtLastName->SafeText;
 			$activeRecord->Username = $activeRecord->Email = $this->txtEmail->SafeText;
 			$activeRecord->Password = md5($this->txtPassword->SafeText);
 			$activeRecord->UserTypeID = 3; // Type = 3 Registered User - this must be changed manually whenever updating user type data
@@ -50,7 +52,7 @@ class Register extends TPage
 				$receiver->Address = $this->txtEmail->SafeText;
 				$receiver->Name = $this->txtEmail->SafeText;
 				$email->getEmailAddresses()->add($receiver);
-				$emailer->send($email);
+				//$emailer->send($email);
 				$this->Application->getModule("auth")->login($this->txtEmail->SafeText,$this->txtPassword->SafeText);
 				$this->Response->redirect($this->Service->ConstructUrl("shop.Index"));
 			}

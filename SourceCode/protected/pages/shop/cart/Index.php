@@ -12,7 +12,7 @@ class Index extends TPage
 			$cartRecord = CartTempRecord::finder()->withCoupon()->findByPk($this->Session->SessionID);
 			if ($cartRecord instanceof CartTempRecord)
 			{
-				if ($cartRecord->Coupon instanceof CouponRecord)
+				if ($cartRecord->Coupon instanceof CouponRecord && $cartRecord->Coupon->ID>0)
 				{
 					$this->couponForm->Visible = false;
 					$this->couponDiscount->Visible = true;

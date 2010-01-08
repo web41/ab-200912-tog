@@ -113,6 +113,10 @@
 					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= CartTempRecord::finder()->getSubtotalInSession() %>" /></div>
 				</div>
 				<div class="price">
+					<div class="text">coupon discount</div>
+					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart ? $this->Cart->CouponAmount : 0 %>" /></div>
+				</div>
+				<div class="price">
 					<div class="text">shipping cost</div>
 					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod ? $this->ShippingMethod->Price : 0 %>" /></div>
 				</div>

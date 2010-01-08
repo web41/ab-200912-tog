@@ -13,7 +13,7 @@
 	#top_box .box .content{border:solid 1px #747474;border-bottom:none;border-top:none;background:url(../images/topbox_bg.png) repeat;padding:4px 10px 10px 10px;}
 		#top_box .box .content a, #top_box .box .content a:visited{margin:0 5px 0 5px;color:#acacac;text-transform:capitalize;}
 		#top_box .box .content a:hover{color:#ddd;}
-		#top_box .box .content a.username, #top_box .box .content a.username:visited{color:#ddd;text-transform:capitalize;margin-left:0;}
+		#top_box .box .content .username, #top_box .box .content .username:visited{color:#ddd;text-transform:capitalize;margin-left:0;}
 		#top_box .box .content a.username:hover{color:#fff;}
 	
 	

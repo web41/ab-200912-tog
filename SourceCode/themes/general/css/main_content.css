@@ -42,9 +42,20 @@
 /*Dashboard*/
 #dashboard{}
 #dashboard .function{display:block;float:left;height:auto;width:64px;margin:10px 20px 10px 0;border:solid 1px #efefef;padding:4px 8px 4px 8px;text-align:center;text-transform:capitalize;font-size:10px;text-transform:uppercase;font-weight:bold;color:#a8a8a8;}
-#dashboard img{float:left;margin:0 0 5px 0;}
+#dashboard .img{float:left;margin:0 0 5px 0;width:64px;height:64px;}
 #dashboard .function:hover{cursor:pointer;border-right:solid 1px #d0d0d0;border-bottom:solid 1px #d0d0d0;color:#828282;}
-	
+
+#icon_dashboard_home{background:url(../images/icon_dashboard_home.png) no-repeat;}
+#icon_dashboard_product{background:url(../images/icon_dashboard_product.png) no-repeat;}
+#icon_dashboard_brand{background:url(../images/icon_dashboard_brand.png) no-repeat;}
+#icon_dashboard_category{background:url(../images/icon_dashboard_category.png) no-repeat;}
+#icon_dashboard_supplier{background:url(../images/icon_dashboard_supplier.png) no-repeat;}
+#icon_dashboard_user{background:url(../images/icon_dashboard_user.png) no-repeat;}
+#icon_dashboard_order{background:url(../images/icon_dashboard_order.png) no-repeat;}
+#icon_dashboard_coupon{background:url(../images/icon_dashboard_coupon.png) no-repeat;}
+#icon_dashboard_discount{background:url(../images/icon_dashboard_discount.png) no-repeat;}
+#icon_dashboard_messages{background:url(../images/icon_dashboard_messages.png) no-repeat;}
+#dashboard .function:hover .img{cursor:pointer;background-position:center -64px;}
 	
 	
 		

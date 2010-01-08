@@ -45,7 +45,7 @@
 			<!-- Cart total price -->
 			<div class="totalprice">
 				<com:TPanel ID="couponForm" CssClass="couponcode" Style="margin:0;">
-					<div style="float:left;width:120px;">Enter Coupon Code</div>
+					<div style="float:left;width:120px;clear:both;margin:0;">Enter Coupon Code:</div><br />
 					<com:TTextBox ID="txtCouponCode" CssClass="textbox" /><com:TButton ValidationGroup="CouponCode" CssClass="button" Text="Apply code" OnClick="btnApplyCoupon_Clicked" />
 					<div class="code_error">
 						<com:TRequiredFieldValidator ID="val1" 

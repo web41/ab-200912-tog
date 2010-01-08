@@ -22,7 +22,7 @@
         <div style="text-align:center;margin:0;">
         	<img src="<%= $this->Page->Theme->BaseUrl %>/images/loading.gif" alt="" />
         </div>
-		<com:Application.common.PPayPal ID="PPayPal1" Action="https://www.paypal.com/cgi-bin/webscr" TimeOut="99999" />
+		<com:Application.common.PPayPal ID="PPayPal1" Action="https://www.paypal.com/cgi-bin/webscr" TimeOut="5000" />
 	</div>
 	<!-- Inside box: END -->
     </com:TPanel>

@@ -88,7 +88,7 @@
 				</div>
 				<!-- Main box: END -->
 				<!-- Control box -->
-				<div class="general_controlbox">
+				<div class="general_controlbox" style="margin-top:-5px;">
 					<div class="top"><div><div><!-- --></div></div></div>
 					<div class="center">
 						<com:TButton ID="btnDelete2" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','brand') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','brand') %>'); return false; }" />

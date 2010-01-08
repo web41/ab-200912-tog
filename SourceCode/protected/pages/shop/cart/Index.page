@@ -85,7 +85,6 @@
 			</div>
 			<!-- Cart button: END -->
 		</div>
-		<com:TJavascriptLogger ToggleKey="j"/>
 	</div>
 	<!-- Inside box: END -->
 	</div>

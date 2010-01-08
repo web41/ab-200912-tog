@@ -11,9 +11,10 @@
 
 <!-- Main column -->
 <div class="main_col">
-	<div class="main_content">
+	<com:Application.shared.UserNotice ID="Notice" />
+	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
-	<div class="inside_box">
+	<com:TPanel ID="mainContent" CssClass="inside_box">
 		<h2>Contact us</h2>
 		<div>You may contact our Customer service on (65) 91150702 between 9am to 9pm Mondays to Fridays and 10am to 5pm on Saturdays, Sundays and Public Holidays.
 		</div>
@@ -25,34 +26,58 @@
 				</tr>
 				<tr>
 					<td class="left">Name <span>*</span></td>
-					<td class="right"><input type="text" /></td>
+					<td class="right">
+						<com:TTextBox ID="txtName" Text="<%= $this->Application->User->FirstName.' '.$this->Application->User->LastName %>" />
+						<com:TRequiredFieldValidator ID="val1"
+						ControlToValidate="txtName"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Your name') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+					</td>
 				</tr>
 				<tr>
 					<td class="left">Email <span>*</span></td>
-					<td class="right"><input type="text" /></td>
+					<td class="right">
+						<com:TTextBox ID="txtEmail" Text="<%= $this->Application->User->Email %>" /><br />
+						<com:TRequiredFieldValidator ID="val3"
+							ControlToValidate="txtEmail"
+							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Your email') %>"
+							Display="Dynamic"
+							FocusOnError="True"/>
+						<com:TEmailAddressValidator ID="val4"
+							ControlToValidate="txtEmail"
+							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Your email') %>"
+							Display="Dynamic"
+							FocusOnError="True"/>
+					</td>
 				</tr>
 				<tr>
-					<td class="left">Phone <span>*</span></td>
-					<td class="right"><input type="text" /></td>
+					<td class="left">Phone</td>
+					<td class="right">
+						<com:TTextBox ID="txtPhone" />
+					</td>
 				</tr>
 				<tr>
 					<td class="left" valign="top">Message <span>*</span></td>
 					<td class="right">
-						<textarea style="width:300px" cols="15" rows="5"></textarea>
+						<com:TTextBox ID="txtMessage" TextMode="MultiLine" Style="width:300px" />
 					</td>
 				</tr>
 				<tr>
-					<td class="left"><span>(*) Required fields</span></td>
+					<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 					<td class="right">
-						<input type="submit" value="Submit" class="button" />
-						<input type="button" value="Cancel" class="button" />
+						<com:TButton Text="Submit" CssClass="button" OnClick="submitButton_Clicked"/>
+						<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'" />
 					</td>
 				</tr>
 			</table>
 		</div>
-	</div>
+	</com:TPanel>
 	<!-- Inside box: END -->
-	</div>
+	<com:TPanel ID="sentSuccess" CssClass="inside_box" Visible="false">
+		Thank you!
+	</com:TPanel>
+	</com:TPanel>
 </div>
 <!-- Main column: END -->
 

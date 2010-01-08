@@ -8,10 +8,10 @@ class Index extends TPage
 		parent::onLoad($param);
 		if (!$this->IsPostBack)
 		{
-			$this->populateData();
 			$cartRecord = CartTempRecord::finder()->withCoupon()->findByPk($this->Session->SessionID);
 			if ($cartRecord instanceof CartTempRecord)
 			{
+				$this->populateData();
 				if ($cartRecord->Coupon instanceof CouponRecord && $cartRecord->Coupon->ID>0)
 				{
 					$this->couponForm->Enabled = false;
@@ -27,7 +27,8 @@ class Index extends TPage
 			else
 			{
 				$this->Notice->Type = UserNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","cart");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
+				$this->mainBox->Visible = false;
 			}
 		}
 	}
@@ -79,7 +80,7 @@ class Index extends TPage
 		else
 		{
 			$this->Notice->Type = UserNoticeType::Error;
-			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","cart");
+			$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 		}
 		$this->populateData();
 		$this->categoryMenu->populateData();

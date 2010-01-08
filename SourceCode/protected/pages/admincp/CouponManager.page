@@ -18,8 +18,8 @@
 						<com:TButton ID="btnDelete" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','coupon') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','coupon') %>'); return false; }" />
 						<com:TButton ID="btnUncheck" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
 						<com:TButton ID="btnCheck" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
-						<com:TButton ID="btnPublish" CssClass="btn_publish" OnClick="btnPublish_Clicked" Visible="false" />
-						<com:TButton ID="btnUnpublish" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" Visible="false" />
+						<com:TButton ID="btnPublish" CssClass="btn_publish" OnClick="btnPublish_Clicked" />
+						<com:TButton ID="btnUnpublish" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" />
 						<com:TButton ID="btnEdit" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','coupon') %>'); return false; }" />
 						<com:TButton ID="btnAdd" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.CouponForm') %>'" />
 						<h2>Action</h2>
@@ -66,22 +66,17 @@
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="10%">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Type
-										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
-									</a>
-								</prop:HeaderTemplate>
-								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Page->CouponTypes[$this->Parent->Data->Type] %>" />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="10%">
-								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Amount
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Parent->Data->Amount %>" />
+									<com:TNumberFormat Type="<%= $this->Parent->Data->IsPercent?'percentage':'currency' %>" Culture="en_US" Currency="USD" Value="<%# $this->Parent->Data->Amount %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderText="Published" HeaderStyle.Width="7%">
+								<prop:ItemTemplate>
+									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Parent->Data->IsPublished) ? 'tick' : 'stop' %>.png" CommandName="publish" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">
@@ -114,8 +109,8 @@
 						<com:TButton ID="btnDelete2" CssClass="btn_delete" OnClick="btnDelete_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) { if(!confirm('<%= $this->Application->getModule('message')->translate('DELETE_ALL_CONFIRM','coupon') %>')) return false; } else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','coupon') %>'); return false; }" />
 						<com:TButton ID="btnUncheck2" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
 						<com:TButton ID="btnCheck2" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
-						<com:TButton ID="btnPublish2" CssClass="btn_publish" OnClick="btnPublish_Clicked" Visible="false" />
-						<com:TButton ID="btnUnpublish2" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" Visible="false" />
+						<com:TButton ID="btnPublish2" CssClass="btn_publish" OnClick="btnPublish_Clicked" />
+						<com:TButton ID="btnUnpublish2" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" />
 						<com:TButton ID="btnEdit2" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','coupon') %>'); return false; }" />
 						<com:TButton ID="btnAdd2" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.CouponForm') %>'" />
 						<h2>Action</h2>

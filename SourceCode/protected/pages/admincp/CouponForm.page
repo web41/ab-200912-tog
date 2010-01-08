@@ -47,7 +47,22 @@
 											FocusOnError="True"/>
 									</div>
 								</td>
-								<td class="field">                                
+								<td class="field">&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="field" style="padding:5px 0 5px 0;">
+									<div class="text paddingtop">Publish</div>
+									<div class="control">
+										<com:TRadioButtonList ID="radPublish" RepeatDirection="Horizontal">
+											<com:TListItem Value="0" Text="No" />
+											<com:TListItem Value="1" Text="Yes"  Selected="true" />
+										</com:TRadioButtonList>
+									</div>
+								</td>
+								<td class="field" style="padding:5px 0 5px 0;">&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="field">
 									<div class="text">Amount<span>*</span></div>
 									<div class="control">
 										<com:TTextBox ID="txtAmount" CssClass="textbox" /><br />
@@ -65,17 +80,17 @@
 											FocusOnError="True"/>
 									</div>
 								</td>
+								<td class="field">                                
+									<div class="text paddingtop">Is percent-based</div>
+									<div class="control">
+										<com:TRadioButtonList ID="radIsPercent" RepeatDirection="Horizontal">
+											<com:TListItem Value="0" Text="No" Selected="true" />
+											<com:TListItem Value="1" Text="Yes" />
+										</com:TRadioButtonList>
+									</div>
+								</td>
 							</tr>
 						</table>
-						<div class="field" style="float:none;height:auto;">
-							<div class="text">Type</div>
-							<div class="control" style="height:auto;float:none;width:auto;padding-bottom:10px;">
-								<com:TDropDownList ID="cboTypeSelector" 
-									CssClass="textbox" Height="25px" Width="208px"
-									PromptText="Select..."
-									PromptValue="0" />
-							</div>
-						</div>
 						<div class="field" style="border:none;margin-bottom:0;">
 							<div class="text">&nbsp;</div>
 							<div class="control">

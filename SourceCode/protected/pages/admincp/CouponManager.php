@@ -206,6 +206,29 @@ class CouponManager extends TPage
 					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","coupon");
 				}
 				break;
+			case "publish":
+				$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($param->Item->colID->lblItemID->Text));
+				if ($activeRecord)
+				{
+					try
+					{
+						$activeRecord->IsPublished = !$activeRecord->IsPublished;
+						$activeRecord->save();
+						$this->Notice->Type = AdminNoticeType::Information;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS",$activeRecord->Code,($activeRecord->IsPublished ? "published" : "unpublished"));
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Code,($activeRecord->IsPublished ? "published" : "unpublished"));
+					}	
+				}
+				else
+				{
+					$this->Notice->Type = AdminNoticeType::Error;
+					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","coupon");
+				}
+				break;
 			default:
 				break;
 		}
@@ -257,6 +280,63 @@ class CouponManager extends TPage
 					}
 				}
 			}
+		}
+	}
+	
+	protected function btnPublish_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$items = array();
+			foreach($this->ItemList->Items as $item) 
+			{
+				if ($item->colCheckBox->chkItem->Checked) 
+				{
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
+					try
+					{
+						$activeRecord->IsPublished = true;
+						$activeRecord->save();
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS",$activeRecord->Code,($activeRecord->IsPublished ? "published" : "unpublished"));
+						break;
+					}
+				}
+			}
+			$this->Notice->Type = AdminNoticeType::Information;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS","Selected items","published");
+			$this->populateData();
+		}
+	}
+
+	protected function btnUnpublish_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$items = array();
+			foreach($this->ItemList->Items as $item) {
+				if ($item->colCheckBox->chkItem->Checked) 
+				{
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
+					try
+					{
+						$activeRecord->IsPublished = false;
+						$activeRecord->save();
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Code,($activeRecord->IsPublished ? "published" : "unpublished"));
+						break;
+					}
+				}
+			}
+			$this->Notice->Type = AdminNoticeType::Information;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS","Selected items","unpublished");
+			$this->populateData();
 		}
 	}
 

@@ -38,3 +38,9 @@
 	.viewcart_container .cart_review .price .text{width:auto;float:left;text-align:left;text-transform:capitalize;margin:0;}
 	.viewcart_container .cart_review .price .value{width:100px;float:left;font-weight:bold;margin:0;}
 	.viewcart_container .cart_review .price .button{margin:10px 0 0 5px;}
+	
+.order_confirmation{float:left;width:544px;height:auto;text-align:left;margin:0;}
+	.order_confirmation .field{float:left;clear:both;margin:0;}
+	.order_confirmation .field .text{float:left;width:150px;text-transform:capitalize;margin:0;}
+	.order_confirmation .field .value{float:left;font-weight:bold;margin:0;}
+	

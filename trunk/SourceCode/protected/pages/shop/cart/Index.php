@@ -14,13 +14,13 @@ class Index extends TPage
 			{
 				if ($cartRecord->Coupon instanceof CouponRecord && $cartRecord->Coupon->ID>0)
 				{
-					$this->couponForm->Visible = false;
+					$this->couponForm->Enabled = false;
 					$this->couponDiscount->Visible = true;
 					$this->lblCouponDiscount->Text = $this->getFormattedValue($cartRecord->CouponAmount);
 				}
 				else
 				{
-					$this->couponForm->Visible = true;
+					$this->couponForm->Enabled = true;
 					$this->couponDiscount->Visible = false;
 				}
 			}
@@ -96,7 +96,7 @@ class Index extends TPage
 				$cartRecord->CouponCode = $coupon->Code;
 				$cartRecord->CouponAmount = ($coupon->IsPercent) ? $cartRecord->getSubtotalInSession()*$coupon->Amount : $coupon->Amount;
 				$cartRecord->save();
-				$this->couponForm->Visible = false;
+				$this->couponForm->Enabled = false;
 				$this->couponDiscount->Visible = true;
 				$this->lblCouponDiscount->Text = $this->getFormattedValue($cartRecord->CouponAmount);
 			}

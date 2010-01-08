@@ -39,6 +39,12 @@
 	#container .main_col .main_box .content .field .control .error{font-size:11px;margin-top:5px;float:left;color:#ffcecf;}
 	#container .main_col .main_box .content .field .control .btn_addnew, #container .main_col .main_box .content .field .control .btn_delete, #container .main_col .main_box .content .field .control .btn_reset, #container .main_col .main_box .content .field .control .btn_cancel, #container .main_col .main_box .content .field .control .btn_edit, #container .main_col .main_box .content .field .control .btn_addmore{margin:0 10px 0 0;float:left;}
 	
+/*Dashboard*/
+#dashboard{}
+#dashboard .function{display:block;float:left;height:auto;width:64px;margin:10px 20px 10px 0;border:solid 1px #efefef;padding:4px 8px 4px 8px;text-align:center;text-transform:capitalize;font-size:10px;text-transform:uppercase;font-weight:bold;color:#a8a8a8;}
+#dashboard img{float:left;margin:0 0 5px 0;}
+#dashboard .function:hover{cursor:pointer;border-right:solid 1px #d0d0d0;border-bottom:solid 1px #d0d0d0;color:#828282;}
+	
 	
 	
 		

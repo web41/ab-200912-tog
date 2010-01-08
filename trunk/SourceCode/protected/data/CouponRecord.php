@@ -8,15 +8,17 @@ class CouponRecord extends TActiveRecord
 
 	public $ID;
 	public $Code;
-	public $Type;
+	public $IsPercent;
+	public $IsPublished;
 	public $Amount;
 	
 	public static $COLUMN_MAPPING=array
 	(
 		'coupon_id'=>'ID',
 		'coupon_code'=>'Code',
-		'coupon_type'=>'Type',
-		'coupon_amount'=>'Amount'
+		'coupon_amount'=>'Amount',
+		'coupon_publish'=>'IsPublished',
+		'is_percent'=>'IsPercent'
 	);
 	
 	public static $RELATIONS=array
@@ -32,7 +34,7 @@ class CouponRecord extends TActiveRecord
 	public function getAllItems()
 	{
 		$criteria = new TActiveRecordCriteria;
-		$criteria->Condition = "coupon_id > 0";
+		$criteria->Condition = "coupon_id > 0 and coupon_publish = 1";
 		$criteria->OrdersBy["coupon_code"] = "asc";
 		return self::finder()->findAll($criteria);
 	}

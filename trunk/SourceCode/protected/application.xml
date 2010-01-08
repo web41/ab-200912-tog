@@ -106,8 +106,8 @@
 			<url ServiceParameter="admincp.BrandForm" pattern="admincp/brand/create-new"/>
 			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/supplier"/>
 			<url ServiceParameter="admincp.ManufacturerManager" pattern="admincp/supplier/manager"/>
-			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/supplier/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
-			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/supplier/create-new"/>
+			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/manufacturer/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
+			<url ServiceParameter="admincp.ManufacturerForm" pattern="admincp/manufacturer/create-new"/>
 			<url ServiceParameter="admincp.CategoryManager" pattern="admincp/category"/>
 			<url ServiceParameter="admincp.CategoryManager" pattern="admincp/category/manager"/>
 			<url ServiceParameter="admincp.CategoryForm" pattern="admincp/category/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
@@ -160,7 +160,6 @@
 		<parameter id="ROW_PER_PAGE" value="20" />
 		<parameter id="AVAILABLE_IMAGES" value="('jpg','jpeg','gif','png')" />
 		<parameter id="UNITS_OF_MEASURE" value="(1=>'gram',2=>'ml',3=>'unit')" />
-		<parameter id="COUPON_TYPES" value="(1=>'Type 1',2=>'Type 2',3=>'Type 3',4=>'Type 4',5=>'Type 5')" />
 		<parameter id="USER_STATUS" value="(0=>'Pending',-1=>'Inactived',1=>'Actived')" />
 		<parameter id="USER_TIMEOUT" value="7200" />
 		<parameter id="USER_TITLE" value="('Mr.'=>'Mr.','Mrs.'=>'Mrs.','Miss.'=>'Miss.','Dr.'=>'Dr.','Prof.'=>'Prof.')" />

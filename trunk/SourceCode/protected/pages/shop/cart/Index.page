@@ -41,31 +41,42 @@
 					</div>
 					<!-- Cart title: END -->
 				</prop:HeaderTemplate>
-				<prop:FooterTemplate>
-					<!-- Cart total price -->
-					<div class="totalprice">
-						<div class="couponcode" style="margin:0;">
-							<div style="float:left;width:120px;">Enter Coupon Code</div>
-                            <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
-                            <div class="code_error">Your code is invalid</div>
-                            <div class="code_notice">Successfully apply code. Discount: 100%</div>
-						</div>
-						<div class="price">
-                        	<div class="text">Cart total: </div>
-                            <div class="value"> <com:TActiveLabel ID="lblSubtotal" /></div>
-                        </div>
-                        <div class="price">
-                        	<div class="text">Discount: </div>
-                            <div class="value">100%</div>
-                        </div>
-                        <div class="price" style="font-size:18px;margin:0;">
-                        	<div class="text">Sub Total: </div>
-                            <div class="value" style="color:#7aa825">$10</div>
-                        </div>
-					</div>
-					<!-- Cart total price: END -->
-				</prop:FooterTemplate>
 			</com:TRepeater>
+			<!-- Cart total price -->
+			<div class="totalprice">
+				<com:TPanel ID="couponForm" CssClass="couponcode" Style="margin:0;">
+					<div style="float:left;width:120px;">Enter Coupon Code</div>
+					<com:TTextBox ID="txtCouponCode" CssClass="textbox" /><com:TButton ValidationGroup="CouponCode" CssClass="button" Text="Apply code" OnClick="btnApplyCoupon_Clicked" />
+					<div class="code_error">
+						<com:TRequiredFieldValidator ID="val1" 
+							ValidationGroup="CouponCode" 
+							ControlToValidate="txtCouponCode" 
+							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Coupon code') %>" 
+							Display="Dynamic" 
+							FocusOnError="true"/>
+						<com:TCustomValidator ID="val2"
+							ValidationGroup="CouponCode"
+							ControlToValidate="txtCouponCode"
+							OnServerValidate="validCheck_ServerValidated"
+							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Coupon code') %>"
+							Display="Dynamic"
+							FocusOnError="true"/>
+					</div>
+				</com:TPanel>
+				<div class="price">
+					<div class="text">Cart total: </div>
+					<div class="value"><com:TActiveLabel ID="lblSubtotal" /></div>
+				</div>
+				<com:TPanel ID="couponDiscount" CssClass="price" Visible="false">
+					<div class="text">Coupon Discount: </div>
+					<div class="value"><com:TLabel ID="lblCouponDiscount" /></div>
+				</com:TPanel>
+				<div class="price" style="font-size:18px;margin:0;">
+					<div class="text">Sub Total: </div>
+					<div class="value" style="color:#7aa825"><com:TActiveLabel ID="lblTotal" /></div>
+				</div>
+			</div>
+			<!-- Cart total price: END -->
 			<div style="margin:0;">* If you have changed the quantity of any of your items, please make sure to update the cart before checking out.</div>
 			<!-- Cart button -->
 			<div class="button_container">
@@ -74,6 +85,7 @@
 			</div>
 			<!-- Cart button: END -->
 		</div>
+		<com:TJavascriptLogger ToggleKey="j"/>
 	</div>
 	<!-- Inside box: END -->
 	</div>

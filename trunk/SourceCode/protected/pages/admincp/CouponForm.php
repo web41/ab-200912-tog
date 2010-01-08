@@ -8,21 +8,19 @@ class CouponForm extends TPage
 		parent::onLoad($param);
 		if (!$this->IsPostBack)
 		{
-			// fill parent selector combobox
-			$this->cboTypeSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["COUPON_TYPES"]);
-			$this->cboTypeSelector->DataBind();
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
 				// Populates the input controls with the existing post data
-				$this->lblHeader->Text = "Update category: ".$activeRecord->Code;
+				$this->lblHeader->Text = "Update coupon: ".$activeRecord->Code;
 				$this->txtCode->Text = $activeRecord->Code;
-				$this->txtAmount->Text = $activeRecord->Amount;
-				$this->cboTypeSelector->SelectedValue = $activeRecord->Type;
+				$this->txtAmount->Text = $activeRecord->IsPercent ? $activeRecord->Amount*100 : $activeRecord->Amount;
+				$this->radPublish->SelectedValue = $activeRecord->IsPublished;
+				$this->radIsPercent->SelectedValue = $activeRecord->IsPercent;
 			}
 			else
 			{
-				$this->lblHeader->Text = "Add new category";
+				$this->lblHeader->Text = "Add new coupon";
 			}
 		}
 	}
@@ -52,9 +50,9 @@ class CouponForm extends TPage
 		$activeRecord = $this->getItem();
 
 		$activeRecord->Code = $this->txtCode->SafeText;
-		$activeRecord->Amount = $this->txtAmount->SafeText;
-		$activeRecord->Type = $this->cboTypeSelector->SelectedValue;
-		
+		$activeRecord->Amount = $activeRecord->IsPercent ? TPropertyValue::ensureFloat($this->txtAmount->SafeText/100) : TPropertyValue::ensureFloat($this->txtAmount->SafeText);
+		$activeRecord->IsPercent = $this->radIsPercent->SelectedValue;
+		$activeRecord->IsPublished = $this->radPublish->SelectedValue;
 		return $activeRecord;
 	}
 

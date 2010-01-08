@@ -44,15 +44,29 @@
 				<prop:FooterTemplate>
 					<!-- Cart total price -->
 					<div class="totalprice">
-						<div class="couponcode">
-							Enter Coupon Code <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
+						<div class="couponcode" style="margin:0;">
+							<div style="float:left;width:120px;">Enter Coupon Code</div>
+                            <input type="text" class="textbox" /><input type="button" class="button" value="Apply code" />
+                            <div class="code_error">Your code is invalid</div>
+                            <div class="code_notice">Successfully apply code. Discount: 100%</div>
 						</div>
-						<div>Cart total: <com:TActiveLabel ID="lblSubtotal" /></div>
+						<div class="price">
+                        	<div class="text">Cart total: </div>
+                            <div class="value"> <com:TActiveLabel ID="lblSubtotal" /></div>
+                        </div>
+                        <div class="price">
+                        	<div class="text">Discount: </div>
+                            <div class="value">100%</div>
+                        </div>
+                        <div class="price" style="font-size:18px;margin:0;">
+                        	<div class="text">Sub Total: </div>
+                            <div class="value" style="color:#7aa825">$10</div>
+                        </div>
 					</div>
 					<!-- Cart total price: END -->
 				</prop:FooterTemplate>
 			</com:TRepeater>
-			<div>* If you have changed the quantity of any of your items, please make sure to update the cart before checking out.</div>
+			<div style="margin:0;">* If you have changed the quantity of any of your items, please make sure to update the cart before checking out.</div>
 			<!-- Cart button -->
 			<div class="button_container">
 				<input type="button" style="float:left;" class="button" value="< Continue shopping" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'"/>

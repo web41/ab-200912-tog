@@ -1,5 +1,5 @@
 <%@ MasterClass="Application.shared.Master" %>
-<com:TContent ID="title">The Organic Grocer - About Us</com:TContent>
+<com:TContent ID="title">The Organic Grocer - Please wait</com:TContent>
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
@@ -15,11 +15,18 @@
 	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<com:Application.common.PPayPal ID="PPayPal1" Action="https://www.paypal.com/cgi-bin/webscr" TimeOut="5000" />
+    	<h2>please wait...</h2>
+        <div style="padding:0 0 10px 0;">
+        	Your order will be redirect to "tên của payment mothod user chọn". Please wait a moment.
+        </div>
+        <div style="text-align:center;margin:0;">
+        	<img src="<%= $this->Page->Theme->BaseUrl %>/images/loading.gif" alt="" />
+        </div>
+		<com:Application.common.PPayPal ID="PPayPal1" Action="https://www.paypal.com/cgi-bin/webscr" TimeOut="99999" />
 	</div>
 	<!-- Inside box: END -->
-	</div>
-</com:TPanel>
+    </com:TPanel>
+</div>
 <!-- Main column: END -->
 
 <!-- Right column -->

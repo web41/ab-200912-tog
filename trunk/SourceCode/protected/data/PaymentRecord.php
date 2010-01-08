@@ -42,5 +42,15 @@ class PaymentRecord extends TActiveRecord
 		$criteria->Condition = "payment_id > 0";
 		return self::finder()->findAll($criteria);
 	}
+	
+	public function save()
+	{
+		if ($this->ID<=0)
+		{
+			$this->CreateDate = time();
+		}
+		$this->ModifyDate = time();
+		parent::save();
+	}
 }
 ?>

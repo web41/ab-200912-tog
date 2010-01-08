@@ -31,5 +31,14 @@ class OrderHistoryRecord extends TActiveRecord
 	{
 		return parent::finder($className);
 	}
+	
+	public function save()
+	{
+		if ($this->ID<=0)
+		{
+			$this->CreateDate = time();
+		}
+		parent::save();
+	}
 }
 ?>

@@ -11,6 +11,7 @@
 		<using namespace="System.Web.TUrlMapping.*"/>
 		<using namespace="Application.data.*"/>
 		<using namespace="Application.common.*"/>
+		<using namespace="Application.common.string"/>
 		<!--using namespace="CSitemap.*"/-->
 	</paths>
 
@@ -89,7 +90,8 @@
 			<url ServiceParameter="shop.checkout.Shipping" pattern="shop/checkout/shipping-address"/>
 			<url ServiceParameter="shop.checkout.ShippingMethod" pattern="shop/checkout/shipping-method"/>
 			<url ServiceParameter="shop.checkout.Review" pattern="shop/checkout/review-order"/>
-			<url ServiceParameter="shop.checkout.Confirmation" pattern="shop/checkout/order-confirmation"/>
+			<url ServiceParameter="shop.checkout.Confirmation" pattern="shop/checkout/order-confirmation/{oid}/{onum}/{pid}" parameters.oid="\d+" parameters.onum=".*" parameters.pid="\d+" />
+			<url ServiceParameter="shop.checkout.PayPalRedirector" pattern="shop/checkout/redirect-to-paypal/{oid}/{onum}/{pid}" parameters.oid="\d+" parameters.onum=".*" parameters.pid="\d+" />
 			<url ServiceParameter="shop.checkout.Declination" pattern="shop/checkout/order-declined"/>
 			
 			<url ServiceParameter="admincp.Index" pattern="admincp"/>
@@ -162,5 +164,7 @@
 		<parameter id="USER_STATUS" value="(0=>'Pending',-1=>'Inactived',1=>'Actived')" />
 		<parameter id="USER_TIMEOUT" value="7200" />
 		<parameter id="USER_TITLE" value="('Mr.'=>'Mr.','Mrs.'=>'Mrs.','Miss.'=>'Miss.','Dr.'=>'Dr.','Prof.'=>'Prof.')" />
+		<parameter id="PAYMENT_STATUS" value="(0=>'Pending',-1=>'Declined',1=>'Approved')" />
+		<parameter id="PAYPAL_INFO" value="('business'=>'sales@bestsportsjersey.com', 'currency'=>'USD', 'auth_token'=>'9GCd8mWWPIYxQLz2vWfTgRexaOR3ydUcb4k0AMRYYtBGspXuKD2skPoIuLO')" />
 	</parameters>
 </application>

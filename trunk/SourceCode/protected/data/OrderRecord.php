@@ -9,6 +9,8 @@ class OrderRecord extends TActiveRecord
 	public $ID;
 	public $Num;
 	public $UserID;
+	public $BTitle;
+	public $BCompanyName;
 	public $BFirstName;
 	public $BLastName;
 	public $BAddress1;
@@ -20,6 +22,8 @@ class OrderRecord extends TActiveRecord
 	public $BPhone1;
 	public $BPhone2;
 	public $BFax;
+	public $STitle;
+	public $SCompanyName;
 	public $SFirstName;
 	public $SLastName;
 	public $SAddress1;
@@ -48,6 +52,8 @@ class OrderRecord extends TActiveRecord
 		'order_id'=>'ID',
 		'order_num'=>'Num',
 		'user_id'=>'UserID',
+		'b_title'=>'BTitle',
+		'b_company_name'=>'BCompanyName',
 		'b_first_name'=>'BFirstName',
 		'b_last_name'=>'BLastName',
 		'b_address_1'=>'BAddress1',
@@ -59,6 +65,8 @@ class OrderRecord extends TActiveRecord
 		'b_phone_1'=>'BPhone1',
 		'b_phone_2'=>'BPhone2',
 		'b_fax'=>'BFax',
+		's_title'=>'STitle',
+		's_company_name'=>'SCompanyName',
 		's_first_name'=>'SFirstName',
 		's_last_name'=>'SLastName',
 		's_address_1'=>'SAddress1',
@@ -97,6 +105,23 @@ class OrderRecord extends TActiveRecord
 	public static function finder($className=__CLASS__)
 	{
 		return parent::finder($className);
+	}
+	
+	public function generateOrderNumber($prefix="TOG")
+	{
+		return $prefix.strtoupper(uniqid(time()));
+	}
+	
+	public function save()
+	{
+		if ($this->ID<=0)
+		{
+			$this->Num = $this->generateOrderNumber();
+			$this->UserID = Prado::getApplication()->User->ID;
+			$this->CreateDate = time();
+		}
+		$this->ModifyDate = time();
+		parent::save();
 	}
 }
 ?>

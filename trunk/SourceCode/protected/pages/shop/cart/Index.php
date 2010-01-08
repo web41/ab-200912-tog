@@ -14,7 +14,7 @@ class Index extends TPage
 	
 	public function populateData()
 	{
-		$this->rptCart->DataSource = CartTempDetailRecord::finder()->withProduct()->withProperty()->findAllBysession_id($this->Session->SessionID);
+		$this->rptCart->DataSource = CartTempDetailRecord::finder()->withProduct()->findAllBysession_id($this->Session->SessionID);
 		$this->rptCart->DataBind();
 		$this->updateSubtotalInSession();
 		if (count($this->rptCart->Items)<=0)

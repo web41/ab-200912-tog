@@ -92,8 +92,18 @@
 
 		<h3>payment method</h3>
 		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
-			<com:TActiveDropDownList ID="cboPaymentSelector" DataValueField="ID" DataTextField="Name" OnCallBack="cboPaymentSelector_CallBack" />
-			<com:TActiveImage ID="imgPayment" Visible="false" ImageAlign="middle" Height="32px" />
+			<com:TActiveDropDownList ID="cboPaymentSelector" 
+				DataValueField="ID" DataTextField="Name" 
+				PromptText="Select..." PromptValue="0"
+				OnCallBack="cboPaymentSelector_CallBack" />
+			<com:TActiveImage ID="imgPayment" ImageAlign="middle" Height="32px" /><br />
+			<com:TRequiredFieldValidator ID="val1"
+				ValidationGroup="PaymentMethod"
+				InitialValue="0"
+				ControlToValidate="cboPaymentSelector"
+				ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','Payment method') %>"
+				Display="Dynamic"
+				FocusOnError="true"/>
 		</div>
 
 		<div class="viewcart_container" style="margin:0;">
@@ -112,7 +122,7 @@
 				</div>
 				<div class="price" style="margin:0;">
 					<com:TButton CssClass="button" Text="Cancel Order" OnClick="btnCancel_Clicked" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('ORDER_CANCEL_CONFIRM') %>')) return false;" />
-					<com:TButton CssClass="button" Text="Submit Your Order" OnClick="btnSubmit_Clicked" />
+					<com:TButton CssClass="button" Text="Submit Your Order" OnClick="btnSubmit_Clicked" Attributes.onclick="disbleButtons(this)" ValidationGroup="PaymentMethod" />
 				</div>
 			</div>
 		</div>
@@ -128,4 +138,18 @@
 	<com:Application.shared.RightColumn />
 </div>
 <!-- Right column: END -->
+<script type="text/javascript">
+	function disbleButtons(e)
+	{
+		if (document.getElementById('<%= $this->cboPaymentSelector->ClientID %>').selectedIndex > 0)
+		{
+			var _form = document.forms['<%= $this->Form->ClientID %>'];
+			for(i=0;i<_form.length;i++)
+			{
+				if ((_form[i].type == 'button' || _form[i].type == 'submit' || _form[i].tagName == 'select') && _form[i] != e)
+					_form[i].disabled = true;
+			}
+		}
+	}
+</script>
 </com:TContent>

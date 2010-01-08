@@ -31,13 +31,17 @@ class CartTempDetailRecord extends TActiveRecord
 	(
 		'User'=>array(self::BELONGS_TO,'UserRecord','user_id'),
 		'Product'=>array(self::BELONGS_TO,'ProductRecord','product_id'),
-		'Property'=>array(self::BELONGS_TO,'PropertyRecord','prop_id'),
 		'CartTemp'=>array(self::BELONGS_TO,'CartTempRecord','session_id')
 	);
 
 	public static function finder($className=__CLASS__)
 	{
 		return parent::finder($className);
+	}
+	
+	protected function getProperty()
+	{
+		return PropertyRecord::finder()->findByPk($this->PropertyID);
 	}
 }
 ?>

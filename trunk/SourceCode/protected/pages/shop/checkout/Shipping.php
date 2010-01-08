@@ -106,7 +106,7 @@ class Shipping extends TPage
 				else
 				{
 					$this->Notice->Type = UserNoticeType::Error;
-					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","cart");
+					$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 				}
 			}
 			catch(TException $e)
@@ -114,6 +114,8 @@ class Shipping extends TPage
 				$this->Notice->Type = UserNoticeType::Error;
 				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Address","");
 			}
+			$this->populateData();
+			$this->categoryMenu->populateData();
 		}
 	}
 	

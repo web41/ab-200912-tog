@@ -188,13 +188,13 @@ class Review extends TPage
 				catch(TException $ex)
 				{
 					$this->Notice->Type = UserNoticeType::Error;
-					$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+					$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 				}
 			}
 			else
 			{
 				$this->Notice->Type = UserNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","cart");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 			}
 			$this->populateData();
 			$this->categoryMenu->populateData();

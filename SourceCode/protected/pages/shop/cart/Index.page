@@ -20,7 +20,7 @@
 			<!-- Cart step -->
 			<div class="cart_step">
 				<ul>
-					<li class="active"><a href="">view cart</a></li>
+					<li class="active">view cart</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
 					<li>bill/ship info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>

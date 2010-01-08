@@ -18,30 +18,59 @@
 							<div><h2>dashboard</h2></div>
 						</div>
 					</div>
-					<div class="content">
-						test
+					<div class="content" id="dashboard">
+                    	<table cellpadding="0" cellspacing="0" border="0">
+                        	<tr>
+                            	<td>
+                                	<a class="function" href="<%= $this->Service->ConstructUrl("shop.Index") %>" target="_blank">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_home.png" alt="" class="img"/>
+                                        Go to homepage
+                                    </a>
+                                	<a class="function" href="<%= $this->Service->ConstructUrl("admincp.ProductManager") %>">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_product.png" alt="" class="img"/>
+                                        product manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.BrandManager") %>">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_brand.png" alt="" class="img"/>
+                                        brand manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.CategoryManager") %>">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_category.png" alt="" class="img"/>
+                                        category manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.ManufacturerManager") %>">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_supplier.png" alt="" class="img"/>
+                                        supplier manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.UserManager") %>">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_user.png" alt="" class="img"/>
+                                        user manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.OrderManager") %>">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_order.png" alt="" class="img"/>
+                                        order manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.CouponManager") %>">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_coupon.png" alt="" class="img"/>
+                                        coupon manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.DiscountManager") %>">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_discount.png" alt="" class="img"/>
+                                        discount manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp") %>" style="margin-right:0;">
+                                        <img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_dashboard_messages.png" alt="" class="img"/>
+                                        messages manager
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    	
 					</div>
 				</div>
 				<!-- Main box: END -->
-				
-                <!-- Control box -->
-				<div class="general_controlbox">
-					<div class="top"><div><div><!-- --></div></div></div>
-					<div class="center">
-                    	<input type="button" class="btn_delete" value="" />
-						<input type="button" class="btn_uncheck" value="" />
-                        <input type="button" class="btn_checkall" value="" />
-                        <input type="button" class="btn_unpublish" value="" />
-                        <input type="button" class="btn_publish" value="" />
-                        <input type="button" class="btn_edit" value="" />
-                        <input type="button" class="btn_addnew" value="" />
-                        <h2>action</h2>
-					</div>
-					<div class="bottom"><div><div><!-- --></div></div></div>
-				</div>
-				<!-- Control box: END -->
                 
-				<!-- Table box -->
+				<!-- Latest Product box -->
 				<div class="main_box">
 					<div class="title"><div><div>
                     	<h2>latest product</h2>
@@ -121,104 +150,60 @@
 						
 					</div>
 				</div>
-				<!-- Table box: END -->
+				<!-- Latest Product box: END -->
+                
+                <!-- Latest User box -->
+				<div class="main_box">
+					<div class="title"><div><div>
+                    	<h2>latest user</h2>
+                        
+                    </div></div></div>
+					<div class="content nopadding">
+						<com:TOGDataGrid ID="datalist2"
+							AutoGenerateColumns="false"
+							AllowSorting="false"
+							AllowPaging="false">
+							<com:TTemplateColumn HeaderStyle.Width="40px" HeaderText="#">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderText="Name" HeaderStyle.CssClass="align_left">
+								<prop:ItemTemplate>
+									<a href="">
+									<com:TLabel ID="lblCategory2" Text="Product<%# $this->Parent->ItemIndex + 1 %>" />
+									</a>
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>					
+							<com:TButtonColumn HeaderStyle.Width="10%" ID="btnPublish2" ButtonType="ImageButton" HeaderText="Publish" CommandName="toogle_publish" />
+							<com:TTemplateColumn HeaderStyle.Width="5%">
+								<prop:HeaderTemplate>
+									<com:TCheckBox ID="chkAllItem2" Attributes.onclick="_chk.check(this)" />
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TCheckBox ID="chkItem2" Attributes.onclick="_chk.check(this)" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+						</com:TOGDataGrid>
+						<div class="table_footer">
+                        	<div class="table_paging" style="display:none;">
+                                <a href="" class="text">First</a>
+                                <a href="" class="text">Previous</a>
+                                <a href="">1</a>
+                                <a href="">2</a>
+                                <a href="">30</a>
+                                <a href="">999</a>
+                                <a href="" class="text">Next</a>
+                                <a href="" class="text">Last</a>
+                            </div>
+						</div>
+						
+					</div>
+				</div>
+				<!-- Latest User box: END -->
 				
 				<com:Application.shared.AdminNotice Type="Information" />
 
-				<!-- Form sample-->
-				<div class="main_box">
-					<div class="title">
-						<div>
-							<div><h2>sample form</h2></div>
-						</div>
-					</div>
-					<div class="content">
-						<div class="field">
-                        	<div class="text">normal field</div>
-                            <div class="control"><input type="text" class="textbox" /></div>
-                        </div>
-                        <div class="field">
-                        	<div class="text">normal field</div>
-                            <div class="control"><input type="text" class="textbox" /></div>
-                        </div>
-                        <div class="field">
-                        	<div class="text">normal field</div>
-                            <div class="control"><input type="text" class="textbox" /></div>
-                        </div>
-                        <div class="field">
-                        	<div class="text">normal field</div>
-                            <div class="control"><input type="text" class="textbox" /></div>
-                        </div>
-                        <div class="field">
-                        	<div class="text">combo box</div>
-                            <div class="control">
-                            	<select>
-                                	<option>test combox box 1</option>
-                                    <option>test combox box 2</option>
-                                    <option>test combox box 3</option>
-                                    <option>test combox box 4</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="field">
-                        	<div class="text">radio option</div>
-                            <div class="control">
-                            	<input type="radio" value="radio"/><label>sample radio</label>
-                                <input type="radio" value="radio"/><label>sample radio</label>
-                                <input type="radio" value="radio"/><label>sample radio</label>
-                            </div>
-                        </div>
-                        <div class="field">
-                        	<div class="text">sample checkbox</div>
-                            <div class="control">
-                            	<input type="checkbox" /><label>sample checkbox</label>
-                                <input type="checkbox" /><label>sample checkbox 2</label>
-                                <input type="checkbox" /><label>sample checkbox 3</label>
-                                <input type="checkbox" /><label>sample checkbox 4</label>
-                            </div>
-                        </div>
-                        <table border="0" cellpadding="0" cellspacing="0" class="form" width="100%" style="margin-bottom:10px;">
-                        	<tr>
-                            	<td class="field nopadding">
-                                    <div class="text">normal field</div>
-                                    <div class="control"><input type="text" class="textbox" /></div>
-                                </td>
-                                <td class="field nopadding">                                
-                                    <div class="text">normal field</div>
-                                    <div class="control"><input type="text" class="textbox" /></div>
-                                </td>
-                            </tr>
-                            <tr>
-                            	<td class="field">
-                                    <div class="text">normal field</div>
-                                    <div class="control"><input type="text" class="textbox" /></div>
-                                </td>
-                                <td class="field">                                
-                                    <div class="text">normal field</div>
-                                    <div class="control"><input type="text" class="textbox" /></div>
-                                </td>
-                            </tr>
-                            <tr>
-                            	<td class="field">
-                                    <div class="text">normal field</div>
-                                    <div class="control"><input type="text" class="textbox" /></div>
-                                </td>
-                                <td class="field">                                
-                                    <div class="text">normal field</div>
-                                    <div class="control"><input type="text" class="textbox" /></div>
-                                </td>
-                            </tr>
-                        </table>
-                        <div class="field">
-                        	<div class="text"><!-- --></div>
-                            <div class="control">
-                            	<input type="button" class="btn_addnew" />
-                                <input type="button" class="btn_delete" />
-                            </div>
-                        </div>
-					</div>
-				</div>
-                <!-- Form sample: END -->
 			</td>
 		</tr>
 	</table>

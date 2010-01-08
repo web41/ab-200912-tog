@@ -150,8 +150,8 @@
 			var _form = document.forms['<%= $this->Form->ClientID %>'];
 			for(i=0;i<_form.length;i++)
 			{
-				if ((_form[i].type == 'button' || _form[i].type == 'submit' || _form[i].tagName == 'select') && _form[i] != e)
-					_form[i].disabled = true;
+				if ((_form[i].type == 'button' || _form[i].type == 'submit' || _form[i].tagName == 'select'))
+					_form[i].style.display = 'none';
 			}
 		}
 	}

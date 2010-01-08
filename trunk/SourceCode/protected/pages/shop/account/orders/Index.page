@@ -14,9 +14,48 @@
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<h2>Your Profile</h2>
-		<div>
-			test
+		<h2>order history</h2>
+		<div class="orderhistory_container" style="margin:0;">
+			<div class="order_title" style="margin:0;">
+            	<div class="order_no">No.</div>
+                <div class="order_date">Date</div>
+                <div class="order_product">product item</div>
+                <div class="order_status">status</div>
+            </div>
+            <div class="order_item" style="margin:0">
+            	<div class="order_no">1</div>
+                <div class="order_date">07/01/2010</div>
+                <div class="order_product">
+                	<a href="">
+                	product item 1 product item 1 product item 1 product item 1<br />
+                    product item 2<br />
+                    product item 3 product item 1
+                    </a>
+                </div>
+                <div class="order_status">pending</div>
+            </div>
+            <div class="order_item" style="margin:0">
+            	<div class="order_no">1</div>
+                <div class="order_date">07/01/2010</div>
+                <div class="order_product">
+                	<a href="">
+                	product item 1 product item 1 product item 1 product item 1<br />
+                    
+                    </a>
+                </div>
+                <div class="order_status">pending</div>
+            </div>
+            <div class="order_item" style="margin:0">
+            	<div class="order_no">1</div>
+                <div class="order_date">07/01/2010</div>
+                <div class="order_product">
+                	<a href="">
+                	product item 1 product item 1 product item 1 product item 1<br />
+                    product item 2<br />
+                    </a>
+                </div>
+                <div class="order_status">pending</div>
+            </div>
 		</div>
 	</div>
 	<!-- Inside box: END -->

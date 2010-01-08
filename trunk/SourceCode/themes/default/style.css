@@ -1,4 +1,4 @@
-﻿@import"css/main_style.css";
+@import"css/main_style.css";
 @import"css/banner.css";
 @import"css/main_menu.css";
 @import"css/main_content.css";
@@ -6,7 +6,7 @@
 @import"css/inside_page.css";
 @import"css/product_detail.css";
 @import"css/cart.css";
-@import"css/address.css";
+@import"css/profile.css";
 
 /*Others Defination
 @import"css/main_style.css";

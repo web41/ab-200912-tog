@@ -20,9 +20,11 @@
 			<div>For security purposes, your billing information will be cleared from Your Account. Please call our Customer Service with any questions at (65) 91150702 </div>
 			<div></div>
 			<div>
-            	<b>Email Address</b>
+            	<b>Email Address</b> &nbsp;
 				<com:TTextBox ID="txtEmail" CssClass="textbox" Style="float:none;width:180px;" />
-				<com:TRequiredFieldValidator ID="val1"
+                <com:TButton ID="btnSendPassword" CssClass="button" OnClick="btnSendPassword_Clicked" Text="Send New Password" Style="float:none;" /><br />
+                <div style="padding-left:102px;font-size:11px;font-weight:bold;">
+                <com:TRequiredFieldValidator ID="val1"
 					ControlToValidate="txtEmail"
 					ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
 					Display="Dynamic"
@@ -32,7 +34,7 @@
 					ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
 					Display="Dynamic"
 					FocusOnError="True"/>
-                    <com:TButton ID="btnSendPassword" CssClass="button" OnClick="btnSendPassword_Clicked" Text="Send New Password" Style="float:none;" />
+                </div>
 			</div>
 		</com:TPanel>
 	</div>

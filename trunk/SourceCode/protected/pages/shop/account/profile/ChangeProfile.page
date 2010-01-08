@@ -62,7 +62,7 @@
 			<tr>
 				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
-					<com:TButton ID="btnSubmit" Text="Change" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
+					<com:TButton ID="btnSubmit" Text="Update" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
 					<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.account.profile.Index") %>'" />
 				</td>
 			</tr>

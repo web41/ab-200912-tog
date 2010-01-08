@@ -24,7 +24,7 @@ class ForgotPwd extends TPage
 			$email->getEmailAddresses()->add($receiver);
 			try
 			{
-				$emailer->send($email);
+				//$emailer->send($email);
 				//$this->Application->getModule("auth")->login($this->txtEmail->SafeText,$this->txtPassword->SafeText);
 				//$this->Response->redirect($this->Service->ConstructUrl("shop.Index"));
 				$this->Notice->Type = UserNoticeType::Notice;

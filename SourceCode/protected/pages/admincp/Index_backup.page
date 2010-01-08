@@ -122,6 +122,50 @@
 					</div>
 				</div>
 				<!-- Table box: END -->
+
+				<!-- Error box -->
+				<div class="general_error">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_error.png" alt=""/>
+						Error notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Error box: END -->
+
+				<!-- Success box -->
+				<div class="general_success">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_success.png" alt=""/>
+						Success notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Success box: END -->
+                
+                <!-- Inform box -->
+				<div class="general_inform">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_inform.png" alt=""/>
+						Information notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Inform box: END -->
+
+				<!-- Attention box -->
+				<div class="general_attention">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<img src="<%= $this->Page->Theme->BaseUrl %>/images/icon_attention.png" alt=""/>
+						Attention notification. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Attention box: END -->
 				
 				<com:Application.shared.AdminNotice Type="Information" />
 

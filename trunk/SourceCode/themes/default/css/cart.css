@@ -23,8 +23,8 @@
 .viewcart_container .totalprice .couponcode{float:left;color:#503a1d;font-size:12px;font-weight:bold;margin:0;clear:right;}
 .viewcart_container .totalprice .couponcode .textbox{float:none;margin:0 5px 0 0;}
 .viewcart_container .totalprice .couponcode .button{float:none;margin:0;}
-.viewcart_container .totalprice .couponcode .code_error{font-size:11px;color:red;float:none;padding-left:120px;margin:0;text-transform:none;}
-.viewcart_container .totalprice .couponcode .code_notice{font-size:11px;color:blue;float:none;padding-left:120px;margin:0;text-transform:none;}
+.viewcart_container .totalprice .couponcode .code_error{font-size:11px;color:red;float:none;padding-left:120px;margin:0 0 -5px 0;text-transform:none;text-align:left;}
+.viewcart_container .totalprice .couponcode .code_notice{font-size:11px;color:blue;float:none;padding-left:120px;margin:0 0 -5px 0;text-transform:none;text-align:left;}
 .viewcart_container .totalprice .price{float:right;width:auto;height:auto;margin:0 0 2px 0;clear:right;font-size:13px;}
 	.viewcart_container .totalprice .price .text{width:auto;float:left;text-align:left;text-transform:capitalize;margin:0;}
 	.viewcart_container .totalprice .price .value{width:80px;float:left;font-weight:bold;margin:0;text-align:right;}

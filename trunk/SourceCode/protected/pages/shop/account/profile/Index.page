@@ -27,19 +27,19 @@
 			<tr>
 				<td class="left">Email</td>
 				<td class="right" style="font-size:12px;">
-					tieuchu@gmail.com &nbsp;
+					<%= $this->Application->User->Email %>
 				</td>
 			</tr>
 			<tr>
 				<td class="left">First Name</td>
 				<td class="right" style="font-size:12px;">
-					text
+					<%= $this->Application->User->FirstName %>
 				</td>
 			</tr>
 			<tr>
 				<td class="left">Last Name</td>
 				<td class="right" style="font-size:12px;">
-					text
+					<%= $this->Application->User->LastName %>
 				</td>
 			</tr>
 			<tr>
@@ -57,8 +57,8 @@
 			<tr>
 				<td class="left">&nbsp;</td>
 				<td class="right">
-					<input type="button" class="button" value="update profile" />
-                    <input type="button" class="button" value="go to shopping" />
+					<input type="button" class="button" value="update profile" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.account.profile.ChangeProfile') %>'" />
+                    <input type="button" class="button" value="go to shopping" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'" />
 				</td>
 			</tr>
 		</table>

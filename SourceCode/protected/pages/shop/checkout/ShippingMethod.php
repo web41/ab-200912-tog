@@ -13,6 +13,7 @@ class ShippingMethod extends TPage
 			$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
 			if ($cartRecord instanceof CartTempRecord && $cartRecord->ShippingMethodID > 0)
 				$this->cboMethodSelector->SelectedValue = $cartRecord->ShippingMethodID;
+			else $this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
 		}
 	}
 	

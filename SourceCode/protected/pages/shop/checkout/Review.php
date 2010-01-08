@@ -7,6 +7,9 @@ class Review extends TPage
 		parent::onLoad($param);
 		if (!$this->IsPostBack)
 		{
+			$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+			if (!$cartRecord)
+				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
 			$this->populateData();
 			$this->cboPaymentSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
 			$this->cboPaymentSelector->DataBind();
@@ -67,6 +70,24 @@ class Review extends TPage
 			$this->imgPayment->ImageUrl = $this->Request->UrlManagerModule->UrlPrefix."/useruploads/images/payment_method/".$payment->ImagePath;
 		}
 		else $this->imgPayment->Visible = false;
+	}
+	
+	protected function btnCancel_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "session_id = :id and user_id = :user";
+			$criteria->Parameters[':id'] = $this->Application->Session->SessionID;
+			$criteria->Parameters[':user'] = $this->Application->User->ID;
+			CartTempRecord::finder()->deleteAll($criteria);
+			$this->Response->redirect($this->Service->ConstructUrl("shop.Index"));
+		}
+	}
+	
+	protected function btnSubmit_Clicked($sender, $param)
+	{
+		
 	}
 }
 

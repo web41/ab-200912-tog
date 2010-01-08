@@ -32,3 +32,4 @@ NEWSLETTER_REG_FAILED		= Your email could not be added to our mailing list. Plea
 NEWSLETTER_EXISTS			= Your email is already in our mailing list.
 APPLY_DISCOUNT_SUCCESS		= Discount has been applied to selected items.
 CART_EMPTY					= Your cart is currently empty.
+ORDER_CANCEL_CONFIRM		= All items in cart will be lost. Do you really want to cancel this order?

@@ -26,7 +26,8 @@ class Index extends TPage
 	
 	public function updateSubtotalInSession()
 	{
-		$this->rptCart->Footer->lblSubtotal->Text = $this->getFormattedValue(CartTempRecord::finder()->getSubtotalInSession());
+		if ($this->rptCart->Footer)
+			$this->rptCart->Footer->lblSubtotal->Text = $this->getFormattedValue(CartTempRecord::finder()->getSubtotalInSession());
 	}
 	
 	public function getFormattedValue($value,$pattern="c",$currency="USD")

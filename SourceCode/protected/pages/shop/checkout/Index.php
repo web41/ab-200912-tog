@@ -5,6 +5,8 @@ class Index extends TPage
 	public function onLoad($param)
 	{
 		$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+		if (!$cartRecord)
+			$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
 		if ($cartRecord->BillingID == 0)
 			$url = $this->Service->ConstructUrl("shop.checkout.Billing");
 		else if ($cartRecord->ShippingID == 0)

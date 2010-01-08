@@ -111,8 +111,8 @@
 					<div class="value" style="color:#7aa825"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart ? $this->Cart->Total : 0 %>" /></div>
 				</div>
 				<div class="price" style="margin:0;">
-					<input type="button" class="button" value="Cancel Order" />
-					<input type="button" class="button" value="Submit Your Order" />
+					<com:TButton CssClass="button" Text="Cancel Order" OnClick="btnCancel_Clicked" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('ORDER_CANCEL_CONFIRM') %>')) return false;" />
+					<com:TButton CssClass="button" Text="Submit Your Order" OnClick="btnSubmit_Clicked" />
 				</div>
 			</div>
 		</div>

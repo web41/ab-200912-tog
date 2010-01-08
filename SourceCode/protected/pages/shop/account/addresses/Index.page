@@ -69,7 +69,7 @@
 			<com:TRepeater ID="rptShipping" OnItemCommand="RepeaterItemCommand">
 				<prop:ItemTemplate>
 					<!-- Address content -->
-					<div class="address_item">
+					<div class="address_item"  style="margin:0;">
 						<div class="adr_item">
 							<%# $this->Data ? $this->Data->Title." ".$this->Data->FirstName." ".$this->Data->LastName : "" %><br />
 							<%# $this->Data ? $this->Data->Address1.(strlen($this->Data->Address2)>0?", ".$this->Data->Address2:"").", ".$this->Data->City.", ".$this->Data->State." ".$this->Data->ZipCode.", ".$this->Data->Country->Name : "" %><br />

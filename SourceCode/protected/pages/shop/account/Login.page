@@ -15,6 +15,7 @@
 	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
+    	<h2>customer login</h2>
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td class="table_title">new customer</td>

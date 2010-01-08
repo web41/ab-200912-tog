@@ -42,6 +42,7 @@ class Review extends TPage
 	
 	public function getBillingAddress()
 	{
+		if (!$this->_billing) $this->setBillingAddress();
 		return $this->_billing;
 	}
 	
@@ -52,6 +53,7 @@ class Review extends TPage
 
 	public function getShippingAddress()
 	{
+		if (!$this->_shipping) $this->setShippingAddress();
 		return $this->_shipping;
 	}
 	
@@ -62,16 +64,18 @@ class Review extends TPage
 	
 	public function getShippingMethod()
 	{
+		if (!$this->_shippingMethod) $this->setShippingMethod();
 		return $this->_shippingMethod;
 	}
 	
 	public function setCart()
 	{
-		$this->_cart = CartTempRecord::finder()->withBillingAddress()->withShippingAddress()->withShippingMethod()->withCoupon()->withCartTempDetails()->findByPk($this->Session->SessionID);
+		$this->_cart = CartTempRecord::finder()->withBillingAddress()->withShippingAddress()->withShippingMethod()->withCartTempDetails()->findByPk($this->Session->SessionID);
 	}
 	
 	public function getCart()
 	{
+		if (!$this->_cart) $this->setCart();
 		return $this->_cart;
 	}
 	

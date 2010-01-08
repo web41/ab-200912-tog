@@ -24,7 +24,7 @@ class CartItemTemplate extends TRepeaterItemRenderer
 	
 	protected function btnDelete_Clicked($sender, $param)
 	{
-		$cartDetail = CartTempDetailRecord::finder()->withProperty()->findByPk($this->txtID->Value);
+		$cartDetail = CartTempDetailRecord::finder()->findByPk($this->txtID->Value);
 		$cartDetail->delete();
 		$this->Page->categoryMenu->populateData();
 		$this->Page->populateData();

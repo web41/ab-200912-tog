@@ -119,7 +119,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">Postal code</td>
+				<td class="left">Postal code <span>*</span></td>
 				<td class="right">
 					<com:TActiveTextBox ID="txtZip" CssClass="frm_textbox" Width="75px"/><br />
 					<com:TRequiredFieldValidator ID="val6"

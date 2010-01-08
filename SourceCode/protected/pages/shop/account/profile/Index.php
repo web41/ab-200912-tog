@@ -2,6 +2,7 @@
 
 class Index extends TPage
 {
+	
 }
 
 ?>

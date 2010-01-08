@@ -2,14 +2,22 @@
 
 class Review extends TPage
 {
+	private $_cart;
+	private $_billing;
+	private $_shipping;
+	private $_shippingMethod;
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
 		if (!$this->IsPostBack)
 		{
-			$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+			$this->setCart();
+			$cartRecord = $this->getCart();
 			if (!$cartRecord)
 				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
+			$this->setBillingAddress();
+			$this->setShippingAddress();
+			$this->setShippingMethod();
 			$this->populateData();
 			$this->cboPaymentSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
 			$this->cboPaymentSelector->DataBind();
@@ -27,29 +35,44 @@ class Review extends TPage
 		}
 	}
 	
-	public function getBillingAddress()
+	public function setBillingAddress()
 	{
-		return $this->getCart()->BillingAddress;
+		$this->_billing = $this->getCart()->BillingAddress;
 	}
 	
+	public function getBillingAddress()
+	{
+		return $this->_billing;
+	}
+	
+	public function setShippingAddress()
+	{
+		$this->_shipping = $this->getCart()->ShippingAddress;
+	}
+
 	public function getShippingAddress()
 	{
-		return $this->getCart()->ShippingAddress;
+		return $this->_shipping;
+	}
+	
+	public function setShippingMethod()
+	{
+		$this->_shippingMethod = $this->getCart()->ShippingMethod;
 	}
 	
 	public function getShippingMethod()
 	{
-		return $this->getCart()->ShippingMethod;
+		return $this->_shippingMethod;
 	}
 	
-	public function getCoupon()
+	public function setCart()
 	{
-		return $this->getCart()->Coupon;
+		$this->_cart = CartTempRecord::finder()->withBillingAddress()->withShippingAddress()->withShippingMethod()->withCoupon()->withCartTempDetails()->findByPk($this->Session->SessionID);
 	}
 	
 	public function getCart()
 	{
-		return CartTempRecord::finder()->withBillingAddress()->withShippingAddress()->withShippingMethod()->withCoupon()->withCartTempDetails()->findByPk($this->Session->SessionID);
+		return $this->_cart;
 	}
 	
 	public function getFormattedValue($value,$pattern="c",$currency="USD")

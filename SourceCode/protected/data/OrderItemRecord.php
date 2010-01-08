@@ -47,5 +47,10 @@ class OrderItemRecord extends TActiveRecord
 		$this->ModifyDate = time();
 		parent::save();
 	}
+	
+	protected function getProperty()
+	{
+		return PropertyRecord::finder()->findByPk($this->PropertyID);
+	}
 }
 ?>

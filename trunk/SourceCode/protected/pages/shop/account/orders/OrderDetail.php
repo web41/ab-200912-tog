@@ -121,6 +121,11 @@ class OrderDetail extends TPage
 		$formatter = new NumberFormat($this->Application->Globalization->Culture);
 		return $formatter->format($value,$pattern,$currency,$this->Application->Globalization->Charset);
 	}
+	
+	public function test_Clicked($sender, $param)
+	{
+		var_dump($this->mainBox->getHtml());
+	}
 }
 
 ?>

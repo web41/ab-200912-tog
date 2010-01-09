@@ -8,9 +8,12 @@ class StatisticsPane extends TTemplateControl
 		if (!$this->Page->IsPostBack)
 		{
 			$this->lblTotalUser->Text = $this->getTotalUser();
-			$this->lblTotalInStock->Text = $this->getTotalProduct();
+			$this->lblTotalInStock->Text = $this->getTotalInStock();
+			$this->lblTotalProduct->Text = $this->getTotalProduct();
 			$this->lblTodayPurchases->Text = $this->getTodayPurchases();
 			$this->lblOnlineUser->Text = $this->getCurrentUser();
+			$this->lblTotalOrder->Text = $this->getTotalOrder();
+			$this->lblTotalPendingOrder->Text = $this->getPendingOrder();
 		}
 	}
 	
@@ -21,7 +24,7 @@ class StatisticsPane extends TTemplateControl
 		return UserRecord::finder()->count($criteria);
 	}
 	
-	public function getTotalProduct($publishedOnly=false)
+	public function getTotalInStock($publishedOnly=false)
 	{
 		$counter = 0;
 		$criteria = new TActiveRecordCriteria;
@@ -41,6 +44,14 @@ class StatisticsPane extends TTemplateControl
 		return $counter;
 	}
 	
+	public function getTotalProduct($publishedOnly=false)
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "product_id > 0";
+		if ($publishedOnly) $criteria->Condition .= " and product_publish = 1";
+		return ProductRecord::finder()->count($criteria);
+	}
+	
 	public function getTodayPurchases()
 	{
 		$first_date = mktime(0, 0, 0, date("m") , date("d"), date("Y")); 
@@ -56,6 +67,23 @@ class StatisticsPane extends TTemplateControl
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "last_visit_date >= {$past_time} and last_visit_date <= ".time();
 		return UserRecord::finder()->count($criteria);
+	}
+	
+	public function getTotalOrder()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "order_id > 0";
+		return OrderRecord::finder()->count($criteria);
+	}
+	
+	public function getPendingOrder()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "order_id in (select o.order_id
+								from tbl_order o 
+								left join tbl_order_history oh on o.order_id = oh.order_id
+								where oh.order_status_code = 'P')";
+		return OrderRecord::finder()->count($criteria);
 	}
 }
 

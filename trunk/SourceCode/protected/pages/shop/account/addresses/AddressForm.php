@@ -116,7 +116,7 @@ class AddressForm extends TPage
 			catch(TException $e)
 			{
 				$this->Notice->Type = UserNoticeType::Error;
-				$this->Notice->Text = $e;//$this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Address","");
+				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Address","");
 			}
 		}
 	}

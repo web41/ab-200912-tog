@@ -9,7 +9,7 @@ class UserManager extends TPage
 	private $_searchText = "";
 	private $_typeID = 0;
 	private $_sortable = array("user_id","user_email","user_status","last_visit_date","c_date","user_type_id");
-	private $_queryParams = array("p","st","sb","parent","q");
+	private $_queryParams = array("p","st","sb","t","q");
 	const AR = "UserRecord";
 
 	public function getSortBy()

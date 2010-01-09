@@ -1,0 +1,238 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Add/Update User
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Form sample-->
+				<com:TPanel ID="mainBox" CssClass="main_box">
+					<div class="title">
+						<div>
+							<div><h2><com:TLabel ID="lblHeader" /></h2></div>
+						</div>
+					</div>
+					<div class="content">
+						<table border="0" cellpadding="0" cellspacing="0" class="form" width="100%" style="margin-bottom:10px;">
+							<tr>
+								<td class="field">
+									<div class="text">User<span>*</span></div>
+									<div class="control">
+										<com:TActiveDropDownList ID="cboUserSelector"
+											CausesValidation="false"
+											PromptValue="0" PromptText="Select..."
+											DataValueField="ID" DataTextField="Email"
+											OnCallBack="cboUserSelector_CallBack" /><br />
+										<com:TRequiredFieldValidator ID="val1"
+											InitialValue="0"
+											CssClass="error"
+											ControlToValidate="cboUserSelector"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','User') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">                                
+									<div class="text">Alias</div>
+									<div class="control">
+										<com:TTextBox ID="txtAlias" CssClass="textbox" /><br />
+										<div class="notice"><%= $this->Application->getModule('message')->translate('AUTO_FIELD') %></div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Address Type</div>
+									<div class="control">
+										<com:TActiveDropDownList ID="cboTypeSelector">
+											<com:TListItem Text="Billing Address" Value="B" />
+											<com:TListItem Text="Shipping Address" Value="S"/>
+										</com:TActiveDropDownList>
+									</div>
+								</td>
+								<td class="field">                                
+									<div class="text">Set as default</div>
+									<div class="control">
+										<com:TDropDownList ID="cboDefaultSelector">
+											<com:TListItem Text="No" Value="0"/>
+											<com:TListItem Text="Yes" Value="1" />
+										</com:TDropDownList>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Title</div>
+									<div class="control">
+										<com:TDropDownList ID="cboTitleSelector"/>
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">Company Name</div>
+									<div class="control">
+										<com:TTextBox ID="txtCompanyName" CssClass="textbox" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">First Name<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtFirstName" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val2"
+											CssClass="error"
+											ControlToValidate="txtFirstName"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">Last Name<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtLastName" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val3"
+											CssClass="error"
+											ControlToValidate="txtLastName"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field" colspan="2">
+									<div class="text">Address 1<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtAddress1" CssClass="textbox" Width="630px" /><br />
+										<com:TRequiredFieldValidator ID="val4"
+											CssClass="error"
+											ControlToValidate="txtLastName"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field" colspan="2">
+									<div class="text">Address 2</div>
+									<div class="control">
+										<com:TTextBox ID="txtAddress2" CssClass="textbox" Width="630px" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">City/Town<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtCity" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val5"
+											CssClass="error"
+											ControlToValidate="txtCity"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','City/Town') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">State<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtState" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val6"
+											CssClass="error"
+											ControlToValidate="txtState"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','State') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Postal Code<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtZipCode" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val7"
+											CssClass="error"
+											ControlToValidate="txtZipCode"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Postal code') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+										<com:TRegularExpressionValidator ID="val8" 
+											ControlToValidate="txtZipCode" 
+											RegularExpression="^\d{5,6}$"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Postal code') %>"
+											Display="Dynamic" 
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">Country<span>*</span></div>
+									<div class="control">
+										<com:TDropDownList ID="cboCountrySelector" 
+											PromptText="Select..." PromptValue="0"
+											DataTextField="Name"
+											DataValueField="Code"/><br />
+										<com:TRequiredFieldValidator ID="val9"
+											ControlToValidate="cboCountrySelector"
+											InitialValue="0"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','Country') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Phone 1<span>*</span></div>
+									<div class="control">
+										<com:TTextBox ID="txtPhone1" CssClass="textbox" /><br />
+										<com:TRequiredFieldValidator ID="val10"
+											CssClass="error"
+											ControlToValidate="txtPhone1"
+											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Phone') %>"
+											Display="Dynamic"
+											FocusOnError="True"/>
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">Phone 2</div>
+									<div class="control">
+										<com:TTextBox ID="txtPhone2" CssClass="textbox" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Fax</div>
+									<div class="control">
+										<com:TTextBox ID="txtFax" CssClass="textbox" />
+									</div>
+								</td>
+								<td class="field">&nbsp;</td>
+							</tr>
+						</table>
+						<div class="field" style="border:none;margin-bottom:0;">
+							<div class="text">&nbsp;</div>
+							<div class="control">
+								<com:TButton ID="btnSubmit" CssClass="<%= ($this->Item && $this->Item->ID > 0) ? 'btn_edit' : 'btn_addnew' %>" OnClick="btnSubmit_Clicked" />
+								<com:TButton ID="btnAddMore" CssClass="btn_addmore" OnClick="btnAddMore_Clicked" />
+								<com:TButton CausesValidation="false" ButtonType="Reset" CssClass="btn_reset" />
+								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_cancel" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('admincp.UserAddressManager',array('u'=>$this->Item->UserID)) %>'" />
+							</div>
+						</div>
+					</div>
+				</com:TPanel>
+				<!-- Form sample: END -->
+			</td>
+		</tr>
+	</table>
+</com:TContent>

@@ -138,6 +138,12 @@
 			<url ServiceParameter="admincp.UserTypeManager" pattern="admincp/user-type/manager"/>
 			<url ServiceParameter="admincp.UserTypeForm" pattern="admincp/user-type/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 			<url ServiceParameter="admincp.UserTypeForm" pattern="admincp/user-type/create-new"/>
+			<url ServiceParameter="admincp.UserAddressManager" pattern="admincp/user-address/{u}" parameters.u="\d+"/>
+			<url ServiceParameter="admincp.UserAddressManager" pattern="admincp/user-address"/>
+			<url ServiceParameter="admincp.UserAddressManager" pattern="admincp/user-address/manager/{u}" parameters.u="\d+"/>
+			<url ServiceParameter="admincp.UserAddressManager" pattern="admincp/user-address/manager"/>
+			<url ServiceParameter="admincp.UserAddressForm" pattern="admincp/user-address/{u}/{id}/{alias}" parameters.u="\d+" parameters.id="\d+" parameters.alias=".*"/>
+			<url ServiceParameter="admincp.UserAddressForm" pattern="admincp/user-address/create-new/{u}" parameters.u="\d+"/>
 			<url ServiceParameter="admincp.OrderStatusManager" pattern="admincp/order-status"/>
 			<url ServiceParameter="admincp.OrderStatusManager" pattern="admincp/order-status/manager"/>
 			<url ServiceParameter="admincp.OrderStatusForm" pattern="admincp/order-status/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>

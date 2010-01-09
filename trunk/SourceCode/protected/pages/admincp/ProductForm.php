@@ -211,12 +211,28 @@ class ProductForm extends TPage
 					$criteria->Condition = "product_id = :id";
 					$criteria->Parameters[":id"] = $activeRecord->ID;
 					ProductCatRecord::finder()->deleteAll($criteria);
-					PackageTypeRecord::finder()->deleteAll($criteria);
+					PropertyRecord::finder()->deleteAll($criteria);
 				}
 				foreach($this->cboCatSelector->SelectedValues as $catID)
 				{
-					$record = new ProductCatRecord(array("ProductID"=>$activeRecord->ID,"CatID"=>$catID));
-					$record->save();
+					$productCat = new ProductCatRecord(array("ProductID"=>$activeRecord->ID,"CatID"=>$catID));
+					$productCat->save();
+				}
+				foreach($this->rptProperty->Items as $item)
+				{
+					$price = TPropertyValue::ensureFloat($item->txtPrice->Text);
+					$name = $item->txtName->SafeText;
+					$stock = TPropertyValue::ensureInteger($item->txtInStock->Text);
+					$packageType = new PropertyRecord;
+					if ($price>0&&$stock>0&&strlen($name)>0)
+					{
+						$packageType->ProductID = $activeRecord->ID;
+						$packageType->Price = $price;
+						$packageType->Name = $name;
+						$packageType->InStock = $stock;
+						$packageType->save();
+					}
+					//var_dump($uom);
 				}
 				$this->Response->redirect($this->Service->ConstructUrl("admincp.ProductForm"));
 			}

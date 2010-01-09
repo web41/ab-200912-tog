@@ -12,6 +12,13 @@
     
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/calendar/jquery.calendar.js"></script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/homepage.js"></script>
+	<script type="text/javascript">
+		function popup(name,url,focus)
+		{
+			var _popup = window.open(url,name);
+			if (focus) _popup.focus();
+		}
+	</script>
 </com:THead>
 <body>
 <center>

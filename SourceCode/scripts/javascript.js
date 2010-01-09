@@ -23,3 +23,11 @@ function toogleCheckBox(theElement,state) {
 		}
 	}
 }
+
+function popup(name,url,width,height,focus)
+{
+	top = (screen.height - height)/ 2;
+	left = (screen.width - width)/2;
+	_popup = window.open(url,name,'top='+top+'px,left='+left+'px,width='+width+'px,height='+height+'px,status=no,resizable=no,toolbar=no,titlebar=no,menubar=no');
+	if (focus) _popup.focus();
+}

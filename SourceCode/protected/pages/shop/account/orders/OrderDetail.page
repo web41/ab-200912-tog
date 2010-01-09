@@ -12,7 +12,7 @@
 <!-- Main column -->
 <div class="main_col">
 	<com:Application.shared.UserNotice ID="Notice" />
-	<div class="main_content">
+	<com:PPanel ID="mainBox" CssClass="main_content" SaveHtml="true">
 	<!-- Inside box -->
 	<div class="inside_box">
 		<h2>Order History Detail</h2>
@@ -105,13 +105,13 @@
 					<div class="value" style="color:#7aa825"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->Total %>" /></div>
 				</div>
 				<div class="price" style="font-size:18px;margin:10px 0 0 0;">
-					<input type="button" class="button" value="Print this order" />
+					<input type="button" class="button" value="Print this order" onclick="popup('printable','<%= $this->Service->ConstructUrl('shop.account.orders.PrintableOrderDetail') %>',true)" />
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Inside box: END -->
-	</div>
+	</com:PPanel>
 </div>
 <!-- Main column: END -->
 

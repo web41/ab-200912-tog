@@ -15,7 +15,7 @@
 	<com:PPanel ID="mainBox" CssClass="main_content" SaveHtml="true">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<h2>Order History Detail</h2>
+		<h2>Order Receipt</h2>
 		<div class="order_confirmation">
 			<div class="field" style="margin:0;">
 				<div class="text">order number:</div>

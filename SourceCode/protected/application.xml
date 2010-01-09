@@ -82,7 +82,7 @@
 			<url ServiceParameter="shop.account.addresses.AddressForm" pattern="shop/account/address/create-new"/>
 			
 			<url ServiceParameter="shop.account.orders.Index" pattern="shop/account/order"/>
-			<url ServiceParameter="shop.account.orders.OrderDetail" pattern="shop/account/order-detail/{oid}/{onum}" parameters.oid="\d+" parameters.onum=".*"/>
+			<url ServiceParameter="shop.account.orders.OrderDetail" pattern="shop/account/order-detail/{hash}" parameters.hash=".*"/>
 			<url ServiceParameter="shop.account.orders.PrintableOrderDetail" pattern="shop/account/order-detail/printable-version"/>
 			
 			<url ServiceParameter="shop.cart.Index" pattern="shop/view-cart"/>

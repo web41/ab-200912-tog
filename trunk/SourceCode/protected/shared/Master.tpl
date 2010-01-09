@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <com:THead>
 	<title><com:TContentPlaceHolder ID="title" /></title>
+	<noscript><meta http-equiv="refresh" content="0;URL=noscript.html" /></noscript>
 	<com:TContentPlaceHolder ID="meta" />
 	<com:TContentPlaceHolder ID="script" />
     <link href="<%= $this->UrlPrefix %>/scripts/a.m/a.m.css" rel="stylesheet" type="text/css" />

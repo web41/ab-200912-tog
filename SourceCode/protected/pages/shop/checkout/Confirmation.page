@@ -15,7 +15,7 @@
 	<com:PPanel ID="mainBox" CssClass="main_content" SaveHtml="true">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<h2>Order Confirmation</h2>
+		<h2>Order Receipt</h2>
         <div class="viewcart_container" style="margin:0;">
 			<!-- Cart step -->
 			<div class="cart_step">

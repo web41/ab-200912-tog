@@ -56,6 +56,7 @@ class Confirmation extends TPage
 	
 	public function getOrder()
 	{
+		if (!$this->_order) $this->setOrder();
 		return $this->_order;
 	}
 
@@ -83,6 +84,7 @@ class Confirmation extends TPage
 	
 	public function getPayment()
 	{
+		if (!$this->_payment) $this->setPayment();
 		return $this->_payment;
 	}
 	
@@ -93,6 +95,7 @@ class Confirmation extends TPage
 	
 	public function getOrderItems()
 	{
+		if (!$this->_orderItems) $this->setOrderItems();
 		return $this->_orderItems;
 	}
 	
@@ -103,6 +106,7 @@ class Confirmation extends TPage
 	
 	public function getShippingMethod()
 	{
+		if (!$this->_shippingMethod) $this->setShippingMethod();
 		return $this->_shippingMethod;
 	}
 	

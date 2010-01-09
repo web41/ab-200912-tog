@@ -127,7 +127,7 @@ class OrderRecord extends TActiveRecord
 	protected function getLatestHistory()
 	{
 		$criteria = new TActiveRecordCriteria;
-		$criteria->Condition = "order_id = :id and c_date = (select max(c_date) from tbl_order_history)";
+		$criteria->Condition = "order_id = :id and c_date = (select max(c_date) from tbl_order_history where order_id = :id)";
 		$criteria->Parameters[":id"] = $this->ID;
 		return OrderHistoryRecord::finder()->withOrderStatus()->find($criteria);
 	}

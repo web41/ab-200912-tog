@@ -6,23 +6,28 @@ class OrderDetail extends TPage
 	private $_payment;
 	private $_orderItems;
 	private $_shippingMethod;
+	private $_hash;
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
 		if (!$this->IsPostBack)
 		{
+			$this->setHash($this->Request['hash']);
 			$this->setOrder();
-			$this->setOrderItems();
-			$this->setPayment();
-			$this->setShippingMethod();
-			$this->populateData();
-
-			// delete temp data
-			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "session_id = :id and user_id = :user";
-			$criteria->Parameters[':id'] = $this->Application->Session->SessionID;
-			$criteria->Parameters[':user'] = $this->Application->User->ID;
-			CartTempRecord::finder()->deleteAll($criteria);
+			if ($this->Order)
+			{
+				$this->setOrderItems();
+				$this->setPayment();
+				$this->setShippingMethod();
+				$this->populateData();
+	
+				// delete temp data
+				$criteria = new TActiveRecordCriteria;
+				$criteria->Condition = "session_id = :id and user_id = :user";
+				$criteria->Parameters[':id'] = $this->Application->Session->SessionID;
+				$criteria->Parameters[':user'] = $this->Application->User->ID;
+				CartTempRecord::finder()->deleteAll($criteria);
+			}
 		}
 	}
 
@@ -31,13 +36,33 @@ class OrderDetail extends TPage
 		$this->rptCart->DataSource = $this->OrderItems;
 		$this->rptCart->DataBind();
 	}
+	
+	public function setHash($value)
+	{
+		if(($value = $this->Application->SecurityManager->validateData($value))!==false)
+		{
+			$value=unserialize($value);
+			if(is_array($value) && count($value)===2)
+			{
+				list($oid,$onum)=$value;
+				$oid = TPropertyValue::ensureInteger($this->Application->SecurityManager->validateData(base64_decode($oid)));
+				$onum = $this->Application->SecurityManager->validateData(base64_decode($onum));
+				$this->_hash = array('oid'=>$oid,'onum'=>$onum);
+			}
+		}
+	}
+
+	public function getHash()
+	{
+		return $this->_hash;
+	}
 
 	public function setOrder()
 	{
-		if ($this->Request->Contains("oid") && $this->Request->Contains("onum"))
+		if (isset($this->Hash["oid"]) && isset($this->Hash["onum"]))
 		{
 			// use Active Record to look for the specified post ID
-			$activeRecord = OrderRecord::finder()->withShippingMethod()->withBCountry()->withSCountry()->findByorder_idAndorder_num(TPropertyValue::ensureInteger($this->Request['oid']), $this->Request['onum']);
+			$activeRecord = OrderRecord::finder()->withShippingMethod()->withBCountry()->withSCountry()->findByorder_idAndorder_numAnduser_id(TPropertyValue::ensureInteger($this->Hash['oid']), $this->Hash['onum'],$this->Application->User->ID);
 			if($activeRecord === null)
 			{
 				$this->Notice->Type = UserNoticeType::Error;
@@ -61,10 +86,10 @@ class OrderDetail extends TPage
 
 	public function setPayment()
 	{
-		if ($this->Request->Contains("oid"))
+		if (isset($this->Hash["oid"]))
 		{
 			// use Active Record to look for the specified post ID
-			$activeRecord = PaymentRecord::finder()->withPaymentMethod()->findAllByorder_id(TPropertyValue::ensureInteger($this->Request['oid']));
+			$activeRecord = PaymentRecord::finder()->withPaymentMethod()->findAllByorder_id(TPropertyValue::ensureInteger($this->Hash['oid']));
 			if (count($activeRecord))
 			{
 				$activeRecord = $activeRecord[0];

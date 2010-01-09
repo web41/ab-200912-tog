@@ -16,21 +16,6 @@
 	<!-- Inside box -->
 	<div class="inside_box">
 		<h2>Order Receipt</h2>
-        <div class="viewcart_container" style="margin:0;">
-			<!-- Cart step -->
-			<div class="cart_step">
-				<ul>
-					<li class="active">view cart</li>
-					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">billing/shipping info</li>
-					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">confirm/edit info</li>
-					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">order confirmation</li>
-				</ul>
-			</div>
-			<!-- Cart step: END -->
-        </div>
 		<div class="order_confirmation">
 			<div class="field" style="margin:0;">
             	<div class="text">order number:</div>
@@ -98,7 +83,7 @@
 
 		<h3>payment method</h3>
 		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
-			<com:TImage ImageUrl="<%= $this->Request->UrlManagerModule->UrlPrefix %>/useruploads/images/payment_method/<%= $this->Payment->PaymentMethod->ImagePath %>" ImageAlign="middle" Height="32px" />
+			<com:TImage ImageUrl="<%= $this->Request->getBaseUrl($this->Request->IsSecureConnection).($this->Request->UrlManagerModule->UrlPrefix!='/'?$this->Request->UrlManagerModule->UrlPrefix:'') %>/useruploads/images/payment_method/<%= $this->Payment->PaymentMethod->ImagePath %>" ImageAlign="middle" Height="32px" />
 		</div>
 
 		<div class="viewcart_container" style="margin:0;">

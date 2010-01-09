@@ -15,12 +15,15 @@ class Review extends TPage
 			$cartRecord = $this->getCart();
 			if (!$cartRecord)
 				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
-			$this->setBillingAddress();
-			$this->setShippingAddress();
-			$this->setShippingMethod();
-			$this->populateData();
-			$this->cboPaymentSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
-			$this->cboPaymentSelector->DataBind();
+			else
+			{
+				$this->setBillingAddress();
+				$this->setShippingAddress();
+				$this->setShippingMethod();
+				$this->populateData();
+				$this->cboPaymentSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
+				$this->cboPaymentSelector->DataBind();
+			}
 		}
 	}
 
@@ -70,7 +73,7 @@ class Review extends TPage
 	
 	public function setCart()
 	{
-		$this->_cart = CartTempRecord::finder()->withBillingAddress()->withShippingAddress()->withShippingMethod()->withCartTempDetails()->findByPk($this->Session->SessionID);
+		$this->_cart = CartTempRecord::finder()->withBillingAddress()->withShippingAddress()->withShippingMethod()->withCartTempDetails()->findBysession_idAnduser_id($this->Session->SessionID,$this->Application->User->ID);
 	}
 	
 	public function getCart()
@@ -182,11 +185,11 @@ class Review extends TPage
 					
 					if ($payment->PaymentMethodID == 1) // paypal
 					{
-						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.PayPalRedirector",array("oid"=>$order->ID,"onum"=>$order->Num,"pid"=>$payment->ID)));
+						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.PayPalRedirector",array("hash"=>$this->generateHash($order->ID,$order->Num,$payment->ID))));
 					}
 					else if ($payment->PaymentMethodID == 2) // cash on delivery
 					{
-						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Confirmation",array("oid"=>$order->ID,"onum"=>$order->Num,"pid"=>$payment->ID)));
+						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Confirmation",array("hash"=>$this->generateHash($order->ID,$order->Num,$payment->ID))));
 					}
 				}
 				catch(TException $ex)
@@ -203,6 +206,15 @@ class Review extends TPage
 			$this->populateData();
 			$this->categoryMenu->populateData();
 		}
+	}
+	
+	public function generateHash($oid,$onum,$pid)
+	{
+		$oid = base64_encode($this->Application->SecurityManager->hashData($oid));
+		$onum = base64_encode($this->Application->SecurityManager->hashData($onum));
+		$pid = base64_encode($this->Application->SecurityManager->hashData($pid));
+		$hash = array($oid,$onum,$pid);
+		return $this->Application->SecurityManager->hashData(serialize($hash));
 	}
 }
 

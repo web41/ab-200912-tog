@@ -1,5 +1,5 @@
 <%@ MasterClass="Application.shared.Master" %>
-<com:TContent ID="title">The Organic Grocer - Shipping Method</com:TContent>
+<com:TContent ID="title">The Organic Grocer - Review Order</com:TContent>
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">

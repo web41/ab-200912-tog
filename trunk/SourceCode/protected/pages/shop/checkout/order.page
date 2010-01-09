@@ -1,3 +1,7 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - About Us</com:TContent>
+<com:TContent ID="content">
+
 <!-- Main column -->
 <div class="main_col">
 	<div style="width:564px;float:left;border:solid 1px #e2e2bc;text-align:left;">
@@ -107,3 +111,4 @@
 	</div>
 </div>
 <!-- Main column: END -->
+</com:TContent>

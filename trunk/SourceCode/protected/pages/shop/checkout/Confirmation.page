@@ -64,7 +64,7 @@
 		<!-- Review: END -->
 
 		<!-- Address -->
-		<h3>Address information</h3>
+		<h3>Billing / Shipping</h3>
 		<div class="address_container" style="margin-bottom:5px;">
 			<!-- Address title -->
 			<div class="address_title" style="margin:0;">

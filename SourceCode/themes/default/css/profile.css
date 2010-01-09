@@ -18,12 +18,12 @@ ight;text-transform:capitalize;color:#7aa825;font-size:18px;margin:0;}
 
 .orderhistory_container .order_title{float:left;width:544px;height:auto;padding:5px 0 5px 0;background:#e2e2bc;font-size:12px;font-weight:bold;text-transform:capitalize;text-align:center;margin:0;}
 .orderhistory_container .order_title .order_no{float:left;width:60px;height:auto;padding:0 0 0 0;margin:0;}
-.orderhistory_container .order_title .order_date{float:left;width:100px;height:auto;margin:0;text-align:left;}
-.orderhistory_container .order_title .order_product{float:left;width:274px;height:auto;margin:0;text-align:left;padding:0 10px 0 0;}
+.orderhistory_container .order_title .order_date{float:left;width:150px;height:auto;margin:0;text-align:left;}
+.orderhistory_container .order_title .order_product{float:left;width:224px;height:auto;margin:0;text-align:left;padding:0 10px 0 0;}
 .orderhistory_container .order_title .order_status{float:left;width:100px;height:auto;margin:0;}
 
 .orderhistory_container .order_item{float:left;width:544px;height:auto;padding:5px 0 5px 0;font-size:12px;text-align:center;border-bottom:1px solid #e2e2bc;margin:0 0 5px 0;margin:0;}
 .orderhistory_container .order_item .order_no{float:left;width:60px;height:auto;padding:0 0 0 0;margin:0;}
-.orderhistory_container .order_item .order_date{float:left;width:100px;height:auto;margin:0;text-align:left;}
-.orderhistory_container .order_item .order_product{float:left;width:274px;height:auto;margin:0;text-align:left;padding:0 10px 0 0;}
+.orderhistory_container .order_item .order_date{float:left;width:150px;height:auto;margin:0;text-align:left;}
+.orderhistory_container .order_item .order_product{float:left;width:224px;height:auto;margin:0;text-align:left;padding:0 10px 0 0;}
 .orderhistory_container .order_item .order_status{float:left;width:100px;height:auto;margin:0;text-transform:capitalize;}

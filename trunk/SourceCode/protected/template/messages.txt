@@ -34,3 +34,5 @@ APPLY_DISCOUNT_SUCCESS		= Discount has been applied to selected items.
 CART_EMPTY					= Your cart is currently empty.
 ORDER_CANCEL_CONFIRM		= All items in cart will be lost. Do you really want to cancel this order?
 PASSWORD_INCORRECT			= Current password is incorrect. Please try again.
+PAYPAL_CONNECT_ERROR		= Cannot connect PayPal server at this moment. Please try again later.
+PAYPAL_PAYMENT_ERROR		= Payment is not successful. Please check your account at PayPal.

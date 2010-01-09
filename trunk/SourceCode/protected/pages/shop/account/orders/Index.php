@@ -20,6 +20,14 @@ class Index extends TPage
 		$this->rptOrder->DataSource = OrderRecord::finder()->findAll($criteria);
 		$this->rptOrder->DataBind();
 	}
+	
+	public function generateHash($oid,$onum)
+	{
+		$oid = base64_encode($this->Application->SecurityManager->hashData($oid));
+		$onum = base64_encode($this->Application->SecurityManager->hashData($onum));
+		$hash = array($oid,$onum);
+		return $this->Application->SecurityManager->hashData(serialize($hash));
+	}
 }
 
 ?>

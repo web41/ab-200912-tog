@@ -31,7 +31,7 @@
 						<div class="order_no"><%# $this->ItemIndex+1 %></div>
 						<div class="order_date"><%# date('m/d/Y h:i a',$this->Data->CreateDate) %></div>
 						<div class="order_product">
-							<a href="<%# $this->Service->ConstructUrl('shop.account.orders.OrderDetail',array('oid'=>$this->Data->ID,'onum'=>$this->Data->Num)) %>">
+							<a href="<%# $this->Service->ConstructUrl('shop.account.orders.OrderDetail',array('hash'=>$this->Page->generateHash($this->Data->ID,$this->Data->Num))) %>">
 								<%# $this->Data->Num %>
 							</a>
 						</div>

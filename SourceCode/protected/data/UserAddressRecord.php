@@ -62,9 +62,15 @@ class UserAddressRecord extends TActiveRecord
 		return parent::finder($className);
 	}
 	
-	public function getAddressesByType($type="B")
+	public function getAddressesByType($type="B",$user=0,$except=array())
 	{
-		return self::finder()->findAllByuser_idAndaddress_type(Prado::getApplication()->User->ID,$type);
+		if ($user==0) $user = Prado::getApplication()->User->ID;
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "user_id = :id and address_type = :type and address_id not in (:except)";
+		$criteria->Parameters[":id"] = $user;
+		$criteria->Parameters[":type"] = $type;
+		$criteria->Parameters[":except"] = implode(",",$except);
+		return self::finder()->findAll($criteria);
 	}
 	
 	public function save()

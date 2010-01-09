@@ -62,5 +62,12 @@ class UserRecord extends TActiveRecord
 		$this->ModifyDate = time();
 		parent::save();
 	}
+	
+	public function getAllItems()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "user_id > 0";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

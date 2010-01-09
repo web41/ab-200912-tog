@@ -11,18 +11,18 @@
         </div>
         <div class="line">
         	<div class="text">Total orders</div>
-            <div class="info">chua code</div>
+            <div class="info"><com:TLabel ID="lblTotalOrder" /></div>
         </div>
         <div class="line">
         	<div class="text">Waiting approval</div>
-            <div class="info">chua code</div>
+            <div class="info"><com:TLabel ID="lblTotalPendingOrder" /></div>
         </div>
         <div class="line">
         	<div class="text">Total products</div>
-            <div class="info">chua code</div>
+            <div class="info"><com:TLabel ID="lblTotalProduct" /></div>
         </div>
         <div class="line">
-        	<div class="text">Product in stock</div>
+        	<div class="text">Products in stock</div>
             <div class="info"><com:TLabel ID="lblTotalInStock" /></div>
         </div>
         <div class="line">

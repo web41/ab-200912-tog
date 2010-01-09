@@ -27,7 +27,7 @@
 				<tr>
 					<td class="left">Name <span>*</span></td>
 					<td class="right">
-						<com:TTextBox ID="txtName" Text="<%= $this->Application->User->FirstName.' '.$this->Application->User->LastName %>" />
+						<com:TTextBox ID="txtName" Text="<%= $this->Application->User->FirstName.' '.$this->Application->User->LastName %>" /><br />
 						<com:TRequiredFieldValidator ID="val1"
 						ControlToValidate="txtName"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Your name') %>"

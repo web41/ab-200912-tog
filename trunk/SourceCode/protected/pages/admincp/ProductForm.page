@@ -23,22 +23,9 @@
 						<table border="0" cellpadding="0" cellspacing="0" class="form" width="100%" style="margin-bottom:10px;">
                         	<tr>
                             	<td class="field nopadding">
-                                	<div class="text">SKU<span>*</span></div>
+                                	<div class="text">SKU</div>
                                     <div class="control">
-                                        <com:TTextBox ID="txtSKU" CssClass="textbox" /><br />
-                                        <com:TRequiredFieldValidator ID="val1"
-                                            CssClass="error"
-                                            ControlToValidate="txtSKU"
-                                            ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Product SKU') %>"
-                                            Display="Dynamic"
-                                            FocusOnError="True"/>
-										<com:TCustomValidator ID="val2"
-											CssClass="error"
-											ControlToValidate="txtSKU"
-											OnServerValidate="uniqueCheck2_ServerValidated"
-											ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Product SKU') %>"
-											Display="Dynamic"
-											FocusOnError="True"/>
+                                        <com:TTextBox ID="txtSKU" CssClass="textbox" />
                                     </div>
                                 </td>
                                 <td class="field nopadding">&nbsp;</td>

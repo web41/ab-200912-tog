@@ -223,7 +223,7 @@ class ProductForm extends TPage
 			catch(TException $e)
 			{
 				$this->Notice->Type = AdminNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Product",$activeRecord->Name);
+				$this->Notice->Text = $e;//$this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_FAILED" : "ADD_FAILED"),"Product",$activeRecord->Name);
 			}
 		}
 	}

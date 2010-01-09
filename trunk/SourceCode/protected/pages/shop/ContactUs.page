@@ -60,7 +60,12 @@
 				<tr>
 					<td class="left" valign="top">Message <span>*</span></td>
 					<td class="right">
-						<com:TTextBox ID="txtMessage" TextMode="MultiLine" Style="width:300px" />
+						<com:TTextBox ID="txtMessage" TextMode="MultiLine" Style="width:300px" /><br />
+						<com:TRequiredFieldValidator ID="val6"
+							ControlToValidate="txtMessage"
+							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Your message') %>"
+							Display="Dynamic"
+							FocusOnError="True"/>
 					</td>
 				</tr>
 				<tr>

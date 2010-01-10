@@ -164,7 +164,7 @@
 			</tr>
 			<tr>
 				<td class="left">&nbsp;</td>
-				<td class="right">
+				<td class="right" style="font-size:12px;">
 					<com:TCheckBox ID="chkBillShip" Text="Shiping address is the same billing address" Checked="true" />
 				</td>
 			</tr>

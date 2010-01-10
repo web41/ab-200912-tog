@@ -126,7 +126,7 @@
 									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Parent->Data->IsPublished) ? 'tick' : 'stop' %>.png" CommandName="publish" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn ID="colOrder" HeaderStyle.Width="7%">
+							<com:TTemplateColumn ID="colOrder" HeaderStyle.Width="7%" ItemStyle.CustomStyle="text-align:left">
 								<prop:HeaderTemplate>
 									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_success.png" CommandName="order_save" />
 									<a href="<%# $this->Page->populateSortUrl(6,(($this->Page->SortBy==6 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Order

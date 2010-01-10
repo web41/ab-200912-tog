@@ -151,6 +151,7 @@
 			<url ServiceParameter="admincp.OrderStatusForm" pattern="admincp/order-status/create-new"/>
 			<url ServiceParameter="admincp.OrderManager" pattern="admincp/order"/>
 			<url ServiceParameter="admincp.OrderManager" pattern="admincp/order/manager"/>
+			<url ServiceParameter="admincp.OrderForm" pattern="admincp/order/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
 		</module>
 		<!-- error module -->
 		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />

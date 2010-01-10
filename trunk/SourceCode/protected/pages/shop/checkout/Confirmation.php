@@ -90,7 +90,12 @@ class Confirmation extends TPage
 						$payment_status = $keyarray['payment_status'];
 	
 						// update payment & order
-						$paymentRecord->Status = $payment_status == "Completed" ? 1 : -1;
+						if ($payment_status == "Completed")
+						{
+							$paymentRecord->Amount = TPropertyValue::ensureFloat($payment_gross);
+							$paymentRecord->Status = 1;
+						}
+						else $paymentRecord->Status = -1;
 						$paymentRecord->save();
 	
 						$this->populateData();

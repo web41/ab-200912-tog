@@ -13,7 +13,7 @@ class PayPalRedirector extends TPage
 			$paymentRecord = $this->getPayment();
 			$this->PPayPal1->Amount = round(TPropertyValue::ensureFloat($orderRecord->Total),2);
 			$this->PPayPal1->Title = "The Organic Grocer - Purchase Order";
-			$this->PPayPal1->ReturnUrl = $this->Service->ConstructUrl("shop.checkout.Confirmation",array("hash"=>$this->generateHash($this->Order->ID,$this->Order->Num,$this->Payment->ID)));
+			$this->PPayPal1->CancelUrl = $this->PPayPal1->ReturnUrl = $this->Service->ConstructUrl("shop.checkout.Confirmation",array("hash"=>$this->generateHash($this->Order->ID,$this->Order->Num,$this->Payment->ID)));
 		}
 	}
 	

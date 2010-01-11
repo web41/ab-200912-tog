@@ -111,6 +111,137 @@
 		</div>
 	</div>
 	<!-- Inside box: END -->
+    
+    <!-- Inside box -->
+	<div id="invoice">
+		<h2>Order Receipt</h2>
+        <div style="float:right;">
+        	Invoice No. 11012010-000001<br />
+            Date: 11 Jan 2010<br />
+            Status: Processing
+        </div>
+        
+        <!-- Address -->
+        <table cellpadding="8" cellspacing="0" border="0" width="100%" >
+            <tr>
+            	<td width="50%">
+                	<b>Sold to:</b><br />
+                    address<br />
+                    state city country<br />
+                    Tel ....
+                </td>
+                <td width="50%">
+                	<b>Deliver to:</b><br />
+                    address<br />
+                    state city country<br />
+                    Tel ....
+                </td>
+            </tr>
+        </table>
+        <!-- Address: END -->
+        
+        <!-- Review title -->
+        <table cellpadding="5" cellspacing="0" border="0" width="100%" style="text-align:center;margin-bottom:5px;">
+            <tr>
+            	<td width="40%">
+                	Description
+                </td>
+                <td width="12%">
+                	Qty
+                </td>
+                <td width="12%">
+                	UOM
+                </td>
+                <td width="12%">
+                	Price/Unit (SGD)
+                </td>
+                <td width="12%">
+                	Disc/Unit (%)
+                </td>
+                <td width="12%">
+                	Total (SGD)
+                </td>
+            </tr>
+        </table>
+        <!-- Review title: END -->
+        
+        <!-- Product items -->
+        <table cellpadding="4" cellspacing="0" width="100%" style="border:0;text-align:right;">
+        	<tr>
+            	<td width="40%" style="border:0;text-align:left;">
+                	product name here
+                </td>
+                <td width="12%" style="border:0;">
+                	1
+                </td>
+                <td width="12%" style="border:0;text-align:left;">
+                	pcs
+                </td>
+                <td width="12%" style="border:0;">
+                	14.05
+                </td>
+                <td width="12%" style="border:0;">
+                	
+                </td>
+                <td width="12%" style="border:0;">
+                	14.05
+                </td>
+            </tr>
+            <tr>
+            	<td width="40%" style="border:0;text-align:left;">
+                	product name here
+                </td>
+                <td width="12%" style="border:0;">
+                	2
+                </td>
+                <td width="12%" style="border:0;text-align:left;">
+                	pcs
+                </td>
+                <td width="12%" style="border:0;">
+                	5.00
+                </td>
+                <td width="12%" style="border:0;">
+                	
+                </td>
+                <td width="12%" style="border:0;">
+                	10.00
+                </td>
+            </tr>
+        </table>
+        <!-- Product items: END -->
+
+		<!-- -->
+		<table cellpadding="8" cellspacing="0" border="0" width="100%" >
+            <tr>
+            	<td width="55%" valign="top">
+                	Delivery: text text text<br />
+                    Payment Terms: Paypal<br />
+                    Delivery Date/Time: 01/09/2010 06:58:25 pm
+                </td>
+                <td width="45%" valign="top">
+                	<div style="float:right;margin:0;">
+                    	<div class="price">
+                        	<div class="text">subtotal:</div>
+                            <div class="value">23.78</div>
+                        </div>
+                        <div class="price">
+                        	<div class="text">Delivery:</div>
+                            <div class="value">1.67</div>
+                        </div>
+                        <div class="price">
+                        	<div class="text">organic point rebate:</div>
+                            <div class="value">10</div>
+                        </div>
+                        <div class="price">
+                        	<div class="text">total:</div>
+                            <div class="value">23.78</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+	</div>
+	<!-- Inside box: END -->
 	</com:PPanel>
 </div>
 <!-- Main column: END -->

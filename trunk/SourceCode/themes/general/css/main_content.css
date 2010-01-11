@@ -30,7 +30,8 @@
 #container .main_col .main_box .content table.form td.nopadding{padding-top:0;}
 #container .main_col .main_box .content table.form td{height:auto;text-align:left;padding:10px 0 10px 0;vertical-align:top;}
 #container .main_col .main_box .content .field{height:36px;border-bottom:dotted 1px #c2c2c2;margin-bottom:10px;text-align:left;}
-	#container .main_col .main_box .content .field .text{float:left;text-transform:capitalize;font-size:13px;width:160px;padding:5px;}
+	#container .main_col .main_box .content .field .text{float:left;text-transform:capitalize;font-size:13px;width:140px;padding:5px;}
+	#container .main_col .main_box .content .field .text2{float:left;text-transform:capitalize;font-size:13px;width:140px;padding:0 5px 0 5px;}
 	#container .main_col .main_box .content .field .paddingtop{padding-top:10px;}
 	#container .main_col .main_box .content .field .text span{color:red;}
 	#container .main_col .main_box .content .field .control{float:left;width:auto;}
@@ -38,6 +39,21 @@
 	#container .main_col .main_box .content .field .control .notice{font-size:11px;margin-top:5px;float:left;color:#b3b3b3;}
 	#container .main_col .main_box .content .field .control .error{font-size:11px;margin-top:5px;float:left;color:#ffcecf;}
 	#container .main_col .main_box .content .field .control .btn_addnew, #container .main_col .main_box .content .field .control .btn_delete, #container .main_col .main_box .content .field .control .btn_reset, #container .main_col .main_box .content .field .control .btn_cancel, #container .main_col .main_box .content .field .control .btn_edit, #container .main_col .main_box .content .field .control .btn_addmore{margin:0 10px 0 0;float:left;}
+	
+	#container .main_col .main_box .content .field2{height:auto;border-bottom:dotted 1px #c2c2c2;margin-bottom:10px;text-align:left;}
+	#container .main_col .main_box .content .field2 .item_title{float:left;width:100%;padding:10px 0 10px 0;background:#f5f5f5;}
+		#container .main_col .main_box .content .field2 .item_title .width_35, #container .main_col .main_box .content .field2 .item_title .width_10, #container .main_col .main_box .content .field2 .item_title .width_15{padding:0;font-weight:bold;font-size:11px;}
+	#container .main_col .main_box .content .field2 .item_text{float:left;width:100%;background:none;margin-bottom:5px;}
+	#container .main_col .main_box .content .field2 .width_35{width:40%;float:left;text-indent:5px;padding:3px 0 0 0;}
+	#container .main_col .main_box .content .field2 .width_10{width:10%;float:left;text-align:center;padding:3px 0 0 0;}
+	#container .main_col .main_box .content .field2 .width_10_nopadding{width:10%;float:left;text-align:center;}
+		#container .main_col .main_box .content .field2 .width_10_nopadding .textbox{width:30px;height:16px;padding:2px 0 2px 0;text-align:center;}
+	#container .main_col .main_box .content .field2 .width_15{width:12%;float:left;text-align:center;padding:3px 0 0 0;}
+	#container .main_col .main_box .content .field2 .width_5{width:4%;float:left;text-align:center;}
+	
+	#container .main_col .main_box .content .field2 .price{float:right;width:auto;height:auto;margin:0 10px 2px 0;clear:both;}
+	#container .main_col .main_box .content .field2 .price .text{width:auto;float:left;text-align:left;text-transform:capitalize;margin:0;}
+	#container .main_col .main_box .content .field2 .value{width:120px;float:left;font-weight:bold;margin:0;text-align:right;}
 	
 /*Dashboard*/
 #dashboard{}

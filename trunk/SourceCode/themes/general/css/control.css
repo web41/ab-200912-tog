@@ -25,3 +25,7 @@ select{width:auto;height:26px;border:solid 1px #e5e5e5;background:url(../images/
 
 #calendar_box table{}
 #calendar_box table td{padding:2px;float:left;text-align:center;}
+
+.btn_refresh{height:16px;width:16px;background:url(../images/btn_refresh.png) no-repeat;border:none;margin:2px 0 0 2px;}
+.btn_smalldelete{height:16px;width:16px;background:url(../images/btn_delete_2.png) no-repeat;border:none;margin:2px 0 0 0;}
+.btn_refresh:hover, .btn_smalldelete:hover{cursor:pointer;filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;cursor:pointer;}

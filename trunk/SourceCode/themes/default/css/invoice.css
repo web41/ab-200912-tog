@@ -1,0 +1,10 @@
+﻿#invoice{float:left;width:544px;height:auto;text-align:left;margin-bottom:20px;line-height:20px;}
+	#invoice h2{text-transform:capitalize;font-weight:normal;font-size:20px;margin-bottom:10px;color:#7aa825;border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;}
+	#invoice div{margin-bottom:15px;}
+	#invoice table{border-right:solid 1px #dadada;border-bottom:solid 1px #dadada;margin-bottom:20px;}
+	#invoice tr td{border-left:solid 1px #dadada;border-top:solid 1px #dadada;}
+	
+	#invoice table .price{float:right;width:auto;height:auto;clear:both;margin:0;}
+	#invoice table .price .text{width:auto;float:left;text-align:left;text-transform:capitalize;margin:0;}
+	#invoice table .price .value{width:80px;float:left;font-weight:bold;margin:0;text-align:right}
+	#invoice table .price .button{margin:10px 0 0 5px;}

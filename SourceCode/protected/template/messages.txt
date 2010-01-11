@@ -36,3 +36,4 @@ ORDER_CANCEL_CONFIRM		= All items in cart will be lost. Do you really want to ca
 PASSWORD_INCORRECT			= Current password is incorrect. Please try again.
 PAYPAL_CONNECT_ERROR		= Cannot connect PayPal server at this moment. Please try again later.
 PAYPAL_PAYMENT_ERROR		= Payment is not successful. Please check your account at PayPal.
+MINIMUM_ORDER_REQUIRED		= Please note that a minimum amount of $50 is required to make an online order.

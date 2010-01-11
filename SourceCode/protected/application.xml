@@ -174,5 +174,9 @@
 		<parameter id="USER_TITLE" value="('Mr.'=>'Mr.','Mrs.'=>'Mrs.','Miss.'=>'Miss.','Dr.'=>'Dr.','Prof.'=>'Prof.')" />
 		<parameter id="PAYMENT_STATUS" value="(0=>'Pending',-1=>'Declined',1=>'Approved')" />
 		<parameter id="PAYPAL_INFO" value="('business'=>'dosithuyen@gmail.com', 'currency'=>'USD', 'auth_token'=>'soZLyylMjyanw7yu5zFnON3MOtZ5Zg-dYLpsXiViO9Q8CX9TPAsRkJcpvHu')" />
+		<parameter id="MINIMUM_ORDER_REQUIRED" value="50.00" />
+		<parameter id="MAXIMUM_ORDER_TO_FREE_SHIPPING" value="100.00" />
 	</parameters>
 </application>
+
+

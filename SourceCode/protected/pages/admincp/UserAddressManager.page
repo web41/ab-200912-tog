@@ -69,7 +69,7 @@
 									<com:TLabel Text="<%# $this->Parent->Data->Address1.', '.$this->Parent->Data->City.', '.$this->Parent->Data->State.' '.$this->Parent->Data->ZipCode %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="10%">
+							<com:TTemplateColumn HeaderStyle.Width="12%" ItemStyle.CustomStyle="text-align:left">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(4,(($this->Page->SortBy==4 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">Country
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==4 %>" />
@@ -79,7 +79,7 @@
 									<com:TLabel Text="<%# $this->Parent->Data->Country->Name %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="10%">
+							<com:TTemplateColumn HeaderStyle.Width="10%" ItemStyle.CustomStyle="text-align:left">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">Type
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />

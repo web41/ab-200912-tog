@@ -31,7 +31,7 @@
 				<!-- Main box -->
 				<div class="main_box">
 					<div class="title"><div><div>
-						<h2>Supplier List</h2>
+						<h2>order List</h2>
 						<div style="float:right;height:26px;padding:7px 5px 0 0;">
 							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/><com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
 							<com:TRequiredFieldValidator ID="val1"
@@ -65,7 +65,7 @@
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							
-							<com:TTemplateColumn HeaderStyle.Width="10%">
+							<com:TTemplateColumn HeaderStyle.Width="8%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">Total
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
@@ -76,7 +76,7 @@
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 
-							<com:TTemplateColumn HeaderStyle.Width="10%">
+							<com:TTemplateColumn HeaderStyle.Width="18%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">Create Date
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />

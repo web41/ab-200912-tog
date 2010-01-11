@@ -71,7 +71,7 @@
 									<com:THyperLink Text="<%# $this->Parent->Data->Email %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.UserForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Email)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="10%">
+							<com:TTemplateColumn HeaderStyle.Width="12%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(4,(($this->Page->SortBy==4 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->TypeID) %>">Role
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==4 %>" />

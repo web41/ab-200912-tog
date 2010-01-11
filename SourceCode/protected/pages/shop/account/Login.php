@@ -29,6 +29,7 @@ class Login extends TPage
 				$this->Notice->Text = $this->Application->getModule('message')->translate('USER_LOGIN_FAILED');
 			}
 		}
+		$this->categoryMenu->populateData();
 	}
 }
 

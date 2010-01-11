@@ -49,8 +49,8 @@
                                         <input type="button" class="btn_smallenter" value="" />
 									</div>
 								</td>
-								<td class="field">                                
-									&nbsp;
+								<td class="field">&nbsp;                                
+									
 								</td>
 							</tr>
 							<tr>
@@ -60,8 +60,8 @@
 										<a href="#">jen@gmail.com - "click here to view detail"</a>
 									</div>
 								</td>
-								<td class="field">                                
-									&nbsp;
+								<td class="field">&nbsp;                                
+									
 								</td>
 							</tr>
 							<tr>
@@ -139,8 +139,17 @@
 								</td>
 							</tr>
                             <tr>
-								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
-									&nbsp;
+								<td class="field" colspan="2">
+									<div class="text">payment</div>
+									<div class="control">
+										text text text
+                                        &nbsp;<input type="button" class="btn_edit" value="" style="float:none" />
+									</div>
+								</td>
+							</tr>
+                            <tr>
+								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">&nbsp;
+									
 								</td>
 								<td class="field2" style="width:50%;line-height:20px">
 									<div class="price">

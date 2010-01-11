@@ -44,7 +44,11 @@ class ShippingMethod extends TPage
 			if ($cartRecord instanceof CartTempRecord)
 			{
 				$cartRecord->ShippingMethodID = $method->ID;
-				$cartRecord->ShippingAmount = $method->Price;
+				if ($cartRecord->Subtotal-$cartRecord->CouponAmount>=TPropertyValue::ensureFloat($this->Application->Parameters["MAXIMUM_ORDER_TO_FREE_SHIPPING"]))
+				{
+					$cartRecord->ShippingAmount = 0;
+				}
+				else $cartRecord->ShippingAmount = $method->Price;
 				$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
 				try
 				{

@@ -60,27 +60,38 @@ class Index extends TPage
 	
 	public function btnSubmit_Clicked($sender, $param)
 	{
-		$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
-		if ($cartRecord instanceof CartTempRecord)
+		if ($this->IsValid)
 		{
-			$cartRecord->Subtotal = $cartRecord->getSubtotalInSession();
-			$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
-			try
+			$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+			if ($cartRecord instanceof CartTempRecord)
 			{
-				$cartRecord->save();
-				$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Index"));
+				$cartRecord->Subtotal = $cartRecord->getSubtotalInSession();
+				if ($cartRecord->Subtotal-$cartRecord->CouponAmount>=TPropertyValue::ensureFloat($this->Application->Parameters["MAXIMUM_ORDER_REQUIRED"]))
+				{
+					$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
+					try
+					{
+						$cartRecord->save();
+						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Index"));
+					}
+					catch(TException $ex)
+					{
+						$this->Notice->Type = UserNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+					}
+				}
+				else
+				{
+					$this->Notice->Type = UserNoticeType::Error;
+					$this->Notice->Text = $this->Application->getModule("message")->translate("MINIMUM_ORDER_REQUIRED");
+				}
+	
 			}
-			catch(TException $ex)
+			else
 			{
 				$this->Notice->Type = UserNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+				$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 			}
-			
-		}
-		else
-		{
-			$this->Notice->Type = UserNoticeType::Error;
-			$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 		}
 		$this->populateData();
 		$this->categoryMenu->populateData();
@@ -96,10 +107,19 @@ class Index extends TPage
 				$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
 				$cartRecord->CouponCode = $coupon->Code;
 				$cartRecord->CouponAmount = ($coupon->IsPercent) ? $cartRecord->getSubtotalInSession()*$coupon->Amount : $coupon->Amount;
-				$cartRecord->save();
-				$this->couponForm->Enabled = false;
-				$this->couponDiscount->Visible = true;
-				$this->lblCouponDiscount->Text = $this->getFormattedValue($cartRecord->CouponAmount);
+				if ($cartRecord->Subtotal-$cartRecord->CouponAmount>=TPropertyValue::ensureFloat($this->Application->Parameters["MAXIMUM_ORDER_REQUIRED"]))
+				{
+					$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
+					$cartRecord->save();
+					$this->couponForm->Enabled = false;
+					$this->couponDiscount->Visible = true;
+					$this->lblCouponDiscount->Text = $this->getFormattedValue($cartRecord->CouponAmount);
+				}
+				else
+				{
+					$this->Notice->Type = UserNoticeType::Error;
+					$this->Notice->Text = $this->Application->getModule("message")->translate("MINIMUM_ORDER_REQUIRED");
+				}
 			}
 			else
 			{

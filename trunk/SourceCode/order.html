@@ -3,10 +3,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Order Receipt</title>
-	<link href="http://localhost:8080/TOG/themes/default/style.css" rel="stylesheet" type="text/css" />
+	<link href="http://localhost:88/TOG/themes/default/style.css" rel="stylesheet" type="text/css" />
+    <STYLE TYPE="text/css" MEDIA=screen>
+	<!--
+	  BODY, div, h2, h3  {background:#fff;}
+	-->
+	</STYLE>
 </head>
 
-<body style="background-color:#fff;">
+<body style="background:none;">
 <!-- Main column -->
 <div class="main_col">
 	<div id="ctl0_content_mainBox" class="main_content">
@@ -39,7 +44,7 @@
 					Tel: 123-123-1232<br />
 				</td>
 			</tr>
-		</table>
+		</table><br />
 		<!-- Address: END -->
 
 
@@ -79,7 +84,7 @@
 	<td width="12%" style="border:0;">
 		$96.92
 	</td>
-</tr></table>
+</tr></table><br />
 		<!-- Product items: END -->
 
 		<!-- -->
@@ -125,7 +130,7 @@
 					</div>
 				</td>
 			</tr>
-		</table>
+		</table><br />
 
 		<div class="price" style="font-size:18px;float:right;">
 			<input type="button" class="button" value="Print this order" onclick="popup('printable','/TOG/shop/account/order-detail/printable',true)" />

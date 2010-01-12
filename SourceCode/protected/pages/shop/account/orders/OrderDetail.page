@@ -146,10 +146,10 @@
             	<td width="40%">
                 	Description
                 </td>
-                <td width="12%">
+                <td width="8%">
                 	Qty
                 </td>
-                <td width="12%">
+                <td width="16%">
                 	UOM
                 </td>
                 <td width="12%">
@@ -171,10 +171,10 @@
             	<td width="40%" style="border:0;text-align:left;">
                 	product name here
                 </td>
-                <td width="12%" style="border:0;">
+                <td width="8%" style="border:0;">
                 	1
                 </td>
-                <td width="12%" style="border:0;text-align:left;">
+                <td width="16%" style="border:0;text-align:left;">
                 	pcs
                 </td>
                 <td width="12%" style="border:0;">
@@ -191,10 +191,10 @@
             	<td width="40%" style="border:0;text-align:left;">
                 	product name here
                 </td>
-                <td width="12%" style="border:0;">
+                <td width="8%" style="border:0;">
                 	2
                 </td>
-                <td width="12%" style="border:0;text-align:left;">
+                <td width="16%" style="border:0;text-align:left;">
                 	pcs
                 </td>
                 <td width="12%" style="border:0;">
@@ -215,6 +215,7 @@
             <tr>
             	<td width="55%" valign="top">
                 	Delivery: text text text<br />
+                    Total packs: text text text<br />
                     Payment Terms: Paypal<br />
                     Delivery Date/Time: 01/09/2010 06:58:25 pm
                 </td>

@@ -49,24 +49,26 @@
 									</div>
 								</td>
 							</tr>
-                            <tr>
-								<td class="field">
-									<div class="text2">Processing</div>
-									<div class="control">
-										01/09/2010 06:58:25 pm
-									</div>
+                           <tr>
+								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
+									<div class="item_title">
+                                    	<div class="width_35">Status</div>
+                                        <div class="width_15_left">Date/Time</div>
+                                    </div>
 								</td>
-								<td class="field">&nbsp;</td>
 							</tr>
                             <tr>
-								<td class="field">
-									<div class="text2">Delivered</div>
-									<div class="control">
-										01/09/2010 06:58:25 pm
-									</div>
-								</td>
-								<td class="field">&nbsp;</td>
-							</tr>
+								<td class="field2" colspan="2">
+                                	<div class="item_text">
+                                    	<div class="width_35">Processing</div>
+                                        <div class="width_15_left">1</div>
+                                    </div>
+                                    <div class="item_text">
+                                    	<div class="width_35">Deliverd</div>
+                                        <div class="width_15_left">1</div>
+                                    </div>
+                            	</td>
+                            </tr>
 							<tr>
 								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
 									<b>Billing address</b><br />
@@ -79,6 +81,7 @@
 									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
                                     <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
                                     <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+                                    <input type="button" class="btn_edit" value="" />
 								</td>
 							</tr>
 							<tr>

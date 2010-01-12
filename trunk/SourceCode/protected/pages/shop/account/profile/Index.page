@@ -49,9 +49,9 @@
 				</td>
 			</tr>
             <tr>
-				<td class="left">billing / shipping</td>
+				<td class="left">shipping address & contacts</td>
 				<td class="right" style="font-size:12px;">
-					<a href="<%= $this->Service->ConstructUrl("shop.account.addresses.Index") %>" class="mail">Change billing / shipping information</a>
+					<a href="<%= $this->Service->ConstructUrl("shop.account.addresses.Index") %>" class="mail">Change shipping address & contacts</a>
 				</td>
 			</tr>
 			<tr>

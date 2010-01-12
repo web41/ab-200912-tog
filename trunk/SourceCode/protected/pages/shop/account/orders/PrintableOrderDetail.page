@@ -1,5 +1,5 @@
 <%@ MasterClass="Application.shared.Master" %>
-<com:TContent ID="title">The Organic Grocer - Order Receipt</com:TContent>
+<com:TContent ID="title">The Organic Grocer - Order Invoice</com:TContent>
 <com:TContent ID="content">
 
 <!-- Main column -->

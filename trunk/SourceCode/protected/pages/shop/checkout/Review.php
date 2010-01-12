@@ -165,7 +165,19 @@ class Review extends TPage
 						$orderItem = new OrderItemRecord;
 						$orderItem->OrderID = $order->ID;
 						$orderItem->ProductID = $cartDetail->ProductID;
+						$product = ProductRecord::finder()->withDiscount()->findByPk($orderItem->ProductID);
+						if ($product->Discount instanceof DiscountRecord)
+						{
+							$orderItem->DiscountName = $product->Discount->Name;
+							$orderItem->DiscountAmount = $product->Discount->Amount;
+							$orderItem->DiscountIsPercent = $product->Discount->IsPercent;
+						}
 						$orderItem->PropertyID = $cartDetail->PropertyID;
+						$prop = PropertyRecord::finder()->findByPk($orderItem->PropertyID);
+						if ($prop instanceof PropertyRecord)
+						{
+							$orderItem->UnitPrice = $prop->Price;
+						}
 						$orderItem->Quantity = $cartDetail->Quantity;
 						$orderItem->Subtotal = $cartDetail->Subtotal;
 						$orderItem->save();
@@ -173,7 +185,7 @@ class Review extends TPage
 					// insert order history
 					$orderHistory = new OrderHistoryRecord;
 					$orderHistory->OrderID = $order->ID;
-					$orderHistory->StatusCode = "P"; // 'P' means Processing
+					$orderHistory->StatusCode = "W"; // 'W' means Pending
 					$orderHistory->save();
 					
 					$payment = new PaymentRecord;
@@ -195,7 +207,7 @@ class Review extends TPage
 				catch(TException $ex)
 				{
 					$this->Notice->Type = UserNoticeType::Error;
-					$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+					$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 				}
 			}
 			else

@@ -14,100 +14,94 @@
 	<com:Application.shared.UserNotice ID="Notice" />
 	<com:PPanel ID="mainBox" CssClass="main_content" SaveHtml="true">
 	<!-- Inside box -->
-	<div class="inside_box">
-		<h2>Order Receipt</h2>
-		<div class="order_confirmation">
-			<div class="field" style="margin:0;">
-            	<div class="text">order number:</div>
-                <div class="value"><%= $this->Order->Num %></div>
-            </div>
-            <div class="field" style="margin:0;">
-            	<div class="text">order date:</div>
-                <div class="value"><%= date('m/d/Y h:i:s a',$this->Order->CreateDate) %></div>
-            </div>
-            <div class="field" style="margin:0;">
-            	<div class="text">order status:</div>
-                <div class="value"><%= $this->Order->LatestHistory->OrderStatus->Name %></div>
-            </div>
+	<div id="invoice">
+		<h2>Order Invoice</h2>
+		<div style="float:right;">
+			Invoice No. <b><%= $this->Order->Num %></b><br />
+			Date: <b><%= date('m/d/Y h:i:s A',$this->Order->CreateDate) %></b><br />
+			Status: <b><%= $this->Order->LatestHistory->OrderStatus->Name %></b>
 		</div>
-
-		<!-- Review -->
-		<h3>Order Summary</h3>
-		<div class="viewcart_container" style="margin-bottom:20px;">
-			<com:TRepeater ID="rptCart" ItemRenderer="Application.pages.shop.checkout.OrderItemTemplate">
-				<prop:HeaderTemplate>
-					<!-- Review title -->
-					<div class="cart_title" style="margin:0;">
-						<div class="prd_item" style="width:380px;">Product Name</div>
-						<div class="qty">Quantity</div>
-						<div class="price">Price</div>
-					</div>
-					<!-- Review title: END -->
-				</prop:HeaderTemplate>
-			</com:TRepeater>
-		</div>
-		<!-- Review: END -->
 
 		<!-- Address -->
-		<h3>Billing / Shipping</h3>
-		<div class="address_container" style="margin-bottom:5px;">
-			<!-- Address title -->
-			<div class="address_title" style="margin:0;">
-				<div class="adr_item2">Billing Address</div>
-				<div class="adr_item2">Shipping Address</div>
-			</div>
-			<!-- Address title: END -->
-
-			<!-- Address content -->
-			<div class="address_item">
-				<div class="adr_item2">
+		<table cellpadding="8" cellspacing="0" border="0" width="100%" >
+			<tr>
+				<td width="50%">
+					<b>Sold to:</b><br />
 					<%= $this->Order->BTitle." ".$this->Order->BFirstName." ".$this->Order->BLastName %><br />
 					<%= $this->Order->BAddress1.(strlen($this->Order->BAddress2)>0?", ".$this->Order->BAddress2:"").", ".$this->Order->BCity.", ".$this->Order->BState." ".$this->Order->BZipCode.", ".$this->Order->BCountry->Name %><br />
-					<%= "Phone: ".$this->Order->BPhone1.(strlen($this->Order->BFax)>0?", Fax: ".$this->Order->BFax:"") %><br />
-				</div>
-				<div class="adr_item2">
+					<%= "Tel: ".$this->Order->BPhone1.(strlen($this->Order->BFax)>0?", Fax: ".$this->Order->BFax:"") %><br />
+				</td>
+				<td width="50%">
+					<b>Deliver to:</b><br />
 					<%= $this->Order->STitle." ".$this->Order->SFirstName." ".$this->Order->SLastName %><br />
 					<%= $this->Order->SAddress1.(strlen($this->Order->SAddress2)>0?", ".$this->Order->SAddress2:"").", ".$this->Order->SCity.", ".$this->Order->SState." ".$this->Order->SZipCode.", ".$this->Order->SCountry->Name %><br />
-					<%= "Phone: ".$this->Order->SPhone1.(strlen($this->Order->SFax)>0?", Fax: ".$this->Order->SFax:"") %><br />
-				</div>
-			</div>
-			<!-- Address content: END -->
-		</div>
+					<%= "Tel: ".$this->Order->SPhone1.(strlen($this->Order->SFax)>0?", Fax: ".$this->Order->SFax:"") %><br />
+				</td>
+			</tr>
+		</table>
 		<!-- Address: END -->
 
-		<h3>shipping method</h3>
-		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;">
-			<%= $this->ShippingMethod->Name." (".$this->getFormattedValue($this->ShippingMethod->Price).")" %>
-			<a href="<%= $this->Service->ConstructUrl('shop.Delivery') %>" target="_blank">More info</a>
-		</div>
+		<com:TRepeater ID="rptCart" ItemRenderer="Application.pages.shop.checkout.OrderItemTemplate">
+			<prop:HeaderTemplate>
+				<!-- Review title -->
+				<table cellpadding="5" cellspacing="0" border="0" width="100%" style="text-align:center;margin-bottom:5px;">
+					<tr>
+						<td width="40%">Description</td>
+						<td width="8%">Qty</td>
+						<td width="16%">UOM</td>
+						<td width="12%">Price/Unit (SGD)</td>
+						<td width="12%">Disc/Unit (%)</td>
+						<td width="12%">Total (SGD)</td>
+					</tr>
+				</table>
+				<!-- Review title: END -->
+				<table cellpadding="4" cellspacing="0" width="100%" style="border:0;text-align:right;">
+			</prop:HeaderTemplate>
+			<prop:FooterTemplate></table></prop:FooterTemplate>
+		</com:TRepeater>
+		<!-- Product items: END -->
 
-		<h3>payment method</h3>
-		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
-			<com:TImage ImageUrl="<%= $this->Request->getBaseUrl($this->Request->IsSecureConnection).($this->Request->UrlManagerModule->UrlPrefix!='/'?$this->Request->UrlManagerModule->UrlPrefix:'') %>/useruploads/images/payment_method/<%= $this->Payment->PaymentMethod->ImagePath %>" ImageAlign="middle" Height="32px" />
-		</div>
-
-		<div class="viewcart_container" style="margin:0;">
-			<div class="cart_review">
-				<div class="price">
-					<div class="text">cart total</div>
-					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->Subtotal %>" /></div>
-				</div>
-				<div class="price">
-					<div class="text">coupon discount</div>
-					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->CouponAmount %>" /></div>
-				</div>
-				<div class="price">
-					<div class="text">shipping cost</div>
-					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price %>" /></div>
-				</div>
-				<div class="price" style="font-size:18px;margin:5px 0 10px 0;">
-					<div class="text">order total</div>
-					<div class="value" style="color:#7aa825"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->Total %>" /></div>
-				</div>
-				<div class="price" style="font-size:18px;margin:10px 0 0 0;">
-					<input type="button" class="button" value="Print this order" onclick="popup('printable','<%= $this->Service->ConstructUrl('shop.account.orders.PrintableOrderDetail') %>',true)" />
-				</div>
-			</div>
+		<!-- -->
+		<table cellpadding="8" cellspacing="0" border="0" width="100%" >
+			<tr>
+				<td width="55%" valign="top">
+					Delivery: <%= strlen($this->Order->Deliverer)>0?$this->Order->Deliverer:"--" %><br />
+					Total packs: <%= $this->Order->TotalPacks>0?$this->Order->TotalPacks:"--" %><br />
+					Payment Terms: <%= $this->Payment->PaymentMethod->Name %><br />
+					Delivery Date/Time: <%= $this->Order->EstDeliveryDate>0 ? date('m/d/Y h:i:s a',$this->Order->EstDeliveryDate) : "--" %>
+				</td>
+				<td width="45%" valign="top">
+					<div style="float:right;margin:0;">
+						<div class="price">
+							<div class="text">Subtotal:</div>
+							<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->Subtotal %>" /></div>
+						</div>
+						<div class="price">
+							<div class="text">Delivery Surcharge:</div>
+							<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price %>" /></div>
+						</div>
+						<div class="price">
+							<div class="text">Delivery Discount:</div>
+							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price-$this->Order->ShippingAmount %>" /></div>
+						</div>
+						<div class="price">
+							<div class="text">Coupon Discount:</div>
+							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->CouponAmount %>" /></div>
+						</div>
+						<div class="price">
+							<div class="text">organic point rebate:</div>
+							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->RewardPointsRebate %>" /></div>
+						</div>
+						<div class="price">
+							<div class="text">total:</div>
+							<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->Total %>" /></div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div class="price" style="font-size:18px;float:right;">
+			<input type="button" class="button" value="Print this order" onclick="popup('printable','<%= $this->Service->ConstructUrl('shop.account.orders.PrintableOrderDetail') %>',true)" />
 		</div>
 	</div>
 	<!-- Inside box: END -->

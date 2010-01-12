@@ -69,13 +69,13 @@
 				<div class="adr_item2">
 					<%= $this->BillingAddress ? $this->BillingAddress->Title." ".$this->BillingAddress->FirstName." ".$this->BillingAddress->LastName : "" %><br />
 					<%= $this->BillingAddress ? $this->BillingAddress->Address1.(strlen($this->BillingAddress->Address2)>0?", ".$this->BillingAddress->Address2:"").", ".$this->BillingAddress->City.", ".$this->BillingAddress->State." ".$this->BillingAddress->ZipCode.", ".$this->BillingAddress->Country->Name : "" %><br />
-					<%= $this->BillingAddress ? "Phone: ".$this->BillingAddress->Phone1.(strlen($this->BillingAddress->Fax)>0?", Fax: ".$this->BillingAddress->Fax:"") : "" %><br />
+					<%= $this->BillingAddress ? "Tel: ".$this->BillingAddress->Phone1.(strlen($this->BillingAddress->Fax)>0?", Fax: ".$this->BillingAddress->Fax:"") : "" %><br />
 					<input type="button" style="float:left;margin:5px 0 5px 0;" class="button" value="Edit Address" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.Billing') %>'" />
 				</div>
 				<div class="adr_item2">
 					<%= $this->ShippingAddress ? $this->ShippingAddress->Title." ".$this->ShippingAddress->FirstName." ".$this->ShippingAddress->LastName : "" %><br />
 					<%= $this->ShippingAddress ? $this->ShippingAddress->Address1.(strlen($this->ShippingAddress->Address2)>0?", ".$this->ShippingAddress->Address2:"").", ".$this->ShippingAddress->City.", ".$this->ShippingAddress->State." ".$this->ShippingAddress->ZipCode.", ".$this->ShippingAddress->Country->Name : "" %><br />
-					<%= $this->ShippingAddress ? "Phone: ".$this->ShippingAddress->Phone1.(strlen($this->ShippingAddress->Fax)>0?", Fax: ".$this->ShippingAddress->Fax:"") : "" %><br />
+					<%= $this->ShippingAddress ? "Tel: ".$this->ShippingAddress->Phone1.(strlen($this->ShippingAddress->Fax)>0?", Fax: ".$this->ShippingAddress->Fax:"") : "" %><br />
 					<input type="button" style="float:left;margin:5px 0 5px 0;" class="button" value="Edit Address" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.Shipping') %>'"/>
 				</div>
 			</div>
@@ -114,7 +114,11 @@
 				</div>
 				<div class="price">
 					<div class="text">delivery surcharge</div>
-					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart->ShippingAmount %>" /></div>
+					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price %>" /></div>
+				</div>
+				<div class="price">
+					<div class="text">delivery discount</div>
+					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price-$this->Cart->ShippingAmount %>" /></div>
 				</div>
 				<div class="price">
 					<div class="text">coupon discount</div>

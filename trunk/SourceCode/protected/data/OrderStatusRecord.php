@@ -31,5 +31,13 @@ class OrderStatusRecord extends TActiveRecord
 		$this->Alias = String::removeAccents(strlen($this->Alias) > 0 ? $this->Alias : $this->Name);
 		parent::save();
 	}
+	
+	public function getAllItems()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "status_id > 0";
+		$criteria->OrdersBy["status_name"] = "asc";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

@@ -37,7 +37,7 @@
 		<!-- error handler -->
 		<module id="error" class="Application.common.TOGErrorHandler" />
 		<module id="db" class="System.Data.TDataSourceConfig">
-			<database ConnectionString="mysql:host=localhost;dbname=tog_db" username="root" password=""/>
+			<database ConnectionString="mysql:host=localhost;dbname=tog_db_test_server" username="root" password=""/>
 			<!--database ConnectionString="mysql:host=localhost;dbname=dosithuy_tog" username="dosithuy_tog" password="tog123"/-->
 		</module>
 		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
@@ -174,7 +174,7 @@
 		<parameter id="USER_TITLE" value="('Mr.'=>'Mr.','Mrs.'=>'Mrs.','Miss.'=>'Miss.','Dr.'=>'Dr.','Prof.'=>'Prof.')" />
 		<parameter id="PAYMENT_STATUS" value="(0=>'Pending',-1=>'Declined',1=>'Approved')" />
 		<parameter id="PAYPAL_INFO" value="('business'=>'dosithuyen@gmail.com', 'currency'=>'USD', 'auth_token'=>'soZLyylMjyanw7yu5zFnON3MOtZ5Zg-dYLpsXiViO9Q8CX9TPAsRkJcpvHu')" />
-		<parameter id="MINIMUM_ORDER_REQUIRED" value="50.00" />
+		<parameter id="MAXIMUM_ORDER_REQUIRED" value="50.00" />
 		<parameter id="MAXIMUM_ORDER_TO_FREE_SHIPPING" value="100.00" />
 	</parameters>
 </application>

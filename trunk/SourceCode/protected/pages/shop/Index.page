@@ -15,7 +15,7 @@
 	<div class="main_content">
 		<!-- Product box -->
 		<com:TRepeater ID="ItemList" 
-			AllowPaging="true" PageSize="5"
+			AllowPaging="true" PageSize="8"
 			ItemRenderer="Application.pages.shop.ProductBoxTemplate" />
 		<!-- Product box: END -->
 

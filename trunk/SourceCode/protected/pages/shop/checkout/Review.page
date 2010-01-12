@@ -109,16 +109,20 @@
 		<div class="viewcart_container" style="margin:0;">
 			<div class="cart_review">
 				<div class="price">
-					<div class="text">cart total</div>
+					<div class="text">subtotal</div>
 					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= CartTempRecord::finder()->getSubtotalInSession() %>" /></div>
+				</div>
+				<div class="price">
+					<div class="text">delivery surcharge</div>
+					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart->ShippingAmount %>" /></div>
 				</div>
 				<div class="price">
 					<div class="text">coupon discount</div>
 					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart ? $this->Cart->CouponAmount : 0 %>" /></div>
 				</div>
 				<div class="price">
-					<div class="text">shipping cost</div>
-					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod ? $this->ShippingMethod->Price : 0 %>" /></div>
+					<div class="text">orgranic point rebate</div>
+					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="0" /></div>
 				</div>
 				<div class="price" style="font-size:18px;margin:5px 0 10px 0;">
 					<div class="text">order total</div>

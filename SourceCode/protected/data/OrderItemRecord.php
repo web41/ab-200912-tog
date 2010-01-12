@@ -10,6 +10,10 @@ class OrderItemRecord extends TActiveRecord
 	public $OrderID;
 	public $ProductID;
 	public $PropertyID;
+	public $DiscountName;
+	public $DiscountAmount;
+	public $DiscountIsPercent;
+	public $UnitPrice;
 	public $Quantity;
 	public $Subtotal;
 	public $CreateDate;
@@ -21,6 +25,10 @@ class OrderItemRecord extends TActiveRecord
 		'order_id'=>'OrderID',
 		'product_id'=>'ProductID',
 		'prop_id'=>'PropertyID',
+		'discount_name'=>'DiscountName',
+		'discount_amount'=>'DiscountAmount',
+		'discount_is_percent'=>'DiscountIsPercent',
+		'unit_price'=>'UnitPrice',
 		'quantity'=>'Quantity',
 		'subtotal'=>'Subtotal',
 		'c_date'=>'CreateDate',

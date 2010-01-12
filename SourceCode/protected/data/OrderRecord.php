@@ -39,8 +39,12 @@ class OrderRecord extends TActiveRecord
 	public $TaxAmount;
 	public $ShippingMethodID;
 	public $ShippingAmount;
+	public $EstDeliveryDate;
 	public $CouponCode;
 	public $CouponAmount;
+	public $RewardPointsRebate;
+	public $Deliverer;
+	public $TotalPacks;
 	public $Total;
 	public $Currency;
 	public $IPAddress;
@@ -82,8 +86,12 @@ class OrderRecord extends TActiveRecord
 		'tax_amount'=>'TaxAmount',
 		'shipping_method_id'=>'ShippingMethodID',
 		'shipping_amount'=>'ShippingAmount',
+		'est_delivery_date'=>'EstDeliveryDate',
 		'coupon_code'=>'CouponCode',
 		'coupon_amount'=>'CouponAmount',
+		'reward_points_rebate'=>'RewardPointsRebate',
+		'deliverer_name'=>'Deliverer',
+		'total_packs'=>'TotalPacks',
 		'total'=>'Total',
 		'currency'=>'Currency',
 		'ip_address'=>'IPAddress',
@@ -107,9 +115,16 @@ class OrderRecord extends TActiveRecord
 		return parent::finder($className);
 	}
 	
-	public function generateOrderNumber($prefix="TOG")
+	public function generateOrderNumber($prefix="",$length=6,$number=0)
 	{
-		return $prefix.strtoupper(uniqid(time()));
+		if ($number<=0)
+		{
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "order_id > 0";
+			$number = self::finder()->count($criteria)+1;
+		}
+		$arg = "%0{$length}d";
+		return $prefix.date("mdY",time())."-".sprintf($arg, $number);
 	}
 	
 	public function save()
@@ -118,6 +133,9 @@ class OrderRecord extends TActiveRecord
 		{
 			$this->Num = $this->generateOrderNumber();
 			$this->UserID = Prado::getApplication()->User->ID;
+			$this->Deliverer = "";
+			$this->TotalPacks = 0;
+			$this->EstDeliveryDate = $this->estimateDeliveryDate();
 			$this->CreateDate = time();
 		}
 		$this->ModifyDate = time();
@@ -130,6 +148,11 @@ class OrderRecord extends TActiveRecord
 		$criteria->Condition = "order_id = :id and c_date = (select max(c_date) from tbl_order_history where order_id = :id)";
 		$criteria->Parameters[":id"] = $this->ID;
 		return OrderHistoryRecord::finder()->withOrderStatus()->find($criteria);
+	}
+	
+	protected function estimateDeliveryDate()
+	{
+		return 0;
 	}
 }
 ?>

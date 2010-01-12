@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Order Receipt</title>
+	<link href="http://localhost:8080/TOG/themes/default/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body style="background-color:#fff;">
+<!-- Main column -->
+<div class="main_col">
+	<div id="ctl0_content_mainBox" class="main_content">
+	<!-- Inside box -->
+	<div id="invoice">
+
+		<h2>Order Invoice</h2>
+		<div style="float:right;">
+			Invoice No. <b>01122010-000002</b><br />
+			Date: <b>01/12/2010 03:56:33 PM</b><br />
+			Status: <b>Pending</b>
+
+		</div>
+
+		<!-- Address -->
+		<table cellpadding="8" cellspacing="0" border="0" width="100%" >
+			<tr>
+				<td width="50%">
+					<b>Sold to:</b><br />
+					 Money Do<br />
+
+					2345 Money fields, Houston, TX 56565, United States<br />
+					Tel: 234-234-343<br />
+				</td>
+				<td width="50%">
+					<b>Deliver to:</b><br />
+					 Money Nguyen<br />
+					345 F21 QBT, Ho Chi Minh, Ho Chi Minh 70000, Viet Nam<br />
+
+					Tel: 123-123-1232<br />
+				</td>
+			</tr>
+		</table>
+		<!-- Address: END -->
+
+
+				<!-- Review title -->
+				<table cellpadding="5" cellspacing="0" border="0" width="100%" style="text-align:center;margin-bottom:5px;">
+					<tr>
+
+						<td width="40%">Description</td>
+						<td width="8%">Qty</td>
+						<td width="16%">UOM</td>
+						<td width="12%">Price/Unit (SGD)</td>
+						<td width="12%">Disc/Unit (%)</td>
+						<td width="12%">Total (SGD)</td>
+
+					</tr>
+				</table>
+				<!-- Review title: END -->
+				<table cellpadding="4" cellspacing="0" width="100%" style="border:0;text-align:right;">
+			<tr>
+	<td width="40%" style="border:0;text-align:left;">
+		<a href="/TOG/shop/product-detail/256/greenland-halibut-portion">Greenland Halibut Portion</a>
+	</td>
+
+	<td width="8%" style="border:0;">
+		<span>4</span>
+	</td>
+	<td width="16%" style="border:0;text-align:left;">
+		400g/unit
+	</td>
+	<td width="12%" style="border:0;">
+		$24.23
+	</td>
+
+	<td width="12%" style="border:0;">
+		$0.00
+	</td>
+	<td width="12%" style="border:0;">
+		$96.92
+	</td>
+</tr></table>
+		<!-- Product items: END -->
+
+		<!-- -->
+		<table cellpadding="8" cellspacing="0" border="0" width="100%" >
+
+			<tr>
+				<td width="55%" valign="top">
+					Delivery: --<br />
+					Total packs: --<br />
+					Payment Terms: Cash On Delivery<br />
+					Delivery Date/Time: --
+				</td>
+				<td width="45%" valign="top">
+
+					<div style="float:right;margin:0;">
+						<div class="price">
+							<div class="text">Subtotal:</div>
+							<div class="value">$96.92</div>
+						</div>
+						<div class="price">
+							<div class="text">Delivery Surcharge:</div>
+
+							<div class="value">$8.47</div>
+						</div>
+						<div class="price">
+							<div class="text">Delivery Discount:</div>
+							<div class="value">-$0.00</div>
+						</div>
+						<div class="price">
+
+							<div class="text">Coupon Discount:</div>
+							<div class="value">-$0.00</div>
+						</div>
+						<div class="price">
+							<div class="text">organic point rebate:</div>
+							<div class="value">-$0.00</div>
+						</div>
+
+						<div class="price">
+							<div class="text">total:</div>
+							<div class="value">$105.39</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<div class="price" style="font-size:18px;float:right;">
+			<input type="button" class="button" value="Print this order" onclick="popup('printable','/TOG/shop/account/order-detail/printable',true)" />
+		</div>
+	</div>
+	<!-- Inside box: END -->
+	</div>
+</div>
+<!-- Main column: END -->
+</body>
+</html>

@@ -81,7 +81,6 @@
 									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
                                     <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
                                     <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-                                    <input type="button" class="btn_edit" value="" />
 								</td>
 							</tr>
 							<tr>
@@ -145,6 +144,28 @@
                             	</td>
                             </tr>
                             <tr>
+								<td class="field">
+									<div class="text">deliver</div>
+									<div class="control">
+										<select>
+                                        	<option>Hubert</option>
+                                            <option>Jodie</option>
+                                            <option>Sandy</option>
+                                        </select>
+									</div>
+								</td>
+								<td class="field">                             
+									<div class="text">Total Packs</div>
+									<div class="control">
+										<select>
+                                        	<option>Hubert</option>
+                                            <option>Jodie</option>
+                                            <option>Sandy</option>
+                                        </select>
+									</div>
+								</td>
+							</tr>
+                            <tr>
 								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
 									&nbsp;
 								</td>
@@ -168,6 +189,15 @@
 								</td>
 							</tr>
 						</table>
+                        <div class="field" style="border:none;margin-bottom:0;">
+							<div class="text">&nbsp;</div>
+							<div class="control" style="float:right;">
+                            	<input type="button" class="btn_addnew" value="" /><!-- Nut generate & process invoice -->
+                                <input type="button" class="btn_addnew" value="" /><!-- Nut add payment invoice -->
+                                <input type="button" class="btn_edit" value="" />
+                                <input type="button" class="btn_cancel" value="" />
+							</div>
+						</div>
 					</div>
 				</com:TPanel>
 				<!-- Form sample: END -->

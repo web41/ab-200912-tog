@@ -11,6 +11,7 @@ class PaymentRecord extends TActiveRecord
 	public $OrderID;
 	public $Amount;
 	public $Status;
+	public $Comments;
 	public $CreateDate;
 	public $ModifyDate;
 	
@@ -21,6 +22,7 @@ class PaymentRecord extends TActiveRecord
 		'order_id'=>'OrderID',
 		'payment_amount'=>'Amount',
 		'payment_status'=>'Status',
+		'comments'=>'Comments',
 		'c_date'=>'CreateDate',
 		'm_date'=>'ModifyDate'
 	);

@@ -25,177 +25,177 @@
 								<td class="field" style="height:28px;">
 									<div class="text2">Order number</div>
 									<div class="control">
-										TOG12630347054B486151A151E
+										<b><com:TLabel ID="lblOrderNum" /></b>
 									</div>
 								</td>
 								<td class="field">                                
 									<div class="text2">Order date</div>
 									<div class="control">
-										01/09/2010 06:58:25 pm
+										<com:TLabel ID="lblOrderDate" />
 									</div>
 								</td>
 							</tr>
-                            <tr>
+							<tr>
 								<td class="field">
 									<div class="text2">latest Status</div>
 									<div class="control">
-										Pending
+										<com:TLabel ID="lblLatestStatus" />
 									</div>
 								</td>
 								<td class="field">                             
 									<div class="text2">User</div>
 									<div class="control">
-										<a href="#">jen@gmail.com - "click here to view detail"</a>
+										<com:THyperLink ID="lnkUser" />
 									</div>
 								</td>
 							</tr>
-                           <tr>
-								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
-									<div class="item_title">
-                                    	<div class="width_35">Status</div>
-                                        <div class="width_15_left">Date/Time</div>
-                                    </div>
-								</td>
-							</tr>
-                            <tr>
-								<td class="field2" colspan="2">
-                                	<div class="item_text">
-                                    	<div class="width_35">Processing</div>
-                                        <div class="width_15_left">1</div>
-                                    </div>
-                                    <div class="item_text">
-                                    	<div class="width_35">Deliverd</div>
-                                        <div class="width_15_left">1</div>
-                                    </div>
-                            	</td>
-                            </tr>
 							<tr>
 								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
 									<b>Billing address</b><br />
-                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
 								</td>
 								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px">
-	                                <b>Shipping address</b><br />
+									<b>Shipping address</b><br />
 									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
 								</td>
 							</tr>
 							<tr>
 								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
 									<div class="item_title">
-                                    	<div class="width_35">Product Items</div>
-                                        <div class="width_10">Quantity</div>
-                                        <div class="width_10">UOM</div>
-                                        <div class="width_15">Price/Unit (SGD)</div>
-                                        <div class="width_15">Disc/Unit (%)</div>
-                                        <div class="width_15">Total (SGD)</div>
-                                    </div>
+										<div class="width_35">Product Items</div>
+										<div class="width_10">Quantity</div>
+										<div class="width_10">UOM</div>
+										<div class="width_15">Price/Unit (SGD)</div>
+										<div class="width_15">Disc/Unit (%)</div>
+										<div class="width_15">Total (SGD)</div>
+									</div>
 								</td>
 							</tr>
-                            <tr>
+							<tr>
 								<td class="field2" colspan="2">
 									<div class="item_text">
-                                    	<div class="width_35">OG Creamy Butternut Squash Soup</div>
-                                        <div class="width_10">1</div>
-                                        <div class="width_10">ml</div>
-                                        <div class="width_15">4.28</div>
-                                        <div class="width_15">10%</div>
-                                        <div class="width_15">1.28</div>
-                                    </div>
-                                    <div class="item_text">
-                                    	<div class="width_35">Lemongrass, Ginger & Citrus Fruits 1.5g</div>
-                                        <div class="width_10">1</div>
-                                        <div class="width_10">g</div>
-                                        <div class="width_15">7.13</div>
-                                        <div class="width_15">0%</div>
-                                        <div class="width_15">7.13</div>
-                                    </div>
-                                    <div class="item_text">
-                                    	<div class="width_35">OG Creamy Butternut Squash Soup</div>
-                                        <div class="width_10">1</div>
-                                        <div class="width_10">ml</div>
-                                        <div class="width_15">4.28</div>
-                                        <div class="width_15">10%</div>
-                                        <div class="width_15">1.28</div>
-                                    </div>
+										<div class="width_35">OG Creamy Butternut Squash Soup</div>
+										<div class="width_10">1</div>
+										<div class="width_10">ml</div>
+										<div class="width_15">4.28</div>
+										<div class="width_15">10%</div>
+										<div class="width_15">1.28</div>
+									</div>
+									<div class="item_text">
+										<div class="width_35">Lemongrass, Ginger & Citrus Fruits 1.5g</div>
+										<div class="width_10">1</div>
+										<div class="width_10">g</div>
+										<div class="width_15">7.13</div>
+										<div class="width_15">0%</div>
+										<div class="width_15">7.13</div>
+									</div>
+									<div class="item_text">
+										<div class="width_35">OG Creamy Butternut Squash Soup</div>
+										<div class="width_10">1</div>
+										<div class="width_10">ml</div>
+										<div class="width_15">4.28</div>
+										<div class="width_15">10%</div>
+										<div class="width_15">1.28</div>
+									</div>
 								</td>
 							</tr>
-                            <tr>
+							<tr>
 								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
 									<div class="item_title">
-                                    	<div class="width_35">Payment Term</div>
-                                        <div class="width_15">Payment Status</div>
-                                    </div>
+										<div class="width_35">Payment Term</div>
+										<div class="width_15">Payment Status</div>
+									</div>
 								</td>
 							</tr>
-                            <tr>
+							<tr>
 								<td class="field2" colspan="2">
-                                	<div class="item_text">
-                                    	<div class="width_35">Paypal</div>
-                                        <div class="width_15">1</div>
-                                    </div>
-                                    <div class="item_text">
-                                    	<div class="width_35">Paypal</div>
-                                        <div class="width_15">1</div>
-                                    </div>
-                            	</td>
-                            </tr>
-                            <tr>
+									<div class="item_text">
+										<div class="width_35">Paypal</div>
+										<div class="width_15">1</div>
+									</div>
+									<div class="item_text">
+										<div class="width_35">Paypal</div>
+										<div class="width_15">1</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
+									<div class="item_title">
+										<div class="width_35">Status</div>
+										<div class="width_15_left">Date/Time</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field2" colspan="2">
+									<div class="item_text">
+										<div class="width_35">Processing</div>
+										<div class="width_15_left">1</div>
+									</div>
+									<div class="item_text">
+										<div class="width_35">Deliverd</div>
+										<div class="width_15_left">1</div>
+									</div>
+								</td>
+							</tr>
+							<tr>
 								<td class="field">
 									<div class="text">deliver</div>
 									<div class="control">
 										<select>
-                                        	<option>Hubert</option>
-                                            <option>Jodie</option>
-                                            <option>Sandy</option>
-                                        </select>
+											<option>Hubert</option>
+											<option>Jodie</option>
+											<option>Sandy</option>
+										</select>
 									</div>
 								</td>
 								<td class="field">                             
 									<div class="text">Total Packs</div>
 									<div class="control">
 										<select>
-                                        	<option>Hubert</option>
-                                            <option>Jodie</option>
-                                            <option>Sandy</option>
-                                        </select>
+											<option>Hubert</option>
+											<option>Jodie</option>
+											<option>Sandy</option>
+										</select>
 									</div>
 								</td>
 							</tr>
-                            <tr>
+							<tr>
 								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
 									&nbsp;
 								</td>
 								<td class="field2" style="width:50%;line-height:20px">
 									<div class="price">
-                                    	<div class="text">subtotal:</div>
-                                        <div class="value">S$10</div>
-                                    </div>
-                                    <div class="price">
-                                    	<div class="text">shipping fee:</div>
-                                        <div class="value">S$5.88</div>
-                                    </div>
-                                    <div class="price">
-                                    	<div class="text">organic point:</div>
-                                        <div class="value">100</div>
-                                    </div>
-                                    <div class="price">
-                                    	<div class="text">total:</div>
-                                        <div class="value">S$100</div>
-                                    </div>
+										<div class="text">subtotal:</div>
+										<div class="value">S$10</div>
+									</div>
+									<div class="price">
+										<div class="text">shipping fee:</div>
+										<div class="value">S$5.88</div>
+									</div>
+									<div class="price">
+										<div class="text">organic point:</div>
+										<div class="value">100</div>
+									</div>
+									<div class="price">
+										<div class="text">total:</div>
+										<div class="value">S$100</div>
+									</div>
 								</td>
 							</tr>
 						</table>
-                        <div class="field" style="border:none;margin-bottom:0;">
+						<div class="field" style="border:none;margin-bottom:0;">
 							<div class="text">&nbsp;</div>
 							<div class="control" style="float:right;">
-                            	<input type="button" class="btn_addnew" value="" /><!-- Nut generate & process invoice -->
-                                <input type="button" class="btn_addnew" value="" /><!-- Nut add payment invoice -->
-                                <input type="button" class="btn_edit" value="" />
-                                <input type="button" class="btn_cancel" value="" />
+								<input type="button" class="btn_addnew" value="" /><!-- Nut generate & process invoice -->
+								<input type="button" class="btn_addnew" value="" /><!-- Nut add payment invoice -->
+								<input type="button" class="btn_edit" value="" />
+								<input type="button" class="btn_cancel" value="" />
 							</div>
 						</div>
 					</div>

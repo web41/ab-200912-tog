@@ -142,6 +142,7 @@ class TOGUser extends TDbUser
 		$user = UserRecord::finder()->findByuser_emailAnduser_pwd($email,md5($password));
 		if ($user instanceof UserRecord)
 		{
+			$user->LastVisitIP = Prado::getApplication()->Request->UserHostAddress;
 			$user->LastVisitDate = time();
 			$user->save();
 			return true;

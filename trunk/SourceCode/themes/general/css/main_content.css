@@ -48,7 +48,7 @@
 	#container .main_col .main_box .content .field2 .width_10{width:10%;float:left;text-align:center;}
 	#container .main_col .main_box .content .field2 .width_15{width:14%;float:left;text-align:center;}
 	#container .main_col .main_box .content .field2 .width_25{width:25%;float:left;text-align:left;text-indent:5px;}
-	#container .main_col .main_box .content .field2 .width_15_left{width:14%;float:left;text-align:left;}
+	#container .main_col .main_box .content .field2 .width_15_left{width:14%;float:left;text-align:left;text-indent:5px;}
 
 	#container .main_col .main_box .content .field2 .price{float:right;width:auto;height:auto;margin:0 10px 2px 0;clear:both;}
 	#container .main_col .main_box .content .field2 .price .text{width:auto;float:left;text-align:left;text-transform:capitalize;margin:0;}

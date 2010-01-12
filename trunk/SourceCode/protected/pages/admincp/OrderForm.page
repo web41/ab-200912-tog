@@ -107,39 +107,48 @@
 								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
 									<div class="item_title">
 										<div class="width_35">Payment Term</div>
-										<div class="width_15">Payment Status</div>
+										<div class="width_10">Amount</div>
+                                        <div class="width_15">Status</div>
+                                        <div class="width_15">Comments</div>
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td class="field2" colspan="2">
 									<div class="item_text">
-										<div class="width_35">Paypal</div>
-										<div class="width_15">1</div>
+										<div class="width_35">Payment Term</div>
+										<div class="width_10">Amount</div>
+                                        <div class="width_15">Status</div>
+                                        <div class="width_15">Comments</div>
 									</div>
 									<div class="item_text">
-										<div class="width_35">Paypal</div>
-										<div class="width_15">1</div>
+										<div class="width_35">Payment Term</div>
+										<div class="width_10">Amount</div>
+                                        <div class="width_15">Status</div>
+                                        <div class="width_15">Comments</div>
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
 									<div class="item_title">
-										<div class="width_35">Status</div>
-										<div class="width_15_left">Date/Time</div>
+										<div class="width_25">Date</div>
+										<div class="width_25">Name</div>
+                                        <div class="width_35">Commments</div>
 									</div>
 								</td>
 							</tr>
 							<tr>
 								<td class="field2" colspan="2">
 									<div class="item_text">
-										<div class="width_35">Processing</div>
-										<div class="width_15_left">1</div>
+										<div class="width_25">Date</div>
+										<div class="width_25">Name</div>
+                                        <div class="width_35">Commments</div>
 									</div>
 									<div class="item_text">
-										<div class="width_35">Deliverd</div>
-										<div class="width_15_left">1</div>
+										<div class="width_25">Date</div>
+										<div class="width_25">Name</div>
+                                        <div class="width_35">Commments</div>
 									</div>
 								</td>
 							</tr>
@@ -166,8 +175,8 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
-									&nbsp;
+								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">&nbsp;
+									
 								</td>
 								<td class="field2" style="width:50%;line-height:20px">
 									<div class="price">

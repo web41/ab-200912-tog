@@ -37,47 +37,48 @@
 							</tr>
                             <tr>
 								<td class="field">
-									<div class="text">Status</div>
+									<div class="text2">latest Status</div>
 									<div class="control">
-										Processing &nbsp;
-                                        <select>
-                                        	<option>Update Status...</option>
-                                            <option>Processing</option>
-                                            <option>Approve</option>
-                                            <option>Decline</option>
-                                        </select> 
-                                        <input type="button" class="btn_smallenter" value="" />
+										Pending
 									</div>
 								</td>
-								<td class="field">&nbsp;                                
-									
-								</td>
-							</tr>
-							<tr>
-								<td class="field">
+								<td class="field">                             
 									<div class="text2">User</div>
 									<div class="control">
 										<a href="#">jen@gmail.com - "click here to view detail"</a>
 									</div>
 								</td>
-								<td class="field">&nbsp;                                
-									
+							</tr>
+                            <tr>
+								<td class="field">
+									<div class="text2">Processing</div>
+									<div class="control">
+										01/09/2010 06:58:25 pm
+									</div>
 								</td>
+								<td class="field">&nbsp;</td>
+							</tr>
+                            <tr>
+								<td class="field">
+									<div class="text2">Delivered</div>
+									<div class="control">
+										01/09/2010 06:58:25 pm
+									</div>
+								</td>
+								<td class="field">&nbsp;</td>
 							</tr>
 							<tr>
-								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
+								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
 									<b>Billing address</b><br />
-                                    jen nguyen<br />
-                                    123 quang , HCMC, VN 777777, Viet Nam<br />
-                                    Phone: 323-323-3233<br />
-                                    <input type="button" class="btn_edit" value="" style="float:none;margin:5px 0 0 0;" /><br /><br />
+                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
 								</td>
-								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px">
-									<b>Shipping address</b><br />
-                                    jen nguyen<br />
-                                    123 quang , HCMC, VN 777777, Viet Nam<br />
-                                    Phone: 323-323-3233<br />
-                                    <input type="button" class="btn_edit" value="" style="float:none;margin:5px 0 0 0;" /><br /><br />
+								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px">
+	                                <b>Shipping address</b><br />
+									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+                                    <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
 								</td>
 							</tr>
 							<tr>
@@ -96,60 +97,53 @@
 								<td class="field2" colspan="2">
 									<div class="item_text">
                                     	<div class="width_35">OG Creamy Butternut Squash Soup</div>
-                                        <div class="width_10_nopadding">
-                                        	<input type="text" class="textbox" />
-                                            <input type="button" class="btn_refresh" value=""  />
-                                        </div>
+                                        <div class="width_10">1</div>
                                         <div class="width_10">ml</div>
                                         <div class="width_15">4.28</div>
                                         <div class="width_15">10%</div>
                                         <div class="width_15">1.28</div>
-                                        <div class="width_5">
-                                        	<input type="button" class="btn_smalldelete" value=""  />
-                                        </div>
                                     </div>
                                     <div class="item_text">
                                     	<div class="width_35">Lemongrass, Ginger & Citrus Fruits 1.5g</div>
-                                        <div class="width_10_nopadding">
-                                        	<input type="text" class="textbox" />
-                                            <input type="button" class="btn_refresh" value=""  />
-                                        </div>
+                                        <div class="width_10">1</div>
                                         <div class="width_10">g</div>
                                         <div class="width_15">7.13</div>
                                         <div class="width_15">0%</div>
                                         <div class="width_15">7.13</div>
-                                        <div class="width_5">
-                                        	<input type="button" class="btn_smalldelete" value=""  />
-                                        </div>
                                     </div>
                                     <div class="item_text">
                                     	<div class="width_35">OG Creamy Butternut Squash Soup</div>
-                                        <div class="width_10_nopadding">
-                                        	<input type="text" class="textbox" />
-                                            <input type="button" class="btn_refresh" value=""  />
-                                        </div>
+                                        <div class="width_10">1</div>
                                         <div class="width_10">ml</div>
                                         <div class="width_15">4.28</div>
                                         <div class="width_15">10%</div>
                                         <div class="width_15">1.28</div>
-                                        <div class="width_5">
-                                        	<input type="button" class="btn_smalldelete" value=""  />
-                                        </div>
                                     </div>
 								</td>
 							</tr>
                             <tr>
-								<td class="field" colspan="2">
-									<div class="text">payment</div>
-									<div class="control">
-										text text text
-                                        &nbsp;<input type="button" class="btn_edit" value="" style="float:none" />
-									</div>
+								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
+									<div class="item_title">
+                                    	<div class="width_35">Payment Term</div>
+                                        <div class="width_15">Payment Status</div>
+                                    </div>
 								</td>
 							</tr>
                             <tr>
-								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">&nbsp;
-									
+								<td class="field2" colspan="2">
+                                	<div class="item_text">
+                                    	<div class="width_35">Paypal</div>
+                                        <div class="width_15">1</div>
+                                    </div>
+                                    <div class="item_text">
+                                    	<div class="width_35">Paypal</div>
+                                        <div class="width_15">1</div>
+                                    </div>
+                            	</td>
+                            </tr>
+                            <tr>
+								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
+									&nbsp;
 								</td>
 								<td class="field2" style="width:50%;line-height:20px">
 									<div class="price">

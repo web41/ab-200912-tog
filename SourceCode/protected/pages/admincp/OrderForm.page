@@ -16,7 +16,7 @@
 				<com:TPanel ID="mainBox" CssClass="main_box">
 					<div class="title">
 						<div>
-							<div><h2><com:TLabel ID="lblHeader" />order detail</h2></div>
+							<div><h2><com:TLabel ID="lblHeader" /></h2></div>
 						</div>
 					</div>
 					<div class="content">
@@ -52,107 +52,101 @@
 							<tr>
 								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
 									<b>Billing address</b><br />
-									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+									<com:TLabel ID="lblBilling" />
 								</td>
 								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px">
 									<b>Shipping address</b><br />
-									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
-									<input type="text" class="textbox" style="width:80px;"/> <input type="text" class="textbox" style="width:80px;"/><br />
+									<com:TLabel ID="lblShipping" />
 								</td>
 							</tr>
-							<tr>
-								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
-									<div class="item_title">
-										<div class="width_35">Product Items</div>
-										<div class="width_10">Quantity</div>
-										<div class="width_10">UOM</div>
-										<div class="width_15">Price/Unit (SGD)</div>
-										<div class="width_15">Disc/Unit (%)</div>
-										<div class="width_15">Total (SGD)</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="field2" colspan="2">
+							<com:TRepeater ID="rptOrderItem">
+								<prop:HeaderTemplate>
+									<tr>
+										<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
+											<div class="item_title">
+												<div class="width_35">Product Items</div>
+												<div class="width_10">Quantity</div>
+												<div class="width_10">UOM</div>
+												<div class="width_15">Price/Unit (SGD)</div>
+												<div class="width_15">Disc/Unit</div>
+												<div class="width_15">Total (SGD)</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="field2" colspan="2">
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
 									<div class="item_text">
-										<div class="width_35">OG Creamy Butternut Squash Soup</div>
-										<div class="width_10">1</div>
-										<div class="width_10">ml</div>
-										<div class="width_15">4.28</div>
-										<div class="width_15">10%</div>
-										<div class="width_15">1.28</div>
+										<div class="width_35"><a href="<%# $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>"><%= $this->Data && $this->Data->Product ? $this->Data->Product->Name : "" %></a></div>
+										<div class="width_10"><%# $this->Data ? $this->Data->Quantity : 0 %></div>
+										<div class="width_10"><%# ($this->Data->Property?$this->Data->Property->Name:"") %>/unit</div>
+										<div class="width_15"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data->UnitPrice %>" /></div>
+										<div class="width_15"><com:TNumberFormat Type="<%# $this->Data->DiscountIsPercent?'percentage':'currency' %>" Culture="en_US" Currency="USD" Value="<%# $this->Data->DiscountAmount %>" /></div>
+										<div class="width_15"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data ? $this->Data->Subtotal : 0 %>" /></div>
 									</div>
+								</prop:ItemTemplate>
+								<prop:FooterTemplate>
+										</td>
+									</tr>
+								</prop:FooterTemplate>
+							</com:TRepeater>
+							<com:TRepeater ID="rptPayment">
+								<prop:HeaderTemplate>
+									<tr>
+										<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
+											<div class="item_title">
+												<div class="width_25">Date</div>
+												<div class="width_15_left">Payment Term</div>
+												<div class="width_10">Amount</div>
+												<div class="width_15">Status</div>
+												<div class="width_15">Comments</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="field2" colspan="2">
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
 									<div class="item_text">
-										<div class="width_35">Lemongrass, Ginger & Citrus Fruits 1.5g</div>
-										<div class="width_10">1</div>
-										<div class="width_10">g</div>
-										<div class="width_15">7.13</div>
-										<div class="width_15">0%</div>
-										<div class="width_15">7.13</div>
+										<div class="width_25"><a href="<%# $this->Service->ConstructUrl('admincp.PaymentForm',array('oid'=>$this->Data->OrderID,'id'=>$this->Data->ID)) %>"><%# $this->Data->CreateDate>0 ? date('m/d/Y h:i:s A',$this->Data->CreateDate) : "--" %></a></div>
+										<div class="width_15_left"><%# $this->Data->PaymentMethod->Name %></div>
+										<div class="width_10"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data->Amount %>" /></div>
+										<div class="width_15"><%# $this->Page->PaymentStatus[$this->Data->Status] %></div>
+										<div class="width_15"><%# $this->Data->Comments %></div>
 									</div>
+								</prop:ItemTemplate>
+								<prop:FooterTemplate>
+										</td>
+									</tr>
+								</prop:FooterTemplate>
+							</com:TRepeater>
+							<com:TRepeater ID="rptHistory">
+								<prop:HeaderTemplate>
+									<tr>
+										<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
+											<div class="item_title">
+												<div class="width_25">Date</div>
+												<div class="width_15_left">Name</div>
+												<div class="width_35">Commments</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="field2" colspan="2">
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
 									<div class="item_text">
-										<div class="width_35">OG Creamy Butternut Squash Soup</div>
-										<div class="width_10">1</div>
-										<div class="width_10">ml</div>
-										<div class="width_15">4.28</div>
-										<div class="width_15">10%</div>
-										<div class="width_15">1.28</div>
+										<div class="width_25"><a href="<%# $this->Service->ConstructUrl('admincp.OrderHistoryForm',array('oid'=>$this->Data->OrderID,'id'=>$this->Data->ID)) %>"><%# $this->Data->CreateDate>0 ? date('m/d/Y h:i:s A',$this->Data->CreateDate) : "--" %></a></div>
+										<div class="width_15_left"><%# $this->Data->OrderStatus->Name %></div>
+										<div class="width_35"><%# $this->Data->Comments %></div>
 									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
-									<div class="item_title">
-										<div class="width_35">Payment Term</div>
-										<div class="width_10">Amount</div>
-                                        <div class="width_15">Status</div>
-                                        <div class="width_15">Comments</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="field2" colspan="2">
-									<div class="item_text">
-										<div class="width_35">Payment Term</div>
-										<div class="width_10">Amount</div>
-                                        <div class="width_15">Status</div>
-                                        <div class="width_15">Comments</div>
-									</div>
-									<div class="item_text">
-										<div class="width_35">Payment Term</div>
-										<div class="width_10">Amount</div>
-                                        <div class="width_15">Status</div>
-                                        <div class="width_15">Comments</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
-									<div class="item_title">
-										<div class="width_25">Date</div>
-										<div class="width_25">Name</div>
-                                        <div class="width_35">Commments</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="field2" colspan="2">
-									<div class="item_text">
-										<div class="width_25">Date</div>
-										<div class="width_25">Name</div>
-                                        <div class="width_35">Commments</div>
-									</div>
-									<div class="item_text">
-										<div class="width_25">Date</div>
-										<div class="width_25">Name</div>
-                                        <div class="width_35">Commments</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
+								</prop:ItemTemplate>
+								<prop:FooterTemplate>
+										</td>
+									</tr>
+								</prop:FooterTemplate>
+							</com:TRepeater>
 								<td class="field">
 									<div class="text">deliver</div>
 									<div class="control">
@@ -201,8 +195,9 @@
 						<div class="field" style="border:none;margin-bottom:0;">
 							<div class="text">&nbsp;</div>
 							<div class="control" style="float:right;">
-								<input type="button" class="btn_addnew" value="" /><!-- Nut generate & process invoice -->
-								<input type="button" class="btn_addnew" value="" /><!-- Nut add payment invoice -->
+								<input type="button" value="Generate" />
+								<input type="button" value="Add Order History" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.OrderHistoryForm",array("oid"=>$this->Item->ID)) %>'" />
+								<input type="button" value="Add Payment" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.PaymentForm",array("oid"=>$this->Item->ID)) %>'" />
 								<input type="button" class="btn_edit" value="" />
 								<input type="button" class="btn_cancel" value="" />
 							</div>

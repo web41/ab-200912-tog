@@ -63,7 +63,7 @@ class StatisticsPane extends TTemplateControl
 	
 	public function getCurrentUser()
 	{
-		$past_time = mktime(2, 0, 0, date("m") , date("d"), date("Y"));
+		$past_time = time()-2*60*60;
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "last_visit_date >= {$past_time} and last_visit_date <= ".time();
 		return UserRecord::finder()->count($criteria);

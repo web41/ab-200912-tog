@@ -4,27 +4,46 @@
 <com:THead>
 	<title>Order Invoice - </title>
 	<link href="<%= $this->Theme->BaseUrl %>/style.css" rel="stylesheet" type="text/css" />
+    <style type="text/css" media="screen">
+	<!--
+	  body, div, h2, h3  {font-family:tahoma;font-size:13px;}
+	-->
+	</style>
 </com:THead>
 <body>
 <com:TForm>
 <div id="container">
 	<div class="general_printable">
-		<div class="top">
-			<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" alt="Logo" />
-			<div class="company_info">
-				<b>The Organic Grocer</b><br />
-				Head Office: Singapore<br />
-				Tel: 0907335003<br />
-				Web: www.theorganicgrocer.com.sg &nbsp;&nbsp;Email: info@theorganicgrocer.com.sg<br />
-				Registration No: TOG12629437444B46FE004CFF7
-			</div>
-		</div>
-		<div style="float:right;">
-			Invoice No. <b>TOG12629437444B46FE004CFF7</b><br />
-			Date: <b>01/08/2010 05:42:24 PM </b><br />
-			Status: <b>Processing</b>
-		</div>
-
+        <table cellpadding="8" cellspacing="0" style="border-right:none;padding-bottom:10px;margin-bottom:10px;" width="100%">
+        	<tr>
+            	<td style="border:none;" valign="bottom">
+                	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" alt="Logo" />
+                </td>
+                <td style="border:none;" valign="bottom">
+	                <b>The Organic Grocer</b><br />
+                    Head Office: Singapore<br />
+                    Tel: 0907335003<br />
+                    Web: www.theorganicgrocer.com.sg &nbsp;&nbsp;Email: info@theorganicgrocer.com.sg<br />
+                    Registration No: TOG12629437444B46FE004CFF7
+                </td>
+            </tr>
+        </table>
+        
+        <table cellpadding="8" cellspacing="0" style="border:none;" width="100%">
+        	<tr>
+            	<td style="border:none;" valign="bottom" width="60%">
+                	&nbsp;
+                </td>
+                <td style="border:none;" valign="bottom" align="right">
+	                <div style="text-align:left;">
+                        Invoice No. <b>TOG12629437444B46FE004CFF7</b><br />
+                        Date: <b>01/08/2010 05:42:24 PM </b><br />
+                        Status: <b>Processing</b>
+                    </div>
+                </td>
+            </tr>
+        </table>
+		
 		<!-- Address -->
 		<table cellpadding="8" cellspacing="0" border="0" width="100%" >
 			<tr>
@@ -58,7 +77,7 @@
 		<!-- Review title: END -->
 
 		<!-- Product items: END -->
-		<table cellpadding="5" cellspacing="0" width="100%" style="text-align:center;margin-bottom:50px;border:none;">
+		<table cellpadding="5" cellspacing="0" width="100%" style="text-align:center;border:none;">
 			<tr>
 				<td style="border:none;text-align:left;" width="40%">Organic Hatcho Miso 100% Soya Jar 300g</td>
 				<td style="border:none;" width="8%">Qty</td>
@@ -69,9 +88,13 @@
 			</tr>
 		</table>
 		<!-- Product items: END -->
-
+		
+        <table style="border:none;">
+        	<tr><td height="500" style="border:none;">&nbsp;</td></tr>
+        </table>
+        
 		<!-- -->
-		<table cellpadding="8" cellspacing="0" border="0" width="100%" style="margin-top:500px" >
+		<table cellpadding="8" cellspacing="0" border="0" width="100%">
 			<tr>
 				<td width="55%" valign="top">
 					Delivery: Bợt<br />

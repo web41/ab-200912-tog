@@ -145,8 +145,8 @@ class TOGUser extends TDbUser
 			$user->LastVisitIP = Prado::getApplication()->Request->UserHostAddress;
 			$user->LastVisitDate = time();
 			$user->save();
-			$userOnlineCount = TPropertyValue::ensureInteger(App::get("UserOnlineCount"));
-			App::set("UserOnlineCount",$userOnlineCount+1);
+			$userOnlineCounter = TPropertyValue::ensureInteger(Prado::getApplication()->getGlobalState("UserOnlineCounter",0));
+			Prado::getApplication()->setGlobalState("UserOnlineCounter",$userOnlineCounter+1);
 			return true;
 		}
 		else return false;

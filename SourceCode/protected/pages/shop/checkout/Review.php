@@ -152,6 +152,7 @@ class Review extends TPage
 				$order->ShippingAmount = $cartRecord->ShippingAmount;
 				$order->CouponCode = $cartRecord->CouponCode;
 				$order->CouponAmount = $cartRecord->CouponAmount;
+				$order->RewardPointsRebate = $cartRecord->RewardPointsRebate;
 				$order->Total = $cartRecord->Total;
 				$order->Currency = "USD";
 				$order->IPAddress = $this->Request->UserHostAddress;

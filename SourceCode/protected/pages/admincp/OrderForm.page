@@ -174,20 +174,28 @@
 								</td>
 								<td class="field2" style="width:50%;line-height:20px">
 									<div class="price">
-										<div class="text">subtotal:</div>
-										<div class="value">S$10</div>
+										<div class="text">Subtotal:</div>
+										<div class="value"><com:TNumberFormat ID="nfSubtotal" Type="currency" Currency="USD" /></div>
 									</div>
 									<div class="price">
-										<div class="text">shipping fee:</div>
-										<div class="value">S$5.88</div>
+										<div class="text">Delivery Surcharge:</div>
+										<div class="value"><com:TNumberFormat ID="nfShippingAmount" Type="currency" Currency="USD" /></div>
 									</div>
 									<div class="price">
-										<div class="text">organic point:</div>
-										<div class="value">100</div>
+										<div class="text">Delivery Discount:</div>
+										<div class="value">-<com:TNumberFormat ID="nfShippingDiscount" Type="currency" Currency="USD" /></div>
+									</div>
+									<div class="price">
+										<div class="text">Coupon Discount:</div>
+										<div class="value">-<com:TNumberFormat ID="nfCouponDiscount" Type="currency" Currency="USD" /></div>
+									</div>
+									<div class="price">
+										<div class="text">Organic Point Rebate:</div>
+										<div class="value">-<com:TNumberFormat ID="nfPointRebate" Type="currency" Currency="USD" /></div>
 									</div>
 									<div class="price">
 										<div class="text">total:</div>
-										<div class="value">S$100</div>
+										<div class="value"><com:TNumberFormat ID="nfTotal" Type="currency" Currency="USD" /></div>
 									</div>
 								</td>
 							</tr>
@@ -198,7 +206,6 @@
 								<input type="button" value="Generate" />
 								<input type="button" value="Add Order History" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.OrderHistoryForm",array("oid"=>$this->Item->ID)) %>'" />
 								<input type="button" value="Add Payment" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.PaymentForm",array("oid"=>$this->Item->ID)) %>'" />
-								<input type="button" class="btn_edit" value="" />
 								<input type="button" class="btn_cancel" value="" />
 							</div>
 						</div>

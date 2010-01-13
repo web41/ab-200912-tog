@@ -39,6 +39,13 @@ class OrderForm extends TPage
 			
 			$this->rptHistory->DataSource = OrderHistoryRecord::finder()->withOrderStatus()->findAllByorder_id($activeRecord->ID);
 			$this->rptHistory->DataBind();
+			
+			$this->nfSubtotal->Value = $activeRecord->Subtotal;
+			$this->nfShippingAmount->Value = $activeRecord->ShippingMethod->Price;
+			$this->nfShippingDiscount->Value = $this->nfShippingAmount->Value - $activeRecord->ShippingAmount;
+			$this->nfCouponDiscount->Value = $activeRecord->CouponAmount;
+			$this->nfPointRebate->Value = $activeRecord->RewardPointsRebate;
+			$this->nfTotal->Value = $activeRecord->Total;
 		}
 	}
 	

@@ -14,6 +14,7 @@ class UserRecord extends TActiveRecord
 	public $LastName;
 	public $UserTypeID=0;
 	public $Credits=0;
+	public $CreditsUsed=0;
 	public $Status=0;
 	public $Hash="";
 	public $IPAddress="";
@@ -32,6 +33,7 @@ class UserRecord extends TActiveRecord
 		'last_name'=>'LastName',
 		'user_type_id'=>'UserTypeID',
 		'user_credits'=>'Credits',
+		'user_credits_used'=>'CreditsUsed',
 		'user_status'=>'Status',
 		'user_hash'=>'Hash',
 		'ip_address'=>'IPAddress',

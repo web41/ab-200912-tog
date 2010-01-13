@@ -16,6 +16,7 @@ class CartTempRecord extends TActiveRecord
 	public $CouponCode=0;
 	public $CouponAmount=0;
 	public $TaxAmount=0;
+	public $RewardPointsRebate=0;
 	public $Total=0;
 	public $CreateDate=0;
 	
@@ -31,6 +32,7 @@ class CartTempRecord extends TActiveRecord
 		'coupon_code'=>'CouponCode',
 		'coupon_amount'=>'CouponAmount',
 		'tax_amount'=>'TaxAmount',
+		'reward_points_rebate'=>'RewardPointsRebate',
 		'total'=>'Total',
 		'c_date'=>'CreateDate'
 	);

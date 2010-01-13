@@ -67,7 +67,7 @@ class StatisticsPane extends TTemplateControl
 		//$criteria = new TActiveRecordCriteria;
 		//$criteria->Condition = "last_visit_date >= {$past_time} and last_visit_date <= ".time();
 		//return UserRecord::finder()->count($criteria);
-		return App::get("UserOnlineCount")?App::get("UserOnlineCount"):0;
+		return TPropertyValue::ensureInteger(Prado::getApplication()->getGlobalState("UserOnlineCounter",0));
 	}
 	
 	public function getTotalOrder()

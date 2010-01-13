@@ -9,8 +9,8 @@ class TOGAuthManager extends TAuthManager
 		$criteria->Parameters[':id'] = $this->Application->Session->SessionID;
 		$criteria->Parameters[':user'] = $this->Application->User->ID;
 		CartTempRecord::finder()->deleteAll($criteria);
-		$userOnlineCount = TPropertyValue::ensureInteger(App::get("UserOnlineCount"));
-		App::set("UserOnlineCount",($userOnlineCount-1));
+		$userOnlineCounter = TPropertyValue::ensureInteger(Prado::getApplication()->getGlobalState("UserOnlineCounter",0));
+		Prado::getApplication()->setGlobalState("UserOnlineCounter",$userOnlineCounter-1);
 		parent::logout();
 	}
 }

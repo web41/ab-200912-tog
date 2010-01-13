@@ -22,7 +22,6 @@
 			<li><a href="<%= $this->Service->ConstructUrl("shop.Help") %>">Help</a></li>
 		</ul>
 	</div><!-- NAVIGATION ENDS -->
-
 	<div id="content">
 		<div id="leftcol">
         	<div id="slideshow_container">

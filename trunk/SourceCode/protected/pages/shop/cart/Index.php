@@ -68,7 +68,7 @@ class Index extends TPage
 				$cartRecord->Subtotal = $cartRecord->getSubtotalInSession();
 				if ($cartRecord->Subtotal-$cartRecord->CouponAmount>=TPropertyValue::ensureFloat($this->Application->Parameters["MAXIMUM_ORDER_REQUIRED"]))
 				{
-					$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
+					$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount-$cartRecord->RewardPointsRebate+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
 					try
 					{
 						$cartRecord->save();

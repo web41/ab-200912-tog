@@ -1,0 +1,53 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - My Organic Points</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.OrganicPoints />
+	<com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<com:Application.shared.UserNotice ID="Notice" />
+	<com:TPanel ID="mainBox" CssClass="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+		<h2>My organic points</h2>
+		<div>1 Organic Point = $1</div>
+		<table border="0" cellpadding="7" cellspacing="0" width="100%">
+			<tr>
+				<td class="left" style="width:60%">Organic points earned so far</td>
+				<td class="right" style="font-size:12px;">
+					<com:TLabel ID="lblCredits" />
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Organic points used so far</td>
+				<td class="right" style="font-size:12px;text-transform:capitalize;">
+					<com:TLabel ID="lblCreditsUsed" />
+				</td>
+			</tr>
+			<tr>
+				<td class="left">Organic points balance</td>
+				<td class="right" style="font-size:12px;text-transform:capitalize;">
+					<com:TLabel ID="lblCreditsBalance" />
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!-- Inside box: END -->
+	</com:TPanel>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.ProfileMenu />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

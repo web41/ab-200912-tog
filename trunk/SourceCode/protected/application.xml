@@ -77,7 +77,7 @@
 			<url ServiceParameter="shop.account.profile.ChangePassword" pattern="shop/account/change-password"/>
 			<url ServiceParameter="shop.account.profile.ChangeProfile" pattern="shop/account/change-profile"/>
 			<url ServiceParameter="shop.account.profile.MyFavourite" pattern="shop/account/my-favourites"/>
-			<url ServiceParameter="shop.account.profile.MyOrganicPoints" pattern="shop/account/my-organic-points"/>
+			<url ServiceParameter="shop.account.profile.MyOrganicPoint" pattern="shop/account/my-organic-points"/>
 			
 			<url ServiceParameter="shop.account.addresses.Index" pattern="shop/account/address"/>
 			<url ServiceParameter="shop.account.addresses.AddressForm" pattern="shop/account/address/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>

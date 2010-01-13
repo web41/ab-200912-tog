@@ -49,7 +49,7 @@ class ShippingMethod extends TPage
 					$cartRecord->ShippingAmount = 0;
 				}
 				else $cartRecord->ShippingAmount = $method->Price;
-				$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
+				$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount-$cartRecord->RewardPointsRebate+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
 				try
 				{
 					$cartRecord->save();

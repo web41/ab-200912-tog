@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu>
-	<menuNode ServiceParameter="admincp.ProductManager" Title="Product">
+	<menuNode Title="Product &amp; Category">
 		<menuNode ServiceParameter="admincp.ProductForm" Title="Add Product" />
 		<menuNode ServiceParameter="admincp.ProductManager" Title="Product List" />
-	</menuNode>
-	<menuNode ServiceParameter="admincp.BrandManager" Title="Brand">
 		<menuNode ServiceParameter="admincp.BrandForm" Title="Add Brand" />
 		<menuNode ServiceParameter="admincp.BrandManager" Title="Brand List" />
-	</menuNode>
-	<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Supplier">
 		<menuNode ServiceParameter="admincp.ManufacturerForm" Title="Add Supplier" />
 		<menuNode ServiceParameter="admincp.ManufacturerManager" Title="Supplier List" />
-	</menuNode>
-	<menuNode ServiceParameter="admincp.CategoryManager" Title="Category">
 		<menuNode ServiceParameter="admincp.CategoryForm" Title="Add Category" />
 		<menuNode ServiceParameter="admincp.CategoryManager" Title="Category List" />
 	</menuNode>
@@ -43,5 +37,8 @@
 		<menuNode ServiceParameter="admincp.OrderManager" Title="Order List" />
 		<menuNode ServiceParameter="admincp.OrderStatusForm" Title="Add Order Status" />
 		<menuNode ServiceParameter="admincp.OrderStatusManager" Title="Order Status List" />
+	</menuNode>
+	<menuNode ServiceParameter="admincp.MailingListManager" Title="Mailing List">
+		<menuNode ServiceParameter="admincp.MailingListManager" Title="Mailing List" />
 	</menuNode>
 </menu>

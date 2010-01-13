@@ -156,8 +156,11 @@
 			<url ServiceParameter="admincp.OrderManager" pattern="admincp/order"/>
 			<url ServiceParameter="admincp.OrderManager" pattern="admincp/order/manager"/>
 			<url ServiceParameter="admincp.OrderForm" pattern="admincp/order/{id}/{num}" parameters.id="\d+" parameters.num=".*"/>
+			<url ServiceParameter="admincp.OrderInvoice" pattern="admincp/order-invoice/{id}/{num}" parameters.id="\d+" parameters.num=".*"/>
 			<url ServiceParameter="admincp.OrderHistoryForm" pattern="admincp/order-history/{oid}/{id}" parameters.oid="\d+" parameters.id="\d+"/>
 			<url ServiceParameter="admincp.OrderHistoryForm" pattern="admincp/order-history/{oid}" parameters.oid="\d+" />
+			<url ServiceParameter="admincp.MailingListManager" pattern="admincp/mailing-list"/>
+			<url ServiceParameter="admincp.MailingListManager" pattern="admincp/mailing-list/manager"/>
 		</module>
 		<!-- error module -->
 		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />
@@ -182,6 +185,7 @@
 		<parameter id="PAYPAL_INFO" value="('business'=>'dosithuyen@gmail.com', 'currency'=>'USD', 'auth_token'=>'soZLyylMjyanw7yu5zFnON3MOtZ5Zg-dYLpsXiViO9Q8CX9TPAsRkJcpvHu')" />
 		<parameter id="MAXIMUM_ORDER_REQUIRED" value="50.00" />
 		<parameter id="MAXIMUM_ORDER_TO_FREE_SHIPPING" value="100.00" />
+		<parameter id="DELIVERER" value="(1=>'Hubert Huynh',2=>'Sandy Nguyen',3=>'Natallie Pham')" />
 	</parameters>
 </application>
 

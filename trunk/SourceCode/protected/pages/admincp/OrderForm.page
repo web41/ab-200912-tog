@@ -209,10 +209,10 @@
 						<div class="field" style="border:none;margin-bottom:0;">
 							<div class="text">&nbsp;</div>
 							<div class="control" style="float:right;">
-								<com:TButton ID="btnGenerateInvoice" Text="Generate invoice and process" OnClick="btnGenerateInvoice_Clicked" />
-								<input type="button" value="Add Order History" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.OrderHistoryForm",array("oid"=>$this->Item->ID)) %>'" />
-								<input type="button" value="Add Payment" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.PaymentForm",array("oid"=>$this->Item->ID)) %>'" />
-								<input type="button" class="btn_cancel" value="" />
+                                <com:TButton ID="btnGenerateInvoice" Text="" OnClick="btnGenerateInvoice_Clicked" CssClass="btn_generateinvoice" />
+                                <input type="button" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.OrderHistoryForm",array("oid"=>$this->Item->ID)) %>'" class="btn_addhistory" value="" />
+                                <input type="button" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.PaymentForm",array("oid"=>$this->Item->ID)) %>'" class="btn_addpayment" value="" />
+                                <input type="button" class="btn_cancel" value="" />
 							</div>
 						</div>
 					</div>

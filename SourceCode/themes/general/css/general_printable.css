@@ -1,0 +1,15 @@
+﻿.general_printable{width:860px;height:auto;text-align:left;line-height:20px;background:#fff;padding:20px;margin:20px;}
+	.general_printable div.top{margin-bottom:10px;border-bottom:solid 1px #dadada;padding:20px 0 20px 0;height:100px;}
+		.general_printable div.top img{float:left;height:100px;margin:0 40px 0 0;}
+		.general_printable div.top .company_info{float:left;font-size:14px;}
+	
+	.general_printable div{margin-bottom:15px;}
+	.general_printable table{border-right:solid 1px #dadada;border-bottom:solid 1px #dadada;}
+	.general_printable tr td{border-left:solid 1px #dadada;border-top:solid 1px #dadada;padding:5px;}
+	
+	.general_printable table .price{float:right;width:auto;height:auto;clear:both;margin:0;}
+	.general_printable table .price .text{width:auto;float:left;text-align:left;text-transform:capitalize;margin:0;}
+	.general_printable table .price .value{width:80px;float:left;font-weight:bold;margin:0;text-align:right}
+	.general_printable table .price .button{margin:10px 0 0 5px;}
+	
+	.general_printable p{padding:0;margin:0 0 8px 0;line-height:18px;}

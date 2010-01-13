@@ -50,11 +50,11 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px;">
+								<td class="field address" style="height:auto;width:50%;padding:10px 0 20px 5px;line-height:20px;">
 									<b>Billing address</b><br />
 									<com:TLabel ID="lblBilling" />
 								</td>
-								<td class="field address" style="height:auto;width:50%;padding-left:5px;line-height:20px">
+								<td class="field address" style="height:auto;width:50%;padding:10px 0 20px 5px;line-height:20px">
 									<b>Shipping address</b><br />
 									<com:TLabel ID="lblShipping" />
 								</td>
@@ -74,7 +74,7 @@
 										</td>
 									</tr>
 									<tr>
-										<td class="field2" colspan="2">
+										<td class="field2" colspan="2" style="padding-bottom:30px;">
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<div class="item_text">
@@ -105,7 +105,7 @@
 										</td>
 									</tr>
 									<tr>
-										<td class="field2" colspan="2">
+										<td class="field2" colspan="2" style="padding-bottom:30px;">
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<div class="item_text">
@@ -133,7 +133,7 @@
 										</td>
 									</tr>
 									<tr>
-										<td class="field2" colspan="2">
+										<td class="field2" colspan="2" style="padding-bottom:30px;">
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<div class="item_text">

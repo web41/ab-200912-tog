@@ -9,17 +9,9 @@ class TOGAuthManager extends TAuthManager
 		$criteria->Parameters[':id'] = $this->Application->Session->SessionID;
 		$criteria->Parameters[':user'] = $this->Application->User->ID;
 		CartTempRecord::finder()->deleteAll($criteria);
-		//CartTempDetailRecord::finder()->deleteAll($criteria);
-		if ($userOnlineCount = App::get("UserOnlineCount") !== false)
-		{
-			App::set("UserOnlineCount",$userOnlineCount-1);
-		}
+		$userOnlineCount = TPropertyValue::ensureInteger(App::get("UserOnlineCount"));
+		App::set("UserOnlineCount",($userOnlineCount-1));
 		parent::logout();
-	}
-	
-	public function login($username, $password,$expire=0)
-	{
-		return parent::login($username, $password, 7200);
 	}
 }
 

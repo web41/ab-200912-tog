@@ -1,5 +1,10 @@
 <?php
 
+Prado::using("Application.common.PHPExcel");
+Prado::using("Application.common.PHPExcel.Style");
+Prado::using("Application.common.PHPExcel.Style.Font");
+Prado::using("Application.common.PHPExcel.IOFactory");
+Prado::using("Application.common.PHPExcel.Writer.Excel5");
 class MailingListManager extends TPage
 {
 	private $_maxPage = 1;
@@ -244,6 +249,40 @@ class MailingListManager extends TPage
 	protected function btnSearchReset_Clicked($sender, $param)
 	{
 		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,''));
+	}
+	
+	protected function btnExport_Clicked($sender, $param)
+	{
+		try
+		{
+		$workBook = new PHPExcel();
+		$workBook->getProperties()->setCreator("Alex Do")
+								->setLastModifiedBy("Alex Do")
+								->setTitle("The Organic Grocer Mailing List generated on ".date("m.D.Y",time()))
+								->setSubject("The Organic Grocer Mailing List")
+								->setDescription("The Organic Grocer Mailing List generated on ".date("m.D.Y",time()));
+		$workBook->setActiveSheetIndex(0);
+		$workSheet = $workBook->getActiveSheet();
+		$workSheet->setCellValue("A1","#")->setCellValue("B1","ID")->setCellValue("C1","Email Address");
+		$workSheet->getStyle('A1')->getFont()->setBold(true);
+		$workSheet->getStyle('B1')->getFont()->setBold(true);
+		$workSheet->getStyle('C1')->getFont()->setBold(true);
+		$mailingLists = MailingListRecord::finder()->findAll();
+		for($i=0;$i<count($mailingLists);$i++)
+		{
+			$workBook->setActiveSheetIndex(0)->setCellValue("A".($i+2),$i+1)->setCellValue("B".($i+2),$mailingLists[$i]->ID)->setCellValue("C".($i+2),$mailingLists[$i]->Address);
+		}
+		$workBook->setActiveSheetIndex(0)->getColumnDimension("C")->setWidth(50);
+		$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
+		$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."docs".DIRECTORY_SEPARATOR;
+		$phpExcelWriter->save($filePath."Mailing List generated on ".date("m.D.Y.h.i",time()).".xls");
+		}
+		catch(Exception $ex)
+		{
+			$this->Notice->Type = AdminNoticeType::Error;
+			$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("DELETE_ALL_FAILED","email");
+		}
+		$this->populateData();
 	}
 }
 

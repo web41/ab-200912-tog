@@ -1,20 +1,24 @@
-<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
-<com:TContent ID="title">
-	Administration :: Order Detail Printable Version
-</com:TContent>
-<com:TContent ID="content">
-	<center>
+<%@ Theme="general" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<com:THead>
+	<title>Order Invoice - </title>
+	<link href="<%= $this->Theme->BaseUrl %>/style.css" rel="stylesheet" type="text/css" />
+</com:THead>
+<body>
+<com:TForm>
+<div id="container">
 	<div class="general_printable">
 		<div class="top">
-        	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" alt="Logo" />
-            <div class="company_info">
-            	<b>The Organic Grocer</b><br />
-                Head Office: Singapore<br />
-                Tel: 0907335003<br />
-                Web: www.theorganicgrocer.com.sg &nbsp;&nbsp;Email: info@theorganicgrocer.com.sg<br />
-                Registration No: TOG12629437444B46FE004CFF7
-            </div>
-        </div>
+			<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" alt="Logo" />
+			<div class="company_info">
+				<b>The Organic Grocer</b><br />
+				Head Office: Singapore<br />
+				Tel: 0907335003<br />
+				Web: www.theorganicgrocer.com.sg &nbsp;&nbsp;Email: info@theorganicgrocer.com.sg<br />
+				Registration No: TOG12629437444B46FE004CFF7
+			</div>
+		</div>
 		<div style="float:right;">
 			Invoice No. <b>TOG12629437444B46FE004CFF7</b><br />
 			Date: <b>01/08/2010 05:42:24 PM </b><br />
@@ -27,47 +31,47 @@
 				<td width="50%">
 					<b>Sold to:</b><br />
 					Alex Do<br />
-                    284 XVNT F21 QBT, HCMC, HCMC 70000, Viet Nam<br />
-                    Tel 1: 0907335003
+					284 XVNT F21 QBT, HCMC, HCMC 70000, Viet Nam<br />
+					Tel 1: 0907335003
 				</td>
 				<td width="50%">
 					<b>Deliver to:</b><br />
 					Alex Do<br />
-                    284 XVNT F21 QBT, HCMC, HCMC 70000, Viet Nam<br />
-                    Tel 1: 0907335003
+					284 XVNT F21 QBT, HCMC, HCMC 70000, Viet Nam<br />
+					Tel 1: 0907335003
 				</td>
 			</tr>
 		</table><br />
 		<!-- Address: END -->
-		
-        <!-- Review title -->
-        <table cellpadding="5" cellspacing="0" border="0" width="100%" style="text-align:center;margin-bottom:5px;">
-            <tr>
-                <td width="40%">Description</td>
-                <td width="8%">Qty</td>
-                <td width="16%">UOM</td>
-                <td width="12%">Price/Unit (SGD)</td>
-                <td width="12%">Disc/Unit (%)</td>
-                <td width="12%">Total (SGD)</td>
-            </tr>
-        </table>
-        <!-- Review title: END -->
-        
-        <!-- Product items: END -->
-        <table cellpadding="5" cellspacing="0" width="100%" style="text-align:center;margin-bottom:50px;border:none;">
-            <tr>
-                <td style="border:none;text-align:left;" width="40%">Organic Hatcho Miso 100% Soya Jar 300g</td>
-                <td style="border:none;" width="8%">Qty</td>
-                <td style="border:none;" width="16%">UOM</td>
-                <td style="border:none;" width="12%">Price/Unit (SGD)</td>
-                <td style="border:none;" width="12%">Disc/Unit (%)</td>
-                <td style="border:none;" width="12%">Total (SGD)</td>
-            </tr>
-        </table>
+
+		<!-- Review title -->
+		<table cellpadding="5" cellspacing="0" border="0" width="100%" style="text-align:center;margin-bottom:5px;">
+			<tr>
+				<td width="40%">Description</td>
+				<td width="8%">Qty</td>
+				<td width="16%">UOM</td>
+				<td width="12%">Price/Unit (SGD)</td>
+				<td width="12%">Disc/Unit (%)</td>
+				<td width="12%">Total (SGD)</td>
+			</tr>
+		</table>
+		<!-- Review title: END -->
+
 		<!-- Product items: END -->
-		
+		<table cellpadding="5" cellspacing="0" width="100%" style="text-align:center;margin-bottom:50px;border:none;">
+			<tr>
+				<td style="border:none;text-align:left;" width="40%">Organic Hatcho Miso 100% Soya Jar 300g</td>
+				<td style="border:none;" width="8%">Qty</td>
+				<td style="border:none;" width="16%">UOM</td>
+				<td style="border:none;" width="12%">Price/Unit (SGD)</td>
+				<td style="border:none;" width="12%">Disc/Unit (%)</td>
+				<td style="border:none;" width="12%">Total (SGD)</td>
+			</tr>
+		</table>
+		<!-- Product items: END -->
+
 		<!-- -->
-		<table cellpadding="8" cellspacing="0" border="0" width="100%" >
+		<table cellpadding="8" cellspacing="0" border="0" width="100%" style="margin-top:500px" >
 			<tr>
 				<td width="55%" valign="top">
 					Delivery: Bợt<br />
@@ -105,32 +109,31 @@
 				</td>
 			</tr>
 		</table>
-        <p>
-        	SINGAPORE DOLLARS TWENTY-FIVE DOLLARS AND FORTY FIVE CENTS ONLY
-        </p>
-        <p>
-        	All cheques to be crossed & made payable to THE ORGANIC GROCER.<br />
-            No claims for damages or short supply will be entertained unless notified within one day of receipt of goods.
-        </p>
-        <!-- Sign -->
+		<p>
+			All cheques to be crossed & made payable to THE ORGANIC GROCER.<br />
+			No claims for damages or short supply will be entertained unless notified within one day of receipt of goods.
+		</p>
+		<!-- Sign -->
 		<table cellpadding="8" cellspacing="0" border="0" width="100%" style="border:none;margin-top:100px;">
 			<tr>
-            	<td width="10%" style="border:none;">&nbsp;</td>
+				<td width="10%" style="border:none;">&nbsp;</td>
 				<td width="30%" style="border-width:1px 0 0 0;text-align:center;">
 					Received by
 				</td>
-                <td width="20%" style="border:none;">&nbsp;</td>
+				<td width="20%" style="border:none;">&nbsp;</td>
 				<td width="30%" style="border-width:1px 0 0 0;text-align:center;">
 					THE ORGANIC GROCER
 				</td>
-                <td width="10%" style="border:none;">&nbsp;</td>
+				<td width="10%" style="border:none;">&nbsp;</td>
 			</tr>
 		</table><br />
 		<!-- Sign: END -->
-        
+
 		<div style="text-align:right;">
-			<input type="button" class="btn_addnew" value="" style="float:none;margin:0;" onclick="javascript::windows.print();" />
+			<input type="button" class="btn_addnew" value="" style="float:none;margin:0;" />
 		</div>
 	</div>
-    </center>
-</com:TContent>
+</div>
+</com:TForm>
+</body>
+</html>

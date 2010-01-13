@@ -31,3 +31,8 @@ function popup(name,url,width,height,focus)
 	_popup = window.open(url,name,'top='+top+'px,left='+left+'px,width='+width+'px,height='+height+'px,status=no,resizable=no,toolbar=no,titlebar=no,menubar=no');
 	if (focus) _popup.focus();
 }
+
+function popup2(name,url,focus) {
+	_popup = window.open(url,name);
+	if (focus) _popup.focus();
+}

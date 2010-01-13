@@ -109,7 +109,8 @@ class OrderForm extends TPage
 					$historyRecord->Comments = "Generate invoice and process pending order";
 					$historyRecord->save();
 				}
-				$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderInvoice",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num)));
+				$this->ClientScript->registerEndScript("popup","popup2('OrderInvoice','".$this->Service->ConstructUrl("admincp.OrderInvoice",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num))."',true)");
+				//$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderInvoice",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num)));
 				
 			}
 			catch(TException $ex)

@@ -30,7 +30,7 @@
 		<!-- user manager module -->
 		<module id="users" class="Application.common.TOGUserManager" UserClass="Application.common.TOGUser"/>
 		<!-- auth manager module -->
-		<module id="auth" class="Application.common.TOGAuthManager" UserManager="users" LoginPage="shop.account.Login" AllowAutoLogin="True" />
+		<module id="auth" class="Application.common.TOGAuthManager" UserManager="users" LoginPage="shop.account.Login" AllowAutoLogin="True" AuthExpire="7200" />
 		<!-- security module -->
 		<module id="security" class="TSecurityManager" ValidationKey="TOG#AsiaBlaze!!" Validation="MD5" EncryptionKey="TOG#AsiaBlaze!!" />
 		<!-- globalization module -->

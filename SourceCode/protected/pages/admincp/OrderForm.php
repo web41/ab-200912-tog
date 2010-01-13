@@ -8,44 +8,59 @@ class OrderForm extends TPage
 		if (!$this->IsPostBack)
 		{
 			$activeRecord = $this->getItem();
-			$this->lblHeader->Text = "Order detail: ".$activeRecord->Num;
-			$this->lblOrderNum->Text = $activeRecord->Num;
-			$this->lblOrderDate->Text = date('m/d/Y h:i:s A',$activeRecord->CreateDate);
-			$this->lblLatestStatus->Text = $activeRecord->LatestHistory->OrderStatus->Name;
-			$this->lnkUser->Text = $activeRecord->User->FirstName." ".$activeRecord->User->LastName;
-			$this->lnkUser->NavigateUrl = $this->Service->ConstructUrl("admincp.UserForm",array("id"=>$activeRecord->User->ID,"alias"=>$activeRecord->User->Email));
-			
-			$this->lblBilling->Text = $activeRecord->BFirstName." ".$activeRecord->BLastName."<br />";
-			$this->lblBilling->Text .= $activeRecord->BAddress1;
-			if (strlen($activeRecord->BAddress2)>0) $this->lblBilling->Text .= ", ".$activeRecord->BAddress2;
-			$this->lblBilling->Text .= ", ".$activeRecord->BCity.", ".$activeRecord->BState." ".$activeRecord->BZipCode.", ".$activeRecord->BCountry->Name."<br />";
-			$this->lblBilling->Text .= "Tel 1: ".$activeRecord->BPhone1;
-			if (strlen($activeRecord->BPhone2)>0) $this->lblBilling->Text .= ", Tel 2: ".$activeRecord->BPhone2;
-			if (strlen($activeRecord->BFax)>0) $this->lblBilling->Text .= ", Fax: ".$activeRecord->BFax;
-			
-			$this->lblShipping->Text = $activeRecord->SFirstName." ".$activeRecord->SLastName."<br />";
-			$this->lblShipping->Text .= $activeRecord->SAddress1;
-			if (strlen($activeRecord->SAddress2)>0) $this->lblShipping->Text .= ", ".$activeRecord->SAddress2;
-			$this->lblShipping->Text .= ", ".$activeRecord->SCity.", ".$activeRecord->SState." ".$activeRecord->SZipCode.", ".$activeRecord->SCountry->Name."<br />";
-			$this->lblShipping->Text .= "Tel 1: ".$activeRecord->SPhone1;
-			if (strlen($activeRecord->SPhone2)>0) $this->lblShipping->Text .= ", Tel 2: ".$activeRecord->SPhone2;
-			if (strlen($activeRecord->SFax)>0) $this->lblShipping->Text .= ", Fax: ".$activeRecord->SFax;
-			
-			$this->rptOrderItem->DataSource = OrderItemRecord::finder()->withProduct()->findAllByorder_id($activeRecord->ID);
-			$this->rptOrderItem->DataBind();
-			
-			$this->rptPayment->DataSource = PaymentRecord::finder()->withPaymentMethod()->findAllByorder_id($activeRecord->ID);
-			$this->rptPayment->DataBind();
-			
-			$this->rptHistory->DataSource = OrderHistoryRecord::finder()->withOrderStatus()->findAllByorder_id($activeRecord->ID);
-			$this->rptHistory->DataBind();
-			
-			$this->nfSubtotal->Value = $activeRecord->Subtotal;
-			$this->nfShippingAmount->Value = $activeRecord->ShippingMethod->Price;
-			$this->nfShippingDiscount->Value = $this->nfShippingAmount->Value - $activeRecord->ShippingAmount;
-			$this->nfCouponDiscount->Value = $activeRecord->CouponAmount;
-			$this->nfPointRebate->Value = $activeRecord->RewardPointsRebate;
-			$this->nfTotal->Value = $activeRecord->Total;
+			$deliverers = TPropertyValue::ensureArray($this->Application->Parameters["DELIVERER"]);
+			$this->cboDelivererSelector->Items->clear();
+			foreach($deliverers as $id=>$value)
+			{
+				$item = new TListItem; $item->Text = $item->Value = $value;
+				$this->cboDelivererSelector->Items->add($item);
+			}
+			$this->cboTotalPacksSelector->DataSource = range(1,10);
+			$this->cboTotalPacksSelector->DataBind();
+			if ($activeRecord instanceof OrderRecord)
+			{
+				$this->lblHeader->Text = "Order detail: ".$activeRecord->Num;
+				$this->lblOrderNum->Text = $activeRecord->Num;
+				$this->lblOrderDate->Text = date('m/d/Y h:i:s A',$activeRecord->CreateDate);
+				$this->lblLatestStatus->Text = $activeRecord->LatestHistory->OrderStatus->Name;
+				$this->lnkUser->Text = $activeRecord->User->FirstName." ".$activeRecord->User->LastName;
+				$this->lnkUser->NavigateUrl = $this->Service->ConstructUrl("admincp.UserForm",array("id"=>$activeRecord->User->ID,"alias"=>$activeRecord->User->Email));
+	
+				$this->lblBilling->Text = $activeRecord->BFirstName." ".$activeRecord->BLastName."<br />";
+				$this->lblBilling->Text .= $activeRecord->BAddress1;
+				if (strlen($activeRecord->BAddress2)>0) $this->lblBilling->Text .= ", ".$activeRecord->BAddress2;
+				$this->lblBilling->Text .= ", ".$activeRecord->BCity.", ".$activeRecord->BState." ".$activeRecord->BZipCode.", ".$activeRecord->BCountry->Name."<br />";
+				$this->lblBilling->Text .= "Tel 1: ".$activeRecord->BPhone1;
+				if (strlen($activeRecord->BPhone2)>0) $this->lblBilling->Text .= ", Tel 2: ".$activeRecord->BPhone2;
+				if (strlen($activeRecord->BFax)>0) $this->lblBilling->Text .= ", Fax: ".$activeRecord->BFax;
+	
+				$this->lblShipping->Text = $activeRecord->SFirstName." ".$activeRecord->SLastName."<br />";
+				$this->lblShipping->Text .= $activeRecord->SAddress1;
+				if (strlen($activeRecord->SAddress2)>0) $this->lblShipping->Text .= ", ".$activeRecord->SAddress2;
+				$this->lblShipping->Text .= ", ".$activeRecord->SCity.", ".$activeRecord->SState." ".$activeRecord->SZipCode.", ".$activeRecord->SCountry->Name."<br />";
+				$this->lblShipping->Text .= "Tel 1: ".$activeRecord->SPhone1;
+				if (strlen($activeRecord->SPhone2)>0) $this->lblShipping->Text .= ", Tel 2: ".$activeRecord->SPhone2;
+				if (strlen($activeRecord->SFax)>0) $this->lblShipping->Text .= ", Fax: ".$activeRecord->SFax;
+	
+				$this->rptOrderItem->DataSource = OrderItemRecord::finder()->withProduct()->findAllByorder_id($activeRecord->ID);
+				$this->rptOrderItem->DataBind();
+	
+				$this->rptPayment->DataSource = PaymentRecord::finder()->withPaymentMethod()->findAllByorder_id($activeRecord->ID);
+				$this->rptPayment->DataBind();
+	
+				$this->rptHistory->DataSource = OrderHistoryRecord::finder()->withOrderStatus()->findAllByorder_id($activeRecord->ID);
+				$this->rptHistory->DataBind();
+	
+				$this->nfSubtotal->Value = $activeRecord->Subtotal;
+				$this->nfShippingAmount->Value = $activeRecord->ShippingMethod->Price;
+				$this->nfShippingDiscount->Value = $this->nfShippingAmount->Value - $activeRecord->ShippingAmount;
+				$this->nfCouponDiscount->Value = $activeRecord->CouponAmount;
+				$this->nfPointRebate->Value = $activeRecord->RewardPointsRebate;
+				$this->nfTotal->Value = $activeRecord->Total;
+				
+				if (strlen($activeRecord->Deliverer)>0) $this->cboDelivererSelector->SelectedValue = $activeRecord->Deliverer;
+				if ($activeRecord->TotalPacks>0) $this->cboTotalPacksSelector->SelectedValue = $activeRecord->TotalPacks;
+			}
 		}
 	}
 	
@@ -74,6 +89,35 @@ class OrderForm extends TPage
 	public function getPaymentStatus()
 	{
 		return TPropertyValue::ensureArray($this->Application->Parameters["PAYMENT_STATUS"]);
+	}
+	
+	protected function btnGenerateInvoice_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$activeRecord = $this->getItem();
+			$activeRecord->Deliverer = $this->cboDelivererSelector->SelectedValue;
+			$activeRecord->TotalPacks = $this->cboTotalPacksSelector->SelectedValue;
+			try
+			{
+				$activeRecord->save();
+				if ($activeRecord->LatestHistory->StatusCode == "W")
+				{
+					$historyRecord = new OrderHistoryRecord;
+					$historyRecord->OrderID = $activeRecord->ID;
+					$historyRecord->StatusCode = "P"; // P = processing
+					$historyRecord->Comments = "Generate invoice and process pending order";
+					$historyRecord->save();
+				}
+				$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderInvoice",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num)));
+				
+			}
+			catch(TException $ex)
+			{
+				$this->Notice->Type = AdminNoticeType::Error;
+				$this->Notice->Text = $this->Application->getModule("message")->translate("UPDATE_FAILED","order", "");
+			}
+		}
 	}
 }
 

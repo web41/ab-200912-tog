@@ -63,10 +63,11 @@ class StatisticsPane extends TTemplateControl
 	
 	public function getCurrentUser()
 	{
-		$past_time = time()-2*60*60;
-		$criteria = new TActiveRecordCriteria;
-		$criteria->Condition = "last_visit_date >= {$past_time} and last_visit_date <= ".time();
-		return UserRecord::finder()->count($criteria);
+		//$past_time = time()-2*60*60;
+		//$criteria = new TActiveRecordCriteria;
+		//$criteria->Condition = "last_visit_date >= {$past_time} and last_visit_date <= ".time();
+		//return UserRecord::finder()->count($criteria);
+		return App::get("UserOnlineCount")?App::get("UserOnlineCount"):0;
 	}
 	
 	public function getTotalOrder()

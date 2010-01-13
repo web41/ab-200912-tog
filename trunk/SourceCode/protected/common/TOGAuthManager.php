@@ -10,6 +10,10 @@ class TOGAuthManager extends TAuthManager
 		$criteria->Parameters[':user'] = $this->Application->User->ID;
 		CartTempRecord::finder()->deleteAll($criteria);
 		//CartTempDetailRecord::finder()->deleteAll($criteria);
+		if ($userOnlineCount = App::get("UserOnlineCount") !== false)
+		{
+			App::set("UserOnlineCount",$userOnlineCount-1);
+		}
 		parent::logout();
 	}
 	

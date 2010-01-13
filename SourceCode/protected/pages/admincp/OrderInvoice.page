@@ -129,7 +129,7 @@
 		<!-- Sign: END -->
         
 		<div style="text-align:right;">
-			<input type="button" class="btn_addnew" value="" style="float:none;margin:0;" />
+			<input type="button" class="btn_addnew" value="" style="float:none;margin:0;" onclick="javascript::windows.print();" />
 		</div>
 	</div>
     </center>

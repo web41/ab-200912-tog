@@ -145,6 +145,10 @@ class TOGUser extends TDbUser
 			$user->LastVisitIP = Prado::getApplication()->Request->UserHostAddress;
 			$user->LastVisitDate = time();
 			$user->save();
+			if ($userOnlineCount = App::get("UserOnlineCount") !== false)
+			{
+				App::set("UserOnlineCount",$userOnlineCount+1);
+			} else App::set("UserOnlineCount",1);
 			return true;
 		}
 		else return false;

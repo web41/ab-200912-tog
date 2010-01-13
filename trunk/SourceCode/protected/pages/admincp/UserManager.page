@@ -58,7 +58,7 @@
 							OnItemCommand="list_ItemCommand">
 							<com:TTemplateColumn HeaderStyle.Width="4%" HeaderText="#">
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
+									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 + ($this->Page->CurrentPage-1)*$this->Parent->Parent->PageSize %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.CssClass="align_left">

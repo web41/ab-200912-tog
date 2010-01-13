@@ -255,32 +255,35 @@ class MailingListManager extends TPage
 	{
 		try
 		{
-		$workBook = new PHPExcel();
-		$workBook->getProperties()->setCreator("Alex Do")
-								->setLastModifiedBy("Alex Do")
-								->setTitle("The Organic Grocer Mailing List generated on ".date("m.D.Y",time()))
-								->setSubject("The Organic Grocer Mailing List")
-								->setDescription("The Organic Grocer Mailing List generated on ".date("m.D.Y",time()));
-		$workBook->setActiveSheetIndex(0);
-		$workSheet = $workBook->getActiveSheet();
-		$workSheet->setCellValue("A1","#")->setCellValue("B1","ID")->setCellValue("C1","Email Address");
-		$workSheet->getStyle('A1')->getFont()->setBold(true);
-		$workSheet->getStyle('B1')->getFont()->setBold(true);
-		$workSheet->getStyle('C1')->getFont()->setBold(true);
-		$mailingLists = MailingListRecord::finder()->findAll();
-		for($i=0;$i<count($mailingLists);$i++)
-		{
-			$workBook->setActiveSheetIndex(0)->setCellValue("A".($i+2),$i+1)->setCellValue("B".($i+2),$mailingLists[$i]->ID)->setCellValue("C".($i+2),$mailingLists[$i]->Address);
-		}
-		$workBook->setActiveSheetIndex(0)->getColumnDimension("C")->setWidth(50);
-		$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
-		$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."docs".DIRECTORY_SEPARATOR;
-		$phpExcelWriter->save($filePath."Mailing List generated on ".date("m.D.Y.h.i",time()).".xls");
+			$workBook = new PHPExcel();
+			$workBook->getProperties()->setCreator("Alex Do")
+									->setLastModifiedBy("Alex Do")
+									->setTitle("The Organic Grocer Mailing List generated on ".date("m.D.Y",time()))
+									->setSubject("The Organic Grocer Mailing List")
+									->setDescription("The Organic Grocer Mailing List generated on ".date("m.D.Y",time()));
+			$workBook->setActiveSheetIndex(0);
+			$workSheet = $workBook->getActiveSheet();
+			$workSheet->setCellValue("A1","#")->setCellValue("B1","ID")->setCellValue("C1","Email Address");
+			$workSheet->getStyle('A1')->getFont()->setBold(true);
+			$workSheet->getStyle('B1')->getFont()->setBold(true);
+			$workSheet->getStyle('C1')->getFont()->setBold(true);
+			$mailingLists = MailingListRecord::finder()->findAll();
+			for($i=0;$i<count($mailingLists);$i++)
+			{
+				$workBook->setActiveSheetIndex(0)->setCellValue("A".($i+2),$i+1)->setCellValue("B".($i+2),$mailingLists[$i]->ID)->setCellValue("C".($i+2),$mailingLists[$i]->Address);
+			}
+			$workBook->setActiveSheetIndex(0)->getColumnDimension("C")->setWidth(50);
+			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
+			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."docs".DIRECTORY_SEPARATOR;
+			//$fileName = md5(uniqid(time())).".xls";
+			$fileName = "Mailing List Generated On ".date("Y.m.d_h.i.s",time()).".xls";
+			$phpExcelWriter->save($filePath.$fileName);
+			$this->Response->writeFile($filePath.$fileName,null,"application/vnd.ms-excel",array("Content-Type: application/vnd.ms-excel","Content-Disposition: attachment;filename='Mailing List Generated On ".date("m.d.Y.h.i",time()).".xls'","Cache-Control: max-age=0"));
 		}
 		catch(Exception $ex)
 		{
 			$this->Notice->Type = AdminNoticeType::Error;
-			$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("DELETE_ALL_FAILED","email");
+			$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 		}
 		$this->populateData();
 	}

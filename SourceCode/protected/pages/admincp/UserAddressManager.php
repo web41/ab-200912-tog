@@ -130,7 +130,7 @@ class UserAddressManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." address_id like '%".$searchArray[$index]."%' or first_name like '%".$searchArray[$index]."%' or last_name like '%".$searchArray[$index]."%' or address_1 like '%".$searchArray[$index]."%' or address_2 like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." address_id like '%".addslashes($searchArray[$index])."%' or first_name like '%".addslashes($searchArray[$index])."%' or last_name like '%".addslashes($searchArray[$index])."%' or address_1 like '%".addslashes($searchArray[$index])."%' or address_2 like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}

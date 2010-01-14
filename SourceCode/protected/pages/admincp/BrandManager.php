@@ -78,7 +78,7 @@ class BrandManager extends TPage
 		$this->ClientScript->registerDefaultButton($this->txtSearchText,$this->btnSearch);
 		$this->CurrentPage = ($this->Request->contains('p')) ? intval($this->Request['p']) : 1;
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 1;
-		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
+		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';	
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
 		if (!$this->IsPostBack)
 		{	
@@ -117,7 +117,7 @@ class BrandManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." brand_id like '%".$searchArray[$index]."%' or brand_name like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." brand_id like '%".addslashes($searchArray[$index])."%' or brand_name like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.")";
 		}

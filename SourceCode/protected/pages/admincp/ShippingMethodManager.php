@@ -117,7 +117,7 @@ class ShippingMethodManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." method_id like '%".$searchArray[$index]."%' or method_name like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." method_id like '%".addslashes($searchArray[$index])."%' or method_name like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}

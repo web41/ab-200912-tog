@@ -117,7 +117,7 @@ class UserTypeManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." user_type_id like '%".$searchArray[$index]."%' or user_type_name like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." user_type_id like '%".addslashes($searchArray[$index])."%' or user_type_name like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}

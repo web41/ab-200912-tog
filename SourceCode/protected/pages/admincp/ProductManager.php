@@ -175,7 +175,7 @@ class ProductManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." p.product_id like '%".$searchArray[$index]."%' or p.product_name like '%".$searchArray[$index]."%' or p.product_sku like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." p.product_id like '%".addslashes($searchArray[$index])."%' or p.product_name like '%".addslashes($searchArray[$index])."%' or p.product_sku like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}

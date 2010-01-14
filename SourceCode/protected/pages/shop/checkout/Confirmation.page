@@ -38,7 +38,7 @@
 					<%= "Tel: ".$this->Order->SPhone1.(strlen($this->Order->SFax)>0?", Fax: ".$this->Order->SFax:"") %><br />
 				</td>
 			</tr>
-		</table>
+		</table><br />
 		<!-- Address: END -->
 
 		<com:TRepeater ID="rptCart" ItemRenderer="Application.pages.shop.checkout.OrderItemTemplate">
@@ -57,7 +57,7 @@
 				<!-- Review title: END -->
 				<table cellpadding="4" cellspacing="0" width="100%" style="border:0;text-align:right;">
 			</prop:HeaderTemplate>
-			<prop:FooterTemplate></table></prop:FooterTemplate>
+			<prop:FooterTemplate></table><br /></prop:FooterTemplate>
 		</com:TRepeater>
 		<!-- Product items: END -->
 
@@ -99,7 +99,7 @@
 					</div>
 				</td>
 			</tr>
-		</table>
+		</table><br />
 		<div class="price" style="font-size:18px;float:right;">
 			<input type="button" class="button" value="Print this order" onclick="popup('printable','<%= $this->Service->ConstructUrl('shop.account.orders.PrintableOrderDetail') %>',true)" />
 		</div>

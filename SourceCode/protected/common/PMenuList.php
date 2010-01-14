@@ -66,7 +66,7 @@ class PMenuList extends TBulletedList
 		$this->_postBackOptions=$this->getPostBackOptions();
 		$writer->writeLine();
 		foreach($this->Manager->Nodes as $index=>$node)
-			if ($node->HasChildren)
+			if ($node->Parent === null)
 				$this->renderNode($writer,$node,$index);
 	}
 	

@@ -66,7 +66,7 @@ class OrderStatusForm extends TPage
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
 				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"Order status",$activeRecord->Name);
 				$activeRecord->save();
-				$this->Response->redirect($this->Service->ConstructUrl("admincp.ManufacturerManager",array("action"=>$action, "msg"=>$msg)));
+				$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderStatusManager",array("action"=>$action, "msg"=>$msg)));
 			}
 			catch(TException $e)
 			{

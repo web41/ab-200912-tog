@@ -117,7 +117,7 @@ class DiscountManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." discount_id like '%".$searchArray[$index]."%' or discount_name like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." discount_id like '%".addslashes($searchArray[$index])."%' or discount_name like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}

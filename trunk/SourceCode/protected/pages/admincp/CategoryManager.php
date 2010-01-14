@@ -135,7 +135,7 @@ class CategoryManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." cat_id like '%".$searchArray[$index]."%' or cat_name like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." cat_id like '%".addslashes($searchArray[$index])."%' or cat_name like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}

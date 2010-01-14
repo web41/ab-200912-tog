@@ -117,7 +117,7 @@ class MailingListManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." mailing_id like '%".$searchArray[$index]."%' or mailing_address like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." mailing_id like '%".addslashes($searchArray[$index])."%' or mailing_address like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}

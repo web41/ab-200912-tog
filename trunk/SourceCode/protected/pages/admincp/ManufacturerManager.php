@@ -117,7 +117,7 @@ class ManufacturerManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." mf_id like '%".$searchArray[$index]."%' or mf_name like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." mf_id like '%".addslashes($searchArray[$index])."%' or mf_name like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.")";
 		}

@@ -117,7 +117,7 @@ class OrderStatusManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." status_id like '%".$searchArray[$index]."%' or status_name like '%".$searchArray[$index]."%' or status_code like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." status_id like '%".addslashes($searchArray[$index])."%' or status_name like '%".addslashes($searchArray[$index])."%' or status_code like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.")";
 		}

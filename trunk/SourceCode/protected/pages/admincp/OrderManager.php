@@ -137,7 +137,7 @@ class OrderManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." order_id like '%".$searchArray[$index]."%' or order_num like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." order_id like '%".addslashes($searchArray[$index])."%' or order_num like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.")";
 		}

@@ -122,7 +122,7 @@ class CouponManager extends TPage
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." coupon_id like '%".$searchArray[$index]."%' or coupon_code like '%".$searchArray[$index]."%'";
+				$searchQuery .= ($index>0 ? " or " : "")." coupon_id like '%".addslashes($searchArray[$index])."%' or coupon_code like '%".addslashes($searchArray[$index])."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
 		}

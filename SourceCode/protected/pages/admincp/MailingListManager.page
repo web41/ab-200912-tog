@@ -58,7 +58,7 @@
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->Data->Address %>" />
+									<com:THyperLink Text="<%# $this->Parent->Data->Address %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">

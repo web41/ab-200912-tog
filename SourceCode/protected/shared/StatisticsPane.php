@@ -63,11 +63,17 @@ class StatisticsPane extends TTemplateControl
 	
 	public function getCurrentUser()
 	{
-		//$past_time = time()-2*60*60;
-		//$criteria = new TActiveRecordCriteria;
-		//$criteria->Condition = "last_visit_date >= {$past_time} and last_visit_date <= ".time();
-		//return UserRecord::finder()->count($criteria);
-		return TPropertyValue::ensureInteger(Prado::getApplication()->getGlobalState("UserOnlineCounter",0));
+		$past_time = time()-12*60*60;
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "last_visit_date >= {$past_time} and last_visit_date <= ".time();
+		$lastVisitUserCount = UserRecord::finder()->count($criteria);
+		$currentUserCounter = TPropertyValue::ensureInteger(Prado::getApplication()->getGlobalState("UserOnlineCounter",0));
+		if ($currentUserCounter > $lastVisitUserCount)
+		{
+			$currentUserCounter = $lastVisitUserCount;
+			Prado::getApplication()->setGlobalState("UserOnlineCounter",$currentUserCounter);
+		}
+		return $currentUserCounter;
 	}
 	
 	public function getTotalOrder()

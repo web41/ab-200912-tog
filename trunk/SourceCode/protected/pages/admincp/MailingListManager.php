@@ -1,10 +1,5 @@
 <?php
 
-Prado::using("Application.common.PHPExcel");
-Prado::using("Application.common.PHPExcel.Style");
-Prado::using("Application.common.PHPExcel.Style.Font");
-Prado::using("Application.common.PHPExcel.IOFactory");
-Prado::using("Application.common.PHPExcel.Writer.Excel5");
 class MailingListManager extends TPage
 {
 	private $_maxPage = 1;
@@ -253,6 +248,11 @@ class MailingListManager extends TPage
 	
 	protected function btnExport_Clicked($sender, $param)
 	{
+		Prado::using("Application.common.PHPExcel");
+		Prado::using("Application.common.PHPExcel.Style");
+		Prado::using("Application.common.PHPExcel.Style.Font");
+		Prado::using("Application.common.PHPExcel.IOFactory");
+		Prado::using("Application.common.PHPExcel.Writer.Excel5");
 		try
 		{
 			$workBook = new PHPExcel();

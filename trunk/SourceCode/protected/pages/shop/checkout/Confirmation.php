@@ -78,7 +78,6 @@ class Confirmation extends TPage
 							list($key,$val) = explode("=", $lines[$i]);
 							$keyarray[urldecode($key)] = urldecode($val);
 						}
-	
 						// check that payment_amount/payment_currency are correct
 						$firstname = $keyarray['first_name'];
 						$lastname = $keyarray['last_name'];

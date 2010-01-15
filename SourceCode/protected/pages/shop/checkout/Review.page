@@ -91,7 +91,7 @@
 		</div>
 
 		<h3>payment method</h3>
-		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;float:left;width:544px;">
 			<com:TActiveDropDownList ID="cboPaymentSelector" 
 				DataValueField="ID" DataTextField="Name" 
 				PromptText="Select..." PromptValue="0"
@@ -105,9 +105,14 @@
 				Display="Dynamic"
 				FocusOnError="true"/>
 		</div>
+        
+        <h3>delivery date</h3>
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
+			<input type="text" class="datepicker" value="" />
+		</div>
 
 		<div class="viewcart_container" style="margin:0;">
-			<div class="cart_review">
+			<div class="cart_review" style="margin:0;">
 				<div class="price">
 					<div class="text">subtotal</div>
 					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= CartTempRecord::finder()->getSubtotalInSession() %>" /></div>

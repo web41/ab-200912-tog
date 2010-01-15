@@ -30,13 +30,13 @@
                                     	<div class="img" id="icon_dashboard_product">&nbsp;</div>
                                         product manager
                                     </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.BrandManager") %>">
-                                    	<div class="img" id="icon_dashboard_brand">&nbsp;</div>
-                                        brand manager
-                                    </a>
                                     <a class="function" href="<%= $this->Service->ConstructUrl("admincp.CategoryManager") %>">
                                         <div class="img" id="icon_dashboard_category">&nbsp;</div>
                                         category manager
+                                    </a>
+                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.BrandManager") %>">
+                                    	<div class="img" id="icon_dashboard_brand">&nbsp;</div>
+                                        brand manager
                                     </a>
                                     <a class="function" href="<%= $this->Service->ConstructUrl("admincp.ManufacturerManager") %>">
                                         <div class="img" id="icon_dashboard_supplier">&nbsp;</div>
@@ -57,10 +57,6 @@
                                     <a class="function" href="<%= $this->Service->ConstructUrl("admincp.DiscountManager") %>">
                                         <div class="img" id="icon_dashboard_discount">&nbsp;</div>
                                         discount manager
-                                    </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp") %>" style="margin-right:0;">
-                                        <div class="img" id="icon_dashboard_messages">&nbsp;</div>
-                                        messages manager
                                     </a>
                                 </td>
                             </tr>

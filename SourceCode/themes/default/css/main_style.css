@@ -29,3 +29,4 @@ a.btn_addtocart:hover{color:#e8e8e8;}
 .btn_delete{height:16px;width:16px;background:url(../images/btn_delete.png) no-repeat;border:none;margin:2px 0 0 0;}
 .btn_refresh:hover, .btn_delete:hover{cursor:pointer;filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;cursor:pointer;}
 
+

@@ -21,6 +21,8 @@
 	.main_col .inside_box h2{text-transform:capitalize;font-weight:normal;font-size:20px;margin-bottom:10px;color:#7aa825;border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;}
 	.main_col .inside_box h3{text-transform:capitalize;font-weight:normal;font-size:16px;margin-bottom:5px;color:#7aa825;}
 	
+	.main_col .inside_box div.datepicker div{margin:inherit;padding:inherit;}
+	
 /*Main column: END*/
 #container .main_content .main_col .error{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#ffcecf;color:#655254;padding:5px 10px 5px 10px;}
 #container .main_content .main_col .notice{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#fffbcc;color:#676455;padding:5px 10px 5px 10px;}
@@ -28,7 +30,7 @@
 /*Shop by Brand*/
 #brand_container{{float:left;width:544px;height:auto;text-align:left;margin:0;}}
 	#brand_container ul{margin:0;padding:0;width:544px;float:left;line-height:16px;}
-	#brand_container ul li{width:116px;float:left;display:inline;padding:5px 10px 5px 10px;text-align:center;}
+	#brand_container ul li{width:160px;float:left;display:block;padding:5px 10px 5px 10px;text-align:center;height:40px;margin:0 0 10px 0;}
 	#brand_container ul li a{text-transform:capitalize;font-size:11px;font-weight:bold;}
 	
 

@@ -25,7 +25,7 @@
 	.box .special_box div div{background:url(../images/specialbox_center.png) repeat-y;padding:0 10px 5px 10px;height:auto;border:none}
 	
 	.box .cart_title{width:178px;height:50px;float:left;background:url(../images/cart_title.png) no-repeat;margin:-20px 0 0 0;}
-	.box .cart_title h2{width:158px;text-align:left;float:left;padding:27px 0 10px 20px;font-size:14px;background:none;}
+	.box .cart_title h2{width:168px;text-align:left;float:left;padding:27px 0 10px 10px;font-size:14px;background:none;}
 	
 	.shoppingcart_box{float:left;width:178px;height:auto;margin:0 0 20px 0;padding:10px 0 10px 0;text-align:center;border:solid #503a1d;border-width:1px 0 1px 0;}
 	

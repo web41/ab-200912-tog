@@ -23,7 +23,7 @@
 				<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" />
 			</div>
 			<div style="float:right;">
-				<com:TLinkButton ID="btnAddToCart" Text="Add to cart" CssClass="btn_addtocart" OnClick="btnAddToCart_Clicked"/>
+				<com:TLinkButton ID="btnAddToCart" Text="Add to bag" CssClass="btn_addtocart" OnClick="btnAddToCart_Clicked"/>
 			</div>
 		</div>
 	</div>

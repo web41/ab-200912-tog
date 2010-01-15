@@ -1,7 +1,8 @@
 var j = jQuery.noConflict();
   
 j(function() {
-	j(".btn_cart").css({"margin-left": (j('.shoppingcart_box').width()-100)/2+"px", "display": "block"})
+	j(".btn_cart").css({"margin-left": (j('.shoppingcart_box').width()-150)/2+"px", "display": "block"})
+	j(".btn_cart2").css({"margin-left": (j('.shoppingcart_box').width()-100)/2+"px", "display": "block"})
 	
 	j(document).ready(function()
 	{  j('#left_category > li').bind('mouseover', jsddm_open)

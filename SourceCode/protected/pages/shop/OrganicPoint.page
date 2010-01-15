@@ -1,0 +1,81 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Organic Point</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.OrganicPoints />
+	<com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+		<h2>Organic point</h2>
+		<div>
+        	<div><b>Earn Organic Points</b><br /><b>Organic Points Rewards Programme</b></div>
+			<div>Every $1 you spend at <span class="name">The Organic Grocer</span> earns you 1 Organic Point.</div>
+            For 500 Organic points earned, redeem a $5 cash rebate off your next purchase.<br />
+            For 750 Organic points earned, redeem a $10 cash rebate off your next purchase.<br />
+            For 1000 Organic points earned, redeem a $15 cash rebate off your next purchase.<br />
+        </div>
+		<div>
+        	<div><b>Organic Points Rewards</b><br /><b>ORGANIC POINTS REWARDS PROGRAMME</b></div>
+			<div><b>What is the Organic Points Rewards Programme?</b></div>
+            <div>This programme is a system to reward our customers for making purchases with <span class="name">The Organic Grocer</span>. The more you shop with us, the more Organic points you will accumulate, the more cash rebates you will enjoy towards your future purchases.</div>
+            <div><b>How do you earn Organic Points?</b></div>
+            <div>For every S$1 spent, you will earn 1 point which will be credited automatically into your account. To track the number of loyalty points you have earned so far, simply log on and access your account.</div>
+            <div><b>What can I do with my Organic Rewards Points?</b></div>
+            <div>Upon accumulating 500 points, you will be eligible to redeem S$5 off your next online purchase! The more points you earn, the more cash rebates you will receive can redeem. Organic points are redeemable for every multiple of 500, 750 and 1000 Organic points.</div>
+        </div>
+        <div>
+            <table cellpadding="2" cellspacing="0" border="0">
+                <tr>
+                    <td><b>Organic Points</b></td>
+                    <td><b>Cash Rebate Value</b></td>
+                </tr>
+                <tr>
+                    <td>500</td>
+                    <td>S$5</td>
+                </tr>
+                <tr>
+                    <td>750</td>
+                    <td>S$10</td>
+                </tr>
+                <tr>
+                    <td>1000</td>
+                    <td>S$15</td>
+                </tr>
+            </table>
+            A maximum of 1000 Organic points may be redeemed at a single purchase. 
+        </div>
+        <div>
+        	<div><b>How can I redeem my Organic Points?</b></div>
+            <div>Redemption of points is easy. You will be prompted with the number of Organic points which you can use for redemption at the point of purchase. Select the number of points to redeem, and the corresponding dollar value will be applied towards your purchase.<br />Loyalty points awarded to a customer may only be redeemed by that customer and is strictly not transferable. </div>
+            <div><b>How can I start earning Organic Points?</b></div>
+            <div>Once you are registered as an online user of <span class="name">The Organic Grocer</span>, you are all set to earn Organic points which can be used towards future purchases.</div>
+        </div>
+        
+        <div>
+        	<div><b>TERMS & CONDITIONS</b><br /><b>ORGANIC POINTS REWARDS PROGRAMME</b></div>
+			<div>
+            	Only Customers registered as members of <span class="name">The Organic Grocer</span> shall be eligible to participate in the "Organic Points Rewards Programme" in which a Registered Member of the Site may accumulate or be awarded points ("Organic Points") for each purchase made on the Site and such points so accumulated will entitle the Registered Member to certain benefits. <span class="name">The Organic Grocer</span> will determine, in its sole discretion, the number of Loyalty Points to be awarded to each Customer and such decision shall be final.<br />
+                The Organic Points Rewards Programme and all the benefits are made available at the sole discretion of <span class="name">The Organic Grocer</span>. <span class="name">The Organic Grocer</span> shall be entitled to limit, suspend, terminate or otherwise amend, at any time, any aspect of the Organic Points Rewards Programme without notice to the Customer.
+            </div>
+        </div>
+	</div>
+	<!-- Inside box: END -->
+	</div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

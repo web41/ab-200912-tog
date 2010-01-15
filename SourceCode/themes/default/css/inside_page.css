@@ -14,6 +14,7 @@
 	.main_col .inside_box table .right .button{margin-right:5px;}
 	
 	.main_col .inside_box div{margin-bottom:15px;line-height:20px;}
+	.main_col .inside_box div div{margin-bottom:5px;line-height:20px;}
 	
 	.main_col .inside_box div ol{list-style-type:upper-roman;}
 	.main_col .inside_box div ol ol{list-style-type:decimal;margin-bottom:10px;font-weight:bold;}

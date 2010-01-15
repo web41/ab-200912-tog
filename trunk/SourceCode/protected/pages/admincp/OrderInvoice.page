@@ -77,7 +77,9 @@
 					Delivery: <com:TLabel ID="lblDeliverer" /><br />
 					Total packs: <com:TLabel ID="lblTotalPacks" /><br />
 					Payment Terms: <com:TLabel ID="lblPaymentTerm" /><br />
-					Delivery Date/Time: <com:TLabel ID="lblDeliveryDate" />
+					Delivery Date/Time: <com:TLabel ID="lblDeliveryDate" /><br />
+					Comments: <br />
+					<com:TLabel ID="lblComments" />
 				</td>
 				<td width="45%" valign="top">
 					<div style="float:right;margin:0;">

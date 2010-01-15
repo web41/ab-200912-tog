@@ -161,6 +161,15 @@ class Confirmation extends TPage
 			try
 			{
 				$emailer->send($email);
+				
+				// add credits to user
+				$user = UserRecord::finder()->findByPk($this->Application->User->ID);
+				if ($user instanceof UserRecord)
+				{
+					$user->Credits = $this->Order->Total;
+					$user->save();
+				}
+				
 				$this->Session["OrderNumber"] = base64_encode($this->Application->SecurityManager->hashData($this->Order->Num));
 			}
 			catch(TException $ex)

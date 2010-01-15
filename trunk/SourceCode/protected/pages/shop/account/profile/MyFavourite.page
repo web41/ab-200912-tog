@@ -14,276 +14,65 @@
 	<com:Application.shared.UserNotice ID="Notice" />
 	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
-    	<h2 class="title">my favourite</h2>
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
-        
-        <!-- Product box -->
-        <div class="product_box">
-            <a href="#">
-                <img src="" style="width:124px;height:124px;"/>
-            </a>
-            <div class="title">
-                <h2>brand name</h2>
-                <div class="price">Price: <b>price</b> discount</div>
-            </div>
-            <div class="title">
-                <h3><a href="#">product name</a></h3>
-            </div>
-            <div class="content">
-                <div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
-                <div><b>free text bar 1</b></div>
-                <!--div><b>Size</b>: 200g</div-->
-                <div style="color:#eb0010">free text bar 2</div>
-                <div>
-                    <div style="float:left;">
-                        Quantity: 10
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Product box: END -->
+		<h2 class="title">my favourite</h2>
+		<com:TRepeater ID="rptMyFavourite" OnItemCreated="rptMyFavourite_ItemCreated">
+			<prop:ItemTemplate>
+			<!-- Product box -->
+			<div class="product_box">
+				<a href="<%= $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>">
+					<img src="<%# $this->Page->Master->UrlPrefix %>/useruploads/images/product/thumbs/<%# $this->Data && $this->Data->Product ? $this->Data->Product->ThumbnailPath : "" %>" alt="<%= $this->Data && $this->Data->Product ? $this->Data->Product->Name : "" %>" style="width:124px;height:124px;"/>
+				</a>
+				<div class="title">
+					<h2><%# $this->Data && $this->Data->Product ? $this->Data->Product->Brand->Name : "" %></h2>
+					<div class="price">Price: <b><com:TActiveLabel ID="lblPrice" /></b> <com:TActiveLabel ID="lblDiscountPrice" /></div>
+				</div>
+				<div class="title">
+					<h3><a href="<%# $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>"><%# $this->Data && $this->Data->Product ? $this->Data->Product->Name : "" %></a></h3>
+				</div>
+				<div class="content">
+					<div><%# $this->Data && $this->Data->Product ? $this->Data->Product->Brief : "" %></div>
+					<div><b><%# $this->Data && $this->Data->Product ? $this->Data->Product->FreeText1 : "" %></b></div>
+					<!--div><b>Size</b>: 200g</div-->
+					<div style="color:#eb0010"><%# $this->Data && $this->Data->Product ? $this->Data->Product->FreeText2 : "" %></div>
+					<div>
+						<div style="float:left;">
+							Quantity: <%# $this->Data ? $this->Data->Quantity : 0 %>
+						</div>
+					</div>
+				</div>
+				<com:THiddenField ID="txtID" Value="<%# $this->Data ? $this->Data->ID : 0 %>" />
+			</div>
+			<!-- Product box: END -->
+			</prop:ItemTemplate>
+		</com:TRepeater>
+		
+
+		<!-- Product box -->
+		<!--div class="product_box">
+			<a href="#">
+				<img src="" style="width:124px;height:124px;"/>
+			</a>
+			<div class="title">
+				<h2>brand name</h2>
+				<div class="price">Price: <b>price</b> discount</div>
+			</div>
+			<div class="title">
+				<h3><a href="#">product name</a></h3>
+			</div>
+			<div class="content">
+				<div>df hasf kasflk jfj lkfl ;ldf j;kfj lkf j;f jf lf lkjaf jlf lklf kjadfj fj lkd f</div>
+				<div><b>free text bar 1</b></div>
+				<!--div><b>Size</b>: 200g</div-->
+				<!--div style="color:#eb0010">free text bar 2</div>
+				<div>
+					<div style="float:left;">
+						Quantity: 10
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Product box: END -->
 	<!-- Inside box: END -->
 	</com:TPanel>
 </div>
@@ -292,7 +81,7 @@
 <!-- Right column -->
 <div class="right_col">
 	<com:Application.shared.UserState />
-    <com:Application.shared.ProfileMenu />
+	<com:Application.shared.ProfileMenu />
 	<com:Application.shared.RightColumn />
 </div>
 <!-- Right column: END -->

@@ -7,7 +7,7 @@ j(function() {
 	{  j('#left_category > li').bind('mouseover', jsddm_open)
 	   j('#left_category > li').bind('mouseout',  jsddm_timer)
 	});
-	document.onclick = jsddm_close;
+	
 });
 
 var timeout    = 500;

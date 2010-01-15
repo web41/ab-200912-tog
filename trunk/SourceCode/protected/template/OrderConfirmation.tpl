@@ -6,10 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Order Receipt</title>
-	<link href="%%STYLE_URL%%" rel="stylesheet" type="text/css" />
+	<link href="%%BASE_URL%%/style.css" rel="stylesheet" type="text/css" />
+	<style type="text/css" media="screen">
+	<!--
+	  body, div, h2, h3  {background:#fff;}
+	-->
+	</style>
 </head>
 
-<body style="background-color:#fff;">
+<body style="background:none;">
 <!-- Main column -->
 <div class="main_col">
 	%%DYNAMIC_CONTENT%%

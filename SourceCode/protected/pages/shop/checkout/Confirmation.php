@@ -153,9 +153,9 @@ class Confirmation extends TPage
 			$emailer = $this->Application->getModule('mailer');
 			$email = $emailer->createNewEmail("OrderConfirmation");
 			$html = $email->HtmlContent->flush();
-			$stlyeUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).($this->Request->UrlManagerModule->UrlPrefix!='/'?$this->Request->UrlManagerModule->UrlPrefix:'')."/themes/default/style.css";
+			$baseThemeUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->Page->Theme->BaseUrl;
 			$dynamicContent = html_entity_decode($this->Session["HtmlContent"], ENT_QUOTES, "UTF-8");
-			$html = str_replace("%%STYLE_URL%%",$stlyeUrl,$html);
+			$html = str_replace("%%BASE_URL%%",$baseThemeUrl,$html);
 			$html = str_replace("%%DYNAMIC_CONTENT%%",$dynamicContent,$html);
 			$email->setHtmlContent($html);
 			try

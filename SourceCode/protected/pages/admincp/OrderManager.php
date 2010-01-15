@@ -88,8 +88,8 @@ class OrderManager extends TPage
 		// register search button
 		$this->ClientScript->registerDefaultButton($this->txtSearchText,$this->btnSearch);
 		$this->CurrentPage = ($this->Request->contains('p')) ? intval($this->Request['p']) : 1;
-		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 1;
-		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
+		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 3;
+		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'desc';
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
 		$this->UserID = ($this->Request->contains('u')) ? TPropertyValue::ensureInteger($this->Request['u']) : 0;
 		if (!$this->IsPostBack)

@@ -43,10 +43,17 @@
 		</module>
 		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
 		<module id="session" class="System.Web.THttpSession" Timeout="86400" />
+		<!-- Used for Local only -->
 		<module id="mailer" class="System.Util.TEmailer" Type="Smtp" EmailTemplateDirectory="Application.template">
 			<sender Field="Sender" Address="no-reply@phoenix-solution.com" Name="The Organic Grocer" />
 			<smtp Host="mail.phoenix-solution.com" Password="1qaz2wsx" Username="no-reply@phoenix-solution.com" Timeout="60" />
 		</module>
+		<!-- Local only -->
+		<!-- When publishing to testing server or production server. Please change to -->
+		<!--module id="mailer" class="System.Util.TEmailer" Type="Mail" EmailTemplateDirectory="Application.template">
+			<sender Field="Sender" Address="info@theorganicgrocer.com.sg" Name="The Organic Grocer" />
+		</module-->
+		<!-- Please do not forget -->
 		<module id="adminmenu" class="Application.common.PMenuManager" MenuFile="Application.pages.admincp.menu"/>
 		<!--module id="sitemap" class="CSitemap.CSitemapManager" SitemapFile="Application.sitemap"/-->
 		<module id="request" class="THttpRequest" UrlManager="friendly-url"/>

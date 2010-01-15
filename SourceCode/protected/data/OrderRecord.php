@@ -48,6 +48,7 @@ class OrderRecord extends TActiveRecord
 	public $Total;
 	public $Currency;
 	public $IPAddress;
+	public $Comments;
 	public $CreateDate;
 	public $ModifyDate;
 	
@@ -95,6 +96,7 @@ class OrderRecord extends TActiveRecord
 		'total'=>'Total',
 		'currency'=>'Currency',
 		'ip_address'=>'IPAddress',
+		'comments'=>'Comments',
 		'c_date'=>'CreateDate',
 		'm_date'=>'ModifyDate'
 	);
@@ -135,7 +137,7 @@ class OrderRecord extends TActiveRecord
 			$this->UserID = Prado::getApplication()->User->ID;
 			$this->Deliverer = "";
 			$this->TotalPacks = 0;
-			$this->EstDeliveryDate = $this->estimateDeliveryDate();
+			//$this->EstDeliveryDate = $this->estimateDeliveryDate();
 			$this->CreateDate = time();
 		}
 		$this->ModifyDate = time();
@@ -150,9 +152,17 @@ class OrderRecord extends TActiveRecord
 		return OrderHistoryRecord::finder()->withOrderStatus()->find($criteria);
 	}
 	
-	protected function estimateDeliveryDate()
+	public function estimateDeliveryDate()
 	{
 		return 0;
+	}
+	
+	public function validateDeliveryDate($estDate)
+	{
+		$next2day = time()+2*24*60*60;
+		if ($estDate > $next2day && date("N",$estDate) != 6 && date("N",$estDate) != 7)
+			return true;
+		else return false;
 	}
 }
 ?>

@@ -37,6 +37,7 @@ class OrderInvoice extends TPage
 				$this->lblTotalPacks->Text = $activeRecord->TotalPacks;
 				$this->lblPaymentTerm->Text = PaymentRecord::finder()->withPaymentMethod()->findByorder_id($activeRecord->ID)->PaymentMethod->Name;
 				$this->lblDeliveryDate->Text = ($activeRecord->EstDeliveryDate>0) ? date('m/d/Y h:i:s A',$activeRecord->EstDeliveryDate) : "--";
+				$this->lblComments->Text = $activeRecord->Comments;
 	
 				$this->nfSubtotal->Value = $activeRecord->Subtotal;
 				$this->nfShippingAmount->Value = $activeRecord->ShippingMethod->Price;

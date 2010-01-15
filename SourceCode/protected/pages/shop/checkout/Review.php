@@ -156,6 +156,8 @@ class Review extends TPage
 				$order->Total = $cartRecord->Total;
 				$order->Currency = "USD";
 				$order->IPAddress = $this->Request->UserHostAddress;
+				$order->EstDeliveryDate = $this->dpEstDeliveryDate->Data;
+				$order->Comments = $this->txtComments->SafeText;
 				
 				try
 				{
@@ -216,9 +218,9 @@ class Review extends TPage
 				$this->Notice->Type = UserNoticeType::Error;
 				$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 			}
-			$this->populateData();
-			$this->categoryMenu->populateData();
 		}
+		$this->populateData();
+		$this->categoryMenu->populateData();
 	}
 	
 	public function generateHash($oid,$onum,$pid)
@@ -228,6 +230,11 @@ class Review extends TPage
 		$pid = base64_encode($this->Application->SecurityManager->hashData($pid));
 		$hash = array($oid,$onum,$pid);
 		return $this->Application->SecurityManager->hashData(serialize($hash));
+	}
+	
+	protected function checkDeliveryDate_ServerValidated($sender, $param)
+	{
+		$param->IsValid = OrderRecord::validateDeliveryDate($param->Value);
 	}
 }
 

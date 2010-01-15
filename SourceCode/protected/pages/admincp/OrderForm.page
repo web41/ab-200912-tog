@@ -175,6 +175,26 @@
 								</td>
 							</tr>
 							<tr>
+								<td class="field">
+									<div class="text">Delivery Date</div>
+									<div class="control">
+										<com:TDatePicker ID="dpEstDeliveryDate"
+											Mode="ImageButton" InputMode="TextBox"
+											ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
+											DateFormat="MM/dd/yyyy"/>
+									</div>
+								</td>
+								<td class="field">&nbsp;</td>
+							</tr>
+							<tr>
+								<td class="field" colspan="2">
+									<div class="text">Comments</div>
+									<div class="control">
+										<com:TTextBox ID="txtComments" TextMode="MultiLine" CssClass="textbox" Width="630px" Height="100px"/>
+									</div>
+								</td>
+							</tr>
+							<tr>
 								<td class="field" style="height:auto;width:50%;padding-left:5px;line-height:20px;">&nbsp;
 									
 								</td>

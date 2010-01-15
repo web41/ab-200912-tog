@@ -65,10 +65,10 @@
 		<table cellpadding="8" cellspacing="0" border="0" width="100%" >
 			<tr>
 				<td width="55%" valign="top">
-					Delivery: <%= strlen($this->Order->Deliverer)>0?$this->Order->Deliverer:"--" %><br />
+					Deliverer: <%= strlen($this->Order->Deliverer)>0?$this->Order->Deliverer:"--" %><br />
 					Total packs: <%= $this->Order->TotalPacks>0?$this->Order->TotalPacks:"--" %><br />
 					Payment Terms: <%= $this->Payment->PaymentMethod->Name %><br />
-					Delivery Date/Time: <%= $this->Order->EstDeliveryDate>0 ? date('m/d/Y h:i:s a',$this->Order->EstDeliveryDate) : "--" %>
+					Delivery Date/Time: <%= $this->Order->EstDeliveryDate>0 ? date('m/d/Y h:i:s A',$this->Order->EstDeliveryDate) : "--" %>
 				</td>
 				<td width="45%" valign="top">
 					<div style="float:right;margin:0;">

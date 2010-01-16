@@ -35,8 +35,8 @@
 					<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" />
 				</div>
 				<div class="price">Price: <span><com:TActiveLabel ID="lblPrice" CssClass="discount" /> <com:TActiveLabel ID="lblDiscountPrice" /></span></div>
-				<div class="price" style="width:544px;text-align:center;">
-					<com:TActiveLinkButton CssClass="btn_addtocart" Style="margin-left:222px;margin-bottom:0" Text="Add to bag" OnClick="btnAddToCart_Clicked" Attributes.onclick="return validateDropDownList('<%= $this->cboPropertySelector->ClientID %>')"/>
+				<div class="price" style="clear:both;margin-top:15px;">
+					<com:TActiveLinkButton CssClass="btn_addtocart" Text="Add to bag" OnClick="btnAddToCart_Clicked" Attributes.onclick="return validateDropDownList('<%= $this->cboPropertySelector->ClientID %>')"/>
 				</div>
 			</div>
 			<div style="float:left;width:544px;margin-bottom:0;">

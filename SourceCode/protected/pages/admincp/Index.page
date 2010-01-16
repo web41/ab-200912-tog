@@ -19,59 +19,59 @@
 						</div>
 					</div>
 					<div class="content" id="dashboard">
-                    	<table cellpadding="0" cellspacing="0" border="0">
-                        	<tr>
-                            	<td>
-                                	<a class="function" href="<%= $this->Service->ConstructUrl("shop.Index") %>" target="_blank">
-                                        <div class="img" id="icon_dashboard_home">&nbsp;</div>
-                                        Go to homepage
-                                    </a>
-                                	<a class="function" href="<%= $this->Service->ConstructUrl("admincp.ProductManager") %>">
-                                    	<div class="img" id="icon_dashboard_product">&nbsp;</div>
-                                        product manager
-                                    </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.CategoryManager") %>">
-                                        <div class="img" id="icon_dashboard_category">&nbsp;</div>
-                                        category manager
-                                    </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.BrandManager") %>">
-                                    	<div class="img" id="icon_dashboard_brand">&nbsp;</div>
-                                        brand manager
-                                    </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.ManufacturerManager") %>">
-                                        <div class="img" id="icon_dashboard_supplier">&nbsp;</div>
-                                        supplier manager
-                                    </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.UserManager") %>">
-                                        <div class="img" id="icon_dashboard_user">&nbsp;</div>
-                                        user manager
-                                    </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.OrderManager") %>">
-                                        <div class="img" id="icon_dashboard_order">&nbsp;</div>
-                                        order manager
-                                    </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.CouponManager") %>">
-                                        <div class="img" id="icon_dashboard_coupon">&nbsp;</div>
-                                        coupon manager
-                                    </a>
-                                    <a class="function" href="<%= $this->Service->ConstructUrl("admincp.DiscountManager") %>">
-                                        <div class="img" id="icon_dashboard_discount">&nbsp;</div>
-                                        discount manager
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    	
+						<table cellpadding="0" cellspacing="0" border="0">
+							<tr>
+								<td>
+									<a class="function" href="<%= $this->Service->ConstructUrl("shop.Index") %>" target="_blank">
+										<div class="img" id="icon_dashboard_home">&nbsp;</div>
+										Go to homepage
+									</a>
+									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.ProductManager") %>">
+										<div class="img" id="icon_dashboard_product">&nbsp;</div>
+										product manager
+									</a>
+									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.CategoryManager") %>">
+										<div class="img" id="icon_dashboard_category">&nbsp;</div>
+										category manager
+									</a>
+									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.BrandManager") %>">
+										<div class="img" id="icon_dashboard_brand">&nbsp;</div>
+										brand manager
+									</a>
+									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.ManufacturerManager") %>">
+										<div class="img" id="icon_dashboard_supplier">&nbsp;</div>
+										supplier manager
+									</a>
+									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.UserManager") %>">
+										<div class="img" id="icon_dashboard_user">&nbsp;</div>
+										user manager
+									</a>
+									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.OrderManager") %>">
+										<div class="img" id="icon_dashboard_order">&nbsp;</div>
+										order manager
+									</a>
+									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.CouponManager") %>">
+										<div class="img" id="icon_dashboard_coupon">&nbsp;</div>
+										coupon manager
+									</a>
+									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.DiscountManager") %>">
+										<div class="img" id="icon_dashboard_discount">&nbsp;</div>
+										discount manager
+									</a>
+								</td>
+							</tr>
+						</table>
+
 					</div>
 				</div>
 				<!-- Main box: END -->
-                
-				<!-- Latest Product box -->
+
+				<!-- Pending order box -->
 				<div class="main_box">
 					<div class="title"><div><div>
-                    	<h2>latest product</h2>
-                        <div style="float:right;padding:7px 5px 0 0;height:auto;">
-                        	<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
+						<h2>Pending order</h2>
+						<div style="float:right;padding:7px 5px 0 0;height:auto;">
+							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
 							<com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
 							<com:TRequiredFieldValidator ID="val1"
 								ControlToValidate="txtSearchText"
@@ -81,125 +81,80 @@
 								InitialValue="Filter by ID or Name"
 								ValidationGroup="filter" Style="margin:0;padding:0;float:right;"/>
 							<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Filter by ID or Name" Attributes.onfocus="this.select()" />
-							<com:TDropDownList ID="cboMfSelector"
-								AutoPostBack="true"
-								OnSelectedIndexChanged="cboMfSelector_SelectedIndexChanged"
-								PromptText="All"
-								PromptValue="0"
-								DataTextField="Name"
-								DataValueField="ID" />
-							<com:TDropDownList ID="cboBrandSelector"
-								AutoPostBack="true"
-								OnSelectedIndexChanged="cboBrandSelector_SelectedIndexChanged"
-								PromptText="All"
-								PromptValue="0"
-								DataTextField="Name"
-								DataValueField="ID" />
-							<com:TDropDownList ID="cboCatSelector"
-								AutoPostBack="true"
-								OnSelectedIndexChanged="cboCatSelector_SelectedIndexChanged"
-								PromptText="All"
-								PromptValue="0"
-								DataTextField="Name"
-								DataValueField="ID" />
-                        </div>
-                    </div></div></div>
+						</div>
+					</div></div></div>
 					<div class="content nopadding">
-						<com:TOGDataGrid ID="datalist"
-							AutoGenerateColumns="false"
-							AllowSorting="false"
-							AllowPaging="false">
-							<com:TTemplateColumn HeaderStyle.Width="40px" HeaderText="#">
+						<com:TOGDataGrid ID="ItemList"
+							OnItemCreated="list_ItemCreated"
+							OnItemCommand="list_ItemCommand">
+							<com:TTemplateColumn HeaderStyle.Width="4%" HeaderText="#">
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
+									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 + ($this->Page->CurrentPage-1)*$this->Parent->Parent->PageSize %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderText="Name" HeaderStyle.CssClass="align_left">
-								<prop:ItemTemplate>
-									<a href="">
-									<com:TLabel ID="lblCategory" Text="Product<%# $this->Parent->ItemIndex + 1 %>" />
-									</a>
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>					
-							<com:TButtonColumn HeaderStyle.Width="10%" ID="btnPublish" ButtonType="ImageButton" HeaderText="Publish" CommandName="toogle_publish" />
-							<com:TTemplateColumn HeaderStyle.Width="5%">
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
 								<prop:HeaderTemplate>
-									<com:TCheckBox ID="chkAllItem" Attributes.onclick="_chk.check(this)" />
+									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Order Number
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />
+									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TCheckBox ID="chkItem" Attributes.onclick="_chk.check(this)" />
+									<com:THyperLink Text="<%# $this->Parent->Data->Num %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$this->Parent->Data->ID,"num"=>$this->Parent->Data->Num)) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-						</com:TOGDataGrid>
-						<div class="table_footer">
-                        	<div class="table_paging" style="display:none;">
-                                <a href="" class="text">First</a>
-                                <a href="" class="text">Previous</a>
-                                <a href="">1</a>
-                                <a href="">2</a>
-                                <a href="">30</a>
-                                <a href="">999</a>
-                                <a href="" class="text">Next</a>
-                                <a href="" class="text">Last</a>
-                            </div>
-						</div>
-						
-					</div>
-				</div>
-				<!-- Latest Product box: END -->
-                
-                <!-- Latest User box -->
-				<div class="main_box">
-					<div class="title"><div><div>
-                    	<h2>latest user</h2>
-                        
-                    </div></div></div>
-					<div class="content nopadding">
-						<com:TOGDataGrid ID="datalist2"
-							AutoGenerateColumns="false"
-							AllowSorting="false"
-							AllowPaging="false">
-							<com:TTemplateColumn HeaderStyle.Width="40px" HeaderText="#">
-								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderText="Name" HeaderStyle.CssClass="align_left">
-								<prop:ItemTemplate>
-									<a href="">
-									<com:TLabel ID="lblCategory2" Text="Product<%# $this->Parent->ItemIndex + 1 %>" />
-									</a>
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>					
-							<com:TButtonColumn HeaderStyle.Width="10%" ID="btnPublish2" ButtonType="ImageButton" HeaderText="Publish" CommandName="toogle_publish" />
-							<com:TTemplateColumn HeaderStyle.Width="5%">
-								<prop:HeaderTemplate>
-									<com:TCheckBox ID="chkAllItem2" Attributes.onclick="_chk.check(this)" />
-								</prop:HeaderTemplate>
-								<prop:ItemTemplate>
-									<com:TCheckBox ID="chkItem2" Attributes.onclick="_chk.check(this)" />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
-						</com:TOGDataGrid>
-						<div class="table_footer">
-                        	<div class="table_paging" style="display:none;">
-                                <a href="" class="text">First</a>
-                                <a href="" class="text">Previous</a>
-                                <a href="">1</a>
-                                <a href="">2</a>
-                                <a href="">30</a>
-                                <a href="">999</a>
-                                <a href="" class="text">Next</a>
-                                <a href="" class="text">Last</a>
-                            </div>
-						</div>
-						
-					</div>
-				</div>
-				<!-- Latest User box: END -->
-				
-				<com:Application.shared.AdminNotice Type="Information" />
 
+							<com:TTemplateColumn HeaderStyle.Width="8%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Total
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Parent->Data->Total %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.Width="18%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Create Date
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->CreateDate>0) ? date('m/d/Y h:i:s a',$this->Parent->Data->CreateDate) : '--' %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.Width="10%" HeaderText="Status">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->Data->LatestHistory->OrderStatus->Name %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">ID
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==0 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel ID="lblItemID" Text="<%# $this->Parent->Data->ID %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TButtonColumn ID="colDeleteButton" HeaderStyle.Width="4%" ButtonType="ImageButton" ImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/icon_minus.png" CommandName="delete" />
+							<com:TTemplateColumn ID="colCheckBox" HeaderStyle.Width="4%">
+								<prop:ItemTemplate>
+									<com:TCheckBox ID="chkItem" Attributes.onclick="_chk.toogle(this,this.checked)" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TBoundColumn ID="colAlias" DataField="Alias" Visible="false" />
+						</com:TOGDataGrid>
+						<div class="table_footer">
+							<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="table_paging" TextCssClass="text" ActivePageCssClass="active" />
+						</div>
+					</div>
+				</div>
+				<!-- Pending Order box: END -->
 			</td>
 		</tr>
 	</table>

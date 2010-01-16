@@ -154,7 +154,13 @@ class OrderRecord extends TActiveRecord
 	
 	public function estimateDeliveryDate()
 	{
-		return 0;
+		//return 0;
+		$next2day = time()+2*24*60*60;
+		while(date("N",$next2day)==6||date("N",$next2day)==7)
+		{
+			$next2day = $next2day + 24*60*60;
+		}
+		return $next2day;
 	}
 	
 	public function validateDeliveryDate($estDate)

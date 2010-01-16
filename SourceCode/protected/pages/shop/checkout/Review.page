@@ -125,6 +125,13 @@
 			<com:TTextBox ID="txtComments" TextMode="MultiLine" Width="400px" Height="100px" /><br />
 			<%= $this->Application->getModule('message')->translate('REVIEW_COMMENT') %>
 		</div>
+		
+		<h3>Redeem our organic points</h3>
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
+			Your current organic points: <%= $this->User->Credits %><br />
+			<com:TActiveDropDownList ID="cboCreditsSelector" 
+				PromptValue="0" PromptText="Keep points for later purchase"/>
+		</div>
 
 		<div class="viewcart_container" style="margin:0;">
 			<div class="cart_review" style="margin:0;">

@@ -195,6 +195,7 @@
 		<parameter id="MAXIMUM_ORDER_REQUIRED" value="50.00" />
 		<parameter id="MAXIMUM_ORDER_TO_FREE_SHIPPING" value="100.00" />
 		<parameter id="DELIVERER" value="(1=>'Hubert Huynh',2=>'Sandy Nguyen',3=>'Natallie Pham')" />
+		<parameter id="ORGANIC_POINTS" value="(5=>500,10=>750,15=>1000)" />
 	</parameters>
 </application>
 

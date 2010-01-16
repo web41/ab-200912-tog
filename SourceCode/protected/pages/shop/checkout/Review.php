@@ -6,6 +6,7 @@ class Review extends TPage
 	private $_billing;
 	private $_shipping;
 	private $_shippingMethod;
+	private $_user;
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
@@ -23,6 +24,19 @@ class Review extends TPage
 				$this->populateData();
 				$this->cboPaymentSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
 				$this->cboPaymentSelector->DataBind();
+				
+				$this->cboCreditsSelector->Items->clear();
+				$organicPoints = TPropertyValue::ensureArray($this->Application->Parameters["ORGANIC_POINTS"]);
+				foreach($organicPoints as $money=>$point)
+				{
+					if ($this->User->Credits >= $point)
+					{
+						$item = new TListItem; $item->Text = $point; $item->Value = $money;
+						$this->cboCreditsSelector->Items->add($item);
+					}
+					else break;
+				}
+				$this->dpEstDeliveryDate->Data = OrderRecord::estimateDeliveryDate();
 			}
 		}
 	}
@@ -80,6 +94,17 @@ class Review extends TPage
 	{
 		if (!$this->_cart) $this->setCart();
 		return $this->_cart;
+	}
+	
+	public function setUser()
+	{
+		$this->_user = UserRecord::finder()->findByPk($this->Application->User->ID);
+	}
+
+	public function getUser()
+	{
+		if (!$this->_user) $this->setUser();
+		return $this->_user;
 	}
 	
 	public function getFormattedValue($value,$pattern="c",$currency="USD")
@@ -152,8 +177,8 @@ class Review extends TPage
 				$order->ShippingAmount = $cartRecord->ShippingAmount;
 				$order->CouponCode = $cartRecord->CouponCode;
 				$order->CouponAmount = $cartRecord->CouponAmount;
-				$order->RewardPointsRebate = $cartRecord->RewardPointsRebate;
-				$order->Total = $cartRecord->Total;
+				$order->RewardPointsRebate = $this->cboCreditsSelector->SelectedValue;//$cartRecord->RewardPointsRebate;
+				$order->Total = $order->Subtotal-$order->CouponAmount-$order->RewardPointsRebate+$order->ShippingAmount+$order->TaxAmount;//$cartRecord->Total;
 				$order->Currency = "USD";
 				$order->IPAddress = $this->Request->UserHostAddress;
 				$order->EstDeliveryDate = $this->dpEstDeliveryDate->Data;
@@ -198,6 +223,16 @@ class Review extends TPage
 					$payment->Amount = 0;
 					$payment->save();
 					
+					// credit user organic points
+					$user = UserRecord::finder()->findByPk($this->Application->User->ID);
+					if ($user instanceof UserRecord)
+					{
+						$user->Credits = $user->Credits - TPropertyValue::ensureInteger($this->cboCreditsSelector->SelectedItem->Text);
+						$user->CreditsUsed = $user->CreditsUsed + TPropertyValue::ensureInteger($this->cboCreditsSelector->SelectedItem->Text);
+						$user->save();
+						$this->Application->getModule("auth")->updateSessionUser($this->Application->User->createUser($user->Email));
+					}
+					
 					if ($payment->PaymentMethodID == 1) // paypal
 					{
 						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.PayPalRedirector",array("hash"=>$this->generateHash($order->ID,$order->Num,$payment->ID))));
@@ -210,7 +245,7 @@ class Review extends TPage
 				catch(TException $ex)
 				{
 					$this->Notice->Type = UserNoticeType::Error;
-					$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+					$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 				}
 			}
 			else

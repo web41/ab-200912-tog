@@ -232,7 +232,7 @@
                                 <com:TButton ID="btnGenerateInvoice" Text="" OnClick="btnGenerateInvoice_Clicked" CssClass="btn_generateinvoice" />
                                 <input type="button" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.OrderHistoryForm",array("oid"=>$this->Item->ID)) %>'" class="btn_addhistory" value="" />
                                 <input type="button" onclick="document.location.href = '<%= $this->Service->ConstructUrl("admincp.PaymentForm",array("oid"=>$this->Item->ID)) %>'" class="btn_addpayment" value="" />
-                                <input type="button" class="btn_cancel" value="" />
+                                <input type="button" class="btn_cancel" value="" onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.OrderManager') %>'" />
 							</div>
 						</div>
 					</div>

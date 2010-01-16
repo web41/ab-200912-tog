@@ -13,7 +13,7 @@ class ProductDetail extends TPage
 				foreach($activeRecord->Properties as $prop)
 				{
 					$item = new TListItem;
-					$item->Text = $prop->Name." - ".$this->getFormattedValue($prop->Price);
+					$item->Text = $prop->Name." ".$this->getFormattedValue($prop->Price);
 					$item->Value = $prop->ID;
 					$this->cboPropertySelector->Items->add($item);
 				}

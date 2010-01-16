@@ -142,5 +142,14 @@ class ProductRecord extends TActiveRecord
 		}
 		return $originalPrice;
 	}
+	
+	protected function getProperties()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "product_id = :id";
+		$criteria->Parameters[":id"] = $this->ID;
+		$criteria->OrdersBy["prop_price"] = "asc";
+		return PropertyRecord::finder()->findAll($criteria);
+	}
 }
 ?>

@@ -29,10 +29,11 @@
 					<td class="right">
 						<com:TTextBox ID="txtName" Text="<%= $this->Application->User->FirstName.' '.$this->Application->User->LastName %>" /><br />
 						<com:TRequiredFieldValidator ID="val1"
-						ControlToValidate="txtName"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Your name') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
+							ControlToValidate="txtName"
+							ValidationGroup="ContactUs"
+							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Your name') %>"
+							Display="Dynamic"
+							FocusOnError="True"/>
 					</td>
 				</tr>
 				<tr>
@@ -41,11 +42,13 @@
 						<com:TTextBox ID="txtEmail" Text="<%= $this->Application->User->Email %>" /><br />
 						<com:TRequiredFieldValidator ID="val3"
 							ControlToValidate="txtEmail"
+							ValidationGroup="ContactUs"
 							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Your email') %>"
 							Display="Dynamic"
 							FocusOnError="True"/>
 						<com:TEmailAddressValidator ID="val4"
 							ControlToValidate="txtEmail"
+							ValidationGroup="ContactUs"
 							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Your email') %>"
 							Display="Dynamic"
 							FocusOnError="True"/>
@@ -63,6 +66,7 @@
 						<com:TTextBox ID="txtMessage" TextMode="MultiLine" Style="width:300px" /><br />
 						<com:TRequiredFieldValidator ID="val6"
 							ControlToValidate="txtMessage"
+							ValidationGroup="ContactUs"
 							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Your message') %>"
 							Display="Dynamic"
 							FocusOnError="True"/>
@@ -71,7 +75,7 @@
 				<tr>
 					<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 					<td class="right">
-						<com:TButton Text="Submit" CssClass="button" OnClick="submitButton_Clicked"/>
+						<com:TButton Text="Submit" CssClass="button" ValidationGroup="ContactUs" OnClick="submitButton_Clicked"/>
 						<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'" />
 					</td>
 				</tr>

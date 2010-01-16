@@ -32,6 +32,7 @@
 					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val1"
 						ControlToValidate="txtFirstName"
+						ValidationGroup="ChangeProfile"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -43,6 +44,7 @@
 					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val2"
 						ControlToValidate="txtLastName"
+						ValidationGroup="ChangeProfile"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Last name') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -54,6 +56,7 @@
 					<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val3"
 						ControlToValidate="txtPassword"
+						ValidationGroup="ChangeProfile"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -62,7 +65,7 @@
 			<tr>
 				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
-					<com:TButton ID="btnSubmit" Text="Update" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
+					<com:TButton ID="btnSubmit" Text="Update" OnClick="btnSubmit_Clicked" ValidationGroup="ChangeProfile" IsDefaultButton="true" CssClass="button"/>
 					<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.account.profile.Index") %>'" />
 				</td>
 			</tr>

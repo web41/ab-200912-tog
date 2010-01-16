@@ -89,7 +89,9 @@ class StatisticsPane extends TTemplateControl
 		$criteria->Condition = "order_id in (select o.order_id
 								from tbl_order o 
 								left join tbl_order_history oh on o.order_id = oh.order_id
-								where oh.order_status_code = 'W')";
+								where oh.order_status_code = 'W'
+								and o.order_id not in (select order_id from tbl_order_history
+								where order_status_code <> 'W'))";
 		return OrderRecord::finder()->count($criteria);
 	}
 }

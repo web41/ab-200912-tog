@@ -89,11 +89,11 @@
 							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->CouponAmount %>" /></div>
 						</div>
 						<div class="price">
-							<div class="text">organic point rebate:</div>
+							<div class="text">Organic Point Rebate:</div>
 							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->RewardPointsRebate %>" /></div>
 						</div>
 						<div class="price">
-							<div class="text">total:</div>
+							<div class="text">Total:</div>
 							<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->Total %>" /></div>
 						</div>
 					</div>

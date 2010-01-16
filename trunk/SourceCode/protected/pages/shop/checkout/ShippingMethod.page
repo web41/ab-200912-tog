@@ -47,14 +47,15 @@
 						InitialValue="0"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Shipping method') %>"
 						Display="Dynamic"
-						FocusOnError="True"/>
+						FocusOnError="True"
+						ValidationGroup="ShippingMethod"/>
 				</td>
 			</tr>
 			<tr>
 				<td class="left">&nbsp;</td>
 				<td class="right">
 					<input type="button" value="Back" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.Shipping') %>'" />
-					<com:TButton Text="Next" CssClass="button" OnClick="btnSubmit_Clicked"/>
+					<com:TButton Text="Next" CssClass="button" OnClick="btnSubmit_Clicked" ValidationGroup="ShippingMethod"/>
 				</td>
 			</tr>
 		</table>

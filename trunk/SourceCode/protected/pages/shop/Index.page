@@ -23,12 +23,25 @@
 		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" />
 		<!-- Pagination: END -->
 	</div>
+	<script type="text/javascript">
+		function validateDropDownList(id) {
+			if (document.getElementById(id).selectedIndex <= 0) {
+				alert('<%= $this->Application->getModule("message")->translate("COMBOBOX_REQUIRED","property of product"); %>');
+				return false;
+			} else {
+				$('<%= $this->Page->ajaxCart->ajaxCartPanel->ClientID %>').hide();
+				$('<%= $this->Page->ajaxCart->imgLoading->ClientID %>').show();
+			}
+			return true;
+		}
+	</script>
 </div>
 <!-- Main column: END -->
 
 <!-- Right column -->
 <div class="right_col">
 	<com:Application.shared.UserState />
+	<com:Application.shared.AjaxCart ID="ajaxCart" />
 	<com:Application.shared.RightColumn />
 </div>
 <!-- Right column: END -->

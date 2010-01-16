@@ -9,32 +9,3 @@
 		</com:TPanel>
 	</div>
 </div>
-
-<div class="shoppingcart_box">
-	<!-- Ajax cart -->
-    <div class="shopping_bag">
-        <div class="product">
-        	<b>Nordic Naturals Arctic Cod Liver Oil 1000 mg - Lemon, 90 sgls.</b><br />
-            Quantity: 1 &nbsp;-&nbsp; Price: <span>$10</span>
-        </div>
-        <div class="product">
-        	<b>BELLAMY'S Toothiepegs 100g</b><br />
-            Quantity: 1 &nbsp;-&nbsp; Price: <span>$15</span>
-        </div>
-        <div class="product">
-        	<b>Follow-on Formula 900g</b><br />
-            Quantity: 1 &nbsp;-&nbsp; Price: <span>$24</span>
-        </div>
-        <div class="product">
-        	<b>Peppermint, Spearmint & Strawberry 1.5g</b><br />
-            Quantity: 1 &nbsp;-&nbsp; Price: <span>$22</span>
-        </div>
-        <div class="product">
-        	<b>Natural Sea Scallop V/P</b><br />
-            Quantity: 1 &nbsp;-&nbsp; Price: <span>$34</span>
-        </div>
-    </div>
-    <!-- Ajax cart: END -->
-	<a href="<%= $this->Service->ConstructUrl("shop.cart.Index") %>" class="btn_cart">view shopping bag</a>
-	<a href="<%= $this->Service->ConstructUrl("shop.checkout.Index") %>" class="btn_cart2">checkout</a>
-</div>

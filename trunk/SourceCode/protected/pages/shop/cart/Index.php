@@ -40,8 +40,9 @@ class Index extends TPage
 		$this->updateSubtotalInSession();
 		if (count($this->rptCart->Items)<=0)
 		{
-			$this->Notice->Type = UserNoticeType::Notice;
+			$this->Notice->Type = UserNoticeType::Error;
 			$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
+			$this->mainBox->Visible = false;
 		}
 	}
 	

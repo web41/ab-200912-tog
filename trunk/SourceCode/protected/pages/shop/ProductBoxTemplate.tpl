@@ -15,7 +15,7 @@
 		<div><b><%= $this->Data ? $this->Data->FreeText1 : "" %></b></div>
 		<!--div><b>Size</b>: 200g</div-->
 		<div style="color:#eb0010"><%= $this->Data ? $this->Data->FreeText2 : "" %></div>
-		<div>
+		<div style="margin-top:20px;">
 			<div style="float:left;">
 				Quantity: 
 				<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false"/>

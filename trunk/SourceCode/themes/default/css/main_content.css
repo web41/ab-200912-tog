@@ -27,7 +27,10 @@
 	.box .cart_title{width:178px;height:50px;float:left;background:url(../images/cart_title.png) no-repeat;margin:-20px 0 0 0;}
 	.box .cart_title h2{width:168px;text-align:left;float:left;padding:27px 0 10px 10px;font-size:14px;background:none;}
 	
-	.shoppingcart_box{float:left;width:178px;height:auto;margin:0 0 20px 0;padding:10px 0 10px 0;text-align:center;border:solid #503a1d;border-width:1px 0 1px 0;}
+	.shoppingcart_box{float:left;width:178px;height:auto;margin:0 0 20px 0;padding:0 0 10px 0;text-align:center;border:solid #503a1d;border-width:1px 0 1px 0;}
+		.shoppingcart_box .shopping_bag{float:left;width:178px;margin:0 0 10px 0;font-size:10px;text-align:left;}
+		.shoppingcart_box .shopping_bag .product{border-bottom:dotted 1px #503a1d;padding:8px 0 8px 0;}
+		.shoppingcart_box .shopping_bag .product span{color:#6c9421;}
 	
 /*Main column*/
 #container .main_content .main_col{float:left;width:564px;height:auto;margin:0 10px 0 10px;text-align:left}

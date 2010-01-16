@@ -94,21 +94,32 @@ class ProductDetail extends TPage
 					if (!$this->User->IsGuest) $cartTemp->UserID = $this->User->ID;
 					$cartTemp->save();
 				}
-				$cartDetail = new CartTempDetailRecord;
-				$cartDetail->HashID = md5(uniqid(time()));
-				$cartDetail->SessionID = $cartTemp->SessionID;
-				if (!$this->User->IsGuest) $cartDetail->UserID = $this->User->ID;
-				$cartDetail->ProductID = $this->Item->ID;
-				$cartDetail->Quantity = $this->cboQuantitySelector->SelectedValue;
+				// we should check if user select the same product
+				$cartDetail = CartTempDetailRecord::finder()->findBysession_idAndproduct_idAndprop_id($this->Session->SessionID,$this->Item->ID,$this->cboPropertySelector->SelectedValue);
 				$prop = PropertyRecord::finder()->withProduct()->findByPk($this->cboPropertySelector->SelectedValue);
-				if ($prop instanceof PropertyRecord)
+				if ($cartDetail instanceof CartTempDetailRecord)
 				{
-					$cartDetail->PropertyID = $prop->ID;
+					$cartDetail->Quantity = $cartDetail->Quantity + $this->cboQuantitySelector->SelectedValue;
+				}
+				else
+				{
+					$cartDetail = new CartTempDetailRecord;
+					$cartDetail->HashID = md5(uniqid(time()));
+					$cartDetail->SessionID = $cartTemp->SessionID;
+					if (!$this->User->IsGuest) $cartDetail->UserID = $this->User->ID;
+					$cartDetail->ProductID = $this->Item->ID;
+					$cartDetail->Quantity = $this->cboQuantitySelector->SelectedValue;
+					if ($prop instanceof PropertyRecord)
+					{
+						$cartDetail->PropertyID = $prop->ID;
+					}
+					$cartDetail->CreateDate = time();
 				}
 				$cartDetail->Subtotal = $cartDetail->Quantity*$prop->Product->getDiscountPrice($prop->Price);
-				$cartDetail->CreateDate = time();
+				
 				$cartDetail->save();
-				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
+				//$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
+				$this->ajaxCart->refreshCart();
 			}
 			catch(TException $e)
 			{

@@ -92,7 +92,8 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 				$cartDetail->Subtotal = $cartDetail->Quantity*$prop->Product->getDiscountPrice($prop->Price);
 				
 				$cartDetail->save();
-				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
+				//$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
+				$this->Page->ajaxCart->refreshCart();
 			}
 			catch(TException $e)
 			{

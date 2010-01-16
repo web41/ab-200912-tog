@@ -136,27 +136,27 @@
 		<div class="viewcart_container" style="margin:0;">
 			<div class="cart_review" style="margin:0;">
 				<div class="price">
-					<div class="text">subtotal</div>
+					<div class="text">Subtotal</div>
 					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= CartTempRecord::finder()->getSubtotalInSession() %>" /></div>
 				</div>
 				<div class="price">
-					<div class="text">delivery surcharge</div>
+					<div class="text">Delivery Surcharge</div>
 					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price %>" /></div>
 				</div>
 				<div class="price">
-					<div class="text">delivery discount</div>
+					<div class="text">Delivery Discount</div>
 					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price-$this->Cart->ShippingAmount %>" /></div>
 				</div>
 				<div class="price">
-					<div class="text">coupon discount</div>
+					<div class="text">Coupon Discount</div>
 					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart ? $this->Cart->CouponAmount : 0 %>" /></div>
 				</div>
 				<div class="price">
-					<div class="text">orgranic point rebate</div>
+					<div class="text">Orgranic Point Rebate</div>
 					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="0" /></div>
 				</div>
 				<div class="price" style="font-size:18px;margin:5px 0 10px 0;">
-					<div class="text">order total</div>
+					<div class="text">Order Total</div>
 					<div class="value" style="color:#7aa825"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart ? $this->Cart->Total : 0 %>" /></div>
 				</div>
 				<div class="price" style="margin:0;">

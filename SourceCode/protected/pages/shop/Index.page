@@ -13,6 +13,10 @@
 <div class="main_col">
 	<com:Application.shared.UserNotice ID="Notice" />
 	<div class="main_content">
+		<!-- Pagination: END -->
+		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" />
+		<!-- Pagination: END -->
+		
 		<!-- Product box -->
 		<com:TRepeater ID="ItemList" 
 			AllowPaging="true" PageSize="8"

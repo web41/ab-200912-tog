@@ -10,7 +10,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 			foreach($this->Data->Properties as $prop)
 			{
 				$item = new TListItem;
-				$item->Text = $prop->Name." - ".$this->getFormattedValue($prop->Price);
+				$item->Text = $prop->Name." ".$this->getFormattedValue($prop->Price);
 				$item->Value = $prop->ID;
 				$this->cboPropertySelector->Items->add($item);
 			}

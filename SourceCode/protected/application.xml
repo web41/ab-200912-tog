@@ -185,7 +185,7 @@
 	<!-- application parameters -->
 	<parameters>
 		<parameter id="ROW_PER_PAGE" value="20" />
-		<parameter id="AVAILABLE_IMAGES" value="('jpg','jpeg','gif','png')" />
+		<parameter id="AVAILABLE_IMAGES" value="('jpg','jpeg','gif','png', 'bmp')" />
 		<parameter id="UNITS_OF_MEASURE" value="(1=>'gram',2=>'ml',3=>'unit')" />
 		<parameter id="USER_STATUS" value="(0=>'Pending',-1=>'Inactived',1=>'Actived')" />
 		<parameter id="USER_TIMEOUT" value="7200" />

@@ -107,13 +107,13 @@
 							</tr>
 							<tr>
 								<td class="field">
-									<div class="text">Last visit date</div>
+									<div class="text2">Last visit date</div>
 									<div class="control">
 										<com:TLabel ID="lblLastVisitDate" />
 									</div>
 								</td>
 								<td class="field">
-									<div class="text">Last visit IP</div>
+									<div class="text2">Last visit IP</div>
 									<div class="control">
 										<com:TLabel ID="lblLastVisitIP" />
 									</div>

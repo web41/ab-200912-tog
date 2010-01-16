@@ -14,7 +14,7 @@
 	<com:Application.shared.UserNotice ID="Notice" />
 	<div class="main_content">
 		<!-- Pagination: END -->
-		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" />
+		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" Style="margin:5px 0 20px 0;border-bottom:solid 1px #503a1d;padding:0 0 10px 0;" />
 		<!-- Pagination: END -->
 		
 		<!-- Product box -->
@@ -24,7 +24,7 @@
 		<!-- Product box: END -->
 
 		<!-- Pagination: END -->
-		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" />
+		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" Style="margin:-10px 0 5px 0;" />
 		<!-- Pagination: END -->
 	</div>
 	<script type="text/javascript">

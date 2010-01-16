@@ -60,6 +60,7 @@ The Organic Grocer also reserves the right to stop servicing certain area at any
 <!-- Right column -->
 <div class="right_col">
 	<com:Application.shared.UserState />
+    <com:Application.shared.AjaxCart ID="ajaxCart" />
 	<com:Application.shared.RightColumn />
 </div>
 <!-- Right column: END -->

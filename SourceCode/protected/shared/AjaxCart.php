@@ -27,7 +27,7 @@ class AjaxCart extends TTemplateControl
 			$writer = "";
 			$writer .= "\n\t<div class=\"product\">";
 			$writer .= "\n\t\t<b>".$product->Name."</b><br />";
-			$writer .= "\n\t\tQuantity:&nbsp;".$cartItem->Quantity."&nbsp;-&nbsp; Subtotal: <span>".$this->getFormattedValue($cartItem->Quantity*$product->getDiscountPrice($prop->Price))."</span>";
+			$writer .= "\n\t\tQuantity:&nbsp;".$cartItem->Quantity." &nbsp;-&nbsp; Total: <span>".$this->getFormattedValue($cartItem->Quantity*$product->getDiscountPrice($prop->Price))."</span>";
 			$writer .= "\n\t</div>";
 			return $writer;
 		}

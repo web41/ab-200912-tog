@@ -29,6 +29,7 @@
 					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val1"
 						ControlToValidate="txtFirstName"
+						ValidationGroup="Register"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -40,6 +41,7 @@
 					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val2"
 						ControlToValidate="txtLastName"
+						ValidationGroup="Register"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Last name') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -51,16 +53,19 @@
 					<com:TTextBox ID="txtEmail" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val3"
 						ControlToValidate="txtEmail"
+						ValidationGroup="Register"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
 					<com:TEmailAddressValidator ID="val4"
 						ControlToValidate="txtEmail"
+						ValidationGroup="Register"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
 					<com:TCustomValidator ID="val5"
 						ControlToValidate="txtEmail"
+						ValidationGroup="Register"
 						OnServerValidate="uniqueCheck_ServerValidated"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_EXISTS','Email') %>"
 						Display="Dynamic"
@@ -73,6 +78,7 @@
 					<com:TTextBox ID="txtPassword" TextMode="Password" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val6"
 						ControlToValidate="txtPassword"
+						ValidationGroup="Register"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -84,11 +90,13 @@
 					<com:TTextBox ID="txtPassword2" TextMode="Password" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val7"
 						ControlToValidate="txtPassword2"
+						ValidationGroup="Register"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Password') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
 					<com:TCompareValidator ID="val8"
 						ControlToValidate="txtPassword2"
+						ValidationGroup="Register"
 						DataType="String"
 						ControlToCompare="txtPassword"
 						Operator="Equal"
@@ -103,6 +111,7 @@
 					<com:TCheckBox ID="chkAgree" Text="Agreed to the The Organic Grocer <a href='<%= $this->Service->ConstructUrl('shop.TermandCondition') %>'>Terms and Conditions</a>." /><br />
 					<com:TRequiredFieldValidator ID="val9"
 						ControlToValidate="chkAgree"
+						ValidationGroup="Register"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','This checkbox') %>"
 						Display="Dynamic"
 						FocusOnError="True" Style="font-size:11px;"/>
@@ -117,7 +126,7 @@
 			<tr>
 				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
-					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
+					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="Register" IsDefaultButton="true" CssClass="button"/>
 					<input type="reset" value="Reset" class="button" />
 					<input type="button" value="Cancel" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl("shop.Index") %>'" />
 				</td>

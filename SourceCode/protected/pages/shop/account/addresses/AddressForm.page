@@ -57,6 +57,7 @@
 					<com:TTextBox ID="txtFirstName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val1"
 						ControlToValidate="txtFirstName"
+						ValidationGroup="AddressForm"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -68,6 +69,7 @@
 					<com:TTextBox ID="txtLastName" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="val2"
 						ControlToValidate="txtLastName"
+						ValidationGroup="AddressForm"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Last name') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -85,6 +87,7 @@
 					<com:TTextBox ID="txtAddress1" CssClass="frm_textbox" Width="275px"/><br />
 					<com:TRequiredFieldValidator ID="va3"
 						ControlToValidate="txtAddress1"
+						ValidationGroup="AddressForm"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Address') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -102,6 +105,7 @@
 					<com:TTextBox ID="txtCity" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="va4"
 						ControlToValidate="txtCity"
+						ValidationGroup="AddressForm"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','City') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -113,6 +117,7 @@
 					<com:TTextBox ID="txtState" CssClass="frm_textbox"/><br />
 					<com:TRequiredFieldValidator ID="va5"
 						ControlToValidate="txtState"
+						ValidationGroup="AddressForm"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','State') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -124,11 +129,13 @@
 					<com:TTextBox ID="txtZip" CssClass="frm_textbox" Width="75px"/><br />
 					<com:TRequiredFieldValidator ID="val6"
 						ControlToValidate="txtZip"
+						ValidationGroup="AddressForm"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Postal code') %>"
 						FocusOnError="true"
 						Display="Dynamic" />
 					<com:TRegularExpressionValidator ID="val7" 
 						ControlToValidate="txtZip" 
+						ValidationGroup="AddressForm"
 						RegularExpression="^\d{5,6}$"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Postal code') %>"
 						Display="Dynamic" />
@@ -143,6 +150,7 @@
 						DataValueField="Code"/><br />
 					<com:TRequiredFieldValidator ID="val8"
 						ControlToValidate="cboCountrySelector"
+						ValidationGroup="AddressForm"
 						InitialValue="0"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','Country') %>"
 						Display="Dynamic"
@@ -155,6 +163,7 @@
 					<com:TTextBox ID="txtPhone1" CssClass="frm_textbox" Width="100px"/><br />
 					<com:TRequiredFieldValidator ID="val9"
 						ControlToValidate="txtPhone1"
+						ValidationGroup="AddressForm"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Phone') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
@@ -175,7 +184,7 @@
 			<tr>
 				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
-					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" IsDefaultButton="true" CssClass="button"/>
+					<com:TButton ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="AddressForm" IsDefaultButton="true" CssClass="button"/>
 					<input type="reset" value="Reset" class="button" />
 					<input type="button" value="Cancel" class="button" onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('shop.account.addresses.Index') %>'" />
 				</td>

@@ -30,11 +30,13 @@ class MyFavourite extends TPage
 	{
 		if ($param->Item->ItemType == "Item" || $param->Item->ItemType == "AlternatingItem")
 		{
-			
-			$prop = $param->Item->DataItem->Property;
-			$param->Item->lblPrice->Text = $this->getFormattedValue($prop->Price);
-			$param->Item->lblPrice->Visible = $prop->Product->DiscountID > 0;
-			$param->Item->lblDiscountPrice->Text = $this->getFormattedValue($prop->Product->getDiscountPrice($prop->Price));
+			if ($param->Item->DataItem)
+			{
+				$prop = $param->Item->DataItem->Property;
+				$param->Item->lblPrice->Text = $this->getFormattedValue($prop->Price);
+				$param->Item->lblPrice->Visible = $prop->Product->DiscountID > 0;
+				$param->Item->lblDiscountPrice->Text = $this->getFormattedValue($prop->Product->getDiscountPrice($prop->Price));
+			}
 		}
 	}
 	

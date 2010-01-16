@@ -9,4 +9,3 @@
 	<a href="<%= $this->Service->ConstructUrl("shop.cart.Index") %>" class="btn_cart">view shopping bag</a>
 	<a href="<%= $this->Service->ConstructUrl("shop.checkout.Index") %>" class="btn_cart2">checkout</a>
 </div>
-<com:TJavascriptLogger ToggleKey="j"/>

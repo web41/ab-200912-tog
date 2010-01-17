@@ -28,6 +28,7 @@ class ContactUs extends TPage
 			$this->Notice->Text = $this->Application->getModule('message')->translate('UNKNOWN_ERROR');
 			$this->mainBox->Visible = false;
 		}
+		$this->categoryMenu->populateData();
 	}
 }
 

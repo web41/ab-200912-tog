@@ -158,6 +158,11 @@ class Confirmation extends TPage
 			$html = str_replace("%%BASE_URL%%",$baseThemeUrl,$html);
 			$html = str_replace("%%DYNAMIC_CONTENT%%",$dynamicContent,$html);
 			$email->setHtmlContent($html);
+			$receiver = new TEmailAddress;
+			$receiver->Field = TEmailAddressField::Receiver;
+			$receiver->Address = $this->Application->User->Email;
+			$receiver->Name = $this->Application->User->FirstName." ".$this->Application->User->LastName;
+			$email->getEmailAddresses()->add($receiver);
 			try
 			{
 				$emailer->send($email);

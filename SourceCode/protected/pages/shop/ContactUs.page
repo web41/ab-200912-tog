@@ -3,7 +3,7 @@
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
-	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.CategoryMenu ID="categoryMenu" />
 	<com:Application.shared.OrganicPoints />
 	<com:Application.shared.Newsletter />
 </div>

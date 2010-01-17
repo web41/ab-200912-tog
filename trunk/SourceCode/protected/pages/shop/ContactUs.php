@@ -13,7 +13,7 @@ class ContactUs extends TPage
 		$email->HtmlContent->findControl("SENDER_EMAIL")->Text = $email->HtmlContent->findControl("SENDER_EMAIL2")->Text = $this->txtEmail->SafeText;
 		$email->HtmlContent->findControl("SENDER_NAME")->Text = $this->txtName->SafeText;
 		$email->HtmlContent->findControl("SENDER_PHONE")->Text = $this->txtPhone->SafeText;
-		$email->HtmlContent->findControl("INQUIRY_CONTENT")->Text = $this->txtContent->SafeText;
+		$email->HtmlContent->findControl("INQUIRY_CONTENT")->Text = $this->txtMessage->SafeText;
 		try
 		{
 			$emailer->send($email);

@@ -1,5 +1,4 @@
 <prop:Subject>Thanks for ordering with The Organic Grocer</prop:Subject>
-<prop:EmailAddresses><com:TEmailAddress Field="Receiver" Address="4l3x.d0@gmail.com" Name="Alex Do" /></prop:EmailAddresses>
 <prop:HtmlContent>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

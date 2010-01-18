@@ -192,7 +192,7 @@ class PPager extends TWebControl
 		// create 'next' link
 		$controls->add($this->createPagerLink(!$this->IsLastPage,"Next",$currentPage+1,$this->TextCssClass));
 		// create 'last' link
-		$controls->add($this->createPagerLink(!$this->IsLastPage,"Last",$maxPage,$this->TextCssClass));
+		$controls->add($this->createPagerLink(!$this->IsLastPage,"Last"." (".$maxPage.")",$maxPage,$this->TextCssClass));
 	}
 }
 

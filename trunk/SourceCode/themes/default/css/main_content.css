@@ -53,6 +53,9 @@
 	.main_col .pagination a.text{font-size:11px;font-weight:bold;text-decoration:none;}
 	.main_col .pagination a.active{font-weight:bold;color:#83ae00;text-decoration:none;}
 	
+	.main_col .category-path {vertical-align:middle;text-transform:capitalize;font-size:11px;font-weight:bold;}
+	.main_col .category-path img {vertical-align:middle;}
+	
 	.main_col .main_content h2.title{text-transform:capitalize;font-weight:normal;font-size:20px;margin-bottom:10px;color:#7aa825;border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;}
 /*Main column: END*/
 

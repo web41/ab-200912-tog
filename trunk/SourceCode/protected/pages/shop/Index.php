@@ -164,6 +164,7 @@ class Index extends TPage
 		if (!$this->IsPostBack)
 		{
 			$this->populateData();
+			$this->renderCategoryPath();
 		}
 	}
 
@@ -239,6 +240,29 @@ class Index extends TPage
 			$this->Notice->Type = UserNoticeType::Notice;
 			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"product");
 		}
+	}
+	
+	public function renderCategoryPath()
+	{
+		if ($this->CatID>0)
+		{
+			$cat=null; $subcat=null;
+			$this->lblCatPath->Text .= "<a href='".$this->Service->ConstructUrl("shop.Index")."'>All categories</a>";
+			$this->lblCatPath->Text .= $this->breadCrumbSeparator();
+			$cat = CategoryRecord::finder()->findByPk($this->CatID);
+			$this->lblCatPath->Text .= "<a href='".$this->Service->ConstructUrl('shop.Index',array('c'=>$cat->ID,'calias'=>$cat->Alias))."'>".$cat->Name."</a>";
+			if ($this->SubCatID>0)
+			{
+				$this->lblCatPath->Text .= $this->breadCrumbSeparator();
+				$subcat = CategoryRecord::finder()->findByPk($this->SubCatID);
+				$this->lblCatPath->Text .= "<a href='".$this->Service->ConstructUrl('shop.Index',array('c'=>$cat->ID,'calias'=>$cat->Alias,'subc'=>$subcat->ID,'subcalias'=>$subcat->Alias))."'>".$subcat->Name."</a>";
+			}
+		}
+	}
+	
+	public function breadCrumbSeparator()
+	{
+		return "<img src='".$this->Page->Theme->BaseUrl."/images/breadcrumb_separator.png'/>";
 	}
 }
 

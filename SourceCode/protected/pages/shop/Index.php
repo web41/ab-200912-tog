@@ -258,6 +258,7 @@ class Index extends TPage
 				$this->lblCatPath->Text .= "<a href='".$this->Service->ConstructUrl('shop.Index',array('c'=>$cat->ID,'calias'=>$cat->Alias,'subc'=>$subcat->ID,'subcalias'=>$subcat->Alias))."'>".$subcat->Name."</a>";
 			}
 		}
+		else $this->lblCatPath->Visible = false;
 	}
 	
 	public function breadCrumbSeparator()

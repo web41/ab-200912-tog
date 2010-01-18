@@ -4,7 +4,7 @@
 #container .main_content .right_col{float:left;width:178px;height:auto;}
 
 #left_category{width:178px;height:auto;margin:0;padding:0;list-style-type:none;text-align:left;margin:0 0 20px 0;background:#e2e2bc url(../images/left_col_top.png) no-repeat;}
-	#left_category li{width:auto;height:auto;margin:0;padding:0;border-bottom:solid 1px #fff;}
+	#left_category li{width:auto;height:auto;margin:0;padding:0;border-bottom:solid 1px #fff;word-wrap: break-word}
 	#left_category li b{font:bold 14px Arial;text-transform:capitalize;display:block;padding:10px 5px 10px 15px;color:#503a1d;}
 	#left_category li a{font:normal 13px Arial;text-transform:capitalize;display:block;padding:10px 5px 10px 15px;color:#503a1d;}
 	#left_category li a:hover{color:#8f6936;background:#eaeac4}
@@ -40,7 +40,7 @@
 	.main_col .product_box{float:left;width:544px;height:auto;text-align:left;padding:0 0 20px 0;border-bottom:solid 1px #503a1d;margin-bottom:20px;font-size:12px;}
 	.main_col .product_box img{float:left;max-width:124px;max-height:124px;margin:0 10px 0 0;border:solid 1px #e9e9e9}
 	.main_col .product_box .title{float:left;width:408px;}
-	.main_col .product_box .title h2{float:left;font-weight:bold;font-size:14px;width:auto;text-transform:uppercase;color:#749f24;}
+	.main_col .product_box .title h2{float:left;font-weight:bold;font-size:14px;width:auto;text-transform:uppercase;color:#749f24;width:310px;}
 	.main_col .product_box .title h3{float:left;font-weight:bold;font-size:12px;width:auto;text-transform:capitalize;color:#996500;}
 	.main_col .product_box .title .price{float:right;font-weight:bold;font-size:14px;color:#9e632a;}
 	.main_col .product_box .title .price b{text-decoration:line-through;font-size:12px;color:#d2ae8a}

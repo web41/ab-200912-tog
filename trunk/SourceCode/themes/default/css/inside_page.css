@@ -23,10 +23,13 @@
 	.main_col .inside_box h3{text-transform:capitalize;font-weight:normal;font-size:16px;margin-bottom:5px;color:#7aa825;}
 	
 	.main_col .inside_box div.datepicker div{margin:inherit;padding:inherit;}
+	.main_col .inside_box .product_desc p{text-transform:inherit;}
+	.main_col .inside_box .product_desc h2, .main_col .inside_box .product_desc h3{font-size:14px;color:#503a1d;font-weight:normal;padding:0;border:none;margin:0;}
 	
 /*Main column: END*/
 #container .main_content .main_col .error{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#ffcecf;color:#655254;padding:5px 10px 5px 10px;}
 #container .main_content .main_col .notice{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#fffbcc;color:#676455;padding:5px 10px 5px 10px;}
+#container .main_content .main_col .category-path{float:left;width:544px;height:auto;text-align:left;margin-bottom:10px;background:#f6ffdb;color:#676455;padding:7px 10px 5px 10px;}
 
 /*Shop by Brand*/
 #brand_container{{float:left;width:544px;height:auto;text-align:left;margin:0;}}

@@ -41,7 +41,7 @@
 			</div>
 			<div style="float:left;width:544px;margin-bottom:0;">
 				<b style="font-size:14px;">Detail desctiption</b><br />
-				<div><%= $this->Item->Description %></div>
+				<div class="product_desc"><%= $this->Item->Description %></div>
 			</div>
 		</div>
 	</div>

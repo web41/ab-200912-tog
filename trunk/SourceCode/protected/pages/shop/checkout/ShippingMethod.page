@@ -1,5 +1,5 @@
 <%@ MasterClass="Application.shared.Master" %>
-<com:TContent ID="title">The Organic Grocer - Shipping Method</com:TContent>
+<com:TContent ID="title">The Organic Grocer - Delivery Method</com:TContent>
 <com:TContent ID="content">
 <!-- Left column -->
 <div class="left_col">
@@ -15,14 +15,14 @@
 	<com:TPanel ID="mainBox" CssClass="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
-		<h2>Shipping Method</h2>
+		<h2>Delivery Method</h2>
         <div class="viewcart_container" style="margin:0;">
 			<!-- Cart step -->
 			<div class="cart_step">
 				<ul>
 					<li class="active">view cart</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">billing/shipping info</li>
+					<li class="active">billing/delivery info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
 					<li>confirm/edit info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
@@ -33,10 +33,10 @@
         </div>
        	<table border="0" cellpadding="7" cellspacing="0" width="100%" style="font-size:13px;">
 			<tr>
-				<td class="table_title" colspan="2">choose shipping method</td>
+				<td class="table_title" colspan="2">choose delivery method</td>
 			</tr>
 			<tr>
-				<td class="left">Shipping method</td>
+				<td class="left">Delivery method</td>
 				<td class="right">
 					<com:TDropDownList ID="cboMethodSelector" 
 						CssClass="frm_textbox" 
@@ -45,7 +45,7 @@
 					<com:TRequiredFieldValidator ID="val8"
 						ControlToValidate="cboMethodSelector"
 						InitialValue="0"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Shipping method') %>"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Delivery method') %>"
 						Display="Dynamic"
 						FocusOnError="True"
 						ValidationGroup="ShippingMethod"/>

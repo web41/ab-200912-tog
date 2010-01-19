@@ -22,7 +22,7 @@
 				<ul>
 					<li class="active">view cart</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">billing/shipping info</li>
+					<li class="active">billing/delivery info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
 					<li class="active">confirm/edit info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
@@ -32,7 +32,7 @@
 			<!-- Cart step: END -->
 		</div>
 		<div>
-			Please check all the information below to make sure it is correct. If you need to change shipping options or remove an item from your order, select the Edit Address button.<br />
+			Please check all the information below to make sure it is correct. If you need to change delivery options or remove an item from your order, select the Edit Address button.<br />
 			You will receive a full order summary and order number on the next page.
 		</div>
 
@@ -55,12 +55,12 @@
 		<!-- Review: END -->
 
 		<!-- Address -->
-		<h3>Billing / Shipping</h3>
+		<h3>Billing / Delivery</h3>
 		<div class="address_container" style="margin-bottom:5px;">
 			<!-- Address title -->
 			<div class="address_title" style="margin:0;">
 				<div class="adr_item2">Billing Address</div>
-				<div class="adr_item2">Shipping Address</div>
+				<div class="adr_item2">Delivery Address</div>
 			</div>
 			<!-- Address title: END -->
 
@@ -83,10 +83,10 @@
 		</div>
 		<!-- Address: END -->
 
-		<h3>shipping method</h3>
+		<h3>delivery method</h3>
 		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;">
 			<%= $this->ShippingMethod ? $this->ShippingMethod->Name." (".$this->getFormattedValue($this->ShippingMethod->Price).")" : ""%>&nbsp;&nbsp;
-			<input type="button" class="button" value="Edit Shipping Method" style="float:none;" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.ShippingMethod') %>'"/>
+			<input type="button" class="button" value="Edit Delivery Method" style="float:none;" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.ShippingMethod') %>'"/>
 			<a href="<%= $this->Service->ConstructUrl('shop.Delivery') %>" target="_blank">More info</a>&nbsp;&nbsp;
 		</div>
 

@@ -1,7 +1,7 @@
 <!-- Product box -->
 <div class="product_box">
 	<a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>">
-		<img src="<%# $this->Page->Master->UrlPrefix %>/useruploads/images/product/thumbs/<%# $this->Data ? $this->Data->ThumbnailPath : "" %>" alt="<%= $this->Data ? $this->Data->Name : "" %>" style="width:124px;height:124px;"/>
+		<img src="<%# $this->Page->Master->UrlPrefix %>/useruploads/images/product/thumbs/<%# $this->Data ? $this->Data->ThumbnailPath : "" %>" alt="<%= $this->Data ? $this->Data->Name : "" %>" style="width:124px;"/>
 	</a>
 	<div class="title">
 		<h2><%# $this->Data ? $this->Data->Brand->Name : "" %></h2>

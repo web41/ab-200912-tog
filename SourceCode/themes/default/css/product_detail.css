@@ -3,7 +3,7 @@
 	.main_col .inside_box .title h2 span{color:#996500;font-size:16px;}
 
 .productdetail_container{float:left;width:544px;height:auto;text-align:left;margin:5px 0 0 0;}
-.productdetail_container img{float:left;width:200px;height:200px;border:solid 1px #cccca5;padding:1px;margin:0 10px 0 0;}
+.productdetail_container img{float:left;width:200px;border:solid 1px #cccca5;padding:1px;margin:0 10px 0 0;max-height:400px;}
 .productdetail_container .item_container{float:left;width:330px;height:auto;}
 .productdetail_container .item_container .price{float:left;font-weight:bold;font-size:15px;}
 .productdetail_container .item_container .price span{font-size:16px;color:#996500;margin:0;}

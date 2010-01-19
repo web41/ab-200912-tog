@@ -101,8 +101,8 @@
 			
 			<url ServiceParameter="shop.checkout.Index" pattern="shop/checkout"/>
 			<url ServiceParameter="shop.checkout.Billing" pattern="shop/checkout/billing-address"/>
-			<url ServiceParameter="shop.checkout.Shipping" pattern="shop/checkout/shipping-address"/>
-			<url ServiceParameter="shop.checkout.ShippingMethod" pattern="shop/checkout/shipping-method"/>
+			<url ServiceParameter="shop.checkout.Shipping" pattern="shop/checkout/delivery-address"/>
+			<url ServiceParameter="shop.checkout.ShippingMethod" pattern="shop/checkout/delivery-method"/>
 			<url ServiceParameter="shop.checkout.Review" pattern="shop/checkout/review-order"/>
 			<url ServiceParameter="shop.checkout.Confirmation" pattern="shop/checkout/order-confirmation/{hash}" parameters.hash=".*" />
 			<url ServiceParameter="shop.checkout.PayPalRedirector" pattern="shop/checkout/redirect-to-paypal/{hash}" parameters.hash=".*" />
@@ -190,7 +190,7 @@
 		<parameter id="UNITS_OF_MEASURE" value="(1=>'gram',2=>'ml',3=>'unit')" />
 		<parameter id="USER_STATUS" value="(0=>'Pending',-1=>'Inactived',1=>'Actived')" />
 		<parameter id="USER_TIMEOUT" value="7200" />
-		<parameter id="USER_TITLE" value="('Mr.'=>'Mr.','Mrs.'=>'Mrs.','Miss.'=>'Miss.','Dr.'=>'Dr.','Prof.'=>'Prof.')" />
+		<parameter id="USER_TITLE" value="('Mr.'=>'Mr','Mrs'=>'Mrs','Miss'=>'Miss','Ms.'=>'Ms.','Dr.'=>'Dr.')" />
 		<parameter id="PAYMENT_STATUS" value="(0=>'Pending',-1=>'Declined',1=>'Approved')" />
 		<parameter id="PAYPAL_INFO" value="('business'=>'dosithuyen@gmail.com', 'currency'=>'USD', 'auth_token'=>'soZLyylMjyanw7yu5zFnON3MOtZ5Zg-dYLpsXiViO9Q8CX9TPAsRkJcpvHu')" />
 		<parameter id="MAXIMUM_ORDER_REQUIRED" value="50.00" />

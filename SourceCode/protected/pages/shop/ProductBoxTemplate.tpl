@@ -23,7 +23,8 @@
 				<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" />
 			</div>
 			<div style="float:right;">
-				<com:TActiveLinkButton ID="btnAddToCart" Text="Add to bag" CssClass="btn_addtocart" OnClick="btnAddToCart_Clicked" Attributes.onclick="return validateDropDownList('<%= $this->cboPropertySelector->ClientID %>');"/>
+				<com:TActiveImage ID="imgLoading" CssClass="imgloading" ImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/loading2.gif" Width="16px" Height="16px" />
+				<com:TActiveLinkButton ID="btnAddToCart" Text="Add to bag" CssClass="btn_addtocart" OnClick="btnAddToCart_Clicked" Attributes.onclick="return validateDropDownList(this,'<%= $this->cboPropertySelector->ClientID %>', '<%= $this->imgLoading->ClientID %>');"/>
 			</div>
 		</div>
 	</div>

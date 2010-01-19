@@ -15,7 +15,7 @@ class CartItemTemplate extends TRepeaterItemRenderer
 		{
 			$prop = PropertyRecord::finder()->findByPk($cartDetail->PropertyID);
 			$cartDetail->Quantity = TPropertyValue::ensureInteger($this->txtQty->SafeText);
-			$cartDetail->Subtotal = $cartDetail->Quantity*$cartDetail->Product->getDiscountPrice($prop->Price);
+			$cartDetail->Subtotal = $cartDetail->Quantity*Common::roundTo($cartDetail->Product->getDiscountPrice($prop->Price));
 			$cartDetail->save();
 		}
 		$this->Page->categoryMenu->populateData();

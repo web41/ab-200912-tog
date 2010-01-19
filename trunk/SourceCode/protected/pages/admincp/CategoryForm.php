@@ -60,7 +60,7 @@ class CategoryForm extends TPage
 		{
 			$hashImage = md5(uniqid(time())).'.'.strtolower(array_pop(explode('.',$this->fuImage->FileName)));
 			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR;
-			if ($activeRecord->ImagePath != '') 
+			if ($activeRecord->ImagePath != '' && $activeRecord->ImagePath != self::NO_IMAGE) 
 			{
 				// Delete old thumbnail
 				try
@@ -79,7 +79,7 @@ class CategoryForm extends TPage
 		{
 			$hashThumb = md5(uniqid(time())).'.'.strtolower(array_pop(explode('.',$this->fuThumb->FileName)));
 			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."images".DIRECTORY_SEPARATOR."category".DIRECTORY_SEPARATOR."thumbs".DIRECTORY_SEPARATOR;
-			if ($activeRecord->ThumbnailPath != '') 
+			if ($activeRecord->ThumbnailPath != '' && $activeRecord->ThumbnailPath != self::NO_IMAGE) 
 			{
 				// Delete old thumbnail
 				try

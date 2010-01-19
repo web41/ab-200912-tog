@@ -13,7 +13,7 @@ class ProductDetail extends TPage
 				foreach($activeRecord->Properties as $prop)
 				{
 					$item = new TListItem;
-					$item->Text = $prop->Name." ".$this->getFormattedValue($prop->Price);
+					$item->Text = $prop->Name." ".$this->getFormattedValue(Common::roundTo($prop->Price));
 					$item->Value = $prop->ID;
 					$this->cboPropertySelector->Items->add($item);
 				}
@@ -60,9 +60,9 @@ class ProductDetail extends TPage
 		$prop = PropertyRecord::finder()->withProduct()->findByPk($sender->SelectedValue);
 		if ($prop instanceof PropertyRecord)
 		{
-			$this->lblPrice->Text = $this->getFormattedValue($prop->Price);
+			$this->lblPrice->Text = $this->getFormattedValue(Common::roundTo($prop->Price));
 			$this->lblPrice->Visible = $prop->Product->DiscountID > 0;
-			$this->lblDiscountPrice->Text = $this->getFormattedValue($prop->Product->getDiscountPrice($prop->Price));
+			$this->lblDiscountPrice->Text = $this->getFormattedValue(Common::roundTo($prop->Product->getDiscountPrice($prop->Price)));
 			$this->cboQuantitySelector->Items->clear();
 			for($i=1;$i<=$prop->InStock;$i++)
 			{
@@ -115,7 +115,7 @@ class ProductDetail extends TPage
 					}
 					$cartDetail->CreateDate = time();
 				}
-				$cartDetail->Subtotal = $cartDetail->Quantity*$prop->Product->getDiscountPrice($prop->Price);
+				$cartDetail->Subtotal = $cartDetail->Quantity*Common::roundTo($prop->Product->getDiscountPrice($prop->Price));
 				
 				$cartDetail->save();
 				//$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));

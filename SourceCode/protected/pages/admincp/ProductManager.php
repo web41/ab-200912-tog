@@ -333,11 +333,16 @@ class ProductManager extends TPage
 					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					$order = TPropertyValue::ensureInteger($item->colOrder->findControl("txtOrder")->Text);
 					if ($order < 0) $order = 0;
+					$activeRecord->Ordering = $order;
+					$activeRecord->save();
 					$criteria = new TActiveRecordCriteria;
 					$criteria->Condition = "product_id <> '".$activeRecord->ID."' and product_order = '".$order."'";
-					$is_existed = (Prado::createComponent(self::AR)->finder()->find($criteria));
-					$activeRecord->Ordering = ($is_existed) ? 0 : $order;
-					$activeRecord->save();
+					$effectedRecord = Prado::createComponent(self::AR)->finder()->find($criteria);
+					if ($effectedRecord instanceof ProductRecord) 
+					{
+						$effectedRecord->Ordering = 0;
+						$effectedRecord->save();
+					}
 				}
 				break;
 			default:

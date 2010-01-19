@@ -7,12 +7,14 @@ class MailingListRecord extends TActiveRecord
 	const TABLE='tbl_mailing_list';
 
 	public $ID;
+	public $Name;
 	public $Address;
 	public $UserID;
 	
 	public static $COLUMN_MAPPING=array
 	(
 		'mailing_id'=>'ID',
+		'mailing_name'=>'Name',
 		'mailing_address'=>'Address',
 		'user_id'=>'UserID'
 	);

@@ -37,6 +37,7 @@ class Register extends TPage
 					if (!$mailing)
 					{
 						$mailing = new MailingListRecord;
+						$mailing->Name = $activeRecord->FirstName." ".$activeRecord->LastName;
 						$mailing->Address = $activeRecord->Email;
 						$mailing->UserID = $activeRecord->ID;
 						$mailing->save();

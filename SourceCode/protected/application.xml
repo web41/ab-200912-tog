@@ -11,6 +11,7 @@
 		<using namespace="System.Web.TUrlMapping.*"/>
 		<using namespace="Application.data.*"/>
 		<using namespace="Application.common.*"/>
+		<using namespace="Application.common.common"/>
 		<using namespace="Application.common.string"/>
 		<using namespace="Application.common.App" />
 		<!--using namespace="CSitemap.*"/-->

@@ -227,8 +227,11 @@ class Review extends TPage
 					$user = UserRecord::finder()->findByPk($this->Application->User->ID);
 					if ($user instanceof UserRecord)
 					{
-						$user->Credits = $user->Credits - TPropertyValue::ensureInteger($this->cboCreditsSelector->SelectedItem->Text);
-						$user->CreditsUsed = $user->CreditsUsed + TPropertyValue::ensureInteger($this->cboCreditsSelector->SelectedItem->Text);
+						if ($this->cboCreditsSelector->SelectedItem)
+						{
+							$user->Credits = $user->Credits - TPropertyValue::ensureInteger($this->cboCreditsSelector->SelectedItem->Text);
+							$user->CreditsUsed = $user->CreditsUsed + TPropertyValue::ensureInteger($this->cboCreditsSelector->SelectedItem->Text);
+						}
 						$user->save();
 						$this->Application->getModule("auth")->updateSessionUser($this->Application->User->createUser($user->Email));
 					}
@@ -245,7 +248,7 @@ class Review extends TPage
 				catch(TException $ex)
 				{
 					$this->Notice->Type = UserNoticeType::Error;
-					$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+					$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 				}
 			}
 			else

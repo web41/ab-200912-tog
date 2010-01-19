@@ -114,7 +114,7 @@ class Index extends TPage
 					$cartRecord->save();
 					$this->couponForm->Enabled = false;
 					$this->couponDiscount->Visible = true;
-					$this->lblCouponDiscount->Text = $this->getFormattedValue($cartRecord->CouponAmount);
+					$this->lblCouponDiscount->Text = $this->getFormattedValue(Common::roundTo($cartRecord->CouponAmount));
 				}
 				else
 				{

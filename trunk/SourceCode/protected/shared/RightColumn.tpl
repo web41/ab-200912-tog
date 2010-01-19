@@ -1,5 +1,5 @@
 <div class="box">
-	<h2>Order Schedule</h2>
+	<h2>Delivery Schedule</h2>
     <div class="special_box" style="border-bottom:solid 1px #503a1d;padding-bottom:10px;">
         <div><div>
             Order by Tuesday 5 pm<br />

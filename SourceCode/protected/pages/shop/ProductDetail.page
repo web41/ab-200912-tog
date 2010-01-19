@@ -24,7 +24,7 @@
 			</div>
 			<div class="item_container" style="margin-bottom:0;">
 				<div>
-					<b>Brief desctiption</b><br />
+					<b>Brief Description</b><br />
 					<div><%= $this->Item->Brief %></div>
 				</div>
 				<div style="margin-bottom:5px;"><i><b><%= $this->Item->FreeText1 %></b></i></div>
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 			<div style="float:left;width:544px;margin-bottom:0;">
-				<b style="font-size:14px;">Detail desctiption</b><br />
+				<b style="font-size:14px;">Detail Description</b><br />
 				<div class="product_desc"><%= $this->Item->Description %></div>
 			</div>
 		</div>

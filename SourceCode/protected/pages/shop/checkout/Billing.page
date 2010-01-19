@@ -22,7 +22,7 @@
 				<ul>
 					<li class="active">view cart</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li class="active">billing/shipping info</li>
+					<li class="active">billing/delivery info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
 					<li>confirm/edit info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
@@ -165,7 +165,7 @@
 			<tr>
 				<td class="left">&nbsp;</td>
 				<td class="right" style="font-size:12px;">
-					<com:TCheckBox ID="chkBillShip" Text="Shiping address is the same billing address" Checked="true" />
+					<com:TCheckBox ID="chkBillShip" Text="Delivery address is the same billing address" Checked="true" />
 				</td>
 			</tr>
 			<tr>

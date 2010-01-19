@@ -2,9 +2,25 @@
 	<h2>newsletter</h2>
 	<div class="content">
 		Enter your email address to receive our FREE newsletter on the organic market
-        <input type="text" class="textbox" style="width:110px;" /><br />
+        <com:TTextBox ID="txtName" Text="Enter your name" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
+		
 		<com:TTextBox ID="txtEmail" CssClass="textbox" Width="110px" Text="Enter your email" Attributes.onclick="this.select()"/>
 		<com:TButton ID="btnSubmit" CssClass="button" Style="margin:10px 0 0 0" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="Newsletter"/><br />
+		<com:TRequiredFieldValidator ID="val1"
+			CssClass="newsletter_error"
+			ControlToValidate="txtName"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			InitialValue="Enter your name"
+			ValidationGroup="Newsletter"/>
+		<com:TRequiredFieldValidator ID="val2"
+			CssClass="newsletter_error"
+			ControlToValidate="txtName"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="Newsletter"/>
 		<com:TRequiredFieldValidator ID="val3"
 			CssClass="newsletter_error"
 			ControlToValidate="txtEmail"

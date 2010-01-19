@@ -9,6 +9,7 @@ class Newsletter extends TTemplateControl
 			// insert the email into mailing list table
 			$activeRecord = new MailingListRecord;
 			$activeRecord->Address = $this->txtEmail->SafeText;
+			$activeRecord->Name = $this->txtName->SafeText;
 			$activeRecord->UserID = $this->Application->User->IsGuest ? 0 : $this->Application->User->ID;
 			try
 			{	

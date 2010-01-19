@@ -61,6 +61,16 @@
 									<com:THyperLink Text="<%# $this->Parent->Data->Address %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left" ItemStyle.CustomStyle="text-align:left">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">Name
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
 							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText) %>">ID

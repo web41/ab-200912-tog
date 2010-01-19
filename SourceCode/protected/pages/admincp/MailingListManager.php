@@ -7,7 +7,7 @@ class MailingListManager extends TPage
 	private $_sortBy = "";
 	private $_sortType = "";
 	private $_searchText = "";
-	private $_sortable = array("mailing_id","mailing_address");
+	private $_sortable = array("mailing_id","mailing_address","mailing_name");
 	private $_queryParams = array("p","st","sb","q");
 	const AR = "MailingListRecord";
 
@@ -263,14 +263,14 @@ class MailingListManager extends TPage
 									->setDescription("The Organic Grocer Mailing List generated on ".date("m.D.Y",time()));
 			$workBook->setActiveSheetIndex(0);
 			$workSheet = $workBook->getActiveSheet();
-			$workSheet->setCellValue("A1","#")->setCellValue("B1","ID")->setCellValue("C1","Email Address");
+			$workSheet->setCellValue("A1","#")->setCellValue("B1","ID")->setCellValue("C1","Name")->setCellValue("D1","Email Address");
 			$workSheet->getStyle('A1')->getFont()->setBold(true);
 			$workSheet->getStyle('B1')->getFont()->setBold(true);
 			$workSheet->getStyle('C1')->getFont()->setBold(true);
 			$mailingLists = MailingListRecord::finder()->findAll();
 			for($i=0;$i<count($mailingLists);$i++)
 			{
-				$workBook->setActiveSheetIndex(0)->setCellValue("A".($i+2),$i+1)->setCellValue("B".($i+2),$mailingLists[$i]->ID)->setCellValue("C".($i+2),$mailingLists[$i]->Address);
+				$workBook->setActiveSheetIndex(0)->setCellValue("A".($i+2),$i+1)->setCellValue("B".($i+2),$mailingLists[$i]->ID)->setCellValue("C".($i+2),$mailingLists[$i]->Name)->setCellValue("D".($i+2),$mailingLists[$i]->Address);
 			}
 			$workBook->setActiveSheetIndex(0)->getColumnDimension("C")->setWidth(50);
 			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');

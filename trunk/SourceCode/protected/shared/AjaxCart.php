@@ -1,6 +1,7 @@
 <?php
 
 Prado::using('System.I18N.core.NumberFormat');
+Prado::using('Application.common.common');
 class AjaxCart extends TTemplateControl
 {
 	public function refreshCart()

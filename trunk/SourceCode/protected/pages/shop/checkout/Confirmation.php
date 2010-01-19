@@ -1,5 +1,6 @@
 <?php
 
+Prado::using('Application.common.common');
 class Confirmation extends TPage
 {
 	private $_order;

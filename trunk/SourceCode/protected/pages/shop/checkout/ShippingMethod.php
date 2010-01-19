@@ -1,5 +1,6 @@
 <?php
 Prado::using('System.I18N.core.NumberFormat');
+Prado::using('Application.common.common');
 class ShippingMethod extends TPage
 {
 	public function onLoad($param)

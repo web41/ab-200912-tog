@@ -1,6 +1,7 @@
 <?php
 
 Prado::using('System.I18N.core.NumberFormat');
+Prado::using('Application.common.common');
 class CartItemTemplate extends TRepeaterItemRenderer
 {
 	public function onDataBinding($param)

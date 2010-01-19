@@ -16,6 +16,8 @@ class AjaxCart extends TTemplateControl
 		$writer .= "\n</div>";
 		$this->Page->CallBackClient->hide($this->imgLoading);
 		$this->Page->CallBackClient->show($this->ajaxCartPanel);
+		//if ($this->Page->imgLoading) $this->Page->CallBackClient->hide($this->Page->imgLoading);
+		$this->Page->CallBackClient->callClientFunction("ajaxCart_loaded");
 		$this->Page->CallBackClient->update($this->ajaxCartPanel,$writer);
 	}
 	

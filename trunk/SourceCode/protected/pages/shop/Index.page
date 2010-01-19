@@ -32,15 +32,24 @@
 		<!-- Pagination: END -->
 	</div>
 	<script type="text/javascript">
-		function validateDropDownList(id) {
-			if (document.getElementById(id).selectedIndex <= 0) {
+		function validateDropDownList(e, id, imgLoading) {
+			if ($(id).selectedIndex <= 0) {
 				alert('<%= $this->Application->getModule("message")->translate("COMBOBOX_REQUIRED","property of product"); %>');
 				return false;
 			} else {
+				$(imgLoading).show();
+				$(e).hide();
 				$('<%= $this->Page->ajaxCart->ajaxCartPanel->ClientID %>').hide();
 				$('<%= $this->Page->ajaxCart->imgLoading->ClientID %>').show();
 			}
 			return true;
+		}
+		Event.observe(window, "load", function(e) {
+			$$('div.main_content img[class="imgloading"]').each(function(e){e.hide();});
+		});
+		function ajaxCart_loaded() {
+			$$('div.main_content img[class="imgloading"]').each(function(e){e.hide();});
+			$$('div.main_content a[class="btn_addtocart"]').each(function(e){e.show();});
 		}
 	</script>
 </div>

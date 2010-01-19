@@ -281,11 +281,17 @@ class CategoryManager extends TPage
 					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					$order = TPropertyValue::ensureInteger($item->colOrder->findControl("txtOrder")->Text);
 					if ($order < 0) $order = 0;
+					$activeRecord->Ordering = $order;
+					$activeRecord->save();
 					$criteria = new TActiveRecordCriteria;
 					$criteria->Condition = "cat_id <> '".$activeRecord->ID."' and cat_order = '".$order."' and parent_id = '".$activeRecord->ParentID."'";
-					$is_existed = (Prado::createComponent(self::AR)->finder()->find($criteria));
-					$activeRecord->Ordering = ($is_existed) ? 0 : $order;
-					$activeRecord->save();
+					$effectedRecord = Prado::createComponent(self::AR)->finder()->find($criteria);
+					if ($effectedRecord instanceof CategoryRecord) 
+					{
+						$effectedRecord->Ordering = 0;
+						$effectedRecord->save();
+					}	
+					
 	
 				}
 				break;

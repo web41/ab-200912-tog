@@ -38,7 +38,7 @@
 #container .main_content .main_col .main_content{float:left;width:544px;height:auto;background:#fbfbfb;padding:10px;}
 
 	.main_col .product_box{float:left;width:544px;height:auto;text-align:left;padding:0 0 20px 0;border-bottom:solid 1px #503a1d;margin-bottom:20px;font-size:12px;}
-	.main_col .product_box img{float:left;max-width:124px;max-height:124px;margin:0 10px 0 0;border:solid 1px #e9e9e9}
+	.main_col .product_box img{float:left;width:124px;margin:0 10px 0 0;border:solid 1px #e9e9e9;height:auto;max-height:300px;}
 	.main_col .product_box .title{float:left;width:408px;}
 	.main_col .product_box .title h2{float:left;font-weight:bold;font-size:14px;width:auto;text-transform:uppercase;color:#749f24;width:310px;}
 	.main_col .product_box .title h3{float:left;font-weight:bold;font-size:12px;width:auto;text-transform:capitalize;color:#996500;}

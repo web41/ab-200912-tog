@@ -20,7 +20,7 @@
 		</div>
 		<div class="productdetail_container" style="margin-bottom:0;">
 			<div style="float:left;width:214px;">
-				<img src="<%= $this->Page->Master->UrlPrefix %>/useruploads/images/product/<%= $this->Item->ImagePath%>" alt="" class="img"/>
+				<img src="<%= $this->Page->Master->UrlPrefix %>/useruploads/images/product/<%= $this->Item->ImagePath%>" alt="" />
 			</div>
 			<div class="item_container" style="margin-bottom:0;">
 				<div>

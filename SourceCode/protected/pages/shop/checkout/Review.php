@@ -1,5 +1,6 @@
 <?php
 
+Prado::using('Application.common.common');
 class Review extends TPage
 {
 	private $_cart;

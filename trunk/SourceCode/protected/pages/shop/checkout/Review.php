@@ -8,9 +8,21 @@ class Review extends TPage
 	private $_shipping;
 	private $_shippingMethod;
 	private $_user;
+	
+	public function getEstDeliveryDate()
+	{
+		return TPropertyValue::ensureArray(unserialize($this->getViewState("EstDeliveryDate","")));
+	}
+	
+	public function setEstDeliveryDate($value)
+	{
+		$this->setViewState("EstDeliveryDate",serialize($value),"");
+	}
+	
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
+		$this->setEstDeliveryDate(OrderRecord::estimateDeliveryDate());
 		if (!$this->IsPostBack)
 		{
 			$this->setCart();
@@ -37,7 +49,13 @@ class Review extends TPage
 					}
 					else break;
 				}
-				$this->dpEstDeliveryDate->Data = OrderRecord::estimateDeliveryDate();
+				$this->cboDeliveryDateSelector->Items->clear();
+				$slots = TPropertyValue::ensureArray($this->Application->Parameters["DELIVERY_SLOTS"]);
+				foreach($this->EstDeliveryDate as $est)
+				{
+					$item = new TListItem; $item->Text = $item->Value = date("l m/d/Y",$est['day']).' '.$slots[$est['time']];
+					$this->cboDeliveryDateSelector->Items->add($item);
+				}
 			}
 		}
 	}
@@ -182,7 +200,7 @@ class Review extends TPage
 				$order->Total = $order->Subtotal-$order->CouponAmount-$order->RewardPointsRebate+$order->ShippingAmount+$order->TaxAmount;//$cartRecord->Total;
 				$order->Currency = "USD";
 				$order->IPAddress = $this->Request->UserHostAddress;
-				$order->EstDeliveryDate = $this->dpEstDeliveryDate->Data;
+				$order->EstDeliveryDate = $this->cboDeliveryDateSelector->SelectedValue;
 				$order->Comments = $this->txtComments->SafeText;
 				
 				try
@@ -269,11 +287,6 @@ class Review extends TPage
 		$pid = base64_encode($this->Application->SecurityManager->hashData($pid));
 		$hash = array($oid,$onum,$pid);
 		return $this->Application->SecurityManager->hashData(serialize($hash));
-	}
-	
-	protected function checkDeliveryDate_ServerValidated($sender, $param)
-	{
-		$param->IsValid = OrderRecord::validateDeliveryDate($param->Value);
 	}
 }
 

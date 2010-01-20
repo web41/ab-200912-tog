@@ -108,16 +108,7 @@
         
         <h3>expected delivery date</h3>
 		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;float:left;width:544px;">
-			 <com:TDatePicker ID="dpEstDeliveryDate"
-				Mode="ImageButton" InputMode="TextBox"
-				ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
-				DateFormat="MM/dd/yyyy"/><br />
-			<com:TCustomValidator ID="val2"
-				ControlToValidate="dpEstDeliveryDate"
-				OnServerValidate="checkDeliveryDate_ServerValidated"
-				ErrorMessage="<%= $this->Application->getModule('message')->translate('INVALID_DELIVERY_DATE') %>"
-				Display="Dynamic"
-				FocusOnError="True"/>
+			<com:TDropDownList ID="cboDeliveryDateSelector" />
 		</div>
         
         <h3>comments</h3>

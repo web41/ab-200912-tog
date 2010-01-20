@@ -155,12 +155,57 @@ class OrderRecord extends TActiveRecord
 	public function estimateDeliveryDate()
 	{
 		//return 0;
-		$next2day = time()+2*24*60*60;
+		/*$next2day = time()+2*24*60*60;
 		while(date("N",$next2day)==6||date("N",$next2day)==7)
 		{
 			$next2day = $next2day + 24*60*60;
 		}
-		return $next2day;
+		return $next2day;*/
+		$today = time();
+		$todayNoon = mktime(12,0,0,date('n',$today),date('j',$today),date('Y',$today));
+		$availDeliveryDate=array();
+		
+		// if order date is later than midnoon, move it to the next day
+		if ($today > $todayNoon) $today = $today + 24*60*60;
+		
+		switch(date('N',$today))
+		{
+			case 1:
+				$availDeliveryDate[] = array('day'=>$today+2*24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$today+2*24*60*60,'time'=>'PM');
+				$availDeliveryDate[] = array('day'=>$today+4*24*60*60,'time'=>'AM');
+				break;
+			case 2:
+				$availDeliveryDate[] = array('day'=>$today+3*24*60*60,'time'=>'PM');
+				$availDeliveryDate[] = array('day'=>$today+4*24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$today+4*24*60*60,'time'=>'PM');
+				break;
+			case 3:
+				$availDeliveryDate[] = array('day'=>$today+2*24*60*60,'time'=>'PM');
+				$availDeliveryDate[] = array('day'=>$today+3*24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$today+3*24*60*60,'time'=>'PM');
+				break;
+			case 4:
+				$availDeliveryDate[] = array('day'=>$today+2*24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$today+2*24*60*60,'time'=>'PM');
+				break;
+			case 5:
+				$availDeliveryDate[] = array('day'=>$today+4*24*60*60,'time'=>'PM');
+				$availDeliveryDate[] = array('day'=>$today+5*24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$today+5*24*60*60,'time'=>'PM');
+				break;
+			case 6:
+				$availDeliveryDate[] = array('day'=>$today+3*24*60*60,'time'=>'PM');
+				$availDeliveryDate[] = array('day'=>$today+4*24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$today+4*24*60*60,'time'=>'PM');
+				break;
+			case 7:
+				$availDeliveryDate[] = array('day'=>$today+3*24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$today+3*24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$today+5*24*60*60,'time'=>'PM');
+				break;
+		}
+		return $availDeliveryDate;
 	}
 	
 	public function validateDeliveryDate($estDate)

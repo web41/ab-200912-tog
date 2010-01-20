@@ -71,7 +71,7 @@ class OrderForm extends TPage
 			if (strlen($activeRecord->Deliverer)>0) $this->cboDelivererSelector->SelectedValue = $activeRecord->Deliverer;
 			if ($activeRecord->TotalPacks>0) $this->cboTotalPacksSelector->SelectedValue = $activeRecord->TotalPacks;
 			
-			if ($activeRecord->EstDeliveryDate > 0) $this->dpEstDeliveryDate->Data = $activeRecord->EstDeliveryDate;
+			if (strlen($activeRecord->EstDeliveryDate) > 0) $this->txtEstDeliveryDate->Text = $activeRecord->EstDeliveryDate;
 			$this->txtComments->Text = $activeRecord->Comments;
 		}
 	}
@@ -110,7 +110,7 @@ class OrderForm extends TPage
 			$activeRecord = $this->getItem();
 			$activeRecord->Deliverer = $this->cboDelivererSelector->SelectedValue;
 			$activeRecord->TotalPacks = $this->cboTotalPacksSelector->SelectedValue;
-			$activeRecord->EstDeliveryDate = $this->dpEstDeliveryDate->Data;
+			$activeRecord->EstDeliveryDate = $this->txtEstDeliveryDate->SafeText;
 			$activeRecord->Comments = $this->txtComments->Text;
 			try
 			{

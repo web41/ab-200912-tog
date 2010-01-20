@@ -178,10 +178,7 @@
 								<td class="field">
 									<div class="text">Delivery Date</div>
 									<div class="control">
-										<com:TDatePicker ID="dpEstDeliveryDate"
-											Mode="ImageButton" InputMode="TextBox"
-											ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
-											DateFormat="MM/dd/yyyy"/>
+										<com:TTextBox ID="txtEstDeliveryDate" CssClass="textbox" />
 									</div>
 								</td>
 								<td class="field">&nbsp;</td>

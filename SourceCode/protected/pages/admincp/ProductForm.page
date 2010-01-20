@@ -196,6 +196,7 @@
 									<div class="text">Properties</div>
 									<div class="control">
 										<com:TRepeater ID="rptProperty" ItemRenderer="Application.pages.admincp.PropertyTemplate" />
+										<com:TTextBox ID="txtAddProperty" Text="1" CssClass="textbox" Width="15px" Style="float:right;"/>
 										<com:TButton ID="btnAddProperty" OnClick="btnAddProperty_Clicked" CausesValidation="false" CssClass="btn_smalladd" />
 										<div class="notice"><%= $this->Application->getModule('message')->translate('MAKE_SURE_FILL_DATA') %></div>
 									</div>

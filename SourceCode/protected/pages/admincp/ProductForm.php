@@ -247,7 +247,7 @@ class ProductForm extends TPage
 	protected function btnAddProperty_Clicked($sender, $param)
 	{
 		$properties = array();
-		$count = $this->getViewState('NewPropertyCount',0)+1;
+		$count = $this->getViewState('NewPropertyCount',0)+ (TPropertyValue::ensureInteger($this->txtAddProperty->Text) > 0 ? TPropertyValue::ensureInteger($this->txtAddProperty->Text) : 1);
 		$this->setViewState('NewPropertyCount',$count,0);
 		if ($this->Item->ID>0)
 		{

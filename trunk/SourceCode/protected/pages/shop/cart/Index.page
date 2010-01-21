@@ -12,17 +12,18 @@
 <!-- Main column -->
 <div class="main_col">
 	<com:Application.shared.UserNotice ID="Notice" />
-	<com:TPanel ID="mainBox" CssClass="main_content">
+	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">
 		<h2>view shopping bag</h2>
 		<div class="viewcart_container">
+			<com:TPanel ID="mainBox">
 			<!-- Cart step -->
 			<div class="cart_step">
 				<ul>
 					<li class="active">view shopping bag</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow_active.png" alt="" /></li>
-					<li>bill/ship info</li>
+					<li>billing/delivery info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
 					<li>confirm/edit info</li>
 					<li><img src="<%= $this->Page->Theme->BaseUrl %>/images/btn_arrow.png" alt="" /></li>
@@ -78,6 +79,7 @@
 			</div>
 			<!-- Cart total price: END -->
 			<div style="margin:0;">* If you have changed the quantity of any of your items, please make sure to update the bag before checking out.</div>
+			</com:TPanel>
 			<!-- Cart button -->
 			<div class="button_container">
 				<input type="button" style="float:left;" class="button" value="< Continue shopping" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'"/>
@@ -87,7 +89,7 @@
 		</div>
 	</div>
 	<!-- Inside box: END -->
-	</com:TPanel>
+	</div>
 </div>
 <!-- Main column: END -->
 

@@ -105,6 +105,18 @@
 						FocusOnError="True"/>
 				</td>
 			</tr>
+			<tr>
+				<td class="left">Contact Number <span>*</span></td>
+				<td class="right">
+					<com:TTextBox ID="txtPhone" CssClass="frm_textbox"/><br />
+					<com:TRequiredFieldValidator ID="val10"
+						ControlToValidate="txtPhone"
+						ValidationGroup="Register"
+						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Contact number') %>"
+						Display="Dynamic"
+						FocusOnError="True"/>
+				</td>
+			</tr>
             <tr>
             	<td>&nbsp;</td>
 				<td class="right" style="font-size:12px;">

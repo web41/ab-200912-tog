@@ -15,7 +15,7 @@
 	<com:PPanel ID="mainBox" CssClass="main_content" SaveHtml="true">
 	<!-- Inside box -->
 	<div id="invoice">
-		<h2>Order Invoice</h2>
+		<h2>Customer Order Invoice</h2>
 		<div style="float:right;">
 			Invoice No. <b><%= $this->Order->Num %></b><br />
 			Date: <b><%= date('m/d/Y h:i:s A',$this->Order->CreateDate) %></b><br />
@@ -68,7 +68,7 @@
 					Deliverer: <%= strlen($this->Order->Deliverer)>0?$this->Order->Deliverer:"--" %><br />
 					Total packs: <%= $this->Order->TotalPacks>0?$this->Order->TotalPacks:"--" %><br />
 					Payment Terms: <%= $this->Payment->PaymentMethod->Name %><br />
-					Delivery Date/Time: <%= $this->Order->EstDeliveryDate>0 ? date('m/d/Y h:i:s A',$this->Order->EstDeliveryDate) : "--" %>
+					Delivery Date/Time: <%= $this->Order->EstDeliveryDate %>
 				</td>
 				<td width="45%" valign="top">
 					<div style="float:right;margin:0;">
@@ -80,18 +80,18 @@
 							<div class="text">Delivery Surcharge:</div>
 							<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price %>" /></div>
 						</div>
-						<div class="price">
+						<com:TPanel CssClass="price" Visible="<%= $this->ShippingMethod->Price-$this->Order->ShippingAmount > 0 %>">
 							<div class="text">Delivery Discount:</div>
 							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price-$this->Order->ShippingAmount %>" /></div>
-						</div>
-						<div class="price">
+						</com:TPanel>
+						<com:TPanel CssClass="price" Visible="<%= $this->Order->CouponAmount>0 %>">
 							<div class="text">Coupon Discount:</div>
 							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->CouponAmount %>" /></div>
-						</div>
-						<div class="price">
+						</com:TPanel>
+						<com:TPanel CssClass="price" Visible="<%= $this->Order->RewardPointsRebate>0 %>">
 							<div class="text">Organic Point Rebate:</div>
 							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->RewardPointsRebate %>" /></div>
-						</div>
+						</com:TPanel>
 						<div class="price">
 							<div class="text">Total:</div>
 							<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->Total %>" /></div>
@@ -103,6 +103,53 @@
 		<div class="price" style="font-size:18px;float:right;">
 			<input type="button" class="button" value="Print this order" onclick="popup('printable','<%= $this->Service->ConstructUrl('shop.account.orders.PrintableOrderDetail') %>',true)" />
 		</div>
+		
+		<div class="content">
+			Thank you for your shopping. Please refer your friends
+			<com:TTextBox ID="txtName" Text="Enter your name" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
+			<com:TRequiredFieldValidator ID="val1"
+				CssClass="newsletter_error"
+				ControlToValidate="txtName"
+				ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
+				Display="Dynamic"
+				FocusOnError="True"
+				InitialValue="Enter your name"
+				ValidationGroup="ReferFr"/>
+			<com:TRequiredFieldValidator ID="val2"
+				CssClass="newsletter_error"
+				ControlToValidate="txtName"
+				ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
+				Display="Dynamic"
+				FocusOnError="True"
+				ValidationGroup="ReferFr"/><br />
+			<com:TTextBox ID="txtEmail" CssClass="textbox" Width="110px" Text="Enter your email" Attributes.onclick="this.select()"/><br />
+			<com:TRequiredFieldValidator ID="val3"
+				CssClass="newsletter_error"
+				ControlToValidate="txtEmail"
+				ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
+				Display="Dynamic"
+				FocusOnError="True"
+				ValidationGroup="ReferFr"/>
+			<com:TEmailAddressValidator ID="val4"
+				CssClass="newsletter_error"
+				ControlToValidate="txtEmail"
+				ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
+				Display="Dynamic"
+				FocusOnError="True"
+				ValidationGroup="ReferFr"/>
+			<com:TCustomValidator ID="val5"
+				CssClass="newsletter_error"
+				ControlToValidate="txtEmail"
+				OnServerValidate="uniqueCheck_ServerValidated"
+				ErrorMessage="<%= $this->Application->getModule('message')->translate('NEWSLETTER_EXISTS') %>"
+				Display="Dynamic"
+				FocusOnError="True"
+				ValidationGroup="ReferFr"/>
+			<com:TButton ID="btnSubmit" CssClass="button" Style="margin:10px 0 0 0" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="ReferFr"/><br />
+	
+			
+		</div>
+		
 	</div>
 	<!-- Inside box: END -->
 	</com:PPanel>

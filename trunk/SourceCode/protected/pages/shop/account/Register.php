@@ -17,6 +17,7 @@ class Register extends TPage
 			$activeRecord = new UserRecord;
 			$activeRecord->FirstName = $this->txtFirstName->SafeText;
 			$activeRecord->LastName = $this->txtLastName->SafeText;
+			$activeRecord->Phone = $this->txtPhone->SafeText;
 			$activeRecord->Username = $activeRecord->Email = $this->txtEmail->SafeText;
 			$activeRecord->Password = md5($this->txtPassword->SafeText);
 			$activeRecord->UserTypeID = 3; // Type = 3 Registered User - this must be changed manually whenever updating user type data

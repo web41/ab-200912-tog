@@ -18,6 +18,7 @@ class CartTempRecord extends TActiveRecord
 	public $TaxAmount=0;
 	public $RewardPointsRebate=0;
 	public $Total=0;
+	public $EstDeliveryDate;
 	public $CreateDate=0;
 	
 	public static $COLUMN_MAPPING=array
@@ -34,6 +35,7 @@ class CartTempRecord extends TActiveRecord
 		'tax_amount'=>'TaxAmount',
 		'reward_points_rebate'=>'RewardPointsRebate',
 		'total'=>'Total',
+		'est_delivery_date'=>'EstDeliveryDate',
 		'c_date'=>'CreateDate'
 	);
 	

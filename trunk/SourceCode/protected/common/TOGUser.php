@@ -56,6 +56,15 @@ class TOGUser extends TDbUser
 		$this->setState("LastName",$value,"");
 	}
 	
+	public function getPhone()
+	{
+		return $this->getState("Phone","");
+	}
+	public function setPhone($value)
+	{
+		$this->setState("Phone",$value,"");
+	}
+	
 	public function getUserTypeID()
 	{
 		return $this->getState("UserTypeID",0);

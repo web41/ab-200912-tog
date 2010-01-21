@@ -34,6 +34,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 		$prop = PropertyRecord::finder()->withProduct()->findByPk($sender->SelectedValue);
 		if ($prop instanceof PropertyRecord)
 		{
+			if (strlen($prop->Name)>0) $this->lblProperty->Text = "&nbsp;".$prop->Name;
 			$this->lblPrice->Text = $this->getFormattedValue(Common::roundTo($prop->Price));
 			$this->lblPrice->Visible = $prop->Product->DiscountID > 0;
 			$this->lblDiscountPrice->Text = $this->getFormattedValue(Common::roundTo($prop->Product->getDiscountPrice($prop->Price)));
@@ -99,7 +100,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 			catch(TException $e)
 			{
 				$this->Page->Notice->Type = UserNoticeType::Error;
-				$this->Page->Notice->Text = $e;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+				$this->Page->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 				$this->Page->categoryMenu->populateData();
 				$this->Page->populateData();
 			}

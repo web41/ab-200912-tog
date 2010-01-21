@@ -27,7 +27,7 @@ class Index extends TPage
 			}
 			else
 			{
-				$this->Notice->Type = UserNoticeType::Error;
+				$this->Notice->Type = UserNoticeType::Notice;
 				$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 				$this->mainBox->Visible = false;
 			}
@@ -41,7 +41,7 @@ class Index extends TPage
 		$this->updateSubtotalInSession();
 		if (count($this->rptCart->Items)<=0)
 		{
-			$this->Notice->Type = UserNoticeType::Error;
+			$this->Notice->Type = UserNoticeType::Notice;
 			$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 			$this->mainBox->Visible = false;
 		}
@@ -64,6 +64,17 @@ class Index extends TPage
 	{
 		if ($this->IsValid)
 		{
+			foreach($this->rptCart->Items as $item)
+			{
+				$cartDetail = CartTempDetailRecord::finder()->withProduct()->findByPk($item->txtID->Value);
+				if ($cartDetail instanceof CartTempDetailRecord)
+				{
+					$prop = PropertyRecord::finder()->findByPk($cartDetail->PropertyID);
+					$cartDetail->Quantity = TPropertyValue::ensureInteger($item->cboQtySelector->SelectedValue);
+					$cartDetail->Subtotal = $cartDetail->Quantity*Common::roundTo($cartDetail->Product->getDiscountPrice($prop->Price));
+					$cartDetail->save();
+				}
+			}
 			$cartRecord = CartTempRecord::finder()->findByPk($this->Session->SessionID);
 			if ($cartRecord instanceof CartTempRecord)
 			{
@@ -91,7 +102,7 @@ class Index extends TPage
 			}
 			else
 			{
-				$this->Notice->Type = UserNoticeType::Error;
+				$this->Notice->Type = UserNoticeType::Notice;
 				$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 			}
 		}

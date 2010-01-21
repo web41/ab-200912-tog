@@ -8,6 +8,16 @@ class CartItemTemplate extends TRepeaterItemRenderer
 	{
 		parent::onDataBinding($param);
 		$this->lblSubtotal->Text = $this->getFormattedValue($this->Data->Subtotal);
+		
+		$this->cboQtySelector->Items->clear();
+		for($i=1;$i<=$this->Data->Property->InStock;$i++)
+		{
+			$item = new TListItem;
+			$item->Text = $item->Value = $i;
+			$this->cboQtySelector->Items->add($item);
+		}
+		
+		$this->cboQtySelector->SelectedValue = $this->Data->Quantity;
 	}
 	protected function btnUpdate_Clicked($sender, $param)
 	{
@@ -15,7 +25,7 @@ class CartItemTemplate extends TRepeaterItemRenderer
 		if ($cartDetail instanceof CartTempDetailRecord)
 		{
 			$prop = PropertyRecord::finder()->findByPk($cartDetail->PropertyID);
-			$cartDetail->Quantity = TPropertyValue::ensureInteger($this->txtQty->SafeText);
+			$cartDetail->Quantity = TPropertyValue::ensureInteger($this->cboQtySelector->SelectedValue);
 			$cartDetail->Subtotal = $cartDetail->Quantity*Common::roundTo($cartDetail->Product->getDiscountPrice($prop->Price));
 			$cartDetail->save();
 		}

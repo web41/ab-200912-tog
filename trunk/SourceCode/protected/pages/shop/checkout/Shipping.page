@@ -97,28 +97,6 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">City/Town <span>*</span></td>
-				<td class="right">
-					<com:TActiveTextBox ID="txtCity" CssClass="frm_textbox"/><br />
-					<com:TRequiredFieldValidator ID="va4"
-						ControlToValidate="txtCity"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','City') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-				</td>
-			</tr>
-			<tr>
-				<td class="left">State <span>*</span></td>
-				<td class="right">
-					<com:TActiveTextBox ID="txtState" CssClass="frm_textbox"/><br />
-					<com:TRequiredFieldValidator ID="va5"
-						ControlToValidate="txtState"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','State') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
-				</td>
-			</tr>
-			<tr>
 				<td class="left">Postal code <span>*</span></td>
 				<td class="right">
 					<com:TActiveTextBox ID="txtZip" CssClass="frm_textbox" Width="75px"/><br />
@@ -135,19 +113,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="left">Country <span>*</span></td>
+				<td class="left">Country</td>
 				<td class="right">
-					<com:TActiveDropDownList ID="cboCountrySelector" 
-						CausesValidation="false"
-						PromptText="Select..." PromptValue="0"
-						DataTextField="Name"
-						DataValueField="Code"/><br />
-					<com:TRequiredFieldValidator ID="val8"
-						ControlToValidate="cboCountrySelector"
-						InitialValue="0"
-						ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','Country') %>"
-						Display="Dynamic"
-						FocusOnError="True"/>
+					Singapore
 				</td>
 			</tr>
 			<tr>

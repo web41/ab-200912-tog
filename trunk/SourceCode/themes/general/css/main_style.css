@@ -2,8 +2,7 @@
 
 * { margin: 0px; padding: 0px; border: 0px;}
 h1,h2,h3,p,i{margin:0;padding:0;font-weight:normal;text-transform:capitalize;}
-img{border:0;}
-a, input {outline:none;} 
+img{border:0;} 
 
 a:link, a:visited{text-decoration:none;color:#0069eb}
 a:hover{color:#0048A4;}

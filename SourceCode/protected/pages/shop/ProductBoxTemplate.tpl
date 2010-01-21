@@ -19,8 +19,9 @@
 			<div style="float:left;">
 				Quantity: 
 				<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false"/>
-				&nbsp;&nbsp;
-				<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" />
+				<div style="margin-top:10px;">
+				Properties: <com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" Style="font-size:11px;margin-top:5px;font-family:Tahoma;" />
+                </div>
 			</div>
 			<div style="float:right;">
 				<com:TActiveImage ID="imgLoading" CssClass="imgloading" ImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/loading2.gif" Width="16px" Height="16px" />

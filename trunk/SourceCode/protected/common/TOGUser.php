@@ -174,6 +174,7 @@ class TOGUser extends TDbUser
 			$user->Email = $activeRecord->Email;
 			$user->FirstName = $activeRecord->FirstName;
 			$user->LastName = $activeRecord->LastName;
+			$user->Phone = $activeRecord->Phone;
 			$user->UserTypeID = $activeRecord->UserTypeID;
 			$user->Credits = $activeRecord->Credits;
 			$user->Status = $activeRecord->Status;

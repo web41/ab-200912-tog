@@ -8,10 +8,12 @@
 		<div class="price">Price: <b><com:TActiveLabel ID="lblPrice" /></b> <com:TActiveLabel ID="lblDiscountPrice" /></div>
 	</div>
 	<div class="title">
-		<h3><a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>"><%= $this->Data ? $this->Data->Name : "" %></a></h3>
+		<h3>
+			<a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>"><%= $this->Data ? $this->Data->Name : "" %><com:TActiveLabel ID="lblProperty" /></a>
+		</h3>
 	</div>
 	<div class="content">
-		<div><%= $this->Data ? $this->Data->Brief : "" %></div>
+		<div><%= $this->Data ? $this->Data->Brief : "" %>&nbsp;<a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>">...more</a></div>
 		<div><b><%= $this->Data ? $this->Data->FreeText1 : "" %></b></div>
 		<!--div><b>Size</b>: 200g</div-->
 		<div style="color:#eb0010"><%= $this->Data ? $this->Data->FreeText2 : "" %></div>

@@ -183,6 +183,7 @@ class Index extends TPage
 		$criteria->Condition .= " where p.product_id > 0 and p.product_publish = 1 ";
 		if (strlen($this->SearchText)>0)
 		{
+			/* search by any term **
 			$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));
 			$searchQuery = "";
 			foreach($searchArray as $index=>$value)
@@ -190,6 +191,12 @@ class Index extends TPage
 				$searchQuery .= ($index>0 ? " or " : "")." p.product_id like '%".$searchArray[$index]."%' or p.product_name like '%".$searchArray[$index]."%' or p.product_sku like '%".$searchArray[$index]."%'";
 			}
 			$criteria->Condition .= " and (".$searchQuery.") ";
+			*/
+			
+			/* search by all term **
+			
+			*/
+			$criteria->Condition .= " and (p.product_id like '%".addslashes($this->SearchText)."%' or p.product_name like '%".addslashes($this->SearchText)."%' or p.product_sku like '%".addslashes($this->SearchText)."%')";
 		}
 		if ($this->BrandID>0)
 		{

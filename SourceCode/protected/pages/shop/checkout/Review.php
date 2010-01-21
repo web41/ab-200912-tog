@@ -9,20 +9,9 @@ class Review extends TPage
 	private $_shippingMethod;
 	private $_user;
 	
-	public function getEstDeliveryDate()
-	{
-		return TPropertyValue::ensureArray(unserialize($this->getViewState("EstDeliveryDate","")));
-	}
-	
-	public function setEstDeliveryDate($value)
-	{
-		$this->setViewState("EstDeliveryDate",serialize($value),"");
-	}
-	
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
-		$this->setEstDeliveryDate(OrderRecord::estimateDeliveryDate());
 		if (!$this->IsPostBack)
 		{
 			$this->setCart();
@@ -48,13 +37,6 @@ class Review extends TPage
 						$this->cboCreditsSelector->Items->add($item);
 					}
 					else break;
-				}
-				$this->cboDeliveryDateSelector->Items->clear();
-				$slots = TPropertyValue::ensureArray($this->Application->Parameters["DELIVERY_SLOTS"]);
-				foreach($this->EstDeliveryDate as $est)
-				{
-					$item = new TListItem; $item->Text = $item->Value = date("l m/d/Y",$est['day']).' '.$slots[$est['time']];
-					$this->cboDeliveryDateSelector->Items->add($item);
 				}
 			}
 		}
@@ -132,17 +114,21 @@ class Review extends TPage
 		return $formatter->format($value,$pattern,$currency,$this->Application->Globalization->Charset);
 	}
 	
-	protected function cboPaymentSelector_CallBack($sender, $param)
+	/*protected function cboPaymentSelector_CallBack($sender, $param)
 	{
-		$payment = PaymentMethodRecord::finder()->findByPk($sender->SelectedValue);
-		if ($payment instanceof PaymentMethodRecord)
+		if ($sender->SelectedValue>0)
 		{
-			$this->imgPayment->Visible = true;
-			$this->imgPayment->AlternateText = $payment->Name;
-			$this->imgPayment->ImageUrl = $this->Request->UrlManagerModule->UrlPrefix."/useruploads/images/payment_method/".$payment->ImagePath;
+			$payment = PaymentMethodRecord::finder()->findByPk($sender->SelectedValue);
+			if ($payment instanceof PaymentMethodRecord)
+			{
+				$this->imgPayment->Visible = true;
+				$this->imgPayment->AlternateText = $payment->Name;
+				$this->imgPayment->ImageUrl = $this->Request->UrlManagerModule->UrlPrefix."/useruploads/images/payment_method/".$payment->ImagePath;
+			}
+			else $this->imgPayment->Visible = false;
 		}
 		else $this->imgPayment->Visible = false;
-	}
+	}*/
 	
 	protected function btnCancel_Clicked($sender, $param)
 	{
@@ -200,7 +186,7 @@ class Review extends TPage
 				$order->Total = $order->Subtotal-$order->CouponAmount-$order->RewardPointsRebate+$order->ShippingAmount+$order->TaxAmount;//$cartRecord->Total;
 				$order->Currency = "USD";
 				$order->IPAddress = $this->Request->UserHostAddress;
-				$order->EstDeliveryDate = $this->cboDeliveryDateSelector->SelectedValue;
+				$order->EstDeliveryDate = $cartRecord->EstDeliveryDate;
 				$order->Comments = $this->txtComments->SafeText;
 				
 				try

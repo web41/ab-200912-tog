@@ -13,8 +13,8 @@ class Billing extends TPage
 			// populate drop down lists
 			$this->cboTitleSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["USER_TITLE"]);
 			$this->cboTitleSelector->DataBind();
-			$this->cboCountrySelector->DataSource = CountryRecord::finder()->getAllItems();
-			$this->cboCountrySelector->DataBind();
+			//$this->cboCountrySelector->DataSource = CountryRecord::finder()->getAllItems();
+			//$this->cboCountrySelector->DataBind();
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
@@ -25,10 +25,10 @@ class Billing extends TPage
 				$this->txtCompanyName->Text = $activeRecord->CompanyName;
 				$this->txtAddress1->Text = $activeRecord->Address1;
 				$this->txtAddress2->Text = $activeRecord->Address2;
-				$this->txtCity->Text = $activeRecord->City;
-				$this->txtState->Text = $activeRecord->State;
+				//$this->txtCity->Text = $activeRecord->City;
+				//$this->txtState->Text = $activeRecord->State;
 				$this->txtZip->Text = $activeRecord->ZipCode;
-				$this->cboCountrySelector->SelectedValue = $activeRecord->CountryCode;
+				//$this->cboCountrySelector->SelectedValue = $activeRecord->CountryCode;
 				$this->txtPhone1->Text = $activeRecord->Phone1;
 				$this->txtPhone2->Text = $activeRecord->Phone2;
 				$this->txtFax->Text = $activeRecord->Fax;
@@ -63,10 +63,10 @@ class Billing extends TPage
 		$activeRecord->CompanyName = $this->txtCompanyName->SafeText;
 		$activeRecord->Address1 = $this->txtAddress1->SafeText;
 		$activeRecord->Address2 = $this->txtAddress2->SafeText;
-		$activeRecord->City =  $this->txtCity->SafeText;
-		$activeRecord->State = $this->txtState->SafeText;
+		$activeRecord->City =  '';//$this->txtCity->SafeText;
+		$activeRecord->State = '';//$this->txtState->SafeText;
 		$activeRecord->ZipCode = $this->txtZip->SafeText;
-		$activeRecord->CountryCode = $this->cboCountrySelector->SelectedValue;
+		$activeRecord->CountryCode = 'SG';//$this->cboCountrySelector->SelectedValue;
 		$activeRecord->Phone1 = $this->txtPhone1->SafeText;
 		$activeRecord->Phone2 = $this->txtPhone2->SafeText;
 		$activeRecord->Fax = $this->txtFax->SafeText;
@@ -95,12 +95,12 @@ class Billing extends TPage
 						$cartDetail->save();
 					}
 					if ($this->chkBillShip->Checked)
-						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.ShippingMethod"));
+						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.ShippingSchedule"));
 					else $this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Shipping"));
 				}
 				else
 				{
-					$this->Notice->Type = UserNoticeType::Error;
+					$this->Notice->Type = UserNoticeType::Notice;
 					$this->Notice->Text = $this->Application->getModule("message")->translate("CART_EMPTY");
 				}
 			}

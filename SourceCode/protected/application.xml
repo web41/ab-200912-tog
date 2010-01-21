@@ -103,6 +103,7 @@
 			<url ServiceParameter="shop.checkout.Billing" pattern="shop/checkout/billing-address"/>
 			<url ServiceParameter="shop.checkout.Shipping" pattern="shop/checkout/delivery-address"/>
 			<url ServiceParameter="shop.checkout.ShippingMethod" pattern="shop/checkout/delivery-method"/>
+			<url ServiceParameter="shop.checkout.ShippingSchedule" pattern="shop/checkout/delivery-schedule"/>
 			<url ServiceParameter="shop.checkout.Review" pattern="shop/checkout/review-order"/>
 			<url ServiceParameter="shop.checkout.Confirmation" pattern="shop/checkout/order-confirmation/{hash}" parameters.hash=".*" />
 			<url ServiceParameter="shop.checkout.PayPalRedirector" pattern="shop/checkout/redirect-to-paypal/{hash}" parameters.hash=".*" />

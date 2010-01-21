@@ -12,6 +12,7 @@ class UserRecord extends TActiveRecord
 	public $Email;
 	public $FirstName;
 	public $LastName;
+	public $Phone;
 	public $UserTypeID=0;
 	public $Credits=0;
 	public $CreditsUsed=0;
@@ -31,6 +32,7 @@ class UserRecord extends TActiveRecord
 		'user_email'=>'Email',
 		'first_name'=>'FirstName',
 		'last_name'=>'LastName',
+		'phone'=>'Phone',
 		'user_type_id'=>'UserTypeID',
 		'user_credits'=>'Credits',
 		'user_credits_used'=>'CreditsUsed',

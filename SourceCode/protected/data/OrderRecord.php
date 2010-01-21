@@ -152,7 +152,7 @@ class OrderRecord extends TActiveRecord
 		return OrderHistoryRecord::finder()->withOrderStatus()->find($criteria);
 	}
 	
-	public function estimateDeliveryDate()
+	public function estimateDeliveryDate($specialCase=false)
 	{
 		//return 0;
 		/*$next2day = time()+2*24*60*60;
@@ -161,10 +161,37 @@ class OrderRecord extends TActiveRecord
 			$next2day = $next2day + 24*60*60;
 		}
 		return $next2day;*/
+		
+		
 		$today = time();
 		$todayNoon = mktime(12,0,0,date('n',$today),date('j',$today),date('Y',$today));
 		$availDeliveryDate=array();
-		
+		if ($specialCase)
+		{
+			if (date('N',$today) <= 2 && $today <= mktime(12,0,0,date('n',$today),date('j',$today),date('Y',$today)))
+			{
+				$shipday = $today;
+				while(date('N',$today) != 5)
+				{
+					$shipday = $shipday + 24*60*60;
+				}
+				$availDeliveryDate[] = array('day'=>$shipday,'time'=>'PM');
+				$availDeliveryDate[] = array('day'=>$shipday+24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$shipday+24*60*60,'time'=>'PM');
+			}
+			else 
+			{
+				$shipday = $today;
+				while(date('N',$today) != 2)
+				{
+					$shipday = $shipday + 24*60*60;
+				}
+				$availDeliveryDate[] = array('day'=>$shipday,'time'=>'PM');
+				$availDeliveryDate[] = array('day'=>$shipday+24*60*60,'time'=>'AM');
+				$availDeliveryDate[] = array('day'=>$shipday+24*60*60,'time'=>'PM');
+			}
+			return $availDeliveryDate;
+		}
 		// if order date is later than midnoon, move it to the next day
 		if ($today > $todayNoon) $today = $today + 24*60*60;
 		

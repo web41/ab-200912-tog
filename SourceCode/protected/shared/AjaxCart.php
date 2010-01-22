@@ -8,7 +8,7 @@ class AjaxCart extends TTemplateControl
 	{
 		$cartTempDetails = CartTempDetailRecord::finder()->withProduct()->findAllBysession_id($this->Session->SessionID);
 		$writer = "";
-		$writer = "\n<div class=\"top\"><!-- --></div>";
+		$writer .= "\n<div class=\"top\"><!-- --></div>";
 		$writer .= "\n<div class=\"shopping_bag\">";
 		foreach($cartTempDetails as $cartItem)
 		{
@@ -22,7 +22,7 @@ class AjaxCart extends TTemplateControl
 		{
 			$writer .= "\n<div style='font-size:11px;font-weight:bold'>Subtotal: ".$this->getFormattedValue($cartTemp->getSubtotalInSession())."</div>";
 		}
-		
+		$writer .= "\n<div class=\"bottom\"><!-- --></div>"; 
 		$this->Page->CallBackClient->hide($this->imgLoading);
 		$this->Page->CallBackClient->show($this->ajaxCartPanel);
 		//if ($this->Page->imgLoading) $this->Page->CallBackClient->hide($this->Page->imgLoading);

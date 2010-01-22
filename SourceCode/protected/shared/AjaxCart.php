@@ -6,24 +6,23 @@ class AjaxCart extends TTemplateControl
 {
 	public function refreshCart()
 	{
+		$cartTemp = CartTempRecord::finder()->findByPk($this->Session->SessionID);
 		$cartTempDetails = CartTempDetailRecord::finder()->withProduct()->findAllBysession_id($this->Session->SessionID);
 		$writer = "";
-		$writer .= "\n<div class=\"top\"><!-- --></div>";
-		$writer .= "\n<div class=\"shopping_bag\">";
-		foreach($cartTempDetails as $cartItem)
-		{
-			$writer .= $this->renderCartItem($cartItem);
-		}
-		
-		// this line display subtotal
-		$cartTemp = CartTempRecord::finder()->findByPk($this->Session->SessionID);
 		if ($cartTemp instanceof CartTempRecord)
 		{
+			$writer .= "\n<div class=\"top\"><!-- --></div>";
+			$writer .= "\n<div class=\"shopping_bag\">";
+			foreach($cartTempDetails as $cartItem)
+			{
+				$writer .= $this->renderCartItem($cartItem);
+			}
 			$writer .= "\n<div style='font-size:11px;font-weight:bold;margin:0;padding:5px 0 5px 0;text-align:right;'>Subtotal: ".$this->getFormattedValue($cartTemp->getSubtotalInSession())."</div>";
 			$writer .= "\n</div>";
 			$writer .= "\n<div class=\"bot\"><!-- --></div>";
+			$writer .= "\n<div class=\"bottom\"><!-- --></div>"; 
+			
 		}
-		$writer .= "\n<div class=\"bottom\"><!-- --></div>"; 
 		$this->Page->CallBackClient->hide($this->imgLoading);
 		$this->Page->CallBackClient->show($this->ajaxCartPanel);
 		//if ($this->Page->imgLoading) $this->Page->CallBackClient->hide($this->Page->imgLoading);

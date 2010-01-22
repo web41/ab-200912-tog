@@ -14,6 +14,13 @@ class AjaxCart extends TTemplateControl
 			$writer .= $this->renderCartItem($cartItem);
 		}
 		$writer .= "\n</div>";
+		
+		// this line display subtotal
+		$cartTemp = CartTempRecord::finder()->findByPk($this->Session->SessionID);
+		if ($cartTemp instanceof CartTempRecord)
+		{
+			$writer .= "\n<div>Subtotal: ".$this->getFormattedValue($cartTemp->getSubtotalInSession())."</div>";
+		}
 		$this->Page->CallBackClient->hide($this->imgLoading);
 		$this->Page->CallBackClient->show($this->ajaxCartPanel);
 		//if ($this->Page->imgLoading) $this->Page->CallBackClient->hide($this->Page->imgLoading);

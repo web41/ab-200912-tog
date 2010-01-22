@@ -7,16 +7,17 @@
 .viewcart_container .cart_step ul li.active{color:#503a1d}
 
 .viewcart_container .cart_title{float:left;width:544px;height:auto;padding:5px 0 5px 0;background:#e2e2bc;font-size:12px;font-weight:bold;text-transform:capitalize;text-align:left;}
-.viewcart_container .cart_title .prd_item{float:left;width:330px;height:auto;padding:0 0 0 10px;margin:0;}
-.viewcart_container .cart_title .qty{float:left;width:50px;height:auto;margin:0;}
-.viewcart_container .cart_title .price{float:left;width:100px;height:auto;margin:0;text-align:center;}
+.viewcart_container .cart_title .prd_item{float:left;width:320px;height:auto;padding:0 0 0 10px;margin:0;}
+.viewcart_container .cart_title .qty{float:left;width:60px;height:auto;margin:0;}
+.viewcart_container .cart_title .price{float:left;width:90px;height:auto;margin:0;text-align:center;}
 .viewcart_container .cart_title .remove{float:left;width:50px;height:auto;margin:0;text-align:center;}
 
 .viewcart_container .cart_item{float:left;width:544px;height:auto;padding:5px 0 5px 0;font-size:12px;text-transform:capitalize;text-align:center;border-bottom:1px solid #e2e2bc}
-.viewcart_container .cart_item .prd_item{float:left;width:330px;height:auto;padding:0 0 0 10px;margin:0;text-align:left;}
-.viewcart_container .cart_item .qty{float:left;width:50px;height:auto;margin:0;}
+.viewcart_container .cart_item .prd_item{float:left;width:320px;height:auto;padding:0 0 0 10px;margin:0;text-align:left;}
+.viewcart_container .cart_item .qty{float:left;width:60px;height:auto;margin:0;}
 	.viewcart_container .cart_item .qty input.textbox{float:left;width:25px;margin:0 5px 0 0;text-align:center;}
-.viewcart_container .cart_item .price{float:left;width:100px;height:auto;margin:0;font-weight:bold;}
+	.viewcart_container .cart_item .qty select{float:left;width:25px;margin:0 5px 0 0;text-align:center;}
+.viewcart_container .cart_item .price{float:left;width:90px;height:auto;margin:0;font-weight:bold;}
 .viewcart_container .cart_item .remove{float:left;width:50px;height:auto;margin:0;font-weight:bold;}
 
 .viewcart_container .totalprice{float:left;width:544px;height:auto;padding:5px 0 5px 0;font-size:12px;text-transform:capitalize;margin:20px 0 0 0;}

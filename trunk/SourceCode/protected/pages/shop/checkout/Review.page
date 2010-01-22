@@ -87,10 +87,6 @@
 					<div class="text">Order Total</div>
 					<div class="value" style="color:#7aa825"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart ? $this->Cart->Total : 0 %>" /></div>
 				</div>
-				<div class="price" style="margin:0;">
-					<com:TButton CssClass="button" Text="Cancel Order" OnClick="btnCancel_Clicked" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('ORDER_CANCEL_CONFIRM') %>')) return false;" />
-					<com:TButton CssClass="button" Text="Submit Your Order" OnClick="btnSubmit_Clicked" Attributes.onclick="disbleButtons(this)" ValidationGroup="PaymentMethod" />
-				</div>
 			</div>
 		</div>
 
@@ -142,11 +138,19 @@
 		</div>
         
         <h3>comments</h3>
-		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:0;float:left;width:544px;">
 			<com:TTextBox ID="txtComments" TextMode="MultiLine" Width="400px" Height="100px" />
 		</div>
 		
-		
+		<div class="viewcart_container" style="margin:0;">
+			<div class="cart_review" style="margin:0;">
+				<div class="price" style="margin:0;">
+					<input type="button" value="Continue Shopping" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'" />
+                    <!-- com:TButton CssClass="button" Text="Cancel Order" OnClick="btnCancel_Clicked" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('ORDER_CANCEL_CONFIRM') %>')) return false;" / -->
+					<com:TButton CssClass="button" Text="Submit Your Order" OnClick="btnSubmit_Clicked" Attributes.onclick="disbleButtons(this)" ValidationGroup="PaymentMethod" />
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- Inside box: END -->
 	</div>

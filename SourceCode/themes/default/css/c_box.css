@@ -1,0 +1,7 @@
+﻿.my_account{width:178px;height:auto;float:left;}
+	.my_account .top{width:178px;height:20px;float:left;background:url(../images/myaccount_top.png) no-repeat;text-align:left;
+	 				 padding:10px 0 0 0;text-indent:10px;font-size:15px;font-weight:bold;text-transform:capitalize;color:#fff;}
+	.my_account .center{width:168px;height:auto;float:left;padding:5px;text-align:center;background:#afac28;color:#daff94}
+		.my_account .center a{color:#daff94}
+		.my_account .center a:hover{color:#f9ffef}
+	.my_account .bottom{width:178px;height:46px;float:left;background:url(../images/myaccount_bottom.png) no-repeat;}

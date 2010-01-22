@@ -58,7 +58,7 @@ class OrderItemRecord extends TActiveRecord
 	
 	protected function getProperty()
 	{
-		return PropertyRecord::finder()->findByPk($this->PropertyID);
+		return PropertyRecord::finder()->withProduct()->findByPk($this->PropertyID);
 	}
 }
 ?>

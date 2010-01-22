@@ -9,7 +9,7 @@
                 <com:THyperLink ID="lnkRegister" NavigateUrl="<%= $this->Service->ConstructUrl('shop.account.Register') %>" Text="Register" />
             </com:TPanel>
             
-            <div style="text-align:left;">
+            <com:TPanel ID="userMenu" Style="text-align:left;" Visible="false">
             	<ul style="float:left;margin:0;padding:10px 0 0 5px;list-style-type:none;">
                     <li><a href="<%= $this->Service->ConstructUrl("shop.account.orders.Index") %>">My Purchase History</a></li>
                     <li><a href="<%= $this->Service->ConstructUrl("shop.account.profile.MyFavourite") %>">My Favourites</a></li>
@@ -18,7 +18,7 @@
                     <li><a href="<%= $this->Service->ConstructUrl("shop.account.profile.ChangeProfile") %>">Personal Particulars</a></li>
                     <li><a href="<%= $this->Service->ConstructUrl("shop.account.profile.ChangePassword") %>">Password Change</a></li>
                 </ul>
-            </div>
+            </com:TPanel>
         </div>
         <div class="bottom"><!-- --></div>
     </div>

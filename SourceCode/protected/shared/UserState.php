@@ -14,6 +14,7 @@ class UserState extends TTemplateControl
 			$this->lblName->Text = $this->Application->User->FirstName." ".$this->Application->User->LastName;
 			$this->btnLogout->Visible = true;
 			$this->GuestPane->Visible = false;
+			$this->userMenu->Visible = true;
 		}
 	}
 	

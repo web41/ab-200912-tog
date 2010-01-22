@@ -1,7 +1,16 @@
 ﻿.my_account{width:178px;height:auto;float:left;}
-	.my_account .top{width:178px;height:20px;float:left;background:url(../images/myaccount_top.png) no-repeat;text-align:left;
+	.my_account .top{width:178px;height:20px;float:left;background:url(../images/myaccount_top.png) no-repeat;text-align:center;
 	 				 padding:10px 0 0 0;text-indent:10px;font-size:15px;font-weight:bold;text-transform:capitalize;color:#fff;}
 	.my_account .center{width:168px;height:auto;float:left;padding:5px;text-align:center;background:#afac28;color:#daff94}
 		.my_account .center a{color:#daff94}
 		.my_account .center a:hover{color:#f9ffef}
+		.my_account .center ul a{color:#FFFD9D;}
 	.my_account .bottom{width:178px;height:46px;float:left;background:url(../images/myaccount_bottom.png) no-repeat;}
+	
+
+.box .special_box{width:178px;height:auto;float:left;text-align:left;}
+	.box .special_box .top{width:178px;height:28px;float:left;background:url(../images/box_top.png) no-repeat;
+							font-size:15px;font-weight:bold;padding-top:6px;color:#663300;text-transform:capitalize;text-align:center;}
+	
+	.box .special_box .bottom{width:178px;height:10px;float:left;background:url(../images/box_bottom.png) no-repeat;}
+	.box .special_box .center{width:160px;height:auto;border:solid 4px #99cc00;border-width:0 4px 0 4px;background:#ffffb9;padding:5px;}

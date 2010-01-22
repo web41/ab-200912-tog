@@ -18,7 +18,7 @@
 		<h2>Customer Order Invoice</h2>
 		<div style="float:right;">
 			Invoice No. <b><%= $this->Order->Num %></b><br />
-			Date: <b><%= date('m/d/Y h:i:s A',$this->Order->CreateDate) %></b><br />
+			Date: <b><%= date('d/m/Y h:i:s A',$this->Order->CreateDate) %></b><br />
 			Status: <b><%= $this->Order->LatestHistory->OrderStatus->Name %></b>
 		</div>
 

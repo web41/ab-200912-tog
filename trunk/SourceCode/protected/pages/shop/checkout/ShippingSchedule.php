@@ -25,7 +25,7 @@ class ShippingSchedule extends TPage
 			$slots = TPropertyValue::ensureArray($this->Application->Parameters["DELIVERY_SLOTS"]);
 			foreach($this->EstDeliveryDate as $est)
 			{
-				$item = new TListItem; $item->Text = $item->Value = date("l m/d/Y",$est['day']).' '.$slots[$est['time']];
+				$item = new TListItem; $item->Text = $item->Value = date("l d/m/Y",$est['day']).' '.$slots[$est['time']];
 				$this->cboDeliveryDateSelector->Items->add($item);
 			}
 		}

@@ -29,8 +29,8 @@
 	
 	.shoppingcart_box{float:left;width:178px;height:auto;margin:5px 0 20px 0;padding:0 0 10px 0;text-align:center;border:solid #503a1d;border-width:0 0 1px 0;}
 		.shoppingcart_box .top{width:178px;height:6px;float:left;background:url(../images/ajaxcart_top.png) no-repeat;}
-		.shoppingcart_box .bot{width:178px;height:6px;float:left;background:url(../images/ajaxcart_bot.png) no-repeat;}
-		.shoppingcart_box .shopping_bag{float:left;width:166px;margin:0 0 10px 0;font-size:10px;text-align:left;border:solid 2px #749f24;border-width:0 2px 0 2px;padding:0 4px 0 4px;}
+		.shoppingcart_box .bot{width:178px;height:6px;float:left;background:url(../images/ajaxcart_bot.png) no-repeat;margin-bottom:10px;}
+		.shoppingcart_box .shopping_bag{float:left;width:166px;margin:0;font-size:10px;text-align:left;border:solid 2px #749f24;border-width:0 2px 0 2px;padding:0 4px 0 4px;}
 		.shoppingcart_box .shopping_bag .product{border-bottom:dotted 1px #503a1d;padding:8px 0 8px 0;}
 		.shoppingcart_box .shopping_bag .product span{color:#6c9421;}
 	

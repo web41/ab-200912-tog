@@ -9,7 +9,7 @@
  *
  * @author Minh Tuan
  */
-Prado::using('Application.common.String');
+Prado::using('Application.common.string');
 
 class Common {
 	//put your code here

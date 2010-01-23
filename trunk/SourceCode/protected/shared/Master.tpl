@@ -41,7 +41,7 @@
 					<li><a href="<%= $this->Service->ConstructUrl("shop.ContactUs") %>">Contact Us</a></li>
 				</ul>
 				<div class="search_container">
-					<com:TButton ID="btnSearch" CssClass="button" Text="Product Search" OnClick="btnSearch_Clicked" IsDefaultButton="false" />
+					<com:TButton ID="btnSearch" CssClass="button" Text="Search" OnClick="btnSearch_Clicked" IsDefaultButton="false" />
 					<com:TDropDownList ID="cboBrandSelector" PromptText="Search All Brand" PromptValue="0" DataTextField="Name" DataValueField="ID" />
 					<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="e.g. apple juice" />
 				</div>

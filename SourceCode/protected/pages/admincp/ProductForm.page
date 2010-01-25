@@ -268,7 +268,7 @@
 								<com:TButton ID="btnSubmit" CssClass="<%= ($this->Item && $this->Item->ID > 0) ? 'btn_edit' : 'btn_addnew' %>" OnClick="btnSubmit_Clicked" />
 								<com:TButton ID="btnAddMore" CssClass="btn_addmore" OnClick="btnAddMore_Clicked" />
 								<com:TButton CausesValidation="false" ButtonType="Reset" CssClass="btn_reset" />
-								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_cancel" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= $this->Service->ConstructUrl('admincp.ProductManager') %>'" />
+								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_cancel" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= strlen($this->Request['refUrl'])>0 ? urldecode($this->Request['refUrl']) : $this->Service->ConstructUrl('admincp.ProductManager') %>'" />
 							</div>
 						</div>
 					</div>

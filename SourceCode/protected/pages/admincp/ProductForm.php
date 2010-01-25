@@ -187,7 +187,10 @@ class ProductForm extends TPage
 					}
 					//var_dump($uom);
 				}
-				$this->Response->redirect($this->Service->ConstructUrl("admincp.ProductManager",array("action"=>$action, "msg"=>$msg)));
+				if (strlen($this->Request["refUrl"])>0)
+					$url = urldecode($this->Request["refUrl"])."&action=$action&msg=$msg";
+				else  $url = $this->Service->ConstructUrl("admincp.ProductManager",array("action"=>$action, "msg"=>$msg));
+				$this->Response->redirect($url);
 			}
 			catch(TException $e)
 			{

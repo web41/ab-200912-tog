@@ -116,7 +116,11 @@ class UserAddressForm extends TPage
 						}
 					}
 				}
-				$this->Response->redirect($this->Service->ConstructUrl("admincp.UserAddressManager",array("u"=>$activeRecord->UserID,"action"=>$action, "msg"=>$msg)));
+				//$this->Response->redirect($this->Service->ConstructUrl("admincp.UserAddressManager",array("u"=>$activeRecord->UserID,"action"=>$action, "msg"=>$msg)));
+				if (strlen($this->Request["refUrl"])>0)
+					$url = urldecode($this->Request["refUrl"])."&u={$activeRecord->UserID}&action=$action&msg=$msg";
+				else  $url = $this->Service->ConstructUrl("admincp.UserAddressManager",array("u"=>$activeRecord->UserID,"action"=>$action, "msg"=>$msg));
+				$this->Response->redirect($url);
 			}
 			catch(TException $e)
 			{

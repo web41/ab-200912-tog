@@ -79,7 +79,11 @@ class UserForm extends TPage
 				$action = ($activeRecord->ID>0 ? "update-success" : "add-success");
 				$msg = $this->Application->getModule("message")->translate(($activeRecord->ID>0 ? "UPDATE_SUCCESS" : "ADD_SUCCESS"),"User",$activeRecord->Email);
 				$activeRecord->save();
-				$this->Response->redirect($this->Service->ConstructUrl("admincp.UserManager",array("action"=>$action, "msg"=>$msg)));
+				//$this->Response->redirect($this->Service->ConstructUrl("admincp.UserManager",array("action"=>$action, "msg"=>$msg)));
+				if (strlen($this->Request["refUrl"])>0)
+					$url = urldecode($this->Request["refUrl"])."&action=$action&msg=$msg";
+				else  $url = $this->Service->ConstructUrl("admincp.UserManager",array("action"=>$action, "msg"=>$msg));
+				$this->Response->redirect($url);
 			}
 			catch(TException $e)
 			{

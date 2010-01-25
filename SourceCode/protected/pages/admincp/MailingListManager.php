@@ -267,12 +267,13 @@ class MailingListManager extends TPage
 			$workSheet->getStyle('A1')->getFont()->setBold(true);
 			$workSheet->getStyle('B1')->getFont()->setBold(true);
 			$workSheet->getStyle('C1')->getFont()->setBold(true);
+			$workSheet->getStyle('D1')->getFont()->setBold(true);
 			$mailingLists = MailingListRecord::finder()->findAll();
 			for($i=0;$i<count($mailingLists);$i++)
 			{
 				$workBook->setActiveSheetIndex(0)->setCellValue("A".($i+2),$i+1)->setCellValue("B".($i+2),$mailingLists[$i]->ID)->setCellValue("C".($i+2),$mailingLists[$i]->Name)->setCellValue("D".($i+2),$mailingLists[$i]->Address);
 			}
-			$workBook->setActiveSheetIndex(0)->getColumnDimension("C")->setWidth(50);
+			$workBook->setActiveSheetIndex(0)->getColumnDimension("D")->setWidth(50);
 			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
 			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."docs".DIRECTORY_SEPARATOR;
 			//$fileName = md5(uniqid(time())).".xls";

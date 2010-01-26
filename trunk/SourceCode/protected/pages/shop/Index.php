@@ -197,6 +197,7 @@ class Index extends TPage
 			
 			*/
 			$this->lblCatPath->Text = 'Search result for "'.$this->SearchText.'"';
+			$this->lblCatPath->Visible = true;
 			$criteria->Condition .= " and (p.product_id like '%".addslashes($this->SearchText)."%' or p.product_name like '%".addslashes($this->SearchText)."%' or p.product_sku like '%".addslashes($this->SearchText)."%')";
 		}
 		if ($this->BrandID>0)
@@ -267,8 +268,8 @@ class Index extends TPage
 				$subcat = CategoryRecord::finder()->findByPk($this->SubCatID);
 				$this->lblCatPath->Text .= "<a href='".$this->Service->ConstructUrl('shop.Index',array('c'=>$cat->ID,'calias'=>$cat->Alias,'subc'=>$subcat->ID,'subcalias'=>$subcat->Alias))."'>".$subcat->Name."</a>";
 			}
+			$this->lblCatPath->Visible = true;
 		}
-		else $this->lblCatPath->Visible = false;
 	}
 	
 	public function breadCrumbSeparator()

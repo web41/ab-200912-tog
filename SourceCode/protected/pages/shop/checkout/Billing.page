@@ -49,6 +49,7 @@
 						ControlToValidate="txtFirstName"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','First name') %>"
 						Display="Dynamic"
+						ValidationGroup="Billing"
 						FocusOnError="True"/>
 				</td>
 			</tr>
@@ -60,6 +61,7 @@
 						ControlToValidate="txtLastName"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Last name') %>"
 						Display="Dynamic"
+						ValidationGroup="Billing"
 						FocusOnError="True"/>
 				</td>
 			</tr>
@@ -77,6 +79,7 @@
 						ControlToValidate="txtAddress1"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Address') %>"
 						Display="Dynamic"
+						ValidationGroup="Billing"
 						FocusOnError="True"/>
 				</td>
 			</tr>
@@ -94,11 +97,14 @@
 						ControlToValidate="txtZip"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Postal code') %>"
 						FocusOnError="true"
+						ValidationGroup="Billing"
 						Display="Dynamic" />
 					<com:TRegularExpressionValidator ID="val7" 
 						ControlToValidate="txtZip" 
 						RegularExpression="^\d{5,6}$"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Postal code') %>"
+						FocusOnError="True"
+						ValidationGroup="Billing"
 						Display="Dynamic" />
 				</td>
 			</tr>
@@ -116,6 +122,7 @@
 						ControlToValidate="txtPhone1"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Phone') %>"
 						Display="Dynamic"
+						ValidationGroup="Billing"
 						FocusOnError="True"/>
 				</td>
 			</tr>
@@ -142,7 +149,7 @@
 				<td class="right">
 					<input type="button" value="Continue Shopping" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'" />
 					<input type="button" value="Back" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.cart.Index') %>'" />
-					<com:TButton Text="Next" CssClass="button" OnClick="btnSubmit_Clicked"/>
+					<com:TButton Text="Next" CssClass="button" OnClick="btnSubmit_Clicked" ValidationGroup="Billing"/>
 				</td>
 			</tr>
 		</table>

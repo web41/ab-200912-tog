@@ -6,7 +6,8 @@
             Delivery this Friday/Saturday<br /><br />
             
             Order by Saturday 11am<br />
-            Delivery next Tuesday/Wednesday<br />
+            Delivery next Tuesday/Wednesday<br /><br />
+            <a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">View here for more details about Delivery</a>
         </div>
         <div class="bottom"><!-- --></div>
     </div>

@@ -31,8 +31,8 @@
 				<div style="color:#eb0010;margin-bottom:5px;"><%= $this->Item->FreeText2 %></div>
 				<div>
 					<b>Quantity</b>
-					<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false" />
-					<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" />
+					<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false" /><br />
+					<com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" Style="font-size:11px;" />
 				</div>
 				<div class="price">Price: <span><com:TActiveLabel ID="lblPrice" CssClass="discount" /> <com:TActiveLabel ID="lblDiscountPrice" /></span></div>
 				<div class="price" style="clear:both;margin-top:15px;">

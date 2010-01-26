@@ -2,10 +2,10 @@
     <div class="special_box">
         <div class="top">Delivery Schedule</div>
        	<div class="center">
-            Order by Tuesday 5 pm<br />
+            Order by Tuesday 12.00 pm<br />
             Delivery this Friday/Saturday<br /><br />
             
-            Order by Saturday 11am<br />
+            Order by Saturday 9.00 am<br />
             Delivery next Tuesday/Wednesday<br /><br />
             <b><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">View here for more details about Delivery</a></b>
         </div>

@@ -248,6 +248,7 @@ class Index extends TPage
 		{
 			$this->Notice->Type = UserNoticeType::Notice;
 			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"product");
+			$this->mainBox->Visible = false;
 		}
 	}
 	

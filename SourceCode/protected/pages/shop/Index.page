@@ -11,12 +11,14 @@
 
 <!-- Main column -->
 <div class="main_col">
+	
+	<!-- Category path -->
+	<com:TLabel ID="lblCatPath" CssClass="category-path" />
+	<!-- Category path: END -->
+	
 	<com:Application.shared.UserNotice ID="Notice" />
-    <!-- Category path -->
-    <com:TLabel ID="lblCatPath" CssClass="category-path" />
-    <!-- Category path: END -->
         
-	<div class="main_content">
+	<com:TPanel ID="mainBox" CssClass="main_content">
 		<!-- Pagination: END -->
 		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" Style="margin:5px 0 20px 0;border-bottom:solid 1px #503a1d;padding:0 0 10px 0;" />
 		<!-- Pagination: END -->
@@ -30,7 +32,7 @@
 		<!-- Pagination: END -->
 		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" Style="margin:-10px 0 5px 0;" />
 		<!-- Pagination: END -->
-	</div>
+	</com:TPanel>
 	<script type="text/javascript">
 		function validateDropDownList(e, id, imgLoading) {
 			if ($(id).selectedIndex <= 0) {

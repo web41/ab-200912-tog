@@ -18,7 +18,7 @@
     	<h2>register new account</h2>
         <div>Creating an account speeds up checkout time by saving your billing, shipping addresses to your account. You can also view detailed order status and purchase history.
         </div>
-        <div>If you already have an account, please <a href="<%= $this->Service->ConstructUrl("shop.account.Login") %>">sign in</a> now.</div>
+        <div>If you already have an account, please <a style='color:brown;' href="<%= $this->Service->ConstructUrl("shop.account.Login") %>">sign in</a> now.</div>
 		<table border="0" cellpadding="7" cellspacing="0" width="100%">
 			<tr>
 				<td class="table_title" colspan="2">register information</td>

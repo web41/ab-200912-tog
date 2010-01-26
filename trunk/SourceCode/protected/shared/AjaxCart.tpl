@@ -1,4 +1,4 @@
-<div class="box" style="float:left;margin:0;">
+<div class="box" style="float:left;margin:-20px 0 0 0;">
 	<div class="cart_title" style="margin:0;"><h2 style="font-size:13px;">your shopping bag</h2></div>
 </div>
 <div class="shoppingcart_box">

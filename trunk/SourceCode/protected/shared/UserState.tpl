@@ -1,4 +1,4 @@
-<div class="box" style="float:left;margin:0;">
+<div class="box" style="float:left;">
 	<div class="my_account">
     	<div class="top">my account</div>
         <div class="center">

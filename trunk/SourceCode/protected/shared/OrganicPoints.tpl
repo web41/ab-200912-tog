@@ -2,10 +2,10 @@
     <div class="special_box">
         <div class="top">earn organic points</div>
        	<div class="center">
-            Shop now and earn Organic Points Rebate to be used for your next purchase<br />
-            <span class="name"><b>1 Organic Point = $1</b></span><br />
-            Earn up to <span class="name"><b>5%</b></span> rebate for your online purchases<br />
-            <a href="<%= $this->Service->ConstructUrl("shop.OrganicPoint") %>" class="mail">View More Organic Points Info</a>
+        	<b>Earning Organic Points is so easy!</b><br />
+            Every $1 you spend at The Organic Grocer earns you 1 Organic Point.<br />
+			Upon accumulating 500 points, you will be eligible to redeem S$5 off your next online purchase!<br />
+            <a href="<%= $this->Service->ConstructUrl("shop.OrganicPoint") %>">View here for more details about Organics Points Info</a>
         </div>
         <div class="bottom"><!-- --></div>
     </div>

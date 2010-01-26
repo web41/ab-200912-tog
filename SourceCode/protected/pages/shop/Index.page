@@ -13,7 +13,7 @@
 <div class="main_col">
 	
 	<!-- Category path -->
-	<com:TLabel ID="lblCatPath" CssClass="category-path" />
+	<com:TLabel ID="lblCatPath" CssClass="category-path" Visible="false" />
 	<!-- Category path: END -->
 	
 	<com:Application.shared.UserNotice ID="Notice" />

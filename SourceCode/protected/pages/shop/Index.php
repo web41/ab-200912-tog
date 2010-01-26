@@ -164,7 +164,7 @@ class Index extends TPage
 		if (!$this->IsPostBack)
 		{
 			$this->populateData();
-			$this->renderCategoryPath();
+			//$this->renderCategoryPath();
 		}
 	}
 
@@ -196,6 +196,7 @@ class Index extends TPage
 			/* search by all term **
 			
 			*/
+			$this->lblCatPath->Text = 'Search result for "'.$this->SearchText.'"';
 			$criteria->Condition .= " and (p.product_id like '%".addslashes($this->SearchText)."%' or p.product_name like '%".addslashes($this->SearchText)."%' or p.product_sku like '%".addslashes($this->SearchText)."%')";
 		}
 		if ($this->BrandID>0)
@@ -208,6 +209,7 @@ class Index extends TPage
 		}
 		if ($this->CatID>0)
 		{
+			$this->renderCategoryPath();
 			$criteria->Condition .= " and c.parent_id = '".$this->CatID."' or c.cat_id = '".$this->CatID."' ";
 		}
 		if ($this->SubCatID>0)

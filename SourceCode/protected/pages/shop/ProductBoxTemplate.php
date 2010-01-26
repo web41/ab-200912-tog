@@ -22,6 +22,19 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 			$this->cboPropertySelector->SelectedIndex = 0;
 			$this->cboPropertySelector_CallBack($this->cboPropertySelector,null);
 		}
+		if ($this->Data)
+		{
+			if (strlen($this->Data->Brief)>0)
+			{
+				$this->lblDesc->Text = $this->Data->Brief . "<a href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...More</a>";
+			}
+			else if (strlen($this->Data->Description)>0)
+			{
+				if (strlen($this->Data->Description)>50)
+					$this->lblDesc->Text = substr($this->Data->Description,0,50) . "<a href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...More</a>";
+				else $this->lblDesc->Text = $this->Data->Description;
+			}
+		}
 	}
 	public function getFormattedValue($value,$pattern="c",$currency="USD")
 	{

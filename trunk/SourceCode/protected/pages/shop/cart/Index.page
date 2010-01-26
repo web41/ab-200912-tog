@@ -82,8 +82,8 @@
 			</com:TPanel>
 			<!-- Cart button -->
 			<div class="button_container">
-				<input type="button" style="float:left;" class="button" value="< Continue shopping" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'"/>
-				<com:TButton Style="float:right;" CssClass="button" Text="Checkout >" OnClick="btnSubmit_Clicked" />
+				<input type="button" style="float:left;" class="btn_shopping" value="" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'"/>
+				<com:TButton Style="float:right;" CssClass="btn_checkout" Text="" OnClick="btnSubmit_Clicked" />
 			</div>
 			<!-- Cart button: END -->
 		</div>

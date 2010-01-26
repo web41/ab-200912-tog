@@ -11,6 +11,9 @@ a:hover{color:#9f743c}
 a.mail, a.mail:visited{text-decoration:none;color:#0044dd}
 a.mail:hover{color:#0034aa}
 
+a.dark, a.dark:visited{text-decoration:none;color:#0044dd}
+a.dark:hover{color:#0034aa}
+
 .name{font-weight:normal;color:#83ae00;}
 
 .newsletter_error{float:left;font-size:11px;color:red;margin:3px 0 0 0;}
@@ -33,5 +36,8 @@ a.btn_addtocart:hover{color:#e8e8e8;}
 
 
 
+.btn_shopping{width:160px;height:28px;background:url(../images/btn_shopping.png) no-repeat;margin:0;float:left;border:none;}
+.btn_checkout{width:100px;height:28px;background:url(../images/btn_checkout.png) no-repeat;margin:0;float:right;border:none;}
 
+.btn_shopping:hover, .btn_checkout:hover{background-position:center -28px;cursor:pointer;}
 

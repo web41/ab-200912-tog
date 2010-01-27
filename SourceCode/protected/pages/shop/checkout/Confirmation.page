@@ -103,56 +103,91 @@
 		<div class="price" style="font-size:18px;float:right;">
 			<input type="button" class="button" value="Print this order" onclick="popup('printable','<%= $this->Service->ConstructUrl('shop.account.orders.PrintableOrderDetail') %>',true)" />
 		</div>
-		
-		<div class="content" style="clear:both;">
-			Thank you for your shopping. Please refer your friends<br />
-			<com:TTextBox ID="txtName" Text="Enter your name" Style="float:none;" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
-			<com:TRequiredFieldValidator ID="val1"
-				CssClass="newsletter_error"
-				ControlToValidate="txtName"
-				ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
-				Display="Dynamic"
-				FocusOnError="True"
-				InitialValue="Enter your name"
-				ValidationGroup="ReferFr"/>
-			<com:TRequiredFieldValidator ID="val2"
-				CssClass="newsletter_error"
-				ControlToValidate="txtName"
-				ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
-				Display="Dynamic"
-				FocusOnError="True"
-				ValidationGroup="ReferFr"/>
-			<com:TTextBox ID="txtEmail" Style="float:none;" CssClass="textbox" Width="110px" Text="Enter your email" Attributes.onclick="this.select()"/><br />
-			<com:TRequiredFieldValidator ID="val3"
-				CssClass="newsletter_error"
-				ControlToValidate="txtEmail"
-				ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
-				Display="Dynamic"
-				FocusOnError="True"
-				ValidationGroup="ReferFr"/>
-			<com:TEmailAddressValidator ID="val4"
-				CssClass="newsletter_error"
-				ControlToValidate="txtEmail"
-				ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
-				Display="Dynamic"
-				FocusOnError="True"
-				ValidationGroup="ReferFr"/>
-			<com:TCustomValidator ID="val5"
-				CssClass="newsletter_error"
-				ControlToValidate="txtEmail"
-				OnServerValidate="uniqueCheck_ServerValidated"
-				ErrorMessage="<%= $this->Application->getModule('message')->translate('NEWSLETTER_EXISTS') %>"
-				Display="Dynamic"
-				FocusOnError="True"
-				ValidationGroup="ReferFr"/>
-			<com:TButton ID="btnSubmit" CssClass="button" Style="margin:10px 0 0 0" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="ReferFr"/><br />
-	
-			
-		</div>
-		
 	</div>
 	<!-- Inside box: END -->
 	</com:PPanel>
+	<div class="content" style="clear:both;">
+		Thank you for your shopping. Please refer your friends<br />
+		<com:TTextBox ID="txtName" Text="Enter name" Style="float:none;" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
+		<com:TRequiredFieldValidator ID="val1"
+			CssClass="newsletter_error"
+			ControlToValidate="txtName"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			InitialValue="Enter name"
+			ValidationGroup="ReferFr"/>
+		<com:TRequiredFieldValidator ID="val2"
+			CssClass="newsletter_error"
+			ControlToValidate="txtName"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="ReferFr"/>
+		<com:TTextBox ID="txtEmail" Style="float:none;" CssClass="textbox" Width="110px" Text="Enter email" Attributes.onclick="this.select()"/><br />
+		<com:TRequiredFieldValidator ID="val3"
+			CssClass="newsletter_error"
+			ControlToValidate="txtEmail"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="ReferFr"/>
+		<com:TEmailAddressValidator ID="val4"
+			CssClass="newsletter_error"
+			ControlToValidate="txtEmail"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="ReferFr"/>
+		<com:TCustomValidator ID="val5"
+			CssClass="newsletter_error"
+			ControlToValidate="txtEmail"
+			OnServerValidate="uniqueCheck_ServerValidated"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('NEWSLETTER_EXISTS') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="ReferFr"/>
+		<com:TTextBox ID="txtName2" Text="Enter name" Style="float:none;" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
+		<com:TRequiredFieldValidator ID="val6"
+			CssClass="newsletter_error"
+			ControlToValidate="txtName2"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			InitialValue="Enter name"
+			ValidationGroup="ReferFr"/>
+		<com:TRequiredFieldValidator ID="val7"
+			CssClass="newsletter_error"
+			ControlToValidate="txtName"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Name') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="ReferFr"/>
+		<com:TTextBox ID="txtEmail2" Style="float:none;" CssClass="textbox" Width="110px" Text="Enter email" Attributes.onclick="this.select()"/><br />
+		<com:TRequiredFieldValidator ID="val8"
+			CssClass="newsletter_error"
+			ControlToValidate="txtEmail2"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_REQUIRED','Email') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="ReferFr"/>
+		<com:TEmailAddressValidator ID="val9"
+			CssClass="newsletter_error"
+			ControlToValidate="txtEmail2"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Email') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="ReferFr"/>
+		<com:TCustomValidator ID="val10"
+			CssClass="newsletter_error"
+			ControlToValidate="txtEmail2"
+			OnServerValidate="uniqueCheck_ServerValidated"
+			ErrorMessage="<%= $this->Application->getModule('message')->translate('NEWSLETTER_EXISTS') %>"
+			Display="Dynamic"
+			FocusOnError="True"
+			ValidationGroup="ReferFr"/>
+		<com:TButton ID="btnSubmit" CssClass="button" Style="margin:10px 0 0 0" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="ReferFr"/><br />
+	</div>
 </div>
 <!-- Main column: END -->
 

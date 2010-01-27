@@ -253,7 +253,7 @@ class Review extends TPage
 				catch(TException $ex)
 				{
 					$this->Notice->Type = UserNoticeType::Error;
-					$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+					$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 				}
 			}
 			else

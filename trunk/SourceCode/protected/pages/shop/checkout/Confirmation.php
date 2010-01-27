@@ -305,11 +305,15 @@ class Confirmation extends TPage
 			$activeRecord = new MailingListRecord;
 			$activeRecord->Address = $this->txtEmail->SafeText;
 			$activeRecord->Name = $this->txtName->SafeText;
-			$activeRecord->UserID = $this->Application->User->IsGuest ? 0 : $this->Application->User->ID;
+			$activeRecord2 = new MailingListRecord;
+			$activeRecord2->Address = $this->txtEmail2->SafeText;
+			$activeRecord2->Name = $this->txtName2->SafeText;
 			try
 			{	
 				$activeRecord->save();
-				$this->txtEmail->Text = "Enter your email";
+				$activeRecord2->save();
+				$this->txtName1->Text = $this->txtName2->Text = "Enter name";
+				$this->txtEmail1->Text = $this->txtEmail2->Text = "Enter email";
 				if ($this->Page->Notice)
 				{
 					$this->Page->Notice->Type = UserNoticeType::Notice;

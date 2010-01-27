@@ -14,7 +14,7 @@
 	<com:Application.shared.UserNotice ID="Notice" />
 	<com:PPanel ID="mainBox" CssClass="main_content" SaveHtml="true">
 	<!-- Inside box -->
-	<div id="invoice">
+	<div id="invoice" style="margin:0;">
 		<h2>Customer Order Invoice</h2>
 		<div style="float:right;">
 			Invoice No. <b><%= $this->Order->Num %></b><br />
@@ -100,13 +100,13 @@
 				</td>
 			</tr>
 		</table><br />
-		<div class="price" style="font-size:18px;float:right;">
+		<div class="price" style="font-size:18px;float:right;margin:0;">
 			<input type="button" class="button" value="Print this order" onclick="popup('printable','<%= $this->Service->ConstructUrl('shop.account.orders.PrintableOrderDetail') %>',true)" />
 		</div>
 	</div>
 	<!-- Inside box: END -->
 	</com:PPanel>
-	<div class="content" style="clear:both;">
+	<div class="main_content" style="clear:both;margin:0;">
 		Thank you for your shopping. Please refer your friends<br />
 		<com:TTextBox ID="txtName" Text="Enter name" Style="float:none;" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
 		<com:TRequiredFieldValidator ID="val1"

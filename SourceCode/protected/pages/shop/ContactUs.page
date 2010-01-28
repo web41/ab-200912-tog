@@ -73,6 +73,25 @@
 					</td>
 				</tr>
 				<tr>
+					<td class="left" valign="top">&nbsp;</td>
+					<td class="right">
+						<com:TCaptcha ID="capt" Width="150px" TokenImageTheme="0" CaseSensitive="True" ChangingTokenBackground="True" TestLimit="1"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="left" valign="top">Word verification <span>*</span></td>
+					<td class="right">
+						<com:TTextBox ID="txtCapt" /><br />
+						<com:TCaptchaValidator ID="val0"
+							ControlToValidate="txtCapt"
+							CaptchaControl="capt"
+							ErrorMessage="<%= $this->Application->getModule('message')->translate('ITEM_INVALID','Word verification') %>"
+							Display="Dynamic"
+							ValidationGroup="ContactUs"
+							FocusOnError="True"/>
+					</td>
+				</tr>
+				<tr>
 					<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 					<td class="right">
 						<com:TButton Text="Submit" CssClass="button" ValidationGroup="ContactUs" OnClick="submitButton_Clicked"/>

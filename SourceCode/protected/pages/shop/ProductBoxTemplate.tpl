@@ -22,7 +22,7 @@
 				Quantity: 
 				<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false"/>
 				<div style="margin-top:10px;">
-				Properties: <com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" Style="font-size:11px;margin-top:5px;font-family:Tahoma;" />
+				Selection: <com:TActiveDropDownList ID="cboPropertySelector" PromptValue="0" PromptText="Select..." OnCallBack="cboPropertySelector_CallBack" Style="font-size:11px;margin-top:5px;font-family:Tahoma;" />
                 </div>
 			</div>
 			<div style="float:right;">

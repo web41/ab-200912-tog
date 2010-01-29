@@ -29,7 +29,7 @@
 		<!-- Banner -->
 		<div id="banner">
 			<div id="logo">
-				<a href="<%= $this->Service->ConstructUrl("shop.Welcome") %>"><img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" width="364" height="119" alt="logo" /></a>
+				<a href="<%= $this->Service->ConstructUrl("Index") %>"><img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" width="364" height="119" alt="logo" /></a>
 			</div>
 			<div class="banner_right">
 				<ul>
@@ -42,8 +42,8 @@
 				</ul>
 				<div class="search_container">
 					<com:TButton ID="btnSearch" CssClass="button" Text="Search" OnClick="btnSearch_Clicked" IsDefaultButton="false" />
-					<com:TDropDownList ID="cboBrandSelector" PromptText="Search All Brand" PromptValue="0" DataTextField="Name" DataValueField="ID" />
-					<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="e.g. apple juice" Attributes.onfocus="this.value=''" />
+					<com:TDropDownList ID="cboBrandSelector" PromptText="Search all Brands" PromptValue="0" DataTextField="Name" DataValueField="ID" />
+					<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Search by Product (e.g. apple juice)" Attributes.onfocus="this.value=''" />
 				</div>
 			</div>
 		</div>

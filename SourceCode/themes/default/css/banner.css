@@ -11,5 +11,5 @@
 	
 .search_container{margin:10px 5px 0 0;}
 .search_container .textbox{color:#7c5a2c;font-size:11px;height:14px;border:solid 1px #9f9f9f;background:#fff;padding-top:2px;width:220px;float:right;margin:0 5px 0 0;}
-.search_container select{text-transform:capitalize;color:#7c5a2c;height:19px;border:solid 1px #9f9f9f;background:#fff;padding:1px 0 1px 0;font-size:11px;float:right;margin:0 5px 0 0;}
+.search_container select{color:#7c5a2c;height:19px;border:solid 1px #9f9f9f;background:#fff;padding:1px 0 1px 0;font-size:11px;float:right;margin:0 5px 0 0;}
 .search_container .button{float:right;}

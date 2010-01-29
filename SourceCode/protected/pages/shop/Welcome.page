@@ -1,0 +1,39 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">Welcome To The Organic Grocer</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.OrganicPoints />
+	<com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+		<h2>Welcome to the organic grocer</h2>
+		<div>
+        	At The Organic Grocer, ordering online is so simple.
+            <ul>
+                <li>Simply select from our categories</li>
+                <li>Select a delivery day</li>
+                <li>Your order will be delivered to your door... That simple!</li>
+            </ul>
+		</div>
+	</div>
+	<!-- Inside box: END -->
+	</div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+    <com:Application.shared.AjaxCart ID="ajaxCart" />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

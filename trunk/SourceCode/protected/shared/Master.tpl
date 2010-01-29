@@ -29,11 +29,11 @@
 		<!-- Banner -->
 		<div id="banner">
 			<div id="logo">
-				<a href="<%= $this->Service->ConstructUrl("shop.Index") %>"><img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" width="364" height="119" alt="logo" /></a>
+				<a href="<%= $this->Service->ConstructUrl("shop.Welcome") %>"><img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" width="364" height="119" alt="logo" /></a>
 			</div>
 			<div class="banner_right">
 				<ul>
-					<li><a href="<%= $this->Service->ConstructUrl("shop.Index") %>">Home</a></li>  |  
+					<li><a href="<%= $this->Service->ConstructUrl("shop.Welcome") %>">Home</a></li>  |  
 					<li><a href="<%= $this->Service->ConstructUrl("shop.AboutUs") %>">About Us</a></li>  |   
 					<li><a href="<%= $this->Service->ConstructUrl("shop.WhyOrganic") %>">Why Organic</a></li>  |  
 					<li><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">Delivery</a></li>  |  

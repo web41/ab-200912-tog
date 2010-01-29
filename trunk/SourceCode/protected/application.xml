@@ -60,8 +60,7 @@
 		<module id="request" class="THttpRequest" UrlManager="friendly-url"/>
 		<module id="friendly-url" class="System.Web.TUrlMapping" EnableCustomUrl="true" UrlPrefix="/TOG">
 			
-			<url ServiceParameter="Index" pattern="home-page.html"/>
-			<url ServiceParameter="shop.Welcome" pattern="welcome.html"/>
+			<url ServiceParameter="Index" pattern="index.html"/>
 			<url ServiceParameter="shop.AboutUs" pattern="about-us.html"/>
 			<url ServiceParameter="shop.WhyOrganic" pattern="why-organic.html"/>
 			<url ServiceParameter="shop.Delivery" pattern="delivery.html"/>
@@ -70,16 +69,17 @@
 			<url ServiceParameter="shop.TermandCondition" pattern="terms-and-conditions.html"/>
 			<url ServiceParameter="shop.OrganicPoint" pattern="organic-points.html"/>
 			
-			<url ServiceParameter="shop.ProductDetail" pattern="shop/product-detail/{id}/{alias}" parameters.id="\d+" parameters.alias=".*" />
-			<url ServiceParameter="shop.Index" pattern="shop/{best_seller}/best-seller" parameters.best_seller="1" />
-			<url ServiceParameter="shop.Index" pattern="shop/{new_arrival}/new-arrival" parameters.new_arrival="1" />
-			<url ServiceParameter="shop.Index" pattern="shop/{promotion}/promotion" parameters.promotion="1" />
-			<url ServiceParameter="shop.Index" pattern="shop/category/{c}/{calias}/{subc}/{subcalias}" parameters.c="\d+" parameters.calias=".*" parameters.subc="\d+" parameters.subcalias=".*" />
-			<url ServiceParameter="shop.Index" pattern="shop/category/{c}/{calias}" parameters.c="\d+" parameters.calias=".*" />
-			<url ServiceParameter="shop.Index" pattern="shop/brand/{b}/{balias}" parameters.b="\d+" parameters.balias=".*" />
-			<url ServiceParameter="shop.Index" pattern="shop"/>
-			<url ServiceParameter="shop.Index" pattern="shop/category"/>
-			<url ServiceParameter="shop.ShopByBrand" pattern="shop/shop-by-brand"/>
+			<url ServiceParameter="shop.ProductDetail" pattern="shop/browse/product-detail/{id}/{alias}" parameters.id="\d+" parameters.alias=".*" />
+			<url ServiceParameter="shop.Index" pattern="shop/browse/{best_seller}/best-seller" parameters.best_seller="1" />
+			<url ServiceParameter="shop.Index" pattern="shop/browse/{new_arrival}/new-arrival" parameters.new_arrival="1" />
+			<url ServiceParameter="shop.Index" pattern="shop/browse/{promotion}/promotion" parameters.promotion="1" />
+			<url ServiceParameter="shop.Index" pattern="shop/browse/category/{c}/{calias}/{subc}/{subcalias}" parameters.c="\d+" parameters.calias=".*" parameters.subc="\d+" parameters.subcalias=".*" />
+			<url ServiceParameter="shop.Index" pattern="shop/browse/category/{c}/{calias}" parameters.c="\d+" parameters.calias=".*" />
+			<url ServiceParameter="shop.Index" pattern="shop/browse/brand/{b}/{balias}" parameters.b="\d+" parameters.balias=".*" />
+			<url ServiceParameter="shop.Index" pattern="shop/browse"/>
+			<url ServiceParameter="shop.Index" pattern="shop/browse/category"/>
+			<url ServiceParameter="shop.ShopByBrand" pattern="shop/browse/shop-by-brand"/>
+			<url ServiceParameter="shop.Welcome" pattern="shop"/>
 			
 			<url ServiceParameter="shop.account.Login" pattern="shop/account/login"/>
 			<url ServiceParameter="shop.account.Register" pattern="shop/account/register"/>

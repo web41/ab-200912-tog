@@ -36,12 +36,18 @@
                         <b>AUST. & USA AIRFLOWN</b><br /><br />
                         <b>TOP ORGANIC BRANDS</b><br /><br />
                         <b>WIDE SELECTION</b>
+                        <div>
+                        	<img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/img_aboutus.png" alt="" class="img" width="150"/>
+                        </div>
                         </div>
                         <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_img.png" alt="" style="float:right;margin-right:20px;"/>
                     </div>
                     
                     <div class="ss_content">
                         <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_theorganic.png" alt=""/><br /><br />
+                        <div>
+                        	<img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image2.png" alt="The organic grocer" class="img" width="150" style="margin-bottom:50px;"/>
+                        </div>
                        	<ul style="list-style-type:none;font-size:24px;font-weight:bold;">
                             <li style="margin-bottom:30px;"><img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/icon_check.png" alt="" align="left" style="margin:-4px 10px 0 0;"/>Simple to order</li>
                             <li style="margin-bottom:20px;"><img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/icon_check.png" alt="" align="left" style="margin:-4px 10px 0 0;"/>Save time and money</li>

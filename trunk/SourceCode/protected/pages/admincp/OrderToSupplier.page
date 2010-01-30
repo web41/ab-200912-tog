@@ -58,8 +58,7 @@
 											PromptText="All suppliers"
 											PromptValue="0"
 											DataTextField="Name"
-											DataValueField="ID"
-											Enabled="false" />
+											DataValueField="ID" />
 									</div>
 								</td>
 								<script type="text/javascript">
@@ -73,6 +72,7 @@
 											}
 										});
 									});
+									$('<%= $this->radViewBy->ClientID %>').select('input[checked="checked"]').each(function(el){el.click()});
 								</script>
 							</tr>
 						</table>

@@ -12,7 +12,6 @@ class OrderToSupplier extends TPage
 			$this->dpFromDate->Data = mktime(0,0,0,date("n"),date("j"),date("Y"));
 			$this->dpToDate->Data = mktime(23,59,59,date("n"),date("j"),date("Y"));
 		}
-		$this->cboMfSelector->Enabled = $this->radViewBy->SelectedValue == 1;
 	}
 	
 	public function generateOrders()
@@ -58,9 +57,9 @@ class OrderToSupplier extends TPage
 		{
 			$criteria->Condition .= " and (o.c_date <= '".$this->dpToDate->Data."') ";
 		}
-		if ($this->cboMfSelector->SelectedValue>0)
+		if (TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue) > 0)
 		{
-			$criteria->Condition .= " and (p.mf_id = '".$this->cboMfSelector->SelectedValue."')";
+			$criteria->Condition .= " and (p.mf_id = '".TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue)."')";
 		}
 		// -- 
 		$criteria->Condition .= ")";
@@ -133,8 +132,8 @@ class OrderToSupplier extends TPage
 					break;
 				case 1:
 					$supplier = null;
-					if ($this->cboMfSelector->SelectedValue>0)
-						$supplier = ManufacturerRecord::finder()->findByPk($this->cboMfSelector->SelectedValue);
+					if (TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue)>0)
+						$supplier = ManufacturerRecord::finder()->findByPk(TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue));
 					$orderItems = $this->generateOrderItemsByPublisher();
 					$totalOrderItems = count($orderItems);
 					if ($totalOrderItems > 0)

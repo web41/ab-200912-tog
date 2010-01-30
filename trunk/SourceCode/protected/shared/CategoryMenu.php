@@ -18,7 +18,7 @@ class CategoryMenu extends TTemplateControl
 			$criteria = new TActiveRecordCriteria;
 			$criteria->Condition = "cat_id > 0 and parent_id = :id and cat_publish = 1";
 			$criteria->Parameters[":id"] = $param->Item->Data->ID;
-			$criteria->OrdersBy["cat_name"] = "asc";
+			$criteria->OrdersBy["cat_order"] = "asc";
 			$param->Item->ChildCategory->DataSource = CategoryRecord::finder()->findAll($criteria);
 			$param->Item->ChildCategory->DataBind();
 		}

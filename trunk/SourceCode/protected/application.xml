@@ -173,6 +173,8 @@
 			<url ServiceParameter="admincp.OrderHistoryForm" pattern="admincp/order-history/{oid}" parameters.oid="\d+" />
 			<url ServiceParameter="admincp.MailingListManager" pattern="admincp/mailing-list"/>
 			<url ServiceParameter="admincp.MailingListManager" pattern="admincp/mailing-list/manager"/>
+			<url ServiceParameter="admincp.OrderReport" pattern="admincp/order-report"/>
+			<url ServiceParameter="admincp.OrderFromSupplier" pattern="admincp/order-from-supplier"/>
 		</module>
 		<!-- error module -->
 		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />

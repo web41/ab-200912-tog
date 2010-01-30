@@ -76,7 +76,7 @@
 									</div>
 								</td>
 								<td class="field">                                
-									<div class="text">Manufacturer<span>*</span></div>
+									<div class="text">Supplier<span>*</span></div>
 									<div class="control">
 										<com:TDropDownList ID="cboMfSelector"
 											PromptText="Select..."

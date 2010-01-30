@@ -109,7 +109,8 @@ class OrderRecord extends TActiveRecord
 		'OrderHistories'=>array(self::HAS_MANY,'OrderHistoryRecord','order_id'),
 		'Payments'=>array(self::HAS_MANY,'PaymentRecord','order_id'),
 		'BCountry'=>array(self::BELONGS_TO,'CountryRecord','b_country_code'),
-		'SCountry'=>array(self::BELONGS_TO,'CountryRecord','s_country_code')
+		'SCountry'=>array(self::BELONGS_TO,'CountryRecord','s_country_code'),
+		'OrderItems'=>array(self::HAS_MANY,'OrderItemRecord','order_id')
 	);
 
 	public static function finder($className=__CLASS__)
@@ -146,10 +147,8 @@ class OrderRecord extends TActiveRecord
 	
 	protected function getLatestHistory()
 	{
-		$criteria = new TActiveRecordCriteria;
-		$criteria->Condition = "order_id = :id and c_date = (select max(c_date) from tbl_order_history where order_id = :id)";
-		$criteria->Parameters[":id"] = $this->ID;
-		return OrderHistoryRecord::finder()->withOrderStatus()->find($criteria);
+		$sql = "select * from tbl_order_history where order_id = :id order by c_date desc limit 1";
+		return OrderHistoryRecord::finder()->withOrderStatus()->findBySql($sql,array(":id"=>$this->ID));
 	}
 	
 	public function estimateDeliveryDate($specialCase=false)

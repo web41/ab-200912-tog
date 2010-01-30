@@ -274,7 +274,7 @@ class Index extends TPage
 	
 	public function breadCrumbSeparator()
 	{
-		return "<img src='".$this->Page->Theme->BaseUrl."/images/breadcrumb_separator.png'/>";
+		return "<img src='".$this->Page->Theme->BaseUrl."/images/arrow_green.png'/>";
 	}
 }
 

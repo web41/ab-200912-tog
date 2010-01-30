@@ -31,36 +31,38 @@
                     <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/banner.png" alt="The organic grocer" width="520" />
                     </div>
                     <div class="ss_content">
-                    	<div style="float:left;width:auto;font-size:24px;">
-                        <b>FRESH ORGANICS</b><br /><br />
-                        <b>AUST. & USA AIRFLOWN</b><br /><br />
-                        <b>TOP ORGANIC BRANDS</b><br /><br />
-                        <b>WIDE SELECTION</b>
+                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_whyorganic.png" alt=""/><br />
+                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image1.png" alt="" class="img"/>
+                        <div>The average non organic fruit contains more than 20 pesticides.</div>
+                        <div>Pesticides in food have been linked to many diseases.</div>
+                        <div>Commercially raised cows and chickens are fed antibiotics, growth promoting drugs and anti-parasite drugs daily.</div>
+                        <div>Colour ink have been added to salmon found in supermarkets.</div>
+                        
+                        <div style="margin-top:15px;text-align:center;" id="morewhyorganic">
+                        	<a href="<%= $this->Service->ConstructUrl("shop.WhyOrganic") %>" class="btn_morewhyorganic"></a>
                         </div>
-                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_img.png" alt="" style="float:right;margin-right:20px;"/>
+						<script type="text/javascript">
+							j(".btn_morewhyorganic").css({"margin-left": (j('#morewhyorganic').width()-j('.btn_morewhyorganic').width())/2+"px", "display": "inherit"})
+						</script>
                     </div>
                     
                     <div class="ss_content">
-                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_theorganic.png" alt=""/><br /><br />
-                       	<ul style="list-style-type:none;font-size:24px;font-weight:bold;">
-                            <li style="margin-bottom:30px;"><img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/icon_check.png" alt="" align="left" style="margin:-4px 10px 0 0;"/>Simple to order</li>
-                            <li style="margin-bottom:20px;"><img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/icon_check.png" alt="" align="left" style="margin:-4px 10px 0 0;"/>Save time and money</li>
-                            <li style="margin-bottom:20px;"><img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/icon_check.png" alt="" align="left" style="margin:-4px 10px 0 0;"/>More than 800 organic products at your finger tips</li>
-                            <li><img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/icon_check.png" alt="" align="left" style="margin:-4px 10px 0 0;"/>Delivered directly to you</li>
-                        </ul>
+                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_theorganic.png" alt=""/><br />
+                        <div>Are you tired of going from shop to shop looking for your favourite organic brands?</div>
+                        <div>Have you been disappointed making a wasted trip to the shop to find that your favourite organic product is out of stock?</div>
+                        <div>Have you bought a non-organic product for your family just because the organic one was not available?</div>
+                        <div>Do you find your entire week taken up just to fill up your refrigerator with your favourite organic brands?</div>
+                        <div><b>If you have answered YES to any of the above, look no more! <a href="<%= $this->Service->ConstructUrl('shop.Index') %>" class="btn_order">Click here to Order Now!</a></b></div>
                     </div>
                     
-                    <div class="ss_content" style="text-align:center;">
-                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_delivery.png" alt="" /><br /><br />
-                        <div>
-                        	<img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_img_delivery.png" alt="" width="300" /><br />
-                        	<b>The Organic Grocer Delivers EVERYDAY except MONDAYS and SUNDAYS.</b>
-                        </div>
-                        <div>
-                        	<img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image1.png" alt="" class="img" width="100" />
-                        	<b>Order now to get your delivery early!</b><br />
-                            <a href="<%= $this->Service->ConstructUrl('shop.Delivery') %>" class="btn_order">Click here to see delivery schedule</a>
-                        </div>
+                    <div class="ss_content">
+                        <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image2.png" alt="" class="img" width="150" style="margin-bottom:80px;"/>
+                        <div>Fresh Organic Fruits &Veggies Air-Flown in From Australia & USA</div> 
+                        <div>Order by Tuesday 4 pm for delivery on Friday/Saturday</div>
+                        <div>Order by Saturday 10am for delivery the following Tuesday/Wednesday</div>
+                        <div>Orders without fresh fruits and veggies will be delivered after 2 working days
+                        (for orders placed before 12pm)</div>
+                        <div><a href="<%= $this->Service->ConstructUrl('shop.Delivery') %>" class="btn_order">Click here to see delivery schedule</a></div>
                     </div>
                 </div>
             </div>

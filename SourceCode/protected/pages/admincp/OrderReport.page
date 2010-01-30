@@ -53,82 +53,12 @@
                         <div class="field" style="border:none;margin-bottom:0;">
 							<div class="text">&nbsp;</div>
 							<div class="control">
-								<com:TButton ID="btnSubmit" CssClass="btn_addnew" />
-								<com:TButton ID="btnAddMore" CssClass="btn_addmore" />
-								<com:TButton CausesValidation="false" ButtonType="Reset" CssClass="btn_reset" />
-								
+								<com:TButton ID="btnSubmit" CssClass="btn_export" />
 							</div>
 						</div>
                     </div>
 				</com:TPanel>
 				<!-- Form sample: END -->
-                
-                <!-- Table box -->
-				<div class="main_box">
-					<div class="title"><div><div>
-                    	<h2>List</h2>
-                        <div style="float:right;padding:7px 5px 0 0;height:auto;">
-                        	<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
-							<com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
-							<com:TDropDownList ID="cboMfSelector"
-								AutoPostBack="true"
-								OnSelectedIndexChanged="cboMfSelector_SelectedIndexChanged"
-								PromptText="All"
-								PromptValue="0"
-								DataTextField="Name"
-								DataValueField="ID" />
-							<com:TDropDownList ID="cboBrandSelector"
-								AutoPostBack="true"
-								OnSelectedIndexChanged="cboBrandSelector_SelectedIndexChanged"
-								PromptText="All"
-								PromptValue="0"
-								DataTextField="Name"
-								DataValueField="ID" />
-                        </div>
-                    </div></div></div>
-					<div class="content nopadding">
-						<com:TOGDataGrid ID="datalist"
-							AutoGenerateColumns="false"
-							AllowSorting="false"
-							AllowPaging="false">
-							<com:TTemplateColumn HeaderStyle.Width="40px" HeaderText="#">
-								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 %>" />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderText="Name" HeaderStyle.CssClass="align_left">
-								<prop:ItemTemplate>
-									<a href="">
-									<com:TLabel ID="lblCategory" Text="Product<%# $this->Parent->ItemIndex + 1 %>" />
-									</a>
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>					
-							<com:TButtonColumn HeaderStyle.Width="10%" ID="btnPublish" ButtonType="ImageButton" HeaderText="Publish" CommandName="toogle_publish" />
-							<com:TTemplateColumn HeaderStyle.Width="5%">
-								<prop:HeaderTemplate>
-									<com:TCheckBox ID="chkAllItem" Attributes.onclick="_chk.check(this)" />
-								</prop:HeaderTemplate>
-								<prop:ItemTemplate>
-									<com:TCheckBox ID="chkItem" Attributes.onclick="_chk.check(this)" />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
-						</com:TOGDataGrid>
-						<div class="table_footer">
-                        	<div class="table_paging" style="display:none;">
-                                <a href="" class="text">First</a>
-                                <a href="" class="text">Previous</a>
-                                <a href="">1</a>
-                                <a href="">2</a>
-                                <a href="">30</a>
-                                <a href="">999</a>
-                                <a href="" class="text">Next</a>
-                                <a href="" class="text">Last</a>
-                            </div>
-						</div>
-						
-					</div>
-				</div>
-				<!-- Table box: END -->
 			</td>
 		</tr>
 	</table>

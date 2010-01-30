@@ -89,7 +89,7 @@
 							
 							<com:TTemplateColumn HeaderStyle.Width="10%" HeaderText="Status">
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->Data->LatestHistory->OrderStatus->Name %>" />
+									<com:TLabel Text="<%# $this->Parent->Data->LatestHistory ? $this->Parent->Data->LatestHistory->OrderStatus->Name : '' %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							

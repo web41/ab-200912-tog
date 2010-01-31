@@ -165,6 +165,7 @@ class Index extends TPage
 		{
 			$this->populateData();
 			//$this->renderCategoryPath();
+			if ($this->CatID > 0) $this->renderCategoryPath();
 		}
 	}
 
@@ -208,14 +209,13 @@ class Index extends TPage
 		{
 			$criteria->Condition .= " and p.mf_id = '".$this->MfID."' ";
 		}
-		if ($this->CatID>0)
+		if ($this->SubCatID>0)
 		{
-			$this->renderCategoryPath();
-			$criteria->Condition .= " and c.parent_id = '".$this->CatID."' ";
-			if ($this->SubCatID>0)
-			{
-				$criteria->Condition .= " and c.cat_id = '".$this->SubCatID."' ";
-			}
+			$criteria->Condition .= " and c.cat_id = '".$this->SubCatID."' ";
+		}
+		else if ($this->CatID>0)
+		{
+			$criteria->Condition .= " and c.parent_id = '".$this->CatID."' or c.cat_id = '".$this->CatID."'";
 		}
 		
 		if ($this->IsBestSeller)

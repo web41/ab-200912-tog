@@ -211,12 +211,13 @@ class Index extends TPage
 		if ($this->CatID>0)
 		{
 			$this->renderCategoryPath();
-			$criteria->Condition .= " and c.parent_id = '".$this->CatID."' or c.cat_id = '".$this->CatID."' ";
+			$criteria->Condition .= " and c.parent_id = '".$this->CatID."' ";
+			if ($this->SubCatID>0)
+			{
+				$criteria->Condition .= " and c.cat_id = '".$this->SubCatID."' ";
+			}
 		}
-		if ($this->SubCatID>0)
-		{
-			$criteria->Condition .= " and c.cat_id = '".$this->SubCatID."' ";
-		}
+		
 		if ($this->IsBestSeller)
 		{
 			$criteria->Condition .= " and p.product_best_seller = 1 ";

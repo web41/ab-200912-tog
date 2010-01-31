@@ -2,6 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <com:THead>
 	<title><com:TContentPlaceHolder ID="title" /></title>
+    <meta name="description" content="The Organic Grocer is committed to delivering fresh organic produce as well as the best organic brands to our customers each week, while focusing on convenience and value." />
+    <meta name="keywords" content="organic , health food , health and living , organic living , organics you , feel good food , farm box , weekly fresh produce , special gifts , duchy festive hampers , hampers , mother and child , special dietary needs , free of synthetic chemicals , free from pesticides , gluten free , wheat free , dairy free , free range , organic stores , non peroxide hair dye" />
 	<noscript><meta http-equiv="refresh" content="0;URL=noscript.html" /></noscript>
 	<com:TContentPlaceHolder ID="meta" />
 	<com:TContentPlaceHolder ID="script" />

@@ -32,7 +32,9 @@ a.btn_addtocart:hover{color:#e8e8e8;}
 
 .btn_refresh{height:16px;width:16px;background:url(../images/btn_refresh.png) no-repeat;float:left;border:none;margin:2px 0 0 0;}
 .btn_delete{height:16px;width:16px;background:url(../images/btn_delete.png) no-repeat;border:none;margin:2px 0 0 0;}
+.btn_back{height:22px;width:50px;background:url(../images/btn_back.png) no-repeat;border:none;margin:-2px 5px 0 0;float:left;}
 .btn_refresh:hover, .btn_delete:hover{cursor:pointer;filter:alpha(opacity=80);-moz-opacity:0.8;-khtml-opacity: 0.8;opacity: 0.8;cursor:pointer;}
+.btn_back:hover{cursor:pointer;}
 
 
 

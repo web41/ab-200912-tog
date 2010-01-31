@@ -38,5 +38,4 @@
 		<menuNode ServiceParameter="admincp.OrderStatusForm" Title="Add Order Status" />
 		<menuNode ServiceParameter="admincp.OrderStatusManager" Title="Order Status List" />
 	</menuNode>
-	<menuNode ServiceParameter="admincp.MailingListManager" Title="Mailing List" />
 </menu>

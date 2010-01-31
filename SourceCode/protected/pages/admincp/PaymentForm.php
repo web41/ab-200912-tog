@@ -8,7 +8,7 @@ class PaymentForm extends TPage
 		parent::onLoad($param);
 		if (!$this->IsPostBack)
 		{
-			$this->cboMethodSelector->DataSource = PaymentMethodRecord::finder()->getAllItems();
+			$this->cboMethodSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
 			$this->cboMethodSelector->DataBind();
 			$this->cboStatusSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["PAYMENT_STATUS"]);
 			$this->cboStatusSelector->DataBind();
@@ -61,7 +61,7 @@ class PaymentForm extends TPage
 	private function bindItem()
 	{
 		$activeRecord = $this->getItem();
-
+		$activeRecord->OrderID = $this->Order->ID;
 		$activeRecord->PaymentMethodID = $this->cboMethodSelector->SelectedValue;
 		$activeRecord->Status = $this->cboStatusSelector->SelectedValue;
 		$activeRecord->Amount = TPropertyValue::ensureFloat($this->txtAmount->Text);

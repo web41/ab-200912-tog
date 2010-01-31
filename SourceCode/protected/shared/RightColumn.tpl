@@ -2,12 +2,9 @@
     <div class="special_box">
         <div class="top">Delivery Schedule</div>
        	<div class="center">
-            Order by Tuesday 12.00 pm<br />
-            Delivery this Friday/Saturday<br /><br />
-            
-            Order by Saturday 9.00 am<br />
-            Delivery next Tuesday/Wednesday<br /><br />
-            <b><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">View here for more details about Delivery</a></b>
+        	The Organic Grocer delivers every <b>Tuesday, Wednesdays, Fridays</b> and <b>Saturdays</b><br />
+			Order your Australian & USA fresh produce by Tuesday 12pm and have it delivered to you on that Friday<br /><br />
+            <b><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">View here for more Delivery details</a></b>
         </div>
         <div class="bottom"><!-- --></div>
     </div>

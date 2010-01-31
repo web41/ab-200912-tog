@@ -1,7 +1,7 @@
 <div class="box">
-	<h2>newsletter</h2>
+	<h2>newsletter signup</h2>
 	<div class="content">
-		Enter your email address to receive our FREE newsletter on the organic market
+        Enter your email address to receive FREE updates and information about The Organic Grocer and our products
         <com:TTextBox ID="txtName" Text="Enter your name" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
 		<com:TRequiredFieldValidator ID="val1"
 			CssClass="newsletter_error"

@@ -70,7 +70,7 @@ class ProductForm extends TPage
 		}
 	}
 	
-	private function populateProperties()
+	public function populateProperties()
 	{
 		$properties = $this->getItem()->Properties;
 		if (count($properties)<=0)
@@ -164,7 +164,7 @@ class ProductForm extends TPage
 					$criteria->Condition = "product_id = :id";
 					$criteria->Parameters[":id"] = $activeRecord->ID;
 					ProductCatRecord::finder()->deleteAll($criteria);
-					PropertyRecord::finder()->deleteAll($criteria);
+					//PropertyRecord::finder()->deleteAll($criteria);
 				}
 				foreach($this->cboCatSelector->SelectedValues as $catID)
 				{
@@ -176,14 +176,16 @@ class ProductForm extends TPage
 					$price = TPropertyValue::ensureFloat($item->txtPrice->Text);
 					$name = $item->txtName->SafeText;
 					$stock = TPropertyValue::ensureInteger($item->txtInStock->Text);
-					$packageType = new PropertyRecord;
+					$id = $item->txtID->Value;
+					$prop = PropertyRecord::finder()->findByPk($id);
+					if ($prop == null) $prop = new PropertyRecord;
 					if ($price>0&&$stock>0&&strlen($name)>0)
 					{
-						$packageType->ProductID = $activeRecord->ID;
-						$packageType->Price = $price;
-						$packageType->Name = $name;
-						$packageType->InStock = $stock;
-						$packageType->save();
+						$prop->ProductID = $activeRecord->ID;
+						$prop->Price = $price;
+						$prop->Name = $name;
+						$prop->InStock = $stock;
+						$prop->save();
 					}
 					//var_dump($uom);
 				}
@@ -214,7 +216,7 @@ class ProductForm extends TPage
 					$criteria->Condition = "product_id = :id";
 					$criteria->Parameters[":id"] = $activeRecord->ID;
 					ProductCatRecord::finder()->deleteAll($criteria);
-					PropertyRecord::finder()->deleteAll($criteria);
+					//PropertyRecord::finder()->deleteAll($criteria);
 				}
 				foreach($this->cboCatSelector->SelectedValues as $catID)
 				{
@@ -226,14 +228,16 @@ class ProductForm extends TPage
 					$price = TPropertyValue::ensureFloat($item->txtPrice->Text);
 					$name = $item->txtName->SafeText;
 					$stock = TPropertyValue::ensureInteger($item->txtInStock->Text);
-					$packageType = new PropertyRecord;
+					$id = $item->txtID->Value;
+					$prop = PropertyRecord::finder()->findByPk($id);
+					if ($prop == null) $prop = new PropertyRecord;
 					if ($price>0&&$stock>0&&strlen($name)>0)
 					{
-						$packageType->ProductID = $activeRecord->ID;
-						$packageType->Price = $price;
-						$packageType->Name = $name;
-						$packageType->InStock = $stock;
-						$packageType->save();
+						$prop->ProductID = $activeRecord->ID;
+						$prop->Price = $price;
+						$prop->Name = $name;
+						$prop->InStock = $stock;
+						$prop->save();
 					}
 					//var_dump($uom);
 				}

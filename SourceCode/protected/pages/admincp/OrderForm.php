@@ -32,7 +32,7 @@ class OrderForm extends TPage
 			$this->lblHeader->Text = "Order detail: ".$activeRecord->Num;
 			$this->lblOrderNum->Text = $activeRecord->Num;
 			$this->lblOrderDate->Text = date('m/d/Y h:i:s A',$activeRecord->CreateDate);
-			$this->lblLatestStatus->Text = $activeRecord->LatestHistory->OrderStatus->Name;
+			$this->lblLatestStatus->Text = $activeRecord->LatestHistory?$activeRecord->LatestHistory->OrderStatus->Name:"";
 			$this->lnkUser->Text = $activeRecord->User->FirstName." ".$activeRecord->User->LastName;
 			$this->lnkUser->NavigateUrl = $this->Service->ConstructUrl("admincp.UserForm",array("id"=>$activeRecord->User->ID,"alias"=>$activeRecord->User->Email));
 

@@ -215,7 +215,7 @@ class Index extends TPage
 		}
 		else if ($this->CatID>0)
 		{
-			$criteria->Condition .= " and c.parent_id = '".$this->CatID."' or c.cat_id = '".$this->CatID."'";
+			$criteria->Condition .= " and (c.parent_id = '".$this->CatID."' or c.cat_id = '".$this->CatID."')";
 		}
 		
 		if ($this->IsBestSeller)

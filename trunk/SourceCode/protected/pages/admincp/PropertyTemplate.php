@@ -13,6 +13,14 @@ class PropertyTemplate extends TRepeaterItemRenderer
 			$this->txtID->Value = $this->Data->ID;
 		}
 	}
+	
+	protected function btnDelete_Clicked($sender, $param)
+	{
+		$prop = PropertyRecord::finder()->findByPk($this->txtID->Value);
+		if ($prop instanceof PropertyRecord)
+			$prop->delete();
+		$this->Page->populateProperties();
+	}
 }
 
 ?>

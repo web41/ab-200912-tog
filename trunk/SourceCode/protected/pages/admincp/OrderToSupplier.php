@@ -1,5 +1,6 @@
 <?php
 
+Prado::using("Application.common.common");
 class OrderToSupplier extends TPage
 {
 	public function onLoad($param)
@@ -103,12 +104,13 @@ class OrderToSupplier extends TPage
 							$workSheet->setCellValue("C".($i+$startRow),$orders[$i]->User->FirstName." ".$orders[$i]->User->LastName)->getStyle("C".($i+$startRow))->getFont()->setBold(true);
 							$workSheet->setCellValue("F".($i+$startRow),$orders[$i]->Total)->getStyle("F".($i+$startRow))->getFont()->setBold(true);
 							$orderItems = $orders[$i]->OrderItems;
-							$totalOrderItems = count($orderItems);
-							if ($totalOrderItems>0)
+							if (count($orderItems)>0)
 							{	
 								$startRow++;
-								for($j=0;$j<$totalOrderItems;$j++)
+								for($j=0;$j<count($orderItems);$j++)
 								{
+									$orderItems[$j]->Counter++;
+									$orderItems[$j]->save();
 									$product = ProductRecord::finder()->withManufacturer()->withBrand()->findByPk($orderItems[$j]->ProductID);
 									$prop = PropertyRecord::finder()->findByPk($orderItems[$j]->PropertyID);
 									if ($product instanceof ProductRecord)
@@ -120,10 +122,11 @@ class OrderToSupplier extends TPage
 										$workSheet->setCellValue("E".($j+$i+$startRow),$orderItems[$j]->Quantity);
 										$workSheet->setCellValue("F".($j+$i+$startRow),$orderItems[$j]->Subtotal);
 										$workSheet->setCellValue("G".($j+$i+$startRow),$product->Manufacturer->Name);
+										$workSheet->setCellValue("H".($j+$i+$startRow),Common::showOrdinal($orderItems[$j]->Counter));	
 									}
 								}
 							}
-							$startRow=$startRow+$totalOrderItems;
+							$startRow=$startRow+count($orderItems);
 						}
 						$workSheet->getColumnDimension("A")->setWidth(20);
 						$workSheet->getColumnDimension("B")->setWidth(80);
@@ -135,8 +138,7 @@ class OrderToSupplier extends TPage
 					if (TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue)>0)
 						$supplier = ManufacturerRecord::finder()->findByPk(TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue));
 					$orderItems = $this->generateOrderItemsByPublisher();
-					$totalOrderItems = count($orderItems);
-					if ($totalOrderItems > 0)
+					if (count($orderItems) > 0)
 					{
 						$workSheet->setCellValue("A3","Supplier");
 						$workSheet->setCellValue("B3",($supplier instanceof ManufacturerRecord ? $supplier->Name : "All suppliers"));
@@ -148,18 +150,22 @@ class OrderToSupplier extends TPage
 						if ($supplier == null) $workSheet->setCellValue("E4","Supplier")->getStyle("E4")->getFont()->setBold(true);
 						
 						$startRow = 5;
-						for($i=0;$i<$totalOrderItems;$i++)
-						{
+						for($i=0;$i<count($orderItems);$i++)
+						{	
+							$orderItems[$i]->Counter++;
+							$orderItems[$i]->save();
 							$product = ProductRecord::finder()->withManufacturer()->withBrand()->findByPk($orderItems[$i]->ProductID);
 							$prop = PropertyRecord::finder()->findByPk($orderItems[$i]->PropertyID);
 							$workSheet->setCellValue("A".($i+$startRow),$i+1);
 							$workSheet->setCellValue("B".($i+$startRow),$product->Name." - ".($prop instanceof PropertyRecord ? $prop->Name : ""));
 							$workSheet->setCellValue("C".($i+$startRow),$product->Brand->Name);
 							$workSheet->setCellValue("D".($i+$startRow),$orderItems[$i]->Quantity);
+							$workSheet->setCellValue("E".($i+$startRow),Common::showOrdinal($orderItems[$i]->Counter));
 							if ($supplier == null)
 							{
-								$workSheet->setCellValue("E".($i+$startRow),$product->Manufacturer->Name);
+								$workSheet->setCellValue("F".($i+$startRow),$product->Manufacturer->Name);
 							}
+							
 						}
 	
 						$workSheet->getColumnDimension("A")->setWidth(20);
@@ -170,8 +176,9 @@ class OrderToSupplier extends TPage
 			}
 			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
 			$fileName = "Export Generated On ".date("Y.m.d_h.i.s",time()).".xls";
-			$this->Response->appendHeader("Content-Type: application/vnd.ms-excel");
-			$this->Response->appendHeader("Content-Disposition: attachment;filename=$fileName","Cache-Control: max-age=0");
+			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
+			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
+			$this->Response->appendHeader("Cache-Control:max-age=0");
 			$phpExcelWriter->save('php://output'); 
 			$this->Response->flush();
 			exit();

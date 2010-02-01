@@ -92,5 +92,60 @@ class Common {
 		$number = (float)(substr($number,0,strlen($number)-1).(substr($number,strlen($number)-1)>=5 ? '5' : '0'));
 		return round($number/$to, 0)* $to; 
 	}
+	
+	function showOrdinal($num) {
+		// first convert to string if needed
+		$the_num = (string) $num;
+		// now we grab the last digit of the number
+		$last_digit = substr($the_num, -1, 1);
+		// if the string is more than 2 chars long, we get
+		// the second to last character to evaluate
+		if (strlen($the_num)>1) {
+			$next_to_last = substr($the_num, -2, 1);
+		} else {
+			$next_to_last = "";
+		}
+		// now iterate through possibilities in a switch
+		switch($last_digit) {
+			case "1":
+				// testing the second from last digit here
+				switch($next_to_last) {
+					case "1":
+						$the_num.="th";
+						break;
+					default:
+						$the_num.="st";
+				}
+				break;
+			case "2":
+				// testing the second from last digit here
+				switch($next_to_last) {
+					case "1":
+						$the_num.="th";
+						break;
+					default:
+						$the_num.="nd";
+				}
+				break;
+			// if last digit is a 3
+			case "3":
+				// testing the second from last digit here
+				switch($next_to_last) {
+					case "1":
+						$the_num.="th";
+						break;
+					default:
+						$the_num.="rd";
+				}
+				break;
+			// for all the other numbers we use "th"
+			default:
+				$the_num.="th";
+		}
+	
+		// finally, return our string with it's new suffix
+		return $the_num;
+	}
+
 }
 ?>

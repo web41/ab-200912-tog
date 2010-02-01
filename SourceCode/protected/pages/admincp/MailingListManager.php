@@ -275,11 +275,17 @@ class MailingListManager extends TPage
 			}
 			$workBook->setActiveSheetIndex(0)->getColumnDimension("D")->setWidth(50);
 			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
-			$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."docs".DIRECTORY_SEPARATOR;
+			//$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."docs".DIRECTORY_SEPARATOR;
 			//$fileName = md5(uniqid(time())).".xls";
 			$fileName = "Mailing List Generated On ".date("Y.m.d_h.i.s",time()).".xls";
-			$phpExcelWriter->save($filePath.$fileName);
-			$this->Response->writeFile($filePath.$fileName,null,"application/vnd.ms-excel",array("Content-Type: application/vnd.ms-excel","Content-Disposition: attachment;filename='Mailing List Generated On ".date("m.d.Y.h.i",time()).".xls'","Cache-Control: max-age=0"));
+			//$phpExcelWriter->save($filePath.$fileName);
+			//$this->Response->writeFile($filePath.$fileName,null,"application/vnd.ms-excel",array("Content-Type: application/vnd.ms-excel","Content-Disposition: attachment;filename='Mailing List Generated On ".date("m.d.Y.h.i",time()).".xls'","Cache-Control: max-age=0"));
+			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
+			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
+			$this->Response->appendHeader("Cache-Control:max-age=0");
+			$phpExcelWriter->save('php://output'); 
+			$this->Response->flush();
+			exit();
 		}
 		catch(Exception $ex)
 		{

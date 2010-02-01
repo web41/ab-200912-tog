@@ -16,6 +16,7 @@ class OrderItemRecord extends TActiveRecord
 	public $UnitPrice;
 	public $Quantity;
 	public $Subtotal;
+	public $Counter;
 	public $CreateDate;
 	public $ModifyDate;
 	
@@ -31,6 +32,7 @@ class OrderItemRecord extends TActiveRecord
 		'unit_price'=>'UnitPrice',
 		'quantity'=>'Quantity',
 		'subtotal'=>'Subtotal',
+		'gen_counter'=>'Counter',
 		'c_date'=>'CreateDate',
 		'm_date'=>'ModifyDate'
 	);

@@ -24,7 +24,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 		}
 		if ($this->Data)
 		{
-			if (strlen($this->Data->Brief)>0)
+			if (strlen($this->Data->Brief)>100)
 			{
 				$this->lblDesc->Text = $this->Data->Brief . "<a style='color:brown;' href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...more</a>";
 			}

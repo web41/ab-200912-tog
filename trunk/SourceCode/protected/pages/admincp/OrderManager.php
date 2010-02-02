@@ -159,7 +159,7 @@ class OrderManager extends TPage
 
 		$criteria->Limit = $limit;
 		$criteria->Offset = $offset;
-		$items = $activeRecord->finder()->findAll($criteria);
+		$items = $activeRecord->finder()->withUser()->findAll($criteria);
 		$this->ItemList->DataSource = $items;
 		$this->ItemList->dataBind();
 		if (count($items) <= 0)

@@ -65,6 +65,12 @@
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							
+							<com:TTemplateColumn HeaderStyle.Width="20%" HeaderText="Customer">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->Data->User->FirstName.' '.$this->Parent->Data->User->LastName %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							
 							<com:TTemplateColumn HeaderStyle.Width="8%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">Total

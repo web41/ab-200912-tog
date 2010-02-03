@@ -102,6 +102,7 @@ class OrderManager extends TPage
 				$item = new TListItem; $item->Text = $user->FirstName.' '.$user->LastName; $item->Value = $user->ID;
 				$this->cboUserSelector->Items->add($item);
 			}
+			$this->cboUserSelector->SelectedValue = $this->UserID;
 			$this->populateData();
 			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
 			{
@@ -298,7 +299,7 @@ class OrderManager extends TPage
 	
 	protected function cboUserSelector_SelectedIndexChanged($sender, $param)
 	{
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,"",(strlen($sender->SelectedValue)>0?$sender->SelectedValue:0)));
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,"",$sender->SelectedValue));
 	}
 }
 

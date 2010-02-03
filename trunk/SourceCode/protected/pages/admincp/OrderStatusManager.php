@@ -236,7 +236,7 @@ class OrderStatusManager extends TPage
 		{
 			foreach($this->ItemList->Items as $item) {
 				if ($item->colCheckBox->chkItem->Checked) {                                   
-					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblBrandID->Text));
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					if ($activeRecord)
 					{	
 						$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderStatusForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias)));

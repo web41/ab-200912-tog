@@ -7,7 +7,9 @@
 	<div class="content nopadding">
 		<ul id="sidebar_menu">
 			<li><a href="<%= $this->Service->ConstructUrl("admincp.MailingListManager") %>">Mailing List</a></li>
-            <li><a href="<%= $this->Service->ConstructUrl("admincp.OrderReport") %>">Order Report</a></li>
+            <li><a href="<%= $this->Service->ConstructUrl("admincp.SalesReport") %>">Sales Report</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("admincp.CustomerReport") %>">Customer Report</a></li>
+			<li><a href="<%= $this->Service->ConstructUrl("admincp.ProductReport") %>">Product Report</a></li>
 			<li><a href="<%= $this->Service->ConstructUrl("admincp.OrderToSupplier") %>">Export To Supplier</a></li>
 		</ul>
 	</div>

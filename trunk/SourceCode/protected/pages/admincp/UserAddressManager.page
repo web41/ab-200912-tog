@@ -61,7 +61,7 @@
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:THyperLink Text="<%# $this->Parent->Data->FirstName.' '.$this->Parent->Data->LastName %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.UserAddressForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias,"u"=>$this->Parent->Data->User->ID,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,"",,$this->Page->UserID)))) %>' />
+									<com:THyperLink Text="<%# $this->Parent->Data->FirstName.' '.$this->Parent->Data->LastName %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.UserAddressForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias,"u"=>$this->Parent->Data->User->ID,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,"",$this->Page->UserID)))) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.CssClass="align_left" ItemStyle.CustomStyle="text-align:left" HeaderStyle.Width="40%" HeaderText="Address">

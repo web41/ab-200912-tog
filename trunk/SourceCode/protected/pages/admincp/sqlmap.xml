@@ -11,7 +11,16 @@
 			$ADDITIONAL_CONDITION$
 			ORDER BY m.mf_name ASC, b.brand_name ASC
 		]]>
-		
+	</select>
+	<select id="SalesReport" parameterClass="array" resultMap="OrderRecord">
+		<![CDATA[
+			SELECT DISTINCT o.* FROM tbl_order o
+			LEFT JOIN tbl_order_history oh ON o.order_id = oh.order_id
+			LEFT JOIN tbl_order_status os ON oh.order_status_code = os.status_code
+			WHERE o.order_id > 0
+			$ADDITIONAL_CONDITION$
+			ORDER BY $ORDER_BY$
+		]]>
 	</select>
 	<resultMap id="OrderItemRecord" class="OrderItemRecord">
 		<result property="ID" column="item_id" />
@@ -25,6 +34,52 @@
 		<result property="Quantity" column="quantity" />
 		<result property="Subtotal" column="subtotal" />
 		<result property="Counter" column="gen_counter" />
+		<result property="CreateDate" column="c_date" />
+		<result property="ModifyDate" column="m_date" />
+	</resultMap>
+	<resultMap id="OrderRecord" class="OrderRecord">
+		<result property="ID" column="order_id" />
+		<result property="Num" column="order_num" />
+		<result property="UserID" column="user_id" />
+		<result property="BTitle" column="b_title" />
+		<result property="BCompanyName" column="b_company_name" />
+		<result property="BFirstName" column="b_first_name" />
+		<result property="BLastName" column="b_last_name" />
+		<result property="BAddress1" column="b_address_1" />
+		<result property="BAddress2" column="b_address_2" />
+		<result property="BCity" column="b_city" />
+		<result property="BState" column="b_state" />
+		<result property="BCountryCode" column="b_country_code" />
+		<result property="BZipCode" column="b_zip_code" />
+		<result property="BPhone1" column="b_phone_1" />
+		<result property="BPhone2" column="b_phone_2" />
+		<result property="BFax" column="b_fax" />
+		<result property="BTitle" column="b_title" />
+		<result property="SCompanyName" column="s_company_name" />
+		<result property="SFirstName" column="s_first_name" />
+		<result property="SLastName" column="s_last_name" />
+		<result property="SAddress1" column="s_address_1" />
+		<result property="SAddress2" column="s_address_2" />
+		<result property="SCity" column="s_city" />
+		<result property="SState" column="s_state" />
+		<result property="SCountryCode" column="s_country_code" />
+		<result property="SZipCode" column="s_zip_code" />
+		<result property="SPhone1" column="s_phone_1" />
+		<result property="SPhone2" column="s_phone_2" />
+		<result property="Subtotal" column="subtotal" />
+		<result property="TaxAmount" column="tax_amount" />
+		<result property="ShippingMethodID" column="shipping_method_id" />
+		<result property="ShippingAmount" column="shipping_amount" />
+		<result property="EstDeliveryDate" column="est_delivery_date" />
+		<result property="CouponCode" column="coupon_code" />
+		<result property="CouponAmount" column="coupon_amount" />
+		<result property="RewardPointsRebate" column="reward_points_rebate" />
+		<result property="Deliverer" column="deliverer_name" />
+		<result property="TotalPacks" column="total_packs" />
+		<result property="Total" column="total" />
+		<result property="Currency" column="currency" />
+		<result property="IPAddress" column="ip_address" />
+		<result property="Comments" column="comments" />
 		<result property="CreateDate" column="c_date" />
 		<result property="ModifyDate" column="m_date" />
 	</resultMap>

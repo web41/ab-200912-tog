@@ -43,6 +43,7 @@
 			<!--database ConnectionString="mysql:host=localhost;dbname=dosithuy_tog" username="dosithuy_tog" password="tog123"/-->
 		</module>
 		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
+		<module id="sqlmap" class="System.Data.SqlMap.TSqlMapConfig" EnableCache="true" ConfigFile="Application.pages.admincp.sqlmap" ConnectionID="db" />
 		<module id="session" class="System.Web.THttpSession" Timeout="86400" />
 		<!-- Used for Local only -->
 		<module id="mailer" class="System.Util.TEmailer" Type="Smtp" EmailTemplateDirectory="Application.template">
@@ -183,7 +184,7 @@
 	<!-- configuration for available services -->
 	<services>
 		<service id="page" class="TPageService" BasePath="Application.pages" DefaultPage="Index">
-			<pages StatePersisterClass="System.Web.UI.TSessionPageStatePersister" Theme="default"/>
+			<pages Theme="default"/>
 		</service>
 	</services>
 

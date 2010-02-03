@@ -81,7 +81,7 @@
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->StartDate>0) ? date('m/d/Y',$this->Parent->Data->StartDate) : '--' %>" />
+									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->StartDate>0) ? date('d/m/Y',$this->Parent->Data->StartDate) : '--' %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="10%">
@@ -91,7 +91,7 @@
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->EndDate>0) ? date('m/d/Y',$this->Parent->Data->EndDate) : '--' %>" />
+									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->EndDate>0) ? date('d/m/Y',$this->Parent->Data->EndDate) : '--' %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">

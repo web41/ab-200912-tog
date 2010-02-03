@@ -109,7 +109,7 @@
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<div class="item_text">
-										<div class="width_25"><a href="<%# $this->Service->ConstructUrl('admincp.PaymentForm',array('oid'=>$this->Data->OrderID,'id'=>$this->Data->ID)) %>"><%# $this->Data->CreateDate>0 ? date('m/d/Y h:i:s A',$this->Data->CreateDate) : "--" %></a></div>
+										<div class="width_25"><a href="<%# $this->Service->ConstructUrl('admincp.PaymentForm',array('oid'=>$this->Data->OrderID,'id'=>$this->Data->ID)) %>"><%# $this->Data->CreateDate>0 ? date('d/m/Y h:i:s A',$this->Data->CreateDate) : "--" %></a></div>
 										<div class="width_15_left"><%# $this->Data->PaymentMethod->Name %></div>
 										<div class="width_10"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data->Amount %>" /></div>
 										<div class="width_15"><%# $this->Page->PaymentStatus[$this->Data->Status] %></div>
@@ -137,7 +137,7 @@
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<div class="item_text">
-										<div class="width_25"><a href="<%# $this->Service->ConstructUrl('admincp.OrderHistoryForm',array('oid'=>$this->Data->OrderID,'id'=>$this->Data->ID)) %>"><%# $this->Data->CreateDate>0 ? date('m/d/Y h:i:s A',$this->Data->CreateDate) : "--" %></a></div>
+										<div class="width_25"><a href="<%# $this->Service->ConstructUrl('admincp.OrderHistoryForm',array('oid'=>$this->Data->OrderID,'id'=>$this->Data->ID)) %>"><%# $this->Data->CreateDate>0 ? date('d/m/Y h:i:s A',$this->Data->CreateDate) : "--" %></a></div>
 										<div class="width_15_left"><%# $this->Data->OrderStatus->Name %></div>
 										<div class="width_35"><%# $this->Data->Comments %></div>
 									</div>

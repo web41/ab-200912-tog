@@ -83,7 +83,7 @@
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->CreateDate>0) ? date('m/d/Y',$this->Parent->Data->CreateDate) : '--' %>" />
+									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->CreateDate>0) ? date('d/m/Y',$this->Parent->Data->CreateDate) : '--' %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderText="Published" HeaderStyle.Width="7%">

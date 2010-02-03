@@ -298,7 +298,7 @@ class OrderManager extends TPage
 	
 	protected function cboUserSelector_SelectedIndexChanged($sender, $param)
 	{
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,"",$sender->SelectedValue));
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,"",(strlen($sender->SelectedValue)>0?$sender->SelectedValue:0)));
 	}
 }
 

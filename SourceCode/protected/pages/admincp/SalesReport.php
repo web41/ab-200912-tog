@@ -194,6 +194,77 @@ class SalesReport extends TPage
 	
 	public function btnExport_Clicked($sender, $param)
 	{
+		Prado::using("Application.common.PHPExcel");
+		Prado::using("Application.common.PHPExcel.Style");
+		Prado::using("Application.common.PHPExcel.Style.Font");
+		Prado::using("Application.common.PHPExcel.IOFactory");
+		Prado::using("Application.common.PHPExcel.Writer.Excel5");
+		try
+		{
+			$workBook = new PHPExcel();
+			$workBook->getProperties()->setCreator("Alex Do")
+									->setLastModifiedBy("Alex Do")
+									->setTitle("The Organic Grocer Export generated on ".date("m.D.Y",time()))
+									->setSubject("The Organic Grocer Export")
+									->setDescription("The Organic Grocer Export generated on ".date("m.D.Y",time()));
+			$workBook->setActiveSheetIndex(0);
+			$workSheet = $workBook->getActiveSheet();
+			$workSheet->setCellValue("A1","From Date");
+			$workSheet->setCellValue("B1",date("d/m/Y",$this->FromDate));
+			$workSheet->setCellValue("C1","To Date");
+			$workSheet->setCellValue("D1",date("d/m/Y",$this->ToDate));
+			$workSheet->setCellValue("A2","Order Status");
+			$status = OrderStatusRecord::finder()->findBystatus_code($this->cboStatusSelector->SelectedValue);
+			$workSheet->setCellValue("B2",($status?$status->Name:"All"));
+			
+			$workSheet->setCellValue("A4","No")->getStyle("A4")->getFont()->setBold(true);
+			$workSheet->setCellValue("B4","Order Date")->getStyle("B4")->getFont()->setBold(true);
+			$workSheet->setCellValue("C4","Order Number")->getStyle("C4")->getFont()->setBold(true);
+			$workSheet->setCellValue("D4","Customer Name")->getStyle("D4")->getFont()->setBold(true);
+			$workSheet->setCellValue("E4","Total Amount")->getStyle("E4")->getFont()->setBold(true);
+			$workSheet->setCellValue("F4","Order Status")->getStyle("F4")->getFont()->setBold(true);
+			
+			$items = $this->generateData();
+			$startRow = 5;
+			$masterTotal = 0;
+			if (count($items)>0)
+			{
+				for($i=0;$i<count($items);$i++)
+				{
+					$workSheet->setCellValue("A".($i+$startRow),$i+1);
+					$workSheet->setCellValue("B".($i+$startRow),date('d/m/Y h:i:s A',$items[$i]->CreateDate));
+					$workSheet->setCellValue("C".($i+$startRow),$items[$i]->Num);
+					$user = UserRecord::finder()->findByPk($items[$i]->UserID);
+					$workSheet->setCellValue("D".($i+$startRow),$user->FirstName." ".$user->LastName);
+					$workSheet->setCellValue("E".($i+$startRow),$items[$i]->Total);
+					$workSheet->setCellValue("F".($i+$startRow),($items[$i]->LatestHistory ? $items[$i]->LatestHistory->OrderStatus->Name : ""));
+					$masterTotal += $items[$i]->Total;
+				}
+				$workSheet->setCellValue("D".($startRow+count($items)+1),"Total Amount");
+				$workSheet->setCellValue("E".($startRow+count($items)+1),$masterTotal);
+			}
+			
+			$workSheet->getColumnDimension("A")->setWidth(15);
+			$workSheet->getColumnDimension("B")->setWidth(30);
+			$workSheet->getColumnDimension("C")->setWidth(30);
+			$workSheet->getColumnDimension("D")->setWidth(30);
+			$workSheet->getColumnDimension("E")->setWidth(20);
+			$workSheet->getColumnDimension("F")->setWidth(20);
+			
+			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
+			$fileName = "Export_Generated_On_".date("Y.m.d_h.i.s",time()).".xls";
+			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
+			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
+			$this->Response->appendHeader("Cache-Control:max-age=0");
+			$phpExcelWriter->save('php://output'); 
+			$this->Response->flush();
+			exit();
+		}
+		catch(Exception $ex)
+		{
+			$this->Notice->Type = AdminNoticeType::Error;
+			$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+		}
 	}
 }
 

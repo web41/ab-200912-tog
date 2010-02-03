@@ -94,6 +94,15 @@ class UserAddressManager extends TPage
 		$this->UserID = ($this->Request->contains('u')) ? TPropertyValue::ensureInteger($this->Request['u']) : 0;
 		if (!$this->IsPostBack)
 		{
+			// set user selector 
+			$users = UserRecord::finder()->getAllItems();
+			$this->cboUserSelector->Items->clear();
+			foreach($users as $user)
+			{
+				$item = new TListItem; $item->Text = $user->FirstName.' '.$user->LastName; $item->Value = $user->ID;
+				$this->cboUserSelector->Items->add($item);
+			}
+			$this->cboUserSelector->SelectedValue = $this->UserID;
 			$this->populateData();
 			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
 			{
@@ -261,7 +270,7 @@ class UserAddressManager extends TPage
 					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					if ($activeRecord)
 					{	
-						$this->Response->redirect($this->Service->ConstructUrl("admincp.UserForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias,"u"=>$activeRecord->UserID,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType,"",$this->UserID)))));
+						$this->Response->redirect($this->Service->ConstructUrl("admincp.UserAddressForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias,"u"=>$activeRecord->UserID,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType,"",$this->UserID)))));
 						return;
 					}
 					else
@@ -285,6 +294,11 @@ class UserAddressManager extends TPage
 	protected function btnSearchReset_Clicked($sender, $param)
 	{
 		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$this->UserID));
+	}
+	
+	protected function cboUserSelector_SelectedIndexChanged($sender, $param)
+	{
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,"",$sender->SelectedValue));
 	}
 }
 

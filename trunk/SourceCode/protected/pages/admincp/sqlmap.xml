@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sqlMapConfig>
+	<select id="OrderItemsByPublisher" parameterClass="string" resultMap="OrderItemRecord">
+		<![CDATA[
+			SELECT oi.* FROM tbl_order_item oi
+			LEFT JOIN tbl_order o on oi.order_id = o.order_id
+			LEFT JOIN tbl_product p on oi.product_id = p.product_id
+			LEFT JOIN tbl_brand b on p.brand_id = b.brand_id
+			LEFT JOIN tbl_manufacturer m on p.mf_id = m.mf_id
+			WHERE oi.order_id > 0
+			$ADDITIONAL_CONDITION$
+			ORDER BY m.mf_name ASC, b.brand_name ASC
+		]]>
+		
+	</select>
+	<resultMap id="OrderItemRecord" class="OrderItemRecord">
+		<result property="ID" column="item_id" />
+		<result property="OrderID" column="order_id" />
+		<result property="ProductID" column="product_id" />
+		<result property="PropertyID" column="prop_id" />
+		<result property="DiscountName" column="discount_name" />
+		<result property="DiscountAmount" column="discount_amount" />
+		<result property="DiscountIsPercent" column="discount_is_percent" />
+		<result property="UnitPrice" column="unit_price" />
+		<result property="Quantity" column="quantity" />
+		<result property="Subtotal" column="subtotal" />
+		<result property="Counter" column="gen_counter" />
+		<result property="CreateDate" column="c_date" />
+		<result property="ModifyDate" column="m_date" />
+	</resultMap>
+</sqlMapConfig>

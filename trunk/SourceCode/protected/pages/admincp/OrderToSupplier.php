@@ -41,14 +41,16 @@ class OrderToSupplier extends TPage
 	
 	public function generateOrderItemsByPublisher()
 	{
-		$criteria = new TActiveRecordCriteria;
+		/*$criteria = new TActiveRecordCriteria;
 		$criteria->OrdersBy['c_date'] = 'desc';
 		// addtional condition here
 		// this part will be hard-code on each page
-		$criteria->Condition = "item_id in (select oi.item_id from tbl_order_item oi 
-											left join tbl_order o on oi.order_id = o.order_id
-											left join tbl_product p on oi.product_id = p.product_id
-											where oi.order_id > 0 ";
+		$criteria->Condition = "item_id in (select oi.item_id from tbl_order_item oi, tbl_order o, tbl_product p, tbl_brand b, tbl_manufacturer m 
+											where oi.order_id = o.order_id
+											and oi.product_id = p.product_id
+											and p.brand_id = b.brand_id
+											and m.mf_id = p.mf_id
+											and oi.order_id > 0 ";
 
 		if ($this->dpFromDate->Data>0)
 		{
@@ -63,8 +65,43 @@ class OrderToSupplier extends TPage
 			$criteria->Condition .= " and (p.mf_id = '".TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue)."')";
 		}
 		// -- 
-		$criteria->Condition .= ")";
-		return OrderItemRecord::finder()->withOrder()->findAll($criteria);
+		$criteria->Condition .= "order by m.mf_name asc, b.brand_name asc )";*/
+		/*$sql = "select oi.* from 
+				tbl_order_item oi, tbl_order o, tbl_product p, tbl_brand b, tbl_manufacturer m 
+				where oi.order_id = o.order_id
+				and oi.product_id = p.product_id
+				and p.brand_id = b.brand_id
+				and m.mf_id = p.mf_id
+				and oi.order_id > 0 ";
+		if ($this->dpFromDate->Data>0)
+		{
+			$sql .= " and (o.c_date >= '".$this->dpFromDate->Data."') ";
+		}
+		if ($this->dpToDate->Data>0)
+		{
+			$sql .= " and (o.c_date <= '".$this->dpToDate->Data."') ";
+		}
+		if (TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue) > 0)
+		{
+			$sql .= " and (p.mf_id = '".TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue)."')";
+		}
+		$sql .= " order by m.mf_name asc, b.brand_name asc;";
+		return OrderItemRecord::finder()->withOrder()->findAllBySql($sql);*/
+		$sql = "";
+		if ($this->dpFromDate->Data>0)
+		{
+			$sql .= " AND o.c_date >= '".$this->dpFromDate->Data."' ";
+		}
+		if ($this->dpToDate->Data>0)
+		{
+			$sql .= " AND o.c_date <= '".$this->dpToDate->Data."' ";
+		}
+		if (TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue) > 0)
+		{
+			$sql .= " AND p.mf_id = '".TPropertyValue::ensureInteger($this->cboMfSelector->SelectedValue)."' ";
+		}
+		$sqlmap = $this->Application->Modules['sqlmap']->Client;
+		return $sqlmap->queryForList("OrderItemsByPublisher", $sql);
 	}
 	
 	protected function btnSubmit_Clicked($sender, $param)
@@ -100,8 +137,8 @@ class OrderToSupplier extends TPage
 						for($i=0;$i<count($orders);$i++)
 						{
 							$workSheet->setCellValue("A".($i+$startRow),date("d/m/Y",$orders[$i]->CreateDate))->getStyle("A".($i+$startRow))->getFont()->setBold(true);
-							$workSheet->setCellValue("B".($i+$startRow),$orders[$i]->Num)->getStyle("B".($i+$startRow))->getFont()->setBold(true);
-							$workSheet->setCellValue("C".($i+$startRow),$orders[$i]->User->FirstName." ".$orders[$i]->User->LastName)->getStyle("C".($i+$startRow))->getFont()->setBold(true);
+							$workSheet->setCellValue("B".($i+$startRow),$orders[$i]->Num." (".$orders[$i]->User->FirstName." ".$orders[$i]->User->LastName.")")->getStyle("B".($i+$startRow))->getFont()->setBold(true);
+							//$workSheet->setCellValue("C".($i+$startRow),$orders[$i]->User->FirstName." ".$orders[$i]->User->LastName)->getStyle("C".($i+$startRow))->getFont()->setBold(true);
 							$workSheet->setCellValue("F".($i+$startRow),$orders[$i]->Total)->getStyle("F".($i+$startRow))->getFont()->setBold(true);
 							$orderItems = $orders[$i]->OrderItems;
 							if (count($orderItems)>0)
@@ -143,11 +180,11 @@ class OrderToSupplier extends TPage
 						$workSheet->setCellValue("A3","Supplier");
 						$workSheet->setCellValue("B3",($supplier instanceof ManufacturerRecord ? $supplier->Name : "All suppliers"));
 	
-						$workSheet->setCellValue("A4","#")->getStyle("A4")->getFont()->setBold(true);
+						$workSheet->setCellValue("A4","No.")->getStyle("A4")->getFont()->setBold(true);
 						$workSheet->setCellValue("B4","Item Description")->getStyle("B4")->getFont()->setBold(true);
 						$workSheet->setCellValue("C4","Brand")->getStyle("C4")->getFont()->setBold(true);
 						$workSheet->setCellValue("D4","Quantity")->getStyle("D4")->getFont()->setBold(true);
-						if ($supplier == null) $workSheet->setCellValue("E4","Supplier")->getStyle("E4")->getFont()->setBold(true);
+						if ($supplier == null) $workSheet->setCellValue("F4","Supplier")->getStyle("E4")->getFont()->setBold(true);
 						
 						$startRow = 5;
 						for($i=0;$i<count($orderItems);$i++)

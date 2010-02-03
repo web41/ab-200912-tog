@@ -30,7 +30,7 @@ class StatisticsPane extends TTemplateControl
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "product_id > 0";
 		if ($publishedOnly) $criteria->Condition .= " and product_publish = 1";
-		$products = ProductRecord::finder()->withProperties()->findAll($criteria);
+		$products = ProductRecord::finder()->findAll($criteria);
 		foreach($products as $product)
 		{
 			if (count($product->Properties)>0)

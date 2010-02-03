@@ -42,6 +42,10 @@ class ProductForm extends TPage
 				$this->txtFreeText2->Text = $activeRecord->FreeText2;
 				$this->txtBrief->Text = $activeRecord->Brief;
 				$this->txtDesc->Text = $activeRecord->Description;
+				$this->imgFull->Visible = true;
+				$this->imgFull->ImageUrl = $this->Request->UrlManagerModule->UrlPrefix."/useruploads/images/product/".$activeRecord->ImagePath;
+				$this->imgThumb->Visible = true;
+				$this->imgThumb->ImageUrl = $this->Request->UrlManagerModule->UrlPrefix."/useruploads/images/product/thumbs/".$activeRecord->ThumbnailPath;
 			}
 			else
 			{

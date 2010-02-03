@@ -175,7 +175,7 @@ class OrderToSupplier extends TPage
 					break;
 			}
 			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
-			$fileName = "Export Generated On ".date("Y.m.d_h.i.s",time()).".xls";
+			$fileName = "Export_Generated_On_".date("Y.m.d_h.i.s",time()).".xls";
 			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
 			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
 			$this->Response->appendHeader("Cache-Control:max-age=0");

@@ -43,6 +43,7 @@
 								InitialValue="Filter by ID or Name"
 								ValidationGroup="filter" Style="margin:0;padding:0;float:right;"/> 
 							<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Filter by ID or Name" Attributes.onfocus="this.select()" />
+							<com:TDropDownList ID="cboUserSelector" AutoPostBack="true" PromptText="All users" PromptValue="0" OnSelectedIndexChanged="cboUserSelector_SelectedIndexChanged" />
 						</div>
 					</div></div></div>
 					<div class="content nopadding">

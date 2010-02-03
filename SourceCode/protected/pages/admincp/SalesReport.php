@@ -214,7 +214,7 @@ class SalesReport extends TPage
 			$workSheet->setCellValue("C1","To Date");
 			$workSheet->setCellValue("D1",date("d/m/Y",$this->ToDate));
 			$workSheet->setCellValue("A2","Order Status");
-			$status = OrderStatusRecord::finder()->findBystatus_code($this->cboStatusSelector->SelectedValue);
+			$status = OrderStatusRecord::finder()->findBystatus_code($this->Status);
 			$workSheet->setCellValue("B2",($status?$status->Name:"All"));
 			
 			$workSheet->setCellValue("A4","No")->getStyle("A4")->getFont()->setBold(true);

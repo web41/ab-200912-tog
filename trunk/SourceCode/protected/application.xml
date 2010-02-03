@@ -174,8 +174,10 @@
 			<url ServiceParameter="admincp.OrderHistoryForm" pattern="admincp/order-history/{oid}" parameters.oid="\d+" />
 			<url ServiceParameter="admincp.MailingListManager" pattern="admincp/mailing-list"/>
 			<url ServiceParameter="admincp.MailingListManager" pattern="admincp/mailing-list/manager"/>
-			<url ServiceParameter="admincp.OrderReport" pattern="admincp/order-report"/>
 			<url ServiceParameter="admincp.OrderToSupplier" pattern="admincp/order-to-supplier"/>
+			<url ServiceParameter="admincp.SalesReport" pattern="admincp/sales-report"/>
+			<url ServiceParameter="admincp.ProductReport" pattern="admincp/product-report"/>
+			<url ServiceParameter="admincp.CustomerReport" pattern="admincp/customer-report"/>
 		</module>
 		<!-- error module -->
 		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />

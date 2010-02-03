@@ -266,7 +266,7 @@ class OrderManager extends TPage
 					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					if ($activeRecord)
 					{	
-						$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Num)));
+						$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,"",$this->Page->UserID)))));
 						return;
 					}
 					else

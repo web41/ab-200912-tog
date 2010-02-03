@@ -183,7 +183,7 @@ class OrderManager extends TPage
 		$params['st'] = $sortType;
 		if (strlen($search)>0) $params['q'] = $search;
 		else if (isset($params['q'])) unset($params['q']);
-		if (strlen($user)>0) $params['u'] = $user;
+		if ($user>0) $params['u'] = $user;
 		else if (isset($params['u'])) unset($params['u']);
 		return $this->Service->ConstructUrl($serviceParameter,$params);
 	}

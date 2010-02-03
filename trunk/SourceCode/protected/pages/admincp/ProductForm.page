@@ -175,7 +175,8 @@
 											OnServerValidate="checkImageExtension_ServerValidated"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('IMAGE_INVALID',implode(",",TPropertyValue::ensureArray($this->Application->Parameters["AVAILABLE_IMAGES"]))) %>"
 											Display="Dynamic" 
-											FocusOnError="True"/>
+											FocusOnError="True"/><br />
+										<com:TImage ID="imgFull" Width="150px" Visible="false" />
 									</div>
 								</td>
 								<td class="field">                                
@@ -187,7 +188,8 @@
 											OnServerValidate="checkImageExtension_ServerValidated"
 											ErrorMessage="<%= $this->Application->getModule('message')->translate('IMAGE_INVALID',implode(",",TPropertyValue::ensureArray($this->Application->Parameters["AVAILABLE_IMAGES"]))) %>"
 											Display="Dynamic" 
-											FocusOnError="True"/>
+											FocusOnError="True"/><br />
+										<com:TImage ID="imgThumb" Width="150px" Visible="false" />
 									</div>
 								</td>
 							</tr>

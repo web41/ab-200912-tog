@@ -277,7 +277,7 @@ class MailingListManager extends TPage
 			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
 			//$filePath = dirname($this->Request->ApplicationFilePath).DIRECTORY_SEPARATOR."useruploads".DIRECTORY_SEPARATOR."docs".DIRECTORY_SEPARATOR;
 			//$fileName = md5(uniqid(time())).".xls";
-			$fileName = "Mailing List Generated On ".date("Y.m.d_h.i.s",time()).".xls";
+			$fileName = "Mailing_List_Generated_On_".date("Y.m.d_h.i.s",time()).".xls";
 			//$phpExcelWriter->save($filePath.$fileName);
 			//$this->Response->writeFile($filePath.$fileName,null,"application/vnd.ms-excel",array("Content-Type: application/vnd.ms-excel","Content-Disposition: attachment;filename='Mailing List Generated On ".date("m.d.Y.h.i",time()).".xls'","Cache-Control: max-age=0"));
 			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");

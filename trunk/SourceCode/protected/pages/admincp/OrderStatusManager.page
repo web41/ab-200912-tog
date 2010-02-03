@@ -21,7 +21,7 @@
 						<com:TButton ID="btnPublish" CssClass="btn_publish" OnClick="btnPublish_Clicked" Visible="false" />
 						<com:TButton ID="btnUnpublish" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" Visible="false" />
 						<com:TButton ID="btnEdit" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','order status') %>'); return false; }" />
-						<com:TButton ID="btnAdd" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.ManufacturerForm') %>'" />
+						<com:TButton ID="btnAdd" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.OrderStatusForm') %>'" />
 						<h2>Action</h2>
 					</div>
 					<div class="bottom"><div><div><!-- --></div></div></div>
@@ -110,7 +110,7 @@
 						<com:TButton ID="btnPublish2" CssClass="btn_publish" OnClick="btnPublish_Clicked" Visible="false" />
 						<com:TButton ID="btnUnpublish2" CssClass="btn_unpublish" OnClick="btnUnpublish_Clicked" Visible="false" />
 						<com:TButton ID="btnEdi2t" CssClass="btn_edit" OnClick="btnEdit_Clicked" Attributes.onclick="if(_chk.totalSelected > 0) {} else { alert('<%= $this->Application->getModule('message')->translate('SELECT_ITEM_REQUIRED','order status') %>'); return false; }" />
-						<com:TButton ID="btnAdd2" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.ManufacturerForm') %>'" />
+						<com:TButton ID="btnAdd2" ButtonType="Button" CssClass="btn_addnew" Attributes.onclick="document.location.href = '<%= $this->Service->ConstructUrl('admincp.OrderStatusForm') %>'" />
 						<h2>Action</h2>
 					</div>
 					<div class="bottom"><div><div><!-- --></div></div></div>

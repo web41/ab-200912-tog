@@ -16,7 +16,7 @@ class OrderItemRecord extends TActiveRecord
 	public $UnitPrice;
 	public $Quantity;
 	public $Subtotal;
-	public $Counter;
+	public $Counter=0;
 	public $CreateDate;
 	public $ModifyDate;
 	

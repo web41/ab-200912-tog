@@ -143,7 +143,7 @@ class ProductRecord extends TActiveRecord
 		return $originalPrice;
 	}
 	
-	protected function getProperties()
+	public function getProperties()
 	{
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "product_id = :id";

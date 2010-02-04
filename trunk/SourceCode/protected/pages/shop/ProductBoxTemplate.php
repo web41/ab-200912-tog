@@ -8,7 +8,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 		parent::onDataBinding($param);
 		if (count($this->Data)>0)
 		{
-			foreach($this->Data->Properties as $prop)
+			foreach($this->Data->getProperties() as $prop)
 			{
 				$item = new TListItem;
 				$item->Text = $prop->Name." ".$this->getFormattedValue(Common::roundTo($prop->Price));

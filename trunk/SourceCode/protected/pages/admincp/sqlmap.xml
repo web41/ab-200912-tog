@@ -35,6 +35,17 @@
 			ORDER BY $ORDER_BY$
 		]]>
 	</select>
+	<select id="CustomerReport" parameterClass="array" resultMap="OrderRecord">
+		<![CDATA[
+			SELECT o.*, COUNT(o.order_id) AS total_order, SUM(o.total) AS total_amount
+			FROM tbl_order o
+			LEFT JOIN tbl_user u ON o.user_id = u.user_id
+			WHERE o.order_id > 0
+			$ADDITIONAL_CONDITION$
+			GROUP BY u.user_id
+			ORDER BY $ORDER_BY$
+		]]>
+	</select>
 	<resultMap id="OrderItemRecord" class="OrderItemRecord">
 		<result property="ID" column="item_id" />
 		<result property="OrderID" column="order_id" />
@@ -96,5 +107,7 @@
 		<result property="Comments" column="comments" />
 		<result property="CreateDate" column="c_date" />
 		<result property="ModifyDate" column="m_date" />
+		<result property="TotalOrder" column="total_order" />
+		<result property="TotalAmount" column="total_amount" />
 	</resultMap>
 </sqlMapConfig>

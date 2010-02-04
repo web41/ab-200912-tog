@@ -51,6 +51,8 @@ class OrderRecord extends TActiveRecord
 	public $Comments;
 	public $CreateDate;
 	public $ModifyDate;
+	public $TotalOrder;
+	public $TotalAmount;
 	
 	public static $COLUMN_MAPPING=array
 	(

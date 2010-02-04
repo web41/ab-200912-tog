@@ -112,7 +112,6 @@
 							</com:TTemplateColumn>
 						</com:TDataGrid>
 						<div class="table_footer">
-							<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="table_paging" TextCssClass="text" ActivePageCssClass="active" />
 						</div>
 					</div>
 				</div>

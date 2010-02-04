@@ -1,0 +1,123 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Customer Report
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<!-- Control box -->
+				<div class="general_controlbox">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<com:TButton ID="btnExport" CssClass="btn_export" OnClick="btnExport_Clicked" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Main box -->
+				<div class="main_box">
+					<div class="title"><div><div>
+						<h2>Customer Report</h2>
+						<div style="float:right;height:26px;padding:7px 5px 0 0;">
+							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/><com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
+							<com:TDropDownList ID="cboUserSelector" PromptText="All customers" PromptValue="0" />
+							<com:TDatePicker ID="dpFromDate"
+								Width="75px"
+								Mode="ImageButton" InputMode="TextBox"
+								ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
+								DateFormat="MM/dd/yyyy"/>
+							<com:TDatePicker ID="dpToDate"
+								Width="75px"
+								Mode="ImageButton" InputMode="TextBox"
+								ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
+								DateFormat="MM/dd/yyyy"/>
+						</div>
+					</div></div></div>
+					<div class="content nopadding">
+						<com:TDataGrid ID="ItemList"
+							CellPadding="2" CellSpacing="1"
+							HeaderStyle.CssClass="table_header"
+							AlternatingItemStyle.CssClass="table_field1"
+							ItemStyle.CssClass="table_field2"
+							FooterStyle.CssClass="table_field2"
+							AutoGenerateColumns="false"
+							PagerStyle.Visible="False"
+							Width="100%" ShowFooter="true"
+							AllowPaging="false" AllowCustomPaging="false"
+							OnItemCreated="ItemList_ItemCreated">
+
+							<com:TTemplateColumn HeaderStyle.Width="4%" HeaderText="#">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 + ($this->Page->CurrentPage-1)*$this->Parent->Parent->PageSize %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->UserID) %>">Customer Name
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:THyperLink Text="<%# $this->Parent->Data->User->FirstName.' '.$this->Parent->Data->User->LastName %>" />
+								</prop:ItemTemplate>
+								<prop:FooterTemplate>
+									<span style="font-size:14px;font-weight:bold;text-align:right;float:right;">Total:<span>
+								</prop:FooterTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.Width="20%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->UserID) %>">Number of Orders
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->Data->TotalOrder %>" />
+								</prop:ItemTemplate>
+								<prop:FooterTemplate>
+									<a style="font-size:14px;font-weight:bold;text-align:center;"><com:TLabel Text="<%# $this->Page->MasterOrderCount %>" /></a>
+								</prop:FooterTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.Width="20%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->UserID) %>">Total Amount
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Parent->Data->TotalAmount %>" />
+								</prop:ItemTemplate>
+								<prop:FooterTemplate>
+									<a style="font-size:14px;font-weight:bold;text-align:center;"><com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Page->MasterTotal %>" /></a>
+								</prop:FooterTemplate>
+							</com:TTemplateColumn>
+						</com:TDataGrid>
+						<div class="table_footer">
+						</div>
+					</div>
+				</div>
+				<!-- Main box: END -->
+				<!-- Control box -->
+				<div class="general_controlbox" style="margin-top:-5px;">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<com:TButton ID="btnExport2" CssClass="btn_export" OnClick="btnExport_Clicked" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
+			</td>
+		</tr>
+	</table>
+</com:TContent>

@@ -10,4 +10,104 @@ a:hover{color:#0048A4;}
 .name{font-weight:normal;color:#f6ac00;}
 
 
+#container .main_col .main_box #calendar .TDatePicker_default
+{
+	border: 1px solid #919EA9;
+	background-color: White;
+	text-align: center;
+	font-size: 11px;
+	font-family: Tahoma;
+	cursor: default;margin:0;padding:0;float:none;
+	width:auto;height:auto;
+}
 
+#container .main_col .main_box #calendar .TDatePickerButton
+{
+	width: auto;margin:0;padding:0;float:none;height:auto;
+}
+
+#container .main_col .main_box #calendar .TDatePickerImageButton
+{
+	padding: 2px;
+	border: 1px solid #919EA9;
+	vertical-align: top;
+	margin-left: 1px;margin:0 5px 0 0;padding:0;float:none;height:auto;
+}
+
+#container .main_col .main_box #calendar .calendarHeader select{width:auto;height:auto;background:none;}
+
+#container .main_col .main_box #calendar .TDatePickerImageButton:hover
+{
+	border-color: #ddd;margin:0 5px 0 0;padding:0;float:none;width:auto;height:auto;
+}
+
+#container .main_col .main_box #calendar .calendarHeader{background:none;}
+#container .main_col .main_box #calendar .calendarHeader select
+{
+	font-size: 11px;margin:0;padding:0;float:none;width:auto;height:auto;
+}
+
+#container .main_col .main_box #calendar .TDatePicker_default input.button
+{
+	font-size: 11px;
+	width: auto;margin:0;padding:0;float:none;height:auto;
+}
+
+#container .main_col .main_box #calendar .TDatePicker_default .date
+{
+	padding: 4px 0;
+	border: 1px solid white;
+	text-align: center;margin:0;padding:0;float:none;width:auto;height:auto;
+}
+#container .main_col .main_box #calendar .TDatePicker_default .hover
+{
+	border: 1px solid blue;margin:0;padding:0;float:none;width:auto;height:auto;
+}
+#container .main_col .main_box #calendar .TDatePicker_default .selected 
+{
+	background-color: blue;
+	border: 1px solid blue;
+	color: white;margin:0;padding:0;float:none;width:auto;height:auto;
+}
+#container .main_col .main_box #calendar .TDatePicker_default .today
+{
+	font-weight: bold;margin:0;padding:0;float:none;width:auto;height:auto;
+}
+
+#container .main_col .main_box #calendar .TDatePicker_default td.empty
+{
+	border: 1px solid white;
+	cursor: default;
+	height: 22px;margin:0;padding:0;float:none;width:auto;
+}
+
+#container .main_col .main_box #calendar .TDatePicker_default th
+{
+	width: 28px;margin:0;padding:0;float:none;height:auto;
+}
+
+#container .main_col .main_box #calendar .TDatePicker_default .calendarBody
+{
+	text-align: center;
+	width: 210px;background:none;
+	margin: 3px 6px;margin:0;padding:0;float:none;height:auto;
+}
+
+#container .main_col .main_box #calendar .TDatePicker_default .grid
+{
+	border-spacing: 0px;margin:0;padding:0;float:none;width:auto;height:auto;
+}
+
+#container .main_col .main_box #calendar .TDatePicker_default .calendarFooter
+{
+	margin: 2px;
+	border-top: 1px solid #919EA9;
+	padding-top: 2px;margin:0;padding:0;float:none;width:auto;height:auto;
+}
+#container .main_col .main_box #calendar .TDatePicker_default .todayButton
+{
+	font-size: 11px;
+	margin: 4px;
+	padding-left: 1em;
+	padding-right: 1em;margin:0;padding:0;float:none;width:auto;height:auto;
+}

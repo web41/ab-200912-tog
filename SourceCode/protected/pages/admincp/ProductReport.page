@@ -24,12 +24,12 @@
 				<com:Application.shared.AdminNotice ID="Notice" />
 				<!-- Main box -->
 				<div class="main_box">
-					<div class="title"><div><div>
+					<div class="title" id="calendar"><div><div>
 						<h2>Product Report</h2>
 						<div style="float:right;height:26px;padding:7px 5px 0 0;">
 							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/><com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
-							<com:TDropDownList ID="cboBrandSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" />
-							<com:TDropDownList ID="cboCatSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" />
+							<com:TDropDownList ID="cboBrandSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" Style="font-size:11px;font-family:tahoma;" />
+							<com:TDropDownList ID="cboCatSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" Style="font-family:tahoma;font-size:11px;" />
 							<com:TDatePicker ID="dpFromDate"
 								Width="75px"
 								Mode="ImageButton" InputMode="TextBox"

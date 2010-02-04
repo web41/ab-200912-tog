@@ -31,7 +31,7 @@
 		<!-- Banner -->
 		<div id="banner">
 			<div id="logo">
-				<a href="<%= $this->Service->ConstructUrl("Index") %>"><img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" width="364" height="119" alt="logo" /></a>
+				<a href="<%= $this->Service->ConstructUrl("shop.Welcome") %>"><img src="<%= $this->Page->Theme->BaseUrl %>/images/logo.png" width="364" height="119" alt="logo" /></a>
 			</div>
 			<div class="banner_right">
 				<ul>

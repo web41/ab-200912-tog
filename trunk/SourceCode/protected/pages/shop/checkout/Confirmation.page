@@ -108,6 +108,7 @@
 	</com:PPanel>
 	<div class="main_content" style="clear:both;margin:0;">
 		Thank you for your shopping. Please refer your friends<br />
+        <div style="clear:both;float:left">
 		<com:TTextBox ID="txtName" Text="Enter name" Style="float:none;" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
 		<com:TRequiredFieldValidator ID="val1"
 			CssClass="newsletter_error"
@@ -124,6 +125,9 @@
 			Display="Dynamic"
 			FocusOnError="True"
 			ValidationGroup="ReferFr"/>
+        </div>
+        
+        <div style="clear:both;float:left">
 		<com:TTextBox ID="txtEmail" Style="float:none;" CssClass="textbox" Width="110px" Text="Enter email" Attributes.onclick="this.select()"/><br />
 		<com:TRequiredFieldValidator ID="val3"
 			CssClass="newsletter_error"
@@ -147,6 +151,9 @@
 			Display="Dynamic"
 			FocusOnError="True"
 			ValidationGroup="ReferFr"/>
+        </div>
+        
+        <div style="clear:both;float:left">
 		<com:TTextBox ID="txtName2" Text="Enter name" Style="float:none;" CssClass="textbox" Width="110px" Attributes.onclick="this.select()"/><br />
 		<com:TRequiredFieldValidator ID="val6"
 			CssClass="newsletter_error"
@@ -163,6 +170,9 @@
 			Display="Dynamic"
 			FocusOnError="True"
 			ValidationGroup="ReferFr"/>
+        </div>    
+        
+        <div style="clear:both;float:left">
 		<com:TTextBox ID="txtEmail2" Style="float:none;" CssClass="textbox" Width="110px" Text="Enter email" Attributes.onclick="this.select()"/><br />
 		<com:TRequiredFieldValidator ID="val8"
 			CssClass="newsletter_error"
@@ -186,7 +196,11 @@
 			Display="Dynamic"
 			FocusOnError="True"
 			ValidationGroup="ReferFr"/>
-		<com:TButton ID="btnSubmit" CssClass="button" Style="margin:10px 0 0 0" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="ReferFr"/><br />
+        </div>
+        
+        <div style="clear:both;float:left">
+		<com:TButton ID="btnSubmit" CssClass="button" Style="margin:10px 0 0 0" Text="Submit" OnClick="btnSubmit_Clicked" ValidationGroup="ReferFr"/>
+        </div>
 	</div>
 </div>
 <!-- Main column: END -->

@@ -11,7 +11,7 @@ class ProductDetail extends TPage
 			$activeRecord = $this->getItem();
 			if ($activeRecord instanceof ProductRecord)
 			{
-				foreach($activeRecord->Properties as $prop)
+				foreach($activeRecord->getProperties() as $prop)
 				{
 					$item = new TListItem;
 					$item->Text = $prop->Name." ".$this->getFormattedValue(Common::roundTo($prop->Price));

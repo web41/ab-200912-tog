@@ -19,6 +19,7 @@ class OrderItemRecord extends TActiveRecord
 	public $Counter=0;
 	public $CreateDate;
 	public $ModifyDate;
+	public $TotalQuantity;
 	
 	public static $COLUMN_MAPPING=array
 	(

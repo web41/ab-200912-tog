@@ -22,6 +22,19 @@
 			ORDER BY $ORDER_BY$
 		]]>
 	</select>
+	<select id="ProductReport" parameterClass="array" resultMap="OrderItemRecord">
+		<![CDATA[
+			SELECT oi.*, SUM(oi.quantity) AS total_quantity FROM tbl_order_item oi
+			LEFT JOIN tbl_order o ON oi.order_id = o.order_id
+			LEFT JOIN tbl_product p ON oi.product_id = p.product_id
+			LEFT JOIN tbl_product_cat_xref pcx ON p.product_id = pcx.product_id
+			LEFT JOIN tbl_brand b ON p.brand_id = b.brand_id
+			WHERE o.order_id > 0
+			$ADDITIONAL_CONDITION$
+			GROUP BY oi.product_id, oi.prop_id
+			ORDER BY $ORDER_BY$
+		]]>
+	</select>
 	<resultMap id="OrderItemRecord" class="OrderItemRecord">
 		<result property="ID" column="item_id" />
 		<result property="OrderID" column="order_id" />
@@ -36,6 +49,7 @@
 		<result property="Counter" column="gen_counter" />
 		<result property="CreateDate" column="c_date" />
 		<result property="ModifyDate" column="m_date" />
+		<result property="TotalQuantity" column="total_quantity" />
 	</resultMap>
 	<resultMap id="OrderRecord" class="OrderRecord">
 		<result property="ID" column="order_id" />

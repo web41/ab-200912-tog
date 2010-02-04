@@ -10,7 +10,7 @@ class SalesReport extends TPage
 	private $_fromDate = 0;
 	private $_toDate = 0;
 	private $_sortable = array("order_id","order_num","total","c_date");
-	private $_queryParams = array("p","st","sb","q");
+	private $_queryParams = array("p","st","sb","stt","fd","td");
 	const AR = "OrderRecord";
 
 	public function getSortBy()
@@ -122,7 +122,7 @@ class SalesReport extends TPage
 		if (count($items) <= 0)
 		{
 			$this->Notice->Type = AdminNoticeType::Information;
-			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"order");
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"record");
 		}
 	}
 	

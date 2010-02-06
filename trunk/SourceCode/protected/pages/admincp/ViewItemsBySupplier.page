@@ -1,0 +1,136 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: View Purchased Items By Suppliers
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<!-- Control box -->
+				<div class="general_controlbox">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<com:TButton ID="btnExport" CssClass="btn_export" OnClick="btnExport_Clicked" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Main box -->
+				<div class="main_box">
+					<div class="title" id="calendar"><div><div>
+						<h2>Purchased Items By Supplier</h2>
+						<div style="float:right;height:26px;padding:7px 5px 0 0;">
+							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/><com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
+							<com:TDropDownList ID="cboMfSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="Code" />
+							<com:TDatePicker ID="dpFromDate" CssClass="jen"
+								Width="75px"
+								Mode="ImageButton" InputMode="TextBox"
+								ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
+								DateFormat="MM/dd/yyyy"/>
+							<com:TDatePicker ID="dpToDate"
+								Width="75px"
+								Mode="ImageButton" InputMode="TextBox"
+								ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
+								DateFormat="MM/dd/yyyy"/>
+						</div>
+					</div></div></div>
+					<div class="content nopadding">
+						<com:TDataGrid ID="ItemList"
+							CellPadding="2" CellSpacing="1"
+							HeaderStyle.CssClass="table_header"
+							AlternatingItemStyle.CssClass="table_field1"
+							ItemStyle.CssClass="table_field2"
+							FooterStyle.CssClass="table_field2"
+							AutoGenerateColumns="false"
+							PagerStyle.Visible="False"
+							Width="100%" ShowFooter="true"
+							AllowPaging="false" AllowCustomPaging="false">
+
+							<com:TTemplateColumn HeaderStyle.Width="4%" HeaderText="#">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 + ($this->Page->CurrentPage-1)*$this->Parent->Parent->PageSize %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->MfID) %>">Item Description
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==0 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:THyperLink Text="<%# ($this->Parent->Data->Product ? $this->Parent->Data->Product->Name : '').($this->Parent->Data->Property ? ' - '.$this->Parent->Data->Property->Name : '') %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.Width="20%" ItemStyle.CustomStyle="text-align:left;">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->MfID) %>">Brand
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# ($this->Parent->Data->Product && $this->Parent->Data->Product->Brand ? $this->Parent->Data->Product->Brand->Name : '') %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							
+							<com:TTemplateColumn HeaderStyle.Width="5%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->MfID) %>">Qty
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->Data->Quantity %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							
+							<com:TTemplateColumn HeaderStyle.Width="20%" ItemStyle.CustomStyle="text-align:left;">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->MfID) %>">Supplier
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# ($this->Parent->Data->Product && $this->Parent->Data->Product->Manufacturer ? $this->Parent->Data->Product->Manufacturer->Name : '') %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							
+							<com:TTemplateColumn HeaderStyle.Width="8%">
+								<prop:HeaderTemplate>
+									<a href="<%# $this->Page->populateSortUrl(4,(($this->Page->SortBy==4 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->MfID) %>">Counter
+										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==4 %>" />
+									</a>
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# Common::showOrdinal($this->Parent->Data->Counter) %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+
+						</com:TDataGrid>
+						<div class="table_footer">
+						</div>
+					</div>
+				</div>
+				<!-- Main box: END -->
+				<!-- Control box -->
+				<div class="general_controlbox" style="margin-top:-5px;">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<com:TButton ID="btnExport2" CssClass="btn_export" OnClick="btnExport_Clicked" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
+			</td>
+		</tr>
+	</table>
+</com:TContent>

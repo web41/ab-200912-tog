@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <sqlMapConfig>
-	<select id="OrderItemsByPublisher" parameterClass="string" resultMap="OrderItemRecord">
+	<select id="ViewItemsBySupplier" parameterClass="array" resultMap="OrderItemRecord">
 		<![CDATA[
 			SELECT oi.* FROM tbl_order_item oi
 			LEFT JOIN tbl_order o on oi.order_id = o.order_id
@@ -9,7 +9,7 @@
 			LEFT JOIN tbl_manufacturer m on p.mf_id = m.mf_id
 			WHERE oi.order_id > 0
 			$ADDITIONAL_CONDITION$
-			ORDER BY m.mf_name ASC, b.brand_name ASC
+			ORDER BY $ORDER_BY$
 		]]>
 	</select>
 	<select id="SalesReport" parameterClass="array" resultMap="OrderRecord">

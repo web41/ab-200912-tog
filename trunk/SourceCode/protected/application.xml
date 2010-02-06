@@ -178,6 +178,8 @@
 			<url ServiceParameter="admincp.SalesReport" pattern="admincp/sales-report"/>
 			<url ServiceParameter="admincp.ProductReport" pattern="admincp/product-report"/>
 			<url ServiceParameter="admincp.CustomerReport" pattern="admincp/customer-report"/>
+			<url ServiceParameter="admincp.ViewItemsByOrder" pattern="admincp/purchased-items-report/{type}" parameters.type="by-order" />
+			<url ServiceParameter="admincp.ViewItemsBySupplier" pattern="admincp/purchased-items-report/{type}" parameters.type="by-supplier" />
 		</module>
 		<!-- error module -->
 		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />

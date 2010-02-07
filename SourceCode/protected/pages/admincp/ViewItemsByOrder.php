@@ -9,7 +9,7 @@ class ViewItemsByOrder extends TPage
 	private $_fromDate = 0;
 	private $_toDate = 0;
 	private $_sortable = array("order_num","total","c_date");
-	private $_queryParams = array("p","st","sb","fd","td");
+	private $_queryParams = array("p","st","sb","fd","td","type");
 	const AR = "OrderRecord";
 
 	public function getSortBy()
@@ -93,7 +93,7 @@ class ViewItemsByOrder extends TPage
 		$this->ToDate = ($this->Request->contains('td')) ? TPropertyValue::ensureInteger($this->Request['td']) : mktime(23,59,59,date("n"),date("j"),date("Y"));
 		if (!$this->IsPostBack)
 		{
-			//$this->populateData();
+			$this->populateData();
 			$this->dpFromDate->Data = $this->FromDate;
 			$this->dpToDate->Data = $this->ToDate;
 		}
@@ -113,22 +113,29 @@ class ViewItemsByOrder extends TPage
 
 	public function generateData()
 	{
-		/*$sql = "";
-		if ($this->FromDate > 0)
-			$sql .= " AND (o.c_date >= '".$this->FromDate."')";
-		if ($this->ToDate > 0)
-			$sql .= " AND (o.c_date <= '".$this->ToDate."')";
-		if (strlen($this->Status)>0)
-			$sql .= " AND (oh.order_status_code = '".$this->Status."' AND oh.c_date = (SELECT MAX(c_date) FROM tbl_order_history WHERE order_id = o.order_id))";
+		$criteria = new TActiveRecordCriteria;
+		$criteria->OrdersBy['c_date'] = 'desc';
+		// addtional condition here
+		// this part will be hard-code on each page
+		$criteria->Condition = "order_id in (select distinct o.order_id from tbl_order o 
+								left join tbl_order_item oi on o.order_id = oi.order_id
+								left join tbl_product p on oi.product_id = p.product_id";
 
-		$order = $this->Sortable[$this->SortBy]." ".$this->SortType;
-
-		$sqlmap = $this->Application->Modules['sqlmap']->Client;
-		return $sqlmap->queryForList("SalesReport", array("ADDITIONAL_CONDITION"=>$sql,"ORDER_BY"=>$order));*/
-		return array();
+		$criteria->Condition .= " where o.order_id > 0 ";
+		if ($this->FromDate>0)
+		{
+			$criteria->Condition .= " and (o.c_date >= '".$this->FromDate."') ";
+		}
+		if ($this->ToDate>0)
+		{
+			$criteria->Condition .= " and (o.c_date <= '".$this->ToDate."') ";
+		}
+		// -- 
+		$criteria->Condition .= ")";
+		return OrderRecord::finder()->withOrderItems()->withUser()->findAll($criteria);
 	}
 
-	public function populateSortUrl($sortBy, $sortType, $fromDate=0, $toDate=0, $status="", $resetPage=true)
+	public function populateSortUrl($sortBy, $sortType, $fromDate=0, $toDate=0, $resetPage=true)
 	{
 		if ($fromDate == 0) $fromDate = mktime(0,0,0,date("n"),date("j"),date("Y"));
 		if ($toDate == 0) $toDate = mktime(23,59,59,date("n"),date("j"),date("Y"));
@@ -155,7 +162,7 @@ class ViewItemsByOrder extends TPage
 		{
 			//$this->SearchText = THttpUtility::htmlEncode($this->txtSearchText->SafeText);
 			//$this->populateData();
-			$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,$this->dpFromDate->Data,$this->dpToDate->Data,$this->cboStatusSelector->SelectedValue));
+			$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,$this->dpFromDate->Data,$this->dpToDate->Data));
 		}
 	}
 
@@ -164,21 +171,93 @@ class ViewItemsByOrder extends TPage
 		//$this->SearchText = "";
 		//$this->txtSearchText->Text = "Filter by ID or Name";
 		//$this->populateData();
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,0,0,""));
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,0,0));
 	}
 
-	public $MasterTotal=0;
 	protected function ItemList_ItemCreated($sender, $param)
 	{
-		if ($param->Item->Data && ($param->Item->ItemType == "Item" || $param->Item->ItemType == "AlternatingItem"))
+		if ($param->Item->ItemChildList instanceof TRepeater && $param->Item->Data)
 		{
-			$this->MasterTotal += $param->Item->Data->Total;
+			$param->Item->ItemChildList->DataSource = $param->Item->Data->OrderItems;
+			$param->ITem->ItemChildList->DataBind();
 		}
 	}
 
 	public function btnExport_Clicked($sender, $param)
 	{
-		
+		Prado::using("Application.common.PHPExcel");
+		Prado::using("Application.common.PHPExcel.Style");
+		Prado::using("Application.common.PHPExcel.Style.Font");
+		Prado::using("Application.common.PHPExcel.IOFactory");
+		Prado::using("Application.common.PHPExcel.Writer.Excel5");
+		try
+		{
+			$workBook = new PHPExcel();
+			$workBook->getProperties()->setCreator("Alex Do")
+									->setLastModifiedBy("Alex Do")
+									->setTitle("The Organic Grocer Export generated on ".date("m.D.Y",time()))
+									->setSubject("The Organic Grocer Export")
+									->setDescription("The Organic Grocer Export generated on ".date("m.D.Y",time()));
+			$workBook->setActiveSheetIndex(0);
+			$workSheet = $workBook->getActiveSheet();
+			$workSheet->setCellValue("A1","From Date");
+			$workSheet->setCellValue("B1",date("d/m/Y",$this->dpFromDate->Data));
+			$workSheet->setCellValue("A2","To Date");
+			$workSheet->setCellValue("B2",date("d/m/Y",$this->dpToDate->Data));
+			$orders = $this->generateData();
+			$totalOrders = count($orders);
+			if ($totalOrders>0)
+			{
+				$startRow = 4;
+				for($i=0;$i<count($orders);$i++)
+				{
+					$workSheet->setCellValue("A".($i+$startRow),date("d/m/Y",$orders[$i]->CreateDate))->getStyle("A".($i+$startRow))->getFont()->setBold(true);
+					$workSheet->setCellValue("B".($i+$startRow),$orders[$i]->Num." (".$orders[$i]->User->FirstName." ".$orders[$i]->User->LastName.")")->getStyle("B".($i+$startRow))->getFont()->setBold(true);
+					//$workSheet->setCellValue("C".($i+$startRow),$orders[$i]->User->FirstName." ".$orders[$i]->User->LastName)->getStyle("C".($i+$startRow))->getFont()->setBold(true);
+					$workSheet->setCellValue("F".($i+$startRow),$orders[$i]->Total)->getStyle("F".($i+$startRow))->getFont()->setBold(true);
+					$orderItems = $orders[$i]->OrderItems;
+					if (count($orderItems)>0)
+					{	
+						$startRow++;
+						for($j=0;$j<count($orderItems);$j++)
+						{
+							$orderItems[$j]->Counter++;
+							$orderItems[$j]->save();
+							$product = ProductRecord::finder()->withManufacturer()->withBrand()->findByPk($orderItems[$j]->ProductID);
+							$prop = PropertyRecord::finder()->findByPk($orderItems[$j]->PropertyID);
+							if ($product instanceof ProductRecord)
+							{
+								$workSheet->setCellValue("A".($j+$i+$startRow),$j+1);
+								$workSheet->setCellValue("B".($j+$i+$startRow),$product->Name." - ".($prop instanceof PropertyRecord ? $prop->Name : ""));
+								$workSheet->setCellValue("C".($j+$i+$startRow),$product->Brand->Name);
+								$workSheet->setCellValue("D".($j+$i+$startRow),$orderItems[$j]->UnitPrice);
+								$workSheet->setCellValue("E".($j+$i+$startRow),$orderItems[$j]->Quantity);
+								$workSheet->setCellValue("F".($j+$i+$startRow),$orderItems[$j]->Subtotal);
+								$workSheet->setCellValue("G".($j+$i+$startRow),$product->Manufacturer->Name);
+								$workSheet->setCellValue("H".($j+$i+$startRow),Common::showOrdinal($orderItems[$j]->Counter));	
+							}
+						}
+					}
+					$startRow=$startRow+count($orderItems);
+				}
+				$workSheet->getColumnDimension("A")->setWidth(20);
+				$workSheet->getColumnDimension("B")->setWidth(80);
+				$workSheet->getColumnDimension("C")->setWidth(30);
+			}
+			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
+			$fileName = "Export_Generated_On_".date("Y.m.d_h.i.s",time()).".xls";
+			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
+			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
+			$this->Response->appendHeader("Cache-Control:max-age=0");
+			$phpExcelWriter->save('php://output'); 
+			$this->Response->flush();
+			exit();
+		}
+		catch(Exception $ex)
+		{
+			$this->Notice->Type = AdminNoticeType::Error;
+			$this->Notice->Text = $ex;//$this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+		}
 	}
 }
 

@@ -41,114 +41,57 @@
 						</div>
 					</div></div></div>
 					<div class="content nopadding">
-						
-                        <!-- Table Grid -->
-                        <table id="ctl0_content_ItemList" cellpadding="2" cellspacing="1" style="width:100%;">
-                            <tbody>
-                                <tr class="table_field1">
-                                    <td style="width:4%;">
-                                        <span>1</span>
-                                    </td>
-                                    <td style="width:8%;">
-                                        <span>94502</span>
-                                    </td>
-                                    <td class="align_left" >
-                                        <a href="">10 Grain Pancake/Waffle Mix</a>
-                                    </td>
-                                    <td style="text-align:left;" style="width:15%;">
-                                        <span>Bob'S Red Mill (USA)</span>
-                                    </td>
-                                    <td style="width:15%;text-align:left;">
-                                        <span>Flour / Baking Needs</span>
-                                    </td>
-                                    <td style="width:10%;">
-                                        <span>10/01/2010</span>
-                                    </td>
-                                </tr>
-                                <tr class="table_field2">
-                                    <td>
-                                        <span>1</span>
-                                    </td>
-                                    <td>
-                                        <span>94502</span>
-                                    </td>
-                                    <td>
-                                        <a href="">10 Grain Pancake/Waffle Mix</a>
-                                    </td>
-                                    <td style="text-align:left;">
-                                        <span>Bob'S Red Mill (USA)</span>
-                                    </td>
-                                    <td style="text-align:left;">
-                                        <span>Flour / Baking Needs</span>
-                                    </td>
-                                    <td>
-                                        <span>10/01/2010</span>
-                                    </td>
-                                </tr>
-                                <tr class="table_field2">
-                                    <td>
-                                        <span>1</span>
-                                    </td>
-                                    <td>
-                                        <span>94502</span>
-                                    </td>
-                                    <td>
-                                        <a href="">10 Grain Pancake/Waffle Mix</a>
-                                    </td>
-                                    <td style="text-align:left;">
-                                        <span>Bob'S Red Mill (USA)</span>
-                                    </td>
-                                    <td style="text-align:left;">
-                                        <span>Flour / Baking Needs</span>
-                                    </td>
-                                    <td>
-                                        <span>10/01/2010</span>
-                                    </td>
-                                </tr>
-                                <tr class="table_field2">
-                                    <td>
-                                        <span>1</span>
-                                    </td>
-                                    <td>
-                                        <span>94502</span>
-                                    </td>
-                                    <td>
-                                        <a href="">10 Grain Pancake/Waffle Mix</a>
-                                    </td>
-                                    <td style="text-align:left;">
-                                        <span>Bob'S Red Mill (USA)</span>
-                                    </td>
-                                    <td style="text-align:left;">
-                                        <span>Flour / Baking Needs</span>
-                                    </td>
-                                    <td>
-                                        <span>10/01/2010</span>
-                                    </td>
-                                </tr>
-                                <tr class="table_field1">
-                                    <td>
-                                        <span>1</span>
-                                    </td>
-                                    <td>
-                                        <span>94502</span>
-                                    </td>
-                                    <td>
-                                        <a href="">10 Grain Pancake/Waffle Mix</a>
-                                    </td>
-                                    <td style="text-align:left;">
-                                        <span>Bob'S Red Mill (USA)</span>
-                                    </td>
-                                    <td style="text-align:left;">
-                                        <span>Flour / Baking Needs</span>
-                                    </td>
-                                    <td>
-                                        <span>10/01/2010</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!-- Table Grid - END -->
-                        
+
+						<!-- Table Grid -->
+						<table id="ctl0_content_ItemList" cellpadding="2" cellspacing="1" style="width:100%;">
+							<com:TRepeater ID="ItemList" OnItemCreated="ItemList_ItemCreated">
+								<prop:ItemTemplate>
+									<com:TRepeater ID="ItemChildList">
+										<prop:HeaderTemplate>
+										<tr class="table_field2">
+											<td colspan="5" class="align_left" style="font-weight:bold;">
+												<a>
+													<%# date("d/m/Y h:i:s A",$this->NamingContainer->Parent->Data->CreateDate) %> - 
+													#<%# $this->NamingContainer->Parent->Data->Num %> 
+													(<%# $this->NamingContainer->Parent->Data->User->FirstName." ".$this->NamingContainer->Parent->Data->User->LastName %>)
+												</a>
+											</td>
+											<td style="width:8%;font-weight:bold;">
+												<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->NamingContainer->Parent->Data->Total %>" />
+											</td>
+											<td>&nbsp;</td>
+										</tr>
+										</prop:HeaderTemplate>
+										<prop:ItemTemplate>
+										<tr class="table_field2">
+											<td style="width:4%;">
+												<span><%# $this->ItemIndex + 1 %></span>
+											</td>
+											<td class="align_left">
+												<a><%# $this->Data->Product ? $this->Data->Product->Name.($this->Data->Property?" - ".$this->Data->Property->Name:"") : "" %></a>
+											</td>
+											<td class="align_left" style="width:20%;text-align:left;">
+												<span><%# $this->Data->Product && $this->Data->Product->Brand ? $this->Data->Product->Brand->Name : "" %></span>
+											</td>
+											<td style="width:8%;">
+												<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Data->UnitPrice %>" />
+											</td>
+											<td style="width:5%;">
+												<span><%# $this->Data->Quantity %></span>
+											</td>
+											<td style="width:8%;">
+												<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Data->Subtotal %>" />
+											</td>
+											<td class="align_left" style="width:10%;text-align:left;">
+												<span><%# $this->Data->Product && $this->Data->Product->Manufacturer ? $this->Data->Product->Manufacturer->Name : "" %></span>
+											</td>
+										</tr>
+										</prop:ItemTemplate>
+									</com:TRepeater>
+								</prop:ItemTemplate>
+							</com:TRepeater>
+						</table>
+						<!-- Table Grid - END -->
 						<div class="table_footer">
 						</div>
 					</div>

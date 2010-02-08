@@ -2,7 +2,7 @@
 
 class Master extends TTemplateControl
 {
-	public $DEFAULT_SEARCH_TEXT = "Search by Product (e.g. apple juice)";
+	public $DEFAULT_SEARCH_TEXT = "Enter Product Name";
 	private $_queryParams = array("p","st","sb","b","mf","q","id","alias","subid","subalias");
 	public function getQueryParameters()
 	{

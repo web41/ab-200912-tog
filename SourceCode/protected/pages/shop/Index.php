@@ -182,7 +182,7 @@ class Index extends TPage
 									 left join tbl_category c on pcx.cat_id = c.cat_id ";
 		}
 		$criteria->Condition .= " where p.product_id > 0 and p.product_publish = 1 ";
-		if (strlen($this->SearchText)>0)
+		if (strlen($this->SearchText)>0 && $this->SearchText != $this->Master->DEFAULT_SEARCH_TEXT)
 		{
 			/* search by any term **
 			$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));

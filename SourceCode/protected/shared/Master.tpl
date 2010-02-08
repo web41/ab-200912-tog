@@ -45,7 +45,17 @@
 				<div class="search_container">
 					<com:TButton ID="btnSearch" CssClass="button" Text="Search" OnClick="btnSearch_Clicked" IsDefaultButton="false" />
 					<com:TDropDownList ID="cboBrandSelector" PromptText="Search all Brands" PromptValue="0" DataTextField="Name" DataValueField="ID" />
-					<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Search by Product (e.g. apple juice)" Attributes.onfocus="this.value=''" />
+					<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="<%= $this->DEFAULT_SEARCH_TEXT %>" />
+					<script type="text/javascript">
+						Event.observe($('<%= $this->txtSearchText->ClientID %>'), 'focus', function(e){
+							if (e.element().value == "<%= $this->DEFAULT_SEARCH_TEXT %>")
+								e.element().value = "";
+						});
+						Event.observe($('<%= $this->txtSearchText->ClientID %>'), 'blur', function(e){
+							if (e.element().value == "")
+								e.element().value = "<%= $this->DEFAULT_SEARCH_TEXT %>";
+						});
+					</script>
 				</div>
 			</div>
 		</div>

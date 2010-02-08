@@ -2,6 +2,7 @@
 
 class Master extends TTemplateControl
 {
+	public $DEFAULT_SEARCH_TEXT = "Search by Product (e.g. apple juice)";
 	private $_queryParams = array("p","st","sb","b","mf","q","id","alias","subid","subalias");
 	public function getQueryParameters()
 	{
@@ -39,7 +40,7 @@ class Master extends TTemplateControl
 		if (!isset($params["subc"])) unset($params["subcalias"]);
 		if (!isset($params["b"])) unset($params["balias"]);
 		//$serviceParameter = $this->Request->ServiceParameter;
-		if (strlen($search)>0) $params['q'] = $search;
+		if (strlen($search)>0 && $search != $this->DEFAULT_SEARCH_TEXT) $params['q'] = $search;
 		else if (isset($params['q'])) unset($params['q']);
 		if ($brand>0) $params['b'] = $brand;
 		else if (isset($params['b'])) unset($params['b']);

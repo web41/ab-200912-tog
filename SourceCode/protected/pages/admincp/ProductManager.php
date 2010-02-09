@@ -386,7 +386,7 @@ class ProductManager extends TPage
 					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					if ($activeRecord)
 					{	
-						$this->Response->redirect($this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType,"",$this->BrandID,$this->MfID,$this->CatID)))));
+						$this->Response->redirect($this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType,"",$this->BrandID,$this->MfID,$this->CatID,false)))));
 						return;
 					}
 					else

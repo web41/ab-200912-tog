@@ -239,7 +239,7 @@ class ManufacturerManager extends TPage
 					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					if ($activeRecord)
 					{	
-						$this->Response->redirect($this->Service->ConstructUrl("admincp.ManufacturerForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType)))));
+						$this->Response->redirect($this->Service->ConstructUrl("admincp.ManufacturerForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType,"",false)))));
 						return;
 					}
 					else

@@ -93,7 +93,7 @@
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,"",$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID)))) %>' />
+									<com:THyperLink Text="<%# $this->Parent->Data->Name %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,"",$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID,false)))) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="15%" ItemStyle.CustomStyle="text-align:left" HeaderStyle.CssClass="align_left">

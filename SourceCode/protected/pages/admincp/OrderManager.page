@@ -61,7 +61,7 @@
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:THyperLink Text="<%# $this->Parent->Data->Num %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$this->Parent->Data->ID,"num"=>$this->Parent->Data->Num,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,"",$this->Page->UserID)))) %>' />
+									<com:THyperLink Text="<%# $this->Parent->Data->Num %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$this->Parent->Data->ID,"num"=>$this->Parent->Data->Num,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,"",$this->Page->UserID,false)))) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							

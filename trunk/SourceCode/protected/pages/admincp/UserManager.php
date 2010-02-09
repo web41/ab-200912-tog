@@ -272,7 +272,7 @@ class UserManager extends TPage
 					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					if ($activeRecord)
 					{	
-						$this->Response->redirect($this->Service->ConstructUrl("admincp.UserForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Email,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType)))));
+						$this->Response->redirect($this->Service->ConstructUrl("admincp.UserForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Email,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType,"",$this->TypeID,false)))));
 						return;
 					}
 					else

@@ -24,14 +24,14 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 		}
 		if ($this->Data)
 		{
-			if (strlen($this->Data->Brief)>100)
+			if (strlen($this->Data->Brief)>185)
 			{
 				$this->lblDesc->Text = $this->Data->Brief . "<a style='color:brown;' href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...more</a>";
 			}
 			else if (strlen($this->Data->Description)>0)
 			{
-				if (strlen($this->Data->Description)>100)
-					$this->lblDesc->Text = Common::neatTrim($this->Data->Description,100,"") . "<a style='color:brown;' href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...more</a>";
+				if (strlen($this->Data->Description)>185)
+					$this->lblDesc->Text = Common::neatTrim($this->Data->Description,185,"") . "<a style='color:brown;' href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...more</a>";
 				else $this->lblDesc->Text = $this->Data->Description;
 			}
 		}

@@ -31,7 +31,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 			else if (strlen($this->Data->Description)>0)
 			{
 				if (strlen($this->Data->Description)>100)
-					$this->lblDesc->Text = substr($this->Data->Description,0,100) . "<a style='color:brown;' href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...more</a>";
+					$this->lblDesc->Text = Common::neatTrim($this->Data->Description,100,"") . "<a style='color:brown;' href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...more</a>";
 				else $this->lblDesc->Text = $this->Data->Description;
 			}
 		}

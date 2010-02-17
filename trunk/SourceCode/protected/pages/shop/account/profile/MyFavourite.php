@@ -33,7 +33,7 @@ class MyFavourite extends TPage
 			if ($param->Item->DataItem)
 			{
 				$prop = $param->Item->DataItem->Property;
-				if ($prop->Product)
+				if ($prop && $prop->Product)
 				{
 					$param->Item->lblPrice->Text = $this->getFormattedValue($prop->Price);
 					$param->Item->lblPrice->Visible = $prop->Product->DiscountID > 0;

@@ -129,7 +129,7 @@ class OrderRecord extends TActiveRecord
 			$number = self::finder()->count($criteria)+1;
 		}
 		$arg = "%0{$length}d";
-		return $prefix.date("mdY",time())."-".sprintf($arg, $number);
+		return $prefix.date("dmY",time())."-".sprintf($arg, $number);
 	}
 	
 	public function save()

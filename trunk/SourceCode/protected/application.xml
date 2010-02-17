@@ -39,7 +39,7 @@
 		<!-- error handler -->
 		<module id="error" class="Application.common.TOGErrorHandler" />
 		<module id="db" class="System.Data.TDataSourceConfig">
-			<database ConnectionString="mysql:host=localhost;dbname=tog_db_test_server" username="root" password=""/>
+			<database ConnectionString="mysql:host=localhost;dbname=tog_db" username="root" password=""/>
 			<!--database ConnectionString="mysql:host=localhost;dbname=dosithuy_tog" username="dosithuy_tog" password="tog123"/-->
 		</module>
 		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>

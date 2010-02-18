@@ -37,6 +37,11 @@
 						<div style="float:left;">
 							Quantity: <%# $this->Data ? $this->Data->Quantity : 0 %>
 						</div>
+						<div style="float:right;">
+							<a href="<%= $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>">
+								View Detail
+							</a>
+						</div>
 					</div>
 				</div>
 				<com:THiddenField ID="txtID" Value="<%# $this->Data ? $this->Data->ID : 0 %>" />

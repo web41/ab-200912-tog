@@ -67,9 +67,11 @@
 		</div>
 		<!-- Main content: END -->
 
-		<div id="footer">
-			Copyright &copy; 2010 <a href="<%= $this->Service->ConstructUrl("shop.Index") %>">The Organic Grocer</a>. All rights reserved.
-            <a href="<%= $this->Service->ConstructUrl("shop.TermandCondition") %>">Terms and Conditions</a><br />
+		<div id="footer">			
+            <a href="<%= $this->Service->ConstructUrl("shop.Help") %>">Help</a></li>  |  
+			<a href="<%= $this->Service->ConstructUrl("shop.ContactUs") %>">Contact Us</a></li> |
+			<a href="<%= $this->Service->ConstructUrl("shop.TermandCondition") %>">Terms and Conditions</a><br />
+			Copyright &copy; 2010 <a href="<%= $this->Service->ConstructUrl("shop.Index") %>">The Organic Grocer</a>. All rights reserved.<br />
             Designed by <a href="http://www.asiablaze.com">AsiaBlaze Design</a>.
 		</div>
 	</div>

@@ -78,12 +78,12 @@
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="8%">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">SKU
+									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Supplier
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->Data->SKU %>" />
+									<com:TLabel Text="<%# $this->Parent->Data->Manufacturer->Name %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
@@ -113,12 +113,12 @@
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="10%">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(5,(($this->Page->SortBy==5 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Create Date
+									<a href="<%# $this->Page->populateSortUrl(5,(($this->Page->SortBy==5 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Last Update
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==5 %>" />
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->CreateDate>0) ? date('d/m/Y',$this->Parent->Data->CreateDate) : '--' %>" />
+									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->ModifyDate>0) ? date('d/m/Y',$this->Parent->Data->ModifyDate) : '--' %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderText="Published" HeaderStyle.Width="7%">

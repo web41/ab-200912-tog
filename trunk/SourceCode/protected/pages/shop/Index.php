@@ -14,7 +14,8 @@ class Index extends TPage
 	private $_isBestSeller = 0;
 	private $_isNewArrival = 0;
 	private $_isPromoted= 0;
-	private $_sortable = array("product_id","product_name","product_sku","brand_id","mf_id","c_date","product_order");
+    private $_myFavourite = 0;
+    private $_sortable = array("product_id","product_name","product_sku","brand_id","mf_id","c_date","product_order");
 	private $_queryParams = array("p","st","sb","b","balias","mf","q","c","calias","subc","subcalias","best_seller","new_arrival","promotion");
 
 	public function getSortBy()
@@ -147,6 +148,16 @@ class Index extends TPage
 		$this->_isPromoted = TPropertyValue::ensureBoolean($value);
 	}
 
+    public function getMyFavourite()
+    {
+        return $this->_myFavourite;
+    }
+
+    public function setMyFavourite($value)
+    {
+        $this->_myFavourite = TPropertyValue::ensureBoolean($value);
+    }
+
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
@@ -160,6 +171,7 @@ class Index extends TPage
 		$this->IsBestSeller = ($this->Request->contains('best_seller')) ? TPropertyValue::ensureBoolean($this->Request['best_seller']) : false;
 		$this->IsNew = ($this->Request->contains('new_arrival')) ? TPropertyValue::ensureBoolean($this->Request['new_arrival']) : false;
 		$this->IsPromoted = ($this->Request->contains('promotion')) ? TPropertyValue::ensureBoolean($this->Request['promotion']) : false;
+        $this->MyFavourite = ($this->Request->contains('my_favourite')) ? TPropertyValue::ensureBoolean($this->Request['my_favourite']) : false;
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
 		if (!$this->IsPostBack)
 		{
@@ -171,79 +183,55 @@ class Index extends TPage
 
 	public function populateData()
 	{
-		$criteria = new TActiveRecordCriteria;
-		$criteria->OrdersBy[$this->Sortable[$this->SortBy]] = $this->SortType;
-		// addtional condition here
-		// this part will be hard-code on each page
-		$criteria->Condition = "product_id in (select distinct p.product_id from tbl_product p ";
-		if ($this->CatID>0)
-		{
-			$criteria->Condition .= " left join tbl_product_cat_xref pcx on p.product_id = pcx.product_id 
-									 left join tbl_category c on pcx.cat_id = c.cat_id ";
-		}
-		$criteria->Condition .= " where p.product_id > 0 and p.product_publish = 1 ";
-		if (strlen($this->SearchText)>0 && $this->SearchText != $this->Master->DEFAULT_SEARCH_TEXT)
-		{
-			/* search by any term **
-			$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));
-			$searchQuery = "";
-			foreach($searchArray as $index=>$value)
-			{
-				$searchQuery .= ($index>0 ? " or " : "")." p.product_id like '%".$searchArray[$index]."%' or p.product_name like '%".$searchArray[$index]."%' or p.product_sku like '%".$searchArray[$index]."%'";
-			}
-			$criteria->Condition .= " and (".$searchQuery.") ";
-			*/
-			
-			/* search by all term **
-			
-			*/
-			$this->lblCatPath->Text = 'Search result for "'.$this->SearchText.'"';
-			$this->lblCatPath->Visible = true;
-			$criteria->Condition .= " and (p.product_id like '%".addslashes($this->SearchText)."%' or p.product_name like '%".addslashes($this->SearchText)."%' or p.product_sku like '%".addslashes($this->SearchText)."%')";
-		}
-		if ($this->BrandID>0)
-		{
-			$criteria->Condition .= " and p.brand_id = '".$this->BrandID."' ";
-		}
-		if ($this->MfID>0)
-		{
-			$criteria->Condition .= " and p.mf_id = '".$this->MfID."' ";
-		}
-		if ($this->SubCatID>0)
-		{
-			$criteria->Condition .= " and c.cat_id = '".$this->SubCatID."' ";
-		}
-		else if ($this->CatID>0)
-		{
-			$criteria->Condition .= " and (c.parent_id = '".$this->CatID."' or c.cat_id = '".$this->CatID."')";
-		}
-		
-		if ($this->IsBestSeller)
-		{
-			$criteria->Condition .= " and p.product_best_seller = 1 ";
-		}
-		if ($this->IsNew)
-		{
-			$criteria->Condition .= " and p.product_new_arrival = 1";
-		}
-		if ($this->IsPromoted)
-		{
-			$criteria->Condition .= " and p.discount_id > 0";
-		}
-		// -- 
-		$criteria->Condition .= ")";
-		$this->ItemList->VirtualItemCount = count(ProductRecord::finder()->findAll($criteria));
+        $sqlmap = $this->Application->Modules['sqlmap']->Client;
+        if ($this->MyFavourite) {
+            $this->ItemList->VirtualItemCount = count($sqlmap->queryForList("FavouriteProduct", $this->Application->User->ID));
+        }
+        else {
+            $sql = "";
+            if (strlen($this->SearchText)>0 && $this->SearchText != $this->Master->DEFAULT_SEARCH_TEXT) {
+			    $this->lblCatPath->Text = 'Search result for "'.$this->SearchText.'"';
+			    $this->lblCatPath->Visible = true;
+                $sql .= " AND (p.product_id LIKE '%".addslashes($this->SearchText)."%' or p.product_name LIKE '%".addslashes($this->SearchText)."%' or p.product_sku LIKE '%".addslashes($this->SearchText)."%')";
+		    }
+            if ($this->BrandID>0) {
+                $sql .= "AND p.brand_id = $this->BrandID ";
+            }
+            if ($this->MfID>0) {
+                $sql .= "AND p.mf_id = $this->MfID ";
+            }
+            if ($this->SubCatID>0) {
+                $sql .= "AND c.cat_id = $this->SubCatID ";
+            }
+            else if ($this->CatID>0) {
+                $sql .= "AND (c.parent_id = $this->CatID or c.cat_id = $this->CatID) ";
+            }
+            if ($this->IsBestSeller) {
+                $sql .= "AND p.product_best_seller = 1 ";
+            }
+            if ($this->IsNew) {
+                $sql .= "AND p.product_new_arrival = 1 ";
+            }
+            if ($this->IsPromoted) {
+                $sql .= "AND p.discount_id > 0";
+            }
+            $order = (isset($this->Sortable[$this->SortBy])?$this->Sortable[$this->SortBy]:$this->Sortable[1])." ".$this->SortType;
+            $this->ItemList->VirtualItemCount = count($sqlmap->queryForList("BrowseProduct", array("ADDITIONAL_CONDITION"=>$sql,"ORDER_BY"=>$order)));
+        }
 		$this->MaxPage = ceil($this->ItemList->VirtualItemCount/$this->ItemList->PageSize);
-		if ($this->CurrentPage > $this->MaxPage) $this->CurrentPage = $this->MaxPage;
-		$limit = $this->ItemList->PageSize;
-		$offset = ($this->CurrentPage-1) * $limit;
+        if ($this->CurrentPage > $this->MaxPage) $this->CurrentPage = $this->MaxPage;
+        $limit = $this->ItemList->PageSize;
+        $offset = ($this->CurrentPage-1) * $limit;
 
-		if ($offset + $limit > $this->ItemList->VirtualItemCount)
-			$limit = $this->ItemList->VirtualItemCount - $offset;
-
-		$criteria->Limit = $limit;
-		$criteria->Offset = $offset;
-		$items = ProductRecord::finder()->withBrand()->withManufacturer()->withProperties()->findAll($criteria);
+        if ($offset + $limit > $this->ItemList->VirtualItemCount)
+            $limit = $this->ItemList->VirtualItemCount - $offset;
+        if ($this->MyFavourite) {
+            $items = $sqlmap->queryForList("FavouriteProduct", $this->Application->User->ID,null,$offset,$limit);
+        }
+        else {
+            $order = (isset($this->Sortable[$this->SortBy])?$this->Sortable[$this->SortBy]:$this->Sortable[1])." ".$this->SortType;
+            $items = $sqlmap->queryForList("BrowseProduct", array("ADDITIONAL_CONDITION"=>$sql,"ORDER_BY"=>$order),null,$offset,$limit);
+        }
 		$this->ItemList->DataSource = $items;
 		$this->ItemList->dataBind();
 		if (count($items) <= 0)

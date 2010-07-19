@@ -10,7 +10,7 @@ class ProductManager extends TPage
 	private $_brandID = 0;
 	private $_mfID = 0;
 	private $_catID = 0;
-	private $_sortable = array("product_id","product_name","product_sku","brand_id","mf_id","c_date","product_order");
+	private $_sortable = array("product_id","product_name","product_sku","brand_id","mf_id","m_date","product_order");
 	private $_queryParams = array("p","st","sb","b","mf","c","q");
 	const AR = "ProductRecord";
 

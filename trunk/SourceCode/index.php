@@ -7,10 +7,10 @@ if (function_exists('date_default_timezone_set'))
 	date_default_timezone_set('Asia/Singapore');
 
 // Alex: fix PATH_INFO problem
-if (!isset($_SERVER["PATH_INFO"]) && isset($_SERVER["ORIG_PATH_INFO"]))
-	$_SERVER["PATH_INFO"] = $_SERVER["ORIG_PATH_INFO"];
+//if (!isset($_SERVER["PATH_INFO"]) && isset($_SERVER["ORIG_PATH_INFO"]))
+//	$_SERVER["PATH_INFO"] = $_SERVER["ORIG_PATH_INFO"];
 
-$frameworkPath='../prado/framework/prado.php';
+$frameworkPath='../prado3.1.7/framework/prado.php';
 
 // The following directory checks may be removed if performance is required
 $basePath=dirname(__FILE__);

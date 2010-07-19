@@ -12,7 +12,7 @@
             <com:TPanel ID="userMenu" Style="text-align:left;" Visible="false">
             	<ul style="float:left;margin:0;padding:10px 0 0 5px;list-style-type:none;">
                     <li><a href="<%= $this->Service->ConstructUrl("shop.account.orders.Index") %>">My Purchase History</a></li>
-                    <li><a href="<%= $this->Service->ConstructUrl("shop.account.profile.MyFavourite") %>">My Favourites</a></li>
+                    <li><a href="<%= $this->Service->ConstructUrl("shop.Index", array("my_favourite"=>1)) %>">My Favourites</a></li>
                     <li><a href="<%= $this->Service->ConstructUrl("shop.account.profile.MyOrganicPoint") %>">My Organic Points</a></li>
                     <li><a href="<%= $this->Service->ConstructUrl("shop.account.addresses.Index") %>">Delivery Address</a></li>
                     <li><a href="<%= $this->Service->ConstructUrl("shop.account.profile.ChangeProfile") %>">Personal Particulars</a></li>

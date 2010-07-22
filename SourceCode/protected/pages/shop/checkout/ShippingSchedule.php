@@ -39,6 +39,15 @@ class ShippingSchedule extends TPage
 			if ($cartRecord instanceof CartTempRecord)
 			{
 				$cartRecord->EstDeliveryDate = $this->cboDeliveryDateSelector->SelectedValue;
+                // add shipping amount if order < $100
+                if ($cartRecord->Subtotal < 100) {
+                    $shippingMethod = ShippingMethodRecord::finder()->findByPk(6);
+                    if ($shippingMethod instanceof ShippingMethodRecord) {
+                        $cartRecord->ShippingMethodID = $shippingMethod->ID;
+                        $cartRecord->ShippingAmount = $shippingMethod->Price;
+                        $cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount-$cartRecord->RewardPointsRebate+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
+                    }
+                }
 				try
 				{
 					$cartRecord->save();

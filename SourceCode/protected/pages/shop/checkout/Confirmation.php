@@ -165,7 +165,8 @@ class Confirmation extends TPage
 			$email->getEmailAddresses()->add($receiver);
 			try
 			{
-				$emailer->send($email);
+				if ($this->Application->Mode!='Debug')
+                    $emailer->send($email);
 				
 				// add credits to user
 				$user = UserRecord::finder()->findByPk($this->Application->User->ID);

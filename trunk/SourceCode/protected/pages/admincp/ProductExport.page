@@ -1,0 +1,59 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Product Export
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<!-- Control box -->
+				<div class="general_controlbox">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<com:TButton ID="btnExport" CssClass="btn_export" OnClick="btnExport_Clicked" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Main box -->
+				<div class="main_box">
+					<div class="title" id="calendar"><div><div>
+						<h2>Product Export</h2>
+						<div style="float:right;height:26px;padding:7px 5px 0 0;">
+                            <com:TDropDownList ID="cboSortBySelector" Style="font-size:11px;font-family:tahoma;">
+                                <com:TListItem Text="Supplier" Value="2" />
+                                <com:TListItem Text="Brand" Value="1" />
+                                <com:TListItem Text="Product Name" Value="0" />
+                            </com:TDropDownList>
+                            <com:TDropDownList ID="cboSortTypeSelector" Style="font-size:11px;font-family:tahoma;">
+                                <com:TListItem Text="Ascending" Value="asc" />
+                                <com:TListItem Text="Descending" Value="desc" />
+                            </com:TDropDownList>
+                            <com:TDropDownList ID="cboMfSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" Style="font-size:11px;font-family:tahoma;" />
+							<com:TDropDownList ID="cboBrandSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" Style="font-size:11px;font-family:tahoma;" />
+							<com:TDropDownList ID="cboCatSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" Style="font-family:tahoma;font-size:11px;" />
+						</div>
+					</div></div></div>
+				</div>
+				<!-- Main box: END -->
+				<!-- Control box -->
+				<div class="general_controlbox" style="margin-top:-5px;">
+					<div class="top"><div><div><!-- --></div></div></div>
+					<div class="center">
+						<com:TButton ID="btnExport2" CssClass="btn_export" OnClick="btnExport_Clicked" />
+						<h2>Action</h2>
+					</div>
+					<div class="bottom"><div><div><!-- --></div></div></div>
+				</div>
+				<!-- Control box: END -->
+			</td>
+		</tr>
+	</table>
+</com:TContent>

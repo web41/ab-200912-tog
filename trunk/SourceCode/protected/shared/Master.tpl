@@ -9,7 +9,6 @@
 	<com:TContentPlaceHolder ID="script" />
     <link href="<%= $this->UrlPrefix %>/scripts/a.m/a.m.css" rel="stylesheet" type="text/css" />
 	<link href="<%= $this->UrlPrefix %>/scripts/calendar/jquery.calendar.css" rel="stylesheet" type="text/css" />
-    <link href="<%= $this->UrlPrefix %>/scripts/d.p/css/redmond/jquery-ui-1.7.2.custom.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/jquery.js"></script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/jquery-ui.js"></script>
 	<script type="text/javascript" src="<%= $this->UrlPrefix %>/scripts/a.m/a.m.js"></script>

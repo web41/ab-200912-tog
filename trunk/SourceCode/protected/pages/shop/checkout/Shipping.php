@@ -13,8 +13,8 @@ class Shipping extends TPage
 			// populate drop down lists
 			$this->cboTitleSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["USER_TITLE"]);
 			$this->cboTitleSelector->DataBind();
-			//$this->cboCountrySelector->DataSource = CountryRecord::finder()->getAllItems();
-			//$this->cboCountrySelector->DataBind();
+			$this->cboCountrySelector->DataSource = CountryRecord::finder()->getAllItems();
+			$this->cboCountrySelector->DataBind();
 			$this->populateShippingAddress();
 			$this->cboShippingSelector_CallBack($this->cboShippingSelector,null);
 		}
@@ -65,7 +65,7 @@ class Shipping extends TPage
 		$activeRecord->City =  '';//$this->txtCity->SafeText;
 		$activeRecord->State = '';//$this->txtState->SafeText;
 		$activeRecord->ZipCode = $this->txtZip->SafeText;
-		$activeRecord->CountryCode = 'SG';//$this->cboCountrySelector->SelectedValue;
+		$activeRecord->CountryCode = $this->cboCountrySelector->SelectedValue;
 		$activeRecord->Phone1 = $this->txtPhone1->SafeText;
 		$activeRecord->Phone2 = $this->txtPhone2->SafeText;
 		$activeRecord->Fax = $this->txtFax->SafeText;
@@ -135,7 +135,7 @@ class Shipping extends TPage
 			//$this->txtCity->Text = $activeRecord->City;
 			//$this->txtState->Text = $activeRecord->State;
 			$this->txtZip->Text = $activeRecord->ZipCode;
-			//$this->cboCountrySelector->SelectedValue = $activeRecord->CountryCode;
+			$this->cboCountrySelector->SelectedValue = $activeRecord->CountryCode;
 			$this->txtPhone1->Text = $activeRecord->Phone1;
 			$this->txtPhone2->Text = $activeRecord->Phone2;
 			$this->txtFax->Text = $activeRecord->Fax;
@@ -152,7 +152,7 @@ class Shipping extends TPage
 			//$this->txtCity->Text = "";
 			//$this->txtState->Text = "";
 			$this->txtZip->Text = "";
-			//$this->cboCountrySelector->SelectedValue = "SG";
+			$this->cboCountrySelector->SelectedValue = "SG";
 			$this->txtPhone1->Text = "";
 			$this->txtPhone2->Text = "";
 			$this->txtFax->Text = "";

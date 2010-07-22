@@ -13,8 +13,8 @@ class Billing extends TPage
 			// populate drop down lists
 			$this->cboTitleSelector->DataSource = TPropertyValue::ensureArray($this->Application->Parameters["USER_TITLE"]);
 			$this->cboTitleSelector->DataBind();
-			//$this->cboCountrySelector->DataSource = CountryRecord::finder()->getAllItems();
-			//$this->cboCountrySelector->DataBind();
+			$this->cboCountrySelector->DataSource = CountryRecord::finder()->getAllItems();
+			$this->cboCountrySelector->DataBind();
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0)
 			{
@@ -28,11 +28,18 @@ class Billing extends TPage
 				//$this->txtCity->Text = $activeRecord->City;
 				//$this->txtState->Text = $activeRecord->State;
 				$this->txtZip->Text = $activeRecord->ZipCode;
-				//$this->cboCountrySelector->SelectedValue = $activeRecord->CountryCode;
+				$this->cboCountrySelector->SelectedValue = $activeRecord->CountryCode;
 				$this->txtPhone1->Text = $activeRecord->Phone1;
 				$this->txtPhone2->Text = $activeRecord->Phone2;
 				$this->txtFax->Text = $activeRecord->Fax;
 			}
+            else
+            {
+                $this->txtFirstName->Text = $this->Application->User->FirstName;
+                $this->txtLastName->Text = $this->Application->User->LastName;
+                $this->txtPhone1->Text = $this->Application->User->Phone;
+                $this->cboCountrySelector->SelectedValue = 'SG';
+            }
 		}
 	}
 	
@@ -66,7 +73,7 @@ class Billing extends TPage
 		$activeRecord->City =  '';//$this->txtCity->SafeText;
 		$activeRecord->State = '';//$this->txtState->SafeText;
 		$activeRecord->ZipCode = $this->txtZip->SafeText;
-		$activeRecord->CountryCode = 'SG';//$this->cboCountrySelector->SelectedValue;
+		$activeRecord->CountryCode = $this->cboCountrySelector->SelectedValue;
 		$activeRecord->Phone1 = $this->txtPhone1->SafeText;
 		$activeRecord->Phone2 = $this->txtPhone2->SafeText;
 		$activeRecord->Fax = $this->txtFax->SafeText;

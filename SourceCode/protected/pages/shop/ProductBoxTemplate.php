@@ -22,7 +22,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 			$this->cboPropertySelector->SelectedIndex = 0;
 			$this->cboPropertySelector_CallBack($this->cboPropertySelector,null);
 		}
-		if ($this->Data)
+		/*if ($this->Data)
 		{
 			if (strlen($this->Data->Brief)>185)
 			{
@@ -34,7 +34,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 					$this->lblDesc->Text = Common::neatTrim($this->Data->Description,185,"") . "<a style='color:brown;' href='".$this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias))."'>...more</a>";
 				else $this->lblDesc->Text = $this->Data->Description;
 			}
-		}
+		}*/
 	}
 	public function getFormattedValue($value,$pattern="c",$currency="USD")
 	{

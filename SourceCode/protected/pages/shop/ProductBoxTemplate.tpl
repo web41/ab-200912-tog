@@ -13,7 +13,7 @@
 		</h3>
 	</div>
 	<div class="content">
-		<div><com:TLabel ID="lblDesc" /></div>
+		<!--div><com:TLabel ID="lblDesc" /></div-->
 		<div><b><%= $this->Data ? $this->Data->FreeText1 : "" %></b></div>
 		<!--div><b>Size</b>: 200g</div-->
 		<div style="color:#eb0010"><%= $this->Data ? $this->Data->FreeText2 : "" %></div>

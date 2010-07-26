@@ -111,6 +111,20 @@
 									<com:TLabel Text="<%# $this->Parent->Data->CategoryNames %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
+                            <com:TTemplateColumn ID="colPrice" HeaderStyle.Width="15%" ItemStyle.CustomStyle="text-align:left" HeaderStyle.CssClass="align_left">
+                                <prop:HeaderTemplate>
+                                    <com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_success.png" CommandName="price_save" />Price
+                                </prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TDataList ID="datProperties">
+                                        <prop:ItemTemplate>
+                                        <label><%# $this->Data->Name %></label>
+                                        <com:TTextBox ID="txtPrice" Width="75px" Text="<%# $this->Data->Price %>" />
+                                        <com:THiddenField ID="valID" Value="<%# $this->Data->ID %>" />
+                                        </prop:ItemTemplate>
+                                    </com:TDataList>
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.Width="10%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(5,(($this->Page->SortBy==5 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Last Update

@@ -166,7 +166,7 @@ class ProductManager extends TPage
 		if ($this->CatID>0)
 		{
 			$criteria->Condition .= " left join tbl_product_cat_xref pcx on p.product_id = pcx.product_id 
-									 left join tbl_category c on pcx.cat_id = c.cat_id ";
+										left join tbl_category c on pcx.cat_id = c.cat_id ";
 		}
 		$criteria->Condition .= " where p.product_id > 0 ";
 		if (strlen($this->SearchText)>0)
@@ -245,6 +245,9 @@ class ProductManager extends TPage
 		{
 			if ($param->Item->Data)
 			{
+				$param->Item->colPrice->datProperties->DataSource = $param->Item->Data->Properties;
+				$param->Item->colPrice->datProperties->DataBind();
+                
 				$param->Item->colDeleteButton->Button->Attributes->onclick = 'if(!confirm("'.$this->Application->getModule("message")->translate("DELETE_CONFIRM","product",$param->Item->Data->Name).'")) return false;';
 			}
 		}
@@ -342,6 +345,26 @@ class ProductManager extends TPage
 					{
 						$effectedRecord->Ordering = 0;
 						$effectedRecord->save();
+					}
+				}
+				break;
+			case "price_save":
+				foreach($this->ItemList->Items as $item) 
+				{
+					$datProperties = $item->colPrice->findControl("datProperties");
+					if ($datProperties)
+					{
+						foreach($datProperties->Items as $item2)
+						{
+							$valID = $item2->findControl("valID")->Value;
+							$txtPrice = $item2->findControl("txtPrice")->Text;
+							$property = PropertyRecord::finder()->findByPk($valID);
+							if ($property instanceof PropertyRecord)
+							{
+								$property->Price = TPropertyValue::ensureFloat($txtPrice);
+								$property->save();
+							}
+						}
 					}
 				}
 				break;

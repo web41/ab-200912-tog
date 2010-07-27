@@ -76,7 +76,7 @@
 									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 + ($this->Page->CurrentPage-1)*$this->Parent->Parent->PageSize %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="8%">
+							<com:TTemplateColumn HeaderStyle.Width="5%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Supplier
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
@@ -118,14 +118,14 @@
 								<prop:ItemTemplate>
 									<com:TDataList ID="datProperties">
                                         <prop:ItemTemplate>
-                                        <label><%# $this->Data->Name %></label>
-                                        <com:TTextBox ID="txtPrice" Width="75px" Text="<%# $this->Data->Price %>" />
+                                        <label style="float:left;text-align:left;"><%# $this->Data->Name %></label><br />
+                                        <com:TTextBox ID="txtPrice" Width="60px" Text="<%# $this->Data->Price %>" Style="float:left;"  />
                                         <com:THiddenField ID="valID" Value="<%# $this->Data->ID %>" />
                                         </prop:ItemTemplate>
                                     </com:TDataList>
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
-							<com:TTemplateColumn HeaderStyle.Width="10%">
+							<com:TTemplateColumn HeaderStyle.Width="7%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(5,(($this->Page->SortBy==5 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->BrandID,$this->Page->MfID,$this->Page->CatID) %>">Last Update
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==5 %>" />

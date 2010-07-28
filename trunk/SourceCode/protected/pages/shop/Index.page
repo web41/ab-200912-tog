@@ -30,7 +30,7 @@
 		<!-- Product box: END -->
 
 		<!-- Pagination: END -->
-		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" Style="margin:-10px 0 5px 0;" />
+		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" Style="margin:0px 0 5px 0;" />
 		<!-- Pagination: END -->
 	</com:TPanel>
 	<script type="text/javascript">

@@ -9,6 +9,7 @@
             <li><a href="<%= $this->Service->ConstructUrl("admincp.SalesReport") %>">Sales Report</a></li>
 			<li><a href="<%= $this->Service->ConstructUrl("admincp.CustomerReport") %>">Customer Report</a></li>
 			<li><a href="<%= $this->Service->ConstructUrl("admincp.ProductReport") %>">Product Report</a></li>
+            <li><a href="<%= $this->Service->ConstructUrl("admincp.ProductExport") %>">Product Export</a></li>
 			<li><a href="<%= $this->Service->ConstructUrl("admincp.ViewItemsByOrder",array("type"=>"by-order")) %>">Purchased Items By Order</a></li>
 			<li><a href="<%= $this->Service->ConstructUrl("admincp.ViewItemsBySupplier",array("type"=>"by-supplier")) %>">Purchased Items By Supplier</a></li>
 		</ul>

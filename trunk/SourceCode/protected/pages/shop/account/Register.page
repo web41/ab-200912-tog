@@ -120,7 +120,8 @@
             <tr>
             	<td>&nbsp;</td>
 				<td class="right" style="font-size:12px;">
-					<com:TCheckBox ID="chkAgree" Text="Agreed to the The Organic Grocer <a href='<%= $this->Service->ConstructUrl('shop.TermandCondition') %>' target='_blank'>Terms and Conditions</a>." /><br />
+                	
+					<com:TCheckBox ID="chkAgree" Text="Agreed to the The Organic Grocer <a href='###' onclick='terms()'>Terms and Conditions</a>." /><br />
 					<com:TRequiredFieldValidator ID="val9"
 						ControlToValidate="chkAgree"
 						ValidationGroup="Register"
@@ -128,6 +129,11 @@
 						Display="Dynamic"
 						FocusOnError="True" Style="font-size:11px;"/>
 				</td>
+                <script type="text/javascript">
+					function terms() {
+						return window.open('/TOG/TermandCondition2.html','Terms','menubar=0,resizable=0,width=620,scrollbars=1');
+					}
+                </script>
 			</tr>
             <tr>
             	<td>&nbsp;</td>

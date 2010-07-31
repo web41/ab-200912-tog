@@ -120,7 +120,7 @@
             <tr>
             	<td>&nbsp;</td>
 				<td class="right" style="font-size:12px;">
-					<com:TCheckBox ID="chkAgree" Text="Agreed to the The Organic Grocer <a href='<%= $this->Service->ConstructUrl('shop.TermandCondition') %>'>Terms and Conditions</a>." /><br />
+					<com:TCheckBox ID="chkAgree" Text="Agreed to the The Organic Grocer <a href='<%= $this->Service->ConstructUrl('shop.TermandCondition') %>' target='_blank'>Terms and Conditions</a>." /><br />
 					<com:TRequiredFieldValidator ID="val9"
 						ControlToValidate="chkAgree"
 						ValidationGroup="Register"

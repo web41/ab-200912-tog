@@ -2,6 +2,10 @@
 
 class ForgotPwd extends TPage
 {
+	public function onLoad($param) {
+		parent::onLoad($param);
+		$this->MainContent->DefaultButton = "btnSendPassword";
+	}
 	protected function btnSendPassword_Clicked($sender, $param)
 	{
 		$user = UserRecord::finder()->findByuser_email($this->txtEmail->Text);

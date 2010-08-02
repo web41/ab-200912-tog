@@ -20,7 +20,7 @@ class ChangePassword extends TPage
 					$user->Password = md5($this->txtNewPassword->SafeText);
 					$user->save();
 					$this->Application->getModule("auth")->updateSessionUser($this->Application->User->createUser($user->Email));
-					$this->Response->redirect($this->Service->ConstructUrl("shop.account.profile.Index"));
+					$this->Response->redirect($this->Service->ConstructUrl("shop.account.profile.Index",array('success'=>1)));
 				}
 				else
 				{

@@ -19,6 +19,9 @@
 	<com:Application.shared.UserNotice ID="Notice" />
         
 	<com:TPanel ID="mainBox" CssClass="main_content">
+        <com:TPanel ID="myFavouriteTitle" Visible="false" CssClass="inside_box">
+    	    <h2>My Favourites</h2>
+        </com:TPanel>
 		<!-- Pagination: END -->
 		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" Style="margin:5px 0 20px 0;border-bottom:solid 1px #503a1d;padding:0 0 10px 0;" />
 		<!-- Pagination: END -->
@@ -32,7 +35,12 @@
 		<!-- Pagination: END -->
 		<com:PPager PageID="p" ControlToPaginate="ItemList" PageButtonCount="5" AutoHide="true" CssClass="pagination" TextCssClass="text" ActivePageCssClass="active" Style="margin:0px 0 5px 0;" />
 		<!-- Pagination: END -->
+
+        <com:TPanel ID="continueShopping" Visible="false">
+		    <input type="button" style="float:left;" class="btn_shopping" value="" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'"/><br /><br />
+	    </com:TPanel>
 	</com:TPanel>
+    
 	<script type="text/javascript">
 		function validateDropDownList(e, id, imgLoading) {
 			if ($(id).selectedIndex <= 0) {

@@ -185,6 +185,8 @@ class Index extends TPage
 	{
         $sqlmap = $this->Application->Modules['sqlmap']->Client;
         if ($this->MyFavourite) {
+			$this->myFavouriteTitle->Visible = true;
+			$this->continueShopping->Visible = true;
             $this->ItemList->VirtualItemCount = count($sqlmap->queryForList("FavouriteProduct", $this->Application->User->ID));
         }
         else {

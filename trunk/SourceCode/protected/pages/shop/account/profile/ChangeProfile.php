@@ -27,7 +27,7 @@ class ChangeProfile extends TPage
 					$user->LastName = $this->txtLastName->SafeText;
 					$user->save();
 					$this->Application->getModule("auth")->updateSessionUser($this->Application->User->createUser($user->Email));
-					$this->Response->redirect($this->Service->ConstructUrl("shop.account.profile.Index"));
+					$this->Response->redirect($this->Service->ConstructUrl("shop.account.profile.Index",array('success'=>1)));
 				}
 				else
 				{

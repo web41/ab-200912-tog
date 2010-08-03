@@ -167,8 +167,8 @@ class Confirmation extends TPage
 			// send email to administrator
 			$email2 = $emailer->createNewEmail("StandingOrderNotice");
 			$email->HtmlContent->findControl("ORDER_NUM")->Text = $this->Order->Num;
-			$email->HtmlContent->findControl("ORDER_NUM")->NavigateUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->constructUrl().
-				$this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$this->Order->ID,"num"=>$this->Order->Num));
+			$email->HtmlContent->findControl("ORDER_NUM")->NavigateUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).
+				$this->Service->constructUrl("admincp.OrderForm",array("id"=>$this->Order->ID,"num"=>$this->Order->Num));
 			$email->HtmlContent->findControl("SO_FREQUENCY")->Text = $this->Session["SO_FREQUENCY"];
 			$email->HtmlContent->findControl("SO_DURATION")->Text = $this->Session["SO_DURATION"];
 			$email->HtmlContent->findControl("SO_STARTDATE")->Text = date('m-d-Y h:i',$this->Session["SO_STARTDATE"]);

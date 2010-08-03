@@ -147,7 +147,6 @@ class Confirmation extends TPage
 	public function render($writer)
 	{
 		parent::render($writer);
-		var_dump($this->Session["SO_DURATION"]);
 		if ($this->Order && (!$this->Session->contains("OrderNumber") || $this->Order->Num != $this->Application->SecurityManager->validateData(base64_decode($this->Session["OrderNumber"]))))
 		{
 			//send email here

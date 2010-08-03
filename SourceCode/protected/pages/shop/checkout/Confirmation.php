@@ -163,10 +163,23 @@ class Confirmation extends TPage
 			$receiver->Address = $this->Application->User->Email;
 			$receiver->Name = $this->Application->User->FirstName." ".$this->Application->User->LastName;
 			$email->getEmailAddresses()->add($receiver);
+			
+			// send email to administrator
+			$email2 = $emailer->createNewEmail("StandingOrderNotice");
+			$email->HtmlContent->findControl("ORDER_NUM")->Text = $this->Order->Num;
+			$email->HtmlContent->findControl("ORDER_NUM")->NavigateUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->constructUrl().
+				$this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$this->Order->ID,"num"=>$this->Order->Num));
+			$email->HtmlContent->findControl("SO_FREQUENCY")->Text = $this->Session["SO_FREQUENCY"];
+			$email->HtmlContent->findControl("SO_DURATION")->Text = $this->Session["SO_DURATION"];
+			$email->HtmlContent->findControl("SO_STARTDATE")->Text = date('m-d-Y h:i',$this->Session["SO_STARTDATE"]);
+			$email->HtmlContent->findControl("SO_PAYMENT")->Text = $this->Session["SO_PAYMENT"];
+			
 			try
 			{
-				if ($this->Application->Mode!='Debug')
-                    $emailer->send($email);
+				if ($this->Application->Mode!='Debug') {
+					$emailer->send($email);
+					$emailer->send($email2);
+				}
 				
 				// add credits to user
 				$user = UserRecord::finder()->findByPk($this->Application->User->ID);

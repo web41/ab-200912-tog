@@ -242,15 +242,15 @@ class Review extends TPage
 					}
 					
 					// temporary store standing orders values
-					$this->Session['SO_FREQUENCY'] = $this->cboFrequencySelector->Text;
-					$this->Session['SO_DURATION'] = $this->cboDurationSelector->Text;
+					$this->Session['SO_FREQUENCY'] = $this->cboFrequencySelector->SelectedValue;
+					$this->Session['SO_DURATION'] = $this->cboDurationSelector->SelectedValue;
 					$this->Session['SO_STARTDATE'] = $this->dpStartDate->Data;
 					if ($this->radCheque->Checked)
-						$this->Session['SO_PAYMENT'] = $this->radCheque->Text;
+						$this->Session['SO_PAYMENT'] = $this->radCheque->Value;
 					else if ($this->radInterbank->Checked)
-						$this->Session['SO_PAYMENT'] = $this->radInterbank->Text;
+						$this->Session['SO_PAYMENT'] = $this->radInterbank->Value;
 					else if ($this->radCash->Checked)
-						$this->Session['SO_PAYMENT'] = $this->radCash->Text;
+						$this->Session['SO_PAYMENT'] = $this->radCash->Value;
 					
 					if ($payment->PaymentMethodID == 1) // paypal
 					{

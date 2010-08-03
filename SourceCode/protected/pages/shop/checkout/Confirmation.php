@@ -173,7 +173,6 @@ class Confirmation extends TPage
 			$email2->HtmlContent->findControl("SO_DURATION")->Text = $this->Session["SO_DURATION"];
 			$email2->HtmlContent->findControl("SO_STARTDATE")->Text = date('m-d-Y h:i',$this->Session["SO_STARTDATE"]);
 			$email2->HtmlContent->findControl("SO_PAYMENT")->Text = $this->Session["SO_PAYMENT"];
-			var_dump($email2->HtmlContent->flush());
 			try
 			{
 				if ($this->Application->Mode!='Debug') {

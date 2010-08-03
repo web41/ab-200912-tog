@@ -166,14 +166,14 @@ class Confirmation extends TPage
 			
 			// send email to administrator
 			$email2 = $emailer->createNewEmail("StandingOrderNotice");
-			$email->HtmlContent->findControl("ORDER_NUM")->Text = $this->Order->Num;
-			$email->HtmlContent->findControl("ORDER_NUM")->NavigateUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).
+			$email2->HtmlContent->findControl("ORDER_NUM")->Text = $this->Order->Num;
+			$email2->HtmlContent->findControl("ORDER_NUM")->NavigateUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).
 				$this->Service->constructUrl("admincp.OrderForm",array("id"=>$this->Order->ID,"num"=>$this->Order->Num));
-			$email->HtmlContent->findControl("SO_FREQUENCY")->Text = $this->Session["SO_FREQUENCY"];
-			$email->HtmlContent->findControl("SO_DURATION")->Text = $this->Session["SO_DURATION"];
-			$email->HtmlContent->findControl("SO_STARTDATE")->Text = date('m-d-Y h:i',$this->Session["SO_STARTDATE"]);
-			$email->HtmlContent->findControl("SO_PAYMENT")->Text = $this->Session["SO_PAYMENT"];
-			
+			$email2->HtmlContent->findControl("SO_FREQUENCY")->Text = $this->Session["SO_FREQUENCY"];
+			$email2->HtmlContent->findControl("SO_DURATION")->Text = $this->Session["SO_DURATION"];
+			$email2->HtmlContent->findControl("SO_STARTDATE")->Text = date('m-d-Y h:i',$this->Session["SO_STARTDATE"]);
+			$email2->HtmlContent->findControl("SO_PAYMENT")->Text = $this->Session["SO_PAYMENT"];
+			var_dump($email2->HtmlContent->flush());
 			try
 			{
 				if ($this->Application->Mode!='Debug') {

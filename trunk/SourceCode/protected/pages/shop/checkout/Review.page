@@ -141,6 +141,35 @@
 		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:0;float:left;width:544px;">
 			<com:TTextBox ID="txtComments" TextMode="MultiLine" Width="400px" Height="100px" />
 		</div>
+
+        <h3>Standing Order</h3>
+        <div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;float:left;width:544px;">
+            <com:TLabel Text="Frequency" ForControl="cboFrequencySelector" />
+            <com:TDropDownList ID="cboFrequencySelector" PromptText="Select..." PromptValue="">
+                <com:TListItem Value="ONCE_WEEK" Text="Once a week" />
+                <com:TListItem Value="TWICE_WEEK" Text="Twice a week" />
+            </com:TDropDownList><br /><br />
+            <com:TLabel Text="Duration" ForControl="cboDurationSelector" />
+            <com:TDropDownList ID="cboDurationSelector" PromptText="Select..." PromptValue="">
+                <com:TListItem Value="2" Text="2 weeks" />
+                <com:TListItem Value="3" Text="3 weeks" />
+                <com:TListItem Value="4" Text="4 weeks" />
+                <com:TListItem Value="5" Text="5 weeks" />
+                <com:TListItem Value="6" Text="6 weeks" />
+                <com:TListItem Value="7" Text="7 weeks" />
+                <com:TListItem Value="8" Text="8 weeks" />
+                <com:TListItem Value="9" Text="9 weeks" />
+                <com:TListItem Value="10" Text="10 weeks" />
+                <com:TListItem Value="11" Text="11 weeks" />
+                <com:TListItem Value="12" Text="12 weeks" />
+            </com:TDropDownList><br /><br />
+            <com:TLabel Text="Start Date" ForControl="dpStartDate" />
+            <com:TDatePicker ID="dpStartDate" Mode="ImageButton" /><br /><br />
+            <com:TLabel Text="Payment (please note that Standing Orders will be processed upon receipt of full payment in advance.)" /><br />
+            <com:TRadioButton ID="radCheque" Value="CHEQUE" GroupName="Payment" Text="Post a Cheque to The Organic Grocer" /><br />
+            <com:TRadioButton ID="radInterbank" Value="INTERBANK" GroupName="Payment" Text="Interbank transfer" /><br />
+            <com:TRadioButton ID="radCash" Value="CASH" GroupName="Payment" Text="I just ordered so will pay cash/cheque at next delivery" /><br />
+        </div>
 		
 		<div class="viewcart_container" style="margin:0;">
 			<div class="cart_review" style="margin:0;">

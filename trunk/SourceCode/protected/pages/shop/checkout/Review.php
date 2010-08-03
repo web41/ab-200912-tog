@@ -241,6 +241,17 @@ class Review extends TPage
 						$this->Application->getModule("auth")->updateSessionUser($this->Application->User->createUser($user->Email));
 					}
 					
+					// temporary store standing orders values
+					$this->Session['SO_Frequency'] = $this->cboFrequencySelector->Text;
+					$this->Session['SO_Duration'] = $this->cboDurationSelector->Text;
+					$this->Session['SO_StartDate'] = $this->dpStartDate->Data;
+					if ($this->radCheque->Checked)
+						$this->Session['SO_Payment'] = $this->radCheque->Text;
+					else if ($this->radInterbank->Checked)
+						$this->Session['SO_Payment'] = $this->radInterbank->Text;
+					else if ($this->radCash->Checked)
+						$this->Session['SO_Payment'] = $this->radCash->Text;
+					
 					if ($payment->PaymentMethodID == 1) // paypal
 					{
 						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.PayPalRedirector",array("hash"=>$this->generateHash($order->ID,$order->Num,$payment->ID))));

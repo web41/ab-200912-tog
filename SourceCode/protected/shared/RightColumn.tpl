@@ -1,5 +1,16 @@
 <div class="box">
     <div class="special_box">
+        <div class="top">Standing Order</div>
+       	<div class="center">
+        	The Organic Grocer allows you to place a standing order for all items that you need to buy oftenly.<br /><br />
+			Orders will be delivered to you <b>weekly</b> / <b>bi-weekly</b> / <b>monthly</b> at your convenient time.<br /><br />
+            <b><a href="<%= $this->Service->ConstructUrl("shop.StandingOrder") %>">Click here to learn how to place a standing order</a></b>
+        </div>
+        <div class="bottom"><!-- --></div>
+    </div>
+</div>
+<div class="box">
+    <div class="special_box">
         <div class="top">Delivery Schedule</div>
        	<div class="center">
         	The Organic Grocer delivers every <b>Tuesday, Wednesday, Friday</b> and <b>Saturday</b>.<br />
@@ -14,8 +25,12 @@
 	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" />
 </div>
 <div class="box">
+	<h2>share with friends</h2>
 	<!-- AddThis Button BEGIN -->
-	<a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4c539e920ae3168d"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4c539e920ae3168d"></script>
+	<a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4c539e920ae3168d">
+		<img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0;padding-top:5px;"/>
+	</a>
+	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4c539e920ae3168d"></script>
 	<!-- AddThis Button END -->
 </div>
 

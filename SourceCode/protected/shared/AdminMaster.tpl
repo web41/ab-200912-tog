@@ -32,7 +32,7 @@
                                 	<div><div><!-- --></div></div>
                                 </div>
                                 <div class="content">
-                                	Hello, <span class="username"><%= $this->Application->User->Email %></span> ::<com:TLinkButton Text="Logout" OnClick="btnLogout_Clicked" />::<a href="<%= $this->Service->ConstructUrl("shop.Index") %>" target="_blank">Homepage</a>
+                                	Hello, <span class="username"><%= $this->Application->User->Email %></span> ::<com:TLinkButton Text="Logout" OnClick="btnLogout_Clicked" />::<a href="<%= $this->Service->ConstructUrl("shop.Welcome") %>" target="_blank">Homepage</a>
                                 </div>
                             </div>
                         </td>

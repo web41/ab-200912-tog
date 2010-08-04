@@ -138,7 +138,7 @@
             <tr>
             	<td>&nbsp;</td>
 				<td class="right" style="font-size:12px;">
-					<com:TCheckBox ID="chkSubcribe" Text="I would like to subscibe and receive newsletters." />
+					<com:TCheckBox ID="chkSubcribe" Checked="true" Text="I would like to subscibe and receive newsletters." />
 				</td>
 			</tr>
 			<tr>

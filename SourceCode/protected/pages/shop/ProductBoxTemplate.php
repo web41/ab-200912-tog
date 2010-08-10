@@ -47,7 +47,7 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 		$prop = PropertyRecord::finder()->withProduct()->findByPk($sender->SelectedValue);
 		if ($prop instanceof PropertyRecord)
 		{
-			if (strlen($prop->Name)>0) $this->lblProperty->Text = "&nbsp;".$prop->Name;
+			if (strlen($prop->Name)>0) $this->lblProperty->Text = $prop->Name;
 			$this->lblPrice->Text = $this->getFormattedValue(Common::roundTo($prop->Price));
 			$this->lblPrice->Visible = $prop->Product->DiscountID > 0;
 			$this->lblDiscountPrice->Text = $this->getFormattedValue(Common::roundTo($prop->Product->getDiscountPrice($prop->Price)));

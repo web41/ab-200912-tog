@@ -10,7 +10,7 @@
 	<div class="title" style="padding-bottom:5px;">
 		<h3>
 			<a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>"><%= $this->Data ? $this->Data->Name : "" %><br />
-			-<com:TActiveLabel ID="lblProperty" />
+			<com:TActiveLabel ID="lblProperty" />
 			</a>
 		</h3>		
 	</div>
@@ -24,7 +24,7 @@
 		<!--div><com:TLabel ID="lblDesc" /></div-->
 		<div><b><%= $this->Data ? $this->Data->FreeText1 : "" %></b></div>
 		<!--div><b>Size</b>: 200g</div-->
-		<div style="color:#eb0010"><%= $this->Data ? $this->Data->FreeText2 : "" %></div>
+		<div><b><%= $this->Data ? $this->Data->FreeText2 : "" %></b></div>
 		<div style="margin-top:5px;">
 			<div style="float:left;">
 				Quantity: 

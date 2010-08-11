@@ -35,9 +35,10 @@
 				<prop:HeaderTemplate>
 					<!-- Cart title -->
 					<div class="cart_title" style="margin:0;">
-						<div class="prd_item">Product Name</div>
+						<div class="prd_item" style="width:230px;">Product Name</div>
 						<div class="qty">Quantity</div>
-						<div class="price">Price</div>
+                        <div class="price">Price/Unit</div>
+						<div class="price">Total</div>
 						<div class="remove">Remove</div>
 					</div>
 					<!-- Cart title: END -->

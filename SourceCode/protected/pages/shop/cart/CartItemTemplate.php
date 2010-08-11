@@ -8,7 +8,7 @@ class CartItemTemplate extends TRepeaterItemRenderer
 	{
 		parent::onDataBinding($param);
 		$this->lblSubtotal->Text = $this->getFormattedValue($this->Data->Subtotal);
-		
+		$this->lblUnitPrice->Text = $this->getFormattedValue($this->Data->Property->Price);
 		$this->cboQtySelector->Items->clear();
 		for($i=1;$i<=$this->Data->Property->InStock;$i++)
 		{

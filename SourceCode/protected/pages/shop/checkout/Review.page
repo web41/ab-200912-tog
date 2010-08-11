@@ -43,9 +43,10 @@
 				<prop:HeaderTemplate>
 					<!-- Review title -->
 					<div class="cart_title" style="margin:0;">
-						<div class="prd_item" style="width:380px;">Product Name</div>
+						<div class="prd_item" style="width:290px;">Product Name</div>
 						<div class="qty">Quantity</div>
-						<div class="price">Price</div>
+                        <div class="price">Price/Unit (SGD)</div>
+						<div class="price">Total (SGD)</div>
 					</div>
 					<!-- Review title: END -->
 				</prop:HeaderTemplate>

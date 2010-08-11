@@ -168,7 +168,7 @@ class Confirmation extends TPage
 			$email2 = $emailer->createNewEmail("StandingOrderNotice");
 			$email2->HtmlContent->findControl("ORDER_NUM")->Text = $this->Order->Num;
 			$email2->HtmlContent->findControl("ORDER_NUM")->NavigateUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).
-				$this->Service->constructUrl("admincp.OrderForm",array("id"=>$this->Order->ID,"num"=>$this->Order->Num));
+			$this->Service->constructUrl("admincp.OrderForm",array("id"=>$this->Order->ID,"num"=>$this->Order->Num));
 			$email2->HtmlContent->findControl("SO_FREQUENCY")->Text = $this->Session["SO_FREQUENCY"];
 			$email2->HtmlContent->findControl("SO_DURATION")->Text = $this->Session["SO_DURATION"];
 			$email2->HtmlContent->findControl("SO_STARTDATE")->Text = date('m-d-Y h:i',$this->Session["SO_STARTDATE"]);

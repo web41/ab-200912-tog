@@ -1,0 +1,50 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">How to place a Standing Order</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.OrganicPoints />
+	<com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<div class="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+		<h2>How to place a Standing Order</h2>
+		<div>
+			The Organic Grocer allows you to have a standing order for the items you need to purchase on a regular basis.
+			All you need to do is shop for the items you wish to purchase on a regular basis and at <b>"check-out"</b>, select the frequency, duration and commencement date for the standing order.  The Organic Grocer will send you an email to confirm your standing order and make arrangements for payment.<br />
+		</div>
+		<u>Follow below 4 steps to place a standing order: </u><br /><br />
+		<b>1. Browse products, select item quantity and click "Add to bag" </b><br /><br />
+		<div style="text-align:center;">
+			<img src="<%= $this->Page->Theme->BaseUrl %>/images/so1.png" />
+		</div>
+		<b>2. Verify your shopping bag and click "Check out" </b><br /><br />
+		<div style="text-align:center;">
+			<img src="<%= $this->Page->Theme->BaseUrl %>/images/so2.png" />
+		</div>
+		<br /><br />
+		<b>3. Fill in your billing address, click Next. Then select delivery date and click Next. </b><br /><br />
+		<b>4. Select frequency, duration, start date and click "Submit Your Order" </b><br /><br />
+		<div style="text-align:center;">
+			<img src="<%= $this->Page->Theme->BaseUrl %>/images/so3.png" />
+		</div>
+	</div>
+	<!-- Inside box: END -->
+	</div>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+    <com:Application.shared.AjaxCart ID="ajaxCart" />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

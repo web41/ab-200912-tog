@@ -5,7 +5,7 @@ class Login extends TPage
 	public function onLoad($param)
 	{
 		if (!$this->Application->User->IsGuest)
-			$this->Response->redirect($this->Service->ConstructUrl("shop.Index"));
+			$this->Response->redirect($this->Service->ConstructUrl("shop.Welcome"));
 		$this->ClientScript->registerDefaultButton($this->mainBox,$this->btnLogin);
 		parent::onLoad($param);
 	}
@@ -20,7 +20,7 @@ class Login extends TPage
 			{
 				$url = $auth->ReturnUrl;
 				if (empty($url))
-					$url = $this->Service->ConstructUrl("shop.Index");
+					$url = $this->Service->ConstructUrl("shop.Welcome");
 				$this->Response->redirect($url);
 			}
 			else

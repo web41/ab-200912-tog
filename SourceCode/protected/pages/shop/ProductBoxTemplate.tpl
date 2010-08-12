@@ -9,16 +9,17 @@
 	</div>
 	<div class="title" style="padding-bottom:5px;">
 		<h3>
-			<a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>"><%= $this->Data ? $this->Data->Name : "" %><br />
-			<com:TActiveLabel ID="lblProperty" />
+			<a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>"><%= $this->Data ? $this->Data->Name : "" %>
+			<!---com:TActiveLabel ID="lblProperty" /--->
 			</a>
-		</h3>		
-	</div>
-	<div>
+		</h3>
+	<div class="price" style="margin-top:3px;">
 		<a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>">
 		<input type="button" value="View Details" class="button" />
 		</a>
+	</div>		
 	</div>
+
 	<div class="content">
 		
 		<!--div><com:TLabel ID="lblDesc" /></div-->

@@ -119,7 +119,7 @@
 									<com:TDataList ID="datProperties">
                                         <prop:ItemTemplate>
                                         <label style="float:left;text-align:left;"><%# $this->Data->Name %></label><br />
-                                        <com:TTextBox ID="txtPrice" Width="60px" Text="<%# $this->Data->Price %>" Style="float:left;"  />
+                                        <com:TTextBox ID="txtPrice" Width="60px" Text="<%# number_format($this->Data->Price,2) %>" Style="float:left;"  />
                                         <com:THiddenField ID="valID" Value="<%# $this->Data->ID %>" />
                                         </prop:ItemTemplate>
                                     </com:TDataList>

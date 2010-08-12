@@ -94,6 +94,7 @@ class CategoryManager extends TPage
 		$this->ParentID = ($this->Request->contains('parent')) ? TPropertyValue::ensureInteger($this->Request['parent']) : -1;
 		if (!$this->IsPostBack)
 		{
+			if ($this->SearchText) $this->txtSearchText->Text = $this->SearchText;
 			// fill parent selector combobox
 			$this->cboParentSelector->DataSource = Prado::createComponent(self::AR)->getAllParent(true);
 			$this->cboParentSelector->DataBind();

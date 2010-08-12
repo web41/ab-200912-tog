@@ -116,8 +116,10 @@ class ProductManager extends TPage
 		$this->MfID = ($this->Request->contains('mf')) ? TPropertyValue::ensureInteger($this->Request['mf']) : 0;
 		$this->CatID = ($this->Request->contains('c')) ? TPropertyValue::ensureInteger($this->Request['c']) : 0;
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
+		
 		if (!$this->IsPostBack)
 		{
+			if ($this->SearchText) $this->txtSearchText->Text = $this->SearchText;
 			// fill parent selector combobox
 			$this->cboCatSelector->DataSource = CategoryRecord::finder()->getCategoryTree(true);
 			$this->cboCatSelector->DataBind();

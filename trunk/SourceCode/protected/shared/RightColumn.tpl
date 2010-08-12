@@ -2,8 +2,8 @@
     <div class="special_box">
         <div class="top">Standing Order</div>
        	<div class="center">
-        	The Organic Grocer allows you to place a standing order for all items that you need to buy oftenly.<br /><br />
-			Orders will be delivered to you <b>weekly</b> / <b>bi-weekly</b> / <b>monthly</b> at your convenient time.<br /><br />
+        	The Organic Grocer allows you to have a standing order for the items you need to purchase on a regular basis.<br /><br />
+			Orders will be delivered to you <b>weekly</b> or <b>bi-weekly</b>.<br /><br />
             <b><a href="<%= $this->Service->ConstructUrl("shop.StandingOrder") %>">Click here to learn how to place a standing order</a></b>
         </div>
         <div class="bottom"><!-- --></div>

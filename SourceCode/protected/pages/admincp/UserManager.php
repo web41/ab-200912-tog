@@ -99,6 +99,7 @@ class UserManager extends TPage
 		$this->TypeID = ($this->Request->contains('t')) ? TPropertyValue::ensureInteger($this->Request['t']) : 0;
 		if (!$this->IsPostBack)
 		{
+			if ($this->SearchText) $this->txtSearchText->Text = $this->SearchText;
 			// fill parent selector combobox
 			$criteria = new TActiveRecordCriteria;
 			$criteria->Condition = "user_type_id > 0";

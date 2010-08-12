@@ -82,6 +82,7 @@ class BrandManager extends TPage
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
 		if (!$this->IsPostBack)
 		{	
+			if ($this->SearchText) $this->txtSearchText->Text = $this->SearchText;
 			$this->populateData();
 			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
 			{

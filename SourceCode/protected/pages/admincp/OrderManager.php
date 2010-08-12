@@ -94,6 +94,7 @@ class OrderManager extends TPage
 		$this->UserID = ($this->Request->contains('u')) ? TPropertyValue::ensureInteger($this->Request['u']) : 0;
 		if (!$this->IsPostBack)
 		{
+			if ($this->SearchText) $this->txtSearchText->Text = $this->SearchText;
 			// set user selector 
 			$users = UserRecord::finder()->getAllItems();
 			$this->cboUserSelector->Items->clear();

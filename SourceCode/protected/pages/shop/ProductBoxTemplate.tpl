@@ -19,12 +19,12 @@
 	</div>		
 	</div>
 
-	<div class="content">		
+	<div class="content" style="margin:0;">		
 		<!--div><com:TLabel ID="lblDesc" /></div-->
 		<div><b><%= $this->Data ? $this->Data->FreeText1 : "" %></b></div>
 		<!--div><b>Size</b>: 200g</div-->
 		<div><b><%= $this->Data ? $this->Data->FreeText2 : "" %></b></div>
-		<div style="margin-top:5px;">
+		<div>
 			<div style="float:left;">
 				Quantity: 
 				<com:TActiveDropDownList ID="cboQuantitySelector" AutoPostBack="false"/>

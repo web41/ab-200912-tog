@@ -1,4 +1,4 @@
-<prop:Subject>New Order</prop:Subject>
+<prop:Subject>Standing Order Notice</prop:Subject>
 <prop:EmailAddresses><com:TEmailAddress Field="Receiver" Address="sales@theorganicgrocer.com.sg" Name="The Organic Grocer" /></prop:EmailAddresses>
 <prop:HtmlContent>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11,12 +11,10 @@
 
 Dear Sir/Madam,<br /><br />
 
-There is a new order.<br />
-Please go to this URL to see the detail: <br /><br />
+There is a new order which has selected standing order option.<br />
+Here is the detail information: <br /><br />
 
-Order Number: <com:THyperlink ID="ORDER_NUM"/><br /><br />
-
-Here is Standing Order information:<br /><br />
+Order Number: <com:THyperlink ID="ORDER_NUM"/>
 Frequency: <com:TLabel ID="SO_FREQUENCY"/><br />
 Duration: <com:TLabel ID="SO_DURATION"/><br />
 Start Date: <com:TLabel ID="SO_STARTDATE"/><br />

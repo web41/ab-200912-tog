@@ -88,7 +88,7 @@ class Common {
 	}*/
 	
 	public function roundTo($number, $to=0.05){ 
-		$number = round($number, 2);
+		$number = number_format($number, 2);
 		$number = (float)(substr($number,0,strlen($number)-1).(substr($number,strlen($number)-1)>=5 ? '5' : '0'));
 		return round($number/$to, 0)* $to; 
 	}

@@ -165,7 +165,7 @@ class Confirmation extends TPage
 			$email->getEmailAddresses()->add($receiver);
 			
 			// send email to administrator
-			$email2 = $emailer->createNewEmail("StandingOrderNotice");
+			$email2 = $emailer->createNewEmail("OrderNotice");
 			$email2->HtmlContent->findControl("ORDER_NUM")->Text = $this->Order->Num;
 			$email2->HtmlContent->findControl("ORDER_NUM")->NavigateUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).
 			$this->Service->constructUrl("admincp.OrderForm",array("id"=>$this->Order->ID,"num"=>$this->Order->Num));

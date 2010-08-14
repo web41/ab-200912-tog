@@ -9,7 +9,6 @@ Dear <com:TLabel ID="FULL_NAME"/>,<br /><br />
 Here is the new password you requested: <com:TLabel ID="NEW_PASSWORD"/> <br /><br />
 
 After you have used it to sign in at <a href="http://www.theorganicgrocer.com.sg">www.theorganicgrocer.com</a>, please change this password in Profile to one easier for you to remember. <br />
-For your security, we have cleared all the billing information from Your Account. You will need to reenter your billing information the next time you place an order. <br /><br />
 
 Thank You. <br />
 The Organic Grocer

@@ -14,14 +14,12 @@
 			</a>
 		</h3>
 	<div class="price" style="margin-top:3px;">
-		<a href="<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>">
-		<input type="button" value="View Details" class="button" />
-		</a>
+		<input type="button" value="View Details" class="button" onClick="location.href='<%= $this->Data ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->ID,"alias"=>$this->Data->Alias)) : "#" %>'"/>
+
 	</div>		
 	</div>
 
-	<div class="content">
-		
+	<div class="content">		
 		<!--div><com:TLabel ID="lblDesc" /></div-->
 		<div><b><%= $this->Data ? $this->Data->FreeText1 : "" %></b></div>
 		<!--div><b>Size</b>: 200g</div-->

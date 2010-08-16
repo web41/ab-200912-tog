@@ -131,7 +131,7 @@
 				</td>
                 <script type="text/javascript">
 					function terms() {
-						return window.open('/TOG/TermandCondition2.html','Terms','menubar=0,resizable=0,width=620,scrollbars=1');
+						return window.open('/TermandCondition2.html','Terms','menubar=0,resizable=0,width=620,scrollbars=1');
 					}
                 </script>
 			</tr>

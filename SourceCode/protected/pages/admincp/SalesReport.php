@@ -257,7 +257,7 @@ class SalesReport extends TPage
 			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
 			$this->Response->appendHeader("Cache-Control:max-age=0");
 			$phpExcelWriter->save('php://output'); 
-			$this->Response->flush();
+			//$this->Response->flush();
 			exit();
 		}
 		catch(Exception $ex)

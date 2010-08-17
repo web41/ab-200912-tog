@@ -216,7 +216,7 @@ class OrderToSupplier extends TPage
 			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
 			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
 			$this->Response->appendHeader("Cache-Control:max-age=0");
-			$phpExcelWriter->save('php://output'); 
+			//$phpExcelWriter->save('php://output'); 
 			$this->Response->flush();
 			exit();
 		}

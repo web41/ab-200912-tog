@@ -11,6 +11,7 @@
 
 <!-- Main column -->
 <div class="main_col">
+	<com:Application.shared.UserNotice ID="Notice" />
 	<div class="main_content">
 	<!-- Inside box -->
 	<div class="inside_box">

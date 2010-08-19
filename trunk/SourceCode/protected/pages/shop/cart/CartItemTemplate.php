@@ -29,16 +29,22 @@ class CartItemTemplate extends TRepeaterItemRenderer
 			$cartDetail->Subtotal = $cartDetail->Quantity*Common::roundTo($cartDetail->Product->getDiscountPrice($prop->Price));
 			$cartDetail->save();
 		}
-		$this->Page->categoryMenu->populateData();
-		$this->Page->populateData();
+		try {
+			$this->Page->categoryMenu->populateData();
+			$this->Page->populateData();
+		}
+		catch(TException $e) {}
 	}
 	
 	protected function btnDelete_Clicked($sender, $param)
 	{
 		$cartDetail = CartTempDetailRecord::finder()->findByPk($this->txtID->Value);
 		$cartDetail->delete();
-		$this->Page->categoryMenu->populateData();
-		$this->Page->populateData();
+		try {
+			$this->Page->categoryMenu->populateData();
+			$this->Page->populateData();
+		}
+		catch(TException $e) {}
 	}
 	
 	public function getFormattedValue($value,$pattern="c",$currency="USD")

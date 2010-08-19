@@ -67,8 +67,11 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 		{
 			$this->Page->Notice->Type = UserNoticeType::Error;
 			$this->Page->Notice->Text = $this->Application->getModule("message")->translate("COMBOBOX_REQUIRED","property of product");
-			$this->Page->categoryMenu->populateData();
-			$this->Page->populateData();
+			try {
+				$this->Page->categoryMenu->populateData();
+				$this->Page->populateData();
+			}
+			catch(TException $e) {}
 		}
 		else
 		{
@@ -114,8 +117,11 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 			{
 				$this->Page->Notice->Type = UserNoticeType::Error;
 				$this->Page->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
-				$this->Page->categoryMenu->populateData();
-				$this->Page->populateData();
+				try {
+					$this->Page->categoryMenu->populateData();
+					$this->Page->populateData();
+				}
+				catch(TException $e) {}
 			}
 		}
 	}

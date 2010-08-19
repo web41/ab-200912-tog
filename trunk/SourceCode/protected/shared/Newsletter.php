@@ -29,8 +29,11 @@ class Newsletter extends TTemplateControl
 					$this->Page->Notice->Text = $this->Application->getModule('message')->translate('NEWSLETTER_REG_FAILED');
 				}
 			}
-			$this->Page->categoryMenu->populateData();
-			$this->Page->populateData();
+			try {
+				$this->Page->categoryMenu->populateData();
+				$this->Page->populateData();
+			}
+			catch(TException $e) {}
 		}
 	}
 	protected function uniqueCheck_ServerValidated($sender, $param)
@@ -42,8 +45,11 @@ class Newsletter extends TTemplateControl
 			$criteria->Parameters[":name"] = $param->Value;
 			$param->IsValid = count(MailingListRecord::finder()->find($criteria)) == 0;
 		}
-		$this->Page->categoryMenu->populateData();
-		$this->Page->populateData();
+		try {
+			$this->Page->categoryMenu->populateData();
+			$this->Page->populateData();
+		}
+		catch(TException $e) {}
 	}
 }
 

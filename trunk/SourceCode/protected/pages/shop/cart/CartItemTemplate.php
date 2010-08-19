@@ -30,8 +30,8 @@ class CartItemTemplate extends TRepeaterItemRenderer
 			$cartDetail->save();
 		}
 		try {
-			$this->Page->categoryMenu->populateData();
-			$this->Page->populateData();
+			if ($this->Page->categoryMenu) $this->Page->categoryMenu->populateData();
+			if (method_exists($this->Page,"populateData")) $this->Page->populateData();
 		}
 		catch(TException $e) {}
 	}
@@ -41,8 +41,8 @@ class CartItemTemplate extends TRepeaterItemRenderer
 		$cartDetail = CartTempDetailRecord::finder()->findByPk($this->txtID->Value);
 		$cartDetail->delete();
 		try {
-			$this->Page->categoryMenu->populateData();
-			$this->Page->populateData();
+			if ($this->Page->categoryMenu) $this->Page->categoryMenu->populateData();
+			if (method_exists($this->Page,"populateData")) $this->Page->populateData();
 		}
 		catch(TException $e) {}
 	}

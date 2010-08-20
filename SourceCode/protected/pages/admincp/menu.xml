@@ -32,6 +32,7 @@
 		<menuNode ServiceParameter="admincp.UserAddressManager" Title="User Address List" />
 		<menuNode ServiceParameter="admincp.UserTypeForm" Title="Add User Type" />
 		<menuNode ServiceParameter="admincp.UserTypeManager" Title="User Type List" />
+		<menuNode ServiceParameter="admincp.MailingListManager" Title="Mailing List" />
 	</menuNode>
 	<menuNode Title="Order">
 		<menuNode ServiceParameter="admincp.OrderManager" Title="Order List" />

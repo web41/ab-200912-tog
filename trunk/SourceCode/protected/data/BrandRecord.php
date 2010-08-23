@@ -9,12 +9,14 @@ class BrandRecord extends TActiveRecord
 	public $ID;
 	public $Alias;
 	public $Name;
+	public $IsPublished;
 	
 	public static $COLUMN_MAPPING=array
 	(
 		'brand_id'=>'ID',
 		'brand_alias'=>'Alias',
-		'brand_name'=>'Name'
+		'brand_name'=>'Name',
+		'brand_publish'=>'IsPublished',
 	);
 	
 	public static $RELATIONS=array
@@ -33,10 +35,11 @@ class BrandRecord extends TActiveRecord
 		parent::save();
 	}
 	
-	public function getAllItems()
+	public function getAllItems($publishOnly=true)
 	{
 		$criteria = new TActiveRecordCriteria;
 		$criteria->Condition = "brand_id > 0";
+		if ($publishOnly) $criteria->Condition .= " and brand_publish = 1";
 		$criteria->OrdersBy["brand_name"] = "asc";
 		return self::finder()->findAll($criteria);
 	}

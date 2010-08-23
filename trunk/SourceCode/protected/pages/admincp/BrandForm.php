@@ -15,6 +15,7 @@ class BrandForm extends TPage
 				$this->lblHeader->Text = "Update brand: ".$activeRecord->Name;
 				$this->txtName->Text = $activeRecord->Name;
 				$this->txtAlias->Text = $activeRecord->Alias;
+				$this->radPublish->SelectedValue = $activeRecord->IsPublished;
 			}
 			else
 			{
@@ -48,7 +49,7 @@ class BrandForm extends TPage
 		$activeRecord = $this->getItem();
 		$activeRecord->Name = $this->txtName->SafeText;
 		$activeRecord->Alias = $this->txtAlias->SafeText;
-		
+		$activeRecord->IsPublished = $this->radPublish->SelectedValue;
 		return $activeRecord;
 	}
 	

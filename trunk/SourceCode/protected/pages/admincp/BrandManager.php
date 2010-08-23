@@ -179,7 +179,7 @@ class BrandManager extends TPage
 		switch($param->CommandName)
 		{
 			case "delete":
-				$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($param->Item->colID->lblBrandID->Text));
+				$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($param->Item->colID->lblItemID->Text));
 				if ($activeRecord)
 				{
 					try
@@ -202,7 +202,33 @@ class BrandManager extends TPage
 					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","brand");
 				}
 				break;
+			case "publish":
+				$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($param->Item->colID->lblItemID->Text));
+				if ($activeRecord)
+				{
+					try
+					{
+						$activeRecord->IsPublished = !$activeRecord->IsPublished;
+						$activeRecord->save();
+						$this->Notice->Type = AdminNoticeType::Information;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS",$activeRecord->Name,($activeRecord->IsPublished ? "published" : "unpublished"));
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Name,($activeRecord->IsPublished ? "published" : "unpublished"));
+					}	
+				}
+				else
+				{
+					$this->Notice->Type = AdminNoticeType::Error;
+					$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","brand");
+				}
+				break;
+			default:
+				break;
 		}
+		$this->populateData();
 	}
 	
 	protected function btnDelete_Clicked($sender, $param)
@@ -212,7 +238,7 @@ class BrandManager extends TPage
 			$items = array();
 			foreach($this->BrandList->Items as $item) {
 				if ($item->colCheckBox->chkItem->Checked) {                                   
-					$items[] = $item->colID->lblBrandID->Text;
+					$items[] = $item->colID->lblItemID->Text;
 				}
 			}
 			try
@@ -237,7 +263,7 @@ class BrandManager extends TPage
 		{
 			foreach($this->BrandList->Items as $item) {
 				if ($item->colCheckBox->chkItem->Checked) {                                   
-					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblBrandID->Text));
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
 					if ($activeRecord)
 					{	
 						$this->Response->redirect($this->Service->ConstructUrl("admincp.BrandForm",array("id"=>$activeRecord->ID,"alias"=>$activeRecord->Alias,"refUrl"=>urlencode($this->populateSortUrl($this->SortBy,$this->SortType,"",false)))));
@@ -250,6 +276,63 @@ class BrandManager extends TPage
 					}
 				}
 			}
+		}
+	}
+	
+	protected function btnPublish_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$items = array();
+			foreach($this->BrandList->Items as $item) 
+			{
+				if ($item->colCheckBox->chkItem->Checked) 
+				{
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
+					try
+					{
+						$activeRecord->IsPublished = true;
+						$activeRecord->save();
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS",$activeRecord->Name,($activeRecord->IsPublished ? "published" : "unpublished"));
+						break;
+					}
+				}
+			}
+			$this->Notice->Type = AdminNoticeType::Information;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS","Selected items","published");
+			$this->populateData();
+		}
+	}
+	
+	protected function btnUnpublish_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$items = array();
+			foreach($this->BrandList->Items as $item) {
+				if ($item->colCheckBox->chkItem->Checked) 
+				{
+					$activeRecord = Prado::createComponent(self::AR)->finder()->findByPk(TPropertyValue::ensureInteger($item->colID->lblItemID->Text));
+					try
+					{
+						$activeRecord->IsPublished = false;
+						$activeRecord->save();
+					}
+					catch(TException $e)
+					{
+						$this->Notice->Type = AdminNoticeType::Error;
+						$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_FAILED",$activeRecord->Name,($activeRecord->IsPublished ? "published" : "unpublished"));
+						break;
+					}
+				}
+			}
+			$this->Notice->Type = AdminNoticeType::Information;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_ACTION_SUCCESS","Selected items","unpublished");
+			$this->populateData();
 		}
 	}
 	

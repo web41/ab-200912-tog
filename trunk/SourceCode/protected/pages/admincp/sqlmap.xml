@@ -51,6 +51,7 @@
       SELECT DISTINCT p.* FROM tbl_product p 
       LEFT JOIN tbl_product_cat_xref pcx ON p.product_id = pcx.product_id 
       LEFT JOIN tbl_category c ON pcx.cat_id = c.cat_id 
+	  LEFT JOIN tbl_brand b ON p.brand_id = b.brand_id
       WHERE p.product_id > 0 AND p.product_publish = 1 
       $ADDITIONAL_CONDITION$
       ORDER BY $ORDER_BY$

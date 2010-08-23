@@ -290,8 +290,9 @@ class ProductForm extends TPage
 		if ($param->Value != '')
 		{
 			$criteria = new TActiveRecordCriteria;
-			$criteria->Condition = "product_sku = :name";
+			$criteria->Condition = "product_sku = :name and brand_id = :brand";
 			$criteria->Parameters[":name"] = $param->Value;
+			$criteria->Parameters[":brand"] = $this->cboBrandSelector->SelectedValue;
 			$activeRecord = $this->getItem();
 			if ($activeRecord && $activeRecord->ID > 0) $criteria->Condition .= " and product_id <> '".$activeRecord->ID."'";
 			$param->IsValid = count(Prado::createComponent(self::AR)->finder()->find($criteria)) == 0;

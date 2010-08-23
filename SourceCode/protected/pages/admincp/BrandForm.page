@@ -48,6 +48,18 @@
 									</div>
 								</td>
 							</tr>
+							<tr>
+								<td class="field" style="padding:5px 0 5px 0;">
+									<div class="text paddingtop">Publish</div>
+									<div class="control">
+										<com:TRadioButtonList ID="radPublish" RepeatDirection="Horizontal">
+											<com:TListItem Value="0" Text="No" />
+											<com:TListItem Value="1" Text="Yes"  Selected="true" />
+										</com:TRadioButtonList>
+									</div>
+								</td>
+								<td></td>
+							</tr>
 						</table>
 						<div class="field" style="border:none;margin-bottom:0;">
 							<div class="text">&nbsp;</div>

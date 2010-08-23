@@ -215,8 +215,13 @@ class Index extends TPage
                 $sql .= "AND p.product_new_arrival = 1 ";
             }
             if ($this->IsPromoted) {
-                $sql .= "AND p.discount_id > 0";
+                $sql .= "AND p.discount_id > 0 ";
             }
+			// earthbound brand
+			$toDay = time();
+			if ((date('w',$toDay)==4 && date('G',$toDay)>=12) || (date('w',$toDay)==6 && date('G',$toDay)<=23)) {
+				$sql .= "AND LOWER(b.brand_name) <> 'earthbound'";
+			}
             $order = (isset($this->Sortable[$this->SortBy])?$this->Sortable[$this->SortBy]:$this->Sortable[1])." ".$this->SortType;
             $this->ItemList->VirtualItemCount = count($sqlmap->queryForList("BrowseProduct", array("ADDITIONAL_CONDITION"=>$sql,"ORDER_BY"=>$order)));
         }

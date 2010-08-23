@@ -64,12 +64,13 @@
 									<tr>
 										<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
 											<div class="item_title">
-												<div class="width_35">Product Items</div>
+												<div class="width_25">Brand</div>
+												<div class="width_25">Product Items</div>
 												<div class="width_10">Quantity</div>
 												<div class="width_10">UOM</div>
-												<div class="width_15">Price/Unit (SGD)</div>
-												<div class="width_15">Disc/Unit</div>
-												<div class="width_15">Total (SGD)</div>
+												<div class="width_10">Price/Unit (SGD)</div>
+												<div class="width_10">Disc/Unit</div>
+												<div class="width_10">Total (SGD)</div>
 											</div>
 										</td>
 									</tr>
@@ -78,12 +79,13 @@
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<div class="item_text">
-										<div class="width_35"><a href="<%# $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>"><%= $this->Data && $this->Data->Product ? $this->Data->Product->Name : "" %></a></div>
+										<div class="width_25"><%= $this->Data && $this->Data->Product->Brand ? $this->Data->Product->Brand->Name : "" %></div>
+										<div class="width_25"><a href="<%# $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>"><%= $this->Data && $this->Data->Product ? $this->Data->Product->Name : "" %></a></div>
 										<div class="width_10"><%# $this->Data ? $this->Data->Quantity : 0 %></div>
 										<div class="width_10"><%# ($this->Data->Property?$this->Data->Property->Name:"") %>/unit</div>
-										<div class="width_15"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data->UnitPrice %>" /></div>
-										<div class="width_15"><com:TNumberFormat Type="<%# $this->Data->DiscountIsPercent?'percentage':'currency' %>" Culture="en_US" Currency="USD" Value="<%# $this->Data->DiscountAmount %>" /></div>
-										<div class="width_15"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data ? $this->Data->Subtotal : 0 %>" /></div>
+										<div class="width_10"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data->UnitPrice %>" /></div>
+										<div class="width_10"><com:TNumberFormat Type="<%# $this->Data->DiscountIsPercent?'percentage':'currency' %>" Culture="en_US" Currency="USD" Value="<%# $this->Data->DiscountAmount %>" /></div>
+										<div class="width_10"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data ? $this->Data->Subtotal : 0 %>" /></div>
 									</div>
 								</prop:ItemTemplate>
 								<prop:FooterTemplate>

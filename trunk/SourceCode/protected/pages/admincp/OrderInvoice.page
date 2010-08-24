@@ -15,15 +15,15 @@
 			<div class="company_info">
 				<b>The Organic Grocer</b><br />
 				Head Office: Singapore<br />
-				Tel: (65) 91150702<br />
-				Web: www.theorganicgrocer.com.sg &nbsp;&nbsp;Email: info@theorganicgrocer.com.sg<br />
-				Registration No: XXXXXXXXXXXXXXXX
+				Tel: (65) 91150702 / (65) 82991517<br />
+				Web: www.theorganicgrocer.com.sg &nbsp;&nbsp;Email: sales@theorganicgrocer.com.sg<br />
+				Registration No: 201015326W
 			</div>
 		</div>
 		<div style="float:right;">
 			Invoice No. <b><com:TLabel ID="lblOrderNum" /></b><br />
 			Date: <b><com:TLabel ID="lblOrderDate" /></b><br />
-			Status: <b><com:TLabel ID="lblLatestStatus" /></b>
+			<!--Status: <b><com:TLabel ID="lblLatestStatus" /></b>-->
 		</div>
 
 		<!-- Address -->
@@ -71,7 +71,7 @@
 		</com:TRepeater>
 		
 		<!-- -->
-		<table cellpadding="8" cellspacing="0" border="0" width="100%" style="margin-top:500px" >
+		<table cellpadding="8" cellspacing="0" border="0" width="100%" style="margin-top:1px" >
 			<tr>
 				<td width="55%" valign="top">
 					Delivery: <com:TLabel ID="lblDeliverer" /><br />
@@ -112,23 +112,17 @@
 			</tr>
 		</table>
 		<p>
-			All cheques to be crossed & made payable to THE ORGANIC GROCER.<br />
-			No claims for damages or short supply will be entertained unless notified within one day of receipt of goods.
+			All cheques to be crossed and made payable to "THE ORGANIC GROCER PTE LTD".<br />
 		</p>
+		
+		<br><br><br>			
+		
 		<!-- Sign -->
-		<table cellpadding="8" cellspacing="0" border="0" width="100%" style="border:none;margin-top:100px;">
-			<tr>
-				<td width="10%" style="border:none;">&nbsp;</td>
-				<td width="30%" style="border-width:1px 0 0 0;text-align:center;">
-					Received by
-				</td>
-				<td width="20%" style="border:none;">&nbsp;</td>
-				<td width="30%" style="border-width:1px 0 0 0;text-align:center;">
-					THE ORGANIC GROCER
-				</td>
-				<td width="10%" style="border:none;">&nbsp;</td>
-			</tr>
-		</table><br />
+		I received all the above items in good and proper condition
+		<br><br><br><br>
+		_______________________________________<br>
+		Receive signature and name
+		<br />
 		<!-- Sign: END -->
 
 		<div style="text-align:right;">

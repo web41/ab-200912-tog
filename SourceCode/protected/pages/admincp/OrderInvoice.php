@@ -11,7 +11,7 @@ class OrderInvoice extends TPage
 			if ($activeRecord instanceof OrderRecord)
 			{
 				$this->lblOrderNum->Text = $activeRecord->Num;
-				$this->lblOrderDate->Text = date('m/d/Y h:i:s A',$activeRecord->CreateDate);
+				$this->lblOrderDate->Text = date('d/m/Y',$activeRecord->CreateDate);
 				$this->lblLatestStatus->Text = $activeRecord->LatestHistory->OrderStatus->Name;
 				
 				$this->lblBilling->Text = $activeRecord->BFirstName." ".$activeRecord->BLastName."<br />";

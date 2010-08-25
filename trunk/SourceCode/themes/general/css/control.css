@@ -16,7 +16,7 @@ select{width:auto;height:26px;border:solid 1px #e5e5e5;background:url(../images/
 .btn_addpayment{width:122px;height:26px;background:url(../images/btn_addpayment.png) no-repeat;border:0;float:left;margin-right:10px;}
 .btn_addhistory{width:122px;height:26px;background:url(../images/btn_addhistory.png) no-repeat;border:0;float:left;margin-right:10px;}
 .btn_generateinvoice{width:142px;height:26px;background:url(../images/btn_generateinvoice.png) no-repeat;border:0;float:left;margin-right:10px;}
-.btn_generateinvoiceadmin{width:142px;height:26px;background:url(../images/btn_generateinvoiceadmin.png) no-repeat;border:0;float:left;margin-right:10px;}
+.btn_generateinvoiceadmin{width:212px;height:26px;background:url(../images/btn_generateinvoiceadmin.png) no-repeat;border:0;float:left;margin-right:10px;}
 
 .btn_smallenter{width:36px;height:26px;background:url(../images/btn_smallenter.png) no-repeat;border:0;margin-left:5px;float:right;}
 .btn_smallreset{width:36px;height:26px;background:url(../images/btn_smallreset.png) no-repeat;border:0;margin-left:5px;float:right;}

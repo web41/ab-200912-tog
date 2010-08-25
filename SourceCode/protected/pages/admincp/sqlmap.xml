@@ -46,50 +46,60 @@
 			ORDER BY $ORDER_BY$
 		]]>
 	</select>
-  <select id="BrowseProduct" parameterClass="array" resultMap="ProductRecord">
-    <![CDATA[
-      SELECT DISTINCT p.* FROM tbl_product p 
-      LEFT JOIN tbl_product_cat_xref pcx ON p.product_id = pcx.product_id 
-      LEFT JOIN tbl_category c ON pcx.cat_id = c.cat_id 
-	  LEFT JOIN tbl_brand b ON p.brand_id = b.brand_id
-      WHERE p.product_id > 0 AND p.product_publish = 1 
-      $ADDITIONAL_CONDITION$
-      ORDER BY $ORDER_BY$
-    ]]>
-  </select>
-  <select id="FavouriteProduct" parameterClass="array" resultMap="ProductRecord">
-    <![CDATA[
-      SELECT DISTINCT p.* FROM tbl_product p
-      LEFT JOIN tbl_order_item oi ON oi.product_id = p.product_id
-      LEFT JOIN tbl_order o ON o.order_id = oi.order_id
-      WHERE o.user_id = #userId#
-      ORDER BY oi.quantity DESC, oi.c_date DESC
-    ]]>
-  </select>
-  <resultMap id="ProductRecord" class="ProductRecord">
-    <result property="ID" column="product_id" />
-    <result property="MfID" column="mf_id" />
-    <result property="BrandID" column="brand_id" />
-    <result property="DiscountID" column="discount_id" />
-    <result property="SKU" column="product_sku" />
-    <result property="Alias" column="product_alias" />
-    <result property="Name" column="product_name" />
-    <result property="FreeText1" column="product_free_text_1" />
-    <result property="FreeText2" column="product_free_text_2" />
-    <result property="Brief" column="product_brief" />
-    <result property="Description" column="product_desc" />
-    <result property="ImagePath" column="product_image" />
-    <result property="ThumbnailPath" column="product_thumb" />
-    <result property="RewardPoints" column="product_reward_points" />
-    <result property="IsBestSeller" column="product_best_seller" />
-    <result property="IsHotDeal" column="product_hot_deal" />
-    <result property="IsNewArrival" column="product_new_arrival" />
-    <result property="IsPublished" column="product_publish" />
-    <result property="Ordering" column="product_order" />
-    <result property="AvailableDate" column="product_available_date" />
-    <result property="CreateDate" column="c_date" />
-    <result property="ModifyDate" column="m_date" />
-  </resultMap>
+	<select id="BrowseProduct" parameterClass="array" resultMap="ProductRecord">
+		<![CDATA[
+			SELECT DISTINCT p.* FROM tbl_product p 
+			LEFT JOIN tbl_product_cat_xref pcx ON p.product_id = pcx.product_id 
+			LEFT JOIN tbl_category c ON pcx.cat_id = c.cat_id 
+			LEFT JOIN tbl_brand b ON p.brand_id = b.brand_id
+			WHERE p.product_id > 0 AND p.product_publish = 1 
+			$ADDITIONAL_CONDITION$
+			ORDER BY $ORDER_BY$
+		]]>
+	</select>
+	<select id="FavouriteProduct" parameterClass="array" resultMap="ProductRecord">
+		<![CDATA[
+			SELECT DISTINCT p.* FROM tbl_product p
+			LEFT JOIN tbl_order_item oi ON oi.product_id = p.product_id
+			LEFT JOIN tbl_order o ON o.order_id = oi.order_id
+			WHERE o.user_id = #userId#
+			ORDER BY oi.quantity DESC, oi.c_date DESC
+		]]>
+	</select>
+	<select id="GetOrderItemByOrderID" parameterClass="int" resultMap="OrderItemRecord">
+		<![CDATA[
+			SELECT oi.* FROM tbl_order_item oi
+			LEFT JOIN tbl_order o ON oi.order_id = o.order_id
+			LEFT JOIN tbl_product p ON oi.product_id = p.product_id
+			LEFT JOIN tbl_brand b ON p.brand_id = b.brand_id
+			WHERE o.order_id = #orderId#
+			ORDER BY brand_name
+		]]>
+	</select>
+	<resultMap id="ProductRecord" class="ProductRecord">
+		<result property="ID" column="product_id" />
+		<result property="MfID" column="mf_id" />
+		<result property="BrandID" column="brand_id" />
+		<result property="DiscountID" column="discount_id" />
+		<result property="SKU" column="product_sku" />
+		<result property="Alias" column="product_alias" />
+		<result property="Name" column="product_name" />
+		<result property="FreeText1" column="product_free_text_1" />
+		<result property="FreeText2" column="product_free_text_2" />
+		<result property="Brief" column="product_brief" />
+		<result property="Description" column="product_desc" />
+		<result property="ImagePath" column="product_image" />
+		<result property="ThumbnailPath" column="product_thumb" />
+		<result property="RewardPoints" column="product_reward_points" />
+		<result property="IsBestSeller" column="product_best_seller" />
+		<result property="IsHotDeal" column="product_hot_deal" />
+		<result property="IsNewArrival" column="product_new_arrival" />
+		<result property="IsPublished" column="product_publish" />
+		<result property="Ordering" column="product_order" />
+		<result property="AvailableDate" column="product_available_date" />
+		<result property="CreateDate" column="c_date" />
+		<result property="ModifyDate" column="m_date" />
+	</resultMap>
 	<resultMap id="OrderItemRecord" class="OrderItemRecord">
 		<result property="ID" column="item_id" />
 		<result property="OrderID" column="order_id" />

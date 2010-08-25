@@ -51,8 +51,9 @@ class OrderForm extends TPage
 			$this->lblShipping->Text .= "Tel 1: ".$activeRecord->SPhone1;
 			if (strlen($activeRecord->SPhone2)>0) $this->lblShipping->Text .= ", Tel 2: ".$activeRecord->SPhone2;
 			if (strlen($activeRecord->SFax)>0) $this->lblShipping->Text .= ", Fax: ".$activeRecord->SFax;
-
-			$this->rptOrderItem->DataSource = OrderItemRecord::finder()->withProduct()->findAllByorder_id($activeRecord->ID);
+			
+			$sqlmap = $this->Application->Modules['sqlmap']->Client;
+			$this->rptOrderItem->DataSource = $sqlmap->queryForList("GetOrderItemByOrderID", $activeRecord->ID);
 			$this->rptOrderItem->DataBind();
 
 			$this->rptPayment->DataSource = PaymentRecord::finder()->withPaymentMethod()->findAllByorder_id($activeRecord->ID);
@@ -124,6 +125,38 @@ class OrderForm extends TPage
 					$historyRecord->save();
 				}
 				$this->ClientScript->registerEndScript("popup","popup2('OrderInvoice','".$this->Service->ConstructUrl("admincp.OrderInvoice",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num))."',true)");
+				//$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderInvoice",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num)));
+				$this->populateData();
+			}
+			catch(TException $ex)
+			{
+				$this->Notice->Type = AdminNoticeType::Error;
+				$this->Notice->Text = $this->Application->getModule("message")->translate("UPDATE_FAILED","order", "");
+			}
+		}
+	}
+	
+	protected function btnGenerateInvoiceAdmin_Clicked($sender, $param)
+	{
+		if ($this->IsValid)
+		{
+			$activeRecord = $this->getItem();
+			$activeRecord->Deliverer = $this->cboDelivererSelector->SelectedValue;
+			$activeRecord->TotalPacks = $this->cboTotalPacksSelector->SelectedValue;
+			$activeRecord->EstDeliveryDate = $this->txtEstDeliveryDate->SafeText;
+			$activeRecord->Comments = $this->txtComments->Text;
+			try
+			{
+				$activeRecord->save();
+				if ($activeRecord->LatestHistory->StatusCode == "W")
+				{
+					$historyRecord = new OrderHistoryRecord;
+					$historyRecord->OrderID = $activeRecord->ID;
+					$historyRecord->StatusCode = "P"; // P = processing
+					$historyRecord->Comments = "Generate invoice and process pending order";
+					$historyRecord->save();
+				}
+				$this->ClientScript->registerEndScript("popup","popup2('OrderInvoice','".$this->Service->ConstructUrl("admincp.OrderInvoice",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num,"mode"=>"admin"))."',true)");
 				//$this->Response->redirect($this->Service->ConstructUrl("admincp.OrderInvoice",array("id"=>$activeRecord->ID,"num"=>$activeRecord->Num)));
 				$this->populateData();
 			}

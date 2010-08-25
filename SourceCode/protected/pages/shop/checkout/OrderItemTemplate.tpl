@@ -1,6 +1,6 @@
 <tr>
 	<td width="40%" style="border:0;border-bottom:1px dashed #dddddd;text-align:left;">
-		<a href="<%= $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>"><%= $this->Data && $this->Data->Product ? $this->Data->Product->Name : "" %></a>
+		<a href="<%= $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("shop.ProductDetail",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>"><%= $this->Data && $this->Data->Product ? ($this->Data->Product->Brand?'<strong>'.$this->Data->Product->Brand->Name.'</strong> - ':"").$this->Data->Product->Name : "" %></a>
 	</td>
 	<td width="8%" style="border:0;border-bottom:1px dashed #dddddd;">
 		<com:TLabel Text="<%# $this->Data ? $this->Data->Quantity : 0 %>" />

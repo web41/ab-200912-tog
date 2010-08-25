@@ -30,7 +30,8 @@ class OrderInvoice extends TPage
 				if (strlen($activeRecord->SPhone2)>0) $this->lblShipping->Text .= ", Tel 2: ".$activeRecord->SPhone2;
 				if (strlen($activeRecord->SFax)>0) $this->lblShipping->Text .= ", Fax: ".$activeRecord->SFax;
 	
-				$this->rptOrderItem->DataSource = OrderItemRecord::finder()->withProduct()->findAllByorder_id($activeRecord->ID);
+				$sqlmap = $this->Application->Modules['sqlmap']->Client;
+				$this->rptOrderItem->DataSource = $sqlmap->queryForList("GetOrderItemByOrderID", $activeRecord->ID);
 				$this->rptOrderItem->DataBind();
 				
 				$this->lblDeliverer->Text = $activeRecord->Deliverer;

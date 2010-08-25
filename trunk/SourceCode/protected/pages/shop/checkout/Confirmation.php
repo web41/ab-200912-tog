@@ -140,63 +140,63 @@ class Confirmation extends TPage
 				$this->Notice->Type = UserNoticeType::Error;
 				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_NOT_FOUND","payment");
 				$this->mainBox->Visible = false;
+				return;
 			}
+			if ($this->Order && (!$this->Session->contains("OrderNumber") || $this->Order->Num != $this->Application->SecurityManager->validateData(base64_decode($this->Session["OrderNumber"]))))
+			{
+				try
+				{
+					if ($this->Application->Mode!='Debug') {
+						$emailer = $this->Application->getModule('mailer');
+						$email = $emailer->createNewEmail("OrderConfirmation");
+						$html = $email->HtmlContent->flush();
+						$baseThemeUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->Page->Theme->BaseUrl;
+						$dynamicContent = $this->generateHtmlContent();
+						$html = str_replace("%%BASE_URL%%",$baseThemeUrl,$html);
+						$html = str_replace("%%DYNAMIC_CONTENT%%",$dynamicContent,$html);
+						$email->setHtmlContent($html);
+						$receiver = new TEmailAddress;
+						$receiver->Field = TEmailAddressField::Receiver;
+						$receiver->Address = $this->Application->User->Email;
+						$receiver->Name = $this->Application->User->FirstName." ".$this->Application->User->LastName;
+						$email->getEmailAddresses()->add($receiver);
+						
+						$emailer->send($email);
+						
+						$email = $emailer->createNewEmail("OrderConfirmation2");
+						$html = $email->HtmlContent->flush();
+						$dynamicContent = $this->generateHtmlContent(true);
+						
+						$html = str_replace("%%BASE_URL%%",$baseThemeUrl,$html);
+						$html = str_replace("%%DYNAMIC_CONTENT%%",$dynamicContent,$html);
+						$email->setHtmlContent($html);
+						
+						$emailer->send($email);
+					}
+					// add credits to user
+					$user = UserRecord::finder()->findByPk($this->Application->User->ID);
+					if ($user instanceof UserRecord)
+					{
+						$user->Credits = $this->Order->Total;
+						$user->save();
+					}
+					
+					$this->Session["OrderNumber"] = base64_encode($this->Application->SecurityManager->hashData($this->Order->Num));
+				}
+				catch(TException $ex)
+				{
+					//throw new THttpException(500, $ex->ErrorMessage);
+					$this->Notice->Type = UserNoticeType::Error;
+					$this->Notice->Text = $this->Application->getModule('message')->translate('UNKNOWN_ERROR');
+				}	
+			}
+			//echo  $this->generateHtmlContent(true);
 		}
 	}
 	
 	public function render($writer)
 	{
 		parent::render($writer);
-		if ($this->Order && (!$this->Session->contains("OrderNumber") || $this->Order->Num != $this->Application->SecurityManager->validateData(base64_decode($this->Session["OrderNumber"]))))
-		{
-			//send email here
-			$emailer = $this->Application->getModule('mailer');
-			$email = $emailer->createNewEmail("OrderConfirmation");
-			$html = $email->HtmlContent->flush();
-			$baseThemeUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->Page->Theme->BaseUrl;
-			$dynamicContent = html_entity_decode($this->Session["HtmlContent"], ENT_QUOTES, "UTF-8");
-			$html = str_replace("%%BASE_URL%%",$baseThemeUrl,$html);
-			$html = str_replace("%%DYNAMIC_CONTENT%%",$dynamicContent,$html);
-			$email->setHtmlContent($html);
-			$receiver = new TEmailAddress;
-			$receiver->Field = TEmailAddressField::Receiver;
-			$receiver->Address = $this->Application->User->Email;
-			$receiver->Name = $this->Application->User->FirstName." ".$this->Application->User->LastName;
-			$email->getEmailAddresses()->add($receiver);
-			
-			// send email to administrator
-			$email2 = $emailer->createNewEmail("OrderNotice");
-			$email2->HtmlContent->findControl("ORDER_NUM")->Text = $this->Order->Num;
-			$email2->HtmlContent->findControl("ORDER_NUM")->NavigateUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).
-			$this->Service->constructUrl("admincp.OrderForm",array("id"=>$this->Order->ID,"num"=>$this->Order->Num));
-			$email2->HtmlContent->findControl("SO_FREQUENCY")->Text = $this->Session["SO_FREQUENCY"];
-			$email2->HtmlContent->findControl("SO_DURATION")->Text = $this->Session["SO_DURATION"];
-			$email2->HtmlContent->findControl("SO_STARTDATE")->Text = date('m-d-Y h:i',$this->Session["SO_STARTDATE"]);
-			$email2->HtmlContent->findControl("SO_PAYMENT")->Text = $this->Session["SO_PAYMENT"];
-			try
-			{
-				if ($this->Application->Mode!='Debug') {
-					$emailer->send($email);
-					$emailer->send($email2);
-				}
-				
-				// add credits to user
-				$user = UserRecord::finder()->findByPk($this->Application->User->ID);
-				if ($user instanceof UserRecord)
-				{
-					$user->Credits = $this->Order->Total;
-					$user->save();
-				}
-				
-				$this->Session["OrderNumber"] = base64_encode($this->Application->SecurityManager->hashData($this->Order->Num));
-			}
-			catch(TException $ex)
-			{
-				//throw new THttpException(500, $ex->ErrorMessage);
-				$this->Notice->Type = UserNoticeType::Error;
-				$this->Notice->Text = $this->Application->getModule('message')->translate('UNKNOWN_ERROR');
-			}
-		}
 	}
 	
 	public function populateData()
@@ -284,7 +284,8 @@ class Confirmation extends TPage
 	
 	public function setOrderItems()
 	{
-		$this->_orderItems = OrderItemRecord::finder()->withProduct()->findAllByorder_id($this->Order->ID);
+		$sqlmap = $this->Application->Modules['sqlmap']->Client;
+		$this->_orderItems = $sqlmap->queryForList("GetOrderItemByOrderID", $this->Order->ID);
 	}
 	
 	public function getOrderItems()
@@ -355,6 +356,120 @@ class Confirmation extends TPage
 		}
 		$this->Page->categoryMenu->populateData();
 		$this->Page->populateData();
+	}
+	
+	protected function generateHtmlContent($mailToAdmin=false) {
+		$html = '';
+		$html .= '	<div class="main_content">
+						<div id="invoice" style="margin:0;">
+							<h2>Order Invoice</h2>
+							<div style="float:right;">
+								Invoice No. <b>'.$this->Order->Num.'</b><br />
+								Date: <b>'.date('d/m/Y h:i:s A',$this->Order->CreateDate).'</b><br />
+								Status: <b>'.$this->Order->LatestHistory->OrderStatus->Name.'</b>
+							</div>
+							<table cellpadding="8" cellspacing="0" border="0" width="100%" >
+								<tr>
+									<td width="50%">
+										<b>Sold to:</b><br />
+										'.$this->Order->BTitle.' '.$this->Order->BFirstName.' '.$this->Order->BLastName.'<br />
+										'.$this->Order->BAddress1.(strlen($this->Order->BAddress2)>0?', '.$this->Order->BAddress2:'').', '.$this->Order->BCity.', '.$this->Order->BState.' '.$this->Order->BZipCode.', '.$this->Order->BCountry->Name.'<br />
+										Tel: '.$this->Order->BPhone1.(strlen($this->Order->BFax)>0?', Fax: '.$this->Order->BFax:'').'<br />
+									</td>
+									<td width="50%">
+										<b>Deliver to:</b><br />
+										'.$this->Order->STitle.' '.$this->Order->SFirstName.' '.$this->Order->SLastName.'<br />
+										'.$this->Order->SAddress1.(strlen($this->Order->SAddress2)>0?', '.$this->Order->SAddress2:'').', '.$this->Order->SCity.", ".$this->Order->SState." ".$this->Order->SZipCode.", ".$this->Order->SCountry->Name.'<br />
+										Tel: '.$this->Order->SPhone1.(strlen($this->Order->SFax)>0?', Fax: '.$this->Order->SFax:'').'<br />
+									</td>
+								</tr>
+							</table><br />
+							<table cellpadding="5" cellspacing="0" border="0" width="100%" style="text-align:center;margin-bottom:5px;">
+								<tr>
+									<td width="40%">Description</td>
+									<td width="8%">Qty</td>
+									<td width="16%">UOM</td>
+									<td width="12%">Price/Unit (SGD)</td>
+									<td width="12%">Disc/Unit (%)</td>
+									<td width="12%">Total (SGD)</td>
+								</tr>
+							</table>
+							<table cellpadding="4" cellspacing="0" width="100%" style="border:0;text-align:right;">';
+		foreach($this->OrderItems as $orderItem) {
+			if ($mailToAdmin) {
+				$desc = '(<strong>'.$orderItem->Product->Manufacturer->Name.'</strong>) ';
+			}
+			else $desc = '';
+			$desc .= '<strong>'.$orderItem->Product->Brand->Name.'</strong> - '.$orderItem->Product->Name;
+			$html .=			'<tr>
+									<td width="40%" style="border:0;border-bottom:1px dashed #dddddd;text-align:left;">
+										'.$desc.'
+									</td>
+									<td width="8%" style="border:0;border-bottom:1px dashed #dddddd;">
+										'.$orderItem->Quantity.'
+									</td>
+									<td width="16%" style="border:0;border-bottom:1px dashed #dddddd;text-align:left;">
+										'.$orderItem->Property->Name.'/unit
+									</td>
+									<td width="12%" style="border:0;border-bottom:1px dashed #dddddd;">
+										'.$this->getFormattedValue($orderItem->UnitPrice).'
+									</td>
+									<td width="12%" style="border:0;border-bottom:1px dashed #dddddd;">
+										'.$this->getFormattedValue($orderItem->UnitPrice,$orderItem->DiscountIsPercent?'p':'c').'
+									</td>
+									<td width="12%" style="border:0;border-bottom:1px dashed #dddddd;">
+										'.$this->getFormattedValue($orderItem->Subtotal).'
+									</td>
+								</tr>';
+		}
+		$html .=			'</table><br />
+							<table cellpadding="8" cellspacing="0" border="0" width="100%">
+								<tr>
+									<td width="55%" valign="top">
+										Deliverer: '.(strlen($this->Order->Deliverer)>0?$this->Order->Deliverer:'--').'<br />
+										Total packs: '.($this->Order->TotalPacks>0?$this->Order->TotalPacks:'--').'<br />
+										Payment Terms: '.$this->Payment->PaymentMethod->Name.'<br />
+										Delivery Date/Time: '.$this->Order->EstDeliveryDate.'
+									</td>
+									<td width="45%" valign="top">
+										<div style="float:right;margin:0;">
+											<div class="price">
+												<div class="text">Subtotal:</div>
+												<div class="value">'.$this->getFormattedValue($this->Order->Subtotal).'</div>
+											</div>
+											<div class="price">
+												<div class="text">Delivery Surcharge:</div>
+												<div class="value">'.$this->getFormattedValue($this->ShippingMethod->Price).'</div>
+											</div>';
+		if ($this->ShippingMethod->Price-$this->Order->ShippingAmount > 0) {
+			$html .=						'<div class="price">
+												<div class="text">Delivery Discount:</div>
+												<div class="value">-'.$this->getFormattedValue($this->ShippingMethod->Price-$this->Order->ShippingAmount).'</div>
+											</div>';
+		}
+		if ($this->Order->CouponAmount>0) {
+			$html .=						'<div class="price">
+												<div class="text">Coupon Discount:</div>
+												<div class="value">-'.$this->getFormattedValue($this->Order->CouponAmount).'</div>
+											</div>';
+		}
+		if ($this->Order->RewardPointsRebate>0) {
+			$html .=						'<div class="price">
+												<div class="text">Organic Point Rebate:</div>
+												<div class="value">-'.$this->getFormattedValue($this->Order->RewardPointsRebate).'</div>
+											</div>';
+		}
+		$html .=						'<div class="price">
+												<div class="text">Total:</div>
+												<div class="value">'.$this->getFormattedValue($this->Order->Total).'</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</table><br />					
+						</div>
+					</div>';
+		return $html;
 	}
 }
 

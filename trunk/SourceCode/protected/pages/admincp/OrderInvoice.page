@@ -57,7 +57,7 @@
 			</prop:HeaderTemplate>
 			<prop:ItemTemplate>
 				<tr>
-					<td style="border:none;text-align:left;" width="40%"><%# $this->Data->Product->Name %></td>
+					<td style="border:none;text-align:left;" width="40%"><%# ($this->Request->Contains('mode')&&$this->Request['mode']=='admin'?'(<strong>'.$this->Data->Product->Manufacturer->Name.'</strong>) ':'').'<strong>'.$this->Data->Product->Brand->Name.'</strong> - '.$this->Data->Product->Name %></td>
 					<td style="border:none;" width="8%"><%# $this->Data->Quantity %></td>
 					<td style="border:none;" width="16%"><%# ($this->Data->Property?$this->Data->Property->Name:"") %>/unit</td>
 					<td style="border:none;" width="12%"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data->UnitPrice %>" /></td>

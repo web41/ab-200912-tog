@@ -169,6 +169,22 @@ class Confirmation extends TPage
 						
 						$html = str_replace("%%BASE_URL%%",$baseThemeUrl,$html);
 						$html = str_replace("%%DYNAMIC_CONTENT%%",$dynamicContent,$html);
+						if ($this->Session->Contains('SO_FREQUENCY')) {
+							$frequency = $this->Session['SO_FREQUENCY'];
+							$html = str_replace("%%SO_FREQUENCY%%",$frequency,$html);
+						}
+						if ($this->Session->Contains('SO_DURATION')) {
+							$duration = $this->Session['SO_DURATION'];
+							$html = str_replace("%%SO_DURATION%%",$this->Session['SO_DURATION'],$html);
+						}
+						if ($this->Session->Contains('SO_STARTDATE')) {
+							$startdate = date('d/m/Y',$this->Session['SO_STARTDATE']);
+							$html = str_replace("%%SO_STARTDATE%%",$startdate,$html);
+						}
+						if ($this->Session->Contains('SO_PAYMENT')) {
+							$payment = $this->Session['SO_PAYMENT'];
+							$html = str_replace("%%SO_PAYMENT%%",$payment,$html);
+						}
 						$email->setHtmlContent($html);
 						
 						$emailer->send($email);

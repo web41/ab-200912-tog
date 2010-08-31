@@ -219,8 +219,10 @@ class ViewItemsBySupplier extends TPage
 				$workSheet->setCellValue("A4","No.")->getStyle("A4")->getFont()->setBold(true);
 				$workSheet->setCellValue("B4","Item Description")->getStyle("B4")->getFont()->setBold(true);
 				$workSheet->setCellValue("C4","Brand")->getStyle("C4")->getFont()->setBold(true);
-				$workSheet->setCellValue("D4","Quantity")->getStyle("D4")->getFont()->setBold(true);
-				if ($supplier == null) $workSheet->setCellValue("F4","Supplier")->getStyle("E4")->getFont()->setBold(true);
+				$workSheet->setCellValue("D4","Cost")->getStyle("D4")->getFont()->setBold(true);
+				$workSheet->setCellValue("E4","Quantity")->getStyle("E4")->getFont()->setBold(true);
+				$workSheet->setCellValue("F4","Amount")->getStyle("F4")->getFont()->setBold(true);
+				if ($supplier == null) $workSheet->setCellValue("H4","Supplier")->getStyle("H4")->getFont()->setBold(true);
 
 				$startRow = 5;
 				for($i=0;$i<count($orderItems);$i++)
@@ -232,11 +234,13 @@ class ViewItemsBySupplier extends TPage
 					$workSheet->setCellValue("A".($i+$startRow),$i+1);
 					$workSheet->setCellValue("B".($i+$startRow),$product->Name." - ".($prop instanceof PropertyRecord ? $prop->Name : ""));
 					$workSheet->setCellValue("C".($i+$startRow),$product->Brand->Name);
-					$workSheet->setCellValue("D".($i+$startRow),$orderItems[$i]->Quantity);
-					$workSheet->setCellValue("E".($i+$startRow),Common::showOrdinal($orderItems[$i]->Counter));
+					$workSheet->setCellValue("D".($i+$startRow),($prop instanceof PropertyRecord ? number_format($prop->CostPrice,2) : 0));
+					$workSheet->setCellValue("E".($i+$startRow),$orderItems[$i]->Quantity);
+					$workSheet->setCellValue("F".($i+$startRow),($prop instanceof PropertyRecord ? number_format($prop->CostPrice*$orderItems[$i]->Quantity,2) : 0));
+					$workSheet->setCellValue("G".($i+$startRow),Common::showOrdinal($orderItems[$i]->Counter));
 					if ($supplier == null)
 					{
-						$workSheet->setCellValue("F".($i+$startRow),$product->Manufacturer->Name);
+						$workSheet->setCellValue("H".($i+$startRow),$product->Manufacturer->Name);
 					}
 
 				}

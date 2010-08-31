@@ -24,9 +24,9 @@ class Review extends TPage
 				$this->setShippingAddress();
 				$this->setShippingMethod();
 				$this->populateData();
-				$this->cboPaymentSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
-				$this->cboPaymentSelector->DataBind();
-				
+				$this->rblPaymentSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
+				$this->rblPaymentSelector->DataBind();
+				$this->rblPaymentSelector->SelectedValue = 1;
 				$this->cboCreditsSelector->Items->clear();
 				$organicPoints = TPropertyValue::ensureArray($this->Application->Parameters["ORGANIC_POINTS"]);
 				foreach($organicPoints as $money=>$point)
@@ -223,7 +223,7 @@ class Review extends TPage
 					
 					$payment = new PaymentRecord;
 					$payment->OrderID = $order->ID;
-					$payment->PaymentMethodID = $this->cboPaymentSelector->SelectedValue;
+					$payment->PaymentMethodID = $this->rblPaymentSelector->SelectedValue;
 					$payment->Status = 0; // pending 
 					$payment->Amount = 0;
 					$payment->save();
@@ -256,7 +256,7 @@ class Review extends TPage
 					{
 						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.PayPalRedirector",array("hash"=>$this->generateHash($order->ID,$order->Num,$payment->ID))));
 					}
-					else if ($payment->PaymentMethodID == 2) // cash on delivery
+					else if ($payment->PaymentMethodID >= 2) // cash on delivery
 					{
 						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Confirmation",array("hash"=>$this->generateHash($order->ID,$order->Num,$payment->ID))));
 					}

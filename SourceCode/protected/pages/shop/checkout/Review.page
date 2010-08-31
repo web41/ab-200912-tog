@@ -76,7 +76,7 @@
 					<div class="text">Delivery Discount</div>
 					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price-$this->Cart->ShippingAmount %>" /></div>
 				</com:TPanel>
-				<com:TPanel CssClass="price" Visible="<%= $this->Cart && $this->Cart->CouponAmount>0 %>">
+				<com:TPanel CssClass="price" Visible="false">
 					<div class="text">Coupon Discount</div>
 					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart ? $this->Cart->CouponAmount : 0 %>" /></div>
 				</com:TPanel>
@@ -134,7 +134,8 @@
 
 		<h3>payment method</h3>
 		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;float:left;width:544px;">
-			<com:TDropDownList ID="cboPaymentSelector" 
+			<com:TRadioButtonList ID="rblPaymentSelector" 
+				RepeatLayout="Flow"
 				DataValueField="ID" DataTextField="Name" />
 		</div>
         
@@ -196,7 +197,7 @@
 <script type="text/javascript">
 	function disbleButtons(e)
 	{
-		if (document.getElementById('<%= $this->cboPaymentSelector->ClientID %>').selectedIndex > 0)
+		if (document.getElementById('<%= $this->rblPaymentSelector->ClientID %>').selectedIndex > 0)
 		{
 			var _form = document.forms['<%= $this->Form->ClientID %>'];
 			for(i=0;i<_form.length;i++)

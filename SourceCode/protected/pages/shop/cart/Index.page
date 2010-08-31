@@ -69,7 +69,7 @@
 					<div class="text">Shopping bag total: </div>
 					<div class="value"><com:TActiveLabel ID="lblSubtotal" /></div>
 				</div>
-				<com:TPanel ID="couponDiscount" CssClass="price">
+				<com:TPanel ID="couponDiscount" CssClass="price" Visible="false">
 					<div class="text">Coupon Discount: </div>
 					<div class="value"><com:TLabel ID="lblCouponDiscount" /></div>
 				</com:TPanel>

@@ -136,7 +136,8 @@ class ProductExport extends TPage {
             $workSheet->setCellValue("B1","Supplier")->getStyle("B1")->getFont()->setBold(true);
             $workSheet->setCellValue("C1","Brand")->getStyle("C1")->getFont()->setBold(true);
             $workSheet->setCellValue("D1","Product")->getStyle("D1")->getFont()->setBold(true);
-            
+			$workSheet->setCellValue("E1","Is Published")->getStyle("E1")->getFont()->setBold(true);
+			
             $startRow = 2;
             if (count($items)>0)
             {
@@ -146,6 +147,7 @@ class ProductExport extends TPage {
                     $workSheet->setCellValue("B".($i+$startRow),$items[$i]?$items[$i]->Manufacturer->Name:"");
                     $workSheet->setCellValue("C".($i+$startRow),$items[$i]?$items[$i]->Brand->Name:"");
                     $workSheet->setCellValue("D".($i+$startRow),$items[$i]->Name);
+					$workSheet->setCellValue("E".($i+$startRow),$items[$i]->IsPublished==1?'Yes':'No');
                 }
             }
 
@@ -153,6 +155,7 @@ class ProductExport extends TPage {
             $workSheet->getColumnDimension("B")->setWidth(50);
             $workSheet->getColumnDimension("C")->setWidth(50);
             $workSheet->getColumnDimension("D")->setWidth(75);
+			$workSheet->getColumnDimension("E")->setWidth(20);
 
             $phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
             $fileName = "TOG_ProductList_On_".date("Y.m.d_h.i.s",time()).".xls";

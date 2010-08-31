@@ -80,6 +80,13 @@
 									<com:TLabel Text="<%# ($this->Parent->Data->Product && $this->Parent->Data->Product->Brand ? $this->Parent->Data->Product->Brand->Name : '') %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.Width="10%">
+								<prop:HeaderTemplate>Cost</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Parent->Data->Property->CostPrice %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
 							
 							<com:TTemplateColumn HeaderStyle.Width="5%">
 								<prop:HeaderTemplate>
@@ -89,6 +96,13 @@
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<com:TLabel Text="<%# $this->Parent->Data->Quantity %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+
+							<com:TTemplateColumn HeaderStyle.Width="10%">
+								<prop:HeaderTemplate>Amount</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TNumberFormat Type="currency" Culture="en_US" Currency="USD" Value="<%# $this->Parent->Data->Property->CostPrice*$this->Parent->Data->Quantity %>" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							

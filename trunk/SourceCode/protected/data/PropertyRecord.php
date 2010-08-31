@@ -10,6 +10,7 @@ class PropertyRecord extends TActiveRecord
 	public $ProductID;
 	public $Name;
 	public $Price;
+	public $CostPrice;
 	public $InStock=10;
 	
 	public static $COLUMN_MAPPING=array
@@ -18,6 +19,7 @@ class PropertyRecord extends TActiveRecord
 		'product_id'=>'ProductID',
 		'prop_name'=>'Name',
 		'prop_price'=>'Price',
+		'prop_cost_price'=>'CostPrice',
 		'prop_in_stock'=>'InStock'
 	);
 	

@@ -76,18 +76,18 @@
 							<div class="text">Subtotal:</div>
 							<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->Subtotal %>" /></div>
 						</div>
-						<div class="price">
-							<div class="text">Delivery Surcharge:</div>
+						<com:TPanel CssClass="price" Visible="<%= $this->ShippingMethod->Price>0 %>">
+							<div class="text">Delivery Surcharge</div>
 							<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price %>" /></div>
-						</div>
-						<div class="price">
-							<div class="text">Delivery Discount:</div>
+						</com:TPanel>
+						<com:TPanel CssClass="price" Visible="<%= $this->ShippingMethod->Price-$this->Order->ShippingAmount>0 %>">
+							<div class="text">Delivery Discount</div>
 							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price-$this->Order->ShippingAmount %>" /></div>
-						</div>
-						<div class="price">
-							<div class="text">Coupon Discount:</div>
-							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->CouponAmount %>" /></div>
-						</div>
+						</com:TPanel>
+						<com:TPanel CssClass="price" Visible="false">
+							<div class="text">Coupon Discount</div>
+							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order ? $this->Order->CouponAmount : 0 %>" /></div>
+						</com:TPanel>
 						<div class="price">
 							<div class="text">organic point rebate:</div>
 							<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Order->RewardPointsRebate %>" /></div>

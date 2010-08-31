@@ -126,7 +126,7 @@ class OrderRecord extends TActiveRecord
 		{
 			$criteria = new TActiveRecordCriteria;
 			$criteria->Condition = "order_id > 0";
-			$number = self::finder()->count($criteria)+1;
+			$number = self::finder()->count($criteria)+155000;
 		}
 		$arg = "%0{$length}d";
 		return $prefix.date("dmY",time())."-".sprintf($arg, $number);

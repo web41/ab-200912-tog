@@ -122,7 +122,7 @@ class Confirmation extends TPage
 				fclose ($fp);
 				/***** END CHECK PAYPAL *****/
 			}
-			else if ($paymentRecord->PaymentMethodID == 2) // Cash on delivery
+			else if ($paymentRecord->PaymentMethodID >= 2) // Cash on delivery or Cheque
 			{
 				$paymentRecord->Status = 0; // pending
 				$paymentRecord->save();

@@ -212,10 +212,10 @@
 										<div class="text">Delivery Discount:</div>
 										<div class="value">-<com:TNumberFormat ID="nfShippingDiscount" Type="currency" Currency="USD" /></div>
 									</div>
-									<div class="price">
+									<com:TPanel CssClass="price" Visible="false">
 										<div class="text">Coupon Discount:</div>
 										<div class="value">-<com:TNumberFormat ID="nfCouponDiscount" Type="currency" Currency="USD" /></div>
-									</div>
+									</com:TPanel>
 									<div class="price">
 										<div class="text">Organic Point Rebate:</div>
 										<div class="value">-<com:TNumberFormat ID="nfPointRebate" Type="currency" Currency="USD" /></div>

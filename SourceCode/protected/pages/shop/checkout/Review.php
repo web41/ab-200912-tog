@@ -236,19 +236,6 @@ class Review extends TPage
 					$payment->Amount = 0;
 					$payment->save();
 					
-					// credit user organic points
-					$user = UserRecord::finder()->findByPk($this->Application->User->ID);
-					if ($user instanceof UserRecord)
-					{
-						if ($this->cboCreditsSelector->SelectedItem)
-						{
-							$user->Credits = $user->Credits - TPropertyValue::ensureInteger($this->cboCreditsSelector->SelectedItem->Text);
-							$user->CreditsUsed = $user->CreditsUsed + TPropertyValue::ensureInteger($this->cboCreditsSelector->SelectedItem->Text);
-						}
-						$user->save();
-						$this->Application->getModule("auth")->updateSessionUser($this->Application->User->createUser($user->Email));
-					}
-					
 					// temporary store standing orders values
 					$this->Session['SO_FREQUENCY'] = $this->cboFrequencySelector->SelectedValue;
 					$this->Session['SO_DURATION'] = $this->cboDurationSelector->SelectedValue;

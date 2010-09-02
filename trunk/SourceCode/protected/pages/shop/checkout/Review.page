@@ -137,6 +137,13 @@
 			<com:TRadioButtonList ID="rblPaymentSelector" 
 				RepeatLayout="Flow"
 				DataValueField="ID" DataTextField="Name" />
+			<com:TRequiredFieldValidator ID="TRequiredFieldValidator1"
+				CssClass="error"
+				ControlToValidate="rblPaymentSelector"
+				ValidationGroup="PaymentMethod"
+				ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','paymend method') %>"
+				Display="Dynamic"
+				FocusOnError="True"/>
 		</div>
         
         <h3>comments</h3>

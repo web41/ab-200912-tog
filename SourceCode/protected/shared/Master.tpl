@@ -84,7 +84,12 @@
 			<a href="<%= $this->Service->ConstructUrl("shop.ContactUs") %>">Contact Us</a></li> |
 			<a href="<%= $this->Service->ConstructUrl("shop.TermandCondition") %>">Terms and Conditions</a><br />
 			Copyright &copy; 2010 <a href="<%= $this->Service->ConstructUrl("shop.Index") %>">The Organic Grocer</a>. All rights reserved.<br />
-            Designed by <a href="http://www.asiablaze.com">AsiaBlaze Design</a>.
+            Designed by <a href="http://www.asiablaze.com">AsiaBlaze Design</a><br />
+            <img src="<%= $this->Page->Theme->BaseUrl %>/images/paypal.png" alt="" /> &nbsp;
+            <img src="<%= $this->Page->Theme->BaseUrl %>/images/visa.png" alt="" /> &nbsp;
+            <img src="<%= $this->Page->Theme->BaseUrl %>/images/master.png" alt="" /> &nbsp;
+            <img src="<%= $this->Page->Theme->BaseUrl %>/images/amex.png" alt="" /> &nbsp;
+            <img src="<%= $this->Page->Theme->BaseUrl %>/images/circus.png" alt="" />
 		</div>
 	</div>
 	</com:TForm>

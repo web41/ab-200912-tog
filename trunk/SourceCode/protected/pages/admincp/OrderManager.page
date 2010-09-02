@@ -43,6 +43,10 @@
 								ValidationGroup="filter" Style="margin:0;padding:0;float:right;"/>
 							<com:TTextBox ID="txtSearchText" CssClass="textbox" Text="Filter by ID or Number" Attributes.onfocus="this.select()" />
 							<com:TDropDownList ID="cboUserSelector" AutoPostBack="true" PromptText="All customers" PromptValue="0" OnSelectedIndexChanged="cboUserSelector_SelectedIndexChanged" />
+							<com:TDropDownList ID="cboStatusSelector" AutoPostBack="true" 
+								PromptText="All statuses" PromptValue="0" 
+								DataTextField="Name" DataValueField="Code"
+								OnSelectedIndexChanged="cboStatusSelector_SelectedIndexChanged" />
 						</div>
 					</div></div></div>
 					<div class="content nopadding">
@@ -56,12 +60,12 @@
 							</com:TTemplateColumn>
 							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">Order Number
+									<a href="<%# $this->Page->populateSortUrl(1,(($this->Page->SortBy==1 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID,$this->Page->LatestStatus) %>">Order Number
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==1 %>" />
 									</a>
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:THyperLink Text="<%# $this->Parent->Data->Num %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$this->Parent->Data->ID,"num"=>$this->Parent->Data->Num,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,"",$this->Page->UserID,false)))) %>' />
+									<com:THyperLink Text="<%# $this->Parent->Data->Num %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.OrderForm",array("id"=>$this->Parent->Data->ID,"num"=>$this->Parent->Data->Num,"refUrl"=>urlencode($this->Page->populateSortUrl($this->Page->SortBy,$this->Page->SortType,$this->Page->SearchText,$this->Page->UserID,$this->Page->LatestStatus,false)))) %>' />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							
@@ -73,7 +77,7 @@
 							
 							<com:TTemplateColumn HeaderStyle.Width="8%">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">Total
+									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID,$this->Page->LatestStatus) %>">Total
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==2 %>" />
 									</a>
 								</prop:HeaderTemplate>
@@ -84,7 +88,7 @@
 
 							<com:TTemplateColumn HeaderStyle.Width="18%">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">Create Date
+									<a href="<%# $this->Page->populateSortUrl(3,(($this->Page->SortBy==3 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID,$this->Page->LatestStatus) %>">Create Date
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==3 %>" />
 									</a>
 								</prop:HeaderTemplate>
@@ -93,15 +97,18 @@
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							
-							<com:TTemplateColumn HeaderStyle.Width="10%" HeaderText="Status">
+							<com:TTemplateColumn ID="colLatestHistory" HeaderStyle.Width="10%">
+								<prop:HeaderTemplate>
+									<com:TImageButton ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_success.png" CommandName="history_save" ToolTip="Save changed statuses" />Status
+								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
-									<com:TLabel Text="<%# $this->Parent->Data->LatestHistory ? $this->Parent->Data->LatestHistory->OrderStatus->Name : '' %>" />
+									<com:TDropDownList ID="cboLatestHistory" DataTextField="Name" DataValueField="Code" />
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							
 							<com:TTemplateColumn ID="colID" HeaderStyle.Width="4%">
 								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID) %>">ID
+									<a href="<%# $this->Page->populateSortUrl(0,(($this->Page->SortBy==0 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID,$this->Page->LatestStatus) %>">ID
 										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==0 %>" />
 									</a>
 								</prop:HeaderTemplate>

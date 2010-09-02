@@ -9,6 +9,7 @@ class MailingListManager extends TPage
 	private $_searchText = "";
 	private $_sortable = array("mailing_id","mailing_address","mailing_name");
 	private $_queryParams = array("p","st","sb","q");
+	private $_mailType = 'mailing';
 	const AR = "MailingListRecord";
 
 	public function getSortBy()
@@ -70,6 +71,14 @@ class MailingListManager extends TPage
 	{
 		$this->_searchText = $value;
 	}
+	
+	public function getMailType() {
+		return $this->_mailType;
+	}
+	
+	public function setMailType($value) {
+		$this->_mailType = $value;
+	}
 
 	public function onLoad($param)
 	{
@@ -80,9 +89,11 @@ class MailingListManager extends TPage
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 1;
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
+		$this->MailType = ($this->Request->contains('mt')) ? $this->Request['mt'] : 'mailing';
 		if (!$this->IsPostBack)
 		{
 			if ($this->SearchText) $this->txtSearchText->Text = $this->SearchText;
+			$this->cboTypeSelector->SelectedValue = $this->MailType;
 			$this->populateData();
 			if ($this->Request->Contains("action") && $this->Request->Contains("msg"))
 			{
@@ -107,46 +118,94 @@ class MailingListManager extends TPage
 
 	protected function populateData()
 	{
-		$criteria = new TActiveRecordCriteria;
-		$criteria->OrdersBy[$this->Sortable[$this->SortBy]] = $this->SortType;
-		// addtional condition here
-		// this part will be hard-code on each page
-		$criteria->Condition = "mailing_id in (select distinct mailing_id from tbl_mailing_list where mailing_id > 0 ";
-		if (strlen($this->SearchText)>0)
-		{
-			$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));
-			$searchQuery = "";
-			foreach($searchArray as $index=>$value)
+		if ($this->MailType=='mailing') {
+			$this->ItemList->Visible = true; $this->ItemList2->Visible = false;
+			$criteria = new TActiveRecordCriteria;
+			$criteria->OrdersBy[$this->Sortable[$this->SortBy]] = $this->SortType;
+			// addtional condition here
+			// this part will be hard-code on each page
+			$criteria->Condition = "mailing_id in (select distinct mailing_id from tbl_mailing_list where mailing_id > 0 ";
+			if (strlen($this->SearchText)>0)
 			{
-				$searchQuery .= ($index>0 ? " or " : "")." mailing_id like '%".addslashes($searchArray[$index])."%' or mailing_address like '%".addslashes($searchArray[$index])."%'";
+				$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));
+				$searchQuery = "";
+				foreach($searchArray as $index=>$value)
+				{
+					$searchQuery .= ($index>0 ? " or " : "")." mailing_id like '%".addslashes($searchArray[$index])."%' or mailing_address like '%".addslashes($searchArray[$index])."%'";
+				}
+				$criteria->Condition .= " and (".$searchQuery.") ";
 			}
-			$criteria->Condition .= " and (".$searchQuery.") ";
+			// -- 
+			$criteria->Condition .= ")";
+			$activeRecord = Prado::createComponent(self::AR);
+			$this->ItemList->VirtualItemCount = count($activeRecord->finder()->findAll($criteria));
+			$this->MaxPage = ceil($this->ItemList->VirtualItemCount/$this->ItemList->PageSize);
+			if ($this->CurrentPage > $this->MaxPage) $this->CurrentPage = $this->MaxPage;
+			$limit = $this->ItemList->PageSize;
+			$offset = ($this->CurrentPage-1) * $limit;
+
+			if ($offset + $limit > $this->ItemList->VirtualItemCount)
+				$limit = $this->ItemList->VirtualItemCount - $offset;
+
+			$criteria->Limit = $limit;
+			$criteria->Offset = $offset;
+			$items = $activeRecord->finder()->findAll($criteria);
+			$this->ItemList->DataSource = $items;
+			$this->ItemList->dataBind();
+			if (count($items) <= 0)
+			{
+				$this->Notice->Type = AdminNoticeType::Information;
+				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"record");
+			}
 		}
-		// -- 
-		$criteria->Condition .= ")";
-		$activeRecord = Prado::createComponent(self::AR);
-		$this->ItemList->VirtualItemCount = count($activeRecord->finder()->findAll($criteria));
-		$this->MaxPage = ceil($this->ItemList->VirtualItemCount/$this->ItemList->PageSize);
-		if ($this->CurrentPage > $this->MaxPage) $this->CurrentPage = $this->MaxPage;
-		$limit = $this->ItemList->PageSize;
-		$offset = ($this->CurrentPage-1) * $limit;
+		else if ($this->MailType=='user') {
+			$this->ItemList->Visible = false; $this->ItemList2->Visible = true;
+			$this->PPager1->ControlToPaginate = 'ItemList2';
+			// re-define sortable
+			$this->_sortable = array('user_id','user_email','first_name','last_name');
+			$criteria = new TActiveRecordCriteria;
+			$criteria->OrdersBy[$this->Sortable[$this->SortBy]] = $this->SortType;
+			if ($this->SortBy==2) {
+				$criteria->OrdersBy[$this->Sortable[3]] = $this->SortType;
+			}
+			// addtional condition here
+			// this part will be hard-code on each page
+			$criteria->Condition = "user_id in (select distinct user_id from tbl_user where user_id > 0 ";
+			if (strlen($this->SearchText)>0)
+			{
+				$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));
+				$searchQuery = "";
+				foreach($searchArray as $index=>$value)
+				{
+					$searchQuery .= ($index>0 ? " or " : "")." user_id like '%".addslashes($searchArray[$index])."%' or user_email like '%".addslashes($searchArray[$index])."%'";
+				}
+				$criteria->Condition .= " and (".$searchQuery.") ";
+			}
+			// -- 
+			$criteria->Condition .= ")";
+			$this->ItemList2->VirtualItemCount = UserRecord::finder()->count($criteria);
+			$this->MaxPage = ceil($this->ItemList2->VirtualItemCount/$this->ItemList2->PageSize);
+			if ($this->CurrentPage > $this->MaxPage) $this->CurrentPage = $this->MaxPage;
+			$limit = $this->ItemList2->PageSize;
+			$offset = ($this->CurrentPage-1) * $limit;
 
-		if ($offset + $limit > $this->ItemList->VirtualItemCount)
-			$limit = $this->ItemList->VirtualItemCount - $offset;
+			if ($offset + $limit > $this->ItemList2->VirtualItemCount)
+				$limit = $this->ItemList2->VirtualItemCount - $offset;
 
-		$criteria->Limit = $limit;
-		$criteria->Offset = $offset;
-		$items = $activeRecord->finder()->findAll($criteria);
-		$this->ItemList->DataSource = $items;
-		$this->ItemList->dataBind();
-		if (count($items) <= 0)
-		{
-			$this->Notice->Type = AdminNoticeType::Information;
-			$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"coupon");
+			$criteria->Limit = $limit;
+			$criteria->Offset = $offset;
+			$items = UserRecord::finder()->findAll($criteria);
+			$this->ItemList2->DataSource = $items;
+			$this->ItemList2->dataBind();
+			if (count($items) <= 0)
+			{
+				$this->Notice->Type = AdminNoticeType::Information;
+				$this->Notice->Text = $this->Application->getModule("message")->translate("ITEM_FOUND",0,"record");
+			}
 		}
 	}
 
-	public function populateSortUrl($sortBy, $sortType, $search="", $resetPage=true)
+	public function populateSortUrl($sortBy, $sortType, $search="", $mailType='mailing', $resetPage=true)
 	{
 		$params = $this->Request->toArray();
 		foreach($params as $key=>$value)
@@ -157,6 +216,8 @@ class MailingListManager extends TPage
 		$serviceParameter = $this->Request->ServiceParameter;
 		if (strlen($search)>0) $params['q'] = $search;
 		else if (isset($params['q'])) unset($params['q']);
+		if (strlen($mailType)>0) $params['mt'] = $mailType;
+		else if (isset($params['mt'])) unset($params['mt']);
 		if ($resetPage)	$params['p'] = 1;
 		$params['sb'] = $sortBy;
 		$params['st'] = $sortType;
@@ -294,6 +355,10 @@ class MailingListManager extends TPage
 			$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
 		}
 		$this->populateData();
+	}
+	
+	protected function cboTypeSelector_SelectedIndexChanged($sender, $param) {
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$sender->SelectedValue));
 	}
 }
 

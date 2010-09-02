@@ -187,8 +187,12 @@ class Confirmation extends TPage
 					$user = UserRecord::finder()->findByPk($this->Application->User->ID);
 					if ($user instanceof UserRecord)
 					{
-						$user->Credits = $this->Order->Total;
+						$organicPoints = TPropertyValue::ensureArray($this->Application->Parameters['ORGANIC_POINTS']);
+						$credits = $organicPoints[TPropertyValue::ensureInteger($this->Order->RewardPointsRebate)];
+						$user->Credits = $user->Credits - $credits + TPropertyValue::ensureInteger($this->Order->Total);
+						$user->CreditsUsed = $user->CreditsUsed + $credits;
 						$user->save();
+						$this->Application->getModule("auth")->updateSessionUser($this->Application->User->createUser($user->Email));
 					}
 					
 					$this->Session["OrderNumber"] = base64_encode($this->Application->SecurityManager->hashData($this->Order->Num));

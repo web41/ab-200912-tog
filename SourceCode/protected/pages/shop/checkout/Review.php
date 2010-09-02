@@ -8,12 +8,20 @@ class Review extends TPage
 	private $_shipping;
 	private $_shippingMethod;
 	private $_user;
+	private $_hash;
 	
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
 		if (!$this->IsPostBack)
 		{
+			if ($this->Request->contains('hash')) {
+				// delete order for better management
+				$this->setHash($this->Request['hash']);
+				if (isset($this->Hash['oid'])) {
+					OrderRecord::finder()->deleteByPk($this->Hash['oid']);
+				}
+			}
 			$this->setCart();
 			$cartRecord = $this->getCart();
 			if (!$cartRecord)
@@ -284,6 +292,27 @@ class Review extends TPage
 		$pid = base64_encode($this->Application->SecurityManager->hashData($pid));
 		$hash = array($oid,$onum,$pid);
 		return $this->Application->SecurityManager->hashData(serialize($hash));
+	}
+	
+	public function setHash($value)
+	{
+		if(($value = $this->Application->SecurityManager->validateData($value))!==false)
+		{
+			$value=unserialize($value);
+			if(is_array($value) && count($value)===3)
+			{
+				list($oid,$onum,$pid)=$value;
+				$oid = TPropertyValue::ensureInteger($this->Application->SecurityManager->validateData(base64_decode($oid)));
+				$onum = $this->Application->SecurityManager->validateData(base64_decode($onum));
+				$pid = TPropertyValue::ensureInteger($this->Application->SecurityManager->validateData(base64_decode($pid)));
+				$this->_hash = array('oid'=>$oid,'onum'=>$onum,'pid'=>$pid);
+			}
+		}
+	}
+	
+	public function getHash()
+	{
+		return $this->_hash;
 	}
 }
 

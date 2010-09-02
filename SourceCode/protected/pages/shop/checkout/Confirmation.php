@@ -109,7 +109,7 @@ class Confirmation extends TPage
 					else if (strcmp ($lines[0], "FAIL") == 0)
 					{
 						$this->Notice->Type = UserNoticeType::Error;
-						$this->Notice->Text = $this->Application->getModule("message")->translate("PAYPAL_CONNECT_ERROR");
+						$this->Notice->Text = $this->Application->getModule("message")->translate("PAYPAL_PAYMENT_ERROR");
 						$this->mainBox->Visible = false;
 					}
 					else

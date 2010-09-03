@@ -174,7 +174,7 @@ class ProductExport extends TPage {
 			$workSheet->getColumnDimension("G")->setWidth(10);
 
             $phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
-            $fileName = "TOG_ProductList_On_".date("Y.m.d_h.i",time()).".xls";
+            $fileName = "TOG_ProductList_On_".date("Y-m-d_h-i",time()).".xls";
             $this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
             $this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
             $this->Response->appendHeader("Cache-Control:max-age=0");

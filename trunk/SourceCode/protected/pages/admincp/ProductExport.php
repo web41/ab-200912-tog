@@ -121,7 +121,7 @@ class ProductExport extends TPage {
         // -- 
         $criteria->Condition .= ")";
         $activeRecord = Prado::createComponent(self::AR);
-        $items = $activeRecord->finder()->withBrand()->withManufacturer()->withCategories()->findAll($criteria);
+		$items = $activeRecord->finder()->withBrand()->withManufacturer()->withCategories()->withProperties()->findAll($criteria);
         try
         {
             $workBook = new PHPExcel();
@@ -135,30 +135,46 @@ class ProductExport extends TPage {
             $workSheet->setCellValue("A1","No")->getStyle("A1")->getFont()->setBold(true);;
             $workSheet->setCellValue("B1","Supplier")->getStyle("B1")->getFont()->setBold(true);
             $workSheet->setCellValue("C1","Brand")->getStyle("C1")->getFont()->setBold(true);
-            $workSheet->setCellValue("D1","Product")->getStyle("D1")->getFont()->setBold(true);
-			$workSheet->setCellValue("E1","Is Published")->getStyle("E1")->getFont()->setBold(true);
+			$workSheet->mergeCells("D1:E1");
+			$workSheet->setCellValue("D1","Product")->getStyle("D1")->getFont()->setBold(true);
+			$workSheet->setCellValue("F1","Price")->getStyle("F1")->getFont()->setBold(true);
+			$workSheet->setCellValue("G1","Is Published")->getStyle("G1")->getFont()->setBold(true);
 			
             $startRow = 2;
             if (count($items)>0)
             {
-                for($i=0;$i<count($items);$i++)
+				for($i=0; $i<count($items); $i++)
                 {
-                    $workSheet->setCellValue("A".($i+$startRow),$i+1);
+					$props = count($items[$i]->Properties);
+					$workSheet->mergeCells('A'.($i+$startRow).':A'.($i+$startRow+$props-1));
+					$workSheet->mergeCells('B'.($i+$startRow).':B'.($i+$startRow+$props-1));
+					$workSheet->mergeCells('C'.($i+$startRow).':C'.($i+$startRow+$props-1));
+					$workSheet->mergeCells('D'.($i+$startRow).':D'.($i+$startRow+$props-1));
+					$workSheet->mergeCells('G'.($i+$startRow).':G'.($i+$startRow+$props-1));
+                    
+					$workSheet->setCellValue("A".($i+$startRow),$i+1);
                     $workSheet->setCellValue("B".($i+$startRow),$items[$i]?$items[$i]->Manufacturer->Name:"");
                     $workSheet->setCellValue("C".($i+$startRow),$items[$i]?$items[$i]->Brand->Name:"");
                     $workSheet->setCellValue("D".($i+$startRow),$items[$i]->Name);
-					$workSheet->setCellValue("E".($i+$startRow),$items[$i]->IsPublished==1?'Yes':'No');
+					for($j=0; $j<$props; $j++) {
+						$workSheet->setCellValue("E".($i+$startRow+$j),$items[$i]->Properties[$j]->Name);
+						$workSheet->setCellValue("F".($i+$startRow+$j),number_format($items[$i]->Properties[$j]->Price,2));
+					}
+					$workSheet->setCellValue("G".($i+$startRow),$items[$i]->IsPublished==1?'Yes':'No');
+					$startRow = $startRow + $props - 1;
                 }
             }
 
-            $workSheet->getColumnDimension("A")->setWidth(15);
-            $workSheet->getColumnDimension("B")->setWidth(50);
-            $workSheet->getColumnDimension("C")->setWidth(50);
-            $workSheet->getColumnDimension("D")->setWidth(75);
-			$workSheet->getColumnDimension("E")->setWidth(20);
+			$workSheet->getColumnDimension("A")->setWidth(10);
+			$workSheet->getColumnDimension("B")->setWidth(10);
+			$workSheet->getColumnDimension("C")->setWidth(25);
+			$workSheet->getColumnDimension("D")->setWidth(50);
+			$workSheet->getColumnDimension("E")->setWidth(50);
+			$workSheet->getColumnDimension("F")->setWidth(10);
+			$workSheet->getColumnDimension("G")->setWidth(10);
 
             $phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
-            $fileName = "TOG_ProductList_On_".date("Y.m.d_h.i.s",time()).".xls";
+            $fileName = "TOG_ProductList_On_".date("Y.m.d_h.i",time()).".xls";
             $this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
             $this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
             $this->Response->appendHeader("Cache-Control:max-age=0");

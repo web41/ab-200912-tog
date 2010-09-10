@@ -28,6 +28,19 @@ class Review extends TPage
 				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
 			else
 			{
+				if ($cartRecord->Subtotal < 100) {
+					$shippingMethod = ShippingMethodRecord::finder()->findByPk(6);
+					if ($shippingMethod instanceof ShippingMethodRecord) {
+						$cartRecord->ShippingMethodID = $shippingMethod->ID;
+						$cartRecord->ShippingAmount = $shippingMethod->Price;
+					}
+				}
+				else {
+					$cartRecord->ShippingMethodID = 0;
+					$cartRecord->ShippingAmount = 0;
+				}
+				$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount-$cartRecord->RewardPointsRebate+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
+				$cartRecord->save();
 				$this->setBillingAddress();
 				$this->setShippingAddress();
 				$this->setShippingMethod();

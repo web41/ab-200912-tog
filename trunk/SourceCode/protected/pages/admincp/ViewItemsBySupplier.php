@@ -225,6 +225,7 @@ class ViewItemsBySupplier extends TPage
 				if ($supplier == null) $workSheet->setCellValue("H4","Supplier")->getStyle("H4")->getFont()->setBold(true);
 
 				$startRow = 5;
+				$totalCost = 0;
 				for($i=0;$i<count($orderItems);$i++)
 				{	
 					$orderItems[$i]->Counter++;
@@ -242,8 +243,10 @@ class ViewItemsBySupplier extends TPage
 					{
 						$workSheet->setCellValue("H".($i+$startRow),$product->Manufacturer->Name);
 					}
-
+					$totalCost += ($prop instanceof PropertyRecord ? number_format($prop->CostPrice*$orderItems[$i]->Quantity,2) : 0);
 				}
+				$workSheet->setCellValue("E".(count($orderItems)+$startRow),'Total')->getStyle("E".(count($orderItems)+$startRow))->getFont()->setBold(true);
+				$workSheet->setCellValue("F".(count($orderItems)+$startRow),$totalCost)->getStyle("F".(count($orderItems)+$startRow))->getFont()->setBold(true);
 
 				$workSheet->getColumnDimension("A")->setWidth(20);
 				$workSheet->getColumnDimension("B")->setWidth(80);
@@ -251,7 +254,7 @@ class ViewItemsBySupplier extends TPage
 			}
 			
 			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
-			$fileName = "Export_Generated_On_".date("Y.m.d_h.i.s",time()).".xls";
+			$fileName = "Export_Generated_On_".date("Y-m-d_h-i",time()).".xls";
 			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
 			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
 			$this->Response->appendHeader("Cache-Control:max-age=0");

@@ -209,6 +209,8 @@ class Index extends TPage
                 $sql .= "AND (c.parent_id = $this->CatID or c.cat_id = $this->CatID) ";
             }
             if ($this->IsBestSeller) {
+				$this->lblCatPath->Text = 'Best Seller Products';
+				$this->lblCatPath->Visible = true;
                 $sql .= "AND p.product_best_seller = 1 ";
             }
             if ($this->IsNew) {

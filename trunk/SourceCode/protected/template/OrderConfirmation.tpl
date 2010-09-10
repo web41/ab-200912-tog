@@ -17,6 +17,19 @@
 <!-- Main column -->
 <div class="main_col">
 	%%DYNAMIC_CONTENT%%
+	<table cellpadding="8" cellspacing="0" border="0" width="100%">
+	<tr>
+		<td>Standing order information (if any)</td>
+	</tr>
+	<tr>
+		<td valign="top">
+			Frequency: %%SO_FREQUENCY%%<br />
+			Duration: %%SO_DURATION%%<br />
+			Start Date: %%SO_STARTDATE%%<br />
+			Payment: %%SO_PAYMENT%% <br /><br />
+		</td>
+	</tr>
+	</table>
 </div>
 <!-- Main column: END -->
 </body>

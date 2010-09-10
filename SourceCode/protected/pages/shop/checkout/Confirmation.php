@@ -147,6 +147,12 @@ class Confirmation extends TPage
 				try
 				{
 					if ($this->Application->Mode!='Debug') {
+						
+						$frequency = $this->Session->Contains('SO_FREQUENCY') ? $this->Session['SO_FREQUENCY'] : '';
+						$duration = $this->Session->Contains('SO_DURATION') ? $this->Session['SO_DURATION'] : '';
+						$startdate = $this->Session->Contains('SO_STARTDATE') ? date('d/m/Y',$this->Session['SO_STARTDATE']) : '';
+						$payment = $this->Session->Contains('SO_PAYMENT') ? $this->Session['SO_PAYMENT'] : '';
+						
 						$emailer = $this->Application->getModule('mailer');
 						$email = $emailer->createNewEmail("OrderConfirmation");
 						$html = $email->HtmlContent->flush();
@@ -154,6 +160,12 @@ class Confirmation extends TPage
 						$dynamicContent = $this->generateHtmlContent();
 						$html = str_replace("%%BASE_URL%%",$baseThemeUrl,$html);
 						$html = str_replace("%%DYNAMIC_CONTENT%%",$dynamicContent,$html);
+						
+						$html = str_replace("%%SO_FREQUENCY%%",$frequency,$html);
+						$html = str_replace("%%SO_DURATION%%",$duration,$html);
+						$html = str_replace("%%SO_STARTDATE%%",$startdate,$html);
+						$html = str_replace("%%SO_PAYMENT%%",$payment,$html);
+						
 						$email->setHtmlContent($html);
 						$receiver = new TEmailAddress;
 						$receiver->Field = TEmailAddressField::Receiver;
@@ -169,11 +181,7 @@ class Confirmation extends TPage
 						
 						$html = str_replace("%%BASE_URL%%",$baseThemeUrl,$html);
 						$html = str_replace("%%DYNAMIC_CONTENT%%",$dynamicContent,$html);
-						$frequency = $this->Session->Contains('SO_FREQUENCY') ? $this->Session['SO_FREQUENCY'] : '';
-						$duration = $this->Session->Contains('SO_DURATION') ? $this->Session['SO_DURATION'] : '';
-						$startdate = $this->Session->Contains('SO_STARTDATE') ? date('d/m/Y',$this->Session['SO_STARTDATE']) : '';
-						$payment = $this->Session->Contains('SO_PAYMENT') ? $this->Session['SO_PAYMENT'] : '';
-						
+
 						$html = str_replace("%%SO_FREQUENCY%%",$frequency,$html);
 						$html = str_replace("%%SO_DURATION%%",$duration,$html);
 						$html = str_replace("%%SO_STARTDATE%%",$startdate,$html);

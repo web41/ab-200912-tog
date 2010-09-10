@@ -45,16 +45,15 @@ class ShippingSchedule extends TPage
                     if ($shippingMethod instanceof ShippingMethodRecord) {
                         $cartRecord->ShippingMethodID = $shippingMethod->ID;
                         $cartRecord->ShippingAmount = $shippingMethod->Price;
-                        $cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount-$cartRecord->RewardPointsRebate+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
                     }
                 }
 				else {
 					$cartRecord->ShippingMethodID = 0;
 					$cartRecord->ShippingAmount = 0;
-					$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount-$cartRecord->RewardPointsRebate+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
 				}
 				try
 				{
+					$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount-$cartRecord->RewardPointsRebate+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
 					$cartRecord->save();
 					$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Review"));
 				}

@@ -217,15 +217,19 @@ class ViewItemsBySupplier extends TPage
 				$workSheet->setCellValue("B3",($supplier instanceof ManufacturerRecord ? $supplier->Name : "All suppliers"));
 
 				$workSheet->setCellValue("A4","No.")->getStyle("A4")->getFont()->setBold(true);
-				$workSheet->setCellValue("B4","Item Description")->getStyle("B4")->getFont()->setBold(true);
+				$workSheet->setCellValue("B4","Supplier")->getStyle("B4")->getFont()->setBold(true);
 				$workSheet->setCellValue("C4","Brand")->getStyle("C4")->getFont()->setBold(true);
-				$workSheet->setCellValue("D4","Cost")->getStyle("D4")->getFont()->setBold(true);
-				$workSheet->setCellValue("E4","Quantity")->getStyle("E4")->getFont()->setBold(true);
-				$workSheet->setCellValue("F4","Amount")->getStyle("F4")->getFont()->setBold(true);
-				if ($supplier == null) $workSheet->setCellValue("H4","Supplier")->getStyle("H4")->getFont()->setBold(true);
+				$workSheet->setCellValue("D4","Item Description")->getStyle("D4")->getFont()->setBold(true);
+				$workSheet->setCellValue("E4","Item Description")->getStyle("E4")->getFont()->setBold(true);
+				$workSheet->setCellValue("F4","Cost")->getStyle("F4")->getFont()->setBold(true);
+				$workSheet->setCellValue("G4","Selling Price")->getStyle("G4")->getFont()->setBold(true);
+				$workSheet->setCellValue("H4","Customer Name")->getStyle("H4")->getFont()->setBold(true);
+				$workSheet->setCellValue("I4","Invoice")->getStyle("I4")->getFont()->setBold(true);
+				$workSheet->setCellValue("J4","No of Exports")->getStyle("J4")->getFont()->setBold(true);
 
 				$startRow = 5;
 				$totalCost = 0;
+				$totalSell = 0;
 				for($i=0;$i<count($orderItems);$i++)
 				{	
 					$orderItems[$i]->Counter++;
@@ -233,28 +237,32 @@ class ViewItemsBySupplier extends TPage
 					$product = ProductRecord::finder()->withManufacturer()->withBrand()->findByPk($orderItems[$i]->ProductID);
 					$prop = PropertyRecord::finder()->findByPk($orderItems[$i]->PropertyID);
 					$workSheet->setCellValue("A".($i+$startRow),$i+1);
-					$workSheet->setCellValue("B".($i+$startRow),$product->Name." - ".($prop instanceof PropertyRecord ? $prop->Name : ""));
+					$workSheet->setCellValue("B".($i+$startRow),$product->Manufacturer->Name);
 					$workSheet->setCellValue("C".($i+$startRow),$product->Brand->Name);
-					$workSheet->setCellValue("D".($i+$startRow),($prop instanceof PropertyRecord ? number_format($prop->CostPrice,2) : 0));
+					$workSheet->setCellValue("D".($i+$startRow),$product->Name." - ".($prop instanceof PropertyRecord ? $prop->Name : ""));
 					$workSheet->setCellValue("E".($i+$startRow),$orderItems[$i]->Quantity);
 					$workSheet->setCellValue("F".($i+$startRow),($prop instanceof PropertyRecord ? number_format($prop->CostPrice*$orderItems[$i]->Quantity,2) : 0));
-					$workSheet->setCellValue("G".($i+$startRow),Common::showOrdinal($orderItems[$i]->Counter));
-					if ($supplier == null)
-					{
-						$workSheet->setCellValue("H".($i+$startRow),$product->Manufacturer->Name);
-					}
+					$workSheet->setCellValue("G".($i+$startRow),($prop instanceof PropertyRecord ? number_format($prop->Price*$orderItems[$i]->Quantity,2) : 0));
+					$workSheet->setCellValue("H".($i+$startRow),$orderItems[$i]->Order->BFirstName.' '.$orderItems[$i]->Order->BLastName);
+					$workSheet->setCellValue("I".($i+$startRow),$orderItems[$i]->Order->Num);
+					$workSheet->setCellValue("J".($i+$startRow),Common::showOrdinal($orderItems[$i]->Counter));
+
 					$totalCost += ($prop instanceof PropertyRecord ? number_format($prop->CostPrice*$orderItems[$i]->Quantity,2) : 0);
+					$totalSell += ($prop instanceof PropertyRecord ? number_format($prop->Price*$orderItems[$i]->Quantity,2) : 0);
 				}
 				$workSheet->setCellValue("E".(count($orderItems)+$startRow),'Total')->getStyle("E".(count($orderItems)+$startRow))->getFont()->setBold(true);
 				$workSheet->setCellValue("F".(count($orderItems)+$startRow),$totalCost)->getStyle("F".(count($orderItems)+$startRow))->getFont()->setBold(true);
+				$workSheet->setCellValue("G".(count($orderItems)+$startRow),$totalSell)->getStyle("G".(count($orderItems)+$startRow))->getFont()->setBold(true);
 
 				$workSheet->getColumnDimension("A")->setWidth(20);
-				$workSheet->getColumnDimension("B")->setWidth(80);
-				$workSheet->getColumnDimension("C")->setWidth(30);
+				$workSheet->getColumnDimension("C")->setWidth(50);
+				$workSheet->getColumnDimension("D")->setWidth(80);
+				$workSheet->getColumnDimension("H")->setWidth(20);
+				$workSheet->getColumnDimension("I")->setWidth(20);
 			}
 			
 			$phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
-			$fileName = "Export_Generated_On_".date("Y-m-d_h-i",time()).".xls";
+			$fileName = "Items_By_Supplier_".date("Y-m-d_h-i",time()).".xls";
 			$this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
 			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
 			$this->Response->appendHeader("Cache-Control:max-age=0");

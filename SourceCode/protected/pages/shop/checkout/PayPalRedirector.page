@@ -17,7 +17,7 @@
 	<div class="inside_box">
     	<h2>please wait...</h2>
         <div style="padding:0 0 8px 0;">
-        	Your order will be redirect to PayPal. Please wait a moment.
+        	Your order will be redirected to Paypal. You may select to pay by Credit Card if a Paypal account is not available. Please wait a moment.
         </div>
         <div style="text-align:center;margin:0;">
         	<img src="<%= $this->Page->Theme->BaseUrl %>/images/loading.gif" alt="" />

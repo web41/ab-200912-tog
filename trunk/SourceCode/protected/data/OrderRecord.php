@@ -165,9 +165,8 @@ class OrderRecord extends TActiveRecord
 		
 		
 		$today = time();
-		$todayNoon = mktime(12,0,0,date('n',$today),date('j',$today),date('Y',$today));
 		$availDeliveryDate=array();
-		if ($specialCase)
+		/*if ($specialCase)
 		{
 			if (date('N',$today) <= 2 && $today <= mktime(12,0,0,date('n',$today),date('j',$today),date('Y',$today)))
 			{
@@ -232,7 +231,27 @@ class OrderRecord extends TActiveRecord
 				$availDeliveryDate[] = array('day'=>$today+3*24*60*60,'time'=>'AM');
 				$availDeliveryDate[] = array('day'=>$today+5*24*60*60,'time'=>'PM');
 				break;
+		}*/
+		
+		$oneDay		= 24*60*60;
+		$dayOfWeek	= date('N',$today);
+		$hourOfDay	= date('G',$today);
+		$tmpDate = $today+$oneDay; //add a day for more accurate
+		if (($dayOfWeek > 2 && $dayOfWeek < 5) || ($dayOfWeek == 5 && $hourOfDay < 15))
+		{
+			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'15h-18h');
+			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'15h-18h');
 		}
+		else
+		{
+			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'15h-18h');
+			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'15h-18h');
+		}
+		
 		return $availDeliveryDate;
 	}
 	

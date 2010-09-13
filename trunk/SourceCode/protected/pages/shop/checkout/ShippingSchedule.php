@@ -22,10 +22,10 @@ class ShippingSchedule extends TPage
 			if (!$cartRecord) $this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
 			$this->setEstDeliveryDate(OrderRecord::estimateDeliveryDate());
 			$this->cboDeliveryDateSelector->Items->clear();
-			$slots = TPropertyValue::ensureArray($this->Application->Parameters["DELIVERY_SLOTS"]);
+			//$slots = TPropertyValue::ensureArray($this->Application->Parameters["DELIVERY_SLOTS"]);
 			foreach($this->EstDeliveryDate as $est)
 			{
-				$item = new TListItem; $item->Text = $item->Value = date("l d/m/Y",$est['day']).' '.$slots[$est['time']];
+				$item = new TListItem; $item->Text = $item->Value = date("l d/m/Y",$est['day']).' '.$est['time'];
 				$this->cboDeliveryDateSelector->Items->add($item);
 			}
 		}

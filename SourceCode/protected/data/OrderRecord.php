@@ -240,16 +240,16 @@ class OrderRecord extends TActiveRecord
 		if (($dayOfWeek > 2 && $dayOfWeek < 5) || ($dayOfWeek == 5 && $hourOfDay < 15))
 		{
 			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'15h-18h');
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
 			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'15h-18h');
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
 		}
 		else
 		{
 			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'15h-18h');
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
 			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'15h-18h');
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
 		}
 		
 		return $availDeliveryDate;

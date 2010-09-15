@@ -16,9 +16,9 @@
 	<div class="inside_box">
     	<h2>Delivery Schedule and Info</h2>
         <div style="text-align:center"><img src="<%= $this->Page->Theme->BaseUrl %>/images/img_delivery.png" alt="" class="img" style="float:none;width:auto;margin:0;border:none;"/></div>
-        <div><b>The Organic Grocer Delivers EVERYDAY except MONDAYS and SUNDAYS.</b></div>
+        <div><b>The Organic Grocer Delivers every Tuesdays and Fridays.</b></div>
         
-        <div><b>A. Delivery Schedule (If your order <span style="color:red">INCLUDES</span> Australian/USA fresh fruits and veggies)</b></div>
+        <div><b></b></div>
         <div>
             <table border="0" cellpadding="4" cellspacing="0" width="100%">
                 <tr>
@@ -26,59 +26,23 @@
                     <td class="table_title">Delivered on</td>
                 </tr>
                 <tr>
-                    <td width="50%">Tuesday 12pm</td>
-                    <td width="50%">Friday PM/Saturday</td>
+                    <td width="50%">Tuesday</td>
+                    <td width="50%">Friday PM</td>
                 </tr>
                 <tr>
-                    <td>Thursday 12pm</td>
-                    <td>The following Tuesday PM/Wednesday</td>
+                    <td>Friday 3pm</td>
+                    <td>The following Tuesday PM</td>
                 </tr>
-                <tr>
-                    <td>Saturday 10am (for ordering Australian produce only)</td>
-                    <td>The following Tuesday PM/Wednesday</td>
-                </tr>
-            </table>
+                </table>
         </div>
-        <div><b>B. Delivery Schedule (If order <span style="color:red">DOES NOT</span> include Australian/USA fresh fruits and veggies)</b></div>
-        	
-        <div>
-        	<table border="0" cellpadding="4" cellspacing="0" width="100%">
-                <tr>
-                    <td class="table_title" style="background:#ffff00;color:#000">Order by</td>
-                    <td class="table_title" style="background:#ffff00;color:#000">Delivered on</td>
-                </tr>
-                <tr>
-                    <td width="50%">Monday 12pm</td>
-                    <td width="50%">Wednesday PM</td>
-                </tr>
-                <tr>
-                    <td>Tuesday 12pm</td>
-                    <td>Thursday PM</td>
-                </tr>
-                <tr>
-                    <td>Wednesday 12pm</td>
-                    <td>Friday PM</td>
-                </tr>
-                <tr>
-                    <td>Thursday 12pm</td>
-                    <td>Saturday</td>
-                </tr>
-                <tr>
-                    <td>Friday (all day)/Saturday12pm</td>
-                    <td>Tuesday PM</td>
-                </tr>
-                <tr>
-                    <td>Sunday (all day)</td>
-                    <td>Wednesday PM</td>
-                </tr>
-            </table>
-        </div>
-        
-        <div>* If delivery falls on a Public Holiday, delivery will be made the following day.</div>
-        
+
+        <div>Express delivery is available for dry goods only (excluding fresh produce).  Orders will be delivered after two working days.  An express delivery fee of $20 will apply.</div>
+         
+        <div>If delivery falls on a Public Holiday, delivery will be made the following day.</div>
+        <br/>
         <div><b>The Organic Grocer's Home Deliver Service, Brings Freshness To Your Door</b><br />
             <ul>
-                <li>The delivery service is FREE when you order $100 and above. For purchases below $100, an $8 delivery charge will be added</li>
+                <li>The delivery service is FREE when you order $100 and above. For purchases below $100, an $10 delivery charge will be added</li>
                 <li>An additional $10 will be charged for re-delivery due to wrong address OR if customer is not present at point of delivery</li>
                 <li>The Organic Grocer will not be liable for any delays in its delivery service, if the delay was caused by reasons beyond its control</li>
                 <li>The Organic Grocer reserves the right to amend any of the terms and conditions without prior notice</li>

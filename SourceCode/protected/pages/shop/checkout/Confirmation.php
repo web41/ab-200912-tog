@@ -196,7 +196,7 @@ class Confirmation extends TPage
 					if ($user instanceof UserRecord)
 					{
 						$organicPoints = TPropertyValue::ensureArray($this->Application->Parameters['ORGANIC_POINTS']);
-						$credits = $organicPoints[TPropertyValue::ensureInteger($this->Order->RewardPointsRebate)];
+						$credits = $this->Order->RewardPointsRebate > 0 ? $organicPoints[TPropertyValue::ensureInteger($this->Order->RewardPointsRebate)] : 0;
 						$user->Credits = $user->Credits - $credits + TPropertyValue::ensureInteger($this->Order->Total);
 						$user->CreditsUsed = $user->CreditsUsed + $credits;
 						$user->save();
@@ -207,7 +207,7 @@ class Confirmation extends TPage
 				}
 				catch(TException $ex)
 				{
-					//throw new THttpException(500, $ex->ErrorMessage);
+					//throw new THttpException(500, $ex);
 					$this->Notice->Type = UserNoticeType::Error;
 					$this->Notice->Text = $this->Application->getModule('message')->translate('UNKNOWN_ERROR');
 				}	
@@ -282,6 +282,7 @@ class Confirmation extends TPage
 		{
 			// use Active Record to look for the specified post ID
 			$activeRecord = PaymentRecord::finder()->withPaymentMethod()->findBypayment_idAndorder_id(TPropertyValue::ensureInteger($this->Hash['pid']), TPropertyValue::ensureInteger($this->Hash['oid']));
+			//$activeRecord->fetchResultsFor('PaymentMethod');
 			if($activeRecord === null)
 			{
 				$this->Notice->Type = UserNoticeType::Error;

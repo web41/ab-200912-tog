@@ -101,7 +101,7 @@ class Shipping extends TPage
 						$cartDetail->UserID = $this->Application->User->ID;
 						$cartDetail->save();
 					}
-					$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.ShippingSchedule"));
+					$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Review"));
 				}
 				else
 				{

@@ -122,14 +122,27 @@ class OrderRecord extends TActiveRecord
 	
 	public function generateOrderNumber($prefix="",$length=6,$number=0)
 	{
+		$start = 155001;
 		if ($number<=0)
 		{
 			$criteria = new TActiveRecordCriteria;
 			$criteria->Condition = "order_id > 0";
-			$number = self::finder()->count($criteria)+155001;
+			$number = self::finder()->count($criteria)+$start;
 		}
 		$arg = "%0{$length}d";
-		return $prefix.date("dmY",time())."-".sprintf($arg, $number);
+		$orderNumber = $prefix.date("dmY",time())."-".sprintf($arg, $number);
+		$orderNumberExist = true;
+		do {
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "order_num = :num";
+			$criteria->Parameters[':num'] = $orderNumber;
+			$orderNumberExist = self::finder()->count($criteria)>0;
+			if ($orderNumberExist) {
+				$orderNumber = $prefix.date("dmY",time())."-".sprintf($arg, $number+1);
+			}
+		}
+		while($orderNumberExist);
+		return $orderNumber;
 	}
 	
 	public function save()

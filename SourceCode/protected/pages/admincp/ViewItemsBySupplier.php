@@ -220,7 +220,7 @@ class ViewItemsBySupplier extends TPage
 				$workSheet->setCellValue("B4","Supplier")->getStyle("B4")->getFont()->setBold(true);
 				$workSheet->setCellValue("C4","Brand")->getStyle("C4")->getFont()->setBold(true);
 				$workSheet->setCellValue("D4","Item Description")->getStyle("D4")->getFont()->setBold(true);
-				$workSheet->setCellValue("E4","Item Description")->getStyle("E4")->getFont()->setBold(true);
+				$workSheet->setCellValue("E4","Quantity")->getStyle("E4")->getFont()->setBold(true);
 				$workSheet->setCellValue("F4","Cost")->getStyle("F4")->getFont()->setBold(true);
 				$workSheet->setCellValue("G4","Selling Price")->getStyle("G4")->getFont()->setBold(true);
 				$workSheet->setCellValue("H4","Customer Name")->getStyle("H4")->getFont()->setBold(true);

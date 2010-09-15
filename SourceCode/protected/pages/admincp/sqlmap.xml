@@ -72,8 +72,9 @@
 			LEFT JOIN tbl_order o ON oi.order_id = o.order_id
 			LEFT JOIN tbl_product p ON oi.product_id = p.product_id
 			LEFT JOIN tbl_brand b ON p.brand_id = b.brand_id
+			LEFT JOIN tbl_manufacturer m ON p.mf_id = m.mf_id
 			WHERE o.order_id = #orderId#
-			ORDER BY brand_name
+			ORDER BY mf_name
 		]]>
 	</select>
 	<resultMap id="ProductRecord" class="ProductRecord">

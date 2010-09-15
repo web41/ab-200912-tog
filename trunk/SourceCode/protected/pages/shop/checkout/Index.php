@@ -28,8 +28,8 @@ class Index extends TPage
 				$url = $this->Service->ConstructUrl("shop.checkout.Billing");
 			else if ($cartRecord->ShippingID == 0)
 				$url = $this->Service->ConstructUrl("shop.checkout.Shipping");
-			else if ($cartRecord->ShippingMethodID == 0)
-				$url = $this->Service->ConstructUrl("shop.checkout.ShippingSchedule");
+			//else if ($cartRecord->ShippingMethodID == 0)
+				//$url = $this->Service->ConstructUrl("shop.checkout.ShippingSchedule");
 			else $url = $this->Service->ConstructUrl("shop.checkout.Review");
 		}
 		else $url = $this->Service->ConstructUrl("shop.cart.Index");

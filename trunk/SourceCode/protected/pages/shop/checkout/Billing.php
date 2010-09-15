@@ -2,6 +2,16 @@
 
 class Billing extends TPage
 {
+	public function getEstDeliveryDate()
+	{
+		return TPropertyValue::ensureArray(unserialize($this->getViewState("EstDeliveryDate","")));
+	}
+
+	public function setEstDeliveryDate($value)
+	{
+		$this->setViewState("EstDeliveryDate",serialize($value),"");
+	}
+	
 	public function onLoad($param)
 	{
 		parent::onLoad($param);
@@ -40,6 +50,15 @@ class Billing extends TPage
                 $this->txtPhone1->Text = $this->Application->User->Phone;
                 $this->cboCountrySelector->SelectedValue = 'SG';
             }
+			
+			$this->setEstDeliveryDate(OrderRecord::estimateDeliveryDate());
+			$this->cboDeliveryDateSelector->Items->clear();
+			//$slots = TPropertyValue::ensureArray($this->Application->Parameters["DELIVERY_SLOTS"]);
+			foreach($this->EstDeliveryDate as $est)
+			{
+				$item = new TListItem; $item->Text = $item->Value = date("l d/m/Y",$est['day']).' '.$est['time'];
+				$this->cboDeliveryDateSelector->Items->add($item);
+			}
 		}
 	}
 	
@@ -92,6 +111,21 @@ class Billing extends TPage
 				$cartRecord = CartTempRecord::finder()->withCartTempDetails()->findByPk($this->Session->SessionID);
 				if ($cartRecord instanceof CartTempRecord)
 				{
+					$cartRecord->EstDeliveryDate = $this->cboDeliveryDateSelector->SelectedValue;
+					// add shipping amount if order < $100
+					if ($cartRecord->Subtotal < 100) {
+						$shippingMethod = ShippingMethodRecord::finder()->findByPk(6);
+						if ($shippingMethod instanceof ShippingMethodRecord) {
+							$cartRecord->ShippingMethodID = $shippingMethod->ID;
+							$cartRecord->ShippingAmount = $shippingMethod->Price;
+						}
+					}
+					else {
+						$cartRecord->ShippingMethodID = 0;
+						$cartRecord->ShippingAmount = 0;
+					}
+					$cartRecord->Total = $cartRecord->Subtotal-$cartRecord->CouponAmount-$cartRecord->RewardPointsRebate+$cartRecord->ShippingAmount+$cartRecord->TaxAmount;
+					
 					$cartRecord->UserID = $this->Application->User->ID;
 					$cartRecord->BillingID = $activeRecord->ID;
 					if ($this->chkBillShip->Checked) $cartRecord->ShippingID = $activeRecord->ID;
@@ -102,7 +136,7 @@ class Billing extends TPage
 						$cartDetail->save();
 					}
 					if ($this->chkBillShip->Checked)
-						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.ShippingSchedule"));
+						$this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Review"));
 					else $this->Response->redirect($this->Service->ConstructUrl("shop.checkout.Shipping"));
 				}
 				else

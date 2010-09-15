@@ -161,6 +161,7 @@
 			<tr>
 				<td class="left"><span style="font-size:11px;text-transform:none">(*) Required fields</span></td>
 				<td class="right">
+					<input type="button" value="Continue Shopping" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.Index') %>'" />
 					<input type="button" value="Back" class="button" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.checkout.Billing') %>'" />
 					<com:TButton Text="Next" CssClass="button" OnClick="btnSubmit_Clicked" ValidationGroup="Shipping"/>
 				</td>

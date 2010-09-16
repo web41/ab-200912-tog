@@ -154,7 +154,8 @@
         <h3>Standing Order</h3>
         <div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin:10px 0 20px 0;float:left;width:544px;">
           <table border="1" border-color="#e2e2bc" cellpading="5" cellspacing="0">
-		   <tr><td style="padding:10px;">
+		   <tr>
+		    <td style="padding:10px;">
 			<com:TLabel Text="Frequency" ForControl="cboFrequencySelector" />
             <com:TDropDownList ID="cboFrequencySelector" PromptText="Select..." PromptValue="">
                 <com:TListItem Value="Once a week" Text="Once a week" />
@@ -180,7 +181,8 @@
             <com:TRadioButton ID="radCheque" Value="Post a Cheque to The Organic Grocer" GroupName="Payment" Text="Post a Cheque to The Organic Grocer" /><br />
             <com:TRadioButton ID="radInterbank" Value="Interbank transfer" GroupName="Payment" Text="Interbank transfer" /><br />
             <com:TRadioButton ID="radCash" Value="I just ordered so will pay cash/cheque at next delivery" GroupName="Payment" Text="I just ordered so will pay cash/cheque at next delivery" /><br />
-		  </td></tr>
+		  </td>
+		  </tr>
 		 </table>
         </div>
 		

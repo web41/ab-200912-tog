@@ -28,7 +28,7 @@
 						<h2>Purchased Items By Supplier</h2>
 						<div style="float:right;height:26px;padding:7px 5px 0 0;">
 							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/><com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
-							<com:TDropDownList ID="cboMfSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="Code" />
+							<com:TDropDownList ID="cboMfSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" />
 							<com:TDatePicker ID="dpFromDate" CssClass="jen"
 								Width="75px"
 								Mode="ImageButton" InputMode="TextBox"
@@ -117,17 +117,6 @@
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							
-							<com:TTemplateColumn HeaderStyle.Width="8%">
-								<prop:HeaderTemplate>
-									<a href="<%# $this->Page->populateSortUrl(4,(($this->Page->SortBy==4 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->FromDate,$this->Page->ToDate,$this->Page->MfID) %>">Counter
-										<com:TImage Width="10px" Height="10px" ImageUrl="<%# $this->Page->Theme->BaseUrl %>/images/icon_<%# ($this->Page->SortType=='asc') ? 'down' : 'up' %>.png" Visible="<%# $this->Page->SortBy==4 %>" />
-									</a>
-								</prop:HeaderTemplate>
-								<prop:ItemTemplate>
-									<com:TLabel Text="<%# Common::showOrdinal($this->Parent->Data->Counter) %>" />
-								</prop:ItemTemplate>
-							</com:TTemplateColumn>
-
 						</com:TDataGrid>
 						<div class="table_footer">
 						</div>

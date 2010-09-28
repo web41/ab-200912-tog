@@ -45,11 +45,10 @@
 			<prop:HeaderTemplate>
 				<table cellpadding="5" cellspacing="0" border="0" width="100%" style="text-align:center;margin-bottom:5px;">
 					<tr>
-						<td width="40%">Description</td>
+						<td width="46%">Description</td>
 						<td width="8%">Qty</td>
-						<td width="16%">UOM</td>
+						<td width="22%">UOM</td>
 						<td width="12%">Price/Unit (SGD)</td>
-						<td width="12%">Disc/Unit</td>
 						<td width="12%">Total (SGD)</td>
 					</tr>
 				</table>
@@ -57,12 +56,11 @@
 			</prop:HeaderTemplate>
 			<prop:ItemTemplate>
 				<tr>
-					<td style="border:none;text-align:left;" width="40%"><%# ($this->Request->Contains('mode')&&$this->Request['mode']=='admin'?'(<strong>'.$this->Data->Product->Manufacturer->Name.'</strong>) ':'').'<strong>'.$this->Data->Product->Brand->Name.'</strong> - '.$this->Data->Product->Name %></td>
+					<td style="border:none;text-align:left;" width="46%"><%# ($this->Request->Contains('mode')&&$this->Request['mode']=='admin'?'(<strong>'.$this->Data->Product->Manufacturer->Name.'</strong>) ':'').'<strong>'.$this->Data->Product->Brand->Name.'</strong> - '.$this->Data->Product->Name %></td>
 					<td style="border:none;" width="8%"><%# $this->Data->Quantity %></td>
-					<td style="border:none;" width="16%"><%# ($this->Data->Property?$this->Data->Property->Name:"") %>/unit</td>
-					<td style="border:none;" width="12%"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data->UnitPrice %>" /></td>
-					<td style="border:none;" width="12%"><com:TNumberFormat Type="<%# $this->Data->DiscountIsPercent?'percentage':'currency' %>" Culture="en_US" Currency="USD" Value="<%# $this->Data->DiscountAmount %>" /></td>
-					<td style="border:none;" width="12%"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data ? $this->Data->Subtotal : 0 %>" /></td>
+					<td style="border:none;" width="22%"><%# ($this->Data->Property?$this->Data->Property->Name:"") %>/unit</td>
+					<td style="border:none;" width="12%"><com:TNumberFormat Type="currency" Currency="SGD" Value="<%# $this->Data->UnitPrice %>" /></td>					
+					<td style="border:none;" width="12%"><com:TNumberFormat Type="currency" Currency="SGD" Value="<%# $this->Data ? $this->Data->Subtotal : 0 %>" /></td>
 				</tr>
 			</prop:ItemTemplate>
 			<prop:FooterTemplate>

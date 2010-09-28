@@ -409,11 +409,10 @@ class Confirmation extends TPage
 							</table><br />
 							<table cellpadding="5" cellspacing="0" border="0" width="100%" style="text-align:center;margin-bottom:5px;">
 								<tr>
-									<td width="40%">Description</td>
+									<td width="46%">Description</td>
 									<td width="8%">Qty</td>
-									<td width="16%">UOM</td>
+									<td width="22%">UOM</td>
 									<td width="12%">Price/Unit (SGD)</td>
-									<td width="12%">Disc/Unit (%)</td>
 									<td width="12%">Total (SGD)</td>
 								</tr>
 							</table>
@@ -425,20 +424,17 @@ class Confirmation extends TPage
 			else $desc = '';
 			$desc .= '<strong>'.$orderItem->Product->Brand->Name.'</strong> - '.$orderItem->Product->Name;
 			$html .=			'<tr>
-									<td width="40%" style="border:0;border-bottom:1px dashed #dddddd;text-align:left;">
+									<td width="46%" style="border:0;border-bottom:1px dashed #dddddd;text-align:left;">
 										'.$desc.'
 									</td>
 									<td width="8%" style="border:0;border-bottom:1px dashed #dddddd;">
 										'.$orderItem->Quantity.'
 									</td>
-									<td width="16%" style="border:0;border-bottom:1px dashed #dddddd;text-align:left;">
+									<td width="22%" style="border:0;border-bottom:1px dashed #dddddd;text-align:left;">
 										'.$orderItem->Property->Name.'/unit
 									</td>
 									<td width="12%" style="border:0;border-bottom:1px dashed #dddddd;">
 										'.$this->getFormattedValue($orderItem->UnitPrice).'
-									</td>
-									<td width="12%" style="border:0;border-bottom:1px dashed #dddddd;">
-										'.$this->getFormattedValue($orderItem->UnitPrice,$orderItem->DiscountIsPercent?'p':'c').'
 									</td>
 									<td width="12%" style="border:0;border-bottom:1px dashed #dddddd;">
 										'.$this->getFormattedValue($orderItem->Subtotal).'

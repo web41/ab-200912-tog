@@ -1,4 +1,7 @@
-<<prop:Subject>There is a new order</prop:Subject>
+<prop:EmailAddresses>
+	<com:TEmailAddress Field="BlindCarbonCopy" Address="tom.do@asiablaze.com" Name="Tom Do" />
+</prop:EmailAddresses>
+<prop:Subject>There is a new order</prop:Subject>
 <prop:EmailAddresses><com:TEmailAddress Field="Receiver" Address="sales@theorganicgrocer.com.sg" Name="The Organic Grocer" /></prop:EmailAddresses>
 <prop:HtmlContent>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

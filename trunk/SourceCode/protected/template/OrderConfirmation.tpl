@@ -1,3 +1,6 @@
+<prop:EmailAddresses>
+	<com:TEmailAddress Field="BlindCarbonCopy" Address="tom.do@asiablaze.com" Name="Tom Do" />
+</prop:EmailAddresses>
 <prop:Subject>Thanks for ordering with The Organic Grocer</prop:Subject>
 <prop:HtmlContent>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

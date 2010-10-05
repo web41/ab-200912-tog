@@ -198,9 +198,20 @@ class Review extends TPage
 				$order->SFax = $cartRecord->ShippingAddress->Fax;
 	
 				$order->Subtotal = $cartRecord->Subtotal;
+				if ($order->Subtotal < 100) {
+					$shippingMethod = ShippingMethodRecord::finder()->findByPk(6);
+					if ($shippingMethod instanceof ShippingMethodRecord) {
+						$order->ShippingMethodID = $shippingMethod->ID;
+						$order->ShippingAmount = $shippingMethod->Price;
+					}
+				}
+				else {
+					$order->ShippingMethodID = 0;
+					$order->ShippingAmount = 0;
+				}
 				$order->TaxAmount = $cartRecord->TaxAmount;
-				$order->ShippingMethodID = $cartRecord->ShippingMethodID;
-				$order->ShippingAmount = $cartRecord->ShippingAmount;
+				//$order->ShippingMethodID = $cartRecord->ShippingMethodID;
+				//$order->ShippingAmount = $cartRecord->ShippingAmount;
 				$order->CouponCode = $cartRecord->CouponCode;
 				$order->CouponAmount = $cartRecord->CouponAmount;
 				$order->RewardPointsRebate = $this->cboCreditsSelector->SelectedValue;//$cartRecord->RewardPointsRebate;

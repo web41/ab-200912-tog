@@ -69,6 +69,9 @@ class Confirmation extends TPage
 					}
 	
 					// parse the data
+					if ($this->Application->Mode==TApplicationMode::Debug) {
+						var_dump($res);
+					}
 					$lines = explode("\n", $res);
 					$keyarray = array();
 					if (strcmp ($lines[0], "SUCCESS") == 0) 

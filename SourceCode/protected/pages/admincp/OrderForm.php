@@ -21,11 +21,11 @@ class OrderForm extends TPage
 			$item = new TListItem; $item->Text = $item->Value = $value;
 			$this->cboDelivererSelector->Items->add($item);
 		}
-		$this->cboTotalPacksSelector->Items->clear();
+		//$this->cboTotalPacksSelector->Items->clear();
 		foreach(range(1,10) as $value)
 		{
 			$item = new TListItem; $item->Text = $item->Value = $value;
-			$this->cboTotalPacksSelector->Items->add($item);
+			//$this->cboTotalPacksSelector->Items->add($item);
 		}
 		if ($activeRecord instanceof OrderRecord)
 		{
@@ -70,7 +70,7 @@ class OrderForm extends TPage
 			$this->nfTotal->Value = $activeRecord->Total;
 
 			if (strlen($activeRecord->Deliverer)>0) $this->cboDelivererSelector->SelectedValue = $activeRecord->Deliverer;
-			if ($activeRecord->TotalPacks>0) $this->cboTotalPacksSelector->SelectedValue = $activeRecord->TotalPacks;
+			//if ($activeRecord->TotalPacks>0) $this->cboTotalPacksSelector->SelectedValue = $activeRecord->TotalPacks;
 			
 			if (strlen($activeRecord->EstDeliveryDate) > 0) $this->txtEstDeliveryDate->Text = $activeRecord->EstDeliveryDate;
 			$this->txtComments->Text = $activeRecord->Comments;
@@ -110,7 +110,7 @@ class OrderForm extends TPage
 		{
 			$activeRecord = $this->getItem();
 			$activeRecord->Deliverer = $this->cboDelivererSelector->SelectedValue;
-			$activeRecord->TotalPacks = $this->cboTotalPacksSelector->SelectedValue;
+			$activeRecord->TotalPacks = 10;// Customer want to remove total pack 10/10/2010 $this->cboTotalPacksSelector->SelectedValue;
 			$activeRecord->EstDeliveryDate = $this->txtEstDeliveryDate->SafeText;
 			$activeRecord->Comments = $this->txtComments->Text;
 			try
@@ -142,7 +142,7 @@ class OrderForm extends TPage
 		{
 			$activeRecord = $this->getItem();
 			$activeRecord->Deliverer = $this->cboDelivererSelector->SelectedValue;
-			$activeRecord->TotalPacks = $this->cboTotalPacksSelector->SelectedValue;
+			$activeRecord->TotalPacks = 10;// Customer want to remove total pack $this->cboTotalPacksSelector->SelectedValue;
 			$activeRecord->EstDeliveryDate = $this->txtEstDeliveryDate->SafeText;
 			$activeRecord->Comments = $this->txtComments->Text;
 			try

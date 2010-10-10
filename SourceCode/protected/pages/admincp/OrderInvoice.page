@@ -73,7 +73,7 @@
 			<tr>
 				<td width="55%" valign="top">
 					Delivery: <com:TLabel ID="lblDeliverer" /><br />
-					Total packs: <com:TLabel ID="lblTotalPacks" /><br />
+					<!--Total packs: <com:TLabel ID="lblTotalPacks" /><br /-->
 					Payment Terms: <com:TLabel ID="lblPaymentTerm" /><br />
 					Delivery Date/Time: <com:TLabel ID="lblDeliveryDate" /><br />
 					Comments: <br />

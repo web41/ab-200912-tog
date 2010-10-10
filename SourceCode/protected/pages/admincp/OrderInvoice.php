@@ -35,7 +35,7 @@ class OrderInvoice extends TPage
 				$this->rptOrderItem->DataBind();
 				
 				$this->lblDeliverer->Text = $activeRecord->Deliverer;
-				$this->lblTotalPacks->Text = $activeRecord->TotalPacks;
+				//$this->lblTotalPacks->Text = $activeRecord->TotalPacks;
 				$this->lblPaymentTerm->Text = PaymentRecord::finder()->withPaymentMethod()->findByorder_id($activeRecord->ID)->PaymentMethod->Name;
 				$this->lblDeliveryDate->Text = $activeRecord->EstDeliveryDate;
 				$this->lblComments->Text = $activeRecord->Comments;

@@ -129,7 +129,7 @@ class Review extends TPage
 		return $this->_user;
 	}
 	
-	public function getFormattedValue($value,$pattern="c",$currency="USD")
+	public function getFormattedValue($value,$pattern="c",$currency="SGD")
 	{
 		$formatter = new NumberFormat($this->Application->Globalization->Culture);
 		return $formatter->format($value,$pattern,$currency,$this->Application->Globalization->Charset);
@@ -216,7 +216,7 @@ class Review extends TPage
 				$order->CouponAmount = $cartRecord->CouponAmount;
 				$order->RewardPointsRebate = $this->cboCreditsSelector->SelectedValue;//$cartRecord->RewardPointsRebate;
 				$order->Total = $order->Subtotal-$order->CouponAmount-$order->RewardPointsRebate+$order->ShippingAmount+$order->TaxAmount;//$cartRecord->Total;
-				$order->Currency = "USD";
+				$order->Currency = "SGD";
 				$order->IPAddress = $this->Request->UserHostAddress;
 				$order->EstDeliveryDate = $cartRecord->EstDeliveryDate;
 				$order->Comments = $this->txtComments->SafeText;

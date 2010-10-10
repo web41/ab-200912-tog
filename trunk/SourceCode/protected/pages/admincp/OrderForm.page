@@ -165,17 +165,7 @@
 									</div>
 								</td>
 								<td class="field">
-									<div class="text">Total Packs</div>
-									<div class="control">
-										<com:TDropDownList ID="cboTotalPacksSelector" PromptText="Select..." PromptValue="0" /><br />
-										<com:TRequiredFieldValidator ID="val2"
-											CssClass="error"
-											ControlToValidate="cboTotalPacksSelector"
-											ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','total packs') %>"
-											Display="Dynamic"
-											InitialValue="0"
-											FocusOnError="True"/>
-									</div>
+									&nbsp;
 								</td>
 							</tr>
 							<tr>

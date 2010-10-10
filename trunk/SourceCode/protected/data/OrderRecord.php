@@ -274,6 +274,11 @@ class OrderRecord extends TActiveRecord
 			- Wed: Sat 10-12noon
 			- From Thu to Fri 3pm: Tue 5-8pm
 			- Fri after 3pm to Sun: Wed 3-6pm			
+			Order on Thursday --> deliver Tuesday 5-8pm (CHOICE OF TUE AND WED)
+			Order on Friday before 3pm --> deliver Tuesday 5-8pm (CHOICE OF TUE AND WED)
+			Order on Friday after 3pm, Saturday, Sunday ---> deliver Wednesday 3-6pm (ONLY WED)
+			Order on Monday, Tuesday ----> deliver Friday 5-8pm (CHOICE OF FRI AND SAT)
+			Order on Wednesday -----> deliver Saturday 10-12noon (ONLY SAT)
 		*/
 		if (($dayOfWeek == 1) || ($dayOfWeek == 2))
 		{
@@ -286,8 +291,8 @@ class OrderRecord extends TActiveRecord
 		{
 			while (date('N',$tmpDate) != 6) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'10am-12noon');
-			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+			//while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
+			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
 		}
 		else if (($dayOfWeek == 4) || ($dayOfWeek == 5 && $hourOfDay < 15))
 		{
@@ -300,8 +305,8 @@ class OrderRecord extends TActiveRecord
 		{
 			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
-			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+			//while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
+			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
 		}
 		
 		return $availDeliveryDate;

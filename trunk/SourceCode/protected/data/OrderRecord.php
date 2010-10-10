@@ -250,6 +250,8 @@ class OrderRecord extends TActiveRecord
 		$dayOfWeek	= date('N',$today);
 		$hourOfDay	= date('G',$today);
 		$tmpDate = $today+$oneDay; //add a day for more accurate
+		
+		/* BY ALEX UNTIL SEP-2010
 		if (($dayOfWeek > 2 && $dayOfWeek < 5) || ($dayOfWeek == 5 && $hourOfDay < 15))
 		{
 			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
@@ -263,6 +265,43 @@ class OrderRecord extends TActiveRecord
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
 			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
+		}
+		*/
+		
+		// ADD BY TOM OCT-2010
+		/* 
+			- Mon to Tue: Fri 5-8pm
+			- Wed: Sat 10-12noon
+			- From Thu to Fri 3pm: Tue 5-8pm
+			- Fri after 3pm to Sun: Wed 3-6pm			
+		*/
+		if (($dayOfWeek == 1) || ($dayOfWeek == 2))
+		{
+			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+			while (date('N',$tmpDate) != 6) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'10am-12noon');
+		}
+		else if ($dayOfWeek == 3)
+		{
+			while (date('N',$tmpDate) != 6) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'10am-12noon');
+			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+		}
+		else if (($dayOfWeek == 4) || ($dayOfWeek == 5 && $hourOfDay < 15))
+		{
+			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
+		}
+		else
+		{
+			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
+			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
 		}
 		
 		return $availDeliveryDate;

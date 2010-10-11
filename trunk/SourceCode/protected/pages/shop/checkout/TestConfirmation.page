@@ -1,0 +1,31 @@
+<%@ MasterClass="Application.shared.Master" %>
+<com:TContent ID="title">The Organic Grocer - Please wait</com:TContent>
+<com:TContent ID="content">
+<!-- Left column -->
+<div class="left_col">
+	<com:Application.shared.CategoryMenu />
+	<com:Application.shared.OrganicPoints />
+	<com:Application.shared.Newsletter />
+</div>
+<!-- Left column: END -->
+
+<!-- Main column -->
+<div class="main_col">
+	<com:Application.shared.UserNotice ID="Notice" />
+	<com:TPanel ID="mainBox" CssClass="main_content">
+	<!-- Inside box -->
+	<div class="inside_box">
+    	
+	</div>
+	<!-- Inside box: END -->
+    </com:TPanel>
+</div>
+<!-- Main column: END -->
+
+<!-- Right column -->
+<div class="right_col">
+	<com:Application.shared.UserState />
+	<com:Application.shared.RightColumn />
+</div>
+<!-- Right column: END -->
+</com:TContent>

@@ -169,7 +169,7 @@ class Index extends TPage
 		$this->CatID = ($this->Request->contains('c')) ? TPropertyValue::ensureInteger($this->Request['c']) : 0;
 		$this->SubCatID = ($this->Request->contains('subc')) ? TPropertyValue::ensureInteger($this->Request['subc']) : 0;
 		$this->IsBestSeller = ($this->Request->contains('best_seller')) ? TPropertyValue::ensureBoolean($this->Request['best_seller']) : false;
-		$this->IsNew = ($this->Request->contains('new_arrival')) ? TPropertyValue::ensureBoolean($this->Request['new_arrival']) : false;
+		$this->IsNew = ($this->Request->contains('new_arrival')) ? TPropertyValue::ensureBoolean($this->Request['new_arrival']) : false;		
 		$this->IsPromoted = ($this->Request->contains('promotion')) ? TPropertyValue::ensureBoolean($this->Request['promotion']) : false;
         $this->MyFavourite = ($this->Request->contains('my_favourite')) ? TPropertyValue::ensureBoolean($this->Request['my_favourite']) : false;
 		$this->SearchText = ($this->Request->contains('q')) ? $this->Request['q'] : '';
@@ -214,6 +214,8 @@ class Index extends TPage
                 $sql .= "AND p.product_best_seller = 1 ";
             }
             if ($this->IsNew) {
+				$this->lblCatPath->Text = 'New Arrival Products';
+				$this->lblCatPath->Visible = true;
                 $sql .= "AND p.product_new_arrival = 1 ";
             }
             if ($this->IsPromoted) {

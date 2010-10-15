@@ -89,7 +89,7 @@
 			<div class="bigtext"></div><!-- Singapore ... -->
 			<p>At the Organic Grocer, we pride ourselves in putting together the best organic brands under one roof, which saves you time running from shop to shop getting various organic products... and best of all they’re just a click away and delivered straight to your door. Saving you both time & money!</p>
 
-			<a class="shopnow" href="<%= $this->Service->ConstructUrl("shop.Welcome") %>"><!-- --></a><!-- SHOP NOW BUTTON -->
+			<a class="shopnow" href="<%= $this->Service->ConstructUrl("shop.Index",array("new_arrival"=>1)) %>"><!-- --></a><!-- SHOP NOW BUTTON -->
 
 			<div class="smalltext"></div><!-- Ordering organic in 3 steps ... -->
 			<ul id="steps">

@@ -47,7 +47,7 @@
 			</div>
 			<div class="banner_right">
 				<ul>
-					<li><a href="<%= $this->Service->ConstructUrl("shop.Welcome") %>">Home</a></li>  |  
+					<li><a href="<%= $this->Service->ConstructUrl("shop.Index",array("new_arrival"=>1)) %>">Home</a></li>  |  
 					<li><a href="<%= $this->Service->ConstructUrl("shop.AboutUs") %>">About Us</a></li>  |   
 					<li><a href="<%= $this->Service->ConstructUrl("shop.WhyOrganic") %>">Why Organic</a></li>  |  
 					<li><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">Delivery</a></li>  |  

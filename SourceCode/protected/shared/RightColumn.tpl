@@ -13,7 +13,7 @@
     <div class="special_box">
         <div class="top">Delivery Schedule</div>
        	<div class="center">
-        	The Organic Grocer delivers every <b>Tuesday</b> and <b>Friday</b>.<br /><br />
+        	The Organic Grocer delivers every <b>Tuesday</b>, <b>Wednesday</b>, <b>Friday</b> and <b>Saturday</b>.<br /><br />
             <b><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">Click here to see delivery schedule</a></b>
         </div>
         <div class="bottom"><!-- --></div>

@@ -150,7 +150,8 @@ class ProductExport extends TPage {
 					$workSheet->mergeCells('B'.($i+$startRow).':B'.($i+$startRow+$props-1));
 					$workSheet->mergeCells('C'.($i+$startRow).':C'.($i+$startRow+$props-1));
 					$workSheet->mergeCells('D'.($i+$startRow).':D'.($i+$startRow+$props-1));
-					$workSheet->mergeCells('G'.($i+$startRow).':G'.($i+$startRow+$props-1));
+					// Code commented by Tom Oct-2010 to unmerge "publish" column as customer requested
+					//$workSheet->mergeCells('G'.($i+$startRow).':G'.($i+$startRow+$props-1));
                     
 					$workSheet->setCellValue("A".($i+$startRow),$i+1);
                     $workSheet->setCellValue("B".($i+$startRow),$items[$i]?$items[$i]->Manufacturer->Name:"");
@@ -159,8 +160,9 @@ class ProductExport extends TPage {
 					for($j=0; $j<$props; $j++) {
 						$workSheet->setCellValue("E".($i+$startRow+$j),$items[$i]->Properties[$j]->Name);
 						$workSheet->setCellValue("F".($i+$startRow+$j),number_format($items[$i]->Properties[$j]->Price,2));
+						$workSheet->setCellValue("G".($i+$startRow+$j),$items[$i]->IsPublished==1?'Yes':'No');
 					}
-					$workSheet->setCellValue("G".($i+$startRow),$items[$i]->IsPublished==1?'Yes':'No');
+					//$workSheet->setCellValue("G".($i+$startRow),$items[$i]->IsPublished==1?'Yes':'No');
 					$startRow = $startRow + $props - 1;
                 }
             }

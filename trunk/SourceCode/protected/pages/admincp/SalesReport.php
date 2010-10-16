@@ -101,8 +101,10 @@ class SalesReport extends TPage
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 3;
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'desc';
 		$this->Status = ($this->Request->contains('stt')) ? $this->Request['stt'] : "";
-		$this->FromDate = ($this->Request->contains('fd')) ? TPropertyValue::ensureInteger($this->Request['fd']) : mktime(0,0,0,date("n"),date("j"),date("Y"));
-		$this->ToDate = ($this->Request->contains('td')) ? TPropertyValue::ensureInteger($this->Request['td']) : mktime(23,59,59,date("n"),date("j"),date("Y"));
+		$tempFromDate = ($this->Request->contains('fd') && TPropertyValue::ensureInteger($this->Request['fd'])>0) ? TPropertyValue::ensureInteger($this->Request['fd']) : time();
+		$tempToDate = ($this->Request->contains('td') && TPropertyValue::ensureInteger($this->Request['td'])>0) ? TPropertyValue::ensureInteger($this->Request['td']) : time();
+		$this->FromDate = mktime(0,0,0,date("n",$tempFromDate),date("j",$tempFromDate),date("Y",$tempFromDate));
+		$this->ToDate = mktime(23,59,59,date("n",$tempToDate),date("j",$tempToDate),date("Y",$tempToDate));
 		if (!$this->IsPostBack)
 		{
 			$this->cboStatusSelector->DataSource = OrderStatusRecord::getAllItems();

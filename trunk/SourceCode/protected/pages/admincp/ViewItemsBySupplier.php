@@ -101,8 +101,10 @@ class ViewItemsBySupplier extends TPage
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 3;
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		$this->MfID = ($this->Request->contains('mf') && TPropertyValue::ensureInteger($this->Request['mf'])>0) ? TPropertyValue::ensureInteger($this->Request['mf']) : 0;
-		$this->FromDate = ($this->Request->contains('fd') && TPropertyValue::ensureInteger($this->Request['fd'])>0) ? TPropertyValue::ensureInteger($this->Request['fd']) : mktime(0,0,0,date("n"),date("j"),date("Y"));
-		$this->ToDate = ($this->Request->contains('td') && TPropertyValue::ensureInteger($this->Request['td'])>0) ? TPropertyValue::ensureInteger($this->Request['td']) : mktime(23,59,59,date("n"),date("j"),date("Y"));
+		$tempFromDate = ($this->Request->contains('fd') && TPropertyValue::ensureInteger($this->Request['fd'])>0) ? TPropertyValue::ensureInteger($this->Request['fd']) : time();
+		$tempToDate = ($this->Request->contains('td') && TPropertyValue::ensureInteger($this->Request['td'])>0) ? TPropertyValue::ensureInteger($this->Request['td']) : time();
+		$this->FromDate = mktime(0,0,0,date("n",$tempFromDate),date("j",$tempFromDate),date("Y",$tempFromDate));
+		$this->ToDate = mktime(23,59,59,date("n",$tempToDate),date("j",$tempToDate),date("Y",$tempToDate));
 		if (!$this->IsPostBack)
 		{
 			$this->cboMfSelector->DataSource = ManufacturerRecord::getAllItems();
@@ -330,7 +332,7 @@ class ViewItemsBySupplier extends TPage
 			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
 			$this->Response->appendHeader("Cache-Control:max-age=0");
 			$phpExcelWriter->save('php://output'); 
-			$this->Response->flush();
+			//$this->Response->flush();
 			exit();
 		}
 		catch(Exception $ex)

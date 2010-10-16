@@ -28,11 +28,13 @@ class OrderToSupplier extends TPage
 		$criteria->Condition .= " where o.order_id > 0 ";
 		if ($this->dpFromDate->Data>0)
 		{
-			$criteria->Condition .= " and (o.c_date >= '".$this->dpFromDate->Data."') ";
+			$fromDate = mktime(0,0,0,date("n",$this->dpFromDate->Data),date("j",$this->dpFromDate->Data),date("Y",$this->dpFromDate->Data));
+			$criteria->Condition .= " and (o.c_date >= '".$fromDate."') ";
 		}
 		if ($this->dpToDate->Data>0)
 		{
-			$criteria->Condition .= " and (o.c_date <= '".$this->dpToDate->Data."') ";
+			$toDate = mktime(23,59,59,date("n",$this->dpToDate->Data),date("j",$this->dpToDate->Data),date("Y",$this->dpToDate->Data));
+			$criteria->Condition .= " and (o.c_date <= '".$toDate."') ";
 		}
 		// -- 
 		$criteria->Condition .= ")";

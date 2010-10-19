@@ -64,9 +64,10 @@
 									<tr>
 										<td class="field2" colspan="2" style="margin-bottom:0;padding:0;">
 											<div class="item_title">
+												<div class="width_10">Edit</div>
 												<div class="width_10">Supplier</div>
 												<div class="width_10">Brand</div>
-												<div class="width_25">Product Items</div>
+												<div class="width_15">Product Items</div>
 												<div class="width_10">Quantity</div>
 												<div class="width_10">UOM</div>
 												<div class="width_10">Price/Unit (SGD)</div>
@@ -80,17 +81,25 @@
 								</prop:HeaderTemplate>
 								<prop:ItemTemplate>
 									<div class="item_text">
+										<div class="width_10"><a href="<%# $this->Data ? $this->Service->ConstructUrl("admincp.OrderItemForm",array("id"=>$this->Data->ID,"ordernum"=>$this->Data->Order->Num)) : '#' %>">Edit</a></div>
 										<div class="width_10"><%= $this->Data && $this->Data->Product->Manufacturer ? $this->Data->Product->Manufacturer->Name : "" %></div>
 										<div class="width_10"><%= $this->Data && $this->Data->Product->Brand ? $this->Data->Product->Brand->Name : "" %></div>
-										<div class="width_25"><a href="<%# $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>"><%= $this->Data && $this->Data->Product ? $this->Data->Product->Name : "" %></a></div>
+										<div class="width_15"><a href="<%# $this->Data && $this->Data->Product ? $this->Service->ConstructUrl("admincp.ProductForm",array("id"=>$this->Data->Product->ID,"alias"=>$this->Data->Product->Alias)) : "#" %>"><%= $this->Data && $this->Data->Product ? $this->Data->Product->Name : "" %></a></div>
 										<div class="width_10"><%# $this->Data ? $this->Data->Quantity : 0 %></div>
 										<div class="width_10"><%# ($this->Data->Property?$this->Data->Property->Name:"") %>/unit</div>
 										<div class="width_10"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data->UnitPrice %>" /></div>
 										<div class="width_10"><com:TNumberFormat Type="<%# $this->Data->DiscountIsPercent?'percentage':'currency' %>" Culture="en_US" Currency="USD" Value="<%# $this->Data->DiscountAmount %>" /></div>
-										<div class="width_10"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data ? $this->Data->Subtotal : 0 %>" /></div>
+										<div class="width_10"><com:TNumberFormat Type="currency" Currency="USD" Value="<%# $this->Data ? Common::roundTo($this->Data->Subtotal) : 0 %>" /></div>
 									</div>
 								</prop:ItemTemplate>
 								<prop:FooterTemplate>
+										</td>
+									</tr>
+									<tr>
+										<td class="field2" colspan="2">
+											<div class="item_text">
+												<div class="width_10"><a href="<%# $this->Service->ConstructUrl("admincp.OrderItemForm", array("ordernum"=>$this->Page->Item->Num))%>">Add new item</a></div>
+											</div>
 										</td>
 									</tr>
 								</prop:FooterTemplate>

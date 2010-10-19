@@ -316,7 +316,7 @@ class OrderRecord extends TActiveRecord
 	{
 		$next2day = time()+2*24*60*60;
 		if ($estDate > $next2day && date("N",$estDate) != 6 && date("N",$estDate) != 7)
-			return true;
+			return true; 
 		else return false;
 	}
 }

@@ -151,5 +151,9 @@ class ProductRecord extends TActiveRecord
 		$criteria->OrdersBy["prop_price"] = "asc";
 		return PropertyRecord::finder()->findAll($criteria);
 	}
+	
+	public function getBrandName() {
+		return $this->Brand?$this->Brand->Name:''; 
+	}
 }
 ?>

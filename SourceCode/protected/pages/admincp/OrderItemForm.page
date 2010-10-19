@@ -1,0 +1,81 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Add/Update Order Item
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%"> 
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Form sample-->
+				<com:TPanel ID="mainBox" CssClass="main_box">
+					<div class="title">
+						<div>
+							<div><h2><com:TLabel ID="lblHeader" /></h2></div>
+						</div>
+					</div>
+					<div class="content">
+						<table border="0" cellpadding="0" cellspacing="0" class="form" width="100%" style="margin-bottom:10px;">
+							<tr>
+								<td class="field">
+									<div class="text">Product<span>*</span></div>
+									<div class="control">
+										<com:TActiveDropDownList ID="cboProductSelector"
+											Width="250px"
+											OnCallBack="cboProductSelector_CallBack"
+											DataGroupField="BrandName"
+											DataTextField="Name"
+											DataValueField="ID" />
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">Property</div>
+									<div class="control">
+										<com:TActiveDropDownList ID="cboPropertySelector" AutoPostBack="false" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field">
+									<div class="text">Brand</div>
+									<div class="control">
+										<com:TActiveTextBox CssClass="textbox" ID="txtBrand" ReadOnly="true" />
+									</div>
+								</td>
+								<td class="field">
+									<div class="text">Supplier</div>
+									<div class="control">
+										<com:TActiveTextBox CssClass="textbox" ID="txtSupplier" ReadOnly="true" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field" style="padding:5px 0 5px 0;">
+									<div class="text paddingtop">Quantity</div>
+									<div class="control">
+										<com:TTextBox CssClass="textbox" ID="txtQuantity" Width="75px" />
+									</div>
+								</td>
+								<td class="field" ></td>
+							</tr>
+						</table>
+						<div class="field" style="border:none;margin-bottom:0;">
+							<div class="text">&nbsp;</div>
+							<div class="control">
+								<com:TButton ID="btnSubmit" CssClass="<%= ($this->Item && $this->Item->ID > 0) ? 'btn_edit' : 'btn_addnew' %>" OnClick="btnSubmit_Clicked" />
+								<com:TButton CausesValidation="false" ButtonType="Reset" CssClass="btn_reset" />
+								<com:TButton CausesValidation="false" ButtonType="Button" CssClass="btn_cancel" Attributes.onclick="if(!confirm('<%= $this->Application->getModule('message')->translate('CANCEL_CONFIRM') %>')) return false; else document.location.href = '<%= strlen($this->Request['refUrl'])>0 ? urldecode($this->Request['refUrl']) : $this->Service->ConstructUrl('admincp.BrandManager') %>'" />
+							</div>
+						</div>
+					</div>
+				</com:TPanel>
+				<!-- Form sample: END -->
+			</td>
+		</tr>
+	</table>
+</com:TContent>

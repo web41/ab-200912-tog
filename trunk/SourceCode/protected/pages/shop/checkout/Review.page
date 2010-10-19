@@ -151,6 +151,11 @@
 			<com:TTextBox ID="txtComments" TextMode="MultiLine" Width="400px" Height="100px" />
 		</div>
 
+		<h3>Order Terms</h3>
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;float:left;width:544px;">
+			Please note: We endeavour to deliver the product ordered but if the item ordered is out of stock we will provide a similar item of equivalent value.
+		</div>
+		
         <h3>Standing Order</h3>
         <div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin:10px 0 20px 0;float:left;width:544px;">
           <table border="1" border-color="#e2e2bc" cellpading="5" cellspacing="0">
@@ -185,11 +190,6 @@
 		  </tr>
 		 </table>
         </div>
-		
-		<h3>Order Terms</h3>
-		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;float:left;width:544px;">
-			Please note: We endeavour to deliver the product ordered but if the item ordered is out of stock we will provide a similar item of equivalent value.
-		</div>
 		
 		<div class="viewcart_container" style="margin:0;">
 			<div class="cart_review" style="margin:0;">

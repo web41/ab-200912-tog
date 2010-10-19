@@ -1,5 +1,5 @@
 <?php
-
+Prado::using('Application.common.common');
 class OrderForm extends TPage
 {
 	public function onLoad($param)
@@ -62,12 +62,12 @@ class OrderForm extends TPage
 			$this->rptHistory->DataSource = OrderHistoryRecord::finder()->withOrderStatus()->findAllByorder_id($activeRecord->ID);
 			$this->rptHistory->DataBind();
 
-			$this->nfSubtotal->Value = $activeRecord->Subtotal;
-			$this->nfShippingAmount->Value = $activeRecord->ShippingMethod->Price;
-			$this->nfShippingDiscount->Value = $this->nfShippingAmount->Value - $activeRecord->ShippingAmount;
-			$this->nfCouponDiscount->Value = $activeRecord->CouponAmount;
-			$this->nfPointRebate->Value = $activeRecord->RewardPointsRebate;
-			$this->nfTotal->Value = $activeRecord->Total;
+			$this->nfSubtotal->Value = Common::roundTo($activeRecord->Subtotal);
+			$this->nfShippingAmount->Value = Common::roundTo($activeRecord->ShippingMethod->Price);
+			$this->nfShippingDiscount->Value = Common::roundTo($this->nfShippingAmount->Value - $activeRecord->ShippingAmount);
+			$this->nfCouponDiscount->Value = Common::roundTo($activeRecord->CouponAmount);
+			$this->nfPointRebate->Value = Common::roundTo($activeRecord->RewardPointsRebate);
+			$this->nfTotal->Value = Common::roundTo($activeRecord->Total);
 
 			if (strlen($activeRecord->Deliverer)>0) $this->cboDelivererSelector->SelectedValue = $activeRecord->Deliverer;
 			//if ($activeRecord->TotalPacks>0) $this->cboTotalPacksSelector->SelectedValue = $activeRecord->TotalPacks;

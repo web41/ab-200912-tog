@@ -280,10 +280,12 @@ class OrderRecord extends TActiveRecord
 			Order on Monday, Tuesday ----> deliver Friday 5-8pm (CHOICE OF FRI AND SAT)
 			Order on Wednesday -----> deliver Saturday 10-12noon (ONLY SAT)
 		*/
+		
+		// 29-10-2010: change tue and fri to 3pm-7pm
 		if (($dayOfWeek == 1) || ($dayOfWeek == 2))
 		{
 			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7pm');
 			while (date('N',$tmpDate) != 6) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'10am-12noon');
 		}
@@ -292,12 +294,12 @@ class OrderRecord extends TActiveRecord
 			while (date('N',$tmpDate) != 6) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'10am-12noon');
 			//while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
-			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7pm');
 		}
 		else if (($dayOfWeek == 4) || ($dayOfWeek == 5 && $hourOfDay < 15))
 		{
 			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7pm');
 			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
 		}
@@ -306,7 +308,7 @@ class OrderRecord extends TActiveRecord
 			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-6pm');
 			//while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
-			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'5pm-8pm');
+			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7pm');
 		}
 		
 		return $availDeliveryDate;

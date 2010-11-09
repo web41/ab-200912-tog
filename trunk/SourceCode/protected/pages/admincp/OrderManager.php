@@ -354,6 +354,99 @@ class OrderManager extends TPage
 	{
 		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,"",$this->UserID,$sender->SelectedValue));
 	}
+
+	protected function btnExport_Clicked($sender, $param) {
+		
+		Prado::using("Application.common.PHPExcel");
+		Prado::using("Application.common.PHPExcel.Style");
+		Prado::using("Application.common.PHPExcel.Style.Font");
+		Prado::using("Application.common.PHPExcel.IOFactory");
+		Prado::using("Application.common.PHPExcel.Writer.Excel5");
+		
+		// get data
+		$criteria = new TActiveRecordCriteria;
+		$criteria->OrdersBy[$this->Sortable[$this->SortBy]] = $this->SortType;
+		// addtional condition here
+		// this part will be hard-code on each page
+		$criteria->Condition = "order_id in (select distinct o.order_id from tbl_order o
+												left join tbl_order_history oh ON o.order_id = oh.order_id
+												where o.order_id > 0 ";
+		if (strlen($this->SearchText)>0)
+		{
+			$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));
+			$searchQuery = "";
+			foreach($searchArray as $index=>$value)
+			{
+				$searchQuery .= ($index>0 ? " or " : "")." o.order_id like '%".addslashes($searchArray[$index])."%' or o.order_num like '%".addslashes($searchArray[$index])."%'";
+			}
+			$criteria->Condition .= " and (".$searchQuery.")";
+		}
+		if ($this->UserID > 0)
+		{
+			$criteria->Condition .= " and o.user_id = {$this->UserID}";
+		}
+		if (strlen($this->LatestStatus)>0) {
+			$criteria->Condition .= " and oh.order_status_code = :status and oh.c_date = (SELECT max(c_date) FROM tbl_order_history WHERE order_id = oh.order_id)";
+			$criteria->Parameters[':status'] = $this->LatestStatus;
+		}
+		// -- 
+		$criteria->Condition .= ")";
+		$activeRecord = Prado::createComponent(self::AR);
+		$items = $activeRecord->finder()->withUser()->findAll($criteria);
+
+		try
+		{
+			$workBook = new PHPExcel();
+            $workBook->getProperties()->setCreator("Alex Do")
+                ->setLastModifiedBy("Alex Do")
+                ->setTitle("The Organic Grocer Product List generated on ".date("m.D.Y",time()))
+                ->setSubject("The Organic Grocer Product List")
+                ->setDescription("The Organic Grocer Product List generated on ".date("m.D.Y",time()));
+            $workBook->setActiveSheetIndex(0);
+            $workSheet = $workBook->getActiveSheet();
+            $workSheet->setCellValue("A1","No")->getStyle("A1")->getFont()->setBold(true);;
+            $workSheet->setCellValue("B1","Order Number")->getStyle("B1")->getFont()->setBold(true);
+            $workSheet->setCellValue("C1","Customer")->getStyle("C1")->getFont()->setBold(true);
+			$workSheet->setCellValue("D1","Total")->getStyle("C1")->getFont()->setBold(true);
+			$workSheet->setCellValue("E1","Order Date")->getStyle("D1")->getFont()->setBold(true);
+			$workSheet->setCellValue("F1","Last Status")->getStyle("E1")->getFont()->setBold(true);
+			
+            $startRow = 2;
+            if (count($items)>0)
+            {
+				for($i=0; $i<count($items); $i++)
+                {
+					$workSheet->setCellValue("A".($i+$startRow),$i+1);
+                    $workSheet->setCellValue("B".($i+$startRow),$items[$i]?$items[$i]->Num:"");
+                    $workSheet->setCellValue("C".($i+$startRow),$items[$i]?$items[$i]->User->FirstName.' '.$items[$i]->User->LastName:"");
+                    $workSheet->setCellValue("D".($i+$startRow),$items[$i]?number_format($items[$i]->Total,2):0);
+					$workSheet->setCellValue("E".($i+$startRow),$items[$i]?date('d/m/Y h:i:s a',$items[$i]->CreateDate):'');
+					$workSheet->setCellValue("F".($i+$startRow),$items[$i]&&$items[$i]->LatestHistory&&$items[$i]->LatestHistory->OrderStatus?$items[$i]->LatestHistory->OrderStatus->Name:'');
+                }
+            }
+
+			$workSheet->getColumnDimension("A")->setWidth(10);
+			$workSheet->getColumnDimension("B")->setWidth(25);
+			$workSheet->getColumnDimension("C")->setWidth(20);
+			$workSheet->getColumnDimension("D")->setWidth(15);
+			$workSheet->getColumnDimension("E")->setWidth(25);
+			$workSheet->getColumnDimension("E")->setWidth(20);
+
+            $phpExcelWriter = PHPExcel_IOFactory::createWriter($workBook, 'Excel5');
+            $fileName = "TOG_OrderList_On_".date("Y-m-d_h-i",time()).".xls";
+            $this->Response->appendHeader("Content-Type:application/vnd.ms-excel");
+            $this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
+            $this->Response->appendHeader("Cache-Control:max-age=0");
+            $phpExcelWriter->save('php://output'); 
+            //$this->Response->flush();
+            exit();
+		}
+		catch(Exception $ex)
+		{
+			$this->Notice->Type = AdminNoticeType::Error;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+		}
+	}
 }
 
 ?>

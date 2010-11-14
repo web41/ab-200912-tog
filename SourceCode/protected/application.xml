@@ -39,8 +39,7 @@
 		<!-- error handler -->
 		<module id="error" class="Application.common.TOGErrorHandler" />
 		<module id="db" class="System.Data.TDataSourceConfig">
-			<!--database ConnectionString="mysql:host=localhost;dbname=tog_db_test_server" username="root" password=""/-->			
-			<database ConnectionString="mysql:host=localhost;dbname=asiablaz_tog" username="asiablaz_udev" password="md6qwptrzp"/>				
+			<database ConnectionString="mysql:host=localhost;dbname=tog_db_test_server" username="root" password=""/>
 		</module>
 		<module class="System.Data.ActiveRecord.TActiveRecordConfig" ConnectionID="db"/>
 		<module id="sqlmap" class="System.Data.SqlMap.TSqlMapConfig" EnableCache="true" ConfigFile="Application.pages.admincp.sqlmap" ConnectionID="db" />
@@ -59,7 +58,7 @@
 		<module id="adminmenu" class="Application.common.PMenuManager" MenuFile="Application.pages.admincp.menu"/>
 		<!--module id="sitemap" class="CSitemap.CSitemapManager" SitemapFile="Application.sitemap"/-->
 		<module id="request" class="THttpRequest" UrlManager="friendly-url" CgiFix="1" />
-		<module id="friendly-url" class="System.Web.TUrlMapping" EnableCustomUrl="true" UrlPrefix="/TOG">
+		<module id="friendly-url" class="System.Web.TUrlMapping" EnableCustomUrl="true" UrlPrefix="/tog/SourceCode">
 			
 			<url ServiceParameter="Index" pattern="index.html"/>
 			<url ServiceParameter="shop.AboutUs" pattern="about-us.html"/>
@@ -204,10 +203,10 @@
 		<parameter id="USER_TIMEOUT" value="7200" />
 		<parameter id="USER_TITLE" value="('Mr.'=>'Mr','Mrs'=>'Mrs','Miss'=>'Miss','Ms.'=>'Ms.','Dr.'=>'Dr.')" />
 		<parameter id="PAYMENT_STATUS" value="(0=>'Pending',-1=>'Declined',1=>'Approved')" />
-		<parameter id="PAYPAL_INFO" value="('business'=>'dosithuyen@gmail.com', 'currency'=>'USD', 'auth_token'=>'soZLyylMjyanw7yu5zFnON3MOtZ5Zg-dYLpsXiViO9Q8CX9TPAsRkJcpvHu')" />
-		<parameter id="MAXIMUM_ORDER_REQUIRED" value="50.00" />
-		<parameter id="MAXIMUM_ORDER_TO_FREE_SHIPPING" value="100.00" />
-		<parameter id="DELIVERER" value="(1=>'Hubert Huynh',2=>'Sandy Nguyen',3=>'Natallie Pham')" />
+		<parameter id="PAYPAL_INFO" value="('business'=>'dosithuyen@gmail.com', 'currency'=>'SGD', 'auth_token'=>'soZLyylMjyanw7yu5zFnON3MOtZ5Zg-dYLpsXiViO9Q8CX9TPAsRkJcpvHu')" />
+		<parameter id="MAXIMUM_ORDER_REQUIRED" value="100.00" />
+		<parameter id="MAXIMUM_ORDER_TO_FREE_SHIPPING" value="150.00" />
+		<parameter id="DELIVERER" value="(1=>'Kenneth',2=>'George',3=>'Gerardine',4=>'Angeline')" />
 		<parameter id="ORGANIC_POINTS" value="(5=>500,10=>750,15=>1000)" />
 		<parameter id="DELIVERY_SLOTS" value="('AM'=>'10am-2pm','PM'=>'3pm-7pm')" />
 	</parameters>

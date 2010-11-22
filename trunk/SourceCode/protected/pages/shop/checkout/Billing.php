@@ -113,7 +113,8 @@ class Billing extends TPage
 				{
 					$cartRecord->EstDeliveryDate = $this->cboDeliveryDateSelector->SelectedValue;
 					// add shipping amount if order < $100
-					if ($cartRecord->Subtotal < 150) {
+					// change to 120 on 22/11/2010
+					if ($cartRecord->Subtotal < 120) {
 						$shippingMethod = ShippingMethodRecord::finder()->findByPk(6);
 						if ($shippingMethod instanceof ShippingMethodRecord) {
 							$cartRecord->ShippingMethodID = $shippingMethod->ID;

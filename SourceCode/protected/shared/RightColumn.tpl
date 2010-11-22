@@ -1,5 +1,15 @@
 <div class="box">
     <div class="special_box">
+        <div class="top" style="color:red;">Gift Hampers Order</div>
+       	<div class="center">
+			Please place your orders on or before 12th December 2010. Deliveries will be made between 14th December 2010 and 22nd December 2010.<br /><br /> 
+			<b><a href="/Hamper_Order_Form.xls">Download Gift Hampers Order Form here</a></b>
+        </div>
+        <div class="bottom"><!-- --></div>
+    </div>
+</div>
+<div class="box">
+    <div class="special_box">
         <div class="top">Standing Order</div>
        	<div class="center">
         	The Organic Grocer allows you to have a standing order for the items you need to purchase on a regular basis.<br /><br />

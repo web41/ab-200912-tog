@@ -42,6 +42,11 @@
                     <div>
                     <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/banner.png" alt="The organic grocer" width="520" />
                     </div>
+					<div class="ss_content">
+						<a href="<%= $this->Service->ConstructUrl('shop.Index',array('c'=>74,'calias'=>'gift-hampers')) %>">
+							<img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/Christmas_Hampers.jpg" alt="Christmas Hampers" />
+						</a>
+					</div>
                     <div class="ss_content">
                     	<div style="float:left;width:auto;font-size:24px;">
                         <b>FRESH ORGANICS</b><br /><br />

@@ -163,7 +163,7 @@ class Index extends TPage
 		parent::onLoad($param);
 		$this->CurrentPage = ($this->Request->contains('p')) ? TPropertyValue::ensureInteger($this->Request['p']) : 1;
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 6;
-		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
+		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'desc'; //changed to "desc" on 30-11-2010 by Tom
 		$this->BrandID = ($this->Request->contains('b')) ? TPropertyValue::ensureInteger($this->Request['b']) : 0;
 		$this->MfID = ($this->Request->contains('mf')) ? TPropertyValue::ensureInteger($this->Request['mf']) : 0;
 		$this->CatID = ($this->Request->contains('c')) ? TPropertyValue::ensureInteger($this->Request['c']) : 0;

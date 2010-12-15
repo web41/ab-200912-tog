@@ -12,13 +12,13 @@
 		<menuNode ServiceParameter="admincp.BrandForm" Title="Add Brand" />
 		<menuNode ServiceParameter="admincp.BrandManager" Title="Brand List" />
 	</menuNode>
-	<menuNode Title="Coupon &amp; Discount">
+	<!--menuNode Title="Coupon &amp; Discount">
 		<menuNode ServiceParameter="admincp.CouponForm" Title="Add Coupon" />
 		<menuNode ServiceParameter="admincp.CouponManager" Title="Coupon List" />
 		<menuNode ServiceParameter="admincp.DiscountForm" Title="Add Discount" />
 		<menuNode ServiceParameter="admincp.DiscountManager" Title="Discount List" />
 		<menuNode ServiceParameter="admincp.ApplyDiscount" Title="Apply Discount" />
-	</menuNode>
+	</menuNode-->
 	<menuNode Title="Shipping &amp; Payment Method">
 		<menuNode ServiceParameter="admincp.ShippingMethodForm" Title="Add Shipping Method" />
 		<menuNode ServiceParameter="admincp.ShippingMethodManager" Title="Shipping Method List" />

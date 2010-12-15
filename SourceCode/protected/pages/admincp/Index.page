@@ -50,14 +50,14 @@
 										<div class="img" id="icon_dashboard_order">&nbsp;</div>
 										order manager
 									</a>
-									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.CouponManager") %>">
+									<!--a class="function" href="<%= $this->Service->ConstructUrl("admincp.CouponManager") %>">
 										<div class="img" id="icon_dashboard_coupon">&nbsp;</div>
 										coupon manager
 									</a>
 									<a class="function" href="<%= $this->Service->ConstructUrl("admincp.DiscountManager") %>">
 										<div class="img" id="icon_dashboard_discount">&nbsp;</div>
 										discount manager
-									</a>
+									</a-->
 								</td>
 							</tr>
 						</table>

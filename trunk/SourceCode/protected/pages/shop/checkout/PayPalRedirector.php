@@ -11,11 +11,11 @@ class PayPalRedirector extends TPage
 			$this->setHash($this->Request['hash']);
 			$orderRecord = $this->getOrder();
 			$paymentRecord = $this->getPayment();
-			$this->PPayPal1->Amount = 1;//Common::roundTo($orderRecord->Total);
+			$this->PPayPal1->Amount = Common::roundTo($orderRecord->Total);
 			$this->PPayPal1->Title = "The Organic Grocer - Purchase Order";
 			$this->PPayPal1->CancelUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->Service->ConstructUrl("shop.checkout.Review",array("hash"=>$this->generateHash($this->Order->ID,$this->Order->Num,$this->Payment->ID)));
-			//$this->PPayPal1->ReturnUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->Service->ConstructUrl("shop.checkout.Confirmation",array("hash"=>$this->generateHash($this->Order->ID,$this->Order->Num,$this->Payment->ID)));
-			$this->PPayPal1->ReturnUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->Service->ConstructUrl("shop.checkout.TestConfirmation",array("order_id"=>$this->Order->ID,"order_num"=>$this->Order->Num,"payment_id"=>$this->Payment->ID));
+			$this->PPayPal1->ReturnUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->Service->ConstructUrl("shop.checkout.Confirmation",array("hash"=>$this->generateHash($this->Order->ID,$this->Order->Num,$this->Payment->ID)));
+			//$this->PPayPal1->ReturnUrl = $this->Request->getBaseUrl($this->Request->IsSecureConnection).$this->Service->ConstructUrl("shop.checkout.TestConfirmation",array("order_id"=>$this->Order->ID,"order_num"=>$this->Order->Num,"payment_id"=>$this->Payment->ID));
 		}
 	}
 	

@@ -15,7 +15,7 @@
 	<!-- Inside box -->
 	<div class="inside_box">
     	<h2>Delivery Schedule and Info</h2>
-        <div style="text-align:center"><img src="<%= $this->Page->Theme->BaseUrl %>/images/img_delivery.png" alt="" class="img" style="float:none;width:auto;margin:0;border:none;"/></div>
+        <!--div style="text-align:center"><img src="<%= $this->Page->Theme->BaseUrl %>/images/img_delivery.png" alt="" class="img" style="float:none;width:auto;margin:0;border:none;"/></div-->
         <div><b>The Organic Grocer Delivers every Tuesdays, Wednesdays, Fridays and Saturdays.</b></div>
         
         <div><b></b></div>

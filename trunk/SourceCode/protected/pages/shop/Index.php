@@ -225,8 +225,10 @@ class Index extends TPage
 			$toDay = time();
 			if ((date('w',$toDay)==4 && date('G',$toDay)>=12) || (date('w',$toDay)==6 && date('G',$toDay)<=23)) {
 				$sql .= "AND LOWER(b.brand_name) <> 'earthbound'";
-			}
-            $order = (isset($this->Sortable[$this->SortBy])?$this->Sortable[$this->SortBy]:$this->Sortable[1])." ".$this->SortType;
+			}            
+			
+			$order = (isset($this->Sortable[$this->SortBy])?$this->Sortable[$this->SortBy]:$this->Sortable[1])." ".$this->SortType;
+			
             $this->ItemList->VirtualItemCount = count($sqlmap->queryForList("BrowseProduct", array("ADDITIONAL_CONDITION"=>$sql,"ORDER_BY"=>$order)));
         }
 		$this->MaxPage = ceil($this->ItemList->VirtualItemCount/$this->ItemList->PageSize);
@@ -240,7 +242,11 @@ class Index extends TPage
             $items = $sqlmap->queryForList("FavouriteProduct", $this->Application->User->ID,null,$offset,$limit);
         }
         else {
-            $order = (isset($this->Sortable[$this->SortBy])?$this->Sortable[$this->SortBy]:$this->Sortable[1])." ".$this->SortType;
+            // tom edit sort by c_date if list new-arrival
+			if ($this->IsNew)
+				$order = "p.product_id desc";
+			else
+				$order = (isset($this->Sortable[$this->SortBy])?$this->Sortable[$this->SortBy]:$this->Sortable[1])." ".$this->SortType;
             $items = $sqlmap->queryForList("BrowseProduct", array("ADDITIONAL_CONDITION"=>$sql,"ORDER_BY"=>$order),null,$offset,$limit);
         }
 		$this->ItemList->DataSource = $items;

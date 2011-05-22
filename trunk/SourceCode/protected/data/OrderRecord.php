@@ -281,37 +281,31 @@ class OrderRecord extends TActiveRecord
 			Order on Wednesday -----> deliver Saturday 10-12noon (ONLY SAT)
 		*/
 		
+		// 1 (for Monday) through 7 (for Sunday)
+		
 		// 29-10-2010: change tue and fri to 3pm-7pm
 		// 22-11-2010: change tue, wed and fri to 3.30pm-7pm, sat to 11am-2pm
 		
 		// 20-02-2011: remove saturday deliveries, order on wed will be deliverred on sat
-		if (($dayOfWeek == 1) || ($dayOfWeek == 2) || ($dayOfWeek == 3))
+		
+		// 23-05-2011: Order by Wed 11:00pm: Deliver by Fri 3:30 to 7pm
+		//             Order by Sun 11:00pm: Deliver next Tues or Wed 3:30 to 7pm
+		if (($dayOfWeek == 1) || ($dayOfWeek == 2) || ($dayOfWeek == 3 && $hourOfDay < 23))
+		{
+			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');			
+		}		
+		else if ($dayOfWeek == 7 && $hourOfDay >= 23)
 		{
 			while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
-			//while (date('N',$tmpDate) != 6) $tmpDate += $oneDay;
-			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'11am-2pm');
 		}
-		/*else if ($dayOfWeek == 3)
-		{
-			while (date('N',$tmpDate) != 6) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'11am-2pm');
-			//while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
-			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
-		}*/
-		else if (($dayOfWeek == 4) || ($dayOfWeek == 5 && $hourOfDay < 15))
+		else
 		{
 			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
 			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
-		}
-		else
-		{
-			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
-			//while (date('N',$tmpDate) != 5) $tmpDate += $oneDay;
-			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
 		}
 		
 		return $availDeliveryDate;

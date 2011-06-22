@@ -117,7 +117,7 @@
 						Display="Dynamic" />
 				</td>
 			</tr>
-			<tr>
+			<!--tr>
 				<td class="left">Country</td>
 				<td class="right">
 					<com:TDropDownList ID="cboCountrySelector" 
@@ -126,13 +126,13 @@
 						DataValueField="Code"/><br />
 					<com:TRequiredFieldValidator ID="val8"
 						ControlToValidate="cboCountrySelector"
-						ValidationGroup="Billing"
+						ValidationGroup="Billing_CANCEL"
 						InitialValue="0"
 						ErrorMessage="<%= $this->Application->getModule('message')->translate('COMBOBOX_REQUIRED','Country') %>"
 						Display="Dynamic"
 						FocusOnError="True"/>
 				</td>
-			</tr>
+			</tr-->
 			<tr>
 				<td class="left">Phone 1 <span>*</span></td>
 				<td class="right">

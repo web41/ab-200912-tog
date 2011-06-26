@@ -56,7 +56,9 @@
 			</prop:HeaderTemplate>
 			<prop:ItemTemplate>
 				<tr>
-					<td style="border:none;text-align:left;" width="46%"><%# ($this->Request->Contains('mode')&&$this->Request['mode']=='admin'?'(<strong>'.$this->Data->Product->Manufacturer->Name.'</strong>) ':'').'<strong>'.$this->Data->Product->Brand->Name.'</strong> - '.$this->Data->Product->Name %></td>
+					<td style="border:none;text-align:left;" width="46%">
+						<%# ($this->Request->Contains('mode')&&$this->Request['mode']=='admin'?'<input type="checkbox" name="tick" value="tick" />&nbsp;(<strong>'.$this->Data->Product->Manufacturer->Name.'</strong>) ':'').'<strong>'.$this->Data->Product->Brand->Name.'</strong> - '.$this->Data->Product->Name %>
+					</td>
 					<td style="border:none;" width="8%"><%# $this->Data->Quantity %></td>
 					<td style="border:none;" width="22%"><%# ($this->Data->Property?$this->Data->Property->Name:"") %>/unit</td>
 					<td style="border:none;" width="12%"><com:TNumberFormat Type="currency" Currency="SGD" Value="<%# $this->Data->UnitPrice %>" /></td>					
@@ -76,6 +78,7 @@
 					<!--Total packs: <com:TLabel ID="lblTotalPacks" /><br /-->
 					Payment Terms: <com:TLabel ID="lblPaymentTerm" /><br />
 					Delivery Date/Time: <com:TLabel ID="lblDeliveryDate" /><br />
+					<com:TLabel ID="lblGoGreen" />
 					Comments: <br />
 					<com:TLabel ID="lblComments" />
 				</td>

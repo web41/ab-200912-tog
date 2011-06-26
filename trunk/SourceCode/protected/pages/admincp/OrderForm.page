@@ -188,6 +188,14 @@
 							</tr>
 							<tr>
 								<td class="field" colspan="2">
+									<div class="text2">Go Eco-Friendly</div>
+									<div class="control">
+										<com:TLabel ID="lblGoGreen" />
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="field" colspan="2">
 									<div class="text">Comments</div>
 									<div class="control">
 										<com:TTextBox ID="txtComments" TextMode="MultiLine" CssClass="textbox" Width="630px" Height="100px"/>

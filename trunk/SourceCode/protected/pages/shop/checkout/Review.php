@@ -221,6 +221,11 @@ class Review extends TPage
 				$order->EstDeliveryDate = $cartRecord->EstDeliveryDate;
 				$order->Comments = $this->txtComments->SafeText;
 				
+				// Added by Tom 2011-Jun
+				if ($this->chkGoGreen->Checked) {
+					$order->GoGreen = "1"; // defuated is 0 means customer don't want go green, 1 mean customer want to go green
+				}
+				
 				try
 				{
 					$order->save();

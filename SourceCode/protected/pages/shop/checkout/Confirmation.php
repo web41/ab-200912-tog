@@ -202,6 +202,8 @@ class Confirmation extends TPage
 						$credits = $this->Order->RewardPointsRebate > 0 ? $organicPoints[TPropertyValue::ensureInteger($this->Order->RewardPointsRebate)] : 0;
 						$user->Credits = $user->Credits - $credits + TPropertyValue::ensureInteger($this->Order->Total);
 						$user->CreditsUsed = $user->CreditsUsed + $credits;
+						if ($user->UserTypeID == 3)
+							$user->UserTypeID = 6; // Added by Tom 2011-Jun: Type = 6 Customer User - this must be changed manually whenever updating user type data
 						$user->save();
 						$this->Application->getModule("auth")->updateSessionUser($this->Application->User->createUser($user->Email));
 					}

@@ -17,16 +17,14 @@ select{width:auto;height:26px;border:solid 1px #e5e5e5;background:url(../images/
 .btn_addhistory{width:122px;height:26px;background:url(../images/btn_addhistory.png) no-repeat;border:0;float:left;margin-right:10px;}
 .btn_generateinvoice{width:142px;height:26px;background:url(../images/btn_generateinvoice.png) no-repeat;border:0;float:left;margin-right:10px;}
 .btn_generateinvoiceadmin{width:212px;height:26px;background:url(../images/btn_generateinvoiceadmin.png) no-repeat;border:0;float:left;margin-right:10px;}
+.btn_getemail{width:132px;height:26px;background:url(../images/btn_getemail.png) no-repeat;border:0;float:right;margin-left:8px;}
 
 .btn_smallenter{width:36px;height:26px;background:url(../images/btn_smallenter.png) no-repeat;border:0;margin-left:5px;float:right;}
 .btn_smallreset{width:36px;height:26px;background:url(../images/btn_smallreset.png) no-repeat;border:0;margin-left:5px;float:right;}
 .btn_smalladd{width:36px;height:26px;background:url(../images/btn_smalladd.png) no-repeat;border:0;margin-left:5px;float:right;}
 .btn_smallprint{width:36px;height:26px;background:url(../images/btn_smallprint.png) no-repeat;border:0;margin-left:5px;float:right;}
 
-
-
-
-.btn_addnew:hover, .btn_checkall:hover, .btn_uncheck:hover, .btn_publish:hover, .btn_unpublish:hover, .btn_delete:hover, .btn_edit:hover, .btn_smallenter:hover, .btn_smallreset:hover, .btn_reset:hover, .btn_cancel:hover, .btn_addmore:hover, .btn_smalladd:hover, .btn_export:hover, .btn_addpayment:hover, .btn_addhistory:hover, .btn_smallprint:hover, .btn_generateinvoice:hover, .btn_generateinvoiceadmin:hover
+.btn_addnew:hover, .btn_checkall:hover, .btn_uncheck:hover, .btn_publish:hover, .btn_unpublish:hover, .btn_delete:hover, .btn_edit:hover, .btn_smallenter:hover, .btn_smallreset:hover, .btn_reset:hover, .btn_cancel:hover, .btn_addmore:hover, .btn_smalladd:hover, .btn_export:hover, .btn_addpayment:hover, .btn_addhistory:hover, .btn_smallprint:hover, .btn_generateinvoice:hover, .btn_generateinvoiceadmin:hover, .btn_getemail:hover
 {background-position:center -26px;cursor:pointer}
 
 #calendar_box table{}

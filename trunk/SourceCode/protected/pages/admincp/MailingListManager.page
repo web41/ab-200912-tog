@@ -19,6 +19,7 @@
 						<com:TButton ID="btnUncheck" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
 						<com:TButton ID="btnCheck" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
 						<com:TButton ID="btnExport" CssClass="btn_export" OnClick="btnExport_Clicked" />
+						<com:TButton ID="btnGetEmail" CssClass="btn_getemail" OnClick="btnGetEmail_Clicked" />						
 						<h2>Action</h2>
 					</div>
 					<div class="bottom"><div><div><!-- --></div></div></div>
@@ -143,6 +144,7 @@
 						<com:TButton ID="btnUncheck2" ButtonType="Button" CssClass="btn_uncheck" Attributes.onclick="_chk.toogle(this,false)" />
 						<com:TButton ID="btnCheck2" ButtonType="Button" CssClass="btn_checkall" Attributes.onclick="_chk.toogle(this,true)" />
                         <com:TButton ID="btnExport2" CssClass="btn_export" OnClick="btnExport_Clicked" />
+						<com:TButton ID="btnGetEmail2" CssClass="btn_getemail" OnClick="btnGetEmail_Clicked" />						
 						<h2>Action</h2>
 					</div>
 					<div class="bottom"><div><div><!-- --></div></div></div>

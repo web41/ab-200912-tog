@@ -357,6 +357,35 @@ class MailingListManager extends TPage
 		$this->populateData();
 	}
 	
+	protected function btnGetEmail_Clicked($sender, $param)
+	{
+		try
+		{
+			$filecontent="TOG Email List: ";
+			$mailingLists = MailingListRecord::finder()->findAll();
+			for($i=0;$i<count($mailingLists);$i++)
+			{
+				$filecontent .= $mailingLists[$i]->Address . ", ";
+			}
+			
+			$filecontent = substr($filecontent, 0, strlen($filecontent) - 2);
+			
+			$fileName = "TOG_Email_List_".date("d-m-Y",time()).".txt";
+			$this->Response->appendHeader("Content-Type:plain/text");
+			$this->Response->appendHeader("Content-Disposition:attachment;filename=$fileName");
+			$this->Response->appendHeader("Cache-Control:max-age=0");
+			$this->Response->appendHeader("Content-Transfer-Encoding: binary");			
+			echo"$filecontent"; 
+			exit();
+		}
+		catch(Exception $ex)
+		{
+			$this->Notice->Type = AdminNoticeType::Error;
+			$this->Notice->Text = $this->Application->getModule("message")->translate("UNKNOWN_ERROR");
+		}
+		$this->populateData();
+	}
+	
 	protected function cboTypeSelector_SelectedIndexChanged($sender, $param) {
 		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,'',$sender->SelectedValue));
 	}

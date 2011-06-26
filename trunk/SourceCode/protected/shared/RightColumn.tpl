@@ -21,15 +21,18 @@
 </div>
 <div class="box">
 	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_1.png" alt=""/>&nbsp;&nbsp;
-	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" /><br />
-	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_gogreen.png" alt="go green" />	
+	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" />	
 </div>
 <div class="box">
-	<h2>Go Eco-Friendly</h2>
-	<div class="content">
-		The Organic Grocer aims to Go Green so let's help the environment by using less plastic! Recycle, Reuse & Reduce!
-	</div>
-</div>	
+    <div class="special_box">
+        <div class="top">Go Eco-Friendly</div>
+       	<div class="center">
+        	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_gogreen.png" alt="go green" />
+			The Organic Grocer aims to Go Green so let's help the environment by using less plastic! Recycle, Reuse & Reduce!
+		</div>
+        <div class="bottom"><!-- --></div>
+    </div>
+</div>
 <div class="box">
 	<h2>share with friends</h2>
 	<!-- AddThis Button BEGIN -->

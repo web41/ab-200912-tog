@@ -145,6 +145,12 @@
 				Display="Dynamic"
 				FocusOnError="True"/>
 		</div>
+		
+		<!-- Added by Tom on Jun-2011 -->
+		<h3>Go Eco-Friendly</h3>
+		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;float:left;width:544px;">
+			<com:TCheckBox ID="chkGoGreen" Checked="false" Text="I want to go green and no plastic bags please (except for pre-packaged fresh & frozen food items)!" />
+		</div>
         
         <h3>comments</h3>
 		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:20px;float:left;width:544px;">

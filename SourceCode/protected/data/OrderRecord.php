@@ -49,6 +49,7 @@ class OrderRecord extends TActiveRecord
 	public $Currency;
 	public $IPAddress;
 	public $Comments;
+	public $GoGreen; // Added by Tom on Jun-2011
 	public $CreateDate;
 	public $ModifyDate;
 	public $TotalOrder;
@@ -99,6 +100,7 @@ class OrderRecord extends TActiveRecord
 		'currency'=>'Currency',
 		'ip_address'=>'IPAddress',
 		'comments'=>'Comments',
+		'go_green'=>'GoGreen',
 		'c_date'=>'CreateDate',
 		'm_date'=>'ModifyDate'
 	);

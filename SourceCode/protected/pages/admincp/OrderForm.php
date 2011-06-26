@@ -74,6 +74,10 @@ class OrderForm extends TPage
 			
 			if (strlen($activeRecord->EstDeliveryDate) > 0) $this->txtEstDeliveryDate->Text = $activeRecord->EstDeliveryDate;
 			$this->txtComments->Text = $activeRecord->Comments;
+			
+			// Added by Tom on Jun-2011
+			if ($activeRecord->GoGreen == 0) $this->lblGoGreen->Text = "Customer wants plastic bag.";
+			else $this->lblGoGreen->Text = "Customer wants to go-green, <b>no plastic bag please</b>.";
 		}
 	}
 	

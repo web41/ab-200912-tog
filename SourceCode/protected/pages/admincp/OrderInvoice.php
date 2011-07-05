@@ -52,7 +52,7 @@ class OrderInvoice extends TPage
 				$this->nfTotal->Value = $activeRecord->Total;
 				
 				// Added by Tom on Jun-2011
-				if ($activeRecord->GoGreen == 1) $this->lblGoGreen->Text = "Customer wants to go-green, <b>no plastic bag please</b>.<br />";
+				if ($activeRecord->GoGreen == 1) $this->lblGoGreen->Text = "Customer wants to go-green, <b>no plastic bags please</b>.<br />";
 			}
 		}
 	}

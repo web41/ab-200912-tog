@@ -40,6 +40,7 @@ a.btn_addtocart:hover{color:#e8e8e8;}
 
 .btn_shopping{width:160px;height:28px;background:url(../images/btn_shopping.png) no-repeat;margin:0;float:left;border:none;}
 .btn_checkout{width:100px;height:28px;background:url(../images/btn_checkout.png) no-repeat;margin:0;float:right;border:none;}
-
-.btn_shopping:hover, .btn_checkout:hover{background-position:center -28px;cursor:pointer;}
+.btn_next{width:68px;height:28px;background:url(../images/btn_next.png) no-repeat;margin:0 0 0 5px;float:left;border:none;}
+.btn_submitorder{width:167px;height:28px;background:url(../images/btn_submitorder.png) no-repeat;margin:0 0 0 5px;float:right;border:none;}
+.btn_shopping:hover, .btn_checkout:hover, .btn_next:hover, .btn_submitorder:hover{background-position:center -28px;cursor:pointer;}
 

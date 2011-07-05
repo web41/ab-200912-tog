@@ -1,13 +1,15 @@
 <div class="box">
     <div class="special_box">
-        <div class="top">Standing Order</div>
+        <div class="top">Go Eco-Friendly</div>
        	<div class="center">
-        	The Organic Grocer allows you to have a standing order for the items you need to purchase on a regular basis.<br /><br />
-			Orders will be delivered to you <b>weekly</b> or <b>bi-weekly</b>.<br /><br />
-            <b><a href="<%= $this->Service->ConstructUrl("shop.StandingOrder") %>">Click here to learn how to place a standing order</a></b>
-        </div>
+        	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_gogreen.png" alt="go green" />
+			The Organic Grocer aims to <b>Go Green</b> by using <b>less plastic</b>! So <b>let's help the environment by Recycling, Reusing & Reducing</b>!</div>
         <div class="bottom"><!-- --></div>
     </div>
+</div>
+<div class="box">
+	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_1.png" alt=""/>&nbsp;&nbsp;
+	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" />	
 </div>
 <div class="box">
     <div class="special_box">
@@ -20,16 +22,13 @@
     </div>
 </div>
 <div class="box">
-	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_1.png" alt=""/>&nbsp;&nbsp;
-	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_2.png" alt="" />	
-</div>
-<div class="box">
     <div class="special_box">
-        <div class="top">Go Eco-Friendly</div>
+        <div class="top">Standing Order</div>
        	<div class="center">
-        	<img src="<%= $this->Page->Theme->BaseUrl %>/images/logo_gogreen.png" alt="go green" />
-			The Organic Grocer aims to Go Green so let's help the environment by using less plastic! Recycle, Reuse & Reduce!
-		</div>
+        	The Organic Grocer allows you to have a standing order for the items you need to purchase on a regular basis.<br /><br />
+			Orders will be delivered to you <b>weekly</b> or <b>bi-weekly</b>.<br /><br />
+            <b><a href="<%= $this->Service->ConstructUrl("shop.StandingOrder") %>">Click here to learn how to place a standing order</a></b>
+        </div>
         <div class="bottom"><!-- --></div>
     </div>
 </div>

@@ -306,8 +306,9 @@ class OrderRecord extends TActiveRecord
 		{
 			while (date('N',$tmpDate) != 2) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
-			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
-			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
+			// updated on 13-Jul-2011: remove Wed
+			//while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
+			//$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3.30pm-7pm');
 		}
 		
 		return $availDeliveryDate;

@@ -16,7 +16,8 @@
 	<div class="inside_box">
     	<h2>Delivery Schedule and Info</h2>
         <!--div style="text-align:center"><img src="<%= $this->Page->Theme->BaseUrl %>/images/img_delivery.png" alt="" class="img" style="float:none;width:auto;margin:0;border:none;"/></div-->
-        <div><b>The Organic Grocer Delivers every Tuesdays and Fridays.</b></div>
+        <div><b>The Organic Grocer delivers twice weekly, every Tuesday and Friday.
+(Tuesdays and Fridays are the days our fresh produce arrive early that morning and so it gets delivered to you fresh later on that same day!)</b></div>
         
         <div><b></b></div>
         <div>
@@ -27,11 +28,11 @@
                 </tr>
                 <tr>
                     <td width="50%">Sunday 11pm</td>
-                    <td width="50%">Next Tuesday PM</td>
+                    <td width="50%">Next Tuesday PM (Between 3:30 to 7pm)</td>
                 </tr>
                 <tr>
                     <td>Wednesday 11pm</td>
-                    <td>Friday PM</td>
+                    <td>Friday PM (Between 3:30 to 7pm)</td>
                 </tr>
                 </table>
         </div>

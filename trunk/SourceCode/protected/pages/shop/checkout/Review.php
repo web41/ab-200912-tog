@@ -47,7 +47,7 @@ class Review extends TPage
 				$this->populateData();
 				$this->rblPaymentSelector->DataSource = PaymentMethodRecord::finder()->getAllItems(true);
 				$this->rblPaymentSelector->DataBind();
-				$this->rblPaymentSelector->SelectedValue = 1;
+				$this->rblPaymentSelector->SelectedValue = 3;
 				$this->cboCreditsSelector->Items->clear();
 				$organicPoints = TPropertyValue::ensureArray($this->Application->Parameters["ORGANIC_POINTS"]);
 				foreach($organicPoints as $money=>$point)

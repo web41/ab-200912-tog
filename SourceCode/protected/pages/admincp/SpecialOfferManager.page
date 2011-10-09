@@ -1,0 +1,71 @@
+<%@ MasterClass="Application.shared.AdminMaster" Theme="general" %>
+<com:TContent ID="title">
+	Administration :: Special Offer Manager
+</com:TContent>
+<com:TContent ID="content">
+	<table border="0" cellpadding="0" cellspacing="0" width="100%" height="100%">
+		<tr>
+			<td class="left_col" style="background:#2e2e2e;">
+				<com:Application.shared.CalendarPane />
+				<com:Application.shared.AdminLeftMenu />
+				<com:Application.shared.StatisticsPane />
+			</td>	
+			<td class="main_col">
+				<com:Application.shared.AdminNotice ID="Notice" />
+				<!-- Main box -->
+				<div class="main_box">
+					<div class="title"><div><div>
+						<h2>Manage Special Offer</h2>						
+					</div></div></div>
+					<div class="content nopadding">
+						<com:TOGDataGrid ID="ItemList">
+							<com:TTemplateColumn HeaderStyle.Width="4%" HeaderText="#">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->ItemIndex + 1 + ($this->Page->CurrentPage-1)*$this->Parent->Parent->PageSize %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.CssClass="align_left">
+								<prop:HeaderTemplate>
+									Special Offer Title
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:THyperLink Text="<%# $this->Parent->Data->Title %>" NavigateUrl='<%# $this->Service->ConstructUrl("admincp.SpecialOfferForm",array("id"=>$this->Parent->Data->ID,"alias"=>$this->Parent->Data->Alias)) %>' />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn ItemStyle.CustomStyle="text-align:left" HeaderStyle.CssClass="align_left">
+								<prop:HeaderTemplate>
+									Special Offer Description
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->Data->Content %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<com:TTemplateColumn HeaderStyle.Width="7%">
+								<prop:HeaderTemplate>
+									Last Update
+								</prop:HeaderTemplate>
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# ($this->Parent->Data && $this->Parent->Data->ModifyDate>0) ? date('d/m/Y',$this->Parent->Data->ModifyDate) : '--' %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>			
+							<com:TBoundColumn ID="colAlias" DataField="Alias" Visible="false" />
+						</com:TOGDataGrid>
+						<div class="table_footer">
+						</div>
+					</div>
+				</div>
+				<!-- Main box: END -->
+			</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		var _chk = new CheckBoxGroup();
+		_chk.setMasterBehavior("all");
+		var _form = document.forms['<%= $this->Form->ClientID %>'];
+		for(i=0;i<_form.length;i++)
+		{
+			if (_form[i].type == 'checkbox')
+				_chk.addToGroup(_form[i].name);
+		}
+	</script>
+</com:TContent>

@@ -17,7 +17,8 @@
 	<!-- Category path: END -->
 	
 	<com:Application.shared.UserNotice ID="Notice" />
-        
+	<com:Application.shared.SpecialOffer />  
+	   
 	<com:TPanel ID="mainBox" CssClass="main_content">
         <com:TPanel ID="myFavouriteTitle" Visible="false" CssClass="inside_box">
     	    <h2>My Favourites</h2>

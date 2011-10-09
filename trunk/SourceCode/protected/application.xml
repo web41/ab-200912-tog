@@ -182,6 +182,8 @@
 			<url ServiceParameter="admincp.CustomerReport" pattern="admincp/customer-report"/>
 			<url ServiceParameter="admincp.ViewItemsByOrder" pattern="admincp/purchased-items-report/{type}" parameters.type="by-order" />
 			<url ServiceParameter="admincp.ViewItemsBySupplier" pattern="admincp/purchased-items-report/{type}" parameters.type="by-supplier" />
+			<url ServiceParameter="admincp.SpecialOfferForm" pattern="admincp/offer/{id}/{alias}" parameters.id="\d+" parameters.alias=".*"/>
+			<url ServiceParameter="admincp.SpecialOfferForm" pattern="admincp/offer/create-new"/>
 		</module>
 		<!-- error module -->
 		<module id="message" class="System.Util.TMessageTranslator" MessageFile="Application.template.messages" />

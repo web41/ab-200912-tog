@@ -5,6 +5,8 @@
 		<menuNode ServiceParameter="admincp.ProductManager" Title="Product List" />
 		<menuNode ServiceParameter="admincp.CategoryForm" Title="Add Category" />
 		<menuNode ServiceParameter="admincp.CategoryManager" Title="Category List" />
+		<!--menuNode ServiceParameter="admincp.SpecialOfferForm" Title="Add Special Offer" /-->
+		<menuNode ServiceParameter="admincp.SpecialOfferManager" Title="Special Offer List" />		
 	</menuNode>
 	<menuNode Title="Supplier &amp; Brand">
 		<menuNode ServiceParameter="admincp.ManufacturerForm" Title="Add Supplier" />

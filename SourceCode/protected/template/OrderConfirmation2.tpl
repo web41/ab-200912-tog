@@ -1,6 +1,3 @@
-<prop:EmailAddresses>
-	<com:TEmailAddress Field="BlindCarbonCopy" Address="tom.do@asiablaze.com" Name="Tom Do" />
-</prop:EmailAddresses>
 <prop:Subject>There is a new order</prop:Subject>
 <prop:EmailAddresses><com:TEmailAddress Field="Receiver" Address="sales@theorganicgrocer.com.sg" Name="The Organic Grocer" /></prop:EmailAddresses>
 <prop:HtmlContent>

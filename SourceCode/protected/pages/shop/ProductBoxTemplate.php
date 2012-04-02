@@ -35,6 +35,12 @@ class ProductBoxTemplate extends TRepeaterItemRenderer
 				else $this->lblDesc->Text = $this->Data->Description;
 			}
 		}*/
+		// Added by Tom 2012 Apr 02 - not allow user to buy unpublished product in my favourite page
+		if ($this->Data->IsPublished == 0)
+		{
+			$this->btnAddToCart->Visible = false;
+			//$this->lblAddToCart->Text = "Not Available";
+		}
 	}
 	public function getFormattedValue($value,$pattern="c",$currency="USD")
 	{

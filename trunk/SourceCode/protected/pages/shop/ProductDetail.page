@@ -41,7 +41,7 @@
 				<div class="price">Price: <span><com:TActiveLabel ID="lblPrice" CssClass="discount" /> <com:TActiveLabel ID="lblDiscountPrice" /></span></div>
 				<div class="price" style="clear:both;margin-top:15px;">                	
 					<input type="button" value="Back" class="button" onclick="javascript:history.back();" />
-					<com:TActiveLinkButton CssClass="btn_addtocart" Text="Add to bag" OnClick="btnAddToCart_Clicked" Attributes.onclick="return validateDropDownList('<%= $this->cboPropertySelector->ClientID %>')" Style="float:left;margin-left:5px;"/>
+					<com:TActiveLinkButton ID="btnAddToCart" CssClass="btn_addtocart" Text="Add to bag" OnClick="btnAddToCart_Clicked" Attributes.onclick="return validateDropDownList('<%= $this->cboPropertySelector->ClientID %>')" Style="float:left;margin-left:5px;"/>
 				</div>
 			</div>
 			<div style="float:left;width:544px;margin-bottom:0;">

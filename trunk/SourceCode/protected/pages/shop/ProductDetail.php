@@ -24,6 +24,12 @@ class ProductDetail extends TPage
 					$this->cboPropertySelector->SelectedIndex = 0;
 					$this->cboPropertySelector_CallBack($this->cboPropertySelector,null);
 				}
+				// Added by Tom 2012 Apr 02 - not allow user to buy unpublished product in my favourite page
+				if ($this->Item->IsPublished == 0)
+				{
+					$this->btnAddToCart->Visible = false;
+					//$this->lblAddToCart->Text = "Not Available";
+				}
 			}
 		}
 	}

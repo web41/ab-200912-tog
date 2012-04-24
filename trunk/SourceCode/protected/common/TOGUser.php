@@ -190,7 +190,7 @@ class TOGUser extends TDbUser
 		}
 	}
 	
-	public function createUserFromCookie($cookie)
+	/*public function createUserFromCookie($cookie)
 	{
 		if(($data = $cookie->Value)!=='')
 		{
@@ -225,7 +225,7 @@ class TOGUser extends TDbUser
 		$data = array(base64_encode($application->SecurityManager->hashData(strtolower($email))),$address,$token);
 		$data = $application->SecurityManager->hashData(serialize($data));
 		$cookie->Value = $data;
-	}
+	}*/
 }
 
 ?>

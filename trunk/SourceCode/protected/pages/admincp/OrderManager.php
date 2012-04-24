@@ -110,7 +110,8 @@ class OrderManager extends TPage
 		{
 			if ($this->SearchText) $this->txtSearchText->Text = $this->SearchText;
 			// set user selector 
-			$users = UserRecord::finder()->getAllItems();
+			//$users = UserRecord::finder()->getAllItems();
+			$users = UserRecord::finder()->getAllItemsOrderByFirstName(); // edited by Tom on 24-04-2012
 			$this->cboUserSelector->Items->clear();
 			foreach($users as $user)
 			{

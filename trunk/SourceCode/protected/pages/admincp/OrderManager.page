@@ -76,6 +76,14 @@
 								</prop:ItemTemplate>
 							</com:TTemplateColumn>
 							
+							<!-- added by Tom on 24-04-2012 -->
+							<com:TTemplateColumn HeaderStyle.Width="20%" HeaderText="Email">
+								<prop:ItemTemplate>
+									<com:TLabel Text="<%# $this->Parent->Data->User->Email %>" />
+								</prop:ItemTemplate>
+							</com:TTemplateColumn>
+							<!-- end -->
+							
 							<com:TTemplateColumn HeaderStyle.Width="8%">
 								<prop:HeaderTemplate>
 									<a href="<%# $this->Page->populateSortUrl(2,(($this->Page->SortBy==2 && $this->Page->SortType=='asc') ? 'desc' : 'asc'),$this->Page->SearchText,$this->Page->UserID,$this->Page->LatestStatus) %>">Total

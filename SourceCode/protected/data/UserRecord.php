@@ -73,5 +73,12 @@ class UserRecord extends TActiveRecord
 		$criteria->Condition = "user_id > 0";
 		return self::finder()->findAll($criteria);
 	}
+	
+	public function getAllItemsOrderByFirstName()
+	{
+		$criteria = new TActiveRecordCriteria;
+		$criteria->Condition = "user_id > 0 order by first_name asc";
+		return self::finder()->findAll($criteria);
+	}
 }
 ?>

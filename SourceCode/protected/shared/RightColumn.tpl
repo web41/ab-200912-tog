@@ -15,8 +15,8 @@
     <div class="special_box">
         <div class="top">Delivery Schedule</div>
        	<div class="center">
-        	The Organic Grocer delivers <b>twice weekly</b>, every <b>Tuesday</b>, and <b>Wednesday</b>.<br /><br />
-            <b><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">Click here to see more details about our delivery schedule</a></b>
+        	The Organic Grocer delivers every <b>Tuesday</b> and <b>Wednesday</b> between 4pm - 8.30pm.<br /><br />
+            <b><a href="<%= $this->Service->ConstructUrl("shop.Delivery") %>">Click here for details about our delivery schedule.</a></b>
         </div>
         <div class="bottom"><!-- --></div>
     </div>

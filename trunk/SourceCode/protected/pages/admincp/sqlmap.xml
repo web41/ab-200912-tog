@@ -7,7 +7,8 @@
 			LEFT JOIN tbl_product p on oi.product_id = p.product_id
 			LEFT JOIN tbl_brand b on p.brand_id = b.brand_id
 			LEFT JOIN tbl_manufacturer m on p.mf_id = m.mf_id
-			WHERE oi.order_id > 0
+			LEFT JOIN tbl_order_history oh ON o.order_id = oh.order_id
+			WHERE oi.order_id > 0			
 			$ADDITIONAL_CONDITION$
 			ORDER BY $ORDER_BY$
 		]]>

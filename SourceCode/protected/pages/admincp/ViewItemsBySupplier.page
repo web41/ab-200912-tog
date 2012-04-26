@@ -27,8 +27,7 @@
 					<div class="title" id="calendar"><div><div>
 						<h2>Purchased Items By Supplier</h2>
 						<div style="float:right;height:26px;padding:7px 5px 0 0;">
-							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/><com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>
-							<com:TDropDownList ID="cboMfSelector" PromptText="All" PromptValue="" DataTextField="Name" DataValueField="ID" />
+							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/><com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>							
 							<com:TDatePicker ID="dpFromDate" CssClass="jen"
 								Width="75px"
 								Mode="ImageButton" InputMode="TextBox"
@@ -39,6 +38,8 @@
 								Mode="ImageButton" InputMode="TextBox"
 								ButtonImageUrl="<%= $this->Page->Theme->BaseUrl %>/images/calendar.png"
 								DateFormat="MM/dd/yyyy"/>
+							<com:TDropDownList ID="cboMfSelector" PromptText="All Supplier" PromptValue="0" DataTextField="Name" DataValueField="ID" />
+							<com:TDropDownList ID="cboOrderStatusSelector" PromptText="All Status" PromptValue="0" DataTextField="Name" DataValueField="Code" />
 						</div>
 					</div></div></div>
 					<div class="content nopadding">

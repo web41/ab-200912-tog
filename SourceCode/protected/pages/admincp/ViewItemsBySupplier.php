@@ -9,6 +9,7 @@ class ViewItemsBySupplier extends TPage
 	private $_fromDate = 0;
 	private $_toDate = 0;
 	private $_mfID = 0;
+	private $_orderStatusCode = '0'; // Added by Tom -26/04/2012
 	private $_sortable = array("p.product_name","b.brand_name","oi.quantity","m.mf_name","oi.gen_counter");
 	private $_queryParams = array("p","st","sb","mf","fd","td","type");
 	const AR = "OrderItemRecord";
@@ -72,6 +73,16 @@ class ViewItemsBySupplier extends TPage
 	{
 		$this->_mfID = TPropertyValue::ensureInteger($value);
 	}
+	
+	public function getOrderStatusCode()
+	{
+		return $this->_orderStatusCode;
+	}
+
+	public function setOrderStatusCode($value)
+	{
+		$this->_orderStatusCode = $value;
+	}
 
 	public function getFromDate()
 	{
@@ -101,6 +112,7 @@ class ViewItemsBySupplier extends TPage
 		$this->SortBy = ($this->Request->contains('sb')) ? TPropertyValue::ensureInteger($this->Request['sb']) : 3;
 		$this->SortType = ($this->Request->contains('st')) ? $this->Request['st'] : 'asc';
 		$this->MfID = ($this->Request->contains('mf') && TPropertyValue::ensureInteger($this->Request['mf'])>0) ? TPropertyValue::ensureInteger($this->Request['mf']) : 0;
+		$this->OrderStatusCode = ($this->Request->contains('os')) ? $this->Request['os'] : '0'; // Tom 26/04/2012
 		$tempFromDate = ($this->Request->contains('fd') && TPropertyValue::ensureInteger($this->Request['fd'])>0) ? TPropertyValue::ensureInteger($this->Request['fd']) : time();
 		$tempToDate = ($this->Request->contains('td') && TPropertyValue::ensureInteger($this->Request['td'])>0) ? TPropertyValue::ensureInteger($this->Request['td']) : time();
 		$this->FromDate = mktime(0,0,0,date("n",$tempFromDate),date("j",$tempFromDate),date("Y",$tempFromDate));
@@ -110,6 +122,11 @@ class ViewItemsBySupplier extends TPage
 			$this->cboMfSelector->DataSource = ManufacturerRecord::getAllItems();
 			$this->cboMfSelector->DataBind();
 			$this->cboMfSelector->SelectedValue = $this->MfID;
+			// Added by Tom 26-04-2012
+			$this->cboOrderStatusSelector->DataSource = OrderStatusRecord::getAllItems();
+			$this->cboOrderStatusSelector->DataBind();
+			$this->cboOrderStatusSelector->SelectedValue = $this->OrderStatusCode;
+			// End
 			$this->populateData();
 			$this->dpFromDate->Data = $this->FromDate;
 			$this->dpToDate->Data = $this->ToDate;
@@ -137,6 +154,14 @@ class ViewItemsBySupplier extends TPage
 			$sql .= " AND (o.c_date <= '".$this->ToDate."')";
 		if ($this->MfID>0)
 			$sql .= " AND (m.mf_id = '".$this->MfID."')";
+		if ($this->OrderStatusCode != '0') {
+			$sql .= " AND (oh.order_status_code = '". $this->OrderStatusCode ."')";
+			$sql .=	" AND (oh.c_date = (SELECT max(c_date) FROM tbl_order_history WHERE order_id = oh.order_id))";
+		}
+		else {		
+			//$sql .= " AND (oh.order_status_code in ('C','W','P', 'D'))";
+			$sql .=	" AND (oh.c_date = (SELECT max(c_date) FROM tbl_order_history WHERE order_id = oh.order_id))";			
+		}
 		if (!isset($this->Sortable[$this->SortBy])) $this->SortBy=3;
 		$order = $this->Sortable[$this->SortBy]." ".$this->SortType;
 		if ($this->SortBy==3) $order .= ", ".$this->Sortable[1]." ".$this->SortType;
@@ -145,8 +170,9 @@ class ViewItemsBySupplier extends TPage
 		return $sqlmap->queryForList("ViewItemsBySupplier", array("ADDITIONAL_CONDITION"=>$sql,"ORDER_BY"=>$order));
 	}
 
-	public function populateSortUrl($sortBy, $sortType, $fromDate=0, $toDate=0, $mfID=0, $resetPage=true)
-	{
+	//public function populateSortUrl($sortBy, $sortType, $fromDate=0, $toDate=0, $mfID=0, $resetPage=true)
+	public function populateSortUrl($sortBy, $sortType, $fromDate=0, $toDate=0, $mfID=0, $orderStatus='0', $resetPage=true)
+	{			
 		if ($fromDate == 0) $fromDate = mktime(0,0,0,date("n"),date("j"),date("Y"));
 		if ($toDate == 0) $toDate = mktime(23,59,59,date("n"),date("j"),date("Y"));
 		$params = $this->Request->toArray();
@@ -165,6 +191,8 @@ class ViewItemsBySupplier extends TPage
 		else if (isset($params['td'])) unset($params['td']);
 		if ($mfID>0) $params['mf'] = $mfID;
 		else if (isset($params['mf'])) unset($params['mf']);
+		if ($orderStatus != '' && $orderStatus != '0') $params['os'] = $orderStatus;
+		else if (isset($params['os'])) unset($params['os']);
 		return $this->Service->ConstructUrl($serviceParameter,$params);
 	}
 
@@ -174,7 +202,8 @@ class ViewItemsBySupplier extends TPage
 		{
 			//$this->SearchText = THttpUtility::htmlEncode($this->txtSearchText->SafeText);
 			//$this->populateData();
-			$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,$this->dpFromDate->Data,$this->dpToDate->Data,$this->cboMfSelector->SelectedValue));
+				//$this->populateSortUrl($this->SortBy,$this->SortType,$this->dpFromDate->Data,$this->dpToDate->Data,$this->cboMfSelector->SelectedValue,$this->cboOrderStatusSelector->SelectedValue);
+			$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,$this->dpFromDate->Data,$this->dpToDate->Data,$this->cboMfSelector->SelectedValue,$this->cboOrderStatusSelector->SelectedValue));
 		}
 	}
 
@@ -183,7 +212,7 @@ class ViewItemsBySupplier extends TPage
 		//$this->SearchText = "";
 		//$this->txtSearchText->Text = "Filter by ID or Name";
 		//$this->populateData();
-		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,0,0,0));
+		$this->Response->redirect($this->populateSortUrl($this->SortBy,$this->SortType,0,0,0,0));
 	}
 
 	public function btnExport_Clicked($sender, $param)

@@ -255,7 +255,8 @@ class Review extends TPage
 					// insert order history
 					$orderHistory = new OrderHistoryRecord;
 					$orderHistory->OrderID = $order->ID;
-					$orderHistory->StatusCode = "W"; // 'W' means Pending
+					//$orderHistory->StatusCode = "W"; // 'W' means Pending
+					$orderHistory->StatusCode = "C"; // 'C' means Confirmed // Updated by Tom 26-04-2012, order start with status Confirmed
 					$orderHistory->save();
 					
 					$payment = new PaymentRecord;

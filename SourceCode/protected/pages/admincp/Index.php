@@ -113,9 +113,9 @@ class Index extends TPage
 		// this part will be hard-code on each page
 		$criteria->Condition = "order_id in (select distinct o.order_id from tbl_order o 
 								left join tbl_order_history oh on o.order_id = oh.order_id
-								where o.order_id > 0 and oh.order_status_code = 'W'
+								where o.order_id > 0 and oh.order_status_code = 'C'
 								and o.order_id not in (select order_id from tbl_order_history
-								where order_status_code <> 'W')";
+								where order_status_code <> 'C')";
 		if (strlen($this->SearchText)>0)
 		{
 			$searchArray = explode(" ",THttpUtility::htmlDecode($this->SearchText));

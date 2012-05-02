@@ -127,11 +127,22 @@ class OrderRecord extends TActiveRecord
 		$start = 155001;
 		if ($number<=0)
 		{
-			$criteria = new TActiveRecordCriteria;
+			/*$criteria = new TActiveRecordCriteria;
 			$criteria->Condition = "order_id > 0";
-			$number = self::finder()->count($criteria)+$start;
+			$number = self::finder()->count($criteria)+$start;*/
+			
+			// Tom - Fixed the Order Number Generation - 2012 May 02
+			$criteria = new TActiveRecordCriteria;
+			$criteria->Condition = "order_id = (select max(order_id) from tbl_order)";
+			$items = self::finder()->findAll($criteria);
+			foreach ($items as $item) 
+			{				
+				$maxOrderNumber = $item->Num;
+			}
+			$number = substr($maxOrderNumber,-6) + 1;
+			// End
 		}
-		$arg = "%0{$length}d";
+		/*$arg = "%0{$length}d";
 		$orderNumber = $prefix.date("dmY",time())."-".sprintf($arg, $number);
 		$orderNumberExist = true;
 		do {
@@ -143,7 +154,8 @@ class OrderRecord extends TActiveRecord
 				$orderNumber = $prefix.date("dmY",time())."-".sprintf($arg, $number+1);
 			}
 		}
-		while($orderNumberExist);
+		while($orderNumberExist);*/
+		$orderNumber = $prefix.date("dmY",time())."-".$number; // Tom - Fixed the Order Number Generation - 2012 May 02
 		return $orderNumber;
 	}
 	

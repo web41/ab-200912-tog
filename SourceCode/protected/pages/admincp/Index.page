@@ -69,7 +69,7 @@
 				<!-- Pending order box -->
 				<div class="main_box">
 					<div class="title"><div><div>
-						<h2>Pending order</h2>
+						<h2>Confirmed Orders</h2>
 						<div style="float:right;padding:7px 5px 0 0;height:auto;">
 							<com:TButton ID="btnSearchReset" CssClass="btn_smallreset" CausesValidation="false" ValidationGroup="filter" OnClick="btnSearchReset_Clicked"/>
 							<com:TButton ID="btnSearch" CssClass="btn_smallenter" ValidationGroup="filter" OnClick="btnSearch_Clicked"/>

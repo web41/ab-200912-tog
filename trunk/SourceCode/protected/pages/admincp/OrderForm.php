@@ -125,7 +125,7 @@ class OrderForm extends TPage
 			try
 			{
 				$activeRecord->save();
-				if ($activeRecord->LatestHistory->StatusCode == "W")
+				if ($activeRecord->LatestHistory->StatusCode == "C")
 				{
 					$historyRecord = new OrderHistoryRecord;
 					$historyRecord->OrderID = $activeRecord->ID;
@@ -157,7 +157,7 @@ class OrderForm extends TPage
 			try
 			{
 				$activeRecord->save();
-				if ($activeRecord->LatestHistory->StatusCode == "W")
+				if ($activeRecord->LatestHistory->StatusCode == "C")
 				{
 					$historyRecord = new OrderHistoryRecord;
 					$historyRecord->OrderID = $activeRecord->ID;

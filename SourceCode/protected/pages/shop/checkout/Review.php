@@ -28,7 +28,7 @@ class Review extends TPage
 				$this->Response->redirect($this->Service->ConstructUrl("shop.cart.Index"));
 			else
 			{
-				if ($cartRecord->Subtotal < 120) {
+				if ($cartRecord->Subtotal < 130) {
 					$shippingMethod = ShippingMethodRecord::finder()->findByPk(6);
 					if ($shippingMethod instanceof ShippingMethodRecord) {
 						$cartRecord->ShippingMethodID = $shippingMethod->ID;

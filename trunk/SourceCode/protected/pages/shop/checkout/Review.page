@@ -48,10 +48,12 @@
 					</div>
 					<!-- Review title: END -->
 				</prop:HeaderTemplate>
-			</com:TRepeater>
-			<div><input type="button" style="float:left;margin:10px 0 5px 10px;" class="button" value="Edit Shopping Bag" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.cart.Index') %>'" /></div>
+			</com:TRepeater>			
+			<div><input type="button" style="float:left;margin:10px 0 5px 10px;" class="button" value="Edit Shopping Bag" onclick="document.location.href='<%= $this->Service->ConstructUrl('shop.cart.Index') %>'" /></div>			
 		</div>
 		<!-- Review: END -->
+		
+		<div style="color:blue;">* Please order a minimum of $130 to enjoy FREE delivery. Otherwise, a $10 delivery fee will apply.</div><!-- Added by Tom on 2012 Jul 11 -->
 		
 		<h3>Redeem your organic points</h3>
 		<div style="border-bottom:solid 1px #e2e2bc;padding:0 0 10px 0;margin-bottom:10px;float:left;width:544px;">

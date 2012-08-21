@@ -36,6 +36,6 @@ ORDER_CANCEL_CONFIRM		= All items in cart will be lost. Do you really want to ca
 PASSWORD_INCORRECT			= Current password is incorrect. Please try again.
 PAYPAL_CONNECT_ERROR		= Cannot connect PayPal server at this moment. Please try again later.
 PAYPAL_PAYMENT_ERROR		= Payment is not successful. Please check your account at PayPal.
-MINIMUM_ORDER_REQUIRED		= Please note that a minimum amount of $70 is required to make an online order.
+MINIMUM_ORDER_REQUIRED		= Please note that a minimum amount of $80 is required to make an online order.
 INVALID_DELIVERY_DATE		= Delivery date must be after the order date at least two days, except Saturday and Sunday.
 REVIEW_COMMENT				= Please provide us your specific request and we will satisfy you!

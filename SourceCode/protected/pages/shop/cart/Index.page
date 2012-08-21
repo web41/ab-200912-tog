@@ -79,6 +79,9 @@
 				</div>
 			</div>
 			<!-- Cart total price: END -->
+			
+			<div style="color:blue;">* Please note that minimum order is $80.</div><!-- Added by Tom on 2012 Aug 21 -->
+			
 			<div style="margin:0;">* If you have changed the quantity of any of your items, please make sure to update the bag before checking out.</div>
 			</com:TPanel>
 			<!-- Cart button -->

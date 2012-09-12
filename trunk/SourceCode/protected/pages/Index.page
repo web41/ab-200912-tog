@@ -77,7 +77,7 @@
                         <img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_title_delivery.png" alt="" /><br /><br />
                         <div>
                         	<!--img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_img_delivery.png" alt="" width="300" /><br /-->
-                        	<b>The Organic Grocer Delivers Every Tuesdays, Wednesdays, and Fridays.</b>
+                        	<b>The Organic Grocer Delivers Every Wednesdays, and Thursdays.</b>
                         </div>
                         <div>
                         	<img src="<%= $this->Request->UrlManagerModule->UrlPrefix %>/themes/default/images/ss_image1.png" alt="" class="img" width="100" />

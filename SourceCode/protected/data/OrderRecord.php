@@ -308,8 +308,8 @@ class OrderRecord extends TActiveRecord
 		// 19-10-2011: Order by Fri 11:00pm: Deliver by next Tue 3:30 to 7pm
 		//             Order by Sun 11:00pm: Deliver by next Wed 3:30 to 7pm
 		
-		// 24-04-2012 Deliver time 4pm-8.30pm
-		if (($dayOfWeek == 1) || ($dayOfWeek == 2) || ($dayOfWeek == 3) || 
+		// 24-04-2012 Deliver time 4pm-8.30pm		
+		/*if (($dayOfWeek == 1) || ($dayOfWeek == 2) || ($dayOfWeek == 3) || 
 			($dayOfWeek == 4) || ($dayOfWeek == 5 && $hourOfDay < 23))
 		{
 			if ($dayOfWeek == 1) $tmpDate += $oneDay; // if order on mon, current tmpdate is tue, plus 1 become wed, skip this tue, deliver next tue
@@ -326,6 +326,24 @@ class OrderRecord extends TActiveRecord
 		{
 			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay;
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'4pm-8.30pm');			
+		}*/
+		
+		// 12-09-2012 Change the delivery days to Wednesdays and Thursdays 3pm to 7:30pm. Cut-off time is Monday 11am.
+		if ($dayOfWeek == 1 && $hourOfDay < 11) // monday before 11am
+		{			
+			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay; // deliver Weds
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
+			while (date('N',$tmpDate) != 4) $tmpDate += $oneDay; // deliver Thurs 
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');				
+		}		
+		else
+		{
+			if ($dayOfWeek < 3) 
+				$tmpDate += $oneDay * 2; // if order on mon after 11am, tue --> current tmpdate is tue,wed, plus 2 become thu,fri skip this wed, deliver next wed
+			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay; // deliver Weds
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
+			while (date('N',$tmpDate) != 4) $tmpDate += $oneDay; // deliver Thurs 
+			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
 		}
 		
 		return $availDeliveryDate;

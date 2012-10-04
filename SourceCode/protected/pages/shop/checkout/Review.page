@@ -68,11 +68,13 @@
 					<div class="text">Subtotal</div>
 					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= CartTempRecord::finder()->getSubtotalInSession() %>" /></div>
 				</div>
-				<com:TPanel CssClass="price" Visible="<%= $this->ShippingMethod->Price>0 %>">
+				<!--com:TPanel CssClass="price" Visible="<%= $this->ShippingMethod->Price>0 %>"-->
+				<com:TPanel CssClass="price">
 					<div class="text">Delivery Surcharge</div>
-					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price %>" /></div>
+					<div class="value"><com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->Cart->ShippingAmount %>" /></div>
 				</com:TPanel>
-				<com:TPanel CssClass="price" Visible="<%= $this->ShippingMethod->Price-$this->Cart->ShippingAmount>0 %>">
+				<!--com:TPanel CssClass="price" Visible="<%= $this->ShippingMethod->Price-$this->Cart->ShippingAmount>0 %>"-->
+				<com:TPanel CssClass="price" Visible="false">
 					<div class="text">Delivery Discount</div>
 					<div class="value">-<com:TNumberFormat Type="currency" Currency="USD" Value="<%= $this->ShippingMethod->Price-$this->Cart->ShippingAmount %>" /></div>
 				</com:TPanel>

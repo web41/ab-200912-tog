@@ -6,7 +6,7 @@
 
 Dear <com:TLabel ID="FULL_NAME"/>,<br /><br />
 
-You have changed you password to: <com:TLabel ID="NEW_PASSWORD"/> <br /><br />
+You have changed your password to: <com:TLabel ID="NEW_PASSWORD"/> <br /><br />
 
 Thank You. <br />
 The Organic Grocer

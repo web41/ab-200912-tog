@@ -331,11 +331,11 @@ class OrderRecord extends TActiveRecord
 		// 12-09-2012 Change the delivery days to Wednesdays and Thursdays 3pm to 7:30pm. Cut-off time is Monday 11am.
 		
 		// 04-12-2012 Block delivery dates from Dec-2012 to mid Jan-2013
-		$tmpDate = mktime(0, 0, 0, 1, 9, 2013);
+		/*$tmpDate = mktime(0, 0, 0, 1, 9, 2013);
 		$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
 		$tmpDate = mktime(0, 0, 0, 1, 10, 2013);
-		$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
-		/*
+		$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	*/
+		
 		if ($dayOfWeek == 1 && $hourOfDay < 11) // monday before 11am
 		{			
 			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay; // deliver Weds
@@ -352,7 +352,7 @@ class OrderRecord extends TActiveRecord
 			while (date('N',$tmpDate) != 4) $tmpDate += $oneDay; // deliver Thurs 
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
 		}
-		*/
+		
 		return $availDeliveryDate;
 	}
 	

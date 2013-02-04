@@ -41,9 +41,9 @@
 					<com:TDropDownList ID="cboDeliveryDateSelector" />
 				</td>
 			</tr>
-			<!--tr>
-				<td colspan="2"><font color="red">Last delivery for 2012 will be on 5th December 2012, Thursday. Deliveries will resume on 9th January 2013, Wednesday (Order by Monday 11am, 7th January 2013).</font></td>
-			</tr-->
+			<tr>
+				<td colspan="2"><font color="red">Please note that there will be no deliveries on 13th & 14th February 2013. Our next delivery will be on Wednesday 20th February & Thursday 21th February 2013.</font></td>
+			</tr>
 			<tr>
 				<td class="table_title" colspan="2">Address information</td>
 			</tr>

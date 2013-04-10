@@ -16,9 +16,13 @@
 	<!-- Inside box -->
 	<com:TPanel ID="mainContent" CssClass="inside_box">
 		<h2>Contact us</h2>
-		<div>You may contact our Customer Service on (65) 91150702 between 10am to 6pm Mondays to Fridays and 10am to 1pm on Saturdays.
+		<div>
+			For further enquiries please email customer service at <a href="mailto:sales@theorganicgrocer.com.sg" class="mail">sales@theorganicgrocer.com.sg</a>.
 		</div>
-		<div>You may also email us at <a href="mailto:sales@theorganicgrocer.com.sg" class="mail">sales@theorganicgrocer.com.sg</a></div>
+		<div>Alternatively, you can call us on (65) 9687 2747  or (65) 9115 0702 during business hours Monday to Friday 9:30am to 7:30pm, Sat 9:30am to 1pm.
+		</div>
+		<div>We will respond to all enquiries within 24 hours guarantee!
+		</div>
 		<div>
 			<table border="0" cellpadding="10" cellspacing="0" width="100%">
 				<tr>

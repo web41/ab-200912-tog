@@ -83,8 +83,9 @@
             <a href="<%= $this->Service->ConstructUrl("shop.Help") %>">Help</a></li>  |  
 			<a href="<%= $this->Service->ConstructUrl("shop.ContactUs") %>">Contact Us</a></li> |
 			<a href="<%= $this->Service->ConstructUrl("shop.TermandCondition") %>">Terms and Conditions</a><br />
-			Copyright &copy; 2010 <a href="<%= $this->Service->ConstructUrl("shop.Index") %>">The Organic Grocer</a>. All rights reserved.<br />
+			Copyright &copy; 2010 - 2013 <a href="<%= $this->Service->ConstructUrl("shop.Index") %>">The Organic Grocer</a>. All rights reserved.<br />
             Powered by <a href="http://www.asiablaze.com" title="Singapore Ecommerce Web Design" target="_blank">AsiaBlaze Design</a><br />
+			Listed on <a href="http://www.thebestsingapore.com" title="The Best Singapore" target="_blank">The Best Singapore</a><br />
             <img src="<%= $this->Page->Theme->BaseUrl %>/images/paypal.png" alt="" /> &nbsp;
             <img src="<%= $this->Page->Theme->BaseUrl %>/images/visa.png" alt="" /> &nbsp;
             <img src="<%= $this->Page->Theme->BaseUrl %>/images/master.png" alt="" /> &nbsp;

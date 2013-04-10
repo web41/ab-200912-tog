@@ -106,7 +106,7 @@
 	</div><!-- CONTENT ENDS -->
 
 	<div id="footer">
-		<span>Copyright © 2010 - 2012 <a href="<%= $this->Service->ConstructUrl("Index") %>">The Organic Grocer</a>. All rights reserved. Powered by <a href="http://www.asiablaze.com" title="Singapore Ecommerce Web Design" target="_blank">AsiaBlaze Design</a>.</span>
+		<span>Copyright © 2010 - 2013 <a href="<%= $this->Service->ConstructUrl("Index") %>">The Organic Grocer</a>. All rights reserved. Powered by <a href="http://www.asiablaze.com" title="Singapore Ecommerce Web Design" target="_blank">AsiaBlaze Design</a>.</span>
 	</div>
 </div><!-- CONTAINER ENDS -->
 

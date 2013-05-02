@@ -336,7 +336,13 @@ class OrderRecord extends TActiveRecord
 		$tmpDate = mktime(0, 0, 0, 1, 10, 2013);
 		$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	*/
 		
-		if ($dayOfWeek == 1 && $hourOfDay < 11) // monday before 11am
+		// 04-02-2013 Block delivery dates 13th and 14th Feb-2013 (Chinese New Year)
+		$tmpDate = mktime(0, 0, 0, 2, 20, 2013);
+		$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
+		$tmpDate = mktime(0, 0, 0, 2, 21, 2013);
+		$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');
+		
+		/*if ($dayOfWeek == 1 && $hourOfDay < 11) // monday before 11am
 		{			
 			while (date('N',$tmpDate) != 3) $tmpDate += $oneDay; // deliver Weds
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
@@ -351,7 +357,7 @@ class OrderRecord extends TActiveRecord
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
 			while (date('N',$tmpDate) != 4) $tmpDate += $oneDay; // deliver Thurs 
 			$availDeliveryDate[] = array('day'=>$tmpDate,'time'=>'3pm-7.30pm');	
-		}
+		}*/
 		
 		return $availDeliveryDate;
 	}
